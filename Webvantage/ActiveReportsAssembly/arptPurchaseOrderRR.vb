@@ -1,4 +1,4 @@
-﻿Imports DataDynamics.ActiveReports 
+﻿Imports DataDynamics.ActiveReports
 Imports DataDynamics.ActiveReports.Document
 Imports System.Data.SqlClient
 Imports System
@@ -25,9 +25,12 @@ Public Class arptPurchaseOrderRR
     Public DefaultFooterFontSize As Double = 0
     Public AgencyName As String
     Public DefaultLocation As AdvantageFramework.Database.Entities.Location
+    Private _LocationLogo As AdvantageFramework.Database.Entities.LocationLogo = Nothing
     Public _Clientname As String = ""
     Public UseLocationName As Boolean = False
     Public UseClientName As Boolean = False
+    Public ConnString As String
+    Public UserCode As String
 
 
     Private POHeader1 As arptPOHeader = Nothing
@@ -184,21 +187,55 @@ Public Class arptPurchaseOrderRR
         Dim FileInfo As System.IO.FileInfo = Nothing
         Dim LogoVisible As Boolean = False
         Dim FilePath As String = Nothing
+        Dim Image As Object = Nothing
 
         Try
 
             Try
 
+                Using DbContext As New AdvantageFramework.Database.DbContext(ConnString, UserCode)
+                    If DefaultLocation IsNot Nothing Then
+
+                        _LocationLogo = AdvantageFramework.Database.Procedures.LocationLogo.LoadByLocationAndLocationLogoTypeID(DbContext, DefaultLocation.ID, AdvantageFramework.Database.Entities.LocationLogoTypes.HeaderPortrait)
+
+                    Else
+
+                        _LocationLogo = Nothing
+
+                    End If
+                End Using
+
+
                 If Me.DefaultLocation IsNot Nothing Then
 
                     If Me.DefaultLocation.LogoLocation <> "N" Then
 
-                        FileInfo = New IO.FileInfo(Me.DefaultLocation.LogoPath)
+                        If String.IsNullOrWhiteSpace(DefaultLocation.LogoPath) = False Then
 
-                        If FileInfo.Exists Then
+                            If My.Computer.FileSystem.FileExists(DefaultLocation.LogoPath) Then
 
-                            LogoVisible = True
-                            FilePath = Me.DefaultLocation.LogoPath
+                                LogoVisible = True
+                                Me.Picture1.Image = System.Drawing.Image.FromFile(DefaultLocation.LogoPath)
+
+                            End If
+
+                        ElseIf _LocationLogo IsNot Nothing AndAlso _LocationLogo.Image IsNot Nothing Then
+
+                            Using MemoryStream = New System.IO.MemoryStream(_LocationLogo.Image)
+
+                                LogoVisible = True
+
+                                Using img As Image = System.Drawing.Image.FromStream(MemoryStream)
+
+                                    Dim bm As Bitmap
+
+                                    bm = New Bitmap(img)
+
+                                    Me.Picture1.Image = bm
+
+                                End Using
+
+                            End Using
 
                         End If
 
@@ -220,6 +257,8 @@ Public Class arptPurchaseOrderRR
 
                     End If
 
+                    Me.Picture1.Image = System.Drawing.Image.FromFile(FilePath)
+
                 End If
 
                 If Me.LogoID = "None" Then
@@ -231,11 +270,16 @@ Public Class arptPurchaseOrderRR
 
                 Me.Picture1.Visible = LogoVisible
 
-                If Me.Picture1.Visible Then
+                'If Me.Picture1.Visible Then
 
-                    Me.Picture1.Image = System.Drawing.Image.FromFile(FilePath)
+                '    If Image IsNot Nothing Then
+                '        Me.Picture1.Image = System.Drawing.Image.
+                '    Else
+                '        Me.Picture1.Image = System.Drawing.Image.FromFile(FilePath)
+                '    End If
 
-                End If
+
+                'End If
 
             Catch ex As Exception
                 'Me.txt_hdr_agency_name.Text = ex.Message.ToString

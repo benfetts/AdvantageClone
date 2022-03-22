@@ -306,7 +306,8 @@
                             <div repeat.for="cardGroup of cardGroups">
                                 <div>
                                     <h5 if.bind="cardGroup.Key && cardGroup.Key !== ''" style="font-weight: bold;">${cardGroup.Key}</h5>
-                                    <div if.bind="allowSort" style="" id="dashboard-container-${$index}" ak-sortable="k-cursor: move; k-container.bind: '#dashboard-container-' + $index;" k-on-change.delegate="changeAlertOrder($event.detail)">
+                                    <div if.bind="allowSort" style="" id="dashboard-container-${$index}" ak-sortable="k-cursor: move; k-container.bind: '#dashboard-container-' + $index;" 
+                                         k-on-change.delegate="changeAlertOrder($event.detail)">
                                         <wv-card repeat.for="card of cardGroup.Cards"
                                                  title="${card.Title}"
                                                  details.bind="card.Data"
@@ -605,7 +606,9 @@
                             <div repeat.for="cardGroup of cardGroups">
                                 <div>
                                     <h5 if.bind="cardGroup.Key && cardGroup.Key !== ''" style="font-weight: bold;">${cardGroup.Key}</h5>
-                                    <div if.bind="allowSort" style="" id="dashboard-container-${$index}" ak-sortable="k-cursor: move; k-container.bind: '#dashboard-container-' + $index;">
+                                    <div if.bind="allowSort" style="" id="dashboard-container-${$index}" 
+                                         ak-sortable="k-cursor: move; k-container.bind: '#dashboard-container-' + $index;"
+                                         k-on-change.delegate="changeProofOrder($event.detail)">
                                         <wv-card repeat.for="card of cardGroup.Cards"
                                                  title="${card.Title}"
                                                  details.bind="card.Data"

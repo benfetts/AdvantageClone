@@ -270,7 +270,6 @@
 
             End If
 
-            ButtonItemRFP_Preview.Visible = False
             ButtonItemActions_Generate.Image = AdvantageFramework.My.Resources.MediaAddImage
             ButtonItemActions_Refresh.Image = AdvantageFramework.My.Resources.RefreshImage
 
@@ -447,6 +446,61 @@
                 DataGridViewDetails_Details.CurrentView.RefreshData()
 
             End If
+
+        End Sub
+        Private Sub ButtonItemRFP_Preview_Click(sender As Object, e As EventArgs) Handles ButtonItemRFP_Preview.Click
+
+            'objects
+            Dim MediaRFPHeaderIDs As Generic.List(Of Integer) = Nothing
+            Dim MediaRFPHeader As AdvantageFramework.DTO.Media.RFP.MediaRFPHeader = Nothing
+            Dim Report As DevExpress.XtraReports.UI.XtraReport = Nothing
+            Dim PrintingSystemCommandHandler As AdvantageFramework.WinForm.Presentation.Controls.Classes.PrintingSystemCommandHandler = Nothing
+
+            MediaRFPHeaderIDs = (From Entity In DataGridViewDetails_Details.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.RFP.GenerateRFP)().ToList
+                                 Select Entity.MediaRFPHeaderID).Distinct.ToList
+
+            For Each MediaRFPHeaderID In MediaRFPHeaderIDs
+
+                Report = AdvantageFramework.Reporting.Reports.CreateRFPReport(Me.Session, MediaRFPHeaderID)
+
+                MediaRFPHeader = _MediaRFPHeaders.Where(Function(H) H.ID = MediaRFPHeaderID).SingleOrDefault
+
+                If Report IsNot Nothing Then
+
+                    Report.CreateDocument()
+
+                    If _ViewModel.IsAgencyASP Then
+
+                        If My.Computer.FileSystem.DirectoryExists(_ViewModel.AgencyImportPath) Then
+
+                            If My.Computer.FileSystem.DirectoryExists(AdvantageFramework.StringUtilities.AppendTrailingCharacter(_ViewModel.AgencyImportPath.Trim, "\") & "Reports\") = False Then
+
+                                My.Computer.FileSystem.CreateDirectory(AdvantageFramework.StringUtilities.AppendTrailingCharacter(_ViewModel.AgencyImportPath.Trim, "\") & "Reports\")
+
+                            End If
+
+                        End If
+
+                        Report.PrintingSystem.ExportOptions.PrintPreview.DefaultFileName = AdvantageFramework.Media.Presentation.CreateMediaRFPFileName(MediaRFPHeader.VendorName, Session.UserCode, MediaRFPHeader.MediaBroadcastWorksheetMarketID)
+                        Report.PrintingSystem.ExportOptions.PrintPreview.DefaultDirectory = If(String.IsNullOrWhiteSpace(_ViewModel.AgencyImportPath), "", AdvantageFramework.StringUtilities.AppendTrailingCharacter(_ViewModel.AgencyImportPath.Trim, "\") & "Reports\")
+                        Report.PrintingSystem.ExportOptions.PrintPreview.SaveMode = DevExpress.XtraPrinting.SaveMode.UsingDefaultPath
+                        Report.PrintingSystem.ExportOptions.PrintPreview.ActionAfterExport = DevExpress.XtraPrinting.ActionAfterExport.None
+
+                        PrintingSystemCommandHandler = New AdvantageFramework.WinForm.Presentation.Controls.Classes.PrintingSystemCommandHandler(Me.Session, If(String.IsNullOrWhiteSpace(_ViewModel.AgencyImportPath), "", AdvantageFramework.StringUtilities.AppendTrailingCharacter(_ViewModel.AgencyImportPath.Trim, "\") & "Reports\"), AdvantageFramework.Media.Presentation.CreateMediaRFPFileName(MediaRFPHeader.VendorName, Session.UserCode, MediaRFPHeader.MediaBroadcastWorksheetMarketID), False)
+
+                        Report.PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.ExportHtm, DevExpress.XtraPrinting.CommandVisibility.None)
+
+                    Else
+
+                        Report.PrintingSystem.ExportOptions.PrintPreview.DefaultFileName = AdvantageFramework.Media.Presentation.CreateMediaRFPFileName(MediaRFPHeader.VendorName, Session.UserCode, MediaRFPHeader.MediaBroadcastWorksheetMarketID)
+
+                    End If
+
+                    AdvantageFramework.Media.Presentation.MediaManagerOrderViewingForm.ShowFormDialog(Report, PrintingSystemCommandHandler)
+
+                End If
+
+            Next
 
         End Sub
 

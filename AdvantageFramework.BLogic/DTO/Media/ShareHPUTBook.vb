@@ -65,6 +65,12 @@
             Me.MediaSpotTVResearchBookID = MediaSpotTVResearchBookID
 
         End Sub
+        Public Sub New(ShareBookID As Integer)
+
+            Me.ID = New Guid
+            Me.ShareBookID = ShareBookID
+
+        End Sub
 
 #End Region
 

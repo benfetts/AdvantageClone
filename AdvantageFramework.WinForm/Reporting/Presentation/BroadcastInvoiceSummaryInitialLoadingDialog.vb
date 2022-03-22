@@ -1,4 +1,6 @@
-﻿Namespace Reporting.Presentation
+﻿Option Strict On
+
+Namespace Reporting.Presentation
 
     Public Class BroadcastInvoiceSummaryInitialLoadingDialog
 
@@ -17,6 +19,7 @@
 #Region " Variables "
 
         Private _ParameterDictionary As Generic.Dictionary(Of String, Object) = Nothing
+        Private _IsDetailReport As Boolean = False
 
 #End Region
 
@@ -32,13 +35,14 @@
 
 #Region " Methods "
 
-        Private Sub New(ParameterDictionary As Generic.Dictionary(Of String, Object))
+        Private Sub New(ParameterDictionary As Generic.Dictionary(Of String, Object), ByVal IsDetailReport As Boolean)
 
             ' This call is required by the Windows Form Designer.
             InitializeComponent()
 
             ' Add any initialization after the InitializeComponent() call.
             _ParameterDictionary = ParameterDictionary
+            _IsDetailReport = IsDetailReport
 
         End Sub
         Private Sub LoadOffices()
@@ -57,12 +61,12 @@
 
 #Region "  Show Form Methods "
 
-        Public Shared Function ShowFormDialog(ByRef ParameterDictionary As Generic.Dictionary(Of String, Object)) As Windows.Forms.DialogResult
+        Public Shared Function ShowFormDialog(ByRef ParameterDictionary As Generic.Dictionary(Of String, Object), ByVal IsDetailReport As Boolean) As Windows.Forms.DialogResult
 
             'objects
             Dim BroadcastInvoiceSummaryInitialLoadingDialog As AdvantageFramework.Reporting.Presentation.BroadcastInvoiceSummaryInitialLoadingDialog = Nothing
 
-            BroadcastInvoiceSummaryInitialLoadingDialog = New AdvantageFramework.Reporting.Presentation.BroadcastInvoiceSummaryInitialLoadingDialog(ParameterDictionary)
+            BroadcastInvoiceSummaryInitialLoadingDialog = New AdvantageFramework.Reporting.Presentation.BroadcastInvoiceSummaryInitialLoadingDialog(ParameterDictionary, IsDetailReport)
 
             ShowFormDialog = BroadcastInvoiceSummaryInitialLoadingDialog.ShowDialog()
 
@@ -132,6 +136,12 @@
             '    _ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.IncludeTV.ToString) = CheckBoxForm_TV.Checked
 
             'End If
+
+            If _IsDetailReport Then
+
+                Me.Text = "Broadcast Invoice Detail Initial Criteria"
+
+            End If
 
         End Sub
         Private Sub BroadcastInvoiceSummaryInitialLoadingDialog_Shown(sender As Object, e As EventArgs) Handles Me.Shown

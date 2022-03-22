@@ -116,9 +116,10 @@ BEGIN
 				[CheckNumber]		= r.CHECK_NBR,
 				[CheckDate]			= r.CHECK_DATE,
 				[CheckPostPeriod]   = r.POST_PERIOD,
-				[CheckAmount]		= r.CHECK_AMT, --p.AP_CHK_AMT, #02
+				[CheckAmount]		= CASE WHEN r.VOID_FLAG = 1 THEN 0.00 ELSE r.CHECK_AMT END, --p.AP_CHK_AMT, #02
 				[DiscountAmount]	= r.DISC_AMT,
 				[CheckVoided]		    = CASE WHEN r.VOID_FLAG = 1 THEN 'Yes' ELSE 'No' END,
+                [VoidedCheckAmount]     = CASE WHEN r.VOID_FLAG = 1 THEN r.CHECK_AMT ELSE 0.00 END,
 				[VoidComments]			= r.VO_COMMENT,
 				[CheckManualFlag]		= CASE WHEN r.[MANUAL] = 1 THEN 'Yes' ELSE 'No' END,
 
@@ -235,9 +236,10 @@ BEGIN
 				[CheckNumber]		= r.CHECK_NBR,
 				[CheckDate]			= r.CHECK_DATE,
 				[CheckPostPeriod]   = r.POST_PERIOD,
-				[CheckAmount]		= r.CHECK_AMT, --p.AP_CHK_AMT, #02
+				[CheckAmount]		= CASE WHEN r.VOID_FLAG = 1 THEN 0.00 ELSE r.CHECK_AMT END, --p.AP_CHK_AMT, #02
 				[DiscountAmount]	= r.DISC_AMT,
 				[CheckVoided]		    = CASE WHEN r.VOID_FLAG = 1 THEN 'Yes' ELSE 'No' END,
+                [VoidedCheckAmount]     = CASE WHEN r.VOID_FLAG = 1 THEN r.CHECK_AMT ELSE 0.00 END,
 				[VoidComments]			= NULL,
 				[CheckManualFlag]		= CASE WHEN r.[MANUAL] = 1 THEN 'Yes' ELSE 'No' END,
 
@@ -357,9 +359,10 @@ BEGIN
 				[CheckNumber]		= r.CHECK_NBR,
 				[CheckDate]			= r.CHECK_DATE,
 				[CheckPostPeriod]   = r.POST_PERIOD,
-				[CheckAmount]		= r.CHECK_AMT, --p.AP_CHK_AMT, #02
+				[CheckAmount]		= CASE WHEN r.VOID_FLAG = 1 THEN 0.00 ELSE r.CHECK_AMT END, --p.AP_CHK_AMT, #02
 				[DiscountAmount]	= r.DISC_AMT,
 				[CheckVoided]		    = CASE WHEN r.VOID_FLAG = 1 THEN 'Yes' ELSE 'No' END,
+                [VoidedCheckAmount]     = CASE WHEN r.VOID_FLAG = 1 THEN r.CHECK_AMT ELSE 0.00 END,
 				[VoidComments]			= r.VO_COMMENT,
 				[CheckManualFlag]		= CASE WHEN r.[MANUAL] = 1 THEN 'Yes' ELSE 'No' END,
 
@@ -476,9 +479,10 @@ BEGIN
 				[CheckNumber]		= r.CHECK_NBR,
 				[CheckDate]			= r.CHECK_DATE,
 				[CheckPostPeriod]   = r.POST_PERIOD, --r.POST_PERIOD
-				[CheckAmount]		= r.CHECK_AMT, --p.AP_CHK_AMT, #02
+				[CheckAmount]		= CASE WHEN r.VOID_FLAG = 1 THEN 0.00 ELSE r.CHECK_AMT END,  --p.AP_CHK_AMT, #02
 				[DiscountAmount]	= r.DISC_AMT,
 				[CheckVoided]		    = CASE WHEN r.VOID_FLAG = 1 THEN 'Yes' ELSE 'No' END,
+                [VoidedCheckAmount]     = CASE WHEN r.VOID_FLAG = 1 THEN r.CHECK_AMT ELSE 0.00 END,
 				[VoidComments]			= NULL,
 				[CheckManualFlag]		= CASE WHEN r.[MANUAL] = 1 THEN 'Yes' ELSE 'No' END,
 

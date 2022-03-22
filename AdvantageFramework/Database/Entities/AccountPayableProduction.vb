@@ -471,7 +471,7 @@
                 .DepartmentTeamCode = Me.DepartmentTeamCode
                 .IsPOComplete = Me.IsPOComplete
                 .ExtendedMarkupAmount = Me.ExtendedMarkupAmount
-                .ExtendedNonResaleTax = Me.ExtendedNonResaleTax
+                .ExtendedNonResaleTax = Me.ExtendedNonResaleTax.GetValueOrDefault(0)
                 .ExtendedStateResale = Me.ExtendedStateResale
                 .ExtendedCountyResale = Me.ExtendedCountyResale
                 .ExtendedCityResale = Me.ExtendedCityResale

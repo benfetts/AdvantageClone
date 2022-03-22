@@ -58,6 +58,7 @@
             PrintSecondaryTVImpressions
             PrintPrimaryCPM
             PrintSecondaryCPM
+            PrintZeroSpotLines
         End Enum
 
 #End Region
@@ -124,6 +125,7 @@
         Public Property PrintSecondaryTVImpressions As Boolean
         Public Property PrintPrimaryCPM As Boolean
         Public Property PrintSecondaryCPM As Boolean
+        Public Property PrintRemoveLinesWithoutSpots As Boolean
 
 #End Region
 
@@ -178,6 +180,7 @@
             Me.PrintSecondaryTVImpressions = False
             Me.PrintPrimaryCPM = False
             Me.PrintSecondaryCPM = False
+            Me.PrintRemoveLinesWithoutSpots = False
 
         End Sub
         Public Sub New(MediaBroadcastWorksheetPrintOptions As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetPrintOptions)
@@ -229,6 +232,7 @@
             Me.PrintSecondaryTVImpressions = MediaBroadcastWorksheetPrintOptions.PrintSecondaryTVImpressions
             Me.PrintPrimaryCPM = MediaBroadcastWorksheetPrintOptions.PrintPrimaryCPM
             Me.PrintSecondaryCPM = MediaBroadcastWorksheetPrintOptions.PrintSecondaryCPM
+            Me.PrintRemoveLinesWithoutSpots = MediaBroadcastWorksheetPrintOptions.PrintRemoveLinesWithoutSpots
 
         End Sub
         Public Sub SaveToEntity(ByRef MediaBroadcastWorksheetPrintOptions As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetPrintOptions)
@@ -279,6 +283,7 @@
             MediaBroadcastWorksheetPrintOptions.PrintSecondaryTVImpressions = Me.PrintSecondaryTVImpressions
             MediaBroadcastWorksheetPrintOptions.PrintPrimaryCPM = Me.PrintPrimaryCPM
             MediaBroadcastWorksheetPrintOptions.PrintSecondaryCPM = Me.PrintSecondaryCPM
+            MediaBroadcastWorksheetPrintOptions.PrintRemoveLinesWithoutSpots = Me.PrintRemoveLinesWithoutSpots
 
         End Sub
 

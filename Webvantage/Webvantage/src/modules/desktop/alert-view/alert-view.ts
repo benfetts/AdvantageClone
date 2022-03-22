@@ -53,7 +53,7 @@ export class AlertView extends ModuleBase {
     @bindable urlTitle: string;
     @bindable urlLink: string;
     @bindable editorHeight: string = "460";
-    @bindable editorHeightProofing: string = "183";
+    @bindable editorHeightProofing: string = "346";
 
     focusLinkTitle: boolean = false;
     focusLinkURL: boolean = false;
@@ -339,9 +339,6 @@ export class AlertView extends ModuleBase {
             window.setTimeout(() => {
                 me.canCompleteProofCheck();
             }, 30);
-            window.setTimeout(() => {
-                me.setupProofingButtons()
-            }, 40);
         }
     }
     hoursChanged() {
@@ -569,7 +566,7 @@ export class AlertView extends ModuleBase {
         this.commentsCollapsed = !this.commentsCollapsed;
     }
     fullScreenAssignment() {
-        this.dialogService.open({ viewModel: AlertCommentDialog, model: { Alert: this.Alert, Comment: this.sendAssignmentComment.value(), SaveLabel: 'Send Assignment' } }).whenClosed(response => {
+        this.dialogService.open({ viewModel: AlertCommentDialog, model: { Alert: this.Alert, Comment: this.sendAssignmentComment.value(), SaveLabel: 'Send Assignment', OkLabel: 'Save Assignment' } }).whenClosed(response => {
             if (!response.wasCancelled) {
                 this.sendAssignmentComment.value(response.output.Comment);
                 if (response.output.Send) {
@@ -2206,6 +2203,7 @@ export class AlertView extends ModuleBase {
 
     // NON-ROUTED MULTISELECT
     assignToNotRoutedAndTasksMultiSelectSelect(e) {
+        console.log("assignToNotRoutedAndTasksMultiSelectSelect");
         this.assigneesChanged = true;
     //    if (e && e.dataItem && e.dataItem.Code) {
     //        //console.log("assignToNotRoutedAndTasksMultiSelectSelect", this.Alert.ID, this.Alert.AlertAssignmentTemplateID, this.selectedStateID, e.dataItem.Code);
@@ -2213,6 +2211,7 @@ export class AlertView extends ModuleBase {
     //    }
     }
     assignToNotRoutedAndTasksMultiSelectDeselect(e) {
+        console.log("assignToNotRoutedAndTasksMultiSelectDeselect");
         this.assigneesChanged = true;
     //    if (e && e.dataItem && e.dataItem.Code) {
     //        //console.log("assignToNotRoutedAndTasksMultiSelectDeselect", this.Alert.ID, this.Alert.AlertAssignmentTemplateID, this.selectedStateID, e.dataItem.Code);
@@ -2220,12 +2219,20 @@ export class AlertView extends ModuleBase {
     //    } 
     }
     assignToNotRoutedAndTasksMultiSelectChange(e) {
+        //console.log("assignToNotRoutedAndTasksMultiSelectChange");
         this.assigneesChanged = true;
         //this.checkForTempCompleteAssignee(e.sender);
         //this.refreshHours();
     }
     assignToNotRoutedAndTasksMultiSelectDataBound(e) {
+        //console.log("assignToNotRoutedAndTasksMultiSelectDataBound");
         this.checkForTempCompleteAssignee(e.sender);
+    }
+    assignToNotRoutedAndTasksMultiSelectOnOpen(e) {
+        //console.log("assignToNotRoutedAndTasksMultiSelectOnOpen");
+    }
+    assignToNotRoutedAndTasksMultiSelectOnClose(e) {
+        //console.log("assignToNotRoutedAndTasksMultiSelectOnClose");
     }
 
     emailGroupsClick() {
@@ -2418,6 +2425,7 @@ export class AlertView extends ModuleBase {
         }
     }
     externalReviewerMultiSelectOnSelect(e) {
+        console.log("externalReviewerMultiSelectOnSelect");
         let me = this;
         if (e && e.dataItem) {
             this.service.addExternalReviewerToAssignment(this.Alert.ID, e.dataItem.ProofingExternalReviewerID).then(response => {
@@ -2573,6 +2581,7 @@ export class AlertView extends ModuleBase {
                                 item.IsProof = true;
                                 item.IsTempComplete = false;
                                 item.FullName = item.Name;
+                                item.Name = item.Name;
                                 item.ProofingStatusID = 0;
                                 idx = proofers.findIndex(x => x.EmployeeCode == item.Code);
                                 if (idx > -1) {
@@ -2606,7 +2615,8 @@ export class AlertView extends ModuleBase {
                                 item.IsProof = true;
                                 item.IsTempComplete = false;
                                 item.CanDelete = true;
-                                item.FullName = null;
+                                item.FullName = "";
+                                item.Name = "";
                                 item.ProofingStatusID = 0;
                                 item.StatusTitle = null;
                                 item.StatusColor = null;
@@ -3841,6 +3851,7 @@ export class AlertView extends ModuleBase {
                 var items = [];
                 let me = this;
                 items = e.response;
+                //console.log("items?", items);
                 if (items) {
                 }
             }

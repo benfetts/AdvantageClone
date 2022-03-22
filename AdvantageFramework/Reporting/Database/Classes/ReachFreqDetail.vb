@@ -41,6 +41,7 @@
             NeilsenRadioPeriodID2
             IsCable
             OnHold
+            VendorIsComboRadioStation
 
             PrimaryBuyImpressions
             PrimaryCumeImpressions
@@ -104,6 +105,7 @@
         Public Property NeilsenRadioPeriodID2 As Nullable(Of Integer)
         Public Property IsCable As Boolean
         Public Property OnHold As Boolean
+        Public Property VendorIsComboRadioStation As Boolean
 
         Public Property PrimaryBuyImpressions As Nullable(Of Long)
         Public Property PrimaryCumeImpressions As Nullable(Of Long)

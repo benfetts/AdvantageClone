@@ -2323,6 +2323,9 @@
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
+                RequestForProposalGenerateViewModel.IsAgencyASP = AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext)
+                RequestForProposalGenerateViewModel.AgencyImportPath = AdvantageFramework.Database.Procedures.Agency.LoadImportPath(DbContext)
+
                 LoadContactTypes(RequestForProposalGenerateViewModel)
 
                 RequestForProposalGenerateViewModel.ContactTypeList = AdvantageFramework.Database.Procedures.ContactType.Load(DbContext).ToList

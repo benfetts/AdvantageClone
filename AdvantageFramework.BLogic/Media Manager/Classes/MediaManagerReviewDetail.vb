@@ -622,6 +622,9 @@
             End Set
         End Property
         <System.Runtime.Serialization.DataMemberAttribute(),
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsReadOnlyColumn:=True, CustomColumnCaption:="AP Status")>
+        Public Property APStatus() As String
+        <System.Runtime.Serialization.DataMemberAttribute(),
         AdvantageFramework.BaseClasses.Attributes.Entity(IsReadOnlyColumn:=True, CustomColumnCaption:="Acceptance" & vbCrLf & "Details")>
         Public Property AcceptanceDetails As String
         <System.Runtime.Serialization.DataMemberAttribute(),
@@ -815,7 +818,7 @@
             End Set
         End Property
         <System.Runtime.Serialization.DataMemberAttribute(),
-        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Material" & vbCrLf & "Date")>
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Material" & vbCrLf & "Date", IsAutoFillProperty:=True)>
         Public Property MaterialDate() As Nullable(Of Date)
             Get
                 MaterialDate = _MaterialDate
@@ -1623,7 +1626,7 @@
         AdvantageFramework.BaseClasses.Attributes.Entity(ShowColumnInGrid:=False)>
         Public Property APExists() As Boolean
         <System.Runtime.Serialization.DataMemberAttribute(),
-        AdvantageFramework.BaseClasses.Attributes.Entity(ShowColumnInGrid:=False)>
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsReadOnlyColumn:=True)>
         Public Property WorksheetLineNumber() As Nullable(Of Integer)
         <System.Runtime.Serialization.DataMemberAttribute(),
         AdvantageFramework.BaseClasses.Attributes.Entity(IsReadOnlyColumn:=True)>

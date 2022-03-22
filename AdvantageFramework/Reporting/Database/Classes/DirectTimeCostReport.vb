@@ -1,4 +1,4 @@
-Namespace Reporting.Database.Classes
+﻿Namespace Reporting.Database.Classes
 
     <Serializable()>
     Public Class DirectTimeCostReport
@@ -19,6 +19,7 @@ Namespace Reporting.Database.Classes
             EmployeeLastName
             EmployeeLastFirst
             EmployeeTitle
+            EmployeeCurrentTitle
             EmployeeAccountNumber
             EmployeeCategory
             IsEmployeeFreelance
@@ -99,6 +100,7 @@ Namespace Reporting.Database.Classes
             ClientPO
             Terminated
             TerminatedDate
+            TimeAgainstCommission
         End Enum
 
 #End Region
@@ -112,6 +114,7 @@ Namespace Reporting.Database.Classes
         Private _EmployeeLastName As String = Nothing
         Private _EmployeeLastFirst As String = Nothing
         Private _EmployeeTitle As String = Nothing
+        Private _EmployeeCurrentTitle As String = Nothing
         Private _EmployeeAccountNumber As String = Nothing
         Private _EmployeeCategory As String = Nothing
         Private _IsEmployeeFreelance As String = Nothing
@@ -192,6 +195,7 @@ Namespace Reporting.Database.Classes
         Private _ClientPO As String = Nothing
         Private _Terminated As String = Nothing
         Private _TerminatedDate As Nullable(Of Date) = Nothing
+        Private _TimeAgainstCommission As Nullable(Of Decimal) = Nothing
 
 #End Region
 
@@ -267,6 +271,15 @@ Namespace Reporting.Database.Classes
             End Get
             Set(ByVal value As String)
                 _EmployeeTitle = value
+            End Set
+        End Property
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property EmployeeCurrentTitle() As String
+            Get
+                EmployeeCurrentTitle = _EmployeeCurrentTitle
+            End Get
+            Set(ByVal value As String)
+                _EmployeeCurrentTitle = value
             End Set
         End Property
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
@@ -978,6 +991,15 @@ Namespace Reporting.Database.Classes
             End Get
             Set(ByVal value As Nullable(Of Date))
                 _TerminatedDate = value
+            End Set
+        End Property
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property TimeAgainstCommission() As Nullable(Of Decimal)
+            Get
+                TimeAgainstCommission = _TimeAgainstCommission
+            End Get
+            Set(ByVal value As Nullable(Of Decimal))
+                _TimeAgainstCommission = value
             End Set
         End Property
 

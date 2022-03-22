@@ -9,6 +9,8 @@ Imports System.Collections.Generic
     Private mConnString As String
     Private mUserID As String
     Private oSQL As SqlHelper
+    Private Const _RotateLabelWeekThreshold As Integer = 20
+    Private Const _RotateLabelMonthThreshold As Integer = 20
 
     Public Sub New(ByVal ConnectionString As String, ByVal UserID As String)
         mConnString = ConnectionString
@@ -5149,6 +5151,8 @@ Imports System.Collections.Generic
         Dim sump As Decimal = 0
         Dim burnrate As Decimal = 0
         Dim burnrateMax As Decimal = 2
+        Dim Threshold As Integer
+
 
         Try
 
@@ -5410,8 +5414,17 @@ Imports System.Collections.Generic
                     RadHtmlChart.PlotArea.YAxis.MaxValue = burnrateMax + 2
                 End If
 
+                If group = "Week" Then
+                    Threshold = _RotateLabelWeekThreshold
+                Else
+                    Threshold = _RotateLabelMonthThreshold
+                End If
 
-
+                If RadHtmlChart.PlotArea.XAxis.Items.Count > Threshold Then
+                    RadHtmlChart.PlotArea.XAxis.LabelsAppearance.RotationAngle = -45
+                Else
+                    RadHtmlChart.PlotArea.XAxis.LabelsAppearance.RotationAngle = 0
+                End If
             End If
 
         Catch ex As Exception

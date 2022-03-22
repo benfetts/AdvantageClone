@@ -189,7 +189,7 @@
 
             End If
 
-            _Worksheet.AutoFitRows()
+            '_Worksheet.AutoFitRows()
 
             If _LocationPicture IsNot Nothing Then
 

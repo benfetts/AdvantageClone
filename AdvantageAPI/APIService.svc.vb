@@ -17,8 +17,6 @@ Public Class APIService
 #Region " Variables "
 
     Dim _AdvSession As AdvantageFramework.Security.Session = Nothing
-    'Dim _ErrorMessage As String = Nothing
-    'Dim _NewMediaPlanID As Integer = 0
     Dim _MediaPlanAddResponse As MediaPlanAddResponse = Nothing
 
 #End Region
@@ -13895,6 +13893,1382 @@ Public Class APIService
 
         LoadTrialBalance = TrialBalanceAPIResponse
 
+
+    End Function
+
+    Public Function LoadEmployeeUtilization(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String,
+                                                Password As String, GroupBy As String, StartDate As Date, EndDate As Date) As EmployeeUtilizationAPIResponse Implements IAPIService.LoadEmployeeUtilization
+
+        'objects
+        Dim APISession As AdvantageFramework.Security.APISession = Nothing
+
+        ' Generic.List(Of AdvantageFramework.Reporting.Database.Classes.EmployeeUtilizationReport)
+
+        Dim EmployeeUtilizationReports As Generic.List(Of EmployeeUtilizationAPIReport) = Nothing
+        Dim SqlParameterStartDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterEndDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterGroupBy As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterLimitWIP As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterOfficeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterDepartmentList As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim EmployeeUtilizationAPIResponse As EmployeeUtilizationAPIResponse
+
+        Dim ErrorMessage As String = String.Empty
+
+        EmployeeUtilizationAPIResponse = New EmployeeUtilizationAPIResponse
+
+        'If GroupBy In ("emp","empdate", "empperiod") Then 
+
+        If GroupBy <> Nothing Then
+            If GroupBy.Contains("emp") = False AndAlso ("empdate") = False AndAlso ("empperiod") = False Then  'GroupBy.Contains("emp") OrElse ("empdate") OrElse ("empperiod") = False
+
+                GroupBy = "emp"
+
+            End If
+        Else
+            GroupBy = "emp"
+        End If
+
+        Try
+
+            If LoginToAPI(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, APISession, "") Then
+
+                Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
+
+                    SqlParameterStartDate = New System.Data.SqlClient.SqlParameter("@StartDate", SqlDbType.DateTime)
+                    SqlParameterEndDate = New System.Data.SqlClient.SqlParameter("@EndDate", SqlDbType.DateTime)
+                    SqlParameterUserID = New System.Data.SqlClient.SqlParameter("@UserID", SqlDbType.VarChar)
+                    SqlParameterGroupBy = New System.Data.SqlClient.SqlParameter("@Groupby", SqlDbType.VarChar)
+                    SqlParameterLimitWIP = New System.Data.SqlClient.SqlParameter("@LimitWIP", SqlDbType.Bit)
+                    SqlParameterOfficeList = New System.Data.SqlClient.SqlParameter("@OFFICE_LIST", SqlDbType.VarChar)
+                    SqlParameterDepartmentList = New System.Data.SqlClient.SqlParameter("@DEPT_LIST", SqlDbType.VarChar)
+
+                    SqlParameterStartDate.Value = StartDate
+                    SqlParameterEndDate.Value = EndDate
+                    SqlParameterUserID.Value = UserName
+                    SqlParameterGroupBy.Value = "emp"
+                    SqlParameterLimitWIP.Value = 0
+                    SqlParameterOfficeList.Value = System.DBNull.Value
+                    SqlParameterDepartmentList.Value = System.DBNull.Value
+
+                    EmployeeUtilizationReports = DbContext.Database.SqlQuery(Of EmployeeUtilizationAPIReport) _
+                    ("exec dbo.advsp_employee_time_util_dataset @StartDate, @EndDate, @UserID, @Groupby, @LimitWIP, @OFFICE_LIST, @DEPT_LIST", SqlParameterStartDate, SqlParameterEndDate, SqlParameterUserID, SqlParameterGroupBy, SqlParameterLimitWIP, SqlParameterOfficeList, SqlParameterDepartmentList).ToList
+
+                    For Each EmployeeUtilizationReport In EmployeeUtilizationReports
+                        If EmployeeUtilizationReport.EmployeeDate.ToString > Nothing Then EmployeeUtilizationReport.EmployeeDateStr = EmployeeUtilizationReport.EmployeeDate.Value.ToString("yyyy-MM-dd")
+                        If EmployeeUtilizationReport.EmploymentDate.ToString > Nothing Then EmployeeUtilizationReport.EmploymentDateStr = EmployeeUtilizationReport.EmploymentDate.Value.ToString("yyyy-MM-dd")
+                        If EmployeeUtilizationReport.EmployeeTerminationDate.ToString > Nothing Then EmployeeUtilizationReport.EmployeeTerminationDateStr = EmployeeUtilizationReport.EmployeeTerminationDate.Value.ToString("yyyy-MM-dd")
+                    Next
+
+                End Using
+
+            End If
+
+        Catch ex As Exception
+            ProcessException(ex, "APIService-NotCaught")
+            ErrorMessage = "Critical Failure in API" & System.Environment.NewLine & System.Environment.NewLine & ex.Message
+        End Try
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+            EmployeeUtilizationAPIResponse.Message = ErrorMessage
+            EmployeeUtilizationAPIResponse.IsSuccessful = False
+            EmployeeUtilizationAPIResponse.IsSuccessful = False
+            EmployeeUtilizationAPIResponse.Results = Nothing
+        Else
+            EmployeeUtilizationAPIResponse.Results = EmployeeUtilizationReports
+            EmployeeUtilizationAPIResponse.Message = CStr(EmployeeUtilizationAPIResponse.Results.Count) + " records"
+        End If
+
+        LoadEmployeeUtilization = EmployeeUtilizationAPIResponse
+
+    End Function
+
+    Public Function LoadJobDetailItem(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String,
+                                  EmployeeDateCutoff As String, IncomeOnlyDateCutoff As String, AccountsPayablePostingPeriodCutoff As String,
+                                  CurrentStartDate As String, CurrentEndDate As String, CurrentPeriod As String,
+                                  JobDateCriteria As Integer, JobStartDate As String, JobEndDate As String, IncludeClosed As Boolean,
+                                  IncludeBilledRange As Boolean, StartingPostPeriodCode As String, EndingPostPeriodCode As String) As JobDetailItemAPIResponse Implements IAPIService.LoadJobDetailItem
+
+        'objects
+        Dim APISession As AdvantageFramework.Security.APISession = Nothing
+
+        Dim ShowJobsWithNoDetails As Boolean = Nothing
+        Dim SelectedCampaigns As String = Nothing
+        Dim CurrentPostPeriod As AdvantageFramework.Database.Entities.PostPeriod
+
+        Dim CurrentDate As Date = Today
+        Dim StartDate As Date = CurrentDate.AddYears(-1)
+
+        ShowJobsWithNoDetails = 0
+
+        If String.IsNullOrWhiteSpace(EmployeeDateCutoff) Then
+            EmployeeDateCutoff = CurrentDate
+        End If
+
+        If String.IsNullOrWhiteSpace(IncomeOnlyDateCutoff) Then
+            IncomeOnlyDateCutoff = CurrentDate
+        End If
+
+        If String.IsNullOrWhiteSpace(AccountsPayablePostingPeriodCutoff) Then
+            AccountsPayablePostingPeriodCutoff = CurrentDate.ToString("yyyyMM")
+        End If
+
+        If String.IsNullOrWhiteSpace(CurrentStartDate) Then
+            CurrentStartDate = StartDate
+        End If
+
+        If String.IsNullOrWhiteSpace(CurrentEndDate) Then
+            CurrentEndDate = CurrentDate
+        End If
+
+        If String.IsNullOrWhiteSpace(JobStartDate) Then
+            JobStartDate = StartDate
+        End If
+
+        If String.IsNullOrWhiteSpace(JobEndDate) Then
+            JobEndDate = CurrentDate
+        End If
+
+        If IncludeBilledRange = 1 Then
+            If String.IsNullOrWhiteSpace(StartingPostPeriodCode) Then
+                StartingPostPeriodCode = CurrentDate.ToString("yyyyMM")
+            End If
+
+            If String.IsNullOrWhiteSpace(EndingPostPeriodCode) Then
+                EndingPostPeriodCode = CurrentDate.ToString("yyyyMM")
+            End If
+        End If
+
+        'JobDateCriteria = 4 'None = 0, Job Create Date = 1, Compnent Date Opened = 2, Due Date = 3, Start Date = 4, Item Date = 5
+
+        'IncludeClosed = 1
+
+        Dim JobDetailItemAPIReports As Generic.List(Of JobDetailItemAPIReport) = Nothing
+        Dim JobDetailItemAPIReports2 As Generic.List(Of JobDetailItemAPIReport) = Nothing
+        Dim SqlParameterStartDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterEndDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterGroupBy As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterLimitWIP As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterOfficeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterDepartmentList As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterEmployeeDateCutoff As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterIncomeOnlyDateCutoff As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterAccountsPayablePostingPeriodCutoff As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterCriteria As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterFromDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterToDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterShowJobsWithNoDetails As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterIncludeClosedJobs As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterIncludeBilledRange As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterStartPeriodBilled As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterEndPeriodBilled As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterClientCodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterClientDivisionCodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterClientDivisionProductCodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterAECodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterCampaignIDList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterJobTypeList As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterCurrentStartDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterCurrentEndDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterCurrentPeriod As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterDateOption As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim JobDetailItemAPIResponse As JobDetailItemAPIResponse
+
+        Dim ErrorMessage As String = String.Empty
+
+        JobDetailItemAPIResponse = New JobDetailItemAPIResponse
+
+        Try
+
+            If LoginToAPI(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, APISession, "") Then
+
+                Using DbContext = New AdvantageFramework.Database.DbContext(APISession.ConnectionString, APISession.UserCode) 'APIDbContext(APISession.ConnectionString, APISession.UserCode)
+                    If String.IsNullOrWhiteSpace(CurrentPeriod) Then
+                        CurrentPostPeriod = AdvantageFramework.Database.Procedures.PostPeriod.LoadCurrentPostPeriod(DbContext)
+                        CurrentPeriod = CurrentPostPeriod.Code
+                    End If
+                End Using
+
+                Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
+
+                    SqlParameterEmployeeDateCutoff = New System.Data.SqlClient.SqlParameter("@et_date_cutoff", SqlDbType.SmallDateTime)
+                    SqlParameterIncomeOnlyDateCutoff = New System.Data.SqlClient.SqlParameter("@io_date_cutoff", SqlDbType.SmallDateTime)
+                    SqlParameterAccountsPayablePostingPeriodCutoff = New System.Data.SqlClient.SqlParameter("@ap_pp_cutoff", SqlDbType.VarChar)
+
+                    SqlParameterCriteria = New System.Data.SqlClient.SqlParameter("@DATE_TYPE", SqlDbType.Int)
+                    SqlParameterFromDate = New System.Data.SqlClient.SqlParameter("@START_DATE", SqlDbType.SmallDateTime)
+                    SqlParameterToDate = New System.Data.SqlClient.SqlParameter("@END_DATE", SqlDbType.SmallDateTime)
+                    SqlParameterShowJobsWithNoDetails = New System.Data.SqlClient.SqlParameter("@SHOW_JOBS_WO_DETAILS", SqlDbType.Bit)
+                    SqlParameterIncludeClosedJobs = New System.Data.SqlClient.SqlParameter("@INCLUDE_CLOSED", SqlDbType.Bit)
+
+                    SqlParameterIncludeBilledRange = New System.Data.SqlClient.SqlParameter("@IncludeBilledRange", SqlDbType.Bit)
+                    SqlParameterStartPeriodBilled = New System.Data.SqlClient.SqlParameter("@BILLED_START_PERIOD", SqlDbType.VarChar)
+                    SqlParameterEndPeriodBilled = New System.Data.SqlClient.SqlParameter("@BILLED_END_PERIOD", SqlDbType.VarChar)
+
+                    SqlParameterClientCodeList = New System.Data.SqlClient.SqlParameter("@ClientCodeList", SqlDbType.VarChar)
+                    SqlParameterClientDivisionCodeList = New System.Data.SqlClient.SqlParameter("@ClientDivisionCodeList", SqlDbType.VarChar)
+                    SqlParameterClientDivisionProductCodeList = New System.Data.SqlClient.SqlParameter("@ClientDivisionProductCodeList", SqlDbType.VarChar)
+                    SqlParameterAECodeList = New System.Data.SqlClient.SqlParameter("@AECodeList", SqlDbType.VarChar)
+                    SqlParameterCampaignIDList = New System.Data.SqlClient.SqlParameter("@CampaignIDList", SqlDbType.VarChar)
+                    SqlParameterJobTypeList = New System.Data.SqlClient.SqlParameter("@JobTypeList", SqlDbType.VarChar)
+
+                    SqlParameterCurrentStartDate = New System.Data.SqlClient.SqlParameter("@Current_StartDate", SqlDbType.SmallDateTime)
+                    SqlParameterCurrentEndDate = New System.Data.SqlClient.SqlParameter("@Current_EndDate", SqlDbType.SmallDateTime)
+                    SqlParameterCurrentPeriod = New System.Data.SqlClient.SqlParameter("@CURRENT_PERIOD", SqlDbType.VarChar)
+
+                    SqlParameterDateOption = New System.Data.SqlClient.SqlParameter("@DateOption", SqlDbType.VarChar)
+
+                    SqlParameterEmployeeDateCutoff.Value = EmployeeDateCutoff
+                    SqlParameterIncomeOnlyDateCutoff.Value = IncomeOnlyDateCutoff
+                    If AccountsPayablePostingPeriodCutoff IsNot Nothing Then
+                        SqlParameterAccountsPayablePostingPeriodCutoff.Value = AccountsPayablePostingPeriodCutoff
+                    Else
+                        SqlParameterAccountsPayablePostingPeriodCutoff.Value = System.DBNull.Value
+                    End If
+
+                    SqlParameterCurrentStartDate.Value = StartDate
+                    SqlParameterCurrentEndDate.Value = CurrentEndDate
+                    If CurrentPeriod IsNot Nothing Then
+                        SqlParameterCurrentPeriod.Value = CurrentPeriod
+                    Else
+                        SqlParameterCurrentPeriod.Value = System.DBNull.Value
+                    End If
+
+                    SqlParameterCriteria.Value = JobDateCriteria
+                    SqlParameterFromDate.Value = JobStartDate
+                    SqlParameterToDate.Value = JobEndDate
+                    SqlParameterShowJobsWithNoDetails.Value = ShowJobsWithNoDetails
+                    SqlParameterIncludeClosedJobs.Value = IncludeClosed
+
+                    SqlParameterIncludeBilledRange.Value = IncludeBilledRange
+                    If StartingPostPeriodCode IsNot Nothing Then
+                        SqlParameterStartPeriodBilled.Value = StartingPostPeriodCode
+                    Else
+                        SqlParameterStartPeriodBilled.Value = System.DBNull.Value
+                    End If
+                    If EndingPostPeriodCode IsNot Nothing Then
+                        SqlParameterEndPeriodBilled.Value = EndingPostPeriodCode
+                    Else
+                        SqlParameterEndPeriodBilled.Value = System.DBNull.Value
+                    End If
+
+                    SqlParameterDateOption.Value = System.DBNull.Value
+
+                    SqlParameterClientCodeList.Value = System.DBNull.Value
+                    SqlParameterClientDivisionCodeList.Value = System.DBNull.Value
+                    SqlParameterClientDivisionProductCodeList.Value = System.DBNull.Value
+                    SqlParameterAECodeList.Value = System.DBNull.Value
+                    SqlParameterCampaignIDList.Value = System.DBNull.Value
+                    SqlParameterJobTypeList.Value = System.DBNull.Value
+
+                    JobDetailItemAPIReports = DbContext.Database.SqlQuery(Of JobDetailItemAPIReport) _
+                        ("EXEC [dbo].[advsp_job_detail_item_load] @DATE_TYPE, @START_DATE, @END_DATE, @SHOW_JOBS_WO_DETAILS, @INCLUDE_CLOSED,@et_date_cutoff, @io_date_cutoff, @ap_pp_cutoff, " &
+                            "@ClientCodeList, @ClientDivisionCodeList, @ClientDivisionProductCodeList, @AECodeList, @CampaignIDList, @IncludeBilledRange, @BILLED_START_PERIOD, @BILLED_END_PERIOD, " &
+                            "@DateOption, @Current_StartDate, @Current_EndDate, @CURRENT_PERIOD, @JobTypeList",
+                            SqlParameterCriteria, SqlParameterFromDate, SqlParameterToDate, SqlParameterShowJobsWithNoDetails, SqlParameterIncludeClosedJobs, SqlParameterEmployeeDateCutoff, SqlParameterIncomeOnlyDateCutoff, SqlParameterAccountsPayablePostingPeriodCutoff,
+                            SqlParameterClientCodeList, SqlParameterClientDivisionCodeList, SqlParameterClientDivisionProductCodeList, SqlParameterAECodeList, SqlParameterCampaignIDList, SqlParameterIncludeBilledRange, SqlParameterStartPeriodBilled, SqlParameterEndPeriodBilled,
+                            SqlParameterDateOption, SqlParameterCurrentStartDate, SqlParameterCurrentEndDate, SqlParameterCurrentPeriod, SqlParameterJobTypeList).OrderBy(Function(Entity) Entity.JobComponent).ToList
+
+                    'For Each JobDetailItemAPIReport In JobDetailItemAPIReports
+                    '    If JobDetailItemAPIReport.EmployeeDate.ToString > Nothing Then JobDetailItemAPIReport.EmployeeDateStr = JobDetailItemAPIReport.EmployeeDate.Value.ToString("yyyy-MM-dd")
+                    '    If JobDetailItemAPIReport.EmploymentDate.ToString > Nothing Then JobDetailItemAPIReport.EmploymentDateStr = JobDetailItemAPIReport.EmploymentDate.Value.ToString("yyyy-MM-dd")
+                    '    If JobDetailItemAPIReport.EmployeeTerminationDate.ToString > Nothing Then JobDetailItemAPIReport.EmployeeTerminationDateStr = JobDetailItemAPIReport.EmployeeTerminationDate.Value.ToString("yyyy-MM-dd")
+                    'Next
+
+                End Using
+
+            End If
+
+        Catch ex As Exception
+            ProcessException(ex, "APIService-NotCaught")
+            ErrorMessage = "Critical Failure in API" & System.Environment.NewLine & System.Environment.NewLine & ex.Message
+        End Try
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+            JobDetailItemAPIResponse.Message = ErrorMessage
+            JobDetailItemAPIResponse.IsSuccessful = False
+            JobDetailItemAPIResponse.Results = Nothing
+        Else
+            JobDetailItemAPIResponse.Results = JobDetailItemAPIReports
+            JobDetailItemAPIResponse.Message = CStr(JobDetailItemAPIResponse.Results.Count) + " records"
+        End If
+
+        LoadJobDetailItem = JobDetailItemAPIResponse
+
+    End Function
+
+    Public Function LoadJobDetail(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String,
+                                  EmployeeDateCutoff As String, IncomeOnlyDateCutoff As String, AccountsPayablePostingPeriodCutoff As String,
+                                  CurrentStartDate As String, CurrentEndDate As String, CurrentPeriod As String,
+                                  JobDateCriteria As Integer, JobStartDate As String, JobEndDate As String, IncludeClosed As Boolean,
+                                  IncludeBilledRange As Boolean, StartingPostPeriodCode As String, EndingPostPeriodCode As String) As JobDetailItemAPIResponse Implements IAPIService.LoadJobDetail
+
+        'objects
+        Dim APISession As AdvantageFramework.Security.APISession = Nothing
+
+        Dim ShowJobsWithNoDetails As Boolean = Nothing
+        Dim SelectedCampaigns As String = Nothing
+        Dim CurrentPostPeriod As AdvantageFramework.Database.Entities.PostPeriod
+
+        Dim CurrentDate As Date = Today
+        Dim StartDateDef As Date = CurrentDate.AddYears(-1)
+
+        ShowJobsWithNoDetails = 0
+
+        If String.IsNullOrWhiteSpace(EmployeeDateCutoff) Then
+            EmployeeDateCutoff = CurrentDate
+        End If
+
+        If String.IsNullOrWhiteSpace(IncomeOnlyDateCutoff) Then
+            IncomeOnlyDateCutoff = CurrentDate
+        End If
+
+        If String.IsNullOrWhiteSpace(AccountsPayablePostingPeriodCutoff) Then
+            AccountsPayablePostingPeriodCutoff = CurrentDate.ToString("yyyyMM")
+        End If
+
+        If String.IsNullOrWhiteSpace(CurrentStartDate) Then
+            CurrentStartDate = StartDateDef
+        End If
+
+        If String.IsNullOrWhiteSpace(CurrentEndDate) Then
+            CurrentEndDate = CurrentDate
+        End If
+
+        If String.IsNullOrWhiteSpace(JobStartDate) Then
+            JobStartDate = StartDateDef
+        End If
+
+        If String.IsNullOrWhiteSpace(JobEndDate) Then
+            JobEndDate = CurrentDate
+        End If
+
+        If IncludeBilledRange = 1 Then
+            If String.IsNullOrWhiteSpace(StartingPostPeriodCode) Then
+                StartingPostPeriodCode = CurrentDate.ToString("yyyyMM")
+            End If
+
+            If String.IsNullOrWhiteSpace(EndingPostPeriodCode) Then
+                EndingPostPeriodCode = CurrentDate.ToString("yyyyMM")
+            End If
+        End If
+
+        'JobDateCriteria = 4 'None = 0, Job Create Date = 1, Compnent Date Opened = 2, Due Date = 3, Start Date = 4, Item Date = 5
+
+        'IncludeClosed = 1
+
+        Dim JobDetailItemAPIReports As Generic.List(Of JobDetailItemAPIReport) = Nothing
+        Dim JobDetailItemAPIReports2 As Generic.List(Of JobDetailItemAPIReport) = Nothing
+        Dim SqlParameterStartDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterEndDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterGroupBy As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterLimitWIP As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterOfficeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterDepartmentList As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterEmployeeDateCutoff As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterIncomeOnlyDateCutoff As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterAccountsPayablePostingPeriodCutoff As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterCriteria As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterFromDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterToDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterShowJobsWithNoDetails As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterIncludeClosedJobs As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterIncludeBilledRange As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterStartPeriodBilled As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterEndPeriodBilled As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterClientCodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterClientDivisionCodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterClientDivisionProductCodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterAECodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterCampaignIDList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterJobTypeList As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterCurrentStartDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterCurrentEndDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterCurrentPeriod As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterDateOption As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim JobDetailItemAPIResponse As JobDetailItemAPIResponse
+
+        Dim ErrorMessage As String = String.Empty
+
+        JobDetailItemAPIResponse = New JobDetailItemAPIResponse
+
+        Try
+
+            If LoginToAPI(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, APISession, "") Then
+
+                Using DbContext = New AdvantageFramework.Database.DbContext(APISession.ConnectionString, APISession.UserCode) 'APIDbContext(APISession.ConnectionString, APISession.UserCode)
+                    If String.IsNullOrWhiteSpace(CurrentPeriod) Then
+                        CurrentPostPeriod = AdvantageFramework.Database.Procedures.PostPeriod.LoadCurrentPostPeriod(DbContext)
+                        CurrentPeriod = CurrentPostPeriod.Code
+                    End If
+                End Using
+
+                Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
+
+                    SqlParameterEmployeeDateCutoff = New System.Data.SqlClient.SqlParameter("@et_date_cutoff", SqlDbType.SmallDateTime)
+                    SqlParameterIncomeOnlyDateCutoff = New System.Data.SqlClient.SqlParameter("@io_date_cutoff", SqlDbType.SmallDateTime)
+                    SqlParameterAccountsPayablePostingPeriodCutoff = New System.Data.SqlClient.SqlParameter("@ap_pp_cutoff", SqlDbType.VarChar)
+
+                    SqlParameterCriteria = New System.Data.SqlClient.SqlParameter("@DATE_TYPE", SqlDbType.Int)
+                    SqlParameterFromDate = New System.Data.SqlClient.SqlParameter("@START_DATE", SqlDbType.SmallDateTime)
+                    SqlParameterToDate = New System.Data.SqlClient.SqlParameter("@END_DATE", SqlDbType.SmallDateTime)
+                    SqlParameterShowJobsWithNoDetails = New System.Data.SqlClient.SqlParameter("@SHOW_JOBS_WO_DETAILS", SqlDbType.Bit)
+                    SqlParameterIncludeClosedJobs = New System.Data.SqlClient.SqlParameter("@INCLUDE_CLOSED", SqlDbType.Bit)
+
+                    SqlParameterIncludeBilledRange = New System.Data.SqlClient.SqlParameter("@IncludeBilledRange", SqlDbType.Bit)
+                    SqlParameterStartPeriodBilled = New System.Data.SqlClient.SqlParameter("@BILLED_START_PERIOD", SqlDbType.VarChar)
+                    SqlParameterEndPeriodBilled = New System.Data.SqlClient.SqlParameter("@BILLED_END_PERIOD", SqlDbType.VarChar)
+
+                    SqlParameterClientCodeList = New System.Data.SqlClient.SqlParameter("@ClientCodeList", SqlDbType.VarChar)
+                    SqlParameterClientDivisionCodeList = New System.Data.SqlClient.SqlParameter("@ClientDivisionCodeList", SqlDbType.VarChar)
+                    SqlParameterClientDivisionProductCodeList = New System.Data.SqlClient.SqlParameter("@ClientDivisionProductCodeList", SqlDbType.VarChar)
+                    SqlParameterAECodeList = New System.Data.SqlClient.SqlParameter("@AECodeList", SqlDbType.VarChar)
+                    SqlParameterCampaignIDList = New System.Data.SqlClient.SqlParameter("@CampaignIDList", SqlDbType.VarChar)
+                    SqlParameterJobTypeList = New System.Data.SqlClient.SqlParameter("@JobTypeList", SqlDbType.VarChar)
+
+                    SqlParameterCurrentStartDate = New System.Data.SqlClient.SqlParameter("@Current_StartDate", SqlDbType.SmallDateTime)
+                    SqlParameterCurrentEndDate = New System.Data.SqlClient.SqlParameter("@Current_EndDate", SqlDbType.SmallDateTime)
+                    SqlParameterCurrentPeriod = New System.Data.SqlClient.SqlParameter("@CURRENT_PERIOD", SqlDbType.VarChar)
+
+                    SqlParameterDateOption = New System.Data.SqlClient.SqlParameter("@DateOption", SqlDbType.VarChar)
+
+                    SqlParameterEmployeeDateCutoff.Value = EmployeeDateCutoff
+                    SqlParameterIncomeOnlyDateCutoff.Value = IncomeOnlyDateCutoff
+                    If AccountsPayablePostingPeriodCutoff IsNot Nothing Then
+                        SqlParameterAccountsPayablePostingPeriodCutoff.Value = AccountsPayablePostingPeriodCutoff
+                    Else
+                        SqlParameterAccountsPayablePostingPeriodCutoff.Value = System.DBNull.Value
+                    End If
+
+                    SqlParameterCurrentStartDate.Value = StartDateDef
+                    SqlParameterCurrentEndDate.Value = CurrentEndDate
+                    If CurrentPeriod IsNot Nothing Then
+                        SqlParameterCurrentPeriod.Value = CurrentPeriod
+                    Else
+                        SqlParameterCurrentPeriod.Value = System.DBNull.Value
+                    End If
+
+                    SqlParameterCriteria.Value = JobDateCriteria
+                    SqlParameterFromDate.Value = JobStartDate
+                    SqlParameterToDate.Value = JobEndDate
+                    SqlParameterShowJobsWithNoDetails.Value = ShowJobsWithNoDetails
+                    SqlParameterIncludeClosedJobs.Value = IncludeClosed
+
+                    SqlParameterIncludeBilledRange.Value = IncludeBilledRange
+                    If StartingPostPeriodCode IsNot Nothing Then
+                        SqlParameterStartPeriodBilled.Value = StartingPostPeriodCode
+                    Else
+                        SqlParameterStartPeriodBilled.Value = System.DBNull.Value
+                    End If
+                    If EndingPostPeriodCode IsNot Nothing Then
+                        SqlParameterEndPeriodBilled.Value = EndingPostPeriodCode
+                    Else
+                        SqlParameterEndPeriodBilled.Value = System.DBNull.Value
+                    End If
+
+                    SqlParameterDateOption.Value = System.DBNull.Value
+
+                    SqlParameterClientCodeList.Value = System.DBNull.Value
+                    SqlParameterClientDivisionCodeList.Value = System.DBNull.Value
+                    SqlParameterClientDivisionProductCodeList.Value = System.DBNull.Value
+                    SqlParameterAECodeList.Value = System.DBNull.Value
+                    SqlParameterCampaignIDList.Value = System.DBNull.Value
+                    SqlParameterJobTypeList.Value = System.DBNull.Value
+
+                    JobDetailItemAPIReports2 = DbContext.Database.SqlQuery(Of JobDetailItemAPIReport) _
+                        ("EXEC [dbo].[advsp_job_detail_item_load] @DATE_TYPE, @START_DATE, @END_DATE, @SHOW_JOBS_WO_DETAILS, @INCLUDE_CLOSED,@et_date_cutoff, @io_date_cutoff, @ap_pp_cutoff, " &
+                            "@ClientCodeList, @ClientDivisionCodeList, @ClientDivisionProductCodeList, @AECodeList, @CampaignIDList, @IncludeBilledRange, @BILLED_START_PERIOD, @BILLED_END_PERIOD, " &
+                            "@DateOption, @Current_StartDate, @Current_EndDate, @CURRENT_PERIOD, @JobTypeList",
+                            SqlParameterCriteria, SqlParameterFromDate, SqlParameterToDate, SqlParameterShowJobsWithNoDetails, SqlParameterIncludeClosedJobs, SqlParameterEmployeeDateCutoff, SqlParameterIncomeOnlyDateCutoff, SqlParameterAccountsPayablePostingPeriodCutoff,
+                            SqlParameterClientCodeList, SqlParameterClientDivisionCodeList, SqlParameterClientDivisionProductCodeList, SqlParameterAECodeList, SqlParameterCampaignIDList, SqlParameterIncludeBilledRange, SqlParameterStartPeriodBilled, SqlParameterEndPeriodBilled,
+                            SqlParameterDateOption, SqlParameterCurrentStartDate, SqlParameterCurrentEndDate, SqlParameterCurrentPeriod, SqlParameterJobTypeList).ToList
+
+                    'For Each JobDetailItemAPIReport In JobDetailItemAPIReports
+                    '    If JobDetailItemAPIReport.EmployeeDate.ToString > Nothing Then JobDetailItemAPIReport.EmployeeDateStr = JobDetailItemAPIReport.EmployeeDate.Value.ToString("yyyy-MM-dd")
+                    '    If JobDetailItemAPIReport.EmploymentDate.ToString > Nothing Then JobDetailItemAPIReport.EmploymentDateStr = JobDetailItemAPIReport.EmploymentDate.Value.ToString("yyyy-MM-dd")
+                    '    If JobDetailItemAPIReport.EmployeeTerminationDate.ToString > Nothing Then JobDetailItemAPIReport.EmployeeTerminationDateStr = JobDetailItemAPIReport.EmployeeTerminationDate.Value.ToString("yyyy-MM-dd")
+                    'Next
+
+                    JobDetailItemAPIReports = (From JobDetailItem In JobDetailItemAPIReports2
+                                               Group JobDetailItem By JobDetailItem.JobNumber,
+                                                                JobDetailItem.JobComponentNumber,
+                                                                JobDetailItem.OfficeCode,
+                                                                JobDetailItem.OfficeDescription,
+                                                                JobDetailItem.ClientCode,
+                                                                JobDetailItem.ClientDescription,
+                                                                JobDetailItem.DivisionCode,
+                                                                JobDetailItem.DivisionDescription,
+                                                                JobDetailItem.ProductCode,
+                                                                JobDetailItem.ProductDescription,
+                                                                JobDetailItem.CampaignID,
+                                                                JobDetailItem.CampaignCode,
+                                                                JobDetailItem.CampaignName,
+                                                                JobDetailItem.BillingBudget,
+                                                                JobDetailItem.IncomeBudget,
+                                                                JobDetailItem.SalesClassCode,
+                                                                JobDetailItem.SalesClassDescription,
+                                                                JobDetailItem.UserCode,
+                                                                JobDetailItem.JobCreateDate,
+                                                                JobDetailItem.JobDescription,
+                                                                JobDetailItem.JobDateOpened,
+                                                                JobDetailItem.RushChargesApproved,
+                                                                JobDetailItem.ApprovedEstimateRequired,
+                                                                JobDetailItem.Comment,
+                                                                JobDetailItem.ClientReference,
+                                                                JobDetailItem.BillingCoopCode,
+                                                                JobDetailItem.SalesClassFormatCode,
+                                                                JobDetailItem.ComplexityCode,
+                                                                JobDetailItem.ComplexityDescription,
+                                                                JobDetailItem.PromotionCode,
+                                                                JobDetailItem.BillingComment,
+                                                                JobDetailItem.LabelFromUDFTable1,
+                                                                JobDetailItem.LabelFromUDFTable2,
+                                                                JobDetailItem.LabelFromUDFTable3,
+                                                                JobDetailItem.LabelFromUDFTable4,
+                                                                JobDetailItem.LabelFromUDFTable5,
+                                                                JobDetailItem.JobOpen,
+                                                                JobDetailItem.JobComponent,
+                                                                JobDetailItem.BillHold,
+                                                                JobDetailItem.AccountExecutiveCode,
+                                                                JobDetailItem.AccountExecutive,
+                                                                JobDetailItem.ManagerCode,
+                                                                JobDetailItem.Manager,
+                                                                JobDetailItem.ComponentDateOpened,
+                                                                JobDetailItem.DueDate,
+                                                                JobDetailItem.StartDate,
+                                                                JobDetailItem.Status,
+                                                                JobDetailItem.GutPercentComplete,
+                                                                JobDetailItem.AdSize,
+                                                                JobDetailItem.DepartmentTeamCode,
+                                                                JobDetailItem.DepartmentTeam,
+                                                                JobDetailItem.MarkupPercent,
+                                                                JobDetailItem.CreativeInstructions,
+                                                                JobDetailItem.JobProcessControl,
+                                                                JobDetailItem.ComponentDescription,
+                                                                JobDetailItem.ComponentComments,
+                                                                JobDetailItem.ComponentBudget,
+                                                                JobDetailItem.EstimateNumber,
+                                                                JobDetailItem.EstimateComponentNumber,
+                                                                JobDetailItem.ClientApproved,
+                                                                JobDetailItem.ClientApprovalDate,
+                                                                JobDetailItem.ClientApprovedBy,
+                                                                JobDetailItem.InternallyApproved,
+                                                                JobDetailItem.InternalApprovalDate,
+                                                                JobDetailItem.InternallyApprovedBy,
+                                                                JobDetailItem.BillingUser,
+                                                                JobDetailItem.AdvanceBillFlag,
+                                                                JobDetailItem.DeliveryInstructions,
+                                                                JobDetailItem.JobTypeCode,
+                                                                JobDetailItem.JobTypeDescription,
+                                                                JobDetailItem.Taxable,
+                                                                JobDetailItem.TaxCode,
+                                                                JobDetailItem.TaxCodeDescription,
+                                                                JobDetailItem.NonBillable,
+                                                                JobDetailItem.AlertGroup,
+                                                                JobDetailItem.AdNumber,
+                                                                JobDetailItem.AccountNumber,
+                                                                JobDetailItem.AccountNumberDescription,
+                                                                JobDetailItem.IncomeRecognitionMethod,
+                                                                JobDetailItem.MarketCode,
+                                                                JobDetailItem.MarketDescription,
+                                                                JobDetailItem.ServiceFeeJob,
+                                                                JobDetailItem.ServiceFeeTypeCode,
+                                                                JobDetailItem.ServiceFeeTypeDescription,
+                                                                JobDetailItem.Archived,
+                                                                JobDetailItem.TrafficScheduleRequired,
+                                                                JobDetailItem.ClientPO,
+                                                                JobDetailItem.CompLabelFromUDFTable1,
+                                                                JobDetailItem.CompLabelFromUDFTable2,
+                                                                JobDetailItem.CompLabelFromUDFTable3,
+                                                                JobDetailItem.CompLabelFromUDFTable4,
+                                                                JobDetailItem.CompLabelFromUDFTable5,
+                                                                JobDetailItem.JobTemplateCode,
+                                                                JobDetailItem.FiscalPeriodCode,
+                                                                JobDetailItem.FiscalPeriodDescription,
+                                                                JobDetailItem.JobQuantity,
+                                                                JobDetailItem.BlackplateVersionCode,
+                                                                JobDetailItem.BlackplateVersionDesc,
+                                                                JobDetailItem.BlackplateVersion2Code,
+                                                                JobDetailItem.BlackplateVersion2Desc,
+                                                                JobDetailItem.ClientContactCode,
+                                                                JobDetailItem.ClientContactID,
+                                                                JobDetailItem.BABatchID,
+                                                                JobDetailItem.ClientContact,
+                                                                JobDetailItem.SelectedBABatchID,
+                                                                JobDetailItem.BillingCommandCenterID,
+                                                                JobDetailItem.AlertAssignmentTemplate,
+                                                                JobDetailItem.IsEstimateNonBillable,
+                                                                JobDetailItem.IsNewBusiness,
+                                                                JobDetailItem.Agency,
+                                                                JobDetailItem.ProductUDF1,
+                                                                JobDetailItem.ProductUDF2,
+                                                                JobDetailItem.ProductUDF3,
+                                                                JobDetailItem.ProductUDF4,
+                                                                JobDetailItem.CompletedDate,
+                                                                JobDetailItem.JobProcessControlDate,
+                                                                JobDetailItem.ClientType1Code,
+                                                                JobDetailItem.ClientType1Description,
+                                                                JobDetailItem.ClientType2Code,
+                                                                JobDetailItem.ClientType2Description,
+                                                                JobDetailItem.ClientType3Code,
+                                                                JobDetailItem.ClientType3Description Into JDI = Group
+                                               Select New JobDetailItemAPIReport With {.JobNumber = JobNumber,
+                                                                .JobComponentNumber = JobComponentNumber,
+                                                                .OfficeCode = OfficeCode,
+                                                                .OfficeDescription = OfficeDescription,
+                                                                .ClientCode = ClientCode,
+                                                                .ClientDescription = ClientDescription,
+                                                                .DivisionCode = DivisionCode,
+                                                                .DivisionDescription = DivisionDescription,
+                                                                .ProductCode = ProductCode,
+                                                                .ProductDescription = ProductDescription,
+                                                                .CampaignID = CampaignID,
+                                                                .CampaignCode = CampaignCode,
+                                                                .CampaignName = CampaignName,
+                                                                .BillingBudget = BillingBudget,
+                                                                .IncomeBudget = IncomeBudget,
+                                                                .SalesClassCode = SalesClassCode,
+                                                                .SalesClassDescription = SalesClassDescription,
+                                                                .UserCode = UserCode,
+                                                                .JobCreateDate = JobCreateDate,
+                                                                .JobDescription = JobDescription,
+                                                                .JobDateOpened = JobDateOpened,
+                                                                .RushChargesApproved = RushChargesApproved,
+                                                                .ApprovedEstimateRequired = ApprovedEstimateRequired,
+                                                                .Comment = Comment,
+                                                                .ClientReference = ClientReference,
+                                                                .BillingCoopCode = BillingCoopCode,
+                                                                .SalesClassFormatCode = SalesClassFormatCode,
+                                                                .ComplexityCode = ComplexityCode,
+                                                                .ComplexityDescription = ComplexityDescription,
+                                                                .PromotionCode = PromotionCode,
+                                                                .BillingComment = BillingComment,
+                                                                .LabelFromUDFTable1 = LabelFromUDFTable1,
+                                                                .LabelFromUDFTable2 = LabelFromUDFTable2,
+                                                                .LabelFromUDFTable3 = LabelFromUDFTable3,
+                                                                .LabelFromUDFTable4 = LabelFromUDFTable4,
+                                                                .LabelFromUDFTable5 = LabelFromUDFTable5,
+                                                                .JobOpen = JobOpen,
+                                                                .JobComponent = JobComponent,
+                                                                .BillHold = BillHold,
+                                                                .AccountExecutiveCode = AccountExecutiveCode,
+                                                                .AccountExecutive = AccountExecutive,
+                                                                .ManagerCode = ManagerCode,
+                                                                .Manager = Manager,
+                                                                .ComponentDateOpened = ComponentDateOpened,
+                                                                .DueDate = DueDate,
+                                                                .StartDate = StartDate,
+                                                                .Status = Status,
+                                                                .GutPercentComplete = GutPercentComplete,
+                                                                .AdSize = AdSize,
+                                                                .DepartmentTeamCode = DepartmentTeamCode,
+                                                                .DepartmentTeam = DepartmentTeam,
+                                                                .MarkupPercent = MarkupPercent,
+                                                                .CreativeInstructions = CreativeInstructions,
+                                                                .JobProcessControl = JobProcessControl,
+                                                                .ComponentDescription = ComponentDescription,
+                                                                .ComponentComments = ComponentComments,
+                                                                .ComponentBudget = ComponentBudget,
+                                                                .EstimateNumber = EstimateNumber,
+                                                                .EstimateComponentNumber = EstimateComponentNumber,
+                                                                .ClientApproved = ClientApproved,
+                                                                .ClientApprovalDate = ClientApprovalDate,
+                                                                .ClientApprovedBy = ClientApprovedBy,
+                                                                .InternallyApproved = InternallyApproved,
+                                                                .InternalApprovalDate = InternalApprovalDate,
+                                                                .InternallyApprovedBy = InternallyApprovedBy,
+                                                                .BillingUser = BillingUser,
+                                                                .AdvanceBillFlag = AdvanceBillFlag,
+                                                                .DeliveryInstructions = DeliveryInstructions,
+                                                                .JobTypeCode = JobTypeCode,
+                                                                .JobTypeDescription = JobTypeDescription,
+                                                                .Taxable = Taxable,
+                                                                .TaxCode = TaxCode,
+                                                                .TaxCodeDescription = TaxCodeDescription,
+                                                                .NonBillable = NonBillable,
+                                                                .AlertGroup = AlertGroup,
+                                                                .AdNumber = AdNumber,
+                                                                .AccountNumber = AccountNumber,
+                                                                .AccountNumberDescription = AccountNumberDescription,
+                                                                .IncomeRecognitionMethod = IncomeRecognitionMethod,
+                                                                .MarketCode = MarketCode,
+                                                                .MarketDescription = MarketDescription,
+                                                                .ServiceFeeJob = ServiceFeeJob,
+                                                                .ServiceFeeTypeCode = ServiceFeeTypeCode,
+                                                                .ServiceFeeTypeDescription = ServiceFeeTypeDescription,
+                                                                .Archived = Archived,
+                                                                .TrafficScheduleRequired = TrafficScheduleRequired,
+                                                                .ClientPO = ClientPO,
+                                                                .CompLabelFromUDFTable1 = CompLabelFromUDFTable1,
+                                                                .CompLabelFromUDFTable2 = CompLabelFromUDFTable2,
+                                                                .CompLabelFromUDFTable3 = CompLabelFromUDFTable3,
+                                                                .CompLabelFromUDFTable4 = CompLabelFromUDFTable4,
+                                                                .CompLabelFromUDFTable5 = CompLabelFromUDFTable5,
+                                                                .JobTemplateCode = JobTemplateCode,
+                                                                .FiscalPeriodCode = FiscalPeriodCode,
+                                                                .FiscalPeriodDescription = FiscalPeriodDescription,
+                                                                .JobQuantity = JobQuantity,
+                                                                .BlackplateVersionCode = BlackplateVersionCode,
+                                                                .BlackplateVersionDesc = BlackplateVersionDesc,
+                                                                .BlackplateVersion2Code = BlackplateVersion2Code,
+                                                                .BlackplateVersion2Desc = BlackplateVersion2Desc,
+                                                                .ClientContactCode = ClientContactCode,
+                                                                .ClientContactID = ClientContactID,
+                                                                .BABatchID = BABatchID,
+                                                                .ClientContact = ClientContact,
+                                                                .SelectedBABatchID = SelectedBABatchID,
+                                                                .BillingCommandCenterID = BillingCommandCenterID,
+                                                                .AlertAssignmentTemplate = AlertAssignmentTemplate,
+                                                                .Hours = JDI.Sum(Function(Entity) Entity.Hours),
+                                                                .Quantity = JDI.Sum(Function(Entity) Entity.Quantity),
+                                                                .BillableLessResale = JDI.Sum(Function(Entity) Entity.BillableLessResale),
+                                                                .BillableTotal = JDI.Sum(Function(Entity) Entity.BillableTotal),
+                                                                .ExtMarkupAmount = JDI.Sum(Function(Entity) Entity.ExtMarkupAmount),
+                                                                .NonResaleTaxAmount = JDI.Sum(Function(Entity) Entity.NonResaleTaxAmount),
+                                                                .ResaleTaxAmount = JDI.Sum(Function(Entity) Entity.ResaleTaxAmount),
+                                                                .Total = JDI.Sum(Function(Entity) Entity.Total),
+                                                                .NetAmount = JDI.Sum(Function(Entity) Entity.NetAmount),
+                                                                .CostAmount = JDI.Sum(Function(Entity) Entity.CostAmount),
+                                                                .EstimateHours = JDI.Sum(Function(Entity) Entity.EstimateHours),
+                                                                .EstimateHoursAmount = JDI.Sum(Function(Entity) Entity.EstimateHoursAmount),
+                                                                .EstimateQuantity = JDI.Sum(Function(Entity) Entity.EstimateQuantity),
+                                                                .EstimateTotalAmount = JDI.Sum(Function(Entity) Entity.EstimateTotalAmount),
+                                                                .EstimateContTotalAmount = JDI.Sum(Function(Entity) Entity.EstimateContTotalAmount),
+                                                                .EstimateNonResaleTaxAmount = JDI.Sum(Function(Entity) Entity.EstimateNonResaleTaxAmount),
+                                                                .EstimateResaleTaxAmount = JDI.Sum(Function(Entity) Entity.EstimateResaleTaxAmount),
+                                                                .EstimateMarkupAmount = JDI.Sum(Function(Entity) Entity.EstimateMarkupAmount),
+                                                                .EstimateCostAmount = JDI.Sum(Function(Entity) Entity.EstimateCostAmount),
+                                                                .IsEstimateNonBillable = IsEstimateNonBillable,
+                                                                .EstimateFeeTime = JDI.Sum(Function(Entity) Entity.EstimateFeeTime),
+                                                                .EstimateNetAmount = JDI.Sum(Function(Entity) Entity.EstimateNetAmount),
+                                                                .BillingApprovalHours = JDI.Sum(Function(Entity) Entity.BillingApprovalHours),
+                                                                .BillingApprovalCostAmount = JDI.Sum(Function(Entity) Entity.BillingApprovalCostAmount),
+                                                                .BillingApprovalExtNetAmount = JDI.Sum(Function(Entity) Entity.BillingApprovalExtNetAmount),
+                                                                .BillingApprovalTotalAmount = JDI.Sum(Function(Entity) Entity.BillingApprovalTotalAmount),
+                                                                .OpenPurchaseOrderAmount = JDI.Sum(Function(Entity) Entity.OpenPurchaseOrderAmount),
+                                                                .OpenPurchaseOrderGrossAmount = JDI.Sum(Function(Entity) Entity.OpenPurchaseOrderGrossAmount),
+                                                                .BilledAmount = JDI.Sum(Function(Entity) Entity.BilledAmount),
+                                                                .BilledWithResale = JDI.Sum(Function(Entity) Entity.BilledWithResale),
+                                                                .AdvanceBilledTotal = JDI.Sum(Function(Entity) Entity.AdvanceBilledTotal),
+                                                                .FlatIncomeRecognized = JDI.Sum(Function(Entity) Entity.FlatIncomeRecognized),
+                                                                .AdvanceBillingBalance = JDI.Sum(Function(Entity) Entity.AdvanceBillingBalance),
+                                                                .AdvanceBillingRetained = JDI.Sum(Function(Entity) Entity.AdvanceBillingRetained),
+                                                                .BilledHours = JDI.Sum(Function(Entity) Entity.BilledHours),
+                                                                .BilledQuantity = JDI.Sum(Function(Entity) Entity.BilledQuantity),
+                                                                .FeeTimeAmount = JDI.Sum(Function(Entity) Entity.FeeTimeAmount),
+                                                                .FeeTimeHours = JDI.Sum(Function(Entity) Entity.FeeTimeHours),
+                                                                .UnbilledAmount = JDI.Sum(Function(Entity) Entity.UnbilledAmount),
+                                                                .UnbilledAmountLessResale = JDI.Sum(Function(Entity) Entity.UnbilledAmountLessResale),
+                                                                .UnbilledHours = JDI.Sum(Function(Entity) Entity.UnbilledHours),
+                                                                .UnbilledQuantity = JDI.Sum(Function(Entity) Entity.UnbilledQuantity),
+                                                                .NonBillableAmount = JDI.Sum(Function(Entity) Entity.NonBillableAmount),
+                                                                .NonBillableHours = JDI.Sum(Function(Entity) Entity.NonBillableHours),
+                                                                .NonBillableQuantity = JDI.Sum(Function(Entity) Entity.NonBillableQuantity),
+                                                                .IsNewBusiness = IsNewBusiness,
+                                                                .Agency = Agency,
+                                                                .ProductUDF1 = ProductUDF1,
+                                                                .ProductUDF2 = ProductUDF2,
+                                                                .ProductUDF3 = ProductUDF3,
+                                                                .ProductUDF4 = ProductUDF4,
+                                                                .CompletedDate = CompletedDate,
+                                                                .JobProcessControlDate = JobProcessControlDate,
+                                                                .ClientType1Code = ClientType1Code,
+                                                                .ClientType1Description = ClientType1Description,
+                                                                .ClientType2Code = ClientType2Code,
+                                                                .ClientType2Description = ClientType2Description,
+                                                                .ClientType3Code = ClientType3Code,
+                                                                .ClientType3Description = ClientType3Description,
+                                                                .CurrentHours = JDI.Sum(Function(Entity) Entity.CurrentHours),
+                                                                .CurrentHoursAmount = JDI.Sum(Function(Entity) Entity.CurrentHoursAmount),
+                                                                .CurrentIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.CurrentIncomeOnlyCharges),
+                                                                .CurrentVendorCharges = JDI.Sum(Function(Entity) Entity.CurrentVendorCharges),
+                                                                .CurrentTotal = JDI.Sum(Function(Entity) Entity.CurrentTotal),
+                                                                .PriorHours = JDI.Sum(Function(Entity) Entity.PriorHours),
+                                                                .PriorHoursAmount = JDI.Sum(Function(Entity) Entity.PriorHoursAmount),
+                                                                .PriorIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.PriorIncomeOnlyCharges),
+                                                                .PriorVendorCharges = JDI.Sum(Function(Entity) Entity.PriorVendorCharges),
+                                                                .PriorTotal = JDI.Sum(Function(Entity) Entity.PriorTotal),
+                                                                .PriorYearHours = JDI.Sum(Function(Entity) Entity.PriorYearHours),
+                                                                .PriorYearHoursAmount = JDI.Sum(Function(Entity) Entity.PriorYearHoursAmount),
+                                                                .PriorYearIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.PriorYearIncomeOnlyCharges),
+                                                                .PriorYearVendorCharges = JDI.Sum(Function(Entity) Entity.PriorYearVendorCharges),
+                                                                .PriorYearTotal = JDI.Sum(Function(Entity) Entity.PriorYearTotal),
+                                                                .TotalToDateHours = JDI.Sum(Function(Entity) Entity.TotalToDateHours),
+                                                                .TotalToDateHoursAmount = JDI.Sum(Function(Entity) Entity.TotalToDateHoursAmount),
+                                                                .TotalToDateIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.TotalToDateIncomeOnlyCharges),
+                                                                .TotalToDateVendorCharges = JDI.Sum(Function(Entity) Entity.TotalToDateVendorCharges),
+                                                                .TotalToDate = JDI.Sum(Function(Entity) Entity.TotalToDate),
+                                                                .EstimateIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.EstimateIncomeOnlyCharges),
+                                                                .BilledIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.BilledIncomeOnlyCharges),
+                                                                .PercentCompleteHours = Math.Round(If(CDec(JDI.Sum(Function(Entity) Entity.EstimateHours)) > 0, ((JDI.Where(Function(Entity) Entity.ResourceType = "E").Sum(Function(Entity) Entity.Hours)) / JDI.Sum(Function(Entity) Entity.EstimateHours)) * 100, CDec(0)), 2, MidpointRounding.AwayFromZero),
+                                                                .PercentCompleteAmount = Math.Round(If(CDec(JDI.Sum(Function(Entity) Entity.EstimateTotalAmount)) > 0, ((JDI.Where(Function(Entity) Entity.ResourceType = "E").Sum(Function(Entity) Entity.Total) / JDI.Sum(Function(Entity) Entity.EstimateTotalAmount))) * 100, CDec(0)), 2, MidpointRounding.AwayFromZero)}).OrderBy(Function(Entity) Entity.JobComponent).ToList
+
+                End Using
+
+            End If
+
+        Catch ex As Exception
+            ProcessException(ex, "APIService-NotCaught")
+            ErrorMessage = "Critical Failure in API" & System.Environment.NewLine & System.Environment.NewLine & ex.Message
+        End Try
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+            JobDetailItemAPIResponse.Message = ErrorMessage
+            JobDetailItemAPIResponse.IsSuccessful = False
+            JobDetailItemAPIResponse.Results = Nothing
+        Else
+            JobDetailItemAPIResponse.Results = JobDetailItemAPIReports
+            JobDetailItemAPIResponse.Message = CStr(JobDetailItemAPIResponse.Results.Count) + " records"
+        End If
+
+        LoadJobDetail = JobDetailItemAPIResponse
+
+    End Function
+
+    Public Function LoadJobDetailFunction(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String,
+                                  EmployeeDateCutoff As String, IncomeOnlyDateCutoff As String, AccountsPayablePostingPeriodCutoff As String,
+                                  CurrentStartDate As String, CurrentEndDate As String, CurrentPeriod As String,
+                                  JobDateCriteria As Integer, JobStartDate As String, JobEndDate As String, IncludeClosed As Boolean,
+                                  IncludeBilledRange As Boolean, StartingPostPeriodCode As String, EndingPostPeriodCode As String) As JobDetailItemAPIResponse Implements IAPIService.LoadJobDetailFunction
+
+        'objects
+        Dim APISession As AdvantageFramework.Security.APISession = Nothing
+
+        Dim ShowJobsWithNoDetails As Boolean = Nothing
+        Dim SelectedCampaigns As String = Nothing
+        Dim CurrentPostPeriod As AdvantageFramework.Database.Entities.PostPeriod
+
+        Dim CurrentDate As Date = Today
+        Dim StartDateDef As Date = CurrentDate.AddYears(-1)
+
+        ShowJobsWithNoDetails = 0
+
+        If String.IsNullOrWhiteSpace(EmployeeDateCutoff) Then
+            EmployeeDateCutoff = CurrentDate
+        End If
+
+        If String.IsNullOrWhiteSpace(IncomeOnlyDateCutoff) Then
+            IncomeOnlyDateCutoff = CurrentDate
+        End If
+
+        If String.IsNullOrWhiteSpace(AccountsPayablePostingPeriodCutoff) Then
+            AccountsPayablePostingPeriodCutoff = CurrentDate.ToString("yyyyMM")
+        End If
+
+        If String.IsNullOrWhiteSpace(CurrentStartDate) Then
+            CurrentStartDate = StartDateDef
+        End If
+
+        If String.IsNullOrWhiteSpace(CurrentEndDate) Then
+            CurrentEndDate = CurrentDate
+        End If
+
+        If String.IsNullOrWhiteSpace(JobStartDate) Then
+            JobStartDate = StartDateDef
+        End If
+
+        If String.IsNullOrWhiteSpace(JobEndDate) Then
+            JobEndDate = CurrentDate
+        End If
+
+        If IncludeBilledRange = 1 Then
+            If String.IsNullOrWhiteSpace(StartingPostPeriodCode) Then
+                StartingPostPeriodCode = CurrentDate.ToString("yyyyMM")
+            End If
+
+            If String.IsNullOrWhiteSpace(EndingPostPeriodCode) Then
+                EndingPostPeriodCode = CurrentDate.ToString("yyyyMM")
+            End If
+        End If
+
+        'JobDateCriteria = 4 'None = 0, Job Create Date = 1, Compnent Date Opened = 2, Due Date = 3, Start Date = 4, Item Date = 5
+
+        'IncludeClosed = 1
+
+        Dim JobDetailItemAPIReports As Generic.List(Of JobDetailItemAPIReport) = Nothing
+        Dim JobDetailItemAPIReports2 As Generic.List(Of JobDetailItemAPIReport) = Nothing
+        Dim SqlParameterStartDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterEndDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterGroupBy As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterLimitWIP As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterOfficeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterDepartmentList As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterEmployeeDateCutoff As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterIncomeOnlyDateCutoff As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterAccountsPayablePostingPeriodCutoff As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterCriteria As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterFromDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterToDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterShowJobsWithNoDetails As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterIncludeClosedJobs As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterIncludeBilledRange As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterStartPeriodBilled As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterEndPeriodBilled As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterClientCodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterClientDivisionCodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterClientDivisionProductCodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterAECodeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterCampaignIDList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterJobTypeList As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterCurrentStartDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterCurrentEndDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterCurrentPeriod As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterDateOption As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim JobDetailItemAPIResponse As JobDetailItemAPIResponse
+
+        Dim ErrorMessage As String = String.Empty
+
+        JobDetailItemAPIResponse = New JobDetailItemAPIResponse
+
+        Try
+
+            If LoginToAPI(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, APISession, "") Then
+
+                Using DbContext = New AdvantageFramework.Database.DbContext(APISession.ConnectionString, APISession.UserCode) 'APIDbContext(APISession.ConnectionString, APISession.UserCode)
+                    If String.IsNullOrWhiteSpace(CurrentPeriod) Then
+                        CurrentPostPeriod = AdvantageFramework.Database.Procedures.PostPeriod.LoadCurrentPostPeriod(DbContext)
+                        CurrentPeriod = CurrentPostPeriod.Code
+                    End If
+                End Using
+
+                Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
+
+                    SqlParameterEmployeeDateCutoff = New System.Data.SqlClient.SqlParameter("@et_date_cutoff", SqlDbType.SmallDateTime)
+                    SqlParameterIncomeOnlyDateCutoff = New System.Data.SqlClient.SqlParameter("@io_date_cutoff", SqlDbType.SmallDateTime)
+                    SqlParameterAccountsPayablePostingPeriodCutoff = New System.Data.SqlClient.SqlParameter("@ap_pp_cutoff", SqlDbType.VarChar)
+
+                    SqlParameterCriteria = New System.Data.SqlClient.SqlParameter("@DATE_TYPE", SqlDbType.Int)
+                    SqlParameterFromDate = New System.Data.SqlClient.SqlParameter("@START_DATE", SqlDbType.SmallDateTime)
+                    SqlParameterToDate = New System.Data.SqlClient.SqlParameter("@END_DATE", SqlDbType.SmallDateTime)
+                    SqlParameterShowJobsWithNoDetails = New System.Data.SqlClient.SqlParameter("@SHOW_JOBS_WO_DETAILS", SqlDbType.Bit)
+                    SqlParameterIncludeClosedJobs = New System.Data.SqlClient.SqlParameter("@INCLUDE_CLOSED", SqlDbType.Bit)
+
+                    SqlParameterIncludeBilledRange = New System.Data.SqlClient.SqlParameter("@IncludeBilledRange", SqlDbType.Bit)
+                    SqlParameterStartPeriodBilled = New System.Data.SqlClient.SqlParameter("@BILLED_START_PERIOD", SqlDbType.VarChar)
+                    SqlParameterEndPeriodBilled = New System.Data.SqlClient.SqlParameter("@BILLED_END_PERIOD", SqlDbType.VarChar)
+
+                    SqlParameterClientCodeList = New System.Data.SqlClient.SqlParameter("@ClientCodeList", SqlDbType.VarChar)
+                    SqlParameterClientDivisionCodeList = New System.Data.SqlClient.SqlParameter("@ClientDivisionCodeList", SqlDbType.VarChar)
+                    SqlParameterClientDivisionProductCodeList = New System.Data.SqlClient.SqlParameter("@ClientDivisionProductCodeList", SqlDbType.VarChar)
+                    SqlParameterAECodeList = New System.Data.SqlClient.SqlParameter("@AECodeList", SqlDbType.VarChar)
+                    SqlParameterCampaignIDList = New System.Data.SqlClient.SqlParameter("@CampaignIDList", SqlDbType.VarChar)
+                    SqlParameterJobTypeList = New System.Data.SqlClient.SqlParameter("@JobTypeList", SqlDbType.VarChar)
+
+                    SqlParameterCurrentStartDate = New System.Data.SqlClient.SqlParameter("@Current_StartDate", SqlDbType.SmallDateTime)
+                    SqlParameterCurrentEndDate = New System.Data.SqlClient.SqlParameter("@Current_EndDate", SqlDbType.SmallDateTime)
+                    SqlParameterCurrentPeriod = New System.Data.SqlClient.SqlParameter("@CURRENT_PERIOD", SqlDbType.VarChar)
+
+                    SqlParameterDateOption = New System.Data.SqlClient.SqlParameter("@DateOption", SqlDbType.VarChar)
+
+                    SqlParameterEmployeeDateCutoff.Value = EmployeeDateCutoff
+                    SqlParameterIncomeOnlyDateCutoff.Value = IncomeOnlyDateCutoff
+                    If AccountsPayablePostingPeriodCutoff IsNot Nothing Then
+                        SqlParameterAccountsPayablePostingPeriodCutoff.Value = AccountsPayablePostingPeriodCutoff
+                    Else
+                        SqlParameterAccountsPayablePostingPeriodCutoff.Value = System.DBNull.Value
+                    End If
+
+                    SqlParameterCurrentStartDate.Value = StartDateDef
+                    SqlParameterCurrentEndDate.Value = CurrentEndDate
+                    If CurrentPeriod IsNot Nothing Then
+                        SqlParameterCurrentPeriod.Value = CurrentPeriod
+                    Else
+                        SqlParameterCurrentPeriod.Value = System.DBNull.Value
+                    End If
+
+                    SqlParameterCriteria.Value = JobDateCriteria
+                    SqlParameterFromDate.Value = JobStartDate
+                    SqlParameterToDate.Value = JobEndDate
+                    SqlParameterShowJobsWithNoDetails.Value = ShowJobsWithNoDetails
+                    SqlParameterIncludeClosedJobs.Value = IncludeClosed
+
+                    SqlParameterIncludeBilledRange.Value = IncludeBilledRange
+                    If StartingPostPeriodCode IsNot Nothing Then
+                        SqlParameterStartPeriodBilled.Value = StartingPostPeriodCode
+                    Else
+                        SqlParameterStartPeriodBilled.Value = System.DBNull.Value
+                    End If
+                    If EndingPostPeriodCode IsNot Nothing Then
+                        SqlParameterEndPeriodBilled.Value = EndingPostPeriodCode
+                    Else
+                        SqlParameterEndPeriodBilled.Value = System.DBNull.Value
+                    End If
+
+                    SqlParameterDateOption.Value = System.DBNull.Value
+
+                    SqlParameterClientCodeList.Value = System.DBNull.Value
+                    SqlParameterClientDivisionCodeList.Value = System.DBNull.Value
+                    SqlParameterClientDivisionProductCodeList.Value = System.DBNull.Value
+                    SqlParameterAECodeList.Value = System.DBNull.Value
+                    SqlParameterCampaignIDList.Value = System.DBNull.Value
+                    SqlParameterJobTypeList.Value = System.DBNull.Value
+
+                    JobDetailItemAPIReports2 = DbContext.Database.SqlQuery(Of JobDetailItemAPIReport) _
+                        ("EXEC [dbo].[advsp_job_detail_item_load] @DATE_TYPE, @START_DATE, @END_DATE, @SHOW_JOBS_WO_DETAILS, @INCLUDE_CLOSED,@et_date_cutoff, @io_date_cutoff, @ap_pp_cutoff, " &
+                            "@ClientCodeList, @ClientDivisionCodeList, @ClientDivisionProductCodeList, @AECodeList, @CampaignIDList, @IncludeBilledRange, @BILLED_START_PERIOD, @BILLED_END_PERIOD, " &
+                            "@DateOption, @Current_StartDate, @Current_EndDate, @CURRENT_PERIOD, @JobTypeList",
+                            SqlParameterCriteria, SqlParameterFromDate, SqlParameterToDate, SqlParameterShowJobsWithNoDetails, SqlParameterIncludeClosedJobs, SqlParameterEmployeeDateCutoff, SqlParameterIncomeOnlyDateCutoff, SqlParameterAccountsPayablePostingPeriodCutoff,
+                            SqlParameterClientCodeList, SqlParameterClientDivisionCodeList, SqlParameterClientDivisionProductCodeList, SqlParameterAECodeList, SqlParameterCampaignIDList, SqlParameterIncludeBilledRange, SqlParameterStartPeriodBilled, SqlParameterEndPeriodBilled,
+                            SqlParameterDateOption, SqlParameterCurrentStartDate, SqlParameterCurrentEndDate, SqlParameterCurrentPeriod, SqlParameterJobTypeList).ToList
+
+                    'For Each JobDetailItemAPIReport In JobDetailItemAPIReports
+                    '    If JobDetailItemAPIReport.EmployeeDate.ToString > Nothing Then JobDetailItemAPIReport.EmployeeDateStr = JobDetailItemAPIReport.EmployeeDate.Value.ToString("yyyy-MM-dd")
+                    '    If JobDetailItemAPIReport.EmploymentDate.ToString > Nothing Then JobDetailItemAPIReport.EmploymentDateStr = JobDetailItemAPIReport.EmploymentDate.Value.ToString("yyyy-MM-dd")
+                    '    If JobDetailItemAPIReport.EmployeeTerminationDate.ToString > Nothing Then JobDetailItemAPIReport.EmployeeTerminationDateStr = JobDetailItemAPIReport.EmployeeTerminationDate.Value.ToString("yyyy-MM-dd")
+                    'Next
+
+                    JobDetailItemAPIReports = (From JobDetailItem In JobDetailItemAPIReports2
+                                               Group JobDetailItem By JobDetailItem.JobNumber,
+                                                        JobDetailItem.JobComponentNumber,
+                                                        JobDetailItem.[FunctionType],
+                                                        JobDetailItem.FunctionConsolidationCode,
+                                                        JobDetailItem.FunctionConsolidation,
+                                                        JobDetailItem.FunctionHeading,
+                                                        JobDetailItem.[FunctionCode],
+                                                        JobDetailItem.[FunctionDescription],
+                                                        JobDetailItem.OfficeCode,
+                                                        JobDetailItem.OfficeDescription,
+                                                        JobDetailItem.ClientCode,
+                                                        JobDetailItem.ClientDescription,
+                                                        JobDetailItem.DivisionCode,
+                                                        JobDetailItem.DivisionDescription,
+                                                        JobDetailItem.ProductCode,
+                                                        JobDetailItem.ProductDescription,
+                                                        JobDetailItem.CampaignID,
+                                                        JobDetailItem.CampaignCode,
+                                                        JobDetailItem.CampaignName,
+                                                        JobDetailItem.BillingBudget,
+                                                        JobDetailItem.IncomeBudget,
+                                                        JobDetailItem.SalesClassCode,
+                                                        JobDetailItem.SalesClassDescription,
+                                                        JobDetailItem.UserCode,
+                                                        JobDetailItem.JobCreateDate,
+                                                        JobDetailItem.JobDescription,
+                                                        JobDetailItem.JobDateOpened,
+                                                        JobDetailItem.RushChargesApproved,
+                                                        JobDetailItem.ApprovedEstimateRequired,
+                                                        JobDetailItem.Comment,
+                                                        JobDetailItem.ClientReference,
+                                                        JobDetailItem.BillingCoopCode,
+                                                        JobDetailItem.SalesClassFormatCode,
+                                                        JobDetailItem.ComplexityCode,
+                                                        JobDetailItem.ComplexityDescription,
+                                                        JobDetailItem.PromotionCode,
+                                                        JobDetailItem.BillingComment,
+                                                        JobDetailItem.LabelFromUDFTable1,
+                                                        JobDetailItem.LabelFromUDFTable2,
+                                                        JobDetailItem.LabelFromUDFTable3,
+                                                        JobDetailItem.LabelFromUDFTable4,
+                                                        JobDetailItem.LabelFromUDFTable5,
+                                                        JobDetailItem.JobOpen,
+                                                        JobDetailItem.JobComponent,
+                                                        JobDetailItem.BillHold,
+                                                        JobDetailItem.AccountExecutiveCode,
+                                                        JobDetailItem.AccountExecutive,
+                                                        JobDetailItem.ManagerCode,
+                                                        JobDetailItem.Manager,
+                                                        JobDetailItem.ComponentDateOpened,
+                                                        JobDetailItem.DueDate,
+                                                        JobDetailItem.StartDate,
+                                                        JobDetailItem.Status,
+                                                        JobDetailItem.GutPercentComplete,
+                                                        JobDetailItem.AdSize,
+                                                        JobDetailItem.DepartmentTeamCode,
+                                                        JobDetailItem.DepartmentTeam,
+                                                        JobDetailItem.MarkupPercent,
+                                                        JobDetailItem.CreativeInstructions,
+                                                        JobDetailItem.JobProcessControl,
+                                                        JobDetailItem.ComponentDescription,
+                                                        JobDetailItem.ComponentComments,
+                                                        JobDetailItem.ComponentBudget,
+                                                        JobDetailItem.EstimateNumber,
+                                                        JobDetailItem.EstimateComponentNumber,
+                                                        JobDetailItem.ClientApproved,
+                                                        JobDetailItem.ClientApprovalDate,
+                                                        JobDetailItem.ClientApprovedBy,
+                                                        JobDetailItem.InternallyApproved,
+                                                        JobDetailItem.InternalApprovalDate,
+                                                        JobDetailItem.InternallyApprovedBy,
+                                                        JobDetailItem.BillingUser,
+                                                        JobDetailItem.AdvanceBillFlag,
+                                                        JobDetailItem.DeliveryInstructions,
+                                                        JobDetailItem.JobTypeCode,
+                                                        JobDetailItem.JobTypeDescription,
+                                                        JobDetailItem.Taxable,
+                                                        JobDetailItem.TaxCode,
+                                                        JobDetailItem.TaxCodeDescription,
+                                                        JobDetailItem.NonBillable,
+                                                        JobDetailItem.AlertGroup,
+                                                        JobDetailItem.AdNumber,
+                                                        JobDetailItem.AccountNumber,
+                                                        JobDetailItem.AccountNumberDescription,
+                                                        JobDetailItem.IncomeRecognitionMethod,
+                                                        JobDetailItem.MarketCode,
+                                                        JobDetailItem.MarketDescription,
+                                                        JobDetailItem.ServiceFeeJob,
+                                                        JobDetailItem.ServiceFeeTypeCode,
+                                                        JobDetailItem.ServiceFeeTypeDescription,
+                                                        JobDetailItem.Archived,
+                                                        JobDetailItem.TrafficScheduleRequired,
+                                                        JobDetailItem.ClientPO,
+                                                        JobDetailItem.CompLabelFromUDFTable1,
+                                                        JobDetailItem.CompLabelFromUDFTable2,
+                                                        JobDetailItem.CompLabelFromUDFTable3,
+                                                        JobDetailItem.CompLabelFromUDFTable4,
+                                                        JobDetailItem.CompLabelFromUDFTable5,
+                                                        JobDetailItem.JobTemplateCode,
+                                                        JobDetailItem.FiscalPeriodCode,
+                                                        JobDetailItem.FiscalPeriodDescription,
+                                                        JobDetailItem.JobQuantity,
+                                                        JobDetailItem.BlackplateVersionCode,
+                                                        JobDetailItem.BlackplateVersionDesc,
+                                                        JobDetailItem.BlackplateVersion2Code,
+                                                        JobDetailItem.BlackplateVersion2Desc,
+                                                        JobDetailItem.ClientContactCode,
+                                                        JobDetailItem.ClientContactID,
+                                                        JobDetailItem.BABatchID,
+                                                        JobDetailItem.ClientContact,
+                                                        JobDetailItem.SelectedBABatchID,
+                                                        JobDetailItem.BillingCommandCenterID,
+                                                        JobDetailItem.AlertAssignmentTemplate,
+                                                        JobDetailItem.IsEstimateNonBillable,
+                                                        JobDetailItem.IsNewBusiness,
+                                                        JobDetailItem.Agency,
+                                                        JobDetailItem.ProductUDF1,
+                                                        JobDetailItem.ProductUDF2,
+                                                        JobDetailItem.ProductUDF3,
+                                                        JobDetailItem.ProductUDF4,
+                                                        JobDetailItem.CompletedDate,
+                                                        JobDetailItem.JobProcessControlDate Into JDI = Group
+                                               Select New JobDetailItemAPIReport With {.JobNumber = JobNumber,
+                                                        .JobComponentNumber = JobComponentNumber,
+                                                        .[FunctionType] = [FunctionType],
+                                                        .FunctionConsolidationCode = FunctionConsolidationCode,
+                                                        .FunctionConsolidation = FunctionConsolidation,
+                                                        .FunctionHeading = FunctionHeading,
+                                                        .[FunctionCode] = [FunctionCode],
+                                                        .[FunctionDescription] = [FunctionDescription],
+                                                        .OfficeCode = OfficeCode,
+                                                        .OfficeDescription = OfficeDescription,
+                                                        .ClientCode = ClientCode,
+                                                        .ClientDescription = ClientDescription,
+                                                        .DivisionCode = DivisionCode,
+                                                        .DivisionDescription = DivisionDescription,
+                                                        .ProductCode = ProductCode,
+                                                        .ProductDescription = ProductDescription,
+                                                        .CampaignID = CampaignID,
+                                                        .CampaignCode = CampaignCode,
+                                                        .CampaignName = CampaignName,
+                                                        .BillingBudget = BillingBudget,
+                                                        .IncomeBudget = IncomeBudget,
+                                                        .SalesClassCode = SalesClassCode,
+                                                        .SalesClassDescription = SalesClassDescription,
+                                                        .UserCode = UserCode,
+                                                        .JobCreateDate = JobCreateDate,
+                                                        .JobDescription = JobDescription,
+                                                        .JobDateOpened = JobDateOpened,
+                                                        .RushChargesApproved = RushChargesApproved,
+                                                        .ApprovedEstimateRequired = ApprovedEstimateRequired,
+                                                        .Comment = Comment,
+                                                        .ClientReference = ClientReference,
+                                                        .BillingCoopCode = BillingCoopCode,
+                                                        .SalesClassFormatCode = SalesClassFormatCode,
+                                                        .ComplexityCode = ComplexityCode,
+                                                        .ComplexityDescription = ComplexityDescription,
+                                                        .PromotionCode = PromotionCode,
+                                                        .BillingComment = BillingComment,
+                                                        .LabelFromUDFTable1 = LabelFromUDFTable1,
+                                                        .LabelFromUDFTable2 = LabelFromUDFTable2,
+                                                        .LabelFromUDFTable3 = LabelFromUDFTable3,
+                                                        .LabelFromUDFTable4 = LabelFromUDFTable4,
+                                                        .LabelFromUDFTable5 = LabelFromUDFTable5,
+                                                        .JobOpen = JobOpen,
+                                                        .JobComponent = JobComponent,
+                                                        .BillHold = BillHold,
+                                                        .AccountExecutiveCode = AccountExecutiveCode,
+                                                        .AccountExecutive = AccountExecutive,
+                                                        .ManagerCode = ManagerCode,
+                                                        .Manager = Manager,
+                                                        .ComponentDateOpened = ComponentDateOpened,
+                                                        .DueDate = DueDate,
+                                                        .StartDate = StartDate,
+                                                        .Status = Status,
+                                                        .GutPercentComplete = GutPercentComplete,
+                                                        .AdSize = AdSize,
+                                                        .DepartmentTeamCode = DepartmentTeamCode,
+                                                        .DepartmentTeam = DepartmentTeam,
+                                                        .MarkupPercent = MarkupPercent,
+                                                        .CreativeInstructions = CreativeInstructions,
+                                                        .JobProcessControl = JobProcessControl,
+                                                        .ComponentDescription = ComponentDescription,
+                                                        .ComponentComments = ComponentComments,
+                                                        .ComponentBudget = ComponentBudget,
+                                                        .EstimateNumber = EstimateNumber,
+                                                        .EstimateComponentNumber = EstimateComponentNumber,
+                                                        .ClientApproved = ClientApproved,
+                                                        .ClientApprovalDate = ClientApprovalDate,
+                                                        .ClientApprovedBy = ClientApprovedBy,
+                                                        .InternallyApproved = InternallyApproved,
+                                                        .InternalApprovalDate = InternalApprovalDate,
+                                                        .InternallyApprovedBy = InternallyApprovedBy,
+                                                        .BillingUser = BillingUser,
+                                                        .AdvanceBillFlag = AdvanceBillFlag,
+                                                        .DeliveryInstructions = DeliveryInstructions,
+                                                        .JobTypeCode = JobTypeCode,
+                                                        .JobTypeDescription = JobTypeDescription,
+                                                        .Taxable = Taxable,
+                                                        .TaxCode = TaxCode,
+                                                        .TaxCodeDescription = TaxCodeDescription,
+                                                        .NonBillable = NonBillable,
+                                                        .AlertGroup = AlertGroup,
+                                                        .AdNumber = AdNumber,
+                                                        .AccountNumber = AccountNumber,
+                                                        .AccountNumberDescription = AccountNumberDescription,
+                                                        .IncomeRecognitionMethod = IncomeRecognitionMethod,
+                                                        .MarketCode = MarketCode,
+                                                        .MarketDescription = MarketDescription,
+                                                        .ServiceFeeJob = ServiceFeeJob,
+                                                        .ServiceFeeTypeCode = ServiceFeeTypeCode,
+                                                        .ServiceFeeTypeDescription = ServiceFeeTypeDescription,
+                                                        .Archived = Archived,
+                                                        .TrafficScheduleRequired = TrafficScheduleRequired,
+                                                        .ClientPO = ClientPO,
+                                                        .CompLabelFromUDFTable1 = CompLabelFromUDFTable1,
+                                                        .CompLabelFromUDFTable2 = CompLabelFromUDFTable2,
+                                                        .CompLabelFromUDFTable3 = CompLabelFromUDFTable3,
+                                                        .CompLabelFromUDFTable4 = CompLabelFromUDFTable4,
+                                                        .CompLabelFromUDFTable5 = CompLabelFromUDFTable5,
+                                                        .JobTemplateCode = JobTemplateCode,
+                                                        .FiscalPeriodCode = FiscalPeriodCode,
+                                                        .FiscalPeriodDescription = FiscalPeriodDescription,
+                                                        .JobQuantity = JobQuantity,
+                                                        .BlackplateVersionCode = BlackplateVersionCode,
+                                                        .BlackplateVersionDesc = BlackplateVersionDesc,
+                                                        .BlackplateVersion2Code = BlackplateVersion2Code,
+                                                        .BlackplateVersion2Desc = BlackplateVersion2Desc,
+                                                        .ClientContactCode = ClientContactCode,
+                                                        .ClientContactID = ClientContactID,
+                                                        .BABatchID = BABatchID,
+                                                        .ClientContact = ClientContact,
+                                                        .SelectedBABatchID = SelectedBABatchID,
+                                                        .BillingCommandCenterID = BillingCommandCenterID,
+                                                        .AlertAssignmentTemplate = AlertAssignmentTemplate,
+                                                        .Hours = JDI.Sum(Function(Entity) Entity.Hours),
+                                                        .Quantity = JDI.Sum(Function(Entity) Entity.Quantity),
+                                                        .BillableLessResale = JDI.Sum(Function(Entity) Entity.BillableLessResale),
+                                                        .BillableTotal = JDI.Sum(Function(Entity) Entity.BillableTotal),
+                                                        .ExtMarkupAmount = JDI.Sum(Function(Entity) Entity.ExtMarkupAmount),
+                                                        .NonResaleTaxAmount = JDI.Sum(Function(Entity) Entity.NonResaleTaxAmount),
+                                                        .ResaleTaxAmount = JDI.Sum(Function(Entity) Entity.ResaleTaxAmount),
+                                                        .Total = JDI.Sum(Function(Entity) Entity.Total),
+                                                        .NetAmount = JDI.Sum(Function(Entity) Entity.NetAmount),
+                                                        .CostAmount = JDI.Sum(Function(Entity) Entity.CostAmount),
+                                                        .EstimateHours = JDI.Sum(Function(Entity) Entity.EstimateHours),
+                                                        .EstimateHoursAmount = JDI.Sum(Function(Entity) Entity.EstimateHoursAmount),
+                                                        .EstimateQuantity = JDI.Sum(Function(Entity) Entity.EstimateQuantity),
+                                                        .EstimateTotalAmount = JDI.Sum(Function(Entity) Entity.EstimateTotalAmount),
+                                                        .EstimateContTotalAmount = JDI.Sum(Function(Entity) Entity.EstimateContTotalAmount),
+                                                        .EstimateNonResaleTaxAmount = JDI.Sum(Function(Entity) Entity.EstimateNonResaleTaxAmount),
+                                                        .EstimateResaleTaxAmount = JDI.Sum(Function(Entity) Entity.EstimateResaleTaxAmount),
+                                                        .EstimateMarkupAmount = JDI.Sum(Function(Entity) Entity.EstimateMarkupAmount),
+                                                        .EstimateCostAmount = JDI.Sum(Function(Entity) Entity.EstimateCostAmount),
+                                                        .IsEstimateNonBillable = IsEstimateNonBillable,
+                                                        .EstimateFeeTime = JDI.Sum(Function(Entity) Entity.EstimateFeeTime),
+                                                        .EstimateNetAmount = JDI.Sum(Function(Entity) Entity.EstimateNetAmount),
+                                                        .BillingApprovalHours = JDI.Sum(Function(Entity) Entity.BillingApprovalHours),
+                                                        .BillingApprovalCostAmount = JDI.Sum(Function(Entity) Entity.BillingApprovalCostAmount),
+                                                        .BillingApprovalExtNetAmount = JDI.Sum(Function(Entity) Entity.BillingApprovalExtNetAmount),
+                                                        .BillingApprovalTotalAmount = JDI.Sum(Function(Entity) Entity.BillingApprovalTotalAmount),
+                                                        .OpenPurchaseOrderAmount = JDI.Sum(Function(Entity) Entity.OpenPurchaseOrderAmount),
+                                                        .OpenPurchaseOrderGrossAmount = JDI.Sum(Function(Entity) Entity.OpenPurchaseOrderGrossAmount),
+                                                        .BilledAmount = JDI.Sum(Function(Entity) Entity.BilledAmount),
+                                                        .BilledWithResale = JDI.Sum(Function(Entity) Entity.BilledWithResale),
+                                                        .BilledHours = JDI.Sum(Function(Entity) Entity.BilledHours),
+                                                        .BilledQuantity = JDI.Sum(Function(Entity) Entity.BilledQuantity),
+                                                        .FeeTimeAmount = JDI.Sum(Function(Entity) Entity.FeeTimeAmount),
+                                                        .FeeTimeHours = JDI.Sum(Function(Entity) Entity.FeeTimeHours),
+                                                        .UnbilledAmount = JDI.Sum(Function(Entity) Entity.UnbilledAmount),
+                                                        .UnbilledAmountLessResale = JDI.Sum(Function(Entity) Entity.UnbilledAmountLessResale),
+                                                        .UnbilledHours = JDI.Sum(Function(Entity) Entity.UnbilledHours),
+                                                        .UnbilledQuantity = JDI.Sum(Function(Entity) Entity.UnbilledQuantity),
+                                                        .NonBillableAmount = JDI.Sum(Function(Entity) Entity.NonBillableAmount),
+                                                        .NonBillableHours = JDI.Sum(Function(Entity) Entity.NonBillableHours),
+                                                        .NonBillableQuantity = JDI.Sum(Function(Entity) Entity.NonBillableQuantity),
+                                                        .IsNewBusiness = IsNewBusiness,
+                                                        .Agency = Agency,
+                                                        .ProductUDF1 = ProductUDF1,
+                                                        .ProductUDF2 = ProductUDF2,
+                                                        .ProductUDF3 = ProductUDF3,
+                                                        .ProductUDF4 = ProductUDF4,
+                                                        .CompletedDate = CompletedDate,
+                                                        .JobProcessControlDate = JobProcessControlDate,
+                                                        .CurrentHours = JDI.Sum(Function(Entity) Entity.CurrentHours),
+                                                        .CurrentHoursAmount = JDI.Sum(Function(Entity) Entity.CurrentHoursAmount),
+                                                        .CurrentIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.CurrentIncomeOnlyCharges),
+                                                        .CurrentVendorCharges = JDI.Sum(Function(Entity) Entity.CurrentVendorCharges),
+                                                        .CurrentTotal = JDI.Sum(Function(Entity) Entity.CurrentTotal),
+                                                        .PriorHours = JDI.Sum(Function(Entity) Entity.PriorHours),
+                                                        .PriorHoursAmount = JDI.Sum(Function(Entity) Entity.PriorHoursAmount),
+                                                        .PriorIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.PriorIncomeOnlyCharges),
+                                                        .PriorVendorCharges = JDI.Sum(Function(Entity) Entity.PriorVendorCharges),
+                                                        .PriorTotal = JDI.Sum(Function(Entity) Entity.PriorTotal),
+                                                        .PriorYearHours = JDI.Sum(Function(Entity) Entity.PriorYearHours),
+                                                        .PriorYearHoursAmount = JDI.Sum(Function(Entity) Entity.PriorYearHoursAmount),
+                                                        .PriorYearIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.PriorYearIncomeOnlyCharges),
+                                                        .PriorYearVendorCharges = JDI.Sum(Function(Entity) Entity.PriorYearVendorCharges),
+                                                        .PriorYearTotal = JDI.Sum(Function(Entity) Entity.PriorYearTotal),
+                                                        .TotalToDateHours = JDI.Sum(Function(Entity) Entity.TotalToDateHours),
+                                                        .TotalToDateHoursAmount = JDI.Sum(Function(Entity) Entity.TotalToDateHoursAmount),
+                                                        .TotalToDateIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.TotalToDateIncomeOnlyCharges),
+                                                        .TotalToDateVendorCharges = JDI.Sum(Function(Entity) Entity.TotalToDateVendorCharges),
+                                                        .TotalToDate = JDI.Sum(Function(Entity) Entity.TotalToDate),
+                                                        .EstimateIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.EstimateIncomeOnlyCharges),
+                                                        .BilledIncomeOnlyCharges = JDI.Sum(Function(Entity) Entity.BilledIncomeOnlyCharges),
+                                                        .PercentCompleteHours = Math.Round(If(CDec(JDI.Sum(Function(Entity) Entity.EstimateHours)) > 0, ((JDI.Where(Function(Entity) Entity.ResourceType = "E").Sum(Function(Entity) Entity.Hours)) / JDI.Sum(Function(Entity) Entity.EstimateHours)) * 100, CDec(0)), 2, MidpointRounding.AwayFromZero),
+                                                        .PercentCompleteAmount = Math.Round(If(CDec(JDI.Sum(Function(Entity) Entity.EstimateTotalAmount)) > 0, ((JDI.Where(Function(Entity) Entity.ResourceType = "E").Sum(Function(Entity) Entity.Total) / JDI.Sum(Function(Entity) Entity.EstimateTotalAmount))) * 100, CDec(0)), 2, MidpointRounding.AwayFromZero)}).OrderBy(Function(Entity) Entity.JobComponent).ToList
+
+                End Using
+
+            End If
+
+        Catch ex As Exception
+            ProcessException(ex, "APIService-NotCaught")
+            ErrorMessage = "Critical Failure in API" & System.Environment.NewLine & System.Environment.NewLine & ex.Message
+        End Try
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+            JobDetailItemAPIResponse.Message = ErrorMessage
+            JobDetailItemAPIResponse.IsSuccessful = False
+            JobDetailItemAPIResponse.Results = Nothing
+        Else
+            JobDetailItemAPIResponse.Results = JobDetailItemAPIReports
+            JobDetailItemAPIResponse.Message = CStr(JobDetailItemAPIResponse.Results.Count) + " records"
+        End If
+
+        LoadJobDetailFunction = JobDetailItemAPIResponse
 
     End Function
 

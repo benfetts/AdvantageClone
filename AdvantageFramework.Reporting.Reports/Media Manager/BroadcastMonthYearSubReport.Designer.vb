@@ -28,14 +28,14 @@
             Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
             Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
             Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+            Me.LabelTotalNetWhenGrossOrder = New DevExpress.XtraReports.UI.XRLabel()
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
             '
             'Detail
             '
-            Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelMonthYear, Me.LabelTotalNet, Me.LabelSpots})
-            Me.Detail.Dpi = 100.0!
-            Me.Detail.HeightF = 51.00002!
+            Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelTotalNetWhenGrossOrder, Me.LabelMonthYear, Me.LabelTotalNet, Me.LabelSpots})
+            Me.Detail.HeightF = 68.00002!
             Me.Detail.MultiColumn.ColumnWidth = 70.83!
             Me.Detail.MultiColumn.Layout = DevExpress.XtraPrinting.ColumnLayout.AcrossThenDown
             Me.Detail.MultiColumn.Mode = DevExpress.XtraReports.UI.MultiColumnMode.UseColumnWidth
@@ -51,7 +51,6 @@
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
             Me.LabelMonthYear.BorderWidth = 0.5!
             Me.LabelMonthYear.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "MonthYear")})
-            Me.LabelMonthYear.Dpi = 100.0!
             Me.LabelMonthYear.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
             Me.LabelMonthYear.Name = "LabelMonthYear"
             Me.LabelMonthYear.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -69,7 +68,6 @@
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
             Me.LabelTotalNet.BorderWidth = 0.5!
             Me.LabelTotalNet.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "TotalNet", "{0:n2}")})
-            Me.LabelTotalNet.Dpi = 100.0!
             Me.LabelTotalNet.LocationFloat = New DevExpress.Utils.PointFloat(0!, 34.00002!)
             Me.LabelTotalNet.Name = "LabelTotalNet"
             Me.LabelTotalNet.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -86,7 +84,6 @@
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
             Me.LabelSpots.BorderWidth = 0.5!
             Me.LabelSpots.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Spots")})
-            Me.LabelSpots.Dpi = 100.0!
             Me.LabelSpots.LocationFloat = New DevExpress.Utils.PointFloat(0!, 17.00001!)
             Me.LabelSpots.Name = "LabelSpots"
             Me.LabelSpots.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -99,7 +96,6 @@
             '
             'TopMargin
             '
-            Me.TopMargin.Dpi = 100.0!
             Me.TopMargin.HeightF = 0!
             Me.TopMargin.Name = "TopMargin"
             Me.TopMargin.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
@@ -108,7 +104,6 @@
             '
             'BottomMargin
             '
-            Me.BottomMargin.Dpi = 100.0!
             Me.BottomMargin.HeightF = 0!
             Me.BottomMargin.Name = "BottomMargin"
             Me.BottomMargin.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
@@ -119,9 +114,26 @@
             '
             Me.BindingSource.DataSource = GetType(AdvantageFramework.MediaManager.Classes.BroadcastOrderYearMonth)
             '
+            'LabelTotalNetWhenGrossOrder
+            '
+            Me.LabelTotalNetWhenGrossOrder.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+            Me.LabelTotalNetWhenGrossOrder.BorderWidth = 0.5!
+            Me.LabelTotalNetWhenGrossOrder.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "TotalNetWhenGrossOrder", "{0:n2}")})
+            Me.LabelTotalNetWhenGrossOrder.LocationFloat = New DevExpress.Utils.PointFloat(0!, 51.00002!)
+            Me.LabelTotalNetWhenGrossOrder.Name = "LabelTotalNetWhenGrossOrder"
+            Me.LabelTotalNetWhenGrossOrder.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+            Me.LabelTotalNetWhenGrossOrder.SizeF = New System.Drawing.SizeF(70.83!, 17.0!)
+            Me.LabelTotalNetWhenGrossOrder.StylePriority.UseBorders = False
+            Me.LabelTotalNetWhenGrossOrder.StylePriority.UseBorderWidth = False
+            Me.LabelTotalNetWhenGrossOrder.StylePriority.UseTextAlignment = False
+            Me.LabelTotalNetWhenGrossOrder.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+            '
             'BroadcastMonthYearSubReport
             '
             Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin})
+            Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.BindingSource})
             Me.DataSource = Me.BindingSource
             Me.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Margins = New System.Drawing.Printing.Margins(0, 0, 0, 0)
@@ -129,7 +141,7 @@
             Me.PaperKind = System.Drawing.Printing.PaperKind.Custom
             Me.RequestParameters = False
             Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
-            Me.Version = "16.2"
+            Me.Version = "20.1"
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
@@ -141,6 +153,7 @@
         Friend WithEvents LabelTotalNet As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents LabelSpots As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents LabelMonthYear As DevExpress.XtraReports.UI.XRLabel
+        Friend WithEvents LabelTotalNetWhenGrossOrder As DevExpress.XtraReports.UI.XRLabel
     End Class
 
 End Namespace

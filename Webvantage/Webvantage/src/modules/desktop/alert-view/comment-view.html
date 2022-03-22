@@ -113,12 +113,13 @@
                     k-title.bind: dialogTitle;
                     k-visible.bind: false;
                     k-modal.bind: true;
-                    k-button-layout: normal;" 
+                    k-button-layout: normal;"
          k-on-close.delegate="onFullScreenCommentDialogClose()">
         <div id="fullMentionContainer" style="position:absolute;">
             <mention-item view-model.ref="mentionItemFull" mention-comment-div="fullScreenCommentDiv" comment-editor.bind="fullScreenComment" vertical-offset="90" horizontal-offset="13" mention-container="fullMentionContainer"></mention-item>
         </div>
-        <div id="fullScreenCommentDiv">
+        <!--alert-container class makes the undo/redo buttons color match the theme.-->
+        <div id="fullScreenCommentDiv" class="alert-container">
             <textarea ak-rich-editor="k-widget.two-way: fullScreenComment; k-resizable.bind: true; k-tools.bind: defaultTools;" k-on-keydown.delegate="mentionItemFull.commentKeyDownEvent($event.detail)"></textarea>
         </div>
         <div if.bind="isEdit == false" style="margin-top: 5px;">

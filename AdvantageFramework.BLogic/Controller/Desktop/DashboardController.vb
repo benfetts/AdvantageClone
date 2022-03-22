@@ -615,14 +615,13 @@ Namespace Controller.Dashboard
 #End Region
 
 #Region "   Alerts Dashboard "
-
         Private Sub LoadAlertsDashboard(ByVal DbContext As AdvantageFramework.Database.DbContext, ByVal Dashboard As AdvantageFramework.DTO.Desktop.Dashboard)
 
 
 
         End Sub
-
-        Public Function SortAlertCards(ByVal AlertId As Integer, ByVal NewPosition As Integer) As String
+        Public Function SortAssignmentCards(ByVal AlertId As Integer,
+                                            ByVal NewPosition As Integer) As String
 
             Dim UserCode As String = Me.Session.UserCode
             Dim EmployeeCode As String = Me.Session.User.EmployeeCode
@@ -632,8 +631,93 @@ Namespace Controller.Dashboard
 
                 Using DbContext As New AdvantageFramework.Database.DbContext(ConnectionString, UserCode)
 
-                    DbContext.Database.ExecuteSqlCommand(String.Format("EXEC [dbo].[advsp_card_user_sort_alerts] '{0}', {1}, {2};",
-                                                     EmployeeCode, AlertId, NewPosition))
+                    DbContext.Database.ExecuteSqlCommand(String.Format("EXEC [dbo].[advsp_card_user_sort_alerts] '{0}', {1}, NULL, {2}, 1;",
+                                                                        EmployeeCode,
+                                                                        AlertId,
+                                                                        NewPosition))
+
+                End Using
+
+                Return ""
+
+            Catch ex As Exception
+
+                Return ex.Message.ToString()
+
+            End Try
+
+        End Function
+        Public Function SortTaskCards(ByVal AlertId As Integer,
+                                      ByVal TaskSequenceNumber As Short,
+                                      ByVal NewPosition As Integer) As String
+
+            Dim UserCode As String = Me.Session.UserCode
+            Dim EmployeeCode As String = Me.Session.User.EmployeeCode
+            Dim ConnectionString As String = Me.Session.ConnectionString
+
+            Try
+
+                Using DbContext As New AdvantageFramework.Database.DbContext(ConnectionString, UserCode)
+
+                    DbContext.Database.ExecuteSqlCommand(String.Format("EXEC [dbo].[advsp_card_user_sort_alerts] '{0}', {1}, {2}, {3}, 1;",
+                                                                        EmployeeCode,
+                                                                        AlertId,
+                                                                        TaskSequenceNumber,
+                                                                        NewPosition))
+
+                End Using
+
+                Return ""
+
+            Catch ex As Exception
+
+                Return ex.Message.ToString()
+
+            End Try
+
+        End Function
+        Public Function SortAlertCards(ByVal AlertId As Integer,
+                                       ByVal NewPosition As Integer) As String
+
+            Dim UserCode As String = Me.Session.UserCode
+            Dim EmployeeCode As String = Me.Session.User.EmployeeCode
+            Dim ConnectionString As String = Me.Session.ConnectionString
+
+            Try
+
+                Using DbContext As New AdvantageFramework.Database.DbContext(ConnectionString, UserCode)
+
+                    DbContext.Database.ExecuteSqlCommand(String.Format("EXEC [dbo].[advsp_card_user_sort_alerts] '{0}', {1}, NULL, {2}, 2;",
+                                                                        EmployeeCode,
+                                                                        AlertId,
+                                                                        NewPosition))
+
+                End Using
+
+                Return ""
+
+            Catch ex As Exception
+
+                Return ex.Message.ToString()
+
+            End Try
+
+        End Function
+        Public Function SortProofingCards(ByVal AlertId As Integer,
+                                          ByVal NewPosition As Integer) As String
+
+            Dim UserCode As String = Me.Session.UserCode
+            Dim EmployeeCode As String = Me.Session.User.EmployeeCode
+            Dim ConnectionString As String = Me.Session.ConnectionString
+
+            Try
+
+                Using DbContext As New AdvantageFramework.Database.DbContext(ConnectionString, UserCode)
+
+                    DbContext.Database.ExecuteSqlCommand(String.Format("EXEC [dbo].[advsp_card_user_sort_alerts] '{0}', {1}, NULL, {2}, 3;",
+                                                                        EmployeeCode,
+                                                                        AlertId,
+                                                                        NewPosition))
 
                 End Using
 
@@ -937,6 +1021,7 @@ Namespace Controller.Dashboard
                                                                                                                                                                                                                             .IsAlertAssignment = If(c.IsAlertAssignment = True, "true", "false"),
                                                                                                                                                                                                                             .IsWorkItem = If(c.IsWorkItem = True, "true", "false"),
                                                                                                                                                                                                                             .TaskSequenceNumber = c.TaskSequenceNumber,
+                                                                                                                                                                                                                            .CardSequenceNumber = c.CardSequenceNumber,
                                                                                                                                                                                                                             .CheckListCompleted = c.CheckListCompleted,
                                                                                                                                                                                                                             .CheckListTotal = c.CheckListTotal,
                                                                                                                                                                                                                             .CSProjectID = c.CSProjectID,
@@ -980,6 +1065,7 @@ Namespace Controller.Dashboard
                                                                                                                                                                                                                             .IsAlertAssignment = If(c.IsAlertAssignment = True, "true", "false"),
                                                                                                                                                                                                                             .IsWorkItem = If(c.IsWorkItem = True, "true", "false"),
                                                                                                                                                                                                                             .TaskSequenceNumber = c.TaskSequenceNumber,
+                                                                                                                                                                                                                            .CardSequenceNumber = c.CardSequenceNumber,
                                                                                                                                                                                                                             .CheckListCompleted = 0,
                                                                                                                                                                                                                             .CheckListTotal = 0,
                                                                                                                                                                                                                             .CSProjectID = c.CSProjectID,
@@ -1027,6 +1113,7 @@ Namespace Controller.Dashboard
                                                                                                                                                                                                                             .IsAlertAssignment = If(c.IsAlertAssignment = True, "true", "false"),
                                                                                                                                                                                                                             .IsWorkItem = If(c.IsWorkItem = True, "true", "false"),
                                                                                                                                                                                                                             .TaskSequenceNumber = c.TaskSequenceNumber,
+                                                                                                                                                                                                                            .CardSequenceNumber = c.CardSequenceNumber,
                                                                                                                                                                                                                             .CheckListCompleted = c.CheckListCompleted,
                                                                                                                                                                                                                             .CheckListTotal = c.CheckListTotal,
                                                                                                                                                                                                                             .CSProjectID = c.CSProjectID,
@@ -1070,6 +1157,7 @@ Namespace Controller.Dashboard
                                                                                                                                                                                                                             .IsAlertAssignment = If(c.IsAlertAssignment = True, "true", "false"),
                                                                                                                                                                                                                             .IsWorkItem = If(c.IsWorkItem = True, "true", "false"),
                                                                                                                                                                                                                             .TaskSequenceNumber = c.TaskSequenceNumber,
+                                                                                                                                                                                                                            .CardSequenceNumber = c.CardSequenceNumber,
                                                                                                                                                                                                                             .CheckListCompleted = c.CheckListCompleted,
                                                                                                                                                                                                                             .CheckListTotal = c.CheckListTotal,
                                                                                                                                                                                                                             .CSProjectID = c.CSProjectID,
@@ -1112,6 +1200,8 @@ Namespace Controller.Dashboard
                                    ByVal AssignmentTaskStatus As String,
                                    ByVal AssignmentTaskShow As Boolean,
                                    ByVal AssignmentTaskOnlyStartDue As Boolean) As Generic.List(Of AdvantageFramework.DTO.Desktop.Alert)
+
+            IsConceptShareActive = False
 
             Dim List As Generic.List(Of AdvantageFramework.DTO.Desktop.Alert) = Nothing
 

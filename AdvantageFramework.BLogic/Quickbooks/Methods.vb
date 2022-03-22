@@ -5,17 +5,22 @@
 
 #Region " Constants "
 
+        'this is the max per Quickbooks
+        Public Const MAX_RESULTS As Integer = 1000
+
+        'QB_CLIENT_ID and QB_CLIENT_SECRET are encryted below!
+
         'next 4 are for sandbox only        
         'Public Const QBO_BASEURL = "https://sandbox-quickbooks.api.intuit.com"
         'Public Const QBO_DISCOVERY_URI = "https://developer.api.intuit.com/.well-known/openid_sandbox_configuration/"
-        'Public Const QB_CLIENT_ID = "ABCQhnvDbWL4Jn4Cy0sUEm6Vejs6kSzOlJ4BpgjFq7lpRxhsNF"
-        'Public Const QB_CLIENT_SECRET = "pWz7tEZWOJRvrOWZfVFnZPJN7OdrRgQY9NZA4SD0"
+        'Public Const QB_CLIENT_ID = "UakrtSe0VfDiief8N3gZ27JAsw7n/s2L/j9wZqBmkzOaigFyUdDoIU5OWb0SEI6cJFM1lvFA9DWSORgsb8DodUa9r9RjRlChmlilkl/+PXEl4uIRvyWA7sxLHs5c4KayPinWMcEQGQDhbOJ67+Lg6g=="
+        'Public Const QB_CLIENT_SECRET = "YjKmTQq0scQxyfSTuY5dsEr6jZAOGIXGTGvqtga6qur7qgYFWDNdKDPKb+FEol9knZ/X1PvwHG4QjJhpVY6EwBsn94BUtjcEEFt7OCFPP+NpHcp17qXD8aScVXG4fEgq"
 
         'next 4 are for production
         Public Const QBO_BASEURL = "https://quickbooks.api.intuit.com"
         Public Const QBO_DISCOVERY_URI = "https://developer.api.intuit.com/.well-known/openid_configuration/"
-        Public Const QB_CLIENT_ID = "ABLSIwubZii3uat8qV7uv06whPtE8EjIXjy4PhS8aE5a8x9zWI"
-        Public Const QB_CLIENT_SECRET = "z4oFQOOmYmmLYqcnvTAfxXNZo9CMcWg3vj1rtsRG"
+        Public Const QB_CLIENT_ID = "3QEAiaHSjiR5OCZ3nP/KSz/Yt9iH11BSlpb1mLaXrGoadIaoNGTfxij+TzKMHyl7ycvccoLMC5WVMyV/+LmX62X5o0yj1FFBomRgJGdev4J9NOtnqETi9js0zfPnsnOGHXmp+2wDvczInrV9zur2qQ=="
+        Public Const QB_CLIENT_SECRET = "FRijrljP5b7+XIoVkAQvszFZqLKtDDEXD05qDgTL9LKYBQ0fK77WetDP/n+/a4juH9szHMAJMyI13li0Lu3D3JVG97Re9h6KdkEcbghC2WSzewcH1zXf/HflmfSFY7HN"
 
 #End Region
 
@@ -156,7 +161,7 @@
 
             DiscoveryData = GetDiscoveryData()
 
-            Credential = String.Format("{0}:{1}", AdvantageFramework.Quickbooks.QB_CLIENT_ID, AdvantageFramework.Quickbooks.QB_CLIENT_SECRET)
+            Credential = String.Format("{0}:{1}", AdvantageFramework.Quickbooks.GetClientID(), AdvantageFramework.Quickbooks.GetClientSecret())
 
             EncodedCredential = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(Credential))
 
@@ -536,7 +541,7 @@
 
                     DataService = New Intuit.Ipp.DataService.DataService(ServiceContext)
 
-                    Customer = DataService.FindById(Of Intuit.Ipp.Data.Customer)(New Intuit.Ipp.Data.Customer With {.Id = ID})
+                    Customer = DataService.FindById(Of Intuit.Ipp.Data.Customer)(New Intuit.Ipp.Data.Customer With {.ID = ID})
 
                     If Customer IsNot Nothing Then
 
@@ -571,6 +576,9 @@
             Dim ServiceContext As Intuit.Ipp.Core.ServiceContext = Nothing
             Dim DataService As Intuit.Ipp.DataService.DataService = Nothing
             Dim Customer As Intuit.Ipp.Data.Customer = Nothing
+            Dim Customers As Generic.List(Of AdvantageFramework.Quickbooks.Classes.Customer) = Nothing
+            Dim StartPosition As Integer = 1
+            Dim MoreData As Boolean = True
 
             Using DataContext As New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
 
@@ -585,8 +593,29 @@
 
                     DataService = New Intuit.Ipp.DataService.DataService(ServiceContext)
 
-                    CustomerList = (From Entity In DataService.FindAll(Of Intuit.Ipp.Data.Customer)(New Intuit.Ipp.Data.Customer).ToList
-                                    Select New AdvantageFramework.Quickbooks.Classes.Customer(Entity)).ToList
+                    CustomerList = New Generic.List(Of AdvantageFramework.Quickbooks.Classes.Customer)
+
+                    Customers = New Generic.List(Of AdvantageFramework.Quickbooks.Classes.Customer)
+
+                    While MoreData = True
+
+                        Customers = (From Entity In DataService.FindAll(Of Intuit.Ipp.Data.Customer)(New Intuit.Ipp.Data.Customer, startPosition:=StartPosition, maxResults:=MAX_RESULTS).ToList
+                                     Select New AdvantageFramework.Quickbooks.Classes.Customer(Entity)).ToList
+
+                        CustomerList.AddRange(Customers)
+
+                        If Customers.Count = MAX_RESULTS Then
+
+                            MoreData = True
+                            StartPosition += MAX_RESULTS
+
+                        Else
+
+                            MoreData = False
+
+                        End If
+
+                    End While
 
                     Loaded = True
 
@@ -663,7 +692,7 @@
 
                     DataService = New Intuit.Ipp.DataService.DataService(ServiceContext)
 
-                    Vendor = DataService.FindById(Of Intuit.Ipp.Data.Vendor)(New Intuit.Ipp.Data.Vendor With {.Id = ID})
+                    Vendor = DataService.FindById(Of Intuit.Ipp.Data.Vendor)(New Intuit.Ipp.Data.Vendor With {.ID = ID})
 
                     If Vendor IsNot Nothing Then
 
@@ -698,6 +727,9 @@
             Dim ServiceContext As Intuit.Ipp.Core.ServiceContext = Nothing
             Dim DataService As Intuit.Ipp.DataService.DataService = Nothing
             Dim Vendor As Intuit.Ipp.Data.Vendor = Nothing
+            Dim Vendors As Generic.List(Of AdvantageFramework.Quickbooks.Classes.Vendor) = Nothing
+            Dim StartPosition As Integer = 1
+            Dim MoreData As Boolean = True
 
             Using DataContext As New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
 
@@ -712,8 +744,29 @@
 
                     DataService = New Intuit.Ipp.DataService.DataService(ServiceContext)
 
-                    VendorList = (From Entity In DataService.FindAll(Of Intuit.Ipp.Data.Vendor)(New Intuit.Ipp.Data.Vendor).ToList
-                                  Select New AdvantageFramework.Quickbooks.Classes.Vendor(Entity)).ToList
+                    VendorList = New Generic.List(Of AdvantageFramework.Quickbooks.Classes.Vendor)
+
+                    Vendors = New Generic.List(Of AdvantageFramework.Quickbooks.Classes.Vendor)
+
+                    While MoreData = True
+
+                        Vendors = (From Entity In DataService.FindAll(Of Intuit.Ipp.Data.Vendor)(New Intuit.Ipp.Data.Vendor, startPosition:=StartPosition, maxResults:=MAX_RESULTS).ToList
+                                   Select New AdvantageFramework.Quickbooks.Classes.Vendor(Entity)).ToList
+
+                        VendorList.AddRange(Vendors)
+
+                        If Vendors.Count = MAX_RESULTS Then
+
+                            MoreData = True
+                            StartPosition += MAX_RESULTS
+
+                        Else
+
+                            MoreData = False
+
+                        End If
+
+                    End While
 
                     Loaded = True
 
@@ -853,6 +906,10 @@
             Dim StringBuilder As System.Text.StringBuilder = Nothing
             Dim AccountReceivable As AdvantageFramework.Database.Entities.AccountReceivable = Nothing
             Dim QuickBooksSetting As AdvantageFramework.Quickbooks.Classes.QuickBooksSetting = Nothing
+            Dim InvoiceList As Generic.List(Of Intuit.Ipp.Data.Invoice) = Nothing
+            Dim Invoices As Generic.List(Of Intuit.Ipp.Data.Invoice) = Nothing
+            Dim StartPosition As Integer = 1
+            Dim MoreData As Boolean = True
 
             Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
@@ -879,7 +936,30 @@
 
                         DataService = New Intuit.Ipp.DataService.DataService(ServiceContext)
 
-                        If DataService.FindAll(Of Intuit.Ipp.Data.Invoice)(New Intuit.Ipp.Data.Invoice).Where(Function(I) I.DocNumber = InvoiceNumber & QuickBooksSetting.InvoiceNumberSuffix).Any Then
+                        InvoiceList = New Generic.List(Of Intuit.Ipp.Data.Invoice)
+
+                        Invoices = New Generic.List(Of Intuit.Ipp.Data.Invoice)
+
+                        While MoreData = True
+
+                            Invoices = DataService.FindAll(Of Intuit.Ipp.Data.Invoice)(New Intuit.Ipp.Data.Invoice, startPosition:=StartPosition, maxResults:=MAX_RESULTS).ToList
+
+                            InvoiceList.AddRange(Invoices)
+
+                            If Invoices.Count = MAX_RESULTS Then
+
+                                MoreData = True
+                                StartPosition += MAX_RESULTS
+
+                            Else
+
+                                MoreData = False
+
+                            End If
+
+                        End While
+
+                        If InvoiceList.Where(Function(I) I.DocNumber = InvoiceNumber & QuickBooksSetting.InvoiceNumberSuffix).Any Then
 
                             Throw New Exception("Invoice no: " & InvoiceNumber & QuickBooksSetting.InvoiceNumberSuffix & " already exists in QuickBooks.")
 
@@ -1163,6 +1243,11 @@
             Dim StringBuilder As System.Text.StringBuilder = Nothing
             Dim AccountPayable As AdvantageFramework.Database.Entities.AccountPayable = Nothing
             Dim QuickBooksSetting As AdvantageFramework.Quickbooks.Classes.QuickBooksSetting = Nothing
+            Dim BillList As Generic.List(Of Intuit.Ipp.Data.Bill) = Nothing
+            Dim Bills As Generic.List(Of Intuit.Ipp.Data.Bill) = Nothing
+            Dim StartPosition As Integer = 1
+            Dim MoreData As Boolean = True
+            Dim CustomerRef As Intuit.Ipp.Data.ReferenceType = Nothing
 
             Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
@@ -1193,7 +1278,30 @@
 
                         DataService = New Intuit.Ipp.DataService.DataService(ServiceContext)
 
-                        If DataService.FindAll(Of Intuit.Ipp.Data.Bill)(New Intuit.Ipp.Data.Bill).Where(Function(I) I.DocNumber = AccountPayable.InvoiceNumber AndAlso I.VendorRef IsNot Nothing AndAlso I.VendorRef.Value = QBVendorID).Any Then
+                        BillList = New Generic.List(Of Intuit.Ipp.Data.Bill)
+
+                        Bills = New Generic.List(Of Intuit.Ipp.Data.Bill)
+
+                        While MoreData = True
+
+                            Bills = DataService.FindAll(Of Intuit.Ipp.Data.Bill)(New Intuit.Ipp.Data.Bill, startPosition:=StartPosition, maxResults:=MAX_RESULTS).ToList
+
+                            BillList.AddRange(Bills)
+
+                            If Bills.Count = MAX_RESULTS Then
+
+                                MoreData = True
+                                StartPosition += MAX_RESULTS
+
+                            Else
+
+                                MoreData = False
+
+                            End If
+
+                        End While
+
+                        If BillList.Where(Function(I) I.DocNumber = AccountPayable.InvoiceNumber AndAlso I.VendorRef IsNot Nothing AndAlso I.VendorRef.Value = QBVendorID).Any Then
 
                             Throw New Exception("Bill no: " & AccountPayable.InvoiceNumber & " already exists in QuickBooks.")
 
@@ -1279,6 +1387,15 @@
                             End If
 
                             AccountBasedExpenseLineDetail.AccountRef = ItemReferenceType
+
+                            If String.IsNullOrWhiteSpace(APDetail.QuickBooksClientID) = False Then
+
+                                CustomerRef = New Intuit.Ipp.Data.ReferenceType
+                                CustomerRef.Value = APDetail.QuickBooksClientID
+
+                                AccountBasedExpenseLineDetail.CustomerRef = CustomerRef
+
+                            End If
 
                             Line.AnyIntuitObject = AccountBasedExpenseLineDetail
 
@@ -1413,6 +1530,10 @@
             Dim ItemList As List(Of Intuit.Ipp.Data.Item) = Nothing
             Dim AccountList As List(Of Intuit.Ipp.Data.Account) = Nothing
             Dim QuickBooksSettingEntity As AdvantageFramework.Database.Entities.QuickbooksSetting = Nothing
+            Dim TempItems As List(Of Intuit.Ipp.Data.Item) = Nothing
+            Dim StartPosition As Integer = 1
+            Dim MoreData As Boolean = True
+            Dim TempAccounts As List(Of Intuit.Ipp.Data.Account) = Nothing
 
             Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
@@ -1441,21 +1562,65 @@
 
                         DataService = New Intuit.Ipp.DataService.DataService(ServiceContext)
 
-                        'Dim Preferences As Generic.List(Of Intuit.Ipp.Data.Preferences) = Nothing
+                        ItemList = New List(Of Intuit.Ipp.Data.Item)
 
-                        'Preferences = DataService.FindAll(Of Intuit.Ipp.Data.Preferences)(New Intuit.Ipp.Data.Preferences).ToList
+                        TempItems = New List(Of Intuit.Ipp.Data.Item)
 
-                        'this is needed to create Invoice 
-                        ItemList = DataService.FindAll(Of Intuit.Ipp.Data.Item)(New Intuit.Ipp.Data.Item).ToList
+                        While MoreData = True
+
+                            'this is needed to create Invoice
+                            TempItems = DataService.FindAll(Of Intuit.Ipp.Data.Item)(New Intuit.Ipp.Data.Item, startPosition:=StartPosition, maxResults:=MAX_RESULTS).ToList
+
+                            ItemList.AddRange(TempItems)
+
+                            If TempItems.Count = MAX_RESULTS Then
+
+                                MoreData = True
+                                StartPosition += MAX_RESULTS
+
+                            Else
+
+                                MoreData = False
+
+                            End If
+
+                        End While
 
                         Items = (From Entity In ItemList
                                  Select New AdvantageFramework.Quickbooks.Classes.Item(Entity)).ToList
 
-                        AccountList = DataService.FindAll(Of Intuit.Ipp.Data.Account)(New Intuit.Ipp.Data.Account).Where(Function(A) A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.Expense OrElse
-                                                                                                                                     A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.CostofGoodsSold OrElse
-                                                                                                                                     A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.OtherCurrentLiability OrElse
-                                                                                                                                     A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.LongTermLiability OrElse
-                                                                                                                                     A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.OtherExpense).ToList
+                        StartPosition = 1
+                        MoreData = True
+
+                        AccountList = New List(Of Intuit.Ipp.Data.Account)
+
+                        TempAccounts = New List(Of Intuit.Ipp.Data.Account)
+
+                        While MoreData = True
+
+                            'this is needed to create Invoice
+                            TempAccounts = DataService.FindAll(Of Intuit.Ipp.Data.Account)(New Intuit.Ipp.Data.Account, startPosition:=StartPosition, maxResults:=MAX_RESULTS).ToList
+
+                            AccountList.AddRange(TempAccounts)
+
+                            If TempAccounts.Count = MAX_RESULTS Then
+
+                                MoreData = True
+                                StartPosition += MAX_RESULTS
+
+                            Else
+
+                                MoreData = False
+
+                            End If
+
+                        End While
+
+                        AccountList = AccountList.Where(Function(A) A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.Expense OrElse
+                                                                    A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.CostofGoodsSold OrElse
+                                                                    A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.OtherCurrentLiability OrElse
+                                                                    A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.LongTermLiability OrElse
+                                                                    A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.OtherExpense).ToList
 
                         Accounts = (From Entity In AccountList
                                     Select New AdvantageFramework.Quickbooks.Classes.Account(Entity)).ToList
@@ -1537,6 +1702,7 @@
             Dim AccountBasedExpenseLineDetail As Intuit.Ipp.Data.AccountBasedExpenseLineDetail = Nothing
             Dim ItemReferenceType As Intuit.Ipp.Data.ReferenceType = Nothing
             Dim QuickBooksSetting As AdvantageFramework.Quickbooks.Classes.QuickBooksSetting = Nothing
+            Dim CustomerRef As Intuit.Ipp.Data.ReferenceType = Nothing
 
             Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
@@ -1645,6 +1811,15 @@
 
                                 End If
 
+                                If String.IsNullOrWhiteSpace(APDetail.QuickBooksClientID) = False Then
+
+                                    CustomerRef = New Intuit.Ipp.Data.ReferenceType
+                                    CustomerRef.Value = APDetail.QuickBooksClientID
+
+                                    AccountBasedExpenseLineDetail.CustomerRef = CustomerRef
+
+                                End If
+
                                 AccountBasedExpenseLineDetail.AccountRef = ItemReferenceType
 
                                 Line.AnyIntuitObject = AccountBasedExpenseLineDetail
@@ -1691,6 +1866,16 @@
             End Using
 
             UpdateBill = Updated
+
+        End Function
+        Public Function GetClientID() As String
+
+            GetClientID = AdvantageFramework.Security.Encryption.Decrypt(AdvantageFramework.Quickbooks.QB_CLIENT_ID)
+
+        End Function
+        Public Function GetClientSecret() As String
+
+            GetClientSecret = AdvantageFramework.Security.Encryption.Decrypt(AdvantageFramework.Quickbooks.QB_CLIENT_SECRET)
 
         End Function
 

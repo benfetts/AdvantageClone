@@ -1059,6 +1059,8 @@
         Public Property MediaPlanMediaChannelID() As Nullable(Of Integer)
         <AdvantageFramework.BaseClasses.Attributes.Entity(ShowColumnInGrid:=False)>
         Public Property MediaPlanMediaTacticID() As Nullable(Of Integer)
+        <AdvantageFramework.BaseClasses.Attributes.Entity(ShowColumnInGrid:=False)>
+        Public Property IsMakegood() As Boolean
 
         '<System.ComponentModel.Browsable(False)>
         '<Xml.Serialization.XmlIgnore()>

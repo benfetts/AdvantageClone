@@ -31,7 +31,7 @@ Public Class ContentPage
 
     Private _UserCode As String = ""
     Private _ContentType As AdvantageFramework.Database.Classes.Content.ContentType = AdvantageFramework.Database.Classes.Content.ContentType.ProjectManagement
-    Private _ContentControlProjectSchedule_Gantt As Webvantage.ProjectSchedule_Gantt
+    'Private _ContentControlProjectSchedule_Gantt As Webvantage.ProjectSchedule_Gantt
     Private _ContentPageData As New AdvantageFramework.Web.Classes.ContentPageData()
 
 #End Region
@@ -240,17 +240,17 @@ Public Class ContentPage
         Get
             Dim IsActive As Boolean = False
 
-            'Check code set by DashboardController.vb
-            If HttpContext.Current.Session("bLnaNBeJk4y$f") IsNot Nothing Then
+            ''''Check code set by DashboardController.vb
+            ''If HttpContext.Current.Session("bLnaNBeJk4y$f") IsNot Nothing Then
 
-                IsActive = CType(HttpContext.Current.Session("bLnaNBeJk4y$f"), Boolean)
+            ''    IsActive = CType(HttpContext.Current.Session("bLnaNBeJk4y$f"), Boolean)
 
-            Else
+            ''Else
 
-                IsActive = cApplication.IsConceptShareActive(SecuritySession)
-                HttpContext.Current.Session("bLnaNBeJk4y$f") = IsActive
+            ''    IsActive = cApplication.IsConceptShareActive(SecuritySession)
+            ''    HttpContext.Current.Session("bLnaNBeJk4y$f") = IsActive
 
-            End If
+            ''End If
 
             Return IsActive
 

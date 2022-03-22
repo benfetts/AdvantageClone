@@ -27,6 +27,112 @@
             Me.components = New System.ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(VendorControl))
             Me.TabControlControl_VendorDetails = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanel1099InfoTab_1099Info = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TableLayoutPanel1099Info_TableLayout = New System.Windows.Forms.TableLayoutPanel()
+            Me.Panel1099Info_RightColumn = New System.Windows.Forms.Panel()
+            Me.RadioButtonControl1099Info_MedicalHealthcare = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.RadioButtonControl1099Info_Royalties = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.RadioButtonControl1099Info_Rent = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.RadioButtonControl1099Info_OtherIncome = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.Label1099Info_Category = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.Panel1099Info_LeftColumn = New System.Windows.Forms.Panel()
+            Me.TextBox1099Info_VendorName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.Label1099Info_VendorName = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.CheckBox1099Info_Use1099Name = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.Label1099Info_AlternateNameFor1099 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.Address3LineControl1099Info_Address = New AdvantageFramework.WinForm.Presentation.Controls.Address3LineControl()
+            Me.CheckBox1099Info_Use1099Address = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.Label1099Info_AlternateAddressFor1099 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.CheckBox1099Info_Is1099Vendor = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.TabItemVendorDetails_1099InfoTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelMainTab_Main = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelMain_QuickbooksVendor = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.SearchableComboBoxMain_QuickBooksVendor = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
+            Me.GridView17 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
+            Me.LabelMain_VATNumber = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxMain_VATNumber = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.CheckBoxMain_Television = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxMain_Radio = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxMain_OutOfHome = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxMain_Newspaper = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxMain_Magazine = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxMain_Internet = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.LabelMain_MediaCategoriesAllowed = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.ComboBoxMain_DefaultCategory = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
+            Me.TableLayoutPanelMain_TableLayout = New System.Windows.Forms.TableLayoutPanel()
+            Me.PanelTableLayout_RightSection = New System.Windows.Forms.Panel()
+            Me.GroupBoxMain_PayToNameAndAddress = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.TextBoxPayToNameAndAddress_Vendor = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.ButtonPayToNameAndAddress_Refresh = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.ButtonItemRefresh_Vendor = New DevComponents.DotNetBar.ButtonItem()
+            Me.TextBoxPayToNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelPayToNameAndAddress_Vendor = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxPayToNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelPayToNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxPayToNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelPayToNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelPayToNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxPayToNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress = New AdvantageFramework.WinForm.Presentation.Controls.Address3LineControl()
+            Me.LabelPayToNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelPayToNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxPayToNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.PanelTableLayout_LeftSection = New System.Windows.Forms.Panel()
+            Me.GroupBoxMain_NameAndAddress = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.LabelLeftSection_Name = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.Address3LineControlNameAndAddress_Address = New AdvantageFramework.WinForm.Presentation.Controls.Address3LineControl()
+            Me.LabelNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.CheckBoxMain_Inactive = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.LabelMain_DefaultCategory = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxMain_FederalTaxID = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelMain_FederalTaxID = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxMain_Website = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxMain_Email = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxMain_PaymentManagerEmail = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelMain_PaymentManagerEmail = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelMain_Email = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelMain_Website = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxMain_Code = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelMain_Code = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemVendorDetails_MainTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelControl_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.ButtonRightSection_RemoveEEOCStatus = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.ButtonRightSection_AddEEOCStatus = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.DataGridViewRightSection_SelectedEEOCStatuses = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.ExpandableSplitterControl_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelControl_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.TabItemVendorDetails_EEOCStatusTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelEEOC2Tab_EEOC2 = New DevComponents.DotNetBar.TabControlPanel()
+            Me.GroupBoxEEOC2_WomensBusinessDetails = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.DateTimePickerWBD_WBENCCertificationExpirationDate = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
+            Me.CheckBoxWBD_IsWBENC = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.LabelWBD_WBENCCertificationExpirationDate = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelWBD_WBENCCertificationNumber = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelWBD_WomensBusinessEnterpriseNationalCouncil = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxWBD_WBENCCertificationNumber = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.GroupBoxEEOC2_MinorityOwnedBusinessDetails = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.LabelMOBD_NationalMinoritySupplierDevelopmentCouncil = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.CheckBoxMODB_IsNMSDC = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.DateTimePickerMOBD_MinorityCertifcateNumberExpirationDate = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
+            Me.LabelMOBD_MinorityCertifcateNumberExpirationDate = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.SearchableComboBoxMOBD_Ethnicity = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
+            Me.GridView16 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
+            Me.LabelMOBD_Ethnicity = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelMOBD_MinorityCertifcateNumber = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxMOBD_MinorityCertifcateNumber = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TabItemVendorDetails_EEOC2Tab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelMediaDefaultsTab_MediaDefaults = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlMediaDefaults_MediaDefaultsTab = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation = New DevComponents.DotNetBar.TabControlPanel()
@@ -120,64 +226,6 @@
             Me.LabelDefaultComments_Instructions = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.TabItemMediaDefaults_DefaultCommentsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabItemVendorDetails_MediaDefaultsTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelMainTab_Main = New DevComponents.DotNetBar.TabControlPanel()
-            Me.LabelMain_QuickbooksVendor = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.SearchableComboBoxMain_QuickBooksVendor = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
-            Me.GridView17 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
-            Me.LabelMain_VATNumber = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxMain_VATNumber = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.CheckBoxMain_Television = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxMain_Radio = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxMain_OutOfHome = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxMain_Newspaper = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxMain_Magazine = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxMain_Internet = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.LabelMain_MediaCategoriesAllowed = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.ComboBoxMain_DefaultCategory = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
-            Me.TableLayoutPanelMain_TableLayout = New System.Windows.Forms.TableLayoutPanel()
-            Me.PanelTableLayout_RightSection = New System.Windows.Forms.Panel()
-            Me.GroupBoxMain_PayToNameAndAddress = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
-            Me.TextBoxPayToNameAndAddress_Vendor = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.ButtonPayToNameAndAddress_Refresh = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.ButtonItemRefresh_Vendor = New DevComponents.DotNetBar.ButtonItem()
-            Me.TextBoxPayToNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelPayToNameAndAddress_Vendor = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxPayToNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelPayToNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxPayToNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelPayToNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelPayToNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxPayToNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress = New AdvantageFramework.WinForm.Presentation.Controls.Address3LineControl()
-            Me.LabelPayToNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelPayToNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxPayToNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.PanelTableLayout_LeftSection = New System.Windows.Forms.Panel()
-            Me.GroupBoxMain_NameAndAddress = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
-            Me.LabelLeftSection_Name = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.Address3LineControlNameAndAddress_Address = New AdvantageFramework.WinForm.Presentation.Controls.Address3LineControl()
-            Me.LabelNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.CheckBoxMain_Inactive = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.LabelMain_DefaultCategory = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxMain_FederalTaxID = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelMain_FederalTaxID = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxMain_Website = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxMain_Email = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxMain_PaymentManagerEmail = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelMain_PaymentManagerEmail = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelMain_Email = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelMain_Website = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxMain_Code = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelMain_Code = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemVendorDetails_MainTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelContactsTab_Contacts = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxContacts_DefaultVendorContactCode = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             Me.DataGridViewContacts_Contacts = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
@@ -187,34 +235,6 @@
             Me.TextBoxRepresentatives_DefaultRep1 = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             Me.DataGridViewRepresentatives_VendorReps = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
             Me.TabItemVendorDetails_RepresentativesTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelEEOC2Tab_EEOC2 = New DevComponents.DotNetBar.TabControlPanel()
-            Me.GroupBoxEEOC2_WomensBusinessDetails = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
-            Me.DateTimePickerWBD_WBENCCertificationExpirationDate = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
-            Me.CheckBoxWBD_IsWBENC = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.LabelWBD_WBENCCertificationExpirationDate = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelWBD_WBENCCertificationNumber = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelWBD_WomensBusinessEnterpriseNationalCouncil = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxWBD_WBENCCertificationNumber = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.GroupBoxEEOC2_MinorityOwnedBusinessDetails = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
-            Me.LabelMOBD_NationalMinoritySupplierDevelopmentCouncil = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.CheckBoxMODB_IsNMSDC = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.DateTimePickerMOBD_MinorityCertifcateNumberExpirationDate = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
-            Me.LabelMOBD_MinorityCertifcateNumberExpirationDate = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.SearchableComboBoxMOBD_Ethnicity = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
-            Me.GridView16 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
-            Me.LabelMOBD_Ethnicity = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelMOBD_MinorityCertifcateNumber = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxMOBD_MinorityCertifcateNumber = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemVendorDetails_EEOC2Tab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelControl_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.ButtonRightSection_RemoveEEOCStatus = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.ButtonRightSection_AddEEOCStatus = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.DataGridViewRightSection_SelectedEEOCStatuses = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.ExpandableSplitterControl_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelControl_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.TabItemVendorDetails_EEOCStatusTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelLineDefaultsNotesTab_DefaultsNotes = New DevComponents.DotNetBar.TabControlPanel()
             Me.TableLayoutPanelDefaultsNotes_TableLayout = New System.Windows.Forms.TableLayoutPanel()
             Me.PanelRightColumn_DefaultsNotes = New System.Windows.Forms.Panel()
@@ -281,22 +301,6 @@
             Me.GridView1 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
             Me.LabelServiceTax_Code = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.TabItemVendorDetails_VendorServiceTaxTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanel1099InfoTab_1099Info = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TableLayoutPanel1099Info_TableLayout = New System.Windows.Forms.TableLayoutPanel()
-            Me.Panel1099Info_RightColumn = New System.Windows.Forms.Panel()
-            Me.RadioButtonControl1099Info_MedicalHealthcare = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.RadioButtonControl1099Info_Royalties = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.RadioButtonControl1099Info_Rent = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.RadioButtonControl1099Info_OtherIncome = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.Label1099Info_Category = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.Panel1099Info_LeftColumn = New System.Windows.Forms.Panel()
-            Me.Address3LineControl1099Info_Address = New AdvantageFramework.WinForm.Presentation.Controls.Address3LineControl()
-            Me.CheckBox1099Info_Use1099Address = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.Label1099Info_AlternateAddressFor1099 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.CheckBox1099Info_Is1099Vendor = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.TabItemVendorDetails_1099InfoTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelMediaInfoTab_MediaInfo = New DevComponents.DotNetBar.TabControlPanel()
             Me.PanelMediaInfo_Magazine = New System.Windows.Forms.Panel()
             Me.NumericInputMagazine_Issues = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
@@ -363,12 +367,37 @@
             Me.VendorPricingControlPricings_VendorPricings = New AdvantageFramework.WinForm.Presentation.Controls.VendorPricingControl()
             Me.TabItemVendorDetails_PricingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelDefaultNotes_ACHType = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.Label1099Info_AlternateNameFor1099 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.CheckBox1099Info_Use1099Name = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.Label1099Info_VendorName = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBox1099Info_VendorName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            CType(Me.TabControlControl_VendorDetails, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.CheckBoxGeneralDefaultInformation_ComboStation = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            CType(Me.TabControlControl_VendorDetails, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlControl_VendorDetails.SuspendLayout
+            Me.TabControlPanel1099InfoTab_1099Info.SuspendLayout
+            Me.TableLayoutPanel1099Info_TableLayout.SuspendLayout
+            Me.Panel1099Info_RightColumn.SuspendLayout
+            Me.Panel1099Info_LeftColumn.SuspendLayout
+            Me.TabControlPanelMainTab_Main.SuspendLayout
+            CType(Me.SearchableComboBoxMain_QuickBooksVendor.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.GridView17, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TableLayoutPanelMain_TableLayout.SuspendLayout
+            Me.PanelTableLayout_RightSection.SuspendLayout
+            CType(Me.GroupBoxMain_PayToNameAndAddress, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxMain_PayToNameAndAddress.SuspendLayout
+            Me.PanelTableLayout_LeftSection.SuspendLayout
+            CType(Me.GroupBoxMain_NameAndAddress, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxMain_NameAndAddress.SuspendLayout
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.SuspendLayout
+            CType(Me.PanelControl_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelControl_RightSection.SuspendLayout
+            CType(Me.PanelControl_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelControl_LeftSection.SuspendLayout
+            Me.TabControlPanelEEOC2Tab_EEOC2.SuspendLayout
+            CType(Me.GroupBoxEEOC2_WomensBusinessDetails, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxEEOC2_WomensBusinessDetails.SuspendLayout
+            CType(Me.DateTimePickerWBD_WBENCCertificationExpirationDate, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.GroupBoxEEOC2_MinorityOwnedBusinessDetails, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxEEOC2_MinorityOwnedBusinessDetails.SuspendLayout
+            CType(Me.DateTimePickerMOBD_MinorityCertifcateNumberExpirationDate, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.SearchableComboBoxMOBD_Ethnicity.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.GridView16, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlPanelMediaDefaultsTab_MediaDefaults.SuspendLayout
             CType(Me.TabControlMediaDefaults_MediaDefaultsTab, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlMediaDefaults_MediaDefaultsTab.SuspendLayout
@@ -401,32 +430,8 @@
             CType(Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties, System.ComponentModel.ISupportInitialize).BeginInit
             CType(Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlPanelDefaultCommentsTab_DefaultComments.SuspendLayout
-            Me.TabControlPanelMainTab_Main.SuspendLayout
-            CType(Me.SearchableComboBoxMain_QuickBooksVendor.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-            CType(Me.GridView17, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TableLayoutPanelMain_TableLayout.SuspendLayout
-            Me.PanelTableLayout_RightSection.SuspendLayout
-            CType(Me.GroupBoxMain_PayToNameAndAddress, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.GroupBoxMain_PayToNameAndAddress.SuspendLayout
-            Me.PanelTableLayout_LeftSection.SuspendLayout
-            CType(Me.GroupBoxMain_NameAndAddress, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.GroupBoxMain_NameAndAddress.SuspendLayout
             Me.TabControlPanelContactsTab_Contacts.SuspendLayout
             Me.TabControlPanelRepresentativesTab_Representatives.SuspendLayout
-            Me.TabControlPanelEEOC2Tab_EEOC2.SuspendLayout
-            CType(Me.GroupBoxEEOC2_WomensBusinessDetails, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.GroupBoxEEOC2_WomensBusinessDetails.SuspendLayout
-            CType(Me.DateTimePickerWBD_WBENCCertificationExpirationDate, System.ComponentModel.ISupportInitialize).BeginInit
-            CType(Me.GroupBoxEEOC2_MinorityOwnedBusinessDetails, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.GroupBoxEEOC2_MinorityOwnedBusinessDetails.SuspendLayout
-            CType(Me.DateTimePickerMOBD_MinorityCertifcateNumberExpirationDate, System.ComponentModel.ISupportInitialize).BeginInit
-            CType(Me.SearchableComboBoxMOBD_Ethnicity.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-            CType(Me.GridView16, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.SuspendLayout
-            CType(Me.PanelControl_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.PanelControl_RightSection.SuspendLayout
-            CType(Me.PanelControl_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.PanelControl_LeftSection.SuspendLayout
             Me.TabControlPanelLineDefaultsNotesTab_DefaultsNotes.SuspendLayout
             Me.TableLayoutPanelDefaultsNotes_TableLayout.SuspendLayout
             Me.PanelRightColumn_DefaultsNotes.SuspendLayout
@@ -454,10 +459,6 @@
             CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit
             CType(Me.SearchableComboBoxServiceTax_Code.Properties, System.ComponentModel.ISupportInitialize).BeginInit
             CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlPanel1099InfoTab_1099Info.SuspendLayout
-            Me.TableLayoutPanel1099Info_TableLayout.SuspendLayout
-            Me.Panel1099Info_RightColumn.SuspendLayout
-            Me.Panel1099Info_LeftColumn.SuspendLayout
             Me.TabControlPanelMediaInfoTab_MediaInfo.SuspendLayout
             Me.PanelMediaInfo_Magazine.SuspendLayout
             CType(Me.NumericInputMagazine_Issues.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -485,11 +486,11 @@
             Me.TabControlControl_VendorDetails.CanReorderTabs = False
             Me.TabControlControl_VendorDetails.ColorScheme.TabBackground = System.Drawing.Color.White
             Me.TabControlControl_VendorDetails.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanel1099InfoTab_1099Info)
+            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelMediaDefaultsTab_MediaDefaults)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelMainTab_Main)
+            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanel1099InfoTab_1099Info)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelEEOCStatusTab_EEOCStatus)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelEEOC2Tab_EEOC2)
-            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelMediaDefaultsTab_MediaDefaults)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelContactsTab_Contacts)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelRepresentativesTab_Representatives)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelLineDefaultsNotesTab_DefaultsNotes)
@@ -527,1908 +528,418 @@
             Me.TabControlControl_VendorDetails.Tabs.Add(Me.TabItemVendorDetails_ContractsTab)
             Me.TabControlControl_VendorDetails.Text = "TabControl1"
             '
-            'TabControlPanelMediaDefaultsTab_MediaDefaults
+            'TabControlPanel1099InfoTab_1099Info
             '
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Controls.Add(Me.TabControlMediaDefaults_MediaDefaultsTab)
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Name = "TabControlPanelMediaDefaultsTab_MediaDefaults"
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Size = New System.Drawing.Size(815, 513)
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanel1099InfoTab_1099Info.Controls.Add(Me.TableLayoutPanel1099Info_TableLayout)
+            Me.TabControlPanel1099InfoTab_1099Info.Controls.Add(Me.CheckBox1099Info_Is1099Vendor)
+            Me.TabControlPanel1099InfoTab_1099Info.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanel1099InfoTab_1099Info.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanel1099InfoTab_1099Info.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanel1099InfoTab_1099Info.Name = "TabControlPanel1099InfoTab_1099Info"
+            Me.TabControlPanel1099InfoTab_1099Info.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanel1099InfoTab_1099Info.Size = New System.Drawing.Size(815, 513)
+            Me.TabControlPanel1099InfoTab_1099Info.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanel1099InfoTab_1099Info.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanel1099InfoTab_1099Info.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanel1099InfoTab_1099Info.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanel1099InfoTab_1099Info.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.GradientAngle = 90
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.TabIndex = 5
-            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.TabItem = Me.TabItemVendorDetails_MediaDefaultsTab
+            Me.TabControlPanel1099InfoTab_1099Info.Style.GradientAngle = 90
+            Me.TabControlPanel1099InfoTab_1099Info.TabIndex = 2
+            Me.TabControlPanel1099InfoTab_1099Info.TabItem = Me.TabItemVendorDetails_1099InfoTab
             '
-            'TabControlMediaDefaults_MediaDefaultsTab
+            'TableLayoutPanel1099Info_TableLayout
             '
-            Me.TabControlMediaDefaults_MediaDefaultsTab.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.TableLayoutPanel1099Info_TableLayout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TableLayoutPanel1099Info_TableLayout.BackColor = System.Drawing.Color.White
+            Me.TableLayoutPanel1099Info_TableLayout.ColumnCount = 2
+            Me.TableLayoutPanel1099Info_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+            Me.TableLayoutPanel1099Info_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+            Me.TableLayoutPanel1099Info_TableLayout.Controls.Add(Me.Panel1099Info_RightColumn, 1, 0)
+            Me.TableLayoutPanel1099Info_TableLayout.Controls.Add(Me.Panel1099Info_LeftColumn, 0, 0)
+            Me.TableLayoutPanel1099Info_TableLayout.Location = New System.Drawing.Point(4, 27)
+            Me.TableLayoutPanel1099Info_TableLayout.Margin = New System.Windows.Forms.Padding(0)
+            Me.TableLayoutPanel1099Info_TableLayout.Name = "TableLayoutPanel1099Info_TableLayout"
+            Me.TableLayoutPanel1099Info_TableLayout.RowCount = 1
+            Me.TableLayoutPanel1099Info_TableLayout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+            Me.TableLayoutPanel1099Info_TableLayout.Size = New System.Drawing.Size(806, 345)
+            Me.TableLayoutPanel1099Info_TableLayout.TabIndex = 1
+            '
+            'Panel1099Info_RightColumn
+            '
+            Me.Panel1099Info_RightColumn.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlMediaDefaults_MediaDefaultsTab.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
-            Me.TabControlMediaDefaults_MediaDefaultsTab.CanReorderTabs = False
-            Me.TabControlMediaDefaults_MediaDefaultsTab.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlMediaDefaults_MediaDefaultsTab.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlMediaDefaults_MediaDefaultsTab.Controls.Add(Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation)
-            Me.TabControlMediaDefaults_MediaDefaultsTab.Controls.Add(Me.TabControlPanelDefaultCommentsTab_DefaultComments)
-            Me.TabControlMediaDefaults_MediaDefaultsTab.ForeColor = System.Drawing.Color.Black
-            Me.TabControlMediaDefaults_MediaDefaultsTab.Location = New System.Drawing.Point(6, 6)
-            Me.TabControlMediaDefaults_MediaDefaultsTab.Name = "TabControlMediaDefaults_MediaDefaultsTab"
-            Me.TabControlMediaDefaults_MediaDefaultsTab.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlMediaDefaults_MediaDefaultsTab.SelectedTabIndex = 0
-            Me.TabControlMediaDefaults_MediaDefaultsTab.Size = New System.Drawing.Size(803, 501)
-            Me.TabControlMediaDefaults_MediaDefaultsTab.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlMediaDefaults_MediaDefaultsTab.TabIndex = 0
-            Me.TabControlMediaDefaults_MediaDefaultsTab.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlMediaDefaults_MediaDefaultsTab.Tabs.Add(Me.TabItemMediaDefaults_GeneralDefaultInformationTab)
-            Me.TabControlMediaDefaults_MediaDefaultsTab.Tabs.Add(Me.TabItemMediaDefaults_DefaultCommentsTab)
-            Me.TabControlMediaDefaults_MediaDefaultsTab.Text = "TabControl1"
+            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_MedicalHealthcare)
+            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_GrossProceedsToAttorney)
+            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_Royalties)
+            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_Rent)
+            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_OtherIncome)
+            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_NonEmployeeCompensation)
+            Me.Panel1099Info_RightColumn.Controls.Add(Me.Label1099Info_Category)
+            Me.Panel1099Info_RightColumn.Location = New System.Drawing.Point(403, 0)
+            Me.Panel1099Info_RightColumn.Margin = New System.Windows.Forms.Padding(0)
+            Me.Panel1099Info_RightColumn.Name = "Panel1099Info_RightColumn"
+            Me.Panel1099Info_RightColumn.Size = New System.Drawing.Size(403, 345)
+            Me.Panel1099Info_RightColumn.TabIndex = 1
             '
-            'TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation
+            'RadioButtonControl1099Info_MedicalHealthcare
             '
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Controls.Add(Me.TableLayoutPanelGeneralDefaultInformation_TableLayout)
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Name = "TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation"
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Size = New System.Drawing.Size(803, 474)
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.GradientAngle = 90
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.TabIndex = 1
-            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.TabItem = Me.TabItemMediaDefaults_GeneralDefaultInformationTab
-            '
-            'TableLayoutPanelGeneralDefaultInformation_TableLayout
-            '
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.RadioButtonControl1099Info_MedicalHealthcare.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.BackColor = System.Drawing.Color.White
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.ColumnCount = 2
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.11347!))
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.88652!))
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Controls.Add(Me.PanelTableLayout_RightColumn, 1, 0)
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Controls.Add(Me.PanelTableLayout_LeftColumn, 0, 0)
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Location = New System.Drawing.Point(4, 4)
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Margin = New System.Windows.Forms.Padding(0)
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Name = "TableLayoutPanelGeneralDefaultInformation_TableLayout"
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.RowCount = 1
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Size = New System.Drawing.Size(794, 450)
-            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.TabIndex = 0
+            Me.RadioButtonControl1099Info_MedicalHealthcare.BackColor = System.Drawing.Color.White
             '
-            'PanelTableLayout_RightColumn
             '
-            Me.PanelTableLayout_RightColumn.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            '
+            Me.RadioButtonControl1099Info_MedicalHealthcare.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControl1099Info_MedicalHealthcare.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControl1099Info_MedicalHealthcare.Location = New System.Drawing.Point(4, 156)
+            Me.RadioButtonControl1099Info_MedicalHealthcare.Name = "RadioButtonControl1099Info_MedicalHealthcare"
+            Me.RadioButtonControl1099Info_MedicalHealthcare.SecurityEnabled = True
+            Me.RadioButtonControl1099Info_MedicalHealthcare.Size = New System.Drawing.Size(399, 20)
+            Me.RadioButtonControl1099Info_MedicalHealthcare.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControl1099Info_MedicalHealthcare.TabIndex = 6
+            Me.RadioButtonControl1099Info_MedicalHealthcare.TabOnEnter = True
+            Me.RadioButtonControl1099Info_MedicalHealthcare.TabStop = False
+            Me.RadioButtonControl1099Info_MedicalHealthcare.Text = "Medical and Health Care"
+            '
+            'RadioButtonControl1099Info_GrossProceedsToAttorney
+            '
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Location = New System.Drawing.Point(4, 130)
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Name = "RadioButtonControl1099Info_GrossProceedsToAttorney"
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.SecurityEnabled = True
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Size = New System.Drawing.Size(399, 20)
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.TabIndex = 5
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.TabOnEnter = True
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.TabStop = False
+            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Text = "Gross Proceeds to Attorney"
+            '
+            'RadioButtonControl1099Info_Royalties
+            '
+            Me.RadioButtonControl1099Info_Royalties.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonControl1099Info_Royalties.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControl1099Info_Royalties.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControl1099Info_Royalties.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControl1099Info_Royalties.Location = New System.Drawing.Point(4, 104)
+            Me.RadioButtonControl1099Info_Royalties.Name = "RadioButtonControl1099Info_Royalties"
+            Me.RadioButtonControl1099Info_Royalties.SecurityEnabled = True
+            Me.RadioButtonControl1099Info_Royalties.Size = New System.Drawing.Size(399, 20)
+            Me.RadioButtonControl1099Info_Royalties.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControl1099Info_Royalties.TabIndex = 4
+            Me.RadioButtonControl1099Info_Royalties.TabOnEnter = True
+            Me.RadioButtonControl1099Info_Royalties.TabStop = False
+            Me.RadioButtonControl1099Info_Royalties.Text = "Royalties"
+            '
+            'RadioButtonControl1099Info_Rent
+            '
+            Me.RadioButtonControl1099Info_Rent.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonControl1099Info_Rent.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControl1099Info_Rent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControl1099Info_Rent.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControl1099Info_Rent.Location = New System.Drawing.Point(4, 78)
+            Me.RadioButtonControl1099Info_Rent.Name = "RadioButtonControl1099Info_Rent"
+            Me.RadioButtonControl1099Info_Rent.SecurityEnabled = True
+            Me.RadioButtonControl1099Info_Rent.Size = New System.Drawing.Size(399, 20)
+            Me.RadioButtonControl1099Info_Rent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControl1099Info_Rent.TabIndex = 3
+            Me.RadioButtonControl1099Info_Rent.TabOnEnter = True
+            Me.RadioButtonControl1099Info_Rent.TabStop = False
+            Me.RadioButtonControl1099Info_Rent.Text = "Rent"
+            '
+            'RadioButtonControl1099Info_OtherIncome
+            '
+            Me.RadioButtonControl1099Info_OtherIncome.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonControl1099Info_OtherIncome.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControl1099Info_OtherIncome.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControl1099Info_OtherIncome.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControl1099Info_OtherIncome.Location = New System.Drawing.Point(4, 52)
+            Me.RadioButtonControl1099Info_OtherIncome.Name = "RadioButtonControl1099Info_OtherIncome"
+            Me.RadioButtonControl1099Info_OtherIncome.SecurityEnabled = True
+            Me.RadioButtonControl1099Info_OtherIncome.Size = New System.Drawing.Size(399, 20)
+            Me.RadioButtonControl1099Info_OtherIncome.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControl1099Info_OtherIncome.TabIndex = 2
+            Me.RadioButtonControl1099Info_OtherIncome.TabOnEnter = True
+            Me.RadioButtonControl1099Info_OtherIncome.TabStop = False
+            Me.RadioButtonControl1099Info_OtherIncome.Text = "Other Income"
+            '
+            'RadioButtonControl1099Info_NonEmployeeCompensation
+            '
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Location = New System.Drawing.Point(4, 26)
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Name = "RadioButtonControl1099Info_NonEmployeeCompensation"
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.SecurityEnabled = True
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Size = New System.Drawing.Size(399, 20)
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.TabIndex = 1
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.TabOnEnter = True
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.TabStop = False
+            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Text = "Non Employee Compensation"
+            '
+            'Label1099Info_Category
+            '
+            Me.Label1099Info_Category.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.Label1099Info_Category.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.Label1099Info_Category.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_Category.BackgroundStyle.BorderBottomWidth = 1
+            Me.Label1099Info_Category.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.Label1099Info_Category.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_Category.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_Category.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_Category.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label1099Info_Category.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label1099Info_Category.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.Label1099Info_Category.Location = New System.Drawing.Point(4, 0)
+            Me.Label1099Info_Category.Name = "Label1099Info_Category"
+            Me.Label1099Info_Category.Size = New System.Drawing.Size(399, 20)
+            Me.Label1099Info_Category.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label1099Info_Category.TabIndex = 0
+            Me.Label1099Info_Category.Text = "Category"
+            '
+            'Panel1099Info_LeftColumn
+            '
+            Me.Panel1099Info_LeftColumn.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelTableLayout_RightColumn.Controls.Add(Me.PanelRates_Rates)
-            Me.PanelTableLayout_RightColumn.Controls.Add(Me.PanelUnits_Units)
-            Me.PanelTableLayout_RightColumn.Controls.Add(Me.LabelDeadlines_MaterialCloseDays)
-            Me.PanelTableLayout_RightColumn.Controls.Add(Me.LabelDeadlines_SpaceCloseDays)
-            Me.PanelTableLayout_RightColumn.Controls.Add(Me.NumericInputDeadlines_SpaceCloseDays)
-            Me.PanelTableLayout_RightColumn.Controls.Add(Me.NumericInputDeadlines_MaterialCloseDays)
-            Me.PanelTableLayout_RightColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Rates)
-            Me.PanelTableLayout_RightColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Deadlines)
-            Me.PanelTableLayout_RightColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Units)
-            Me.PanelTableLayout_RightColumn.Location = New System.Drawing.Point(509, 0)
-            Me.PanelTableLayout_RightColumn.Margin = New System.Windows.Forms.Padding(0)
-            Me.PanelTableLayout_RightColumn.Name = "PanelTableLayout_RightColumn"
-            Me.PanelTableLayout_RightColumn.Size = New System.Drawing.Size(285, 450)
-            Me.PanelTableLayout_RightColumn.TabIndex = 1
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.TextBox1099Info_VendorName)
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.Label1099Info_VendorName)
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.CheckBox1099Info_Use1099Name)
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.Label1099Info_AlternateNameFor1099)
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.Address3LineControl1099Info_Address)
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.CheckBox1099Info_Use1099Address)
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.Label1099Info_AlternateAddressFor1099)
+            Me.Panel1099Info_LeftColumn.Location = New System.Drawing.Point(0, 0)
+            Me.Panel1099Info_LeftColumn.Margin = New System.Windows.Forms.Padding(0)
+            Me.Panel1099Info_LeftColumn.Name = "Panel1099Info_LeftColumn"
+            Me.Panel1099Info_LeftColumn.Size = New System.Drawing.Size(403, 345)
+            Me.Panel1099Info_LeftColumn.TabIndex = 0
             '
-            'PanelRates_Rates
+            'TextBox1099Info_VendorName
             '
-            Me.PanelRates_Rates.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.TextBox1099Info_VendorName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelRates_Rates.BackColor = System.Drawing.Color.White
-            Me.PanelRates_Rates.Controls.Add(Me.RadioButtonControlRates_Net)
-            Me.PanelRates_Rates.Controls.Add(Me.RadioButtonControlRates_Gross)
-            Me.PanelRates_Rates.Location = New System.Drawing.Point(3, 214)
-            Me.PanelRates_Rates.Name = "PanelRates_Rates"
-            Me.PanelRates_Rates.Size = New System.Drawing.Size(276, 80)
-            Me.PanelRates_Rates.TabIndex = 43
+            Me.TextBox1099Info_VendorName.BackColor = System.Drawing.Color.White
             '
-            'RadioButtonControlRates_Net
             '
-            Me.RadioButtonControlRates_Net.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            '
+            Me.TextBox1099Info_VendorName.Border.Class = "TextBoxBorder"
+            Me.TextBox1099Info_VendorName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBox1099Info_VendorName.CheckSpellingOnValidate = False
+            Me.TextBox1099Info_VendorName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBox1099Info_VendorName.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBox1099Info_VendorName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBox1099Info_VendorName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBox1099Info_VendorName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBox1099Info_VendorName.FocusHighlightEnabled = True
+            Me.TextBox1099Info_VendorName.ForeColor = System.Drawing.Color.Black
+            Me.TextBox1099Info_VendorName.Location = New System.Drawing.Point(72, 315)
+            Me.TextBox1099Info_VendorName.MaxFileSize = CType(0, Long)
+            Me.TextBox1099Info_VendorName.Name = "TextBox1099Info_VendorName"
+            Me.TextBox1099Info_VendorName.SecurityEnabled = True
+            Me.TextBox1099Info_VendorName.ShowSpellCheckCompleteMessage = True
+            Me.TextBox1099Info_VendorName.Size = New System.Drawing.Size(323, 20)
+            Me.TextBox1099Info_VendorName.StartingFolderName = Nothing
+            Me.TextBox1099Info_VendorName.TabIndex = 6
+            Me.TextBox1099Info_VendorName.TabOnEnter = True
+            '
+            'Label1099Info_VendorName
+            '
+            Me.Label1099Info_VendorName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.Label1099Info_VendorName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label1099Info_VendorName.Location = New System.Drawing.Point(6, 314)
+            Me.Label1099Info_VendorName.Name = "Label1099Info_VendorName"
+            Me.Label1099Info_VendorName.Size = New System.Drawing.Size(52, 20)
+            Me.Label1099Info_VendorName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label1099Info_VendorName.TabIndex = 5
+            Me.Label1099Info_VendorName.Text = "Name:"
+            '
+            'CheckBox1099Info_Use1099Name
+            '
+            Me.CheckBox1099Info_Use1099Name.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControlRates_Net.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.RadioButtonControlRates_Net.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControlRates_Net.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControlRates_Net.Location = New System.Drawing.Point(0, 0)
-            Me.RadioButtonControlRates_Net.Name = "RadioButtonControlRates_Net"
-            Me.RadioButtonControlRates_Net.SecurityEnabled = True
-            Me.RadioButtonControlRates_Net.Size = New System.Drawing.Size(273, 20)
-            Me.RadioButtonControlRates_Net.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControlRates_Net.TabIndex = 10
-            Me.RadioButtonControlRates_Net.TabOnEnter = True
-            Me.RadioButtonControlRates_Net.TabStop = False
-            Me.RadioButtonControlRates_Net.Text = "Net"
+            Me.CheckBox1099Info_Use1099Name.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBox1099Info_Use1099Name.CheckValue = 0
+            Me.CheckBox1099Info_Use1099Name.CheckValueChecked = 1
+            Me.CheckBox1099Info_Use1099Name.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBox1099Info_Use1099Name.CheckValueUnchecked = 0
+            Me.CheckBox1099Info_Use1099Name.ChildControls = CType(resources.GetObject("CheckBox1099Info_Use1099Name.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBox1099Info_Use1099Name.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBox1099Info_Use1099Name.Location = New System.Drawing.Point(1, 290)
+            Me.CheckBox1099Info_Use1099Name.Name = "CheckBox1099Info_Use1099Name"
+            Me.CheckBox1099Info_Use1099Name.OldestSibling = Nothing
+            Me.CheckBox1099Info_Use1099Name.SecurityEnabled = True
+            Me.CheckBox1099Info_Use1099Name.SiblingControls = CType(resources.GetObject("CheckBox1099Info_Use1099Name.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBox1099Info_Use1099Name.Size = New System.Drawing.Size(400, 20)
+            Me.CheckBox1099Info_Use1099Name.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBox1099Info_Use1099Name.TabIndex = 4
+            Me.CheckBox1099Info_Use1099Name.TabOnEnter = True
+            Me.CheckBox1099Info_Use1099Name.Text = "Use"
             '
-            'RadioButtonControlRates_Gross
+            'Label1099Info_AlternateNameFor1099
             '
-            Me.RadioButtonControlRates_Gross.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.Label1099Info_AlternateNameFor1099.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControlRates_Gross.BackColor = System.Drawing.Color.White
+            Me.Label1099Info_AlternateNameFor1099.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.RadioButtonControlRates_Gross.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControlRates_Gross.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControlRates_Gross.Location = New System.Drawing.Point(0, 26)
-            Me.RadioButtonControlRates_Gross.Name = "RadioButtonControlRates_Gross"
-            Me.RadioButtonControlRates_Gross.SecurityEnabled = True
-            Me.RadioButtonControlRates_Gross.Size = New System.Drawing.Size(273, 20)
-            Me.RadioButtonControlRates_Gross.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControlRates_Gross.TabIndex = 11
-            Me.RadioButtonControlRates_Gross.TabOnEnter = True
-            Me.RadioButtonControlRates_Gross.TabStop = False
-            Me.RadioButtonControlRates_Gross.Text = "Gross"
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderBottomWidth = 1
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label1099Info_AlternateNameFor1099.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label1099Info_AlternateNameFor1099.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.Label1099Info_AlternateNameFor1099.Location = New System.Drawing.Point(2, 264)
+            Me.Label1099Info_AlternateNameFor1099.Name = "Label1099Info_AlternateNameFor1099"
+            Me.Label1099Info_AlternateNameFor1099.Size = New System.Drawing.Size(398, 20)
+            Me.Label1099Info_AlternateNameFor1099.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label1099Info_AlternateNameFor1099.TabIndex = 3
+            Me.Label1099Info_AlternateNameFor1099.Text = "Alternate Name for 1099"
             '
-            'PanelUnits_Units
+            'Address3LineControl1099Info_Address
             '
-            Me.PanelUnits_Units.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.Address3LineControl1099Info_Address.Address = Nothing
+            Me.Address3LineControl1099Info_Address.Address2 = Nothing
+            Me.Address3LineControl1099Info_Address.Address3 = Nothing
+            Me.Address3LineControl1099Info_Address.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelUnits_Units.BackColor = System.Drawing.Color.White
-            Me.PanelUnits_Units.Controls.Add(Me.RadioButtonControlUnits_MontlyOrBroadcastMonth)
-            Me.PanelUnits_Units.Controls.Add(Me.RadioButtonControlUnits_WeeklyOrCalendarMonth)
-            Me.PanelUnits_Units.Controls.Add(Me.RadioButtonControlUnits_Daily)
-            Me.PanelUnits_Units.Location = New System.Drawing.Point(3, 26)
-            Me.PanelUnits_Units.Name = "PanelUnits_Units"
-            Me.PanelUnits_Units.Size = New System.Drawing.Size(276, 72)
-            Me.PanelUnits_Units.TabIndex = 38
+            Me.Address3LineControl1099Info_Address.City = Nothing
+            Me.Address3LineControl1099Info_Address.Country = Nothing
+            Me.Address3LineControl1099Info_Address.County = Nothing
+            Me.Address3LineControl1099Info_Address.DisableCountry = False
+            Me.Address3LineControl1099Info_Address.DisableCounty = False
+            Me.Address3LineControl1099Info_Address.Location = New System.Drawing.Point(3, 52)
+            Me.Address3LineControl1099Info_Address.Name = "Address3LineControl1099Info_Address"
+            Me.Address3LineControl1099Info_Address.ReadOnly = False
+            Me.Address3LineControl1099Info_Address.ShowCountry = True
+            Me.Address3LineControl1099Info_Address.ShowCounty = True
+            Me.Address3LineControl1099Info_Address.Size = New System.Drawing.Size(397, 207)
+            Me.Address3LineControl1099Info_Address.State = Nothing
+            Me.Address3LineControl1099Info_Address.TabIndex = 2
+            Me.Address3LineControl1099Info_Address.Title = "Address"
+            Me.Address3LineControl1099Info_Address.Zip = Nothing
             '
-            'RadioButtonControlUnits_MontlyOrBroadcastMonth
+            'CheckBox1099Info_Use1099Address
             '
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.CheckBox1099Info_Use1099Address.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Location = New System.Drawing.Point(0, 0)
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Name = "RadioButtonControlUnits_MontlyOrBroadcastMonth"
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.SecurityEnabled = True
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Size = New System.Drawing.Size(257, 20)
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.TabIndex = 1
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.TabOnEnter = True
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.TabStop = False
-            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Text = "Monthly Or Broadcast Month"
+            Me.CheckBox1099Info_Use1099Address.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBox1099Info_Use1099Address.CheckValue = 0
+            Me.CheckBox1099Info_Use1099Address.CheckValueChecked = 1
+            Me.CheckBox1099Info_Use1099Address.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBox1099Info_Use1099Address.CheckValueUnchecked = 0
+            Me.CheckBox1099Info_Use1099Address.ChildControls = CType(resources.GetObject("CheckBox1099Info_Use1099Address.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBox1099Info_Use1099Address.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBox1099Info_Use1099Address.Location = New System.Drawing.Point(0, 26)
+            Me.CheckBox1099Info_Use1099Address.Name = "CheckBox1099Info_Use1099Address"
+            Me.CheckBox1099Info_Use1099Address.OldestSibling = Nothing
+            Me.CheckBox1099Info_Use1099Address.SecurityEnabled = True
+            Me.CheckBox1099Info_Use1099Address.SiblingControls = CType(resources.GetObject("CheckBox1099Info_Use1099Address.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBox1099Info_Use1099Address.Size = New System.Drawing.Size(400, 20)
+            Me.CheckBox1099Info_Use1099Address.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBox1099Info_Use1099Address.TabIndex = 1
+            Me.CheckBox1099Info_Use1099Address.TabOnEnter = True
+            Me.CheckBox1099Info_Use1099Address.Text = "Use"
             '
-            'RadioButtonControlUnits_WeeklyOrCalendarMonth
+            'Label1099Info_AlternateAddressFor1099
             '
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.Label1099Info_AlternateAddressFor1099.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.BackColor = System.Drawing.Color.White
+            Me.Label1099Info_AlternateAddressFor1099.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Location = New System.Drawing.Point(0, 26)
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Name = "RadioButtonControlUnits_WeeklyOrCalendarMonth"
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.SecurityEnabled = True
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Size = New System.Drawing.Size(257, 20)
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.TabIndex = 2
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.TabOnEnter = True
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.TabStop = False
-            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Text = "Weekly Or Calendar Month"
+            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderBottomWidth = 1
+            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label1099Info_AlternateAddressFor1099.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label1099Info_AlternateAddressFor1099.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.Label1099Info_AlternateAddressFor1099.Location = New System.Drawing.Point(0, 0)
+            Me.Label1099Info_AlternateAddressFor1099.Name = "Label1099Info_AlternateAddressFor1099"
+            Me.Label1099Info_AlternateAddressFor1099.Size = New System.Drawing.Size(400, 20)
+            Me.Label1099Info_AlternateAddressFor1099.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label1099Info_AlternateAddressFor1099.TabIndex = 0
+            Me.Label1099Info_AlternateAddressFor1099.Text = "Alternate Address for 1099"
             '
-            'RadioButtonControlUnits_Daily
+            'CheckBox1099Info_Is1099Vendor
             '
-            Me.RadioButtonControlUnits_Daily.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.CheckBox1099Info_Is1099Vendor.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControlUnits_Daily.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonControlUnits_Daily.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControlUnits_Daily.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControlUnits_Daily.Location = New System.Drawing.Point(0, 52)
-            Me.RadioButtonControlUnits_Daily.Name = "RadioButtonControlUnits_Daily"
-            Me.RadioButtonControlUnits_Daily.SecurityEnabled = True
-            Me.RadioButtonControlUnits_Daily.Size = New System.Drawing.Size(257, 20)
-            Me.RadioButtonControlUnits_Daily.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControlUnits_Daily.TabIndex = 3
-            Me.RadioButtonControlUnits_Daily.TabOnEnter = True
-            Me.RadioButtonControlUnits_Daily.TabStop = False
-            Me.RadioButtonControlUnits_Daily.Text = "Daily Or 4 Week"
-            '
-            'LabelDeadlines_MaterialCloseDays
-            '
-            Me.LabelDeadlines_MaterialCloseDays.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDeadlines_MaterialCloseDays.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelDeadlines_MaterialCloseDays.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDeadlines_MaterialCloseDays.Location = New System.Drawing.Point(3, 136)
-            Me.LabelDeadlines_MaterialCloseDays.Name = "LabelDeadlines_MaterialCloseDays"
-            Me.LabelDeadlines_MaterialCloseDays.Size = New System.Drawing.Size(118, 20)
-            Me.LabelDeadlines_MaterialCloseDays.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDeadlines_MaterialCloseDays.TabIndex = 39
-            Me.LabelDeadlines_MaterialCloseDays.Text = "Material Close Days:"
-            '
-            'LabelDeadlines_SpaceCloseDays
-            '
-            Me.LabelDeadlines_SpaceCloseDays.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDeadlines_SpaceCloseDays.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelDeadlines_SpaceCloseDays.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDeadlines_SpaceCloseDays.Location = New System.Drawing.Point(3, 162)
-            Me.LabelDeadlines_SpaceCloseDays.Name = "LabelDeadlines_SpaceCloseDays"
-            Me.LabelDeadlines_SpaceCloseDays.Size = New System.Drawing.Size(118, 20)
-            Me.LabelDeadlines_SpaceCloseDays.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDeadlines_SpaceCloseDays.TabIndex = 41
-            Me.LabelDeadlines_SpaceCloseDays.Text = "Space Close Days:"
-            '
-            'NumericInputDeadlines_SpaceCloseDays
-            '
-            Me.NumericInputDeadlines_SpaceCloseDays.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputDeadlines_SpaceCloseDays.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.NumericInputDeadlines_SpaceCloseDays.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Short]
-            Me.NumericInputDeadlines_SpaceCloseDays.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputDeadlines_SpaceCloseDays.EnterMoveNextControl = True
-            Me.NumericInputDeadlines_SpaceCloseDays.Location = New System.Drawing.Point(130, 162)
-            Me.NumericInputDeadlines_SpaceCloseDays.Name = "NumericInputDeadlines_SpaceCloseDays"
-            Me.NumericInputDeadlines_SpaceCloseDays.Properties.DisplayFormat.FormatString = "f0"
-            Me.NumericInputDeadlines_SpaceCloseDays.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputDeadlines_SpaceCloseDays.Properties.EditFormat.FormatString = "f0"
-            Me.NumericInputDeadlines_SpaceCloseDays.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputDeadlines_SpaceCloseDays.Properties.IsFloatValue = False
-            Me.NumericInputDeadlines_SpaceCloseDays.Properties.Mask.EditMask = "f0"
-            Me.NumericInputDeadlines_SpaceCloseDays.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputDeadlines_SpaceCloseDays.Properties.MaxValue = New Decimal(New Integer() {32767, 0, 0, 0})
-            Me.NumericInputDeadlines_SpaceCloseDays.Properties.MinValue = New Decimal(New Integer() {32768, 0, 0, -2147483648})
-            Me.NumericInputDeadlines_SpaceCloseDays.SecurityEnabled = True
-            Me.NumericInputDeadlines_SpaceCloseDays.Size = New System.Drawing.Size(155, 20)
-            Me.NumericInputDeadlines_SpaceCloseDays.TabIndex = 42
-            '
-            'NumericInputDeadlines_MaterialCloseDays
-            '
-            Me.NumericInputDeadlines_MaterialCloseDays.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputDeadlines_MaterialCloseDays.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.NumericInputDeadlines_MaterialCloseDays.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Short]
-            Me.NumericInputDeadlines_MaterialCloseDays.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputDeadlines_MaterialCloseDays.EnterMoveNextControl = True
-            Me.NumericInputDeadlines_MaterialCloseDays.Location = New System.Drawing.Point(130, 136)
-            Me.NumericInputDeadlines_MaterialCloseDays.Name = "NumericInputDeadlines_MaterialCloseDays"
-            Me.NumericInputDeadlines_MaterialCloseDays.Properties.DisplayFormat.FormatString = "f0"
-            Me.NumericInputDeadlines_MaterialCloseDays.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputDeadlines_MaterialCloseDays.Properties.EditFormat.FormatString = "f0"
-            Me.NumericInputDeadlines_MaterialCloseDays.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputDeadlines_MaterialCloseDays.Properties.IsFloatValue = False
-            Me.NumericInputDeadlines_MaterialCloseDays.Properties.Mask.EditMask = "f0"
-            Me.NumericInputDeadlines_MaterialCloseDays.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputDeadlines_MaterialCloseDays.Properties.MaxValue = New Decimal(New Integer() {32767, 0, 0, 0})
-            Me.NumericInputDeadlines_MaterialCloseDays.Properties.MinValue = New Decimal(New Integer() {32768, 0, 0, -2147483648})
-            Me.NumericInputDeadlines_MaterialCloseDays.SecurityEnabled = True
-            Me.NumericInputDeadlines_MaterialCloseDays.Size = New System.Drawing.Size(155, 20)
-            Me.NumericInputDeadlines_MaterialCloseDays.TabIndex = 40
-            '
-            'LabelGeneralDefaultInformation_Rates
-            '
-            Me.LabelGeneralDefaultInformation_Rates.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelGeneralDefaultInformation_Rates.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_Rates.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelGeneralDefaultInformation_Rates.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
-            Me.LabelGeneralDefaultInformation_Rates.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelGeneralDefaultInformation_Rates.BackgroundStyle.BorderColor = System.Drawing.Color.Black
-            Me.LabelGeneralDefaultInformation_Rates.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_Rates.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelGeneralDefaultInformation_Rates.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelGeneralDefaultInformation_Rates.Location = New System.Drawing.Point(3, 188)
-            Me.LabelGeneralDefaultInformation_Rates.Name = "LabelGeneralDefaultInformation_Rates"
-            Me.LabelGeneralDefaultInformation_Rates.Size = New System.Drawing.Size(282, 20)
-            Me.LabelGeneralDefaultInformation_Rates.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_Rates.TabIndex = 9
-            Me.LabelGeneralDefaultInformation_Rates.Text = "Rates"
-            '
-            'LabelGeneralDefaultInformation_Deadlines
-            '
-            Me.LabelGeneralDefaultInformation_Deadlines.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelGeneralDefaultInformation_Deadlines.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_Deadlines.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelGeneralDefaultInformation_Deadlines.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
-            Me.LabelGeneralDefaultInformation_Deadlines.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelGeneralDefaultInformation_Deadlines.BackgroundStyle.BorderColor = System.Drawing.Color.Black
-            Me.LabelGeneralDefaultInformation_Deadlines.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_Deadlines.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelGeneralDefaultInformation_Deadlines.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelGeneralDefaultInformation_Deadlines.Location = New System.Drawing.Point(3, 110)
-            Me.LabelGeneralDefaultInformation_Deadlines.Name = "LabelGeneralDefaultInformation_Deadlines"
-            Me.LabelGeneralDefaultInformation_Deadlines.Size = New System.Drawing.Size(282, 20)
-            Me.LabelGeneralDefaultInformation_Deadlines.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_Deadlines.TabIndex = 4
-            Me.LabelGeneralDefaultInformation_Deadlines.Text = "Deadlines"
-            '
-            'LabelGeneralDefaultInformation_Units
-            '
-            Me.LabelGeneralDefaultInformation_Units.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelGeneralDefaultInformation_Units.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_Units.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelGeneralDefaultInformation_Units.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
-            Me.LabelGeneralDefaultInformation_Units.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelGeneralDefaultInformation_Units.BackgroundStyle.BorderColor = System.Drawing.Color.Black
-            Me.LabelGeneralDefaultInformation_Units.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_Units.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelGeneralDefaultInformation_Units.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelGeneralDefaultInformation_Units.Location = New System.Drawing.Point(3, 0)
-            Me.LabelGeneralDefaultInformation_Units.Name = "LabelGeneralDefaultInformation_Units"
-            Me.LabelGeneralDefaultInformation_Units.Size = New System.Drawing.Size(282, 20)
-            Me.LabelGeneralDefaultInformation_Units.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_Units.TabIndex = 0
-            Me.LabelGeneralDefaultInformation_Units.Text = "Units"
-            '
-            'PanelTableLayout_LeftColumn
-            '
-            Me.PanelTableLayout_LeftColumn.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_PuertoRicoTVStation)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.ComboBoxGeneralDefaultInformation_CanadianVendorType)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_CanadianVendorType)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelMediaDefaults_Financial)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.ComboBoxGeneralDefaultInformation_Band)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Band)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.TextBoxGeneralDefaultInformation_CallLetters)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_CallLetters)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxIsComscoreSubscriber)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxIsNielsenSubscriber)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelRatingsSubscriber)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelMediaDefaults_CrossReference)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_ComscoreStation)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_EastlanStation)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_CableSyscode)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_RadioStation)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_TVStation)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Station)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxGeneralDefaultInformation_IsCableSystem)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_IsCableSystem)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_MarkupPercent)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.NumericInputGeneralDefaultInformation_MarkupPercent)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_TaxCode)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_Market)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Market)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_CommissionPercent)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_ApplyTo)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_NetDiscount)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_OveragePercent)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_AddlCharge)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_TaxCode)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_Rebate)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_ColumnWidth)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_NetCharge)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_Commission)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_LineNet)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.NumericInputGeneralDefaultInformation_ColumnWidth)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_UseFlags)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.NumericInputGeneralDefaultInformation_OveragePercent)
-            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.NumericInputGeneralDefaultInformation_CommissionPercent)
-            Me.PanelTableLayout_LeftColumn.Location = New System.Drawing.Point(0, 0)
-            Me.PanelTableLayout_LeftColumn.Margin = New System.Windows.Forms.Padding(0)
-            Me.PanelTableLayout_LeftColumn.Name = "PanelTableLayout_LeftColumn"
-            Me.PanelTableLayout_LeftColumn.Size = New System.Drawing.Size(509, 450)
-            Me.PanelTableLayout_LeftColumn.TabIndex = 0
-            '
-            'SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation
-            '
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ActiveFilterString = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.AutoFillMode = False
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.BookmarkingEnabled = False
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.[Default]
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DataSource = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DisableMouseWheel = False
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DisplayName = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.EnterMoveNextControl = True
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Location = New System.Drawing.Point(167, 208)
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Name = "SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation"
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.DisplayMember = "Name"
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.NullText = "Select Puerto Rico TV Station"
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.PopupView = Me.GridView19
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.ValueMember = "ID"
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.SecurityEnabled = True
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.SelectedValue = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Size = New System.Drawing.Size(339, 20)
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.TabIndex = 23
-            '
-            'GridView19
-            '
-            Me.GridView19.AFActiveFilterString = ""
-            Me.GridView19.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView19.AutoFilterLookupColumns = False
-            Me.GridView19.AutoloadRepositoryDatasource = True
-            Me.GridView19.DataSourceClearing = False
-            Me.GridView19.EnableDisabledRows = False
-            Me.GridView19.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView19.Name = "GridView19"
-            Me.GridView19.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView19.OptionsView.ShowGroupPanel = False
-            Me.GridView19.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView19.RunStandardValidation = True
-            Me.GridView19.SkipAddingControlsOnModifyColumn = False
-            Me.GridView19.SkipSettingFontOnModifyColumn = False
-            '
-            'LabelGeneralDefaultInformation_PuertoRicoTVStation
-            '
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Location = New System.Drawing.Point(-1, 208)
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Name = "LabelGeneralDefaultInformation_PuertoRicoTVStation"
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Size = New System.Drawing.Size(161, 20)
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.TabIndex = 42
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Text = "Puerto Rico TV Station:"
-            '
-            'ComboBoxGeneralDefaultInformation_CanadianVendorType
-            '
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.AutoFindItemInDataSource = False
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.BookmarkingEnabled = False
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ClientCode = ""
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.EnumObjects
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.DisableMouseWheel = False
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.DisplayMember = "Description"
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.DisplayName = ""
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.DivisionCode = ""
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.FocusHighlightEnabled = True
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ForeColor = System.Drawing.Color.Black
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.FormattingEnabled = True
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ItemHeight = 15
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.Location = New System.Drawing.Point(348, 52)
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.Name = "ComboBoxGeneralDefaultInformation_CanadianVendorType"
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ReadOnly = False
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.SecurityEnabled = True
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.Size = New System.Drawing.Size(158, 21)
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.TabIndex = 11
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.TabOnEnter = True
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ValueMember = "Code"
-            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.WatermarkText = "Select"
-            '
-            'LabelGeneralDefaultInformation_CanadianVendorType
-            '
-            Me.LabelGeneralDefaultInformation_CanadianVendorType.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_CanadianVendorType.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_CanadianVendorType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_CanadianVendorType.Location = New System.Drawing.Point(199, 52)
-            Me.LabelGeneralDefaultInformation_CanadianVendorType.Name = "LabelGeneralDefaultInformation_CanadianVendorType"
-            Me.LabelGeneralDefaultInformation_CanadianVendorType.Size = New System.Drawing.Size(141, 20)
-            Me.LabelGeneralDefaultInformation_CanadianVendorType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_CanadianVendorType.TabIndex = 10
-            Me.LabelGeneralDefaultInformation_CanadianVendorType.Text = "Canadian Vendor Type:"
-            '
-            'LabelMediaDefaults_Financial
-            '
-            Me.LabelMediaDefaults_Financial.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelMediaDefaults_Financial.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMediaDefaults_Financial.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelMediaDefaults_Financial.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
-            Me.LabelMediaDefaults_Financial.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelMediaDefaults_Financial.BackgroundStyle.BorderColor = System.Drawing.Color.Black
-            Me.LabelMediaDefaults_Financial.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMediaDefaults_Financial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelMediaDefaults_Financial.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelMediaDefaults_Financial.Location = New System.Drawing.Point(1, 232)
-            Me.LabelMediaDefaults_Financial.Name = "LabelMediaDefaults_Financial"
-            Me.LabelMediaDefaults_Financial.Size = New System.Drawing.Size(506, 20)
-            Me.LabelMediaDefaults_Financial.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMediaDefaults_Financial.TabIndex = 23
-            Me.LabelMediaDefaults_Financial.Text = "Financial:"
-            '
-            'ComboBoxGeneralDefaultInformation_Band
-            '
-            Me.ComboBoxGeneralDefaultInformation_Band.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxGeneralDefaultInformation_Band.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-            Me.ComboBoxGeneralDefaultInformation_Band.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxGeneralDefaultInformation_Band.AutoFindItemInDataSource = False
-            Me.ComboBoxGeneralDefaultInformation_Band.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxGeneralDefaultInformation_Band.BookmarkingEnabled = False
-            Me.ComboBoxGeneralDefaultInformation_Band.ClientCode = ""
-            Me.ComboBoxGeneralDefaultInformation_Band.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.EnumDataTable
-            Me.ComboBoxGeneralDefaultInformation_Band.DisableMouseWheel = False
-            Me.ComboBoxGeneralDefaultInformation_Band.DisplayMember = "Name"
-            Me.ComboBoxGeneralDefaultInformation_Band.DisplayName = ""
-            Me.ComboBoxGeneralDefaultInformation_Band.DivisionCode = ""
-            Me.ComboBoxGeneralDefaultInformation_Band.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxGeneralDefaultInformation_Band.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.ComboBoxGeneralDefaultInformation_Band.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
-            Me.ComboBoxGeneralDefaultInformation_Band.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxGeneralDefaultInformation_Band.FocusHighlightEnabled = True
-            Me.ComboBoxGeneralDefaultInformation_Band.ForeColor = System.Drawing.Color.Black
-            Me.ComboBoxGeneralDefaultInformation_Band.FormattingEnabled = True
-            Me.ComboBoxGeneralDefaultInformation_Band.ItemHeight = 15
-            Me.ComboBoxGeneralDefaultInformation_Band.Location = New System.Drawing.Point(450, 26)
-            Me.ComboBoxGeneralDefaultInformation_Band.Name = "ComboBoxGeneralDefaultInformation_Band"
-            Me.ComboBoxGeneralDefaultInformation_Band.ReadOnly = False
-            Me.ComboBoxGeneralDefaultInformation_Band.SecurityEnabled = True
-            Me.ComboBoxGeneralDefaultInformation_Band.Size = New System.Drawing.Size(56, 21)
-            Me.ComboBoxGeneralDefaultInformation_Band.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxGeneralDefaultInformation_Band.TabIndex = 7
-            Me.ComboBoxGeneralDefaultInformation_Band.TabOnEnter = True
-            Me.ComboBoxGeneralDefaultInformation_Band.ValueMember = "Value"
-            Me.ComboBoxGeneralDefaultInformation_Band.WatermarkText = "Select"
-            '
-            'LabelGeneralDefaultInformation_Band
-            '
-            Me.LabelGeneralDefaultInformation_Band.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_Band.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_Band.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_Band.Location = New System.Drawing.Point(410, 26)
-            Me.LabelGeneralDefaultInformation_Band.Name = "LabelGeneralDefaultInformation_Band"
-            Me.LabelGeneralDefaultInformation_Band.Size = New System.Drawing.Size(34, 20)
-            Me.LabelGeneralDefaultInformation_Band.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_Band.TabIndex = 6
-            Me.LabelGeneralDefaultInformation_Band.Text = "Band:"
-            '
-            'TextBoxGeneralDefaultInformation_CallLetters
-            '
-            Me.TextBoxGeneralDefaultInformation_CallLetters.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxGeneralDefaultInformation_CallLetters.Border.Class = "TextBoxBorder"
-            Me.TextBoxGeneralDefaultInformation_CallLetters.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxGeneralDefaultInformation_CallLetters.CheckSpellingOnValidate = False
-            Me.TextBoxGeneralDefaultInformation_CallLetters.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxGeneralDefaultInformation_CallLetters.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxGeneralDefaultInformation_CallLetters.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxGeneralDefaultInformation_CallLetters.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxGeneralDefaultInformation_CallLetters.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxGeneralDefaultInformation_CallLetters.FocusHighlightEnabled = True
-            Me.TextBoxGeneralDefaultInformation_CallLetters.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxGeneralDefaultInformation_CallLetters.Location = New System.Drawing.Point(347, 26)
-            Me.TextBoxGeneralDefaultInformation_CallLetters.MaxFileSize = CType(0, Long)
-            Me.TextBoxGeneralDefaultInformation_CallLetters.Name = "TextBoxGeneralDefaultInformation_CallLetters"
-            Me.TextBoxGeneralDefaultInformation_CallLetters.SecurityEnabled = True
-            Me.TextBoxGeneralDefaultInformation_CallLetters.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxGeneralDefaultInformation_CallLetters.Size = New System.Drawing.Size(57, 20)
-            Me.TextBoxGeneralDefaultInformation_CallLetters.StartingFolderName = Nothing
-            Me.TextBoxGeneralDefaultInformation_CallLetters.TabIndex = 5
-            Me.TextBoxGeneralDefaultInformation_CallLetters.TabOnEnter = True
-            '
-            'LabelGeneralDefaultInformation_CallLetters
-            '
-            Me.LabelGeneralDefaultInformation_CallLetters.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_CallLetters.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_CallLetters.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_CallLetters.Location = New System.Drawing.Point(274, 26)
-            Me.LabelGeneralDefaultInformation_CallLetters.Name = "LabelGeneralDefaultInformation_CallLetters"
-            Me.LabelGeneralDefaultInformation_CallLetters.Size = New System.Drawing.Size(66, 20)
-            Me.LabelGeneralDefaultInformation_CallLetters.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_CallLetters.TabIndex = 4
-            Me.LabelGeneralDefaultInformation_CallLetters.Text = "Call Letters:"
-            '
-            'CheckBoxIsComscoreSubscriber
-            '
-            Me.CheckBoxIsComscoreSubscriber.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxIsComscoreSubscriber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxIsComscoreSubscriber.CheckValue = 0
-            Me.CheckBoxIsComscoreSubscriber.CheckValueChecked = 1
-            Me.CheckBoxIsComscoreSubscriber.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxIsComscoreSubscriber.CheckValueUnchecked = 0
-            Me.CheckBoxIsComscoreSubscriber.ChildControls = CType(resources.GetObject("CheckBoxIsComscoreSubscriber.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxIsComscoreSubscriber.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxIsComscoreSubscriber.Location = New System.Drawing.Point(267, 104)
-            Me.CheckBoxIsComscoreSubscriber.Name = "CheckBoxIsComscoreSubscriber"
-            Me.CheckBoxIsComscoreSubscriber.OldestSibling = Nothing
-            Me.CheckBoxIsComscoreSubscriber.SecurityEnabled = True
-            Me.CheckBoxIsComscoreSubscriber.SiblingControls = CType(resources.GetObject("CheckBoxIsComscoreSubscriber.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxIsComscoreSubscriber.Size = New System.Drawing.Size(94, 20)
-            Me.CheckBoxIsComscoreSubscriber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxIsComscoreSubscriber.TabIndex = 16
-            Me.CheckBoxIsComscoreSubscriber.TabOnEnter = True
-            Me.CheckBoxIsComscoreSubscriber.Text = "Comscore"
-            '
-            'CheckBoxIsNielsenSubscriber
-            '
-            Me.CheckBoxIsNielsenSubscriber.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxIsNielsenSubscriber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxIsNielsenSubscriber.CheckValue = 0
-            Me.CheckBoxIsNielsenSubscriber.CheckValueChecked = 1
-            Me.CheckBoxIsNielsenSubscriber.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxIsNielsenSubscriber.CheckValueUnchecked = 0
-            Me.CheckBoxIsNielsenSubscriber.ChildControls = CType(resources.GetObject("CheckBoxIsNielsenSubscriber.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxIsNielsenSubscriber.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxIsNielsenSubscriber.Location = New System.Drawing.Point(167, 104)
-            Me.CheckBoxIsNielsenSubscriber.Name = "CheckBoxIsNielsenSubscriber"
-            Me.CheckBoxIsNielsenSubscriber.OldestSibling = Nothing
-            Me.CheckBoxIsNielsenSubscriber.SecurityEnabled = True
-            Me.CheckBoxIsNielsenSubscriber.SiblingControls = CType(resources.GetObject("CheckBoxIsNielsenSubscriber.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxIsNielsenSubscriber.Size = New System.Drawing.Size(94, 20)
-            Me.CheckBoxIsNielsenSubscriber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxIsNielsenSubscriber.TabIndex = 15
-            Me.CheckBoxIsNielsenSubscriber.TabOnEnter = True
-            Me.CheckBoxIsNielsenSubscriber.Text = "Nielsen"
-            '
-            'LabelRatingsSubscriber
-            '
-            Me.LabelRatingsSubscriber.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelRatingsSubscriber.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelRatingsSubscriber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelRatingsSubscriber.Location = New System.Drawing.Point(0, 104)
-            Me.LabelRatingsSubscriber.Name = "LabelRatingsSubscriber"
-            Me.LabelRatingsSubscriber.Size = New System.Drawing.Size(161, 20)
-            Me.LabelRatingsSubscriber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelRatingsSubscriber.TabIndex = 14
-            Me.LabelRatingsSubscriber.Text = "Ratings Subscriber:"
-            '
-            'TextBoxGeneralDefaultInformation_VendorCodeCrossReference
-            '
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Border.Class = "TextBoxBorder"
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.CheckSpellingOnValidate = False
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.FocusHighlightEnabled = True
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Location = New System.Drawing.Point(167, 26)
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.MaxFileSize = CType(0, Long)
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Name = "TextBoxGeneralDefaultInformation_VendorCodeCrossReference"
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.SecurityEnabled = True
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Size = New System.Drawing.Size(94, 20)
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.StartingFolderName = Nothing
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.TabIndex = 3
-            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.TabOnEnter = True
-            '
-            'SearchableComboBoxGeneralDefaultInformation_ComscoreStation
-            '
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.ActiveFilterString = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.AutoFillMode = False
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.BookmarkingEnabled = False
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.ComscoreTVStation
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.DataSource = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.DisableMouseWheel = False
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.DisplayName = "Comscore Station"
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.EnterMoveNextControl = True
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Location = New System.Drawing.Point(167, 156)
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Name = "SearchableComboBoxGeneralDefaultInformation_ComscoreStation"
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties.DisplayMember = "Name"
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties.NullText = "Select TV Station"
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties.PopupView = Me.GridView14
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties.ValueMember = "ID"
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.SecurityEnabled = True
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.SelectedValue = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Size = New System.Drawing.Size(339, 20)
-            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.TabIndex = 20
-            '
-            'GridView14
-            '
-            Me.GridView14.AFActiveFilterString = ""
-            Me.GridView14.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView14.AutoFilterLookupColumns = False
-            Me.GridView14.AutoloadRepositoryDatasource = True
-            Me.GridView14.DataSourceClearing = False
-            Me.GridView14.EnableDisabledRows = False
-            Me.GridView14.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView14.Name = "GridView14"
-            Me.GridView14.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView14.OptionsView.ShowGroupPanel = False
-            Me.GridView14.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView14.RunStandardValidation = True
-            Me.GridView14.SkipAddingControlsOnModifyColumn = False
-            Me.GridView14.SkipSettingFontOnModifyColumn = False
-            '
-            'LabelMediaDefaults_CrossReference
-            '
-            Me.LabelMediaDefaults_CrossReference.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMediaDefaults_CrossReference.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelMediaDefaults_CrossReference.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMediaDefaults_CrossReference.Location = New System.Drawing.Point(0, 26)
-            Me.LabelMediaDefaults_CrossReference.Name = "LabelMediaDefaults_CrossReference"
-            Me.LabelMediaDefaults_CrossReference.Size = New System.Drawing.Size(161, 20)
-            Me.LabelMediaDefaults_CrossReference.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMediaDefaults_CrossReference.TabIndex = 2
-            Me.LabelMediaDefaults_CrossReference.Text = "Vendor Code Cross Reference:"
-            '
-            'LabelGeneralDefaultInformation_ComscoreStation
-            '
-            Me.LabelGeneralDefaultInformation_ComscoreStation.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_ComscoreStation.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_ComscoreStation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_ComscoreStation.Location = New System.Drawing.Point(0, 156)
-            Me.LabelGeneralDefaultInformation_ComscoreStation.Name = "LabelGeneralDefaultInformation_ComscoreStation"
-            Me.LabelGeneralDefaultInformation_ComscoreStation.Size = New System.Drawing.Size(91, 20)
-            Me.LabelGeneralDefaultInformation_ComscoreStation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_ComscoreStation.TabIndex = 19
-            Me.LabelGeneralDefaultInformation_ComscoreStation.Text = "Comscore Station:"
-            '
-            'SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation
-            '
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.ActiveFilterString = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.AutoFillMode = False
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.BookmarkingEnabled = False
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.NielsenRadioStation
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.DataSource = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.DisableMouseWheel = False
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.DisplayName = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.EnterMoveNextControl = True
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Location = New System.Drawing.Point(167, 182)
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Name = "SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation"
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties.DisplayMember = "Name"
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties.NullText = "Select Radio Station"
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties.PopupView = Me.GridView15
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties.ValueMember = "ComboID"
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.SecurityEnabled = True
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.SelectedValue = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Size = New System.Drawing.Size(339, 20)
-            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.TabIndex = 22
-            '
-            'GridView15
-            '
-            Me.GridView15.AFActiveFilterString = ""
-            Me.GridView15.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView15.AutoFilterLookupColumns = False
-            Me.GridView15.AutoloadRepositoryDatasource = True
-            Me.GridView15.DataSourceClearing = False
-            Me.GridView15.EnableDisabledRows = False
-            Me.GridView15.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView15.Name = "GridView15"
-            Me.GridView15.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView15.OptionsView.ShowGroupPanel = False
-            Me.GridView15.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView15.RunStandardValidation = True
-            Me.GridView15.SkipAddingControlsOnModifyColumn = False
-            Me.GridView15.SkipSettingFontOnModifyColumn = False
-            '
-            'LabelGeneralDefaultInformation_EastlanStation
-            '
-            Me.LabelGeneralDefaultInformation_EastlanStation.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_EastlanStation.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_EastlanStation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_EastlanStation.Location = New System.Drawing.Point(0, 182)
-            Me.LabelGeneralDefaultInformation_EastlanStation.Name = "LabelGeneralDefaultInformation_EastlanStation"
-            Me.LabelGeneralDefaultInformation_EastlanStation.Size = New System.Drawing.Size(91, 20)
-            Me.LabelGeneralDefaultInformation_EastlanStation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_EastlanStation.TabIndex = 21
-            Me.LabelGeneralDefaultInformation_EastlanStation.Text = "Eastlan Station:"
-            '
-            'SearchableComboBoxGeneralDefaultInformation_CableSyscode
-            '
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.ActiveFilterString = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.AutoFillMode = False
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.BookmarkingEnabled = False
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.NCCTVSyscode
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.DataSource = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.DisableMouseWheel = False
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.DisplayName = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.EditValue = "11"
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.EnterMoveNextControl = True
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Location = New System.Drawing.Point(167, 78)
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Name = "SearchableComboBoxGeneralDefaultInformation_CableSyscode"
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Properties.DisplayMember = "Description"
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Properties.NullText = "Select Syscode"
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Properties.PopupView = Me.GridView13
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Properties.ValueMember = "ID"
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.SecurityEnabled = True
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.SelectedValue = "11"
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Size = New System.Drawing.Size(339, 20)
-            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.TabIndex = 13
-            '
-            'GridView13
-            '
-            Me.GridView13.AFActiveFilterString = ""
-            Me.GridView13.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView13.AutoFilterLookupColumns = False
-            Me.GridView13.AutoloadRepositoryDatasource = True
-            Me.GridView13.DataSourceClearing = False
-            Me.GridView13.EnableDisabledRows = False
-            Me.GridView13.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView13.Name = "GridView13"
-            Me.GridView13.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView13.OptionsView.ShowGroupPanel = False
-            Me.GridView13.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView13.RunStandardValidation = True
-            Me.GridView13.SkipAddingControlsOnModifyColumn = False
-            Me.GridView13.SkipSettingFontOnModifyColumn = False
-            '
-            'LabelGeneralDefaultInformation_CableSyscode
-            '
-            Me.LabelGeneralDefaultInformation_CableSyscode.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_CableSyscode.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_CableSyscode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_CableSyscode.Location = New System.Drawing.Point(1, 81)
-            Me.LabelGeneralDefaultInformation_CableSyscode.Name = "LabelGeneralDefaultInformation_CableSyscode"
-            Me.LabelGeneralDefaultInformation_CableSyscode.Size = New System.Drawing.Size(91, 20)
-            Me.LabelGeneralDefaultInformation_CableSyscode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_CableSyscode.TabIndex = 12
-            Me.LabelGeneralDefaultInformation_CableSyscode.Text = "Cable Syscode:"
-            '
-            'SearchableComboBoxGeneralDefaultInformation_RadioStation
-            '
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.ActiveFilterString = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.AutoFillMode = False
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.BookmarkingEnabled = False
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.NielsenRadioStation
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.DataSource = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.DisableMouseWheel = False
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.DisplayName = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.EnterMoveNextControl = True
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Location = New System.Drawing.Point(167, 130)
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Name = "SearchableComboBoxGeneralDefaultInformation_RadioStation"
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Properties.DisplayMember = "Name"
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Properties.NullText = "Select Radio Station"
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Properties.PopupView = Me.GridView12
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Properties.ValueMember = "ComboID"
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.SecurityEnabled = True
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.SelectedValue = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Size = New System.Drawing.Size(339, 20)
-            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.TabIndex = 18
-            '
-            'GridView12
-            '
-            Me.GridView12.AFActiveFilterString = ""
-            Me.GridView12.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView12.AutoFilterLookupColumns = False
-            Me.GridView12.AutoloadRepositoryDatasource = True
-            Me.GridView12.DataSourceClearing = False
-            Me.GridView12.EnableDisabledRows = False
-            Me.GridView12.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView12.Name = "GridView12"
-            Me.GridView12.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView12.OptionsView.ShowGroupPanel = False
-            Me.GridView12.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView12.RunStandardValidation = True
-            Me.GridView12.SkipAddingControlsOnModifyColumn = False
-            Me.GridView12.SkipSettingFontOnModifyColumn = False
-            '
-            'SearchableComboBoxGeneralDefaultInformation_TVStation
-            '
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.ActiveFilterString = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.AutoFillMode = False
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.BookmarkingEnabled = False
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.NielsenTVStation
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.DataSource = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.DisableMouseWheel = False
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.DisplayName = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.EnterMoveNextControl = True
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Location = New System.Drawing.Point(167, 130)
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Name = "SearchableComboBoxGeneralDefaultInformation_TVStation"
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Properties.DisplayMember = "Description"
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Properties.NullText = "Select TV Station"
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Properties.PopupView = Me.GridView11
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Properties.ValueMember = "Code"
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.SecurityEnabled = True
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.SelectedValue = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Size = New System.Drawing.Size(339, 20)
-            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.TabIndex = 16
-            '
-            'GridView11
-            '
-            Me.GridView11.AFActiveFilterString = ""
-            Me.GridView11.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView11.AutoFilterLookupColumns = False
-            Me.GridView11.AutoloadRepositoryDatasource = True
-            Me.GridView11.DataSourceClearing = False
-            Me.GridView11.EnableDisabledRows = False
-            Me.GridView11.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView11.Name = "GridView11"
-            Me.GridView11.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView11.OptionsView.ShowGroupPanel = False
-            Me.GridView11.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView11.RunStandardValidation = True
-            Me.GridView11.SkipAddingControlsOnModifyColumn = False
-            Me.GridView11.SkipSettingFontOnModifyColumn = False
-            '
-            'LabelGeneralDefaultInformation_Station
-            '
-            Me.LabelGeneralDefaultInformation_Station.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_Station.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_Station.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_Station.Location = New System.Drawing.Point(0, 130)
-            Me.LabelGeneralDefaultInformation_Station.Name = "LabelGeneralDefaultInformation_Station"
-            Me.LabelGeneralDefaultInformation_Station.Size = New System.Drawing.Size(91, 20)
-            Me.LabelGeneralDefaultInformation_Station.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_Station.TabIndex = 17
-            Me.LabelGeneralDefaultInformation_Station.Text = "Nielsen Station:"
-            '
-            'CheckBoxGeneralDefaultInformation_IsCableSystem
-            '
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.CheckValue = 0
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.CheckValueChecked = 1
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.CheckValueUnchecked = 0
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.ChildControls = CType(resources.GetObject("CheckBoxGeneralDefaultInformation_IsCableSystem.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.Location = New System.Drawing.Point(167, 52)
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.Name = "CheckBoxGeneralDefaultInformation_IsCableSystem"
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.OldestSibling = Nothing
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.SecurityEnabled = True
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.SiblingControls = CType(resources.GetObject("CheckBoxGeneralDefaultInformation_IsCableSystem.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.Size = New System.Drawing.Size(26, 20)
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.TabIndex = 9
-            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.TabOnEnter = True
-            '
-            'LabelGeneralDefaultInformation_IsCableSystem
-            '
-            Me.LabelGeneralDefaultInformation_IsCableSystem.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_IsCableSystem.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_IsCableSystem.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_IsCableSystem.Location = New System.Drawing.Point(0, 52)
-            Me.LabelGeneralDefaultInformation_IsCableSystem.Name = "LabelGeneralDefaultInformation_IsCableSystem"
-            Me.LabelGeneralDefaultInformation_IsCableSystem.Size = New System.Drawing.Size(161, 20)
-            Me.LabelGeneralDefaultInformation_IsCableSystem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_IsCableSystem.TabIndex = 8
-            Me.LabelGeneralDefaultInformation_IsCableSystem.Text = "Is Cable System:"
-            '
-            'LabelGeneralDefaultInformation_MarkupPercent
-            '
-            Me.LabelGeneralDefaultInformation_MarkupPercent.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_MarkupPercent.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_MarkupPercent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_MarkupPercent.Location = New System.Drawing.Point(1, 284)
-            Me.LabelGeneralDefaultInformation_MarkupPercent.Name = "LabelGeneralDefaultInformation_MarkupPercent"
-            Me.LabelGeneralDefaultInformation_MarkupPercent.Size = New System.Drawing.Size(99, 20)
-            Me.LabelGeneralDefaultInformation_MarkupPercent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_MarkupPercent.TabIndex = 28
-            Me.LabelGeneralDefaultInformation_MarkupPercent.Text = "Markup %:"
-            '
-            'NumericInputGeneralDefaultInformation_MarkupPercent
-            '
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.EnterMoveNextControl = True
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Location = New System.Drawing.Point(167, 284)
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Name = "NumericInputGeneralDefaultInformation_MarkupPercent"
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.DisplayFormat.FormatString = "f"
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.EditFormat.FormatString = "f"
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.Mask.EditMask = "f"
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.SecurityEnabled = True
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Size = New System.Drawing.Size(94, 20)
-            Me.NumericInputGeneralDefaultInformation_MarkupPercent.TabIndex = 29
-            '
-            'SearchableComboBoxGeneralDefaultInformation_TaxCode
-            '
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.ActiveFilterString = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.AutoFillMode = False
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.BookmarkingEnabled = False
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.TaxCode
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.DataSource = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.DisableMouseWheel = False
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.DisplayName = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.EnterMoveNextControl = True
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Location = New System.Drawing.Point(167, 310)
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Name = "SearchableComboBoxGeneralDefaultInformation_TaxCode"
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Properties.DisplayMember = "Description"
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Properties.NullText = "Select Tax Code"
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Properties.PopupView = Me.GridView9
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Properties.ValueMember = "TaxCode"
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.SecurityEnabled = True
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.SelectedValue = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Size = New System.Drawing.Size(339, 20)
-            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.TabIndex = 33
-            '
-            'GridView9
-            '
-            Me.GridView9.AFActiveFilterString = ""
-            Me.GridView9.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView9.AutoFilterLookupColumns = False
-            Me.GridView9.AutoloadRepositoryDatasource = True
-            Me.GridView9.DataSourceClearing = False
-            Me.GridView9.EnableDisabledRows = False
-            Me.GridView9.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView9.Name = "GridView9"
-            Me.GridView9.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView9.OptionsView.ShowGroupPanel = False
-            Me.GridView9.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView9.RunStandardValidation = True
-            Me.GridView9.SkipAddingControlsOnModifyColumn = False
-            Me.GridView9.SkipSettingFontOnModifyColumn = False
-            '
-            'SearchableComboBoxGeneralDefaultInformation_Market
-            '
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.ActiveFilterString = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.AddInactiveItemsOnSelectedValue = True
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.AutoFillMode = False
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.BookmarkingEnabled = False
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.Market
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.DataSource = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.DisableMouseWheel = False
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.DisplayName = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.EnterMoveNextControl = True
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.Location = New System.Drawing.Point(167, 0)
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.Name = "SearchableComboBoxGeneralDefaultInformation_Market"
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.Properties.DisplayMember = "Description"
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.Properties.NullText = "Select Market"
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.Properties.PopupView = Me.GridView8
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.Properties.ValueMember = "Code"
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.SecurityEnabled = True
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.SelectedValue = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.Size = New System.Drawing.Size(339, 20)
-            Me.SearchableComboBoxGeneralDefaultInformation_Market.TabIndex = 1
-            '
-            'GridView8
-            '
-            Me.GridView8.AFActiveFilterString = ""
-            Me.GridView8.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView8.AutoFilterLookupColumns = False
-            Me.GridView8.AutoloadRepositoryDatasource = True
-            Me.GridView8.DataSourceClearing = False
-            Me.GridView8.EnableDisabledRows = False
-            Me.GridView8.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView8.Name = "GridView8"
-            Me.GridView8.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView8.OptionsView.ShowGroupPanel = False
-            Me.GridView8.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView8.RunStandardValidation = True
-            Me.GridView8.SkipAddingControlsOnModifyColumn = False
-            Me.GridView8.SkipSettingFontOnModifyColumn = False
-            '
-            'LabelGeneralDefaultInformation_Market
-            '
-            Me.LabelGeneralDefaultInformation_Market.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_Market.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_Market.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_Market.Location = New System.Drawing.Point(0, 0)
-            Me.LabelGeneralDefaultInformation_Market.Name = "LabelGeneralDefaultInformation_Market"
-            Me.LabelGeneralDefaultInformation_Market.Size = New System.Drawing.Size(91, 20)
-            Me.LabelGeneralDefaultInformation_Market.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_Market.TabIndex = 0
-            Me.LabelGeneralDefaultInformation_Market.Text = "Market:"
-            '
-            'LabelGeneralDefaultInformation_CommissionPercent
-            '
-            Me.LabelGeneralDefaultInformation_CommissionPercent.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_CommissionPercent.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_CommissionPercent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_CommissionPercent.Location = New System.Drawing.Point(1, 258)
-            Me.LabelGeneralDefaultInformation_CommissionPercent.Name = "LabelGeneralDefaultInformation_CommissionPercent"
-            Me.LabelGeneralDefaultInformation_CommissionPercent.Size = New System.Drawing.Size(92, 20)
-            Me.LabelGeneralDefaultInformation_CommissionPercent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_CommissionPercent.TabIndex = 24
-            Me.LabelGeneralDefaultInformation_CommissionPercent.Text = "Commission %:"
-            '
-            'LabelGeneralDefaultInformation_ApplyTo
-            '
-            Me.LabelGeneralDefaultInformation_ApplyTo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelGeneralDefaultInformation_ApplyTo.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_ApplyTo.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelGeneralDefaultInformation_ApplyTo.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
-            Me.LabelGeneralDefaultInformation_ApplyTo.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelGeneralDefaultInformation_ApplyTo.BackgroundStyle.BorderColor = System.Drawing.Color.Black
-            Me.LabelGeneralDefaultInformation_ApplyTo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_ApplyTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelGeneralDefaultInformation_ApplyTo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelGeneralDefaultInformation_ApplyTo.Location = New System.Drawing.Point(0, 338)
-            Me.LabelGeneralDefaultInformation_ApplyTo.Name = "LabelGeneralDefaultInformation_ApplyTo"
-            Me.LabelGeneralDefaultInformation_ApplyTo.Size = New System.Drawing.Size(506, 20)
-            Me.LabelGeneralDefaultInformation_ApplyTo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_ApplyTo.TabIndex = 34
-            Me.LabelGeneralDefaultInformation_ApplyTo.Text = "Apply Tax To:"
-            '
-            'CheckBoxApplyTo_NetDiscount
-            '
-            Me.CheckBoxApplyTo_NetDiscount.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxApplyTo_NetDiscount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxApplyTo_NetDiscount.CheckValue = 0
-            Me.CheckBoxApplyTo_NetDiscount.CheckValueChecked = 1
-            Me.CheckBoxApplyTo_NetDiscount.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxApplyTo_NetDiscount.CheckValueUnchecked = 0
-            Me.CheckBoxApplyTo_NetDiscount.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_NetDiscount.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_NetDiscount.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxApplyTo_NetDiscount.Location = New System.Drawing.Point(213, 416)
-            Me.CheckBoxApplyTo_NetDiscount.Name = "CheckBoxApplyTo_NetDiscount"
-            Me.CheckBoxApplyTo_NetDiscount.OldestSibling = Nothing
-            Me.CheckBoxApplyTo_NetDiscount.SecurityEnabled = True
-            Me.CheckBoxApplyTo_NetDiscount.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_NetDiscount.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_NetDiscount.Size = New System.Drawing.Size(198, 20)
-            Me.CheckBoxApplyTo_NetDiscount.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxApplyTo_NetDiscount.TabIndex = 41
-            Me.CheckBoxApplyTo_NetDiscount.TabOnEnter = True
-            Me.CheckBoxApplyTo_NetDiscount.Text = "Net Discount"
-            '
-            'LabelGeneralDefaultInformation_OveragePercent
-            '
-            Me.LabelGeneralDefaultInformation_OveragePercent.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_OveragePercent.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_OveragePercent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_OveragePercent.Location = New System.Drawing.Point(275, 258)
-            Me.LabelGeneralDefaultInformation_OveragePercent.Name = "LabelGeneralDefaultInformation_OveragePercent"
-            Me.LabelGeneralDefaultInformation_OveragePercent.Size = New System.Drawing.Size(91, 20)
-            Me.LabelGeneralDefaultInformation_OveragePercent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_OveragePercent.TabIndex = 26
-            Me.LabelGeneralDefaultInformation_OveragePercent.Text = "Overage %:"
-            '
-            'CheckBoxApplyTo_AddlCharge
-            '
-            Me.CheckBoxApplyTo_AddlCharge.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxApplyTo_AddlCharge.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxApplyTo_AddlCharge.CheckValue = 0
-            Me.CheckBoxApplyTo_AddlCharge.CheckValueChecked = 1
-            Me.CheckBoxApplyTo_AddlCharge.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxApplyTo_AddlCharge.CheckValueUnchecked = 0
-            Me.CheckBoxApplyTo_AddlCharge.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_AddlCharge.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_AddlCharge.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxApplyTo_AddlCharge.Location = New System.Drawing.Point(107, 416)
-            Me.CheckBoxApplyTo_AddlCharge.Name = "CheckBoxApplyTo_AddlCharge"
-            Me.CheckBoxApplyTo_AddlCharge.OldestSibling = Nothing
-            Me.CheckBoxApplyTo_AddlCharge.SecurityEnabled = True
-            Me.CheckBoxApplyTo_AddlCharge.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_AddlCharge.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_AddlCharge.Size = New System.Drawing.Size(100, 20)
-            Me.CheckBoxApplyTo_AddlCharge.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxApplyTo_AddlCharge.TabIndex = 40
-            Me.CheckBoxApplyTo_AddlCharge.TabOnEnter = True
-            Me.CheckBoxApplyTo_AddlCharge.Text = "Addl Charge"
-            '
-            'LabelGeneralDefaultInformation_TaxCode
-            '
-            Me.LabelGeneralDefaultInformation_TaxCode.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_TaxCode.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_TaxCode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_TaxCode.Location = New System.Drawing.Point(1, 310)
-            Me.LabelGeneralDefaultInformation_TaxCode.Name = "LabelGeneralDefaultInformation_TaxCode"
-            Me.LabelGeneralDefaultInformation_TaxCode.Size = New System.Drawing.Size(91, 20)
-            Me.LabelGeneralDefaultInformation_TaxCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_TaxCode.TabIndex = 32
-            Me.LabelGeneralDefaultInformation_TaxCode.Text = "Tax Code:"
-            '
-            'CheckBoxApplyTo_Rebate
-            '
-            Me.CheckBoxApplyTo_Rebate.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxApplyTo_Rebate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxApplyTo_Rebate.CheckValue = 0
-            Me.CheckBoxApplyTo_Rebate.CheckValueChecked = 1
-            Me.CheckBoxApplyTo_Rebate.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxApplyTo_Rebate.CheckValueUnchecked = 0
-            Me.CheckBoxApplyTo_Rebate.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_Rebate.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_Rebate.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxApplyTo_Rebate.Location = New System.Drawing.Point(213, 390)
-            Me.CheckBoxApplyTo_Rebate.Name = "CheckBoxApplyTo_Rebate"
-            Me.CheckBoxApplyTo_Rebate.OldestSibling = Nothing
-            Me.CheckBoxApplyTo_Rebate.SecurityEnabled = True
-            Me.CheckBoxApplyTo_Rebate.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_Rebate.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_Rebate.Size = New System.Drawing.Size(198, 20)
-            Me.CheckBoxApplyTo_Rebate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxApplyTo_Rebate.TabIndex = 39
-            Me.CheckBoxApplyTo_Rebate.TabOnEnter = True
-            Me.CheckBoxApplyTo_Rebate.Text = "Rebate"
-            '
-            'LabelGeneralDefaultInformation_ColumnWidth
-            '
-            Me.LabelGeneralDefaultInformation_ColumnWidth.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelGeneralDefaultInformation_ColumnWidth.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_ColumnWidth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_ColumnWidth.Location = New System.Drawing.Point(275, 284)
-            Me.LabelGeneralDefaultInformation_ColumnWidth.Name = "LabelGeneralDefaultInformation_ColumnWidth"
-            Me.LabelGeneralDefaultInformation_ColumnWidth.Size = New System.Drawing.Size(91, 20)
-            Me.LabelGeneralDefaultInformation_ColumnWidth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_ColumnWidth.TabIndex = 30
-            Me.LabelGeneralDefaultInformation_ColumnWidth.Text = "Column Width:"
-            '
-            'CheckBoxApplyTo_NetCharge
-            '
-            Me.CheckBoxApplyTo_NetCharge.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxApplyTo_NetCharge.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxApplyTo_NetCharge.CheckValue = 0
-            Me.CheckBoxApplyTo_NetCharge.CheckValueChecked = 1
-            Me.CheckBoxApplyTo_NetCharge.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxApplyTo_NetCharge.CheckValueUnchecked = 0
-            Me.CheckBoxApplyTo_NetCharge.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_NetCharge.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_NetCharge.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxApplyTo_NetCharge.Location = New System.Drawing.Point(107, 390)
-            Me.CheckBoxApplyTo_NetCharge.Name = "CheckBoxApplyTo_NetCharge"
-            Me.CheckBoxApplyTo_NetCharge.OldestSibling = Nothing
-            Me.CheckBoxApplyTo_NetCharge.SecurityEnabled = True
-            Me.CheckBoxApplyTo_NetCharge.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_NetCharge.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_NetCharge.Size = New System.Drawing.Size(100, 20)
-            Me.CheckBoxApplyTo_NetCharge.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxApplyTo_NetCharge.TabIndex = 38
-            Me.CheckBoxApplyTo_NetCharge.TabOnEnter = True
-            Me.CheckBoxApplyTo_NetCharge.Text = "Net Charge"
-            '
-            'CheckBoxApplyTo_Commission
-            '
-            Me.CheckBoxApplyTo_Commission.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxApplyTo_Commission.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxApplyTo_Commission.CheckValue = 0
-            Me.CheckBoxApplyTo_Commission.CheckValueChecked = 1
-            Me.CheckBoxApplyTo_Commission.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxApplyTo_Commission.CheckValueUnchecked = 0
-            Me.CheckBoxApplyTo_Commission.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_Commission.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_Commission.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxApplyTo_Commission.Location = New System.Drawing.Point(213, 364)
-            Me.CheckBoxApplyTo_Commission.Name = "CheckBoxApplyTo_Commission"
-            Me.CheckBoxApplyTo_Commission.OldestSibling = Nothing
-            Me.CheckBoxApplyTo_Commission.SecurityEnabled = True
-            Me.CheckBoxApplyTo_Commission.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_Commission.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_Commission.Size = New System.Drawing.Size(198, 20)
-            Me.CheckBoxApplyTo_Commission.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxApplyTo_Commission.TabIndex = 37
-            Me.CheckBoxApplyTo_Commission.TabOnEnter = True
-            Me.CheckBoxApplyTo_Commission.Text = "Commission"
-            '
-            'CheckBoxApplyTo_LineNet
-            '
-            Me.CheckBoxApplyTo_LineNet.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxApplyTo_LineNet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxApplyTo_LineNet.CheckValue = 0
-            Me.CheckBoxApplyTo_LineNet.CheckValueChecked = 1
-            Me.CheckBoxApplyTo_LineNet.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxApplyTo_LineNet.CheckValueUnchecked = 0
-            Me.CheckBoxApplyTo_LineNet.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_LineNet.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_LineNet.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxApplyTo_LineNet.Location = New System.Drawing.Point(107, 364)
-            Me.CheckBoxApplyTo_LineNet.Name = "CheckBoxApplyTo_LineNet"
-            Me.CheckBoxApplyTo_LineNet.OldestSibling = Nothing
-            Me.CheckBoxApplyTo_LineNet.SecurityEnabled = True
-            Me.CheckBoxApplyTo_LineNet.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_LineNet.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_LineNet.Size = New System.Drawing.Size(100, 20)
-            Me.CheckBoxApplyTo_LineNet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxApplyTo_LineNet.TabIndex = 36
-            Me.CheckBoxApplyTo_LineNet.TabOnEnter = True
-            Me.CheckBoxApplyTo_LineNet.Text = "Line Net"
-            '
-            'NumericInputGeneralDefaultInformation_ColumnWidth
-            '
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.EnterMoveNextControl = True
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Location = New System.Drawing.Point(410, 284)
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Name = "NumericInputGeneralDefaultInformation_ColumnWidth"
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.DisplayFormat.FormatString = "f"
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.EditFormat.FormatString = "f"
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.Mask.EditMask = "f"
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.SecurityEnabled = True
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Size = New System.Drawing.Size(94, 20)
-            Me.NumericInputGeneralDefaultInformation_ColumnWidth.TabIndex = 31
-            '
-            'CheckBoxApplyTo_UseFlags
-            '
-            Me.CheckBoxApplyTo_UseFlags.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxApplyTo_UseFlags.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxApplyTo_UseFlags.CheckValue = 0
-            Me.CheckBoxApplyTo_UseFlags.CheckValueChecked = 1
-            Me.CheckBoxApplyTo_UseFlags.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxApplyTo_UseFlags.CheckValueUnchecked = 0
-            Me.CheckBoxApplyTo_UseFlags.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_UseFlags.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_UseFlags.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxApplyTo_UseFlags.Location = New System.Drawing.Point(0, 364)
-            Me.CheckBoxApplyTo_UseFlags.Name = "CheckBoxApplyTo_UseFlags"
-            Me.CheckBoxApplyTo_UseFlags.OldestSibling = Nothing
-            Me.CheckBoxApplyTo_UseFlags.SecurityEnabled = True
-            Me.CheckBoxApplyTo_UseFlags.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_UseFlags.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxApplyTo_UseFlags.Size = New System.Drawing.Size(100, 20)
-            Me.CheckBoxApplyTo_UseFlags.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxApplyTo_UseFlags.TabIndex = 35
-            Me.CheckBoxApplyTo_UseFlags.TabOnEnter = True
-            Me.CheckBoxApplyTo_UseFlags.Text = "Use Flags"
-            '
-            'NumericInputGeneralDefaultInformation_OveragePercent
-            '
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.EnterMoveNextControl = True
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.Location = New System.Drawing.Point(410, 258)
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.Name = "NumericInputGeneralDefaultInformation_OveragePercent"
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.DisplayFormat.FormatString = "f"
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.EditFormat.FormatString = "f"
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.Mask.EditMask = "f"
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.SecurityEnabled = True
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.Size = New System.Drawing.Size(94, 20)
-            Me.NumericInputGeneralDefaultInformation_OveragePercent.TabIndex = 27
-            '
-            'NumericInputGeneralDefaultInformation_CommissionPercent
-            '
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.EnterMoveNextControl = True
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Location = New System.Drawing.Point(167, 258)
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Name = "NumericInputGeneralDefaultInformation_CommissionPercent"
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.DisplayFormat.FormatString = "f"
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.EditFormat.FormatString = "f"
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.Mask.EditMask = "f"
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.SecurityEnabled = True
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Size = New System.Drawing.Size(94, 20)
-            Me.NumericInputGeneralDefaultInformation_CommissionPercent.TabIndex = 25
-            '
-            'TabItemMediaDefaults_GeneralDefaultInformationTab
-            '
-            Me.TabItemMediaDefaults_GeneralDefaultInformationTab.AttachedControl = Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation
-            Me.TabItemMediaDefaults_GeneralDefaultInformationTab.Name = "TabItemMediaDefaults_GeneralDefaultInformationTab"
-            Me.TabItemMediaDefaults_GeneralDefaultInformationTab.Text = "General Default Information"
-            '
-            'TabControlPanelDefaultCommentsTab_DefaultComments
-            '
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.ButtonDefaultComments_CheckSpelling)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.CheckBoxDefaultComments_UseFooterComment)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_Instructions)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_FooterComment)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_RateInfo)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_MaterialNotes)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_PositionInfo)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_MiscInfo)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_CloseInfo)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_FooterComment)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_RateInfo)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_MaterialNotes)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_PositionInfo)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_MiscInfo)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_CloseInfo)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_Instructions)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Name = "TabControlPanelDefaultCommentsTab_DefaultComments"
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Size = New System.Drawing.Size(803, 474)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.GradientAngle = 90
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.TabIndex = 2
-            Me.TabControlPanelDefaultCommentsTab_DefaultComments.TabItem = Me.TabItemMediaDefaults_DefaultCommentsTab
-            '
-            'ButtonDefaultComments_CheckSpelling
-            '
-            Me.ButtonDefaultComments_CheckSpelling.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonDefaultComments_CheckSpelling.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.ButtonDefaultComments_CheckSpelling.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonDefaultComments_CheckSpelling.Location = New System.Drawing.Point(703, 450)
-            Me.ButtonDefaultComments_CheckSpelling.Name = "ButtonDefaultComments_CheckSpelling"
-            Me.ButtonDefaultComments_CheckSpelling.SecurityEnabled = True
-            Me.ButtonDefaultComments_CheckSpelling.Size = New System.Drawing.Size(96, 20)
-            Me.ButtonDefaultComments_CheckSpelling.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonDefaultComments_CheckSpelling.TabIndex = 15
-            Me.ButtonDefaultComments_CheckSpelling.Text = "Check Spelling"
-            '
-            'CheckBoxDefaultComments_UseFooterComment
-            '
-            Me.CheckBoxDefaultComments_UseFooterComment.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxDefaultComments_UseFooterComment.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxDefaultComments_UseFooterComment.CheckValue = 0
-            Me.CheckBoxDefaultComments_UseFooterComment.CheckValueChecked = 1
-            Me.CheckBoxDefaultComments_UseFooterComment.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxDefaultComments_UseFooterComment.CheckValueUnchecked = 0
-            Me.CheckBoxDefaultComments_UseFooterComment.ChildControls = CType(resources.GetObject("CheckBoxDefaultComments_UseFooterComment.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxDefaultComments_UseFooterComment.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxDefaultComments_UseFooterComment.Location = New System.Drawing.Point(4, 336)
-            Me.CheckBoxDefaultComments_UseFooterComment.Name = "CheckBoxDefaultComments_UseFooterComment"
-            Me.CheckBoxDefaultComments_UseFooterComment.OldestSibling = Nothing
-            Me.CheckBoxDefaultComments_UseFooterComment.SecurityEnabled = True
-            Me.CheckBoxDefaultComments_UseFooterComment.SiblingControls = CType(resources.GetObject("CheckBoxDefaultComments_UseFooterComment.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxDefaultComments_UseFooterComment.Size = New System.Drawing.Size(91, 20)
-            Me.CheckBoxDefaultComments_UseFooterComment.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxDefaultComments_UseFooterComment.TabIndex = 14
-            Me.CheckBoxDefaultComments_UseFooterComment.TabOnEnter = True
-            Me.CheckBoxDefaultComments_UseFooterComment.Text = "Use"
-            '
-            'TextBoxDefaultComments_Instructions
-            '
-            Me.TextBoxDefaultComments_Instructions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxDefaultComments_Instructions.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxDefaultComments_Instructions.Border.Class = "TextBoxBorder"
-            Me.TextBoxDefaultComments_Instructions.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxDefaultComments_Instructions.CheckSpellingOnValidate = False
-            Me.TextBoxDefaultComments_Instructions.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxDefaultComments_Instructions.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxDefaultComments_Instructions.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxDefaultComments_Instructions.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxDefaultComments_Instructions.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxDefaultComments_Instructions.FocusHighlightEnabled = True
-            Me.TextBoxDefaultComments_Instructions.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxDefaultComments_Instructions.Location = New System.Drawing.Point(101, 4)
-            Me.TextBoxDefaultComments_Instructions.MaxFileSize = CType(0, Long)
-            Me.TextBoxDefaultComments_Instructions.Multiline = True
-            Me.TextBoxDefaultComments_Instructions.Name = "TextBoxDefaultComments_Instructions"
-            Me.TextBoxDefaultComments_Instructions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxDefaultComments_Instructions.SecurityEnabled = True
-            Me.TextBoxDefaultComments_Instructions.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxDefaultComments_Instructions.Size = New System.Drawing.Size(698, 45)
-            Me.TextBoxDefaultComments_Instructions.StartingFolderName = Nothing
-            Me.TextBoxDefaultComments_Instructions.TabIndex = 1
-            Me.TextBoxDefaultComments_Instructions.TabOnEnter = False
-            '
-            'TextBoxDefaultComments_FooterComment
-            '
-            Me.TextBoxDefaultComments_FooterComment.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxDefaultComments_FooterComment.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxDefaultComments_FooterComment.Border.Class = "TextBoxBorder"
-            Me.TextBoxDefaultComments_FooterComment.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxDefaultComments_FooterComment.CheckSpellingOnValidate = False
-            Me.TextBoxDefaultComments_FooterComment.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxDefaultComments_FooterComment.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxDefaultComments_FooterComment.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxDefaultComments_FooterComment.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxDefaultComments_FooterComment.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxDefaultComments_FooterComment.FocusHighlightEnabled = True
-            Me.TextBoxDefaultComments_FooterComment.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxDefaultComments_FooterComment.Location = New System.Drawing.Point(101, 310)
-            Me.TextBoxDefaultComments_FooterComment.MaxFileSize = CType(0, Long)
-            Me.TextBoxDefaultComments_FooterComment.Multiline = True
-            Me.TextBoxDefaultComments_FooterComment.Name = "TextBoxDefaultComments_FooterComment"
-            Me.TextBoxDefaultComments_FooterComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxDefaultComments_FooterComment.SecurityEnabled = True
-            Me.TextBoxDefaultComments_FooterComment.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxDefaultComments_FooterComment.Size = New System.Drawing.Size(698, 134)
-            Me.TextBoxDefaultComments_FooterComment.StartingFolderName = Nothing
-            Me.TextBoxDefaultComments_FooterComment.TabIndex = 13
-            Me.TextBoxDefaultComments_FooterComment.TabOnEnter = False
-            '
-            'TextBoxDefaultComments_RateInfo
-            '
-            Me.TextBoxDefaultComments_RateInfo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxDefaultComments_RateInfo.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxDefaultComments_RateInfo.Border.Class = "TextBoxBorder"
-            Me.TextBoxDefaultComments_RateInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxDefaultComments_RateInfo.CheckSpellingOnValidate = False
-            Me.TextBoxDefaultComments_RateInfo.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxDefaultComments_RateInfo.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxDefaultComments_RateInfo.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxDefaultComments_RateInfo.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxDefaultComments_RateInfo.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxDefaultComments_RateInfo.FocusHighlightEnabled = True
-            Me.TextBoxDefaultComments_RateInfo.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxDefaultComments_RateInfo.Location = New System.Drawing.Point(101, 259)
-            Me.TextBoxDefaultComments_RateInfo.MaxFileSize = CType(0, Long)
-            Me.TextBoxDefaultComments_RateInfo.Multiline = True
-            Me.TextBoxDefaultComments_RateInfo.Name = "TextBoxDefaultComments_RateInfo"
-            Me.TextBoxDefaultComments_RateInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxDefaultComments_RateInfo.SecurityEnabled = True
-            Me.TextBoxDefaultComments_RateInfo.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxDefaultComments_RateInfo.Size = New System.Drawing.Size(698, 45)
-            Me.TextBoxDefaultComments_RateInfo.StartingFolderName = Nothing
-            Me.TextBoxDefaultComments_RateInfo.TabIndex = 11
-            Me.TextBoxDefaultComments_RateInfo.TabOnEnter = False
-            '
-            'TextBoxDefaultComments_MaterialNotes
-            '
-            Me.TextBoxDefaultComments_MaterialNotes.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxDefaultComments_MaterialNotes.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxDefaultComments_MaterialNotes.Border.Class = "TextBoxBorder"
-            Me.TextBoxDefaultComments_MaterialNotes.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxDefaultComments_MaterialNotes.CheckSpellingOnValidate = False
-            Me.TextBoxDefaultComments_MaterialNotes.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxDefaultComments_MaterialNotes.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxDefaultComments_MaterialNotes.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxDefaultComments_MaterialNotes.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxDefaultComments_MaterialNotes.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxDefaultComments_MaterialNotes.FocusHighlightEnabled = True
-            Me.TextBoxDefaultComments_MaterialNotes.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxDefaultComments_MaterialNotes.Location = New System.Drawing.Point(101, 208)
-            Me.TextBoxDefaultComments_MaterialNotes.MaxFileSize = CType(0, Long)
-            Me.TextBoxDefaultComments_MaterialNotes.Multiline = True
-            Me.TextBoxDefaultComments_MaterialNotes.Name = "TextBoxDefaultComments_MaterialNotes"
-            Me.TextBoxDefaultComments_MaterialNotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxDefaultComments_MaterialNotes.SecurityEnabled = True
-            Me.TextBoxDefaultComments_MaterialNotes.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxDefaultComments_MaterialNotes.Size = New System.Drawing.Size(698, 45)
-            Me.TextBoxDefaultComments_MaterialNotes.StartingFolderName = Nothing
-            Me.TextBoxDefaultComments_MaterialNotes.TabIndex = 9
-            Me.TextBoxDefaultComments_MaterialNotes.TabOnEnter = False
-            '
-            'TextBoxDefaultComments_PositionInfo
-            '
-            Me.TextBoxDefaultComments_PositionInfo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxDefaultComments_PositionInfo.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxDefaultComments_PositionInfo.Border.Class = "TextBoxBorder"
-            Me.TextBoxDefaultComments_PositionInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxDefaultComments_PositionInfo.CheckSpellingOnValidate = False
-            Me.TextBoxDefaultComments_PositionInfo.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxDefaultComments_PositionInfo.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxDefaultComments_PositionInfo.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxDefaultComments_PositionInfo.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxDefaultComments_PositionInfo.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxDefaultComments_PositionInfo.FocusHighlightEnabled = True
-            Me.TextBoxDefaultComments_PositionInfo.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxDefaultComments_PositionInfo.Location = New System.Drawing.Point(101, 157)
-            Me.TextBoxDefaultComments_PositionInfo.MaxFileSize = CType(0, Long)
-            Me.TextBoxDefaultComments_PositionInfo.Multiline = True
-            Me.TextBoxDefaultComments_PositionInfo.Name = "TextBoxDefaultComments_PositionInfo"
-            Me.TextBoxDefaultComments_PositionInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxDefaultComments_PositionInfo.SecurityEnabled = True
-            Me.TextBoxDefaultComments_PositionInfo.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxDefaultComments_PositionInfo.Size = New System.Drawing.Size(698, 45)
-            Me.TextBoxDefaultComments_PositionInfo.StartingFolderName = Nothing
-            Me.TextBoxDefaultComments_PositionInfo.TabIndex = 7
-            Me.TextBoxDefaultComments_PositionInfo.TabOnEnter = False
-            '
-            'TextBoxDefaultComments_MiscInfo
-            '
-            Me.TextBoxDefaultComments_MiscInfo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxDefaultComments_MiscInfo.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxDefaultComments_MiscInfo.Border.Class = "TextBoxBorder"
-            Me.TextBoxDefaultComments_MiscInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxDefaultComments_MiscInfo.CheckSpellingOnValidate = False
-            Me.TextBoxDefaultComments_MiscInfo.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxDefaultComments_MiscInfo.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxDefaultComments_MiscInfo.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxDefaultComments_MiscInfo.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxDefaultComments_MiscInfo.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxDefaultComments_MiscInfo.FocusHighlightEnabled = True
-            Me.TextBoxDefaultComments_MiscInfo.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxDefaultComments_MiscInfo.Location = New System.Drawing.Point(101, 106)
-            Me.TextBoxDefaultComments_MiscInfo.MaxFileSize = CType(0, Long)
-            Me.TextBoxDefaultComments_MiscInfo.Multiline = True
-            Me.TextBoxDefaultComments_MiscInfo.Name = "TextBoxDefaultComments_MiscInfo"
-            Me.TextBoxDefaultComments_MiscInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxDefaultComments_MiscInfo.SecurityEnabled = True
-            Me.TextBoxDefaultComments_MiscInfo.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxDefaultComments_MiscInfo.Size = New System.Drawing.Size(698, 45)
-            Me.TextBoxDefaultComments_MiscInfo.StartingFolderName = Nothing
-            Me.TextBoxDefaultComments_MiscInfo.TabIndex = 5
-            Me.TextBoxDefaultComments_MiscInfo.TabOnEnter = False
-            '
-            'TextBoxDefaultComments_CloseInfo
-            '
-            Me.TextBoxDefaultComments_CloseInfo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxDefaultComments_CloseInfo.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxDefaultComments_CloseInfo.Border.Class = "TextBoxBorder"
-            Me.TextBoxDefaultComments_CloseInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxDefaultComments_CloseInfo.CheckSpellingOnValidate = False
-            Me.TextBoxDefaultComments_CloseInfo.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxDefaultComments_CloseInfo.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxDefaultComments_CloseInfo.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxDefaultComments_CloseInfo.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxDefaultComments_CloseInfo.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxDefaultComments_CloseInfo.FocusHighlightEnabled = True
-            Me.TextBoxDefaultComments_CloseInfo.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxDefaultComments_CloseInfo.Location = New System.Drawing.Point(101, 55)
-            Me.TextBoxDefaultComments_CloseInfo.MaxFileSize = CType(0, Long)
-            Me.TextBoxDefaultComments_CloseInfo.Multiline = True
-            Me.TextBoxDefaultComments_CloseInfo.Name = "TextBoxDefaultComments_CloseInfo"
-            Me.TextBoxDefaultComments_CloseInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxDefaultComments_CloseInfo.SecurityEnabled = True
-            Me.TextBoxDefaultComments_CloseInfo.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxDefaultComments_CloseInfo.Size = New System.Drawing.Size(698, 45)
-            Me.TextBoxDefaultComments_CloseInfo.StartingFolderName = Nothing
-            Me.TextBoxDefaultComments_CloseInfo.TabIndex = 3
-            Me.TextBoxDefaultComments_CloseInfo.TabOnEnter = False
-            '
-            'LabelDefaultComments_FooterComment
-            '
-            Me.LabelDefaultComments_FooterComment.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDefaultComments_FooterComment.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelDefaultComments_FooterComment.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDefaultComments_FooterComment.Location = New System.Drawing.Point(4, 310)
-            Me.LabelDefaultComments_FooterComment.Name = "LabelDefaultComments_FooterComment"
-            Me.LabelDefaultComments_FooterComment.Size = New System.Drawing.Size(91, 20)
-            Me.LabelDefaultComments_FooterComment.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDefaultComments_FooterComment.TabIndex = 12
-            Me.LabelDefaultComments_FooterComment.Text = "Footer Comment:"
-            '
-            'LabelDefaultComments_RateInfo
-            '
-            Me.LabelDefaultComments_RateInfo.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDefaultComments_RateInfo.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelDefaultComments_RateInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDefaultComments_RateInfo.Location = New System.Drawing.Point(4, 259)
-            Me.LabelDefaultComments_RateInfo.Name = "LabelDefaultComments_RateInfo"
-            Me.LabelDefaultComments_RateInfo.Size = New System.Drawing.Size(91, 20)
-            Me.LabelDefaultComments_RateInfo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDefaultComments_RateInfo.TabIndex = 10
-            Me.LabelDefaultComments_RateInfo.Text = "Rate Info:"
-            '
-            'LabelDefaultComments_MaterialNotes
-            '
-            Me.LabelDefaultComments_MaterialNotes.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDefaultComments_MaterialNotes.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelDefaultComments_MaterialNotes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDefaultComments_MaterialNotes.Location = New System.Drawing.Point(4, 208)
-            Me.LabelDefaultComments_MaterialNotes.Name = "LabelDefaultComments_MaterialNotes"
-            Me.LabelDefaultComments_MaterialNotes.Size = New System.Drawing.Size(91, 20)
-            Me.LabelDefaultComments_MaterialNotes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDefaultComments_MaterialNotes.TabIndex = 8
-            Me.LabelDefaultComments_MaterialNotes.Text = "Material Notes:"
-            '
-            'LabelDefaultComments_PositionInfo
-            '
-            Me.LabelDefaultComments_PositionInfo.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDefaultComments_PositionInfo.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelDefaultComments_PositionInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDefaultComments_PositionInfo.Location = New System.Drawing.Point(4, 157)
-            Me.LabelDefaultComments_PositionInfo.Name = "LabelDefaultComments_PositionInfo"
-            Me.LabelDefaultComments_PositionInfo.Size = New System.Drawing.Size(91, 20)
-            Me.LabelDefaultComments_PositionInfo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDefaultComments_PositionInfo.TabIndex = 6
-            Me.LabelDefaultComments_PositionInfo.Text = "Position Info:"
-            '
-            'LabelDefaultComments_MiscInfo
-            '
-            Me.LabelDefaultComments_MiscInfo.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDefaultComments_MiscInfo.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelDefaultComments_MiscInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDefaultComments_MiscInfo.Location = New System.Drawing.Point(4, 106)
-            Me.LabelDefaultComments_MiscInfo.Name = "LabelDefaultComments_MiscInfo"
-            Me.LabelDefaultComments_MiscInfo.Size = New System.Drawing.Size(91, 20)
-            Me.LabelDefaultComments_MiscInfo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDefaultComments_MiscInfo.TabIndex = 4
-            Me.LabelDefaultComments_MiscInfo.Text = "Misc Info:"
-            '
-            'LabelDefaultComments_CloseInfo
-            '
-            Me.LabelDefaultComments_CloseInfo.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDefaultComments_CloseInfo.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelDefaultComments_CloseInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDefaultComments_CloseInfo.Location = New System.Drawing.Point(4, 55)
-            Me.LabelDefaultComments_CloseInfo.Name = "LabelDefaultComments_CloseInfo"
-            Me.LabelDefaultComments_CloseInfo.Size = New System.Drawing.Size(91, 20)
-            Me.LabelDefaultComments_CloseInfo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDefaultComments_CloseInfo.TabIndex = 2
-            Me.LabelDefaultComments_CloseInfo.Text = "Close Info:"
-            '
-            'LabelDefaultComments_Instructions
-            '
-            Me.LabelDefaultComments_Instructions.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDefaultComments_Instructions.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelDefaultComments_Instructions.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDefaultComments_Instructions.Location = New System.Drawing.Point(4, 4)
-            Me.LabelDefaultComments_Instructions.Name = "LabelDefaultComments_Instructions"
-            Me.LabelDefaultComments_Instructions.Size = New System.Drawing.Size(91, 20)
-            Me.LabelDefaultComments_Instructions.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDefaultComments_Instructions.TabIndex = 0
-            Me.LabelDefaultComments_Instructions.Text = "Instructions:"
-            '
-            'TabItemMediaDefaults_DefaultCommentsTab
-            '
-            Me.TabItemMediaDefaults_DefaultCommentsTab.AttachedControl = Me.TabControlPanelDefaultCommentsTab_DefaultComments
-            Me.TabItemMediaDefaults_DefaultCommentsTab.Name = "TabItemMediaDefaults_DefaultCommentsTab"
-            Me.TabItemMediaDefaults_DefaultCommentsTab.Text = "Default Comments"
-            '
-            'TabItemVendorDetails_MediaDefaultsTab
-            '
-            Me.TabItemVendorDetails_MediaDefaultsTab.AttachedControl = Me.TabControlPanelMediaDefaultsTab_MediaDefaults
-            Me.TabItemVendorDetails_MediaDefaultsTab.Name = "TabItemVendorDetails_MediaDefaultsTab"
-            Me.TabItemVendorDetails_MediaDefaultsTab.Text = "Media Defaults"
+            Me.CheckBox1099Info_Is1099Vendor.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBox1099Info_Is1099Vendor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBox1099Info_Is1099Vendor.CheckValue = 0
+            Me.CheckBox1099Info_Is1099Vendor.CheckValueChecked = 1
+            Me.CheckBox1099Info_Is1099Vendor.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBox1099Info_Is1099Vendor.CheckValueUnchecked = 0
+            Me.CheckBox1099Info_Is1099Vendor.ChildControls = CType(resources.GetObject("CheckBox1099Info_Is1099Vendor.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBox1099Info_Is1099Vendor.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBox1099Info_Is1099Vendor.Location = New System.Drawing.Point(4, 4)
+            Me.CheckBox1099Info_Is1099Vendor.Name = "CheckBox1099Info_Is1099Vendor"
+            Me.CheckBox1099Info_Is1099Vendor.OldestSibling = Nothing
+            Me.CheckBox1099Info_Is1099Vendor.SecurityEnabled = True
+            Me.CheckBox1099Info_Is1099Vendor.SiblingControls = CType(resources.GetObject("CheckBox1099Info_Is1099Vendor.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBox1099Info_Is1099Vendor.Size = New System.Drawing.Size(806, 20)
+            Me.CheckBox1099Info_Is1099Vendor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBox1099Info_Is1099Vendor.TabIndex = 0
+            Me.CheckBox1099Info_Is1099Vendor.TabOnEnter = True
+            Me.CheckBox1099Info_Is1099Vendor.Text = "1099 Vendor"
+            '
+            'TabItemVendorDetails_1099InfoTab
+            '
+            Me.TabItemVendorDetails_1099InfoTab.AttachedControl = Me.TabControlPanel1099InfoTab_1099Info
+            Me.TabItemVendorDetails_1099InfoTab.Name = "TabItemVendorDetails_1099InfoTab"
+            Me.TabItemVendorDetails_1099InfoTab.Text = "1099 Info"
             '
             'TabControlPanelMainTab_Main
             '
@@ -3641,202 +2152,177 @@
             Me.TabItemVendorDetails_MainTab.Name = "TabItemVendorDetails_MainTab"
             Me.TabItemVendorDetails_MainTab.Text = "Main"
             '
-            'TabControlPanelContactsTab_Contacts
+            'TabControlPanelEEOCStatusTab_EEOCStatus
             '
-            Me.TabControlPanelContactsTab_Contacts.Controls.Add(Me.TextBoxContacts_DefaultVendorContactCode)
-            Me.TabControlPanelContactsTab_Contacts.Controls.Add(Me.DataGridViewContacts_Contacts)
-            Me.TabControlPanelContactsTab_Contacts.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelContactsTab_Contacts.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelContactsTab_Contacts.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelContactsTab_Contacts.Name = "TabControlPanelContactsTab_Contacts"
-            Me.TabControlPanelContactsTab_Contacts.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelContactsTab_Contacts.Size = New System.Drawing.Size(815, 513)
-            Me.TabControlPanelContactsTab_Contacts.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelContactsTab_Contacts.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelContactsTab_Contacts.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelContactsTab_Contacts.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelContactsTab_Contacts.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Controls.Add(Me.PanelControl_RightSection)
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Controls.Add(Me.ExpandableSplitterControl_LeftRight)
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Controls.Add(Me.PanelControl_LeftSection)
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Name = "TabControlPanelEEOCStatusTab_EEOCStatus"
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Size = New System.Drawing.Size(815, 513)
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelContactsTab_Contacts.Style.GradientAngle = 90
-            Me.TabControlPanelContactsTab_Contacts.TabIndex = 3
-            Me.TabControlPanelContactsTab_Contacts.TabItem = Me.TabItemVendorDetails_ContactsTab
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.GradientAngle = 90
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.TabIndex = 9
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.TabItem = Me.TabItemVendorDetails_EEOCStatusTab
             '
-            'TextBoxContacts_DefaultVendorContactCode
+            'PanelControl_RightSection
             '
-            Me.TextBoxContacts_DefaultVendorContactCode.BackColor = System.Drawing.Color.White
+            Me.PanelControl_RightSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelControl_RightSection.Appearance.Options.UseBackColor = True
+            Me.PanelControl_RightSection.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+            Me.PanelControl_RightSection.Controls.Add(Me.ButtonRightSection_RemoveEEOCStatus)
+            Me.PanelControl_RightSection.Controls.Add(Me.ButtonRightSection_AddEEOCStatus)
+            Me.PanelControl_RightSection.Controls.Add(Me.DataGridViewRightSection_SelectedEEOCStatuses)
+            Me.PanelControl_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelControl_RightSection.Location = New System.Drawing.Point(254, 1)
+            Me.PanelControl_RightSection.Name = "PanelControl_RightSection"
+            Me.PanelControl_RightSection.Size = New System.Drawing.Size(560, 511)
+            Me.PanelControl_RightSection.TabIndex = 34
             '
+            'ButtonRightSection_RemoveEEOCStatus
             '
+            Me.ButtonRightSection_RemoveEEOCStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonRightSection_RemoveEEOCStatus.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonRightSection_RemoveEEOCStatus.Location = New System.Drawing.Point(6, 30)
+            Me.ButtonRightSection_RemoveEEOCStatus.Name = "ButtonRightSection_RemoveEEOCStatus"
+            Me.ButtonRightSection_RemoveEEOCStatus.SecurityEnabled = True
+            Me.ButtonRightSection_RemoveEEOCStatus.Size = New System.Drawing.Size(73, 20)
+            Me.ButtonRightSection_RemoveEEOCStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonRightSection_RemoveEEOCStatus.TabIndex = 1
+            Me.ButtonRightSection_RemoveEEOCStatus.Text = "<"
             '
-            Me.TextBoxContacts_DefaultVendorContactCode.Border.Class = "TextBoxBorder"
-            Me.TextBoxContacts_DefaultVendorContactCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxContacts_DefaultVendorContactCode.CheckSpellingOnValidate = False
-            Me.TextBoxContacts_DefaultVendorContactCode.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxContacts_DefaultVendorContactCode.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxContacts_DefaultVendorContactCode.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxContacts_DefaultVendorContactCode.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxContacts_DefaultVendorContactCode.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxContacts_DefaultVendorContactCode.FocusHighlightEnabled = True
-            Me.TextBoxContacts_DefaultVendorContactCode.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxContacts_DefaultVendorContactCode.Location = New System.Drawing.Point(566, 363)
-            Me.TextBoxContacts_DefaultVendorContactCode.MaxFileSize = CType(0, Long)
-            Me.TextBoxContacts_DefaultVendorContactCode.Name = "TextBoxContacts_DefaultVendorContactCode"
-            Me.TextBoxContacts_DefaultVendorContactCode.ReadOnly = True
-            Me.TextBoxContacts_DefaultVendorContactCode.SecurityEnabled = True
-            Me.TextBoxContacts_DefaultVendorContactCode.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxContacts_DefaultVendorContactCode.Size = New System.Drawing.Size(82, 20)
-            Me.TextBoxContacts_DefaultVendorContactCode.StartingFolderName = Nothing
-            Me.TextBoxContacts_DefaultVendorContactCode.TabIndex = 1
-            Me.TextBoxContacts_DefaultVendorContactCode.TabOnEnter = True
-            Me.TextBoxContacts_DefaultVendorContactCode.Visible = False
+            'ButtonRightSection_AddEEOCStatus
             '
-            'DataGridViewContacts_Contacts
+            Me.ButtonRightSection_AddEEOCStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonRightSection_AddEEOCStatus.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonRightSection_AddEEOCStatus.Location = New System.Drawing.Point(6, 4)
+            Me.ButtonRightSection_AddEEOCStatus.Name = "ButtonRightSection_AddEEOCStatus"
+            Me.ButtonRightSection_AddEEOCStatus.SecurityEnabled = True
+            Me.ButtonRightSection_AddEEOCStatus.Size = New System.Drawing.Size(73, 20)
+            Me.ButtonRightSection_AddEEOCStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonRightSection_AddEEOCStatus.TabIndex = 0
+            Me.ButtonRightSection_AddEEOCStatus.Text = ">"
             '
-            Me.DataGridViewContacts_Contacts.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewContacts_Contacts.AllowDragAndDrop = False
-            Me.DataGridViewContacts_Contacts.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewContacts_Contacts.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewContacts_Contacts.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewContacts_Contacts.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            'DataGridViewRightSection_SelectedEEOCStatuses
+            '
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.AllowDragAndDrop = False
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewContacts_Contacts.AutoFilterLookupColumns = False
-            Me.DataGridViewContacts_Contacts.AutoloadRepositoryDatasource = True
-            Me.DataGridViewContacts_Contacts.AutoUpdateViewCaption = True
-            Me.DataGridViewContacts_Contacts.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewContacts_Contacts.DataSource = Nothing
-            Me.DataGridViewContacts_Contacts.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewContacts_Contacts.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewContacts_Contacts.ItemDescription = ""
-            Me.DataGridViewContacts_Contacts.Location = New System.Drawing.Point(6, 6)
-            Me.DataGridViewContacts_Contacts.MultiSelect = True
-            Me.DataGridViewContacts_Contacts.Name = "DataGridViewContacts_Contacts"
-            Me.DataGridViewContacts_Contacts.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewContacts_Contacts.RunStandardValidation = True
-            Me.DataGridViewContacts_Contacts.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewContacts_Contacts.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewContacts_Contacts.Size = New System.Drawing.Size(803, 501)
-            Me.DataGridViewContacts_Contacts.TabIndex = 0
-            Me.DataGridViewContacts_Contacts.UseEmbeddedNavigator = False
-            Me.DataGridViewContacts_Contacts.ViewCaptionHeight = -1
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.AutoFilterLookupColumns = False
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.AutoloadRepositoryDatasource = True
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.AutoUpdateViewCaption = True
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.DataSource = Nothing
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.ItemDescription = "Selected EEOC Status(es)"
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.Location = New System.Drawing.Point(85, 4)
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.MultiSelect = True
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.Name = "DataGridViewRightSection_SelectedEEOCStatuses"
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.RunStandardValidation = True
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.Size = New System.Drawing.Size(472, 504)
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.TabIndex = 2
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.UseEmbeddedNavigator = False
+            Me.DataGridViewRightSection_SelectedEEOCStatuses.ViewCaptionHeight = -1
             '
-            'TabItemVendorDetails_ContactsTab
+            'ExpandableSplitterControl_LeftRight
             '
-            Me.TabItemVendorDetails_ContactsTab.AttachedControl = Me.TabControlPanelContactsTab_Contacts
-            Me.TabItemVendorDetails_ContactsTab.Name = "TabItemVendorDetails_ContactsTab"
-            Me.TabItemVendorDetails_ContactsTab.Text = "Contacts"
+            Me.ExpandableSplitterControl_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControl_LeftRight.ExpandableControl = Me.PanelControl_LeftSection
+            Me.ExpandableSplitterControl_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControl_LeftRight.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControl_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControl_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControl_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControl_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControl_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControl_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControl_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControl_LeftRight.Location = New System.Drawing.Point(248, 1)
+            Me.ExpandableSplitterControl_LeftRight.Name = "ExpandableSplitterControl_LeftRight"
+            Me.ExpandableSplitterControl_LeftRight.Size = New System.Drawing.Size(6, 511)
+            Me.ExpandableSplitterControl_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControl_LeftRight.TabIndex = 35
+            Me.ExpandableSplitterControl_LeftRight.TabStop = False
             '
-            'TabControlPanelRepresentativesTab_Representatives
+            'PanelControl_LeftSection
             '
-            Me.TabControlPanelRepresentativesTab_Representatives.Controls.Add(Me.TextBoxRepresentatives_DefaultRep2)
-            Me.TabControlPanelRepresentativesTab_Representatives.Controls.Add(Me.TextBoxRepresentatives_DefaultRep1)
-            Me.TabControlPanelRepresentativesTab_Representatives.Controls.Add(Me.DataGridViewRepresentatives_VendorReps)
-            Me.TabControlPanelRepresentativesTab_Representatives.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelRepresentativesTab_Representatives.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelRepresentativesTab_Representatives.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelRepresentativesTab_Representatives.Name = "TabControlPanelRepresentativesTab_Representatives"
-            Me.TabControlPanelRepresentativesTab_Representatives.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelRepresentativesTab_Representatives.Size = New System.Drawing.Size(815, 513)
-            Me.TabControlPanelRepresentativesTab_Representatives.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelRepresentativesTab_Representatives.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelRepresentativesTab_Representatives.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelRepresentativesTab_Representatives.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelRepresentativesTab_Representatives.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelRepresentativesTab_Representatives.Style.GradientAngle = 90
-            Me.TabControlPanelRepresentativesTab_Representatives.TabIndex = 4
-            Me.TabControlPanelRepresentativesTab_Representatives.TabItem = Me.TabItemVendorDetails_RepresentativesTab
+            Me.PanelControl_LeftSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelControl_LeftSection.Appearance.Options.UseBackColor = True
+            Me.PanelControl_LeftSection.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+            Me.PanelControl_LeftSection.Controls.Add(Me.DataGridViewLeftSection_AvailableEEOCStatuses)
+            Me.PanelControl_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelControl_LeftSection.Location = New System.Drawing.Point(1, 1)
+            Me.PanelControl_LeftSection.Name = "PanelControl_LeftSection"
+            Me.PanelControl_LeftSection.Size = New System.Drawing.Size(247, 511)
+            Me.PanelControl_LeftSection.TabIndex = 33
             '
-            'TextBoxRepresentatives_DefaultRep2
+            'DataGridViewLeftSection_AvailableEEOCStatuses
             '
-            Me.TextBoxRepresentatives_DefaultRep2.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxRepresentatives_DefaultRep2.Border.Class = "TextBoxBorder"
-            Me.TextBoxRepresentatives_DefaultRep2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxRepresentatives_DefaultRep2.CheckSpellingOnValidate = False
-            Me.TextBoxRepresentatives_DefaultRep2.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxRepresentatives_DefaultRep2.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxRepresentatives_DefaultRep2.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxRepresentatives_DefaultRep2.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxRepresentatives_DefaultRep2.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxRepresentatives_DefaultRep2.FocusHighlightEnabled = True
-            Me.TextBoxRepresentatives_DefaultRep2.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxRepresentatives_DefaultRep2.Location = New System.Drawing.Point(566, 368)
-            Me.TextBoxRepresentatives_DefaultRep2.MaxFileSize = CType(0, Long)
-            Me.TextBoxRepresentatives_DefaultRep2.Name = "TextBoxRepresentatives_DefaultRep2"
-            Me.TextBoxRepresentatives_DefaultRep2.ReadOnly = True
-            Me.TextBoxRepresentatives_DefaultRep2.SecurityEnabled = True
-            Me.TextBoxRepresentatives_DefaultRep2.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxRepresentatives_DefaultRep2.Size = New System.Drawing.Size(82, 20)
-            Me.TextBoxRepresentatives_DefaultRep2.StartingFolderName = Nothing
-            Me.TextBoxRepresentatives_DefaultRep2.TabIndex = 3
-            Me.TextBoxRepresentatives_DefaultRep2.TabOnEnter = True
-            Me.TextBoxRepresentatives_DefaultRep2.Visible = False
-            '
-            'TextBoxRepresentatives_DefaultRep1
-            '
-            Me.TextBoxRepresentatives_DefaultRep1.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxRepresentatives_DefaultRep1.Border.Class = "TextBoxBorder"
-            Me.TextBoxRepresentatives_DefaultRep1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxRepresentatives_DefaultRep1.CheckSpellingOnValidate = False
-            Me.TextBoxRepresentatives_DefaultRep1.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxRepresentatives_DefaultRep1.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxRepresentatives_DefaultRep1.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxRepresentatives_DefaultRep1.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxRepresentatives_DefaultRep1.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxRepresentatives_DefaultRep1.FocusHighlightEnabled = True
-            Me.TextBoxRepresentatives_DefaultRep1.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxRepresentatives_DefaultRep1.Location = New System.Drawing.Point(566, 342)
-            Me.TextBoxRepresentatives_DefaultRep1.MaxFileSize = CType(0, Long)
-            Me.TextBoxRepresentatives_DefaultRep1.Name = "TextBoxRepresentatives_DefaultRep1"
-            Me.TextBoxRepresentatives_DefaultRep1.ReadOnly = True
-            Me.TextBoxRepresentatives_DefaultRep1.SecurityEnabled = True
-            Me.TextBoxRepresentatives_DefaultRep1.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxRepresentatives_DefaultRep1.Size = New System.Drawing.Size(82, 20)
-            Me.TextBoxRepresentatives_DefaultRep1.StartingFolderName = Nothing
-            Me.TextBoxRepresentatives_DefaultRep1.TabIndex = 2
-            Me.TextBoxRepresentatives_DefaultRep1.TabOnEnter = True
-            Me.TextBoxRepresentatives_DefaultRep1.Visible = False
-            '
-            'DataGridViewRepresentatives_VendorReps
-            '
-            Me.DataGridViewRepresentatives_VendorReps.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewRepresentatives_VendorReps.AllowDragAndDrop = False
-            Me.DataGridViewRepresentatives_VendorReps.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewRepresentatives_VendorReps.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewRepresentatives_VendorReps.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewRepresentatives_VendorReps.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AllowDragAndDrop = False
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewRepresentatives_VendorReps.AutoFilterLookupColumns = False
-            Me.DataGridViewRepresentatives_VendorReps.AutoloadRepositoryDatasource = True
-            Me.DataGridViewRepresentatives_VendorReps.AutoUpdateViewCaption = True
-            Me.DataGridViewRepresentatives_VendorReps.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewRepresentatives_VendorReps.DataSource = Nothing
-            Me.DataGridViewRepresentatives_VendorReps.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewRepresentatives_VendorReps.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewRepresentatives_VendorReps.ItemDescription = ""
-            Me.DataGridViewRepresentatives_VendorReps.Location = New System.Drawing.Point(6, 6)
-            Me.DataGridViewRepresentatives_VendorReps.MultiSelect = True
-            Me.DataGridViewRepresentatives_VendorReps.Name = "DataGridViewRepresentatives_VendorReps"
-            Me.DataGridViewRepresentatives_VendorReps.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewRepresentatives_VendorReps.RunStandardValidation = True
-            Me.DataGridViewRepresentatives_VendorReps.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewRepresentatives_VendorReps.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewRepresentatives_VendorReps.Size = New System.Drawing.Size(803, 501)
-            Me.DataGridViewRepresentatives_VendorReps.TabIndex = 0
-            Me.DataGridViewRepresentatives_VendorReps.UseEmbeddedNavigator = False
-            Me.DataGridViewRepresentatives_VendorReps.ViewCaptionHeight = -1
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AutoFilterLookupColumns = False
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AutoloadRepositoryDatasource = True
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AutoUpdateViewCaption = True
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.DataSource = Nothing
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.ItemDescription = "Available EEOC Status(es)"
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.Location = New System.Drawing.Point(4, 4)
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.MultiSelect = True
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.Name = "DataGridViewLeftSection_AvailableEEOCStatuses"
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.RunStandardValidation = True
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.Size = New System.Drawing.Size(237, 504)
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.TabIndex = 0
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.UseEmbeddedNavigator = False
+            Me.DataGridViewLeftSection_AvailableEEOCStatuses.ViewCaptionHeight = -1
             '
-            'TabItemVendorDetails_RepresentativesTab
+            'TabItemVendorDetails_EEOCStatusTab
             '
-            Me.TabItemVendorDetails_RepresentativesTab.AttachedControl = Me.TabControlPanelRepresentativesTab_Representatives
-            Me.TabItemVendorDetails_RepresentativesTab.Name = "TabItemVendorDetails_RepresentativesTab"
-            Me.TabItemVendorDetails_RepresentativesTab.Text = "Representatives"
+            Me.TabItemVendorDetails_EEOCStatusTab.AttachedControl = Me.TabControlPanelEEOCStatusTab_EEOCStatus
+            Me.TabItemVendorDetails_EEOCStatusTab.Name = "TabItemVendorDetails_EEOCStatusTab"
+            Me.TabItemVendorDetails_EEOCStatusTab.Text = "EEOC Status"
             '
             'TabControlPanelEEOC2Tab_EEOC2
             '
@@ -4258,175 +2744,2104 @@
             Me.TabItemVendorDetails_EEOC2Tab.Name = "TabItemVendorDetails_EEOC2Tab"
             Me.TabItemVendorDetails_EEOC2Tab.Text = "EEOC 2"
             '
-            'TabControlPanelEEOCStatusTab_EEOCStatus
+            'TabControlPanelMediaDefaultsTab_MediaDefaults
             '
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Controls.Add(Me.PanelControl_RightSection)
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Controls.Add(Me.ExpandableSplitterControl_LeftRight)
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Controls.Add(Me.PanelControl_LeftSection)
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Name = "TabControlPanelEEOCStatusTab_EEOCStatus"
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Size = New System.Drawing.Size(815, 513)
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Controls.Add(Me.TabControlMediaDefaults_MediaDefaultsTab)
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Name = "TabControlPanelMediaDefaultsTab_MediaDefaults"
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Size = New System.Drawing.Size(815, 513)
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.Style.GradientAngle = 90
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.TabIndex = 9
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.TabItem = Me.TabItemVendorDetails_EEOCStatusTab
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.Style.GradientAngle = 90
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.TabIndex = 5
+            Me.TabControlPanelMediaDefaultsTab_MediaDefaults.TabItem = Me.TabItemVendorDetails_MediaDefaultsTab
             '
-            'PanelControl_RightSection
+            'TabControlMediaDefaults_MediaDefaultsTab
             '
-            Me.PanelControl_RightSection.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelControl_RightSection.Appearance.Options.UseBackColor = True
-            Me.PanelControl_RightSection.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-            Me.PanelControl_RightSection.Controls.Add(Me.ButtonRightSection_RemoveEEOCStatus)
-            Me.PanelControl_RightSection.Controls.Add(Me.ButtonRightSection_AddEEOCStatus)
-            Me.PanelControl_RightSection.Controls.Add(Me.DataGridViewRightSection_SelectedEEOCStatuses)
-            Me.PanelControl_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelControl_RightSection.Location = New System.Drawing.Point(254, 1)
-            Me.PanelControl_RightSection.Name = "PanelControl_RightSection"
-            Me.PanelControl_RightSection.Size = New System.Drawing.Size(560, 511)
-            Me.PanelControl_RightSection.TabIndex = 34
-            '
-            'ButtonRightSection_RemoveEEOCStatus
-            '
-            Me.ButtonRightSection_RemoveEEOCStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonRightSection_RemoveEEOCStatus.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonRightSection_RemoveEEOCStatus.Location = New System.Drawing.Point(6, 30)
-            Me.ButtonRightSection_RemoveEEOCStatus.Name = "ButtonRightSection_RemoveEEOCStatus"
-            Me.ButtonRightSection_RemoveEEOCStatus.SecurityEnabled = True
-            Me.ButtonRightSection_RemoveEEOCStatus.Size = New System.Drawing.Size(73, 20)
-            Me.ButtonRightSection_RemoveEEOCStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonRightSection_RemoveEEOCStatus.TabIndex = 1
-            Me.ButtonRightSection_RemoveEEOCStatus.Text = "<"
-            '
-            'ButtonRightSection_AddEEOCStatus
-            '
-            Me.ButtonRightSection_AddEEOCStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonRightSection_AddEEOCStatus.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonRightSection_AddEEOCStatus.Location = New System.Drawing.Point(6, 4)
-            Me.ButtonRightSection_AddEEOCStatus.Name = "ButtonRightSection_AddEEOCStatus"
-            Me.ButtonRightSection_AddEEOCStatus.SecurityEnabled = True
-            Me.ButtonRightSection_AddEEOCStatus.Size = New System.Drawing.Size(73, 20)
-            Me.ButtonRightSection_AddEEOCStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonRightSection_AddEEOCStatus.TabIndex = 0
-            Me.ButtonRightSection_AddEEOCStatus.Text = ">"
-            '
-            'DataGridViewRightSection_SelectedEEOCStatuses
-            '
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.AllowDragAndDrop = False
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.TabControlMediaDefaults_MediaDefaultsTab.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.AutoFilterLookupColumns = False
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.AutoloadRepositoryDatasource = True
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.AutoUpdateViewCaption = True
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.ItemDescription = "Selected EEOC Status(es)"
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.Location = New System.Drawing.Point(85, 4)
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.MultiSelect = True
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.Name = "DataGridViewRightSection_SelectedEEOCStatuses"
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.RunStandardValidation = True
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.Size = New System.Drawing.Size(472, 504)
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.TabIndex = 2
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.UseEmbeddedNavigator = False
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.ViewCaptionHeight = -1
+            Me.TabControlMediaDefaults_MediaDefaultsTab.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+            Me.TabControlMediaDefaults_MediaDefaultsTab.CanReorderTabs = False
+            Me.TabControlMediaDefaults_MediaDefaultsTab.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlMediaDefaults_MediaDefaultsTab.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlMediaDefaults_MediaDefaultsTab.Controls.Add(Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation)
+            Me.TabControlMediaDefaults_MediaDefaultsTab.Controls.Add(Me.TabControlPanelDefaultCommentsTab_DefaultComments)
+            Me.TabControlMediaDefaults_MediaDefaultsTab.ForeColor = System.Drawing.Color.Black
+            Me.TabControlMediaDefaults_MediaDefaultsTab.Location = New System.Drawing.Point(6, 6)
+            Me.TabControlMediaDefaults_MediaDefaultsTab.Name = "TabControlMediaDefaults_MediaDefaultsTab"
+            Me.TabControlMediaDefaults_MediaDefaultsTab.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlMediaDefaults_MediaDefaultsTab.SelectedTabIndex = 0
+            Me.TabControlMediaDefaults_MediaDefaultsTab.Size = New System.Drawing.Size(803, 501)
+            Me.TabControlMediaDefaults_MediaDefaultsTab.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlMediaDefaults_MediaDefaultsTab.TabIndex = 0
+            Me.TabControlMediaDefaults_MediaDefaultsTab.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlMediaDefaults_MediaDefaultsTab.Tabs.Add(Me.TabItemMediaDefaults_GeneralDefaultInformationTab)
+            Me.TabControlMediaDefaults_MediaDefaultsTab.Tabs.Add(Me.TabItemMediaDefaults_DefaultCommentsTab)
+            Me.TabControlMediaDefaults_MediaDefaultsTab.Text = "TabControl1"
             '
-            'ExpandableSplitterControl_LeftRight
+            'TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation
             '
-            Me.ExpandableSplitterControl_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterControl_LeftRight.ExpandableControl = Me.PanelControl_LeftSection
-            Me.ExpandableSplitterControl_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControl_LeftRight.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterControl_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControl_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControl_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterControl_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterControl_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControl_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControl_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControl_LeftRight.Location = New System.Drawing.Point(248, 1)
-            Me.ExpandableSplitterControl_LeftRight.Name = "ExpandableSplitterControl_LeftRight"
-            Me.ExpandableSplitterControl_LeftRight.Size = New System.Drawing.Size(6, 511)
-            Me.ExpandableSplitterControl_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterControl_LeftRight.TabIndex = 35
-            Me.ExpandableSplitterControl_LeftRight.TabStop = False
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Controls.Add(Me.TableLayoutPanelGeneralDefaultInformation_TableLayout)
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Name = "TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation"
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Size = New System.Drawing.Size(803, 474)
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.Style.GradientAngle = 90
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.TabIndex = 1
+            Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation.TabItem = Me.TabItemMediaDefaults_GeneralDefaultInformationTab
             '
-            'PanelControl_LeftSection
+            'TableLayoutPanelGeneralDefaultInformation_TableLayout
             '
-            Me.PanelControl_LeftSection.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelControl_LeftSection.Appearance.Options.UseBackColor = True
-            Me.PanelControl_LeftSection.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-            Me.PanelControl_LeftSection.Controls.Add(Me.DataGridViewLeftSection_AvailableEEOCStatuses)
-            Me.PanelControl_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelControl_LeftSection.Location = New System.Drawing.Point(1, 1)
-            Me.PanelControl_LeftSection.Name = "PanelControl_LeftSection"
-            Me.PanelControl_LeftSection.Size = New System.Drawing.Size(247, 511)
-            Me.PanelControl_LeftSection.TabIndex = 33
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.BackColor = System.Drawing.Color.White
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.ColumnCount = 2
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.11347!))
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.88652!))
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Controls.Add(Me.PanelTableLayout_RightColumn, 1, 0)
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Controls.Add(Me.PanelTableLayout_LeftColumn, 0, 0)
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Location = New System.Drawing.Point(4, 4)
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Margin = New System.Windows.Forms.Padding(0)
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Name = "TableLayoutPanelGeneralDefaultInformation_TableLayout"
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.RowCount = 1
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.Size = New System.Drawing.Size(794, 450)
+            Me.TableLayoutPanelGeneralDefaultInformation_TableLayout.TabIndex = 0
             '
-            'DataGridViewLeftSection_AvailableEEOCStatuses
+            'PanelTableLayout_RightColumn
             '
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AllowDragAndDrop = False
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.PanelTableLayout_RightColumn.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AutoFilterLookupColumns = False
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AutoloadRepositoryDatasource = True
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.AutoUpdateViewCaption = True
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.ItemDescription = "Available EEOC Status(es)"
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.Location = New System.Drawing.Point(4, 4)
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.MultiSelect = True
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.Name = "DataGridViewLeftSection_AvailableEEOCStatuses"
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.RunStandardValidation = True
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.Size = New System.Drawing.Size(237, 504)
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.TabIndex = 0
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.UseEmbeddedNavigator = False
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.ViewCaptionHeight = -1
+            Me.PanelTableLayout_RightColumn.Controls.Add(Me.PanelRates_Rates)
+            Me.PanelTableLayout_RightColumn.Controls.Add(Me.PanelUnits_Units)
+            Me.PanelTableLayout_RightColumn.Controls.Add(Me.LabelDeadlines_MaterialCloseDays)
+            Me.PanelTableLayout_RightColumn.Controls.Add(Me.LabelDeadlines_SpaceCloseDays)
+            Me.PanelTableLayout_RightColumn.Controls.Add(Me.NumericInputDeadlines_SpaceCloseDays)
+            Me.PanelTableLayout_RightColumn.Controls.Add(Me.NumericInputDeadlines_MaterialCloseDays)
+            Me.PanelTableLayout_RightColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Rates)
+            Me.PanelTableLayout_RightColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Deadlines)
+            Me.PanelTableLayout_RightColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Units)
+            Me.PanelTableLayout_RightColumn.Location = New System.Drawing.Point(509, 0)
+            Me.PanelTableLayout_RightColumn.Margin = New System.Windows.Forms.Padding(0)
+            Me.PanelTableLayout_RightColumn.Name = "PanelTableLayout_RightColumn"
+            Me.PanelTableLayout_RightColumn.Size = New System.Drawing.Size(285, 450)
+            Me.PanelTableLayout_RightColumn.TabIndex = 1
             '
-            'TabItemVendorDetails_EEOCStatusTab
+            'PanelRates_Rates
             '
-            Me.TabItemVendorDetails_EEOCStatusTab.AttachedControl = Me.TabControlPanelEEOCStatusTab_EEOCStatus
-            Me.TabItemVendorDetails_EEOCStatusTab.Name = "TabItemVendorDetails_EEOCStatusTab"
-            Me.TabItemVendorDetails_EEOCStatusTab.Text = "EEOC Status"
+            Me.PanelRates_Rates.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelRates_Rates.BackColor = System.Drawing.Color.White
+            Me.PanelRates_Rates.Controls.Add(Me.RadioButtonControlRates_Net)
+            Me.PanelRates_Rates.Controls.Add(Me.RadioButtonControlRates_Gross)
+            Me.PanelRates_Rates.Location = New System.Drawing.Point(3, 214)
+            Me.PanelRates_Rates.Name = "PanelRates_Rates"
+            Me.PanelRates_Rates.Size = New System.Drawing.Size(276, 80)
+            Me.PanelRates_Rates.TabIndex = 43
+            '
+            'RadioButtonControlRates_Net
+            '
+            Me.RadioButtonControlRates_Net.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonControlRates_Net.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControlRates_Net.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControlRates_Net.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControlRates_Net.Location = New System.Drawing.Point(0, 0)
+            Me.RadioButtonControlRates_Net.Name = "RadioButtonControlRates_Net"
+            Me.RadioButtonControlRates_Net.SecurityEnabled = True
+            Me.RadioButtonControlRates_Net.Size = New System.Drawing.Size(273, 20)
+            Me.RadioButtonControlRates_Net.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControlRates_Net.TabIndex = 10
+            Me.RadioButtonControlRates_Net.TabOnEnter = True
+            Me.RadioButtonControlRates_Net.TabStop = False
+            Me.RadioButtonControlRates_Net.Text = "Net"
+            '
+            'RadioButtonControlRates_Gross
+            '
+            Me.RadioButtonControlRates_Gross.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonControlRates_Gross.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControlRates_Gross.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControlRates_Gross.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControlRates_Gross.Location = New System.Drawing.Point(0, 26)
+            Me.RadioButtonControlRates_Gross.Name = "RadioButtonControlRates_Gross"
+            Me.RadioButtonControlRates_Gross.SecurityEnabled = True
+            Me.RadioButtonControlRates_Gross.Size = New System.Drawing.Size(273, 20)
+            Me.RadioButtonControlRates_Gross.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControlRates_Gross.TabIndex = 11
+            Me.RadioButtonControlRates_Gross.TabOnEnter = True
+            Me.RadioButtonControlRates_Gross.TabStop = False
+            Me.RadioButtonControlRates_Gross.Text = "Gross"
+            '
+            'PanelUnits_Units
+            '
+            Me.PanelUnits_Units.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelUnits_Units.BackColor = System.Drawing.Color.White
+            Me.PanelUnits_Units.Controls.Add(Me.RadioButtonControlUnits_MontlyOrBroadcastMonth)
+            Me.PanelUnits_Units.Controls.Add(Me.RadioButtonControlUnits_WeeklyOrCalendarMonth)
+            Me.PanelUnits_Units.Controls.Add(Me.RadioButtonControlUnits_Daily)
+            Me.PanelUnits_Units.Location = New System.Drawing.Point(3, 26)
+            Me.PanelUnits_Units.Name = "PanelUnits_Units"
+            Me.PanelUnits_Units.Size = New System.Drawing.Size(276, 72)
+            Me.PanelUnits_Units.TabIndex = 38
+            '
+            'RadioButtonControlUnits_MontlyOrBroadcastMonth
+            '
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Location = New System.Drawing.Point(0, 0)
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Name = "RadioButtonControlUnits_MontlyOrBroadcastMonth"
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.SecurityEnabled = True
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Size = New System.Drawing.Size(257, 20)
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.TabIndex = 1
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.TabOnEnter = True
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.TabStop = False
+            Me.RadioButtonControlUnits_MontlyOrBroadcastMonth.Text = "Monthly Or Broadcast Month"
+            '
+            'RadioButtonControlUnits_WeeklyOrCalendarMonth
+            '
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Location = New System.Drawing.Point(0, 26)
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Name = "RadioButtonControlUnits_WeeklyOrCalendarMonth"
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.SecurityEnabled = True
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Size = New System.Drawing.Size(257, 20)
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.TabIndex = 2
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.TabOnEnter = True
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.TabStop = False
+            Me.RadioButtonControlUnits_WeeklyOrCalendarMonth.Text = "Weekly Or Calendar Month"
+            '
+            'RadioButtonControlUnits_Daily
+            '
+            Me.RadioButtonControlUnits_Daily.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonControlUnits_Daily.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControlUnits_Daily.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControlUnits_Daily.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControlUnits_Daily.Location = New System.Drawing.Point(0, 52)
+            Me.RadioButtonControlUnits_Daily.Name = "RadioButtonControlUnits_Daily"
+            Me.RadioButtonControlUnits_Daily.SecurityEnabled = True
+            Me.RadioButtonControlUnits_Daily.Size = New System.Drawing.Size(257, 20)
+            Me.RadioButtonControlUnits_Daily.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControlUnits_Daily.TabIndex = 3
+            Me.RadioButtonControlUnits_Daily.TabOnEnter = True
+            Me.RadioButtonControlUnits_Daily.TabStop = False
+            Me.RadioButtonControlUnits_Daily.Text = "Daily Or 4 Week"
+            '
+            'LabelDeadlines_MaterialCloseDays
+            '
+            Me.LabelDeadlines_MaterialCloseDays.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDeadlines_MaterialCloseDays.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelDeadlines_MaterialCloseDays.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDeadlines_MaterialCloseDays.Location = New System.Drawing.Point(3, 136)
+            Me.LabelDeadlines_MaterialCloseDays.Name = "LabelDeadlines_MaterialCloseDays"
+            Me.LabelDeadlines_MaterialCloseDays.Size = New System.Drawing.Size(118, 20)
+            Me.LabelDeadlines_MaterialCloseDays.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDeadlines_MaterialCloseDays.TabIndex = 39
+            Me.LabelDeadlines_MaterialCloseDays.Text = "Material Close Days:"
+            '
+            'LabelDeadlines_SpaceCloseDays
+            '
+            Me.LabelDeadlines_SpaceCloseDays.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDeadlines_SpaceCloseDays.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelDeadlines_SpaceCloseDays.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDeadlines_SpaceCloseDays.Location = New System.Drawing.Point(3, 162)
+            Me.LabelDeadlines_SpaceCloseDays.Name = "LabelDeadlines_SpaceCloseDays"
+            Me.LabelDeadlines_SpaceCloseDays.Size = New System.Drawing.Size(118, 20)
+            Me.LabelDeadlines_SpaceCloseDays.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDeadlines_SpaceCloseDays.TabIndex = 41
+            Me.LabelDeadlines_SpaceCloseDays.Text = "Space Close Days:"
+            '
+            'NumericInputDeadlines_SpaceCloseDays
+            '
+            Me.NumericInputDeadlines_SpaceCloseDays.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputDeadlines_SpaceCloseDays.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.NumericInputDeadlines_SpaceCloseDays.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Short]
+            Me.NumericInputDeadlines_SpaceCloseDays.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputDeadlines_SpaceCloseDays.EnterMoveNextControl = True
+            Me.NumericInputDeadlines_SpaceCloseDays.Location = New System.Drawing.Point(130, 162)
+            Me.NumericInputDeadlines_SpaceCloseDays.Name = "NumericInputDeadlines_SpaceCloseDays"
+            Me.NumericInputDeadlines_SpaceCloseDays.Properties.DisplayFormat.FormatString = "f0"
+            Me.NumericInputDeadlines_SpaceCloseDays.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputDeadlines_SpaceCloseDays.Properties.EditFormat.FormatString = "f0"
+            Me.NumericInputDeadlines_SpaceCloseDays.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputDeadlines_SpaceCloseDays.Properties.IsFloatValue = False
+            Me.NumericInputDeadlines_SpaceCloseDays.Properties.Mask.EditMask = "f0"
+            Me.NumericInputDeadlines_SpaceCloseDays.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputDeadlines_SpaceCloseDays.Properties.MaxValue = New Decimal(New Integer() {32767, 0, 0, 0})
+            Me.NumericInputDeadlines_SpaceCloseDays.Properties.MinValue = New Decimal(New Integer() {32768, 0, 0, -2147483648})
+            Me.NumericInputDeadlines_SpaceCloseDays.SecurityEnabled = True
+            Me.NumericInputDeadlines_SpaceCloseDays.Size = New System.Drawing.Size(155, 20)
+            Me.NumericInputDeadlines_SpaceCloseDays.TabIndex = 42
+            '
+            'NumericInputDeadlines_MaterialCloseDays
+            '
+            Me.NumericInputDeadlines_MaterialCloseDays.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputDeadlines_MaterialCloseDays.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.NumericInputDeadlines_MaterialCloseDays.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Short]
+            Me.NumericInputDeadlines_MaterialCloseDays.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputDeadlines_MaterialCloseDays.EnterMoveNextControl = True
+            Me.NumericInputDeadlines_MaterialCloseDays.Location = New System.Drawing.Point(130, 136)
+            Me.NumericInputDeadlines_MaterialCloseDays.Name = "NumericInputDeadlines_MaterialCloseDays"
+            Me.NumericInputDeadlines_MaterialCloseDays.Properties.DisplayFormat.FormatString = "f0"
+            Me.NumericInputDeadlines_MaterialCloseDays.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputDeadlines_MaterialCloseDays.Properties.EditFormat.FormatString = "f0"
+            Me.NumericInputDeadlines_MaterialCloseDays.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputDeadlines_MaterialCloseDays.Properties.IsFloatValue = False
+            Me.NumericInputDeadlines_MaterialCloseDays.Properties.Mask.EditMask = "f0"
+            Me.NumericInputDeadlines_MaterialCloseDays.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputDeadlines_MaterialCloseDays.Properties.MaxValue = New Decimal(New Integer() {32767, 0, 0, 0})
+            Me.NumericInputDeadlines_MaterialCloseDays.Properties.MinValue = New Decimal(New Integer() {32768, 0, 0, -2147483648})
+            Me.NumericInputDeadlines_MaterialCloseDays.SecurityEnabled = True
+            Me.NumericInputDeadlines_MaterialCloseDays.Size = New System.Drawing.Size(155, 20)
+            Me.NumericInputDeadlines_MaterialCloseDays.TabIndex = 40
+            '
+            'LabelGeneralDefaultInformation_Rates
+            '
+            Me.LabelGeneralDefaultInformation_Rates.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelGeneralDefaultInformation_Rates.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_Rates.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelGeneralDefaultInformation_Rates.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
+            Me.LabelGeneralDefaultInformation_Rates.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelGeneralDefaultInformation_Rates.BackgroundStyle.BorderColor = System.Drawing.Color.Black
+            Me.LabelGeneralDefaultInformation_Rates.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_Rates.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelGeneralDefaultInformation_Rates.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelGeneralDefaultInformation_Rates.Location = New System.Drawing.Point(3, 188)
+            Me.LabelGeneralDefaultInformation_Rates.Name = "LabelGeneralDefaultInformation_Rates"
+            Me.LabelGeneralDefaultInformation_Rates.Size = New System.Drawing.Size(282, 20)
+            Me.LabelGeneralDefaultInformation_Rates.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_Rates.TabIndex = 9
+            Me.LabelGeneralDefaultInformation_Rates.Text = "Rates"
+            '
+            'LabelGeneralDefaultInformation_Deadlines
+            '
+            Me.LabelGeneralDefaultInformation_Deadlines.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelGeneralDefaultInformation_Deadlines.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_Deadlines.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelGeneralDefaultInformation_Deadlines.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
+            Me.LabelGeneralDefaultInformation_Deadlines.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelGeneralDefaultInformation_Deadlines.BackgroundStyle.BorderColor = System.Drawing.Color.Black
+            Me.LabelGeneralDefaultInformation_Deadlines.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_Deadlines.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelGeneralDefaultInformation_Deadlines.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelGeneralDefaultInformation_Deadlines.Location = New System.Drawing.Point(3, 110)
+            Me.LabelGeneralDefaultInformation_Deadlines.Name = "LabelGeneralDefaultInformation_Deadlines"
+            Me.LabelGeneralDefaultInformation_Deadlines.Size = New System.Drawing.Size(282, 20)
+            Me.LabelGeneralDefaultInformation_Deadlines.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_Deadlines.TabIndex = 4
+            Me.LabelGeneralDefaultInformation_Deadlines.Text = "Deadlines"
+            '
+            'LabelGeneralDefaultInformation_Units
+            '
+            Me.LabelGeneralDefaultInformation_Units.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelGeneralDefaultInformation_Units.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_Units.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelGeneralDefaultInformation_Units.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
+            Me.LabelGeneralDefaultInformation_Units.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelGeneralDefaultInformation_Units.BackgroundStyle.BorderColor = System.Drawing.Color.Black
+            Me.LabelGeneralDefaultInformation_Units.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_Units.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelGeneralDefaultInformation_Units.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelGeneralDefaultInformation_Units.Location = New System.Drawing.Point(3, 0)
+            Me.LabelGeneralDefaultInformation_Units.Name = "LabelGeneralDefaultInformation_Units"
+            Me.LabelGeneralDefaultInformation_Units.Size = New System.Drawing.Size(282, 20)
+            Me.LabelGeneralDefaultInformation_Units.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_Units.TabIndex = 0
+            Me.LabelGeneralDefaultInformation_Units.Text = "Units"
+            '
+            'PanelTableLayout_LeftColumn
+            '
+            Me.PanelTableLayout_LeftColumn.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_PuertoRicoTVStation)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.ComboBoxGeneralDefaultInformation_CanadianVendorType)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_CanadianVendorType)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelMediaDefaults_Financial)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.ComboBoxGeneralDefaultInformation_Band)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Band)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.TextBoxGeneralDefaultInformation_CallLetters)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_CallLetters)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelRatingsSubscriber)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelMediaDefaults_CrossReference)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_ComscoreStation)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_EastlanStation)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_CableSyscode)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_RadioStation)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_TVStation)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Station)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxGeneralDefaultInformation_IsCableSystem)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_IsCableSystem)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_MarkupPercent)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.NumericInputGeneralDefaultInformation_MarkupPercent)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_TaxCode)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_Market)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_Market)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_CommissionPercent)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_ApplyTo)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_NetDiscount)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_OveragePercent)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_AddlCharge)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_TaxCode)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_Rebate)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.LabelGeneralDefaultInformation_ColumnWidth)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_NetCharge)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_Commission)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_LineNet)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.NumericInputGeneralDefaultInformation_ColumnWidth)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxApplyTo_UseFlags)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.NumericInputGeneralDefaultInformation_OveragePercent)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.NumericInputGeneralDefaultInformation_CommissionPercent)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxIsNielsenSubscriber)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxIsComscoreSubscriber)
+            Me.PanelTableLayout_LeftColumn.Controls.Add(Me.CheckBoxGeneralDefaultInformation_ComboStation)
+            Me.PanelTableLayout_LeftColumn.Location = New System.Drawing.Point(0, 0)
+            Me.PanelTableLayout_LeftColumn.Margin = New System.Windows.Forms.Padding(0)
+            Me.PanelTableLayout_LeftColumn.Name = "PanelTableLayout_LeftColumn"
+            Me.PanelTableLayout_LeftColumn.Size = New System.Drawing.Size(509, 450)
+            Me.PanelTableLayout_LeftColumn.TabIndex = 0
+            '
+            'SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation
+            '
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ActiveFilterString = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.AutoFillMode = False
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.BookmarkingEnabled = False
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.[Default]
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DataSource = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DisableMouseWheel = False
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DisplayName = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.EnterMoveNextControl = True
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Location = New System.Drawing.Point(167, 208)
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Name = "SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation"
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.DisplayMember = "Name"
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.NullText = "Select Puerto Rico TV Station"
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.PopupView = Me.GridView19
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.ValueMember = "ID"
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.SecurityEnabled = True
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.SelectedValue = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Size = New System.Drawing.Size(339, 20)
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.TabIndex = 23
+            '
+            'GridView19
+            '
+            Me.GridView19.AFActiveFilterString = ""
+            Me.GridView19.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView19.AutoFilterLookupColumns = False
+            Me.GridView19.AutoloadRepositoryDatasource = True
+            Me.GridView19.DataSourceClearing = False
+            Me.GridView19.EnableDisabledRows = False
+            Me.GridView19.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView19.Name = "GridView19"
+            Me.GridView19.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView19.OptionsView.ShowGroupPanel = False
+            Me.GridView19.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView19.RunStandardValidation = True
+            Me.GridView19.SkipAddingControlsOnModifyColumn = False
+            Me.GridView19.SkipSettingFontOnModifyColumn = False
+            '
+            'LabelGeneralDefaultInformation_PuertoRicoTVStation
+            '
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Location = New System.Drawing.Point(-1, 208)
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Name = "LabelGeneralDefaultInformation_PuertoRicoTVStation"
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Size = New System.Drawing.Size(161, 20)
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.TabIndex = 42
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Text = "Puerto Rico TV Station:"
+            '
+            'ComboBoxGeneralDefaultInformation_CanadianVendorType
+            '
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.AutoFindItemInDataSource = False
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.BookmarkingEnabled = False
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ClientCode = ""
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.EnumObjects
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.DisableMouseWheel = False
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.DisplayMember = "Description"
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.DisplayName = ""
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.DivisionCode = ""
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.FocusHighlightEnabled = True
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.FormattingEnabled = True
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ItemHeight = 15
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.Location = New System.Drawing.Point(348, 52)
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.Name = "ComboBoxGeneralDefaultInformation_CanadianVendorType"
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ReadOnly = False
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.SecurityEnabled = True
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.Size = New System.Drawing.Size(158, 21)
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.TabIndex = 11
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.TabOnEnter = True
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.ValueMember = "Code"
+            Me.ComboBoxGeneralDefaultInformation_CanadianVendorType.WatermarkText = "Select"
+            '
+            'LabelGeneralDefaultInformation_CanadianVendorType
+            '
+            Me.LabelGeneralDefaultInformation_CanadianVendorType.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_CanadianVendorType.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_CanadianVendorType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_CanadianVendorType.Location = New System.Drawing.Point(199, 52)
+            Me.LabelGeneralDefaultInformation_CanadianVendorType.Name = "LabelGeneralDefaultInformation_CanadianVendorType"
+            Me.LabelGeneralDefaultInformation_CanadianVendorType.Size = New System.Drawing.Size(141, 20)
+            Me.LabelGeneralDefaultInformation_CanadianVendorType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_CanadianVendorType.TabIndex = 10
+            Me.LabelGeneralDefaultInformation_CanadianVendorType.Text = "Canadian Vendor Type:"
+            '
+            'LabelMediaDefaults_Financial
+            '
+            Me.LabelMediaDefaults_Financial.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelMediaDefaults_Financial.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMediaDefaults_Financial.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelMediaDefaults_Financial.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
+            Me.LabelMediaDefaults_Financial.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelMediaDefaults_Financial.BackgroundStyle.BorderColor = System.Drawing.Color.Black
+            Me.LabelMediaDefaults_Financial.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMediaDefaults_Financial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelMediaDefaults_Financial.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelMediaDefaults_Financial.Location = New System.Drawing.Point(1, 232)
+            Me.LabelMediaDefaults_Financial.Name = "LabelMediaDefaults_Financial"
+            Me.LabelMediaDefaults_Financial.Size = New System.Drawing.Size(506, 20)
+            Me.LabelMediaDefaults_Financial.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMediaDefaults_Financial.TabIndex = 23
+            Me.LabelMediaDefaults_Financial.Text = "Financial:"
+            '
+            'ComboBoxGeneralDefaultInformation_Band
+            '
+            Me.ComboBoxGeneralDefaultInformation_Band.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxGeneralDefaultInformation_Band.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+            Me.ComboBoxGeneralDefaultInformation_Band.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxGeneralDefaultInformation_Band.AutoFindItemInDataSource = False
+            Me.ComboBoxGeneralDefaultInformation_Band.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxGeneralDefaultInformation_Band.BookmarkingEnabled = False
+            Me.ComboBoxGeneralDefaultInformation_Band.ClientCode = ""
+            Me.ComboBoxGeneralDefaultInformation_Band.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.EnumDataTable
+            Me.ComboBoxGeneralDefaultInformation_Band.DisableMouseWheel = False
+            Me.ComboBoxGeneralDefaultInformation_Band.DisplayMember = "Name"
+            Me.ComboBoxGeneralDefaultInformation_Band.DisplayName = ""
+            Me.ComboBoxGeneralDefaultInformation_Band.DivisionCode = ""
+            Me.ComboBoxGeneralDefaultInformation_Band.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxGeneralDefaultInformation_Band.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxGeneralDefaultInformation_Band.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxGeneralDefaultInformation_Band.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxGeneralDefaultInformation_Band.FocusHighlightEnabled = True
+            Me.ComboBoxGeneralDefaultInformation_Band.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxGeneralDefaultInformation_Band.FormattingEnabled = True
+            Me.ComboBoxGeneralDefaultInformation_Band.ItemHeight = 15
+            Me.ComboBoxGeneralDefaultInformation_Band.Location = New System.Drawing.Point(450, 26)
+            Me.ComboBoxGeneralDefaultInformation_Band.Name = "ComboBoxGeneralDefaultInformation_Band"
+            Me.ComboBoxGeneralDefaultInformation_Band.ReadOnly = False
+            Me.ComboBoxGeneralDefaultInformation_Band.SecurityEnabled = True
+            Me.ComboBoxGeneralDefaultInformation_Band.Size = New System.Drawing.Size(56, 21)
+            Me.ComboBoxGeneralDefaultInformation_Band.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxGeneralDefaultInformation_Band.TabIndex = 7
+            Me.ComboBoxGeneralDefaultInformation_Band.TabOnEnter = True
+            Me.ComboBoxGeneralDefaultInformation_Band.ValueMember = "Value"
+            Me.ComboBoxGeneralDefaultInformation_Band.WatermarkText = "Select"
+            '
+            'LabelGeneralDefaultInformation_Band
+            '
+            Me.LabelGeneralDefaultInformation_Band.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_Band.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_Band.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_Band.Location = New System.Drawing.Point(410, 26)
+            Me.LabelGeneralDefaultInformation_Band.Name = "LabelGeneralDefaultInformation_Band"
+            Me.LabelGeneralDefaultInformation_Band.Size = New System.Drawing.Size(34, 20)
+            Me.LabelGeneralDefaultInformation_Band.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_Band.TabIndex = 6
+            Me.LabelGeneralDefaultInformation_Band.Text = "Band:"
+            '
+            'TextBoxGeneralDefaultInformation_CallLetters
+            '
+            Me.TextBoxGeneralDefaultInformation_CallLetters.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxGeneralDefaultInformation_CallLetters.Border.Class = "TextBoxBorder"
+            Me.TextBoxGeneralDefaultInformation_CallLetters.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxGeneralDefaultInformation_CallLetters.CheckSpellingOnValidate = False
+            Me.TextBoxGeneralDefaultInformation_CallLetters.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxGeneralDefaultInformation_CallLetters.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxGeneralDefaultInformation_CallLetters.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxGeneralDefaultInformation_CallLetters.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxGeneralDefaultInformation_CallLetters.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxGeneralDefaultInformation_CallLetters.FocusHighlightEnabled = True
+            Me.TextBoxGeneralDefaultInformation_CallLetters.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxGeneralDefaultInformation_CallLetters.Location = New System.Drawing.Point(347, 26)
+            Me.TextBoxGeneralDefaultInformation_CallLetters.MaxFileSize = CType(0, Long)
+            Me.TextBoxGeneralDefaultInformation_CallLetters.Name = "TextBoxGeneralDefaultInformation_CallLetters"
+            Me.TextBoxGeneralDefaultInformation_CallLetters.SecurityEnabled = True
+            Me.TextBoxGeneralDefaultInformation_CallLetters.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxGeneralDefaultInformation_CallLetters.Size = New System.Drawing.Size(57, 20)
+            Me.TextBoxGeneralDefaultInformation_CallLetters.StartingFolderName = Nothing
+            Me.TextBoxGeneralDefaultInformation_CallLetters.TabIndex = 5
+            Me.TextBoxGeneralDefaultInformation_CallLetters.TabOnEnter = True
+            '
+            'LabelGeneralDefaultInformation_CallLetters
+            '
+            Me.LabelGeneralDefaultInformation_CallLetters.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_CallLetters.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_CallLetters.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_CallLetters.Location = New System.Drawing.Point(274, 26)
+            Me.LabelGeneralDefaultInformation_CallLetters.Name = "LabelGeneralDefaultInformation_CallLetters"
+            Me.LabelGeneralDefaultInformation_CallLetters.Size = New System.Drawing.Size(66, 20)
+            Me.LabelGeneralDefaultInformation_CallLetters.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_CallLetters.TabIndex = 4
+            Me.LabelGeneralDefaultInformation_CallLetters.Text = "Call Letters:"
+            '
+            'CheckBoxIsComscoreSubscriber
+            '
+            Me.CheckBoxIsComscoreSubscriber.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxIsComscoreSubscriber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxIsComscoreSubscriber.CheckValue = 0
+            Me.CheckBoxIsComscoreSubscriber.CheckValueChecked = 1
+            Me.CheckBoxIsComscoreSubscriber.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxIsComscoreSubscriber.CheckValueUnchecked = 0
+            Me.CheckBoxIsComscoreSubscriber.ChildControls = CType(resources.GetObject("CheckBoxIsComscoreSubscriber.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxIsComscoreSubscriber.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxIsComscoreSubscriber.Location = New System.Drawing.Point(267, 104)
+            Me.CheckBoxIsComscoreSubscriber.Name = "CheckBoxIsComscoreSubscriber"
+            Me.CheckBoxIsComscoreSubscriber.OldestSibling = Nothing
+            Me.CheckBoxIsComscoreSubscriber.SecurityEnabled = True
+            Me.CheckBoxIsComscoreSubscriber.SiblingControls = CType(resources.GetObject("CheckBoxIsComscoreSubscriber.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxIsComscoreSubscriber.Size = New System.Drawing.Size(94, 20)
+            Me.CheckBoxIsComscoreSubscriber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxIsComscoreSubscriber.TabIndex = 16
+            Me.CheckBoxIsComscoreSubscriber.TabOnEnter = True
+            Me.CheckBoxIsComscoreSubscriber.Text = "Comscore"
+            '
+            'CheckBoxIsNielsenSubscriber
+            '
+            Me.CheckBoxIsNielsenSubscriber.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxIsNielsenSubscriber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxIsNielsenSubscriber.CheckValue = 0
+            Me.CheckBoxIsNielsenSubscriber.CheckValueChecked = 1
+            Me.CheckBoxIsNielsenSubscriber.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxIsNielsenSubscriber.CheckValueUnchecked = 0
+            Me.CheckBoxIsNielsenSubscriber.ChildControls = CType(resources.GetObject("CheckBoxIsNielsenSubscriber.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxIsNielsenSubscriber.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxIsNielsenSubscriber.Location = New System.Drawing.Point(167, 104)
+            Me.CheckBoxIsNielsenSubscriber.Name = "CheckBoxIsNielsenSubscriber"
+            Me.CheckBoxIsNielsenSubscriber.OldestSibling = Nothing
+            Me.CheckBoxIsNielsenSubscriber.SecurityEnabled = True
+            Me.CheckBoxIsNielsenSubscriber.SiblingControls = CType(resources.GetObject("CheckBoxIsNielsenSubscriber.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxIsNielsenSubscriber.Size = New System.Drawing.Size(94, 20)
+            Me.CheckBoxIsNielsenSubscriber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxIsNielsenSubscriber.TabIndex = 15
+            Me.CheckBoxIsNielsenSubscriber.TabOnEnter = True
+            Me.CheckBoxIsNielsenSubscriber.Text = "Nielsen"
+            '
+            'LabelRatingsSubscriber
+            '
+            Me.LabelRatingsSubscriber.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelRatingsSubscriber.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelRatingsSubscriber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelRatingsSubscriber.Location = New System.Drawing.Point(0, 104)
+            Me.LabelRatingsSubscriber.Name = "LabelRatingsSubscriber"
+            Me.LabelRatingsSubscriber.Size = New System.Drawing.Size(161, 20)
+            Me.LabelRatingsSubscriber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelRatingsSubscriber.TabIndex = 14
+            Me.LabelRatingsSubscriber.Text = "Ratings Subscriber:"
+            '
+            'TextBoxGeneralDefaultInformation_VendorCodeCrossReference
+            '
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Border.Class = "TextBoxBorder"
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.CheckSpellingOnValidate = False
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.FocusHighlightEnabled = True
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Location = New System.Drawing.Point(167, 26)
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.MaxFileSize = CType(0, Long)
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Name = "TextBoxGeneralDefaultInformation_VendorCodeCrossReference"
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.SecurityEnabled = True
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Size = New System.Drawing.Size(94, 20)
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.StartingFolderName = Nothing
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.TabIndex = 3
+            Me.TextBoxGeneralDefaultInformation_VendorCodeCrossReference.TabOnEnter = True
+            '
+            'SearchableComboBoxGeneralDefaultInformation_ComscoreStation
+            '
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.ActiveFilterString = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.AutoFillMode = False
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.BookmarkingEnabled = False
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.ComscoreTVStation
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.DataSource = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.DisableMouseWheel = False
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.DisplayName = "Comscore Station"
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.EnterMoveNextControl = True
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Location = New System.Drawing.Point(167, 156)
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Name = "SearchableComboBoxGeneralDefaultInformation_ComscoreStation"
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties.DisplayMember = "Name"
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties.NullText = "Select TV Station"
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties.PopupView = Me.GridView14
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties.ValueMember = "ID"
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.SecurityEnabled = True
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.SelectedValue = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Size = New System.Drawing.Size(339, 20)
+            Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.TabIndex = 20
+            '
+            'GridView14
+            '
+            Me.GridView14.AFActiveFilterString = ""
+            Me.GridView14.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView14.AutoFilterLookupColumns = False
+            Me.GridView14.AutoloadRepositoryDatasource = True
+            Me.GridView14.DataSourceClearing = False
+            Me.GridView14.EnableDisabledRows = False
+            Me.GridView14.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView14.Name = "GridView14"
+            Me.GridView14.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView14.OptionsView.ShowGroupPanel = False
+            Me.GridView14.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView14.RunStandardValidation = True
+            Me.GridView14.SkipAddingControlsOnModifyColumn = False
+            Me.GridView14.SkipSettingFontOnModifyColumn = False
+            '
+            'LabelMediaDefaults_CrossReference
+            '
+            Me.LabelMediaDefaults_CrossReference.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMediaDefaults_CrossReference.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelMediaDefaults_CrossReference.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMediaDefaults_CrossReference.Location = New System.Drawing.Point(0, 26)
+            Me.LabelMediaDefaults_CrossReference.Name = "LabelMediaDefaults_CrossReference"
+            Me.LabelMediaDefaults_CrossReference.Size = New System.Drawing.Size(161, 20)
+            Me.LabelMediaDefaults_CrossReference.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMediaDefaults_CrossReference.TabIndex = 2
+            Me.LabelMediaDefaults_CrossReference.Text = "Vendor Code Cross Reference:"
+            '
+            'LabelGeneralDefaultInformation_ComscoreStation
+            '
+            Me.LabelGeneralDefaultInformation_ComscoreStation.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_ComscoreStation.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_ComscoreStation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_ComscoreStation.Location = New System.Drawing.Point(0, 156)
+            Me.LabelGeneralDefaultInformation_ComscoreStation.Name = "LabelGeneralDefaultInformation_ComscoreStation"
+            Me.LabelGeneralDefaultInformation_ComscoreStation.Size = New System.Drawing.Size(91, 20)
+            Me.LabelGeneralDefaultInformation_ComscoreStation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_ComscoreStation.TabIndex = 19
+            Me.LabelGeneralDefaultInformation_ComscoreStation.Text = "Comscore Station:"
+            '
+            'SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation
+            '
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.ActiveFilterString = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.AutoFillMode = False
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.BookmarkingEnabled = False
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.NielsenRadioStation
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.DataSource = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.DisableMouseWheel = False
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.DisplayName = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.EnterMoveNextControl = True
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Location = New System.Drawing.Point(167, 182)
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Name = "SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation"
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties.DisplayMember = "Name"
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties.NullText = "Select Radio Station"
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties.PopupView = Me.GridView15
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties.ValueMember = "ComboID"
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.SecurityEnabled = True
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.SelectedValue = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Size = New System.Drawing.Size(339, 20)
+            Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.TabIndex = 22
+            '
+            'GridView15
+            '
+            Me.GridView15.AFActiveFilterString = ""
+            Me.GridView15.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView15.AutoFilterLookupColumns = False
+            Me.GridView15.AutoloadRepositoryDatasource = True
+            Me.GridView15.DataSourceClearing = False
+            Me.GridView15.EnableDisabledRows = False
+            Me.GridView15.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView15.Name = "GridView15"
+            Me.GridView15.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView15.OptionsView.ShowGroupPanel = False
+            Me.GridView15.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView15.RunStandardValidation = True
+            Me.GridView15.SkipAddingControlsOnModifyColumn = False
+            Me.GridView15.SkipSettingFontOnModifyColumn = False
+            '
+            'LabelGeneralDefaultInformation_EastlanStation
+            '
+            Me.LabelGeneralDefaultInformation_EastlanStation.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_EastlanStation.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_EastlanStation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_EastlanStation.Location = New System.Drawing.Point(0, 182)
+            Me.LabelGeneralDefaultInformation_EastlanStation.Name = "LabelGeneralDefaultInformation_EastlanStation"
+            Me.LabelGeneralDefaultInformation_EastlanStation.Size = New System.Drawing.Size(91, 20)
+            Me.LabelGeneralDefaultInformation_EastlanStation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_EastlanStation.TabIndex = 21
+            Me.LabelGeneralDefaultInformation_EastlanStation.Text = "Eastlan Station:"
+            '
+            'SearchableComboBoxGeneralDefaultInformation_CableSyscode
+            '
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.ActiveFilterString = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.AutoFillMode = False
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.BookmarkingEnabled = False
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.NCCTVSyscode
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.DataSource = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.DisableMouseWheel = False
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.DisplayName = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.EditValue = "11"
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.EnterMoveNextControl = True
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Location = New System.Drawing.Point(167, 78)
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Name = "SearchableComboBoxGeneralDefaultInformation_CableSyscode"
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Properties.DisplayMember = "Description"
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Properties.NullText = "Select Syscode"
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Properties.PopupView = Me.GridView13
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Properties.ValueMember = "ID"
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.SecurityEnabled = True
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.SelectedValue = "11"
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.Size = New System.Drawing.Size(339, 20)
+            Me.SearchableComboBoxGeneralDefaultInformation_CableSyscode.TabIndex = 13
+            '
+            'GridView13
+            '
+            Me.GridView13.AFActiveFilterString = ""
+            Me.GridView13.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView13.AutoFilterLookupColumns = False
+            Me.GridView13.AutoloadRepositoryDatasource = True
+            Me.GridView13.DataSourceClearing = False
+            Me.GridView13.EnableDisabledRows = False
+            Me.GridView13.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView13.Name = "GridView13"
+            Me.GridView13.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView13.OptionsView.ShowGroupPanel = False
+            Me.GridView13.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView13.RunStandardValidation = True
+            Me.GridView13.SkipAddingControlsOnModifyColumn = False
+            Me.GridView13.SkipSettingFontOnModifyColumn = False
+            '
+            'LabelGeneralDefaultInformation_CableSyscode
+            '
+            Me.LabelGeneralDefaultInformation_CableSyscode.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_CableSyscode.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_CableSyscode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_CableSyscode.Location = New System.Drawing.Point(1, 78)
+            Me.LabelGeneralDefaultInformation_CableSyscode.Name = "LabelGeneralDefaultInformation_CableSyscode"
+            Me.LabelGeneralDefaultInformation_CableSyscode.Size = New System.Drawing.Size(91, 20)
+            Me.LabelGeneralDefaultInformation_CableSyscode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_CableSyscode.TabIndex = 12
+            Me.LabelGeneralDefaultInformation_CableSyscode.Text = "Cable Syscode:"
+            '
+            'SearchableComboBoxGeneralDefaultInformation_RadioStation
+            '
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.ActiveFilterString = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.AutoFillMode = False
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.BookmarkingEnabled = False
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.NielsenRadioStation
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.DataSource = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.DisableMouseWheel = False
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.DisplayName = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.EnterMoveNextControl = True
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Location = New System.Drawing.Point(167, 130)
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Name = "SearchableComboBoxGeneralDefaultInformation_RadioStation"
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Properties.DisplayMember = "Name"
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Properties.NullText = "Select Radio Station"
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Properties.PopupView = Me.GridView12
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Properties.ValueMember = "ComboID"
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.SecurityEnabled = True
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.SelectedValue = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.Size = New System.Drawing.Size(339, 20)
+            Me.SearchableComboBoxGeneralDefaultInformation_RadioStation.TabIndex = 18
+            '
+            'GridView12
+            '
+            Me.GridView12.AFActiveFilterString = ""
+            Me.GridView12.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView12.AutoFilterLookupColumns = False
+            Me.GridView12.AutoloadRepositoryDatasource = True
+            Me.GridView12.DataSourceClearing = False
+            Me.GridView12.EnableDisabledRows = False
+            Me.GridView12.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView12.Name = "GridView12"
+            Me.GridView12.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView12.OptionsView.ShowGroupPanel = False
+            Me.GridView12.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView12.RunStandardValidation = True
+            Me.GridView12.SkipAddingControlsOnModifyColumn = False
+            Me.GridView12.SkipSettingFontOnModifyColumn = False
+            '
+            'SearchableComboBoxGeneralDefaultInformation_TVStation
+            '
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.ActiveFilterString = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.AutoFillMode = False
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.BookmarkingEnabled = False
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.NielsenTVStation
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.DataSource = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.DisableMouseWheel = False
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.DisplayName = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.EnterMoveNextControl = True
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Location = New System.Drawing.Point(167, 130)
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Name = "SearchableComboBoxGeneralDefaultInformation_TVStation"
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Properties.DisplayMember = "Description"
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Properties.NullText = "Select TV Station"
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Properties.PopupView = Me.GridView11
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Properties.ValueMember = "Code"
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.SecurityEnabled = True
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.SelectedValue = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.Size = New System.Drawing.Size(339, 20)
+            Me.SearchableComboBoxGeneralDefaultInformation_TVStation.TabIndex = 16
+            '
+            'GridView11
+            '
+            Me.GridView11.AFActiveFilterString = ""
+            Me.GridView11.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView11.AutoFilterLookupColumns = False
+            Me.GridView11.AutoloadRepositoryDatasource = True
+            Me.GridView11.DataSourceClearing = False
+            Me.GridView11.EnableDisabledRows = False
+            Me.GridView11.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView11.Name = "GridView11"
+            Me.GridView11.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView11.OptionsView.ShowGroupPanel = False
+            Me.GridView11.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView11.RunStandardValidation = True
+            Me.GridView11.SkipAddingControlsOnModifyColumn = False
+            Me.GridView11.SkipSettingFontOnModifyColumn = False
+            '
+            'LabelGeneralDefaultInformation_Station
+            '
+            Me.LabelGeneralDefaultInformation_Station.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_Station.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_Station.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_Station.Location = New System.Drawing.Point(0, 130)
+            Me.LabelGeneralDefaultInformation_Station.Name = "LabelGeneralDefaultInformation_Station"
+            Me.LabelGeneralDefaultInformation_Station.Size = New System.Drawing.Size(91, 20)
+            Me.LabelGeneralDefaultInformation_Station.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_Station.TabIndex = 17
+            Me.LabelGeneralDefaultInformation_Station.Text = "Nielsen Station:"
+            '
+            'CheckBoxGeneralDefaultInformation_IsCableSystem
+            '
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.CheckValue = 0
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.CheckValueChecked = 1
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.CheckValueUnchecked = 0
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.ChildControls = CType(resources.GetObject("CheckBoxGeneralDefaultInformation_IsCableSystem.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.Location = New System.Drawing.Point(167, 52)
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.Name = "CheckBoxGeneralDefaultInformation_IsCableSystem"
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.OldestSibling = Nothing
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.SecurityEnabled = True
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.SiblingControls = CType(resources.GetObject("CheckBoxGeneralDefaultInformation_IsCableSystem.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.Size = New System.Drawing.Size(26, 20)
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.TabIndex = 9
+            Me.CheckBoxGeneralDefaultInformation_IsCableSystem.TabOnEnter = True
+            '
+            'LabelGeneralDefaultInformation_IsCableSystem
+            '
+            Me.LabelGeneralDefaultInformation_IsCableSystem.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_IsCableSystem.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_IsCableSystem.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_IsCableSystem.Location = New System.Drawing.Point(0, 52)
+            Me.LabelGeneralDefaultInformation_IsCableSystem.Name = "LabelGeneralDefaultInformation_IsCableSystem"
+            Me.LabelGeneralDefaultInformation_IsCableSystem.Size = New System.Drawing.Size(161, 20)
+            Me.LabelGeneralDefaultInformation_IsCableSystem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_IsCableSystem.TabIndex = 8
+            Me.LabelGeneralDefaultInformation_IsCableSystem.Text = "Is Cable System:"
+            '
+            'LabelGeneralDefaultInformation_MarkupPercent
+            '
+            Me.LabelGeneralDefaultInformation_MarkupPercent.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_MarkupPercent.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_MarkupPercent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_MarkupPercent.Location = New System.Drawing.Point(1, 284)
+            Me.LabelGeneralDefaultInformation_MarkupPercent.Name = "LabelGeneralDefaultInformation_MarkupPercent"
+            Me.LabelGeneralDefaultInformation_MarkupPercent.Size = New System.Drawing.Size(99, 20)
+            Me.LabelGeneralDefaultInformation_MarkupPercent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_MarkupPercent.TabIndex = 28
+            Me.LabelGeneralDefaultInformation_MarkupPercent.Text = "Markup %:"
+            '
+            'NumericInputGeneralDefaultInformation_MarkupPercent
+            '
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.EnterMoveNextControl = True
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Location = New System.Drawing.Point(167, 284)
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Name = "NumericInputGeneralDefaultInformation_MarkupPercent"
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.DisplayFormat.FormatString = "f"
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.EditFormat.FormatString = "f"
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.Mask.EditMask = "f"
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.SecurityEnabled = True
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.Size = New System.Drawing.Size(94, 20)
+            Me.NumericInputGeneralDefaultInformation_MarkupPercent.TabIndex = 29
+            '
+            'SearchableComboBoxGeneralDefaultInformation_TaxCode
+            '
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.ActiveFilterString = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.AutoFillMode = False
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.BookmarkingEnabled = False
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.TaxCode
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.DataSource = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.DisableMouseWheel = False
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.DisplayName = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.EnterMoveNextControl = True
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Location = New System.Drawing.Point(167, 310)
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Name = "SearchableComboBoxGeneralDefaultInformation_TaxCode"
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Properties.DisplayMember = "Description"
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Properties.NullText = "Select Tax Code"
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Properties.PopupView = Me.GridView9
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Properties.ValueMember = "TaxCode"
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.SecurityEnabled = True
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.SelectedValue = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.Size = New System.Drawing.Size(339, 20)
+            Me.SearchableComboBoxGeneralDefaultInformation_TaxCode.TabIndex = 33
+            '
+            'GridView9
+            '
+            Me.GridView9.AFActiveFilterString = ""
+            Me.GridView9.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView9.AutoFilterLookupColumns = False
+            Me.GridView9.AutoloadRepositoryDatasource = True
+            Me.GridView9.DataSourceClearing = False
+            Me.GridView9.EnableDisabledRows = False
+            Me.GridView9.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView9.Name = "GridView9"
+            Me.GridView9.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView9.OptionsView.ShowGroupPanel = False
+            Me.GridView9.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView9.RunStandardValidation = True
+            Me.GridView9.SkipAddingControlsOnModifyColumn = False
+            Me.GridView9.SkipSettingFontOnModifyColumn = False
+            '
+            'SearchableComboBoxGeneralDefaultInformation_Market
+            '
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.ActiveFilterString = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.AddInactiveItemsOnSelectedValue = True
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.AutoFillMode = False
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.BookmarkingEnabled = False
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.Market
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.DataSource = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.DisableMouseWheel = False
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.DisplayName = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.EnterMoveNextControl = True
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.Location = New System.Drawing.Point(167, 0)
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.Name = "SearchableComboBoxGeneralDefaultInformation_Market"
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.Properties.DisplayMember = "Description"
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.Properties.NullText = "Select Market"
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.Properties.PopupView = Me.GridView8
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.Properties.ValueMember = "Code"
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.SecurityEnabled = True
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.SelectedValue = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.Size = New System.Drawing.Size(339, 20)
+            Me.SearchableComboBoxGeneralDefaultInformation_Market.TabIndex = 1
+            '
+            'GridView8
+            '
+            Me.GridView8.AFActiveFilterString = ""
+            Me.GridView8.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView8.AutoFilterLookupColumns = False
+            Me.GridView8.AutoloadRepositoryDatasource = True
+            Me.GridView8.DataSourceClearing = False
+            Me.GridView8.EnableDisabledRows = False
+            Me.GridView8.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView8.Name = "GridView8"
+            Me.GridView8.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView8.OptionsView.ShowGroupPanel = False
+            Me.GridView8.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView8.RunStandardValidation = True
+            Me.GridView8.SkipAddingControlsOnModifyColumn = False
+            Me.GridView8.SkipSettingFontOnModifyColumn = False
+            '
+            'LabelGeneralDefaultInformation_Market
+            '
+            Me.LabelGeneralDefaultInformation_Market.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_Market.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_Market.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_Market.Location = New System.Drawing.Point(0, 0)
+            Me.LabelGeneralDefaultInformation_Market.Name = "LabelGeneralDefaultInformation_Market"
+            Me.LabelGeneralDefaultInformation_Market.Size = New System.Drawing.Size(91, 20)
+            Me.LabelGeneralDefaultInformation_Market.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_Market.TabIndex = 0
+            Me.LabelGeneralDefaultInformation_Market.Text = "Market:"
+            '
+            'LabelGeneralDefaultInformation_CommissionPercent
+            '
+            Me.LabelGeneralDefaultInformation_CommissionPercent.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_CommissionPercent.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_CommissionPercent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_CommissionPercent.Location = New System.Drawing.Point(1, 258)
+            Me.LabelGeneralDefaultInformation_CommissionPercent.Name = "LabelGeneralDefaultInformation_CommissionPercent"
+            Me.LabelGeneralDefaultInformation_CommissionPercent.Size = New System.Drawing.Size(92, 20)
+            Me.LabelGeneralDefaultInformation_CommissionPercent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_CommissionPercent.TabIndex = 24
+            Me.LabelGeneralDefaultInformation_CommissionPercent.Text = "Commission %:"
+            '
+            'LabelGeneralDefaultInformation_ApplyTo
+            '
+            Me.LabelGeneralDefaultInformation_ApplyTo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelGeneralDefaultInformation_ApplyTo.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_ApplyTo.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelGeneralDefaultInformation_ApplyTo.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
+            Me.LabelGeneralDefaultInformation_ApplyTo.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelGeneralDefaultInformation_ApplyTo.BackgroundStyle.BorderColor = System.Drawing.Color.Black
+            Me.LabelGeneralDefaultInformation_ApplyTo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_ApplyTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelGeneralDefaultInformation_ApplyTo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelGeneralDefaultInformation_ApplyTo.Location = New System.Drawing.Point(0, 338)
+            Me.LabelGeneralDefaultInformation_ApplyTo.Name = "LabelGeneralDefaultInformation_ApplyTo"
+            Me.LabelGeneralDefaultInformation_ApplyTo.Size = New System.Drawing.Size(506, 20)
+            Me.LabelGeneralDefaultInformation_ApplyTo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_ApplyTo.TabIndex = 34
+            Me.LabelGeneralDefaultInformation_ApplyTo.Text = "Apply Tax To:"
+            '
+            'CheckBoxApplyTo_NetDiscount
+            '
+            Me.CheckBoxApplyTo_NetDiscount.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxApplyTo_NetDiscount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxApplyTo_NetDiscount.CheckValue = 0
+            Me.CheckBoxApplyTo_NetDiscount.CheckValueChecked = 1
+            Me.CheckBoxApplyTo_NetDiscount.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxApplyTo_NetDiscount.CheckValueUnchecked = 0
+            Me.CheckBoxApplyTo_NetDiscount.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_NetDiscount.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_NetDiscount.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxApplyTo_NetDiscount.Location = New System.Drawing.Point(213, 416)
+            Me.CheckBoxApplyTo_NetDiscount.Name = "CheckBoxApplyTo_NetDiscount"
+            Me.CheckBoxApplyTo_NetDiscount.OldestSibling = Nothing
+            Me.CheckBoxApplyTo_NetDiscount.SecurityEnabled = True
+            Me.CheckBoxApplyTo_NetDiscount.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_NetDiscount.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_NetDiscount.Size = New System.Drawing.Size(198, 20)
+            Me.CheckBoxApplyTo_NetDiscount.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxApplyTo_NetDiscount.TabIndex = 41
+            Me.CheckBoxApplyTo_NetDiscount.TabOnEnter = True
+            Me.CheckBoxApplyTo_NetDiscount.Text = "Net Discount"
+            '
+            'LabelGeneralDefaultInformation_OveragePercent
+            '
+            Me.LabelGeneralDefaultInformation_OveragePercent.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_OveragePercent.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_OveragePercent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_OveragePercent.Location = New System.Drawing.Point(275, 258)
+            Me.LabelGeneralDefaultInformation_OveragePercent.Name = "LabelGeneralDefaultInformation_OveragePercent"
+            Me.LabelGeneralDefaultInformation_OveragePercent.Size = New System.Drawing.Size(91, 20)
+            Me.LabelGeneralDefaultInformation_OveragePercent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_OveragePercent.TabIndex = 26
+            Me.LabelGeneralDefaultInformation_OveragePercent.Text = "Overage %:"
+            '
+            'CheckBoxApplyTo_AddlCharge
+            '
+            Me.CheckBoxApplyTo_AddlCharge.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxApplyTo_AddlCharge.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxApplyTo_AddlCharge.CheckValue = 0
+            Me.CheckBoxApplyTo_AddlCharge.CheckValueChecked = 1
+            Me.CheckBoxApplyTo_AddlCharge.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxApplyTo_AddlCharge.CheckValueUnchecked = 0
+            Me.CheckBoxApplyTo_AddlCharge.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_AddlCharge.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_AddlCharge.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxApplyTo_AddlCharge.Location = New System.Drawing.Point(107, 416)
+            Me.CheckBoxApplyTo_AddlCharge.Name = "CheckBoxApplyTo_AddlCharge"
+            Me.CheckBoxApplyTo_AddlCharge.OldestSibling = Nothing
+            Me.CheckBoxApplyTo_AddlCharge.SecurityEnabled = True
+            Me.CheckBoxApplyTo_AddlCharge.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_AddlCharge.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_AddlCharge.Size = New System.Drawing.Size(100, 20)
+            Me.CheckBoxApplyTo_AddlCharge.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxApplyTo_AddlCharge.TabIndex = 40
+            Me.CheckBoxApplyTo_AddlCharge.TabOnEnter = True
+            Me.CheckBoxApplyTo_AddlCharge.Text = "Addl Charge"
+            '
+            'LabelGeneralDefaultInformation_TaxCode
+            '
+            Me.LabelGeneralDefaultInformation_TaxCode.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_TaxCode.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_TaxCode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_TaxCode.Location = New System.Drawing.Point(1, 310)
+            Me.LabelGeneralDefaultInformation_TaxCode.Name = "LabelGeneralDefaultInformation_TaxCode"
+            Me.LabelGeneralDefaultInformation_TaxCode.Size = New System.Drawing.Size(91, 20)
+            Me.LabelGeneralDefaultInformation_TaxCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_TaxCode.TabIndex = 32
+            Me.LabelGeneralDefaultInformation_TaxCode.Text = "Tax Code:"
+            '
+            'CheckBoxApplyTo_Rebate
+            '
+            Me.CheckBoxApplyTo_Rebate.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxApplyTo_Rebate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxApplyTo_Rebate.CheckValue = 0
+            Me.CheckBoxApplyTo_Rebate.CheckValueChecked = 1
+            Me.CheckBoxApplyTo_Rebate.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxApplyTo_Rebate.CheckValueUnchecked = 0
+            Me.CheckBoxApplyTo_Rebate.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_Rebate.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_Rebate.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxApplyTo_Rebate.Location = New System.Drawing.Point(213, 390)
+            Me.CheckBoxApplyTo_Rebate.Name = "CheckBoxApplyTo_Rebate"
+            Me.CheckBoxApplyTo_Rebate.OldestSibling = Nothing
+            Me.CheckBoxApplyTo_Rebate.SecurityEnabled = True
+            Me.CheckBoxApplyTo_Rebate.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_Rebate.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_Rebate.Size = New System.Drawing.Size(198, 20)
+            Me.CheckBoxApplyTo_Rebate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxApplyTo_Rebate.TabIndex = 39
+            Me.CheckBoxApplyTo_Rebate.TabOnEnter = True
+            Me.CheckBoxApplyTo_Rebate.Text = "Rebate"
+            '
+            'LabelGeneralDefaultInformation_ColumnWidth
+            '
+            Me.LabelGeneralDefaultInformation_ColumnWidth.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_ColumnWidth.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_ColumnWidth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_ColumnWidth.Location = New System.Drawing.Point(275, 284)
+            Me.LabelGeneralDefaultInformation_ColumnWidth.Name = "LabelGeneralDefaultInformation_ColumnWidth"
+            Me.LabelGeneralDefaultInformation_ColumnWidth.Size = New System.Drawing.Size(91, 20)
+            Me.LabelGeneralDefaultInformation_ColumnWidth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_ColumnWidth.TabIndex = 30
+            Me.LabelGeneralDefaultInformation_ColumnWidth.Text = "Column Width:"
+            '
+            'CheckBoxApplyTo_NetCharge
+            '
+            Me.CheckBoxApplyTo_NetCharge.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxApplyTo_NetCharge.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxApplyTo_NetCharge.CheckValue = 0
+            Me.CheckBoxApplyTo_NetCharge.CheckValueChecked = 1
+            Me.CheckBoxApplyTo_NetCharge.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxApplyTo_NetCharge.CheckValueUnchecked = 0
+            Me.CheckBoxApplyTo_NetCharge.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_NetCharge.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_NetCharge.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxApplyTo_NetCharge.Location = New System.Drawing.Point(107, 390)
+            Me.CheckBoxApplyTo_NetCharge.Name = "CheckBoxApplyTo_NetCharge"
+            Me.CheckBoxApplyTo_NetCharge.OldestSibling = Nothing
+            Me.CheckBoxApplyTo_NetCharge.SecurityEnabled = True
+            Me.CheckBoxApplyTo_NetCharge.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_NetCharge.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_NetCharge.Size = New System.Drawing.Size(100, 20)
+            Me.CheckBoxApplyTo_NetCharge.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxApplyTo_NetCharge.TabIndex = 38
+            Me.CheckBoxApplyTo_NetCharge.TabOnEnter = True
+            Me.CheckBoxApplyTo_NetCharge.Text = "Net Charge"
+            '
+            'CheckBoxApplyTo_Commission
+            '
+            Me.CheckBoxApplyTo_Commission.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxApplyTo_Commission.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxApplyTo_Commission.CheckValue = 0
+            Me.CheckBoxApplyTo_Commission.CheckValueChecked = 1
+            Me.CheckBoxApplyTo_Commission.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxApplyTo_Commission.CheckValueUnchecked = 0
+            Me.CheckBoxApplyTo_Commission.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_Commission.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_Commission.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxApplyTo_Commission.Location = New System.Drawing.Point(213, 364)
+            Me.CheckBoxApplyTo_Commission.Name = "CheckBoxApplyTo_Commission"
+            Me.CheckBoxApplyTo_Commission.OldestSibling = Nothing
+            Me.CheckBoxApplyTo_Commission.SecurityEnabled = True
+            Me.CheckBoxApplyTo_Commission.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_Commission.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_Commission.Size = New System.Drawing.Size(198, 20)
+            Me.CheckBoxApplyTo_Commission.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxApplyTo_Commission.TabIndex = 37
+            Me.CheckBoxApplyTo_Commission.TabOnEnter = True
+            Me.CheckBoxApplyTo_Commission.Text = "Commission"
+            '
+            'CheckBoxApplyTo_LineNet
+            '
+            Me.CheckBoxApplyTo_LineNet.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxApplyTo_LineNet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxApplyTo_LineNet.CheckValue = 0
+            Me.CheckBoxApplyTo_LineNet.CheckValueChecked = 1
+            Me.CheckBoxApplyTo_LineNet.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxApplyTo_LineNet.CheckValueUnchecked = 0
+            Me.CheckBoxApplyTo_LineNet.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_LineNet.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_LineNet.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxApplyTo_LineNet.Location = New System.Drawing.Point(107, 364)
+            Me.CheckBoxApplyTo_LineNet.Name = "CheckBoxApplyTo_LineNet"
+            Me.CheckBoxApplyTo_LineNet.OldestSibling = Nothing
+            Me.CheckBoxApplyTo_LineNet.SecurityEnabled = True
+            Me.CheckBoxApplyTo_LineNet.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_LineNet.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_LineNet.Size = New System.Drawing.Size(100, 20)
+            Me.CheckBoxApplyTo_LineNet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxApplyTo_LineNet.TabIndex = 36
+            Me.CheckBoxApplyTo_LineNet.TabOnEnter = True
+            Me.CheckBoxApplyTo_LineNet.Text = "Line Net"
+            '
+            'NumericInputGeneralDefaultInformation_ColumnWidth
+            '
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.EnterMoveNextControl = True
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Location = New System.Drawing.Point(410, 284)
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Name = "NumericInputGeneralDefaultInformation_ColumnWidth"
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.DisplayFormat.FormatString = "f"
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.EditFormat.FormatString = "f"
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.Mask.EditMask = "f"
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.SecurityEnabled = True
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.Size = New System.Drawing.Size(94, 20)
+            Me.NumericInputGeneralDefaultInformation_ColumnWidth.TabIndex = 31
+            '
+            'CheckBoxApplyTo_UseFlags
+            '
+            Me.CheckBoxApplyTo_UseFlags.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxApplyTo_UseFlags.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxApplyTo_UseFlags.CheckValue = 0
+            Me.CheckBoxApplyTo_UseFlags.CheckValueChecked = 1
+            Me.CheckBoxApplyTo_UseFlags.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxApplyTo_UseFlags.CheckValueUnchecked = 0
+            Me.CheckBoxApplyTo_UseFlags.ChildControls = CType(resources.GetObject("CheckBoxApplyTo_UseFlags.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_UseFlags.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxApplyTo_UseFlags.Location = New System.Drawing.Point(0, 364)
+            Me.CheckBoxApplyTo_UseFlags.Name = "CheckBoxApplyTo_UseFlags"
+            Me.CheckBoxApplyTo_UseFlags.OldestSibling = Nothing
+            Me.CheckBoxApplyTo_UseFlags.SecurityEnabled = True
+            Me.CheckBoxApplyTo_UseFlags.SiblingControls = CType(resources.GetObject("CheckBoxApplyTo_UseFlags.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxApplyTo_UseFlags.Size = New System.Drawing.Size(100, 20)
+            Me.CheckBoxApplyTo_UseFlags.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxApplyTo_UseFlags.TabIndex = 35
+            Me.CheckBoxApplyTo_UseFlags.TabOnEnter = True
+            Me.CheckBoxApplyTo_UseFlags.Text = "Use Flags"
+            '
+            'NumericInputGeneralDefaultInformation_OveragePercent
+            '
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.EnterMoveNextControl = True
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.Location = New System.Drawing.Point(410, 258)
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.Name = "NumericInputGeneralDefaultInformation_OveragePercent"
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.DisplayFormat.FormatString = "f"
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.EditFormat.FormatString = "f"
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.Mask.EditMask = "f"
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.SecurityEnabled = True
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.Size = New System.Drawing.Size(94, 20)
+            Me.NumericInputGeneralDefaultInformation_OveragePercent.TabIndex = 27
+            '
+            'NumericInputGeneralDefaultInformation_CommissionPercent
+            '
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.EnterMoveNextControl = True
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Location = New System.Drawing.Point(167, 258)
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Name = "NumericInputGeneralDefaultInformation_CommissionPercent"
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.DisplayFormat.FormatString = "f"
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.EditFormat.FormatString = "f"
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.Mask.EditMask = "f"
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.SecurityEnabled = True
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.Size = New System.Drawing.Size(94, 20)
+            Me.NumericInputGeneralDefaultInformation_CommissionPercent.TabIndex = 25
+            '
+            'TabItemMediaDefaults_GeneralDefaultInformationTab
+            '
+            Me.TabItemMediaDefaults_GeneralDefaultInformationTab.AttachedControl = Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation
+            Me.TabItemMediaDefaults_GeneralDefaultInformationTab.Name = "TabItemMediaDefaults_GeneralDefaultInformationTab"
+            Me.TabItemMediaDefaults_GeneralDefaultInformationTab.Text = "General Default Information"
+            '
+            'TabControlPanelDefaultCommentsTab_DefaultComments
+            '
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.ButtonDefaultComments_CheckSpelling)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.CheckBoxDefaultComments_UseFooterComment)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_Instructions)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_FooterComment)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_RateInfo)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_MaterialNotes)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_PositionInfo)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_MiscInfo)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.TextBoxDefaultComments_CloseInfo)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_FooterComment)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_RateInfo)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_MaterialNotes)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_PositionInfo)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_MiscInfo)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_CloseInfo)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Controls.Add(Me.LabelDefaultComments_Instructions)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Name = "TabControlPanelDefaultCommentsTab_DefaultComments"
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Size = New System.Drawing.Size(803, 474)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.Style.GradientAngle = 90
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.TabIndex = 2
+            Me.TabControlPanelDefaultCommentsTab_DefaultComments.TabItem = Me.TabItemMediaDefaults_DefaultCommentsTab
+            '
+            'ButtonDefaultComments_CheckSpelling
+            '
+            Me.ButtonDefaultComments_CheckSpelling.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonDefaultComments_CheckSpelling.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.ButtonDefaultComments_CheckSpelling.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonDefaultComments_CheckSpelling.Location = New System.Drawing.Point(703, 450)
+            Me.ButtonDefaultComments_CheckSpelling.Name = "ButtonDefaultComments_CheckSpelling"
+            Me.ButtonDefaultComments_CheckSpelling.SecurityEnabled = True
+            Me.ButtonDefaultComments_CheckSpelling.Size = New System.Drawing.Size(96, 20)
+            Me.ButtonDefaultComments_CheckSpelling.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonDefaultComments_CheckSpelling.TabIndex = 15
+            Me.ButtonDefaultComments_CheckSpelling.Text = "Check Spelling"
+            '
+            'CheckBoxDefaultComments_UseFooterComment
+            '
+            Me.CheckBoxDefaultComments_UseFooterComment.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxDefaultComments_UseFooterComment.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxDefaultComments_UseFooterComment.CheckValue = 0
+            Me.CheckBoxDefaultComments_UseFooterComment.CheckValueChecked = 1
+            Me.CheckBoxDefaultComments_UseFooterComment.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxDefaultComments_UseFooterComment.CheckValueUnchecked = 0
+            Me.CheckBoxDefaultComments_UseFooterComment.ChildControls = CType(resources.GetObject("CheckBoxDefaultComments_UseFooterComment.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxDefaultComments_UseFooterComment.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxDefaultComments_UseFooterComment.Location = New System.Drawing.Point(4, 336)
+            Me.CheckBoxDefaultComments_UseFooterComment.Name = "CheckBoxDefaultComments_UseFooterComment"
+            Me.CheckBoxDefaultComments_UseFooterComment.OldestSibling = Nothing
+            Me.CheckBoxDefaultComments_UseFooterComment.SecurityEnabled = True
+            Me.CheckBoxDefaultComments_UseFooterComment.SiblingControls = CType(resources.GetObject("CheckBoxDefaultComments_UseFooterComment.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxDefaultComments_UseFooterComment.Size = New System.Drawing.Size(91, 20)
+            Me.CheckBoxDefaultComments_UseFooterComment.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxDefaultComments_UseFooterComment.TabIndex = 14
+            Me.CheckBoxDefaultComments_UseFooterComment.TabOnEnter = True
+            Me.CheckBoxDefaultComments_UseFooterComment.Text = "Use"
+            '
+            'TextBoxDefaultComments_Instructions
+            '
+            Me.TextBoxDefaultComments_Instructions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxDefaultComments_Instructions.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxDefaultComments_Instructions.Border.Class = "TextBoxBorder"
+            Me.TextBoxDefaultComments_Instructions.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxDefaultComments_Instructions.CheckSpellingOnValidate = False
+            Me.TextBoxDefaultComments_Instructions.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxDefaultComments_Instructions.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxDefaultComments_Instructions.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxDefaultComments_Instructions.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxDefaultComments_Instructions.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxDefaultComments_Instructions.FocusHighlightEnabled = True
+            Me.TextBoxDefaultComments_Instructions.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxDefaultComments_Instructions.Location = New System.Drawing.Point(101, 4)
+            Me.TextBoxDefaultComments_Instructions.MaxFileSize = CType(0, Long)
+            Me.TextBoxDefaultComments_Instructions.Multiline = True
+            Me.TextBoxDefaultComments_Instructions.Name = "TextBoxDefaultComments_Instructions"
+            Me.TextBoxDefaultComments_Instructions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxDefaultComments_Instructions.SecurityEnabled = True
+            Me.TextBoxDefaultComments_Instructions.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxDefaultComments_Instructions.Size = New System.Drawing.Size(698, 45)
+            Me.TextBoxDefaultComments_Instructions.StartingFolderName = Nothing
+            Me.TextBoxDefaultComments_Instructions.TabIndex = 1
+            Me.TextBoxDefaultComments_Instructions.TabOnEnter = False
+            '
+            'TextBoxDefaultComments_FooterComment
+            '
+            Me.TextBoxDefaultComments_FooterComment.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxDefaultComments_FooterComment.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxDefaultComments_FooterComment.Border.Class = "TextBoxBorder"
+            Me.TextBoxDefaultComments_FooterComment.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxDefaultComments_FooterComment.CheckSpellingOnValidate = False
+            Me.TextBoxDefaultComments_FooterComment.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxDefaultComments_FooterComment.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxDefaultComments_FooterComment.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxDefaultComments_FooterComment.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxDefaultComments_FooterComment.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxDefaultComments_FooterComment.FocusHighlightEnabled = True
+            Me.TextBoxDefaultComments_FooterComment.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxDefaultComments_FooterComment.Location = New System.Drawing.Point(101, 310)
+            Me.TextBoxDefaultComments_FooterComment.MaxFileSize = CType(0, Long)
+            Me.TextBoxDefaultComments_FooterComment.Multiline = True
+            Me.TextBoxDefaultComments_FooterComment.Name = "TextBoxDefaultComments_FooterComment"
+            Me.TextBoxDefaultComments_FooterComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxDefaultComments_FooterComment.SecurityEnabled = True
+            Me.TextBoxDefaultComments_FooterComment.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxDefaultComments_FooterComment.Size = New System.Drawing.Size(698, 134)
+            Me.TextBoxDefaultComments_FooterComment.StartingFolderName = Nothing
+            Me.TextBoxDefaultComments_FooterComment.TabIndex = 13
+            Me.TextBoxDefaultComments_FooterComment.TabOnEnter = False
+            '
+            'TextBoxDefaultComments_RateInfo
+            '
+            Me.TextBoxDefaultComments_RateInfo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxDefaultComments_RateInfo.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxDefaultComments_RateInfo.Border.Class = "TextBoxBorder"
+            Me.TextBoxDefaultComments_RateInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxDefaultComments_RateInfo.CheckSpellingOnValidate = False
+            Me.TextBoxDefaultComments_RateInfo.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxDefaultComments_RateInfo.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxDefaultComments_RateInfo.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxDefaultComments_RateInfo.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxDefaultComments_RateInfo.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxDefaultComments_RateInfo.FocusHighlightEnabled = True
+            Me.TextBoxDefaultComments_RateInfo.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxDefaultComments_RateInfo.Location = New System.Drawing.Point(101, 259)
+            Me.TextBoxDefaultComments_RateInfo.MaxFileSize = CType(0, Long)
+            Me.TextBoxDefaultComments_RateInfo.Multiline = True
+            Me.TextBoxDefaultComments_RateInfo.Name = "TextBoxDefaultComments_RateInfo"
+            Me.TextBoxDefaultComments_RateInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxDefaultComments_RateInfo.SecurityEnabled = True
+            Me.TextBoxDefaultComments_RateInfo.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxDefaultComments_RateInfo.Size = New System.Drawing.Size(698, 45)
+            Me.TextBoxDefaultComments_RateInfo.StartingFolderName = Nothing
+            Me.TextBoxDefaultComments_RateInfo.TabIndex = 11
+            Me.TextBoxDefaultComments_RateInfo.TabOnEnter = False
+            '
+            'TextBoxDefaultComments_MaterialNotes
+            '
+            Me.TextBoxDefaultComments_MaterialNotes.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxDefaultComments_MaterialNotes.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxDefaultComments_MaterialNotes.Border.Class = "TextBoxBorder"
+            Me.TextBoxDefaultComments_MaterialNotes.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxDefaultComments_MaterialNotes.CheckSpellingOnValidate = False
+            Me.TextBoxDefaultComments_MaterialNotes.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxDefaultComments_MaterialNotes.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxDefaultComments_MaterialNotes.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxDefaultComments_MaterialNotes.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxDefaultComments_MaterialNotes.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxDefaultComments_MaterialNotes.FocusHighlightEnabled = True
+            Me.TextBoxDefaultComments_MaterialNotes.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxDefaultComments_MaterialNotes.Location = New System.Drawing.Point(101, 208)
+            Me.TextBoxDefaultComments_MaterialNotes.MaxFileSize = CType(0, Long)
+            Me.TextBoxDefaultComments_MaterialNotes.Multiline = True
+            Me.TextBoxDefaultComments_MaterialNotes.Name = "TextBoxDefaultComments_MaterialNotes"
+            Me.TextBoxDefaultComments_MaterialNotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxDefaultComments_MaterialNotes.SecurityEnabled = True
+            Me.TextBoxDefaultComments_MaterialNotes.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxDefaultComments_MaterialNotes.Size = New System.Drawing.Size(698, 45)
+            Me.TextBoxDefaultComments_MaterialNotes.StartingFolderName = Nothing
+            Me.TextBoxDefaultComments_MaterialNotes.TabIndex = 9
+            Me.TextBoxDefaultComments_MaterialNotes.TabOnEnter = False
+            '
+            'TextBoxDefaultComments_PositionInfo
+            '
+            Me.TextBoxDefaultComments_PositionInfo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxDefaultComments_PositionInfo.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxDefaultComments_PositionInfo.Border.Class = "TextBoxBorder"
+            Me.TextBoxDefaultComments_PositionInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxDefaultComments_PositionInfo.CheckSpellingOnValidate = False
+            Me.TextBoxDefaultComments_PositionInfo.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxDefaultComments_PositionInfo.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxDefaultComments_PositionInfo.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxDefaultComments_PositionInfo.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxDefaultComments_PositionInfo.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxDefaultComments_PositionInfo.FocusHighlightEnabled = True
+            Me.TextBoxDefaultComments_PositionInfo.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxDefaultComments_PositionInfo.Location = New System.Drawing.Point(101, 157)
+            Me.TextBoxDefaultComments_PositionInfo.MaxFileSize = CType(0, Long)
+            Me.TextBoxDefaultComments_PositionInfo.Multiline = True
+            Me.TextBoxDefaultComments_PositionInfo.Name = "TextBoxDefaultComments_PositionInfo"
+            Me.TextBoxDefaultComments_PositionInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxDefaultComments_PositionInfo.SecurityEnabled = True
+            Me.TextBoxDefaultComments_PositionInfo.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxDefaultComments_PositionInfo.Size = New System.Drawing.Size(698, 45)
+            Me.TextBoxDefaultComments_PositionInfo.StartingFolderName = Nothing
+            Me.TextBoxDefaultComments_PositionInfo.TabIndex = 7
+            Me.TextBoxDefaultComments_PositionInfo.TabOnEnter = False
+            '
+            'TextBoxDefaultComments_MiscInfo
+            '
+            Me.TextBoxDefaultComments_MiscInfo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxDefaultComments_MiscInfo.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxDefaultComments_MiscInfo.Border.Class = "TextBoxBorder"
+            Me.TextBoxDefaultComments_MiscInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxDefaultComments_MiscInfo.CheckSpellingOnValidate = False
+            Me.TextBoxDefaultComments_MiscInfo.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxDefaultComments_MiscInfo.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxDefaultComments_MiscInfo.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxDefaultComments_MiscInfo.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxDefaultComments_MiscInfo.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxDefaultComments_MiscInfo.FocusHighlightEnabled = True
+            Me.TextBoxDefaultComments_MiscInfo.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxDefaultComments_MiscInfo.Location = New System.Drawing.Point(101, 106)
+            Me.TextBoxDefaultComments_MiscInfo.MaxFileSize = CType(0, Long)
+            Me.TextBoxDefaultComments_MiscInfo.Multiline = True
+            Me.TextBoxDefaultComments_MiscInfo.Name = "TextBoxDefaultComments_MiscInfo"
+            Me.TextBoxDefaultComments_MiscInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxDefaultComments_MiscInfo.SecurityEnabled = True
+            Me.TextBoxDefaultComments_MiscInfo.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxDefaultComments_MiscInfo.Size = New System.Drawing.Size(698, 45)
+            Me.TextBoxDefaultComments_MiscInfo.StartingFolderName = Nothing
+            Me.TextBoxDefaultComments_MiscInfo.TabIndex = 5
+            Me.TextBoxDefaultComments_MiscInfo.TabOnEnter = False
+            '
+            'TextBoxDefaultComments_CloseInfo
+            '
+            Me.TextBoxDefaultComments_CloseInfo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxDefaultComments_CloseInfo.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxDefaultComments_CloseInfo.Border.Class = "TextBoxBorder"
+            Me.TextBoxDefaultComments_CloseInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxDefaultComments_CloseInfo.CheckSpellingOnValidate = False
+            Me.TextBoxDefaultComments_CloseInfo.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxDefaultComments_CloseInfo.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxDefaultComments_CloseInfo.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxDefaultComments_CloseInfo.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxDefaultComments_CloseInfo.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxDefaultComments_CloseInfo.FocusHighlightEnabled = True
+            Me.TextBoxDefaultComments_CloseInfo.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxDefaultComments_CloseInfo.Location = New System.Drawing.Point(101, 55)
+            Me.TextBoxDefaultComments_CloseInfo.MaxFileSize = CType(0, Long)
+            Me.TextBoxDefaultComments_CloseInfo.Multiline = True
+            Me.TextBoxDefaultComments_CloseInfo.Name = "TextBoxDefaultComments_CloseInfo"
+            Me.TextBoxDefaultComments_CloseInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxDefaultComments_CloseInfo.SecurityEnabled = True
+            Me.TextBoxDefaultComments_CloseInfo.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxDefaultComments_CloseInfo.Size = New System.Drawing.Size(698, 45)
+            Me.TextBoxDefaultComments_CloseInfo.StartingFolderName = Nothing
+            Me.TextBoxDefaultComments_CloseInfo.TabIndex = 3
+            Me.TextBoxDefaultComments_CloseInfo.TabOnEnter = False
+            '
+            'LabelDefaultComments_FooterComment
+            '
+            Me.LabelDefaultComments_FooterComment.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDefaultComments_FooterComment.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelDefaultComments_FooterComment.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDefaultComments_FooterComment.Location = New System.Drawing.Point(4, 310)
+            Me.LabelDefaultComments_FooterComment.Name = "LabelDefaultComments_FooterComment"
+            Me.LabelDefaultComments_FooterComment.Size = New System.Drawing.Size(91, 20)
+            Me.LabelDefaultComments_FooterComment.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDefaultComments_FooterComment.TabIndex = 12
+            Me.LabelDefaultComments_FooterComment.Text = "Footer Comment:"
+            '
+            'LabelDefaultComments_RateInfo
+            '
+            Me.LabelDefaultComments_RateInfo.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDefaultComments_RateInfo.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelDefaultComments_RateInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDefaultComments_RateInfo.Location = New System.Drawing.Point(4, 259)
+            Me.LabelDefaultComments_RateInfo.Name = "LabelDefaultComments_RateInfo"
+            Me.LabelDefaultComments_RateInfo.Size = New System.Drawing.Size(91, 20)
+            Me.LabelDefaultComments_RateInfo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDefaultComments_RateInfo.TabIndex = 10
+            Me.LabelDefaultComments_RateInfo.Text = "Rate Info:"
+            '
+            'LabelDefaultComments_MaterialNotes
+            '
+            Me.LabelDefaultComments_MaterialNotes.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDefaultComments_MaterialNotes.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelDefaultComments_MaterialNotes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDefaultComments_MaterialNotes.Location = New System.Drawing.Point(4, 208)
+            Me.LabelDefaultComments_MaterialNotes.Name = "LabelDefaultComments_MaterialNotes"
+            Me.LabelDefaultComments_MaterialNotes.Size = New System.Drawing.Size(91, 20)
+            Me.LabelDefaultComments_MaterialNotes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDefaultComments_MaterialNotes.TabIndex = 8
+            Me.LabelDefaultComments_MaterialNotes.Text = "Material Notes:"
+            '
+            'LabelDefaultComments_PositionInfo
+            '
+            Me.LabelDefaultComments_PositionInfo.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDefaultComments_PositionInfo.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelDefaultComments_PositionInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDefaultComments_PositionInfo.Location = New System.Drawing.Point(4, 157)
+            Me.LabelDefaultComments_PositionInfo.Name = "LabelDefaultComments_PositionInfo"
+            Me.LabelDefaultComments_PositionInfo.Size = New System.Drawing.Size(91, 20)
+            Me.LabelDefaultComments_PositionInfo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDefaultComments_PositionInfo.TabIndex = 6
+            Me.LabelDefaultComments_PositionInfo.Text = "Position Info:"
+            '
+            'LabelDefaultComments_MiscInfo
+            '
+            Me.LabelDefaultComments_MiscInfo.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDefaultComments_MiscInfo.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelDefaultComments_MiscInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDefaultComments_MiscInfo.Location = New System.Drawing.Point(4, 106)
+            Me.LabelDefaultComments_MiscInfo.Name = "LabelDefaultComments_MiscInfo"
+            Me.LabelDefaultComments_MiscInfo.Size = New System.Drawing.Size(91, 20)
+            Me.LabelDefaultComments_MiscInfo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDefaultComments_MiscInfo.TabIndex = 4
+            Me.LabelDefaultComments_MiscInfo.Text = "Misc Info:"
+            '
+            'LabelDefaultComments_CloseInfo
+            '
+            Me.LabelDefaultComments_CloseInfo.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDefaultComments_CloseInfo.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelDefaultComments_CloseInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDefaultComments_CloseInfo.Location = New System.Drawing.Point(4, 55)
+            Me.LabelDefaultComments_CloseInfo.Name = "LabelDefaultComments_CloseInfo"
+            Me.LabelDefaultComments_CloseInfo.Size = New System.Drawing.Size(91, 20)
+            Me.LabelDefaultComments_CloseInfo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDefaultComments_CloseInfo.TabIndex = 2
+            Me.LabelDefaultComments_CloseInfo.Text = "Close Info:"
+            '
+            'LabelDefaultComments_Instructions
+            '
+            Me.LabelDefaultComments_Instructions.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDefaultComments_Instructions.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelDefaultComments_Instructions.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDefaultComments_Instructions.Location = New System.Drawing.Point(4, 4)
+            Me.LabelDefaultComments_Instructions.Name = "LabelDefaultComments_Instructions"
+            Me.LabelDefaultComments_Instructions.Size = New System.Drawing.Size(91, 20)
+            Me.LabelDefaultComments_Instructions.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDefaultComments_Instructions.TabIndex = 0
+            Me.LabelDefaultComments_Instructions.Text = "Instructions:"
+            '
+            'TabItemMediaDefaults_DefaultCommentsTab
+            '
+            Me.TabItemMediaDefaults_DefaultCommentsTab.AttachedControl = Me.TabControlPanelDefaultCommentsTab_DefaultComments
+            Me.TabItemMediaDefaults_DefaultCommentsTab.Name = "TabItemMediaDefaults_DefaultCommentsTab"
+            Me.TabItemMediaDefaults_DefaultCommentsTab.Text = "Default Comments"
+            '
+            'TabItemVendorDetails_MediaDefaultsTab
+            '
+            Me.TabItemVendorDetails_MediaDefaultsTab.AttachedControl = Me.TabControlPanelMediaDefaultsTab_MediaDefaults
+            Me.TabItemVendorDetails_MediaDefaultsTab.Name = "TabItemVendorDetails_MediaDefaultsTab"
+            Me.TabItemVendorDetails_MediaDefaultsTab.Text = "Media Defaults"
+            '
+            'TabControlPanelContactsTab_Contacts
+            '
+            Me.TabControlPanelContactsTab_Contacts.Controls.Add(Me.TextBoxContacts_DefaultVendorContactCode)
+            Me.TabControlPanelContactsTab_Contacts.Controls.Add(Me.DataGridViewContacts_Contacts)
+            Me.TabControlPanelContactsTab_Contacts.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelContactsTab_Contacts.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelContactsTab_Contacts.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelContactsTab_Contacts.Name = "TabControlPanelContactsTab_Contacts"
+            Me.TabControlPanelContactsTab_Contacts.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelContactsTab_Contacts.Size = New System.Drawing.Size(815, 513)
+            Me.TabControlPanelContactsTab_Contacts.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelContactsTab_Contacts.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelContactsTab_Contacts.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelContactsTab_Contacts.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelContactsTab_Contacts.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelContactsTab_Contacts.Style.GradientAngle = 90
+            Me.TabControlPanelContactsTab_Contacts.TabIndex = 3
+            Me.TabControlPanelContactsTab_Contacts.TabItem = Me.TabItemVendorDetails_ContactsTab
+            '
+            'TextBoxContacts_DefaultVendorContactCode
+            '
+            Me.TextBoxContacts_DefaultVendorContactCode.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxContacts_DefaultVendorContactCode.Border.Class = "TextBoxBorder"
+            Me.TextBoxContacts_DefaultVendorContactCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxContacts_DefaultVendorContactCode.CheckSpellingOnValidate = False
+            Me.TextBoxContacts_DefaultVendorContactCode.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxContacts_DefaultVendorContactCode.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxContacts_DefaultVendorContactCode.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxContacts_DefaultVendorContactCode.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxContacts_DefaultVendorContactCode.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxContacts_DefaultVendorContactCode.FocusHighlightEnabled = True
+            Me.TextBoxContacts_DefaultVendorContactCode.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxContacts_DefaultVendorContactCode.Location = New System.Drawing.Point(566, 363)
+            Me.TextBoxContacts_DefaultVendorContactCode.MaxFileSize = CType(0, Long)
+            Me.TextBoxContacts_DefaultVendorContactCode.Name = "TextBoxContacts_DefaultVendorContactCode"
+            Me.TextBoxContacts_DefaultVendorContactCode.ReadOnly = True
+            Me.TextBoxContacts_DefaultVendorContactCode.SecurityEnabled = True
+            Me.TextBoxContacts_DefaultVendorContactCode.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxContacts_DefaultVendorContactCode.Size = New System.Drawing.Size(82, 20)
+            Me.TextBoxContacts_DefaultVendorContactCode.StartingFolderName = Nothing
+            Me.TextBoxContacts_DefaultVendorContactCode.TabIndex = 1
+            Me.TextBoxContacts_DefaultVendorContactCode.TabOnEnter = True
+            Me.TextBoxContacts_DefaultVendorContactCode.Visible = False
+            '
+            'DataGridViewContacts_Contacts
+            '
+            Me.DataGridViewContacts_Contacts.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewContacts_Contacts.AllowDragAndDrop = False
+            Me.DataGridViewContacts_Contacts.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewContacts_Contacts.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewContacts_Contacts.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewContacts_Contacts.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewContacts_Contacts.AutoFilterLookupColumns = False
+            Me.DataGridViewContacts_Contacts.AutoloadRepositoryDatasource = True
+            Me.DataGridViewContacts_Contacts.AutoUpdateViewCaption = True
+            Me.DataGridViewContacts_Contacts.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewContacts_Contacts.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewContacts_Contacts.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewContacts_Contacts.ItemDescription = ""
+            Me.DataGridViewContacts_Contacts.Location = New System.Drawing.Point(6, 6)
+            Me.DataGridViewContacts_Contacts.MultiSelect = True
+            Me.DataGridViewContacts_Contacts.Name = "DataGridViewContacts_Contacts"
+            Me.DataGridViewContacts_Contacts.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewContacts_Contacts.RunStandardValidation = True
+            Me.DataGridViewContacts_Contacts.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewContacts_Contacts.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewContacts_Contacts.Size = New System.Drawing.Size(803, 501)
+            Me.DataGridViewContacts_Contacts.TabIndex = 0
+            Me.DataGridViewContacts_Contacts.UseEmbeddedNavigator = False
+            Me.DataGridViewContacts_Contacts.ViewCaptionHeight = -1
+            '
+            'TabItemVendorDetails_ContactsTab
+            '
+            Me.TabItemVendorDetails_ContactsTab.AttachedControl = Me.TabControlPanelContactsTab_Contacts
+            Me.TabItemVendorDetails_ContactsTab.Name = "TabItemVendorDetails_ContactsTab"
+            Me.TabItemVendorDetails_ContactsTab.Text = "Contacts"
+            '
+            'TabControlPanelRepresentativesTab_Representatives
+            '
+            Me.TabControlPanelRepresentativesTab_Representatives.Controls.Add(Me.TextBoxRepresentatives_DefaultRep2)
+            Me.TabControlPanelRepresentativesTab_Representatives.Controls.Add(Me.TextBoxRepresentatives_DefaultRep1)
+            Me.TabControlPanelRepresentativesTab_Representatives.Controls.Add(Me.DataGridViewRepresentatives_VendorReps)
+            Me.TabControlPanelRepresentativesTab_Representatives.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelRepresentativesTab_Representatives.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelRepresentativesTab_Representatives.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelRepresentativesTab_Representatives.Name = "TabControlPanelRepresentativesTab_Representatives"
+            Me.TabControlPanelRepresentativesTab_Representatives.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelRepresentativesTab_Representatives.Size = New System.Drawing.Size(815, 513)
+            Me.TabControlPanelRepresentativesTab_Representatives.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelRepresentativesTab_Representatives.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelRepresentativesTab_Representatives.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelRepresentativesTab_Representatives.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelRepresentativesTab_Representatives.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelRepresentativesTab_Representatives.Style.GradientAngle = 90
+            Me.TabControlPanelRepresentativesTab_Representatives.TabIndex = 4
+            Me.TabControlPanelRepresentativesTab_Representatives.TabItem = Me.TabItemVendorDetails_RepresentativesTab
+            '
+            'TextBoxRepresentatives_DefaultRep2
+            '
+            Me.TextBoxRepresentatives_DefaultRep2.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxRepresentatives_DefaultRep2.Border.Class = "TextBoxBorder"
+            Me.TextBoxRepresentatives_DefaultRep2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxRepresentatives_DefaultRep2.CheckSpellingOnValidate = False
+            Me.TextBoxRepresentatives_DefaultRep2.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxRepresentatives_DefaultRep2.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxRepresentatives_DefaultRep2.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxRepresentatives_DefaultRep2.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxRepresentatives_DefaultRep2.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxRepresentatives_DefaultRep2.FocusHighlightEnabled = True
+            Me.TextBoxRepresentatives_DefaultRep2.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxRepresentatives_DefaultRep2.Location = New System.Drawing.Point(566, 368)
+            Me.TextBoxRepresentatives_DefaultRep2.MaxFileSize = CType(0, Long)
+            Me.TextBoxRepresentatives_DefaultRep2.Name = "TextBoxRepresentatives_DefaultRep2"
+            Me.TextBoxRepresentatives_DefaultRep2.ReadOnly = True
+            Me.TextBoxRepresentatives_DefaultRep2.SecurityEnabled = True
+            Me.TextBoxRepresentatives_DefaultRep2.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxRepresentatives_DefaultRep2.Size = New System.Drawing.Size(82, 20)
+            Me.TextBoxRepresentatives_DefaultRep2.StartingFolderName = Nothing
+            Me.TextBoxRepresentatives_DefaultRep2.TabIndex = 3
+            Me.TextBoxRepresentatives_DefaultRep2.TabOnEnter = True
+            Me.TextBoxRepresentatives_DefaultRep2.Visible = False
+            '
+            'TextBoxRepresentatives_DefaultRep1
+            '
+            Me.TextBoxRepresentatives_DefaultRep1.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxRepresentatives_DefaultRep1.Border.Class = "TextBoxBorder"
+            Me.TextBoxRepresentatives_DefaultRep1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxRepresentatives_DefaultRep1.CheckSpellingOnValidate = False
+            Me.TextBoxRepresentatives_DefaultRep1.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxRepresentatives_DefaultRep1.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxRepresentatives_DefaultRep1.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxRepresentatives_DefaultRep1.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxRepresentatives_DefaultRep1.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxRepresentatives_DefaultRep1.FocusHighlightEnabled = True
+            Me.TextBoxRepresentatives_DefaultRep1.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxRepresentatives_DefaultRep1.Location = New System.Drawing.Point(566, 342)
+            Me.TextBoxRepresentatives_DefaultRep1.MaxFileSize = CType(0, Long)
+            Me.TextBoxRepresentatives_DefaultRep1.Name = "TextBoxRepresentatives_DefaultRep1"
+            Me.TextBoxRepresentatives_DefaultRep1.ReadOnly = True
+            Me.TextBoxRepresentatives_DefaultRep1.SecurityEnabled = True
+            Me.TextBoxRepresentatives_DefaultRep1.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxRepresentatives_DefaultRep1.Size = New System.Drawing.Size(82, 20)
+            Me.TextBoxRepresentatives_DefaultRep1.StartingFolderName = Nothing
+            Me.TextBoxRepresentatives_DefaultRep1.TabIndex = 2
+            Me.TextBoxRepresentatives_DefaultRep1.TabOnEnter = True
+            Me.TextBoxRepresentatives_DefaultRep1.Visible = False
+            '
+            'DataGridViewRepresentatives_VendorReps
+            '
+            Me.DataGridViewRepresentatives_VendorReps.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewRepresentatives_VendorReps.AllowDragAndDrop = False
+            Me.DataGridViewRepresentatives_VendorReps.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewRepresentatives_VendorReps.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewRepresentatives_VendorReps.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewRepresentatives_VendorReps.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewRepresentatives_VendorReps.AutoFilterLookupColumns = False
+            Me.DataGridViewRepresentatives_VendorReps.AutoloadRepositoryDatasource = True
+            Me.DataGridViewRepresentatives_VendorReps.AutoUpdateViewCaption = True
+            Me.DataGridViewRepresentatives_VendorReps.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewRepresentatives_VendorReps.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewRepresentatives_VendorReps.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewRepresentatives_VendorReps.ItemDescription = ""
+            Me.DataGridViewRepresentatives_VendorReps.Location = New System.Drawing.Point(6, 6)
+            Me.DataGridViewRepresentatives_VendorReps.MultiSelect = True
+            Me.DataGridViewRepresentatives_VendorReps.Name = "DataGridViewRepresentatives_VendorReps"
+            Me.DataGridViewRepresentatives_VendorReps.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewRepresentatives_VendorReps.RunStandardValidation = True
+            Me.DataGridViewRepresentatives_VendorReps.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewRepresentatives_VendorReps.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewRepresentatives_VendorReps.Size = New System.Drawing.Size(803, 501)
+            Me.DataGridViewRepresentatives_VendorReps.TabIndex = 0
+            Me.DataGridViewRepresentatives_VendorReps.UseEmbeddedNavigator = False
+            Me.DataGridViewRepresentatives_VendorReps.ViewCaptionHeight = -1
+            '
+            'TabItemVendorDetails_RepresentativesTab
+            '
+            Me.TabItemVendorDetails_RepresentativesTab.AttachedControl = Me.TabControlPanelRepresentativesTab_Representatives
+            Me.TabItemVendorDetails_RepresentativesTab.Name = "TabItemVendorDetails_RepresentativesTab"
+            Me.TabItemVendorDetails_RepresentativesTab.Text = "Representatives"
             '
             'TabControlPanelLineDefaultsNotesTab_DefaultsNotes
             '
@@ -5776,328 +6191,6 @@
             Me.TabItemVendorDetails_VendorServiceTaxTab.Name = "TabItemVendorDetails_VendorServiceTaxTab"
             Me.TabItemVendorDetails_VendorServiceTaxTab.Text = "Vendor Service Tax"
             '
-            'TabControlPanel1099InfoTab_1099Info
-            '
-            Me.TabControlPanel1099InfoTab_1099Info.Controls.Add(Me.TableLayoutPanel1099Info_TableLayout)
-            Me.TabControlPanel1099InfoTab_1099Info.Controls.Add(Me.CheckBox1099Info_Is1099Vendor)
-            Me.TabControlPanel1099InfoTab_1099Info.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanel1099InfoTab_1099Info.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanel1099InfoTab_1099Info.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanel1099InfoTab_1099Info.Name = "TabControlPanel1099InfoTab_1099Info"
-            Me.TabControlPanel1099InfoTab_1099Info.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanel1099InfoTab_1099Info.Size = New System.Drawing.Size(815, 513)
-            Me.TabControlPanel1099InfoTab_1099Info.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanel1099InfoTab_1099Info.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanel1099InfoTab_1099Info.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanel1099InfoTab_1099Info.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanel1099InfoTab_1099Info.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanel1099InfoTab_1099Info.Style.GradientAngle = 90
-            Me.TabControlPanel1099InfoTab_1099Info.TabIndex = 2
-            Me.TabControlPanel1099InfoTab_1099Info.TabItem = Me.TabItemVendorDetails_1099InfoTab
-            '
-            'TableLayoutPanel1099Info_TableLayout
-            '
-            Me.TableLayoutPanel1099Info_TableLayout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TableLayoutPanel1099Info_TableLayout.BackColor = System.Drawing.Color.White
-            Me.TableLayoutPanel1099Info_TableLayout.ColumnCount = 2
-            Me.TableLayoutPanel1099Info_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanel1099Info_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanel1099Info_TableLayout.Controls.Add(Me.Panel1099Info_RightColumn, 1, 0)
-            Me.TableLayoutPanel1099Info_TableLayout.Controls.Add(Me.Panel1099Info_LeftColumn, 0, 0)
-            Me.TableLayoutPanel1099Info_TableLayout.Location = New System.Drawing.Point(4, 27)
-            Me.TableLayoutPanel1099Info_TableLayout.Margin = New System.Windows.Forms.Padding(0)
-            Me.TableLayoutPanel1099Info_TableLayout.Name = "TableLayoutPanel1099Info_TableLayout"
-            Me.TableLayoutPanel1099Info_TableLayout.RowCount = 1
-            Me.TableLayoutPanel1099Info_TableLayout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanel1099Info_TableLayout.Size = New System.Drawing.Size(806, 345)
-            Me.TableLayoutPanel1099Info_TableLayout.TabIndex = 1
-            '
-            'Panel1099Info_RightColumn
-            '
-            Me.Panel1099Info_RightColumn.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_MedicalHealthcare)
-            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_GrossProceedsToAttorney)
-            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_Royalties)
-            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_Rent)
-            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_OtherIncome)
-            Me.Panel1099Info_RightColumn.Controls.Add(Me.RadioButtonControl1099Info_NonEmployeeCompensation)
-            Me.Panel1099Info_RightColumn.Controls.Add(Me.Label1099Info_Category)
-            Me.Panel1099Info_RightColumn.Location = New System.Drawing.Point(403, 0)
-            Me.Panel1099Info_RightColumn.Margin = New System.Windows.Forms.Padding(0)
-            Me.Panel1099Info_RightColumn.Name = "Panel1099Info_RightColumn"
-            Me.Panel1099Info_RightColumn.Size = New System.Drawing.Size(403, 345)
-            Me.Panel1099Info_RightColumn.TabIndex = 1
-            '
-            'RadioButtonControl1099Info_MedicalHealthcare
-            '
-            Me.RadioButtonControl1099Info_MedicalHealthcare.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControl1099Info_MedicalHealthcare.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonControl1099Info_MedicalHealthcare.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControl1099Info_MedicalHealthcare.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControl1099Info_MedicalHealthcare.Location = New System.Drawing.Point(4, 156)
-            Me.RadioButtonControl1099Info_MedicalHealthcare.Name = "RadioButtonControl1099Info_MedicalHealthcare"
-            Me.RadioButtonControl1099Info_MedicalHealthcare.SecurityEnabled = True
-            Me.RadioButtonControl1099Info_MedicalHealthcare.Size = New System.Drawing.Size(399, 20)
-            Me.RadioButtonControl1099Info_MedicalHealthcare.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControl1099Info_MedicalHealthcare.TabIndex = 6
-            Me.RadioButtonControl1099Info_MedicalHealthcare.TabOnEnter = True
-            Me.RadioButtonControl1099Info_MedicalHealthcare.TabStop = False
-            Me.RadioButtonControl1099Info_MedicalHealthcare.Text = "Medical and Health Care"
-            '
-            'RadioButtonControl1099Info_GrossProceedsToAttorney
-            '
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Location = New System.Drawing.Point(4, 130)
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Name = "RadioButtonControl1099Info_GrossProceedsToAttorney"
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.SecurityEnabled = True
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Size = New System.Drawing.Size(399, 20)
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.TabIndex = 5
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.TabOnEnter = True
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.TabStop = False
-            Me.RadioButtonControl1099Info_GrossProceedsToAttorney.Text = "Gross Proceeds to Attorney"
-            '
-            'RadioButtonControl1099Info_Royalties
-            '
-            Me.RadioButtonControl1099Info_Royalties.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControl1099Info_Royalties.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonControl1099Info_Royalties.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControl1099Info_Royalties.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControl1099Info_Royalties.Location = New System.Drawing.Point(4, 104)
-            Me.RadioButtonControl1099Info_Royalties.Name = "RadioButtonControl1099Info_Royalties"
-            Me.RadioButtonControl1099Info_Royalties.SecurityEnabled = True
-            Me.RadioButtonControl1099Info_Royalties.Size = New System.Drawing.Size(399, 20)
-            Me.RadioButtonControl1099Info_Royalties.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControl1099Info_Royalties.TabIndex = 4
-            Me.RadioButtonControl1099Info_Royalties.TabOnEnter = True
-            Me.RadioButtonControl1099Info_Royalties.TabStop = False
-            Me.RadioButtonControl1099Info_Royalties.Text = "Royalties"
-            '
-            'RadioButtonControl1099Info_Rent
-            '
-            Me.RadioButtonControl1099Info_Rent.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControl1099Info_Rent.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonControl1099Info_Rent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControl1099Info_Rent.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControl1099Info_Rent.Location = New System.Drawing.Point(4, 78)
-            Me.RadioButtonControl1099Info_Rent.Name = "RadioButtonControl1099Info_Rent"
-            Me.RadioButtonControl1099Info_Rent.SecurityEnabled = True
-            Me.RadioButtonControl1099Info_Rent.Size = New System.Drawing.Size(399, 20)
-            Me.RadioButtonControl1099Info_Rent.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControl1099Info_Rent.TabIndex = 3
-            Me.RadioButtonControl1099Info_Rent.TabOnEnter = True
-            Me.RadioButtonControl1099Info_Rent.TabStop = False
-            Me.RadioButtonControl1099Info_Rent.Text = "Rent"
-            '
-            'RadioButtonControl1099Info_OtherIncome
-            '
-            Me.RadioButtonControl1099Info_OtherIncome.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControl1099Info_OtherIncome.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonControl1099Info_OtherIncome.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControl1099Info_OtherIncome.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControl1099Info_OtherIncome.Location = New System.Drawing.Point(4, 52)
-            Me.RadioButtonControl1099Info_OtherIncome.Name = "RadioButtonControl1099Info_OtherIncome"
-            Me.RadioButtonControl1099Info_OtherIncome.SecurityEnabled = True
-            Me.RadioButtonControl1099Info_OtherIncome.Size = New System.Drawing.Size(399, 20)
-            Me.RadioButtonControl1099Info_OtherIncome.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControl1099Info_OtherIncome.TabIndex = 2
-            Me.RadioButtonControl1099Info_OtherIncome.TabOnEnter = True
-            Me.RadioButtonControl1099Info_OtherIncome.TabStop = False
-            Me.RadioButtonControl1099Info_OtherIncome.Text = "Other Income"
-            '
-            'RadioButtonControl1099Info_NonEmployeeCompensation
-            '
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Location = New System.Drawing.Point(4, 26)
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Name = "RadioButtonControl1099Info_NonEmployeeCompensation"
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.SecurityEnabled = True
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Size = New System.Drawing.Size(399, 20)
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.TabIndex = 1
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.TabOnEnter = True
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.TabStop = False
-            Me.RadioButtonControl1099Info_NonEmployeeCompensation.Text = "Non Employee Compensation"
-            '
-            'Label1099Info_Category
-            '
-            Me.Label1099Info_Category.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Label1099Info_Category.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.Label1099Info_Category.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_Category.BackgroundStyle.BorderBottomWidth = 1
-            Me.Label1099Info_Category.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.Label1099Info_Category.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_Category.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_Category.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_Category.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label1099Info_Category.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label1099Info_Category.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.Label1099Info_Category.Location = New System.Drawing.Point(4, 0)
-            Me.Label1099Info_Category.Name = "Label1099Info_Category"
-            Me.Label1099Info_Category.Size = New System.Drawing.Size(399, 20)
-            Me.Label1099Info_Category.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label1099Info_Category.TabIndex = 0
-            Me.Label1099Info_Category.Text = "Category"
-            '
-            'Panel1099Info_LeftColumn
-            '
-            Me.Panel1099Info_LeftColumn.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Panel1099Info_LeftColumn.Controls.Add(Me.TextBox1099Info_VendorName)
-            Me.Panel1099Info_LeftColumn.Controls.Add(Me.Label1099Info_VendorName)
-            Me.Panel1099Info_LeftColumn.Controls.Add(Me.CheckBox1099Info_Use1099Name)
-            Me.Panel1099Info_LeftColumn.Controls.Add(Me.Label1099Info_AlternateNameFor1099)
-            Me.Panel1099Info_LeftColumn.Controls.Add(Me.Address3LineControl1099Info_Address)
-            Me.Panel1099Info_LeftColumn.Controls.Add(Me.CheckBox1099Info_Use1099Address)
-            Me.Panel1099Info_LeftColumn.Controls.Add(Me.Label1099Info_AlternateAddressFor1099)
-            Me.Panel1099Info_LeftColumn.Location = New System.Drawing.Point(0, 0)
-            Me.Panel1099Info_LeftColumn.Margin = New System.Windows.Forms.Padding(0)
-            Me.Panel1099Info_LeftColumn.Name = "Panel1099Info_LeftColumn"
-            Me.Panel1099Info_LeftColumn.Size = New System.Drawing.Size(403, 345)
-            Me.Panel1099Info_LeftColumn.TabIndex = 0
-            '
-            'Address3LineControl1099Info_Address
-            '
-            Me.Address3LineControl1099Info_Address.Address = Nothing
-            Me.Address3LineControl1099Info_Address.Address2 = Nothing
-            Me.Address3LineControl1099Info_Address.Address3 = Nothing
-            Me.Address3LineControl1099Info_Address.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Address3LineControl1099Info_Address.City = Nothing
-            Me.Address3LineControl1099Info_Address.Country = Nothing
-            Me.Address3LineControl1099Info_Address.County = Nothing
-            Me.Address3LineControl1099Info_Address.DisableCountry = False
-            Me.Address3LineControl1099Info_Address.DisableCounty = False
-            Me.Address3LineControl1099Info_Address.Location = New System.Drawing.Point(3, 52)
-            Me.Address3LineControl1099Info_Address.Name = "Address3LineControl1099Info_Address"
-            Me.Address3LineControl1099Info_Address.ReadOnly = False
-            Me.Address3LineControl1099Info_Address.ShowCountry = True
-            Me.Address3LineControl1099Info_Address.ShowCounty = True
-            Me.Address3LineControl1099Info_Address.Size = New System.Drawing.Size(397, 207)
-            Me.Address3LineControl1099Info_Address.State = Nothing
-            Me.Address3LineControl1099Info_Address.TabIndex = 2
-            Me.Address3LineControl1099Info_Address.Title = "Address"
-            Me.Address3LineControl1099Info_Address.Zip = Nothing
-            '
-            'CheckBox1099Info_Use1099Address
-            '
-            Me.CheckBox1099Info_Use1099Address.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            '
-            '
-            '
-            Me.CheckBox1099Info_Use1099Address.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBox1099Info_Use1099Address.CheckValue = 0
-            Me.CheckBox1099Info_Use1099Address.CheckValueChecked = 1
-            Me.CheckBox1099Info_Use1099Address.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBox1099Info_Use1099Address.CheckValueUnchecked = 0
-            Me.CheckBox1099Info_Use1099Address.ChildControls = CType(resources.GetObject("CheckBox1099Info_Use1099Address.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBox1099Info_Use1099Address.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBox1099Info_Use1099Address.Location = New System.Drawing.Point(0, 26)
-            Me.CheckBox1099Info_Use1099Address.Name = "CheckBox1099Info_Use1099Address"
-            Me.CheckBox1099Info_Use1099Address.OldestSibling = Nothing
-            Me.CheckBox1099Info_Use1099Address.SecurityEnabled = True
-            Me.CheckBox1099Info_Use1099Address.SiblingControls = CType(resources.GetObject("CheckBox1099Info_Use1099Address.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBox1099Info_Use1099Address.Size = New System.Drawing.Size(400, 20)
-            Me.CheckBox1099Info_Use1099Address.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBox1099Info_Use1099Address.TabIndex = 1
-            Me.CheckBox1099Info_Use1099Address.TabOnEnter = True
-            Me.CheckBox1099Info_Use1099Address.Text = "Use"
-            '
-            'Label1099Info_AlternateAddressFor1099
-            '
-            Me.Label1099Info_AlternateAddressFor1099.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Label1099Info_AlternateAddressFor1099.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderBottomWidth = 1
-            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_AlternateAddressFor1099.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label1099Info_AlternateAddressFor1099.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label1099Info_AlternateAddressFor1099.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.Label1099Info_AlternateAddressFor1099.Location = New System.Drawing.Point(0, 0)
-            Me.Label1099Info_AlternateAddressFor1099.Name = "Label1099Info_AlternateAddressFor1099"
-            Me.Label1099Info_AlternateAddressFor1099.Size = New System.Drawing.Size(400, 20)
-            Me.Label1099Info_AlternateAddressFor1099.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label1099Info_AlternateAddressFor1099.TabIndex = 0
-            Me.Label1099Info_AlternateAddressFor1099.Text = "Alternate Address for 1099"
-            '
-            'CheckBox1099Info_Is1099Vendor
-            '
-            Me.CheckBox1099Info_Is1099Vendor.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.CheckBox1099Info_Is1099Vendor.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBox1099Info_Is1099Vendor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBox1099Info_Is1099Vendor.CheckValue = 0
-            Me.CheckBox1099Info_Is1099Vendor.CheckValueChecked = 1
-            Me.CheckBox1099Info_Is1099Vendor.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBox1099Info_Is1099Vendor.CheckValueUnchecked = 0
-            Me.CheckBox1099Info_Is1099Vendor.ChildControls = CType(resources.GetObject("CheckBox1099Info_Is1099Vendor.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBox1099Info_Is1099Vendor.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBox1099Info_Is1099Vendor.Location = New System.Drawing.Point(4, 4)
-            Me.CheckBox1099Info_Is1099Vendor.Name = "CheckBox1099Info_Is1099Vendor"
-            Me.CheckBox1099Info_Is1099Vendor.OldestSibling = Nothing
-            Me.CheckBox1099Info_Is1099Vendor.SecurityEnabled = True
-            Me.CheckBox1099Info_Is1099Vendor.SiblingControls = CType(resources.GetObject("CheckBox1099Info_Is1099Vendor.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBox1099Info_Is1099Vendor.Size = New System.Drawing.Size(806, 20)
-            Me.CheckBox1099Info_Is1099Vendor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBox1099Info_Is1099Vendor.TabIndex = 0
-            Me.CheckBox1099Info_Is1099Vendor.TabOnEnter = True
-            Me.CheckBox1099Info_Is1099Vendor.Text = "1099 Vendor"
-            '
-            'TabItemVendorDetails_1099InfoTab
-            '
-            Me.TabItemVendorDetails_1099InfoTab.AttachedControl = Me.TabControlPanel1099InfoTab_1099Info
-            Me.TabItemVendorDetails_1099InfoTab.Name = "TabItemVendorDetails_1099InfoTab"
-            Me.TabItemVendorDetails_1099InfoTab.Text = "1099 Info"
-            '
             'TabControlPanelMediaInfoTab_MediaInfo
             '
             Me.TabControlPanelMediaInfoTab_MediaInfo.Controls.Add(Me.PanelMediaInfo_Magazine)
@@ -7339,96 +7432,29 @@
             Me.LabelDefaultNotes_ACHType.TabIndex = 7
             Me.LabelDefaultNotes_ACHType.Text = "ACH Type:"
             '
-            'Label1099Info_AlternateNameFor1099
+            'CheckBoxGeneralDefaultInformation_ComboStation
             '
-            Me.Label1099Info_AlternateNameFor1099.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Label1099Info_AlternateNameFor1099.BackColor = System.Drawing.Color.White
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderBottomWidth = 1
-            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label1099Info_AlternateNameFor1099.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label1099Info_AlternateNameFor1099.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.Label1099Info_AlternateNameFor1099.Location = New System.Drawing.Point(2, 264)
-            Me.Label1099Info_AlternateNameFor1099.Name = "Label1099Info_AlternateNameFor1099"
-            Me.Label1099Info_AlternateNameFor1099.Size = New System.Drawing.Size(398, 20)
-            Me.Label1099Info_AlternateNameFor1099.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label1099Info_AlternateNameFor1099.TabIndex = 3
-            Me.Label1099Info_AlternateNameFor1099.Text = "Alternate Name for 1099"
-            '
-            'CheckBox1099Info_Use1099Name
-            '
-            Me.CheckBox1099Info_Use1099Name.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            '
-            '
-            '
-            Me.CheckBox1099Info_Use1099Name.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBox1099Info_Use1099Name.CheckValue = 0
-            Me.CheckBox1099Info_Use1099Name.CheckValueChecked = 1
-            Me.CheckBox1099Info_Use1099Name.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBox1099Info_Use1099Name.CheckValueUnchecked = 0
-            Me.CheckBox1099Info_Use1099Name.ChildControls = CType(resources.GetObject("CheckBox1099Info_Use1099Name.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBox1099Info_Use1099Name.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBox1099Info_Use1099Name.Location = New System.Drawing.Point(1, 290)
-            Me.CheckBox1099Info_Use1099Name.Name = "CheckBox1099Info_Use1099Name"
-            Me.CheckBox1099Info_Use1099Name.OldestSibling = Nothing
-            Me.CheckBox1099Info_Use1099Name.SecurityEnabled = True
-            Me.CheckBox1099Info_Use1099Name.SiblingControls = CType(resources.GetObject("CheckBox1099Info_Use1099Name.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBox1099Info_Use1099Name.Size = New System.Drawing.Size(400, 20)
-            Me.CheckBox1099Info_Use1099Name.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBox1099Info_Use1099Name.TabIndex = 4
-            Me.CheckBox1099Info_Use1099Name.TabOnEnter = True
-            Me.CheckBox1099Info_Use1099Name.Text = "Use"
-            '
-            'Label1099Info_VendorName
-            '
-            Me.Label1099Info_VendorName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.Label1099Info_VendorName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label1099Info_VendorName.Location = New System.Drawing.Point(6, 314)
-            Me.Label1099Info_VendorName.Name = "Label1099Info_VendorName"
-            Me.Label1099Info_VendorName.Size = New System.Drawing.Size(52, 20)
-            Me.Label1099Info_VendorName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label1099Info_VendorName.TabIndex = 5
-            Me.Label1099Info_VendorName.Text = "Name:"
-            '
-            'TextBox1099Info_VendorName
-            '
-            Me.TextBox1099Info_VendorName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBox1099Info_VendorName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBox1099Info_VendorName.Border.Class = "TextBoxBorder"
-            Me.TextBox1099Info_VendorName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBox1099Info_VendorName.CheckSpellingOnValidate = False
-            Me.TextBox1099Info_VendorName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBox1099Info_VendorName.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBox1099Info_VendorName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBox1099Info_VendorName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBox1099Info_VendorName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBox1099Info_VendorName.FocusHighlightEnabled = True
-            Me.TextBox1099Info_VendorName.ForeColor = System.Drawing.Color.Black
-            Me.TextBox1099Info_VendorName.Location = New System.Drawing.Point(72, 315)
-            Me.TextBox1099Info_VendorName.MaxFileSize = CType(0, Long)
-            Me.TextBox1099Info_VendorName.Name = "TextBox1099Info_VendorName"
-            Me.TextBox1099Info_VendorName.SecurityEnabled = True
-            Me.TextBox1099Info_VendorName.ShowSpellCheckCompleteMessage = True
-            Me.TextBox1099Info_VendorName.Size = New System.Drawing.Size(323, 20)
-            Me.TextBox1099Info_VendorName.StartingFolderName = Nothing
-            Me.TextBox1099Info_VendorName.TabIndex = 6
-            Me.TextBox1099Info_VendorName.TabOnEnter = True
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.CheckValue = 0
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.CheckValueChecked = 1
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.CheckValueUnchecked = 0
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.ChildControls = CType(resources.GetObject("CheckBoxGeneralDefaultInformation_ComboStation.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.Location = New System.Drawing.Point(167, 78)
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.Name = "CheckBoxGeneralDefaultInformation_ComboStation"
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.OldestSibling = Nothing
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.SecurityEnabled = True
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.SiblingControls = CType(resources.GetObject("CheckBoxGeneralDefaultInformation_ComboStation.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.Size = New System.Drawing.Size(125, 20)
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.TabIndex = 43
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.TabOnEnter = True
+            Me.CheckBoxGeneralDefaultInformation_ComboStation.Text = "Combo Station"
             '
             'VendorControl
             '
@@ -7440,6 +7466,34 @@
             Me.Size = New System.Drawing.Size(815, 540)
             CType(Me.TabControlControl_VendorDetails, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlControl_VendorDetails.ResumeLayout(False)
+            Me.TabControlPanel1099InfoTab_1099Info.ResumeLayout(False)
+            Me.TableLayoutPanel1099Info_TableLayout.ResumeLayout(False)
+            Me.Panel1099Info_RightColumn.ResumeLayout(False)
+            Me.Panel1099Info_LeftColumn.ResumeLayout(False)
+            Me.TabControlPanelMainTab_Main.ResumeLayout(False)
+            CType(Me.SearchableComboBoxMain_QuickBooksVendor.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.GridView17, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TableLayoutPanelMain_TableLayout.ResumeLayout(False)
+            Me.PanelTableLayout_RightSection.ResumeLayout(False)
+            CType(Me.GroupBoxMain_PayToNameAndAddress, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxMain_PayToNameAndAddress.ResumeLayout(False)
+            Me.PanelTableLayout_LeftSection.ResumeLayout(False)
+            CType(Me.GroupBoxMain_NameAndAddress, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxMain_NameAndAddress.ResumeLayout(False)
+            Me.TabControlPanelEEOCStatusTab_EEOCStatus.ResumeLayout(False)
+            CType(Me.PanelControl_RightSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelControl_RightSection.ResumeLayout(False)
+            CType(Me.PanelControl_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelControl_LeftSection.ResumeLayout(False)
+            Me.TabControlPanelEEOC2Tab_EEOC2.ResumeLayout(False)
+            CType(Me.GroupBoxEEOC2_WomensBusinessDetails, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxEEOC2_WomensBusinessDetails.ResumeLayout(False)
+            CType(Me.DateTimePickerWBD_WBENCCertificationExpirationDate, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.GroupBoxEEOC2_MinorityOwnedBusinessDetails, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxEEOC2_MinorityOwnedBusinessDetails.ResumeLayout(False)
+            CType(Me.DateTimePickerMOBD_MinorityCertifcateNumberExpirationDate, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.SearchableComboBoxMOBD_Ethnicity.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.GridView16, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlPanelMediaDefaultsTab_MediaDefaults.ResumeLayout(False)
             CType(Me.TabControlMediaDefaults_MediaDefaultsTab, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlMediaDefaults_MediaDefaultsTab.ResumeLayout(False)
@@ -7472,32 +7526,8 @@
             CType(Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties, System.ComponentModel.ISupportInitialize).EndInit
             CType(Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlPanelDefaultCommentsTab_DefaultComments.ResumeLayout(False)
-            Me.TabControlPanelMainTab_Main.ResumeLayout(False)
-            CType(Me.SearchableComboBoxMain_QuickBooksVendor.Properties, System.ComponentModel.ISupportInitialize).EndInit
-            CType(Me.GridView17, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TableLayoutPanelMain_TableLayout.ResumeLayout(False)
-            Me.PanelTableLayout_RightSection.ResumeLayout(False)
-            CType(Me.GroupBoxMain_PayToNameAndAddress, System.ComponentModel.ISupportInitialize).EndInit
-            Me.GroupBoxMain_PayToNameAndAddress.ResumeLayout(False)
-            Me.PanelTableLayout_LeftSection.ResumeLayout(False)
-            CType(Me.GroupBoxMain_NameAndAddress, System.ComponentModel.ISupportInitialize).EndInit
-            Me.GroupBoxMain_NameAndAddress.ResumeLayout(False)
             Me.TabControlPanelContactsTab_Contacts.ResumeLayout(False)
             Me.TabControlPanelRepresentativesTab_Representatives.ResumeLayout(False)
-            Me.TabControlPanelEEOC2Tab_EEOC2.ResumeLayout(False)
-            CType(Me.GroupBoxEEOC2_WomensBusinessDetails, System.ComponentModel.ISupportInitialize).EndInit
-            Me.GroupBoxEEOC2_WomensBusinessDetails.ResumeLayout(False)
-            CType(Me.DateTimePickerWBD_WBENCCertificationExpirationDate, System.ComponentModel.ISupportInitialize).EndInit
-            CType(Me.GroupBoxEEOC2_MinorityOwnedBusinessDetails, System.ComponentModel.ISupportInitialize).EndInit
-            Me.GroupBoxEEOC2_MinorityOwnedBusinessDetails.ResumeLayout(False)
-            CType(Me.DateTimePickerMOBD_MinorityCertifcateNumberExpirationDate, System.ComponentModel.ISupportInitialize).EndInit
-            CType(Me.SearchableComboBoxMOBD_Ethnicity.Properties, System.ComponentModel.ISupportInitialize).EndInit
-            CType(Me.GridView16, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlPanelEEOCStatusTab_EEOCStatus.ResumeLayout(False)
-            CType(Me.PanelControl_RightSection, System.ComponentModel.ISupportInitialize).EndInit
-            Me.PanelControl_RightSection.ResumeLayout(False)
-            CType(Me.PanelControl_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
-            Me.PanelControl_LeftSection.ResumeLayout(False)
             Me.TabControlPanelLineDefaultsNotesTab_DefaultsNotes.ResumeLayout(False)
             Me.TableLayoutPanelDefaultsNotes_TableLayout.ResumeLayout(False)
             Me.PanelRightColumn_DefaultsNotes.ResumeLayout(False)
@@ -7525,10 +7555,6 @@
             CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit
             CType(Me.SearchableComboBoxServiceTax_Code.Properties, System.ComponentModel.ISupportInitialize).EndInit
             CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlPanel1099InfoTab_1099Info.ResumeLayout(False)
-            Me.TableLayoutPanel1099Info_TableLayout.ResumeLayout(False)
-            Me.Panel1099Info_RightColumn.ResumeLayout(False)
-            Me.Panel1099Info_LeftColumn.ResumeLayout(False)
             Me.TabControlPanelMediaInfoTab_MediaInfo.ResumeLayout(False)
             Me.PanelMediaInfo_Magazine.ResumeLayout(False)
             CType(Me.NumericInputMagazine_Issues.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -7892,6 +7918,7 @@
         Friend WithEvents Label1099Info_VendorName As Label
         Friend WithEvents CheckBox1099Info_Use1099Name As CheckBox
         Friend WithEvents Label1099Info_AlternateNameFor1099 As Label
+        Friend WithEvents CheckBoxGeneralDefaultInformation_ComboStation As CheckBox
     End Class
 
 End Namespace

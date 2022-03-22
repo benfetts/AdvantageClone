@@ -90,7 +90,7 @@
             XrSummary1.FormatString = "{0:n2}"
             Me.XrLabelRate.Summary = XrSummary1
             Me.XrLabelRate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-            Me.XrLabelRate.TextFormatString = "{0:n2}"
+            Me.XrLabelRate.TextFormatString = "{0:n4}"
             '
             'FormattingRuleShowRate
             '

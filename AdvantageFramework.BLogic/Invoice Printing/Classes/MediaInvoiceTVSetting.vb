@@ -61,8 +61,9 @@
             TVLineNumberColumn
             TVShowZeroLineAmounts
 			TVCloseDateColumn
-			TVCustomInvoiceID
-		End Enum
+            TVCustomInvoiceID
+            TVStartDateColumn
+        End Enum
 
 #End Region
 
@@ -422,17 +423,20 @@
 				_TVPriorBillAmountColumn = value
 			End Set
 		End Property
-		<System.Runtime.Serialization.DataMemberAttribute(),
-		System.ComponentModel.Category("Columns")>
-		Public Property TVBilledToDateAmountColumn As Short
-			Get
-				TVBilledToDateAmountColumn = _TVBilledToDateAmountColumn
-			End Get
-			Set(ByVal value As Short)
-				_TVBilledToDateAmountColumn = value
-			End Set
-		End Property
-		<System.Runtime.Serialization.DataMemberAttribute()>
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        System.ComponentModel.Category("Columns")>
+        Public Property TVBilledToDateAmountColumn As Short
+            Get
+                TVBilledToDateAmountColumn = _TVBilledToDateAmountColumn
+            End Get
+            Set(ByVal value As Short)
+                _TVBilledToDateAmountColumn = value
+            End Set
+        End Property
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        System.ComponentModel.Category("Columns")>
+        Public Property TVStartDateColumn As Short
+        <System.Runtime.Serialization.DataMemberAttribute()>
 		Public Property TVShowCommissionSeparately As Boolean
 			Get
 				TVShowCommissionSeparately = _TVShowCommissionSeparately
@@ -642,8 +646,9 @@
 			Me.TVOrderDetailCommentColumn = MediaInvoiceDefault.TVOrderDetailCommentColumn.GetValueOrDefault(0)
 			Me.TVOrderHouseDetailCommentColumn = MediaInvoiceDefault.TVOrderHouseDetailCommentColumn.GetValueOrDefault(0)
 			Me.TVExtraChargesColumn = MediaInvoiceDefault.TVExtraChargesColumn.GetValueOrDefault(0)
+            Me.TVStartDateColumn = MediaInvoiceDefault.TVStartDateColumn
 
-			Me.TVShowCommissionSeparately = Convert.ToBoolean(MediaInvoiceDefault.TVShowCommissionSeparately.GetValueOrDefault(0))
+            Me.TVShowCommissionSeparately = Convert.ToBoolean(MediaInvoiceDefault.TVShowCommissionSeparately.GetValueOrDefault(0))
 			Me.TVShowRebateSeparately = Convert.ToBoolean(MediaInvoiceDefault.TVShowRebateSeparately.GetValueOrDefault(0))
 			Me.TVShowTaxSeparately = Convert.ToBoolean(MediaInvoiceDefault.TVShowTaxSeparately.GetValueOrDefault(0))
 			Me.TVShowBillingHistory = Convert.ToBoolean(MediaInvoiceDefault.TVShowBillingHistory.GetValueOrDefault(0))
@@ -700,8 +705,9 @@
 			Me.TVOrderDetailCommentColumn = InvoicePrintingMediaSetting.TVOrderDetailCommentColumn.GetValueOrDefault(0)
 			Me.TVOrderHouseDetailCommentColumn = InvoicePrintingMediaSetting.TVOrderHouseDetailCommentColumn.GetValueOrDefault(0)
 			Me.TVExtraChargesColumn = InvoicePrintingMediaSetting.TVExtraChargesColumn.GetValueOrDefault(0)
+            Me.TVStartDateColumn = InvoicePrintingMediaSetting.TVStartDateColumn.GetValueOrDefault(0)
 
-			Me.TVShowCommissionSeparately = InvoicePrintingMediaSetting.TVShowCommissionSeparately.GetValueOrDefault(False)
+            Me.TVShowCommissionSeparately = InvoicePrintingMediaSetting.TVShowCommissionSeparately.GetValueOrDefault(False)
 			Me.TVShowRebateSeparately = InvoicePrintingMediaSetting.TVShowRebateSeparately.GetValueOrDefault(False)
 			Me.TVShowTaxSeparately = InvoicePrintingMediaSetting.TVShowTaxSeparately.GetValueOrDefault(False)
 			Me.TVShowBillingHistory = InvoicePrintingMediaSetting.TVShowBillingHistory.GetValueOrDefault(False)
@@ -807,8 +813,9 @@
 			InvoicePrintingMediaSetting.TVOrderDetailCommentColumn = Me.TVOrderDetailCommentColumn
 			InvoicePrintingMediaSetting.TVOrderHouseDetailCommentColumn = Me.TVOrderHouseDetailCommentColumn
 			InvoicePrintingMediaSetting.TVExtraChargesColumn = Me.TVExtraChargesColumn
+            InvoicePrintingMediaSetting.TVStartDateColumn = Me.TVStartDateColumn
 
-			InvoicePrintingMediaSetting.TVShowCommissionSeparately = Me.TVShowCommissionSeparately
+            InvoicePrintingMediaSetting.TVShowCommissionSeparately = Me.TVShowCommissionSeparately
 			InvoicePrintingMediaSetting.TVShowRebateSeparately = Me.TVShowRebateSeparately
 			InvoicePrintingMediaSetting.TVShowTaxSeparately = Me.TVShowTaxSeparately
 			InvoicePrintingMediaSetting.TVShowBillingHistory = Me.TVShowBillingHistory
@@ -863,8 +870,9 @@
 			MediaInvoiceDefault.TVOrderDetailCommentColumn = Me.TVOrderDetailCommentColumn
 			MediaInvoiceDefault.TVOrderHouseDetailCommentColumn = Me.TVOrderHouseDetailCommentColumn
 			MediaInvoiceDefault.TVExtraChargesColumn = Me.TVExtraChargesColumn
+            MediaInvoiceDefault.TVStartDateColumn = Me.TVStartDateColumn
 
-			MediaInvoiceDefault.TVShowCommissionSeparately = Convert.ToInt16(Me.TVShowCommissionSeparately)
+            MediaInvoiceDefault.TVShowCommissionSeparately = Convert.ToInt16(Me.TVShowCommissionSeparately)
 			MediaInvoiceDefault.TVShowRebateSeparately = Convert.ToInt16(Me.TVShowRebateSeparately)
 			MediaInvoiceDefault.TVShowTaxSeparately = Convert.ToInt16(Me.TVShowTaxSeparately)
 			MediaInvoiceDefault.TVShowBillingHistory = Convert.ToInt16(Me.TVShowBillingHistory)

@@ -91,6 +91,12 @@
 
             Try
 
+                If AccountPayableProduction.ExtendedNonResaleTax.HasValue = False Then
+
+                    AccountPayableProduction.ExtendedNonResaleTax = 0
+
+                End If
+
                 DbContext.AccountPayableProductions.Add(AccountPayableProduction)
 
                 ErrorText = AccountPayableProduction.ValidateEntity(IsValid)
@@ -134,6 +140,12 @@
 
             Try
 
+                If AccountPayableProduction.ExtendedNonResaleTax.HasValue = False Then
+
+                    AccountPayableProduction.ExtendedNonResaleTax = 0
+
+                End If
+
                 DbContext.AccountPayableProductions.Add(AccountPayableProduction)
 
                 SetNonBillableFlag(DbContext, AccountPayableProduction)
@@ -168,6 +180,12 @@
             Dim ErrorText As String = ""
 
             Try
+
+                If AccountPayableProduction.ExtendedNonResaleTax.HasValue = False Then
+
+                    AccountPayableProduction.ExtendedNonResaleTax = 0
+
+                End If
 
                 DbContext.UpdateObject(AccountPayableProduction)
 

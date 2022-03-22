@@ -1,4 +1,4 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Public Class arptPurchaseOrderRR
     Inherits DataDynamics.ActiveReports.ActiveReport
 
@@ -404,6 +404,8 @@ Partial Public Class arptPurchaseOrderRR
         Me.Picture1.ImageData = Nothing
         Me.Picture1.Name = "Picture1"
         Me.Picture1.PictureAlignment = DataDynamics.ActiveReports.PictureAlignment.TopLeft
+        Me.Picture1.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch
+        Me.Picture1.Left = 0.0625!
         '
         'Line6
         '

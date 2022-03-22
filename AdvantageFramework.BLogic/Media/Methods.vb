@@ -6405,6 +6405,12 @@
 
             End If
 
+            If String.IsNullOrWhiteSpace(CreateOrderRequestOrder.Station.FCCCallLetters) = False Then
+
+                CreateOrderRequestOrder.Station.FCCCallLetters = CreateOrderRequestOrder.Station.FCCCallLetters.Replace("+", "")
+
+            End If
+
             If TVOrder.StartDate.HasValue Then
 
                 CreateOrderRequestOrder.StartDate = TVOrder.StartDate.Value

@@ -197,10 +197,22 @@
         e.preventDefault();
         var action = $(e.item).attr('Action');
         var url = $(e.item).find('a').attr('href');
+        var unityModel = @Html.Raw(Json.Encode(Model));
         var data = {
             ActionName: action,
             UnityMenuModel: @Html.Raw(Json.Encode(Model))
         };
+
+        if ($(e.target)) {
+            var target = $(e.target);
+            var jobnumber = target.attr("row-jobnumber");
+            var componentnumber = target.attr("row-componentnumber");
+            if (jobnumber)
+                data.UnityMenuModel.JobNumber = jobnumber;
+            if (componentnumber)
+                data.UnityMenuModel.JobComponentNumber = componentnumber;
+        }
+
         $.post({
             url: window.appBase + 'Utilities/' + url,
             data: data
@@ -218,7 +230,7 @@
                             OpenRadWindow('Print/Send Project Schedule', response.Data.Url);
                         } else {
                             OpenRadWindow('', response.Data.Url);
-                        }                          
+                        }
                     }
                 }
             } else {
@@ -227,7 +239,7 @@
                 }
             }
         });
-        
+
     }
 </script>
 <style type="text/css">

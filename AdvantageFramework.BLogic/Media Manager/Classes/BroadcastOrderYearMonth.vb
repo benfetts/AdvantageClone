@@ -16,6 +16,8 @@
             MonthYear
             Spots
             TotalNet
+            TotalNetWhenGrossOrder
+            ShowTotalNetWhenGrossOrder
         End Enum
 
 #End Region
@@ -40,6 +42,10 @@
         Public Property BroadcastMonthAbbrev() As String
         <System.Runtime.Serialization.DataMemberAttribute()>
         Public Property BroadcastYear() As Short
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property TotalNetWhenGrossOrder() As Decimal
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property ShowTotalNetWhenGrossOrder() As Boolean
 
 #End Region
 

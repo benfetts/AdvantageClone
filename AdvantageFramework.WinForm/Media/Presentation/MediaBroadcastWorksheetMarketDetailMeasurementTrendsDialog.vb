@@ -540,6 +540,7 @@
                 DataTable.Rows(0)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_MeasurementTrendsColumns.AQH.ToString) = _ViewModel.MeasurementTrendsDataTable.Rows(0)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_MeasurementTrendsColumns.AQH.ToString)
                 DataTable.Rows(0)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_MeasurementTrendsColumns.CumeRating.ToString) = _ViewModel.MeasurementTrendsDataTable.Rows(0)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_MeasurementTrendsColumns.CumeRating.ToString)
                 DataTable.Rows(0)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_MeasurementTrendsColumns.Cume.ToString) = _ViewModel.MeasurementTrendsDataTable.Rows(0)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_MeasurementTrendsColumns.Cume.ToString)
+                DataTable.Rows(0)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_MeasurementTrendsColumns.Impressions.ToString) = _ViewModel.MeasurementTrendsDataTable.Rows(0)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_MeasurementTrendsColumns.Impressions.ToString)
 
                 DataGridViewForm_Trends.CurrentView.RefreshData()
 

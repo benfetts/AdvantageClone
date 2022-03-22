@@ -260,7 +260,11 @@ Namespace Controllers.Media
 
                 GetServerName(DatabaseName, SqlConnectionStringBuilder.DataSource, SqlConnectionStringBuilder.UserID, SqlConnectionStringBuilder.Password)
 
-                SqlConnectionStringBuilder.InitialCatalog = DatabaseName
+                If String.IsNullOrWhiteSpace(DatabaseName) = False Then
+
+                    SqlConnectionStringBuilder.InitialCatalog = DatabaseName
+
+                End If
 
                 If String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.DataSource) = False AndAlso String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.InitialCatalog) = False AndAlso
                         String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.UserID) = False AndAlso String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.Password) = False Then
@@ -445,7 +449,11 @@ Namespace Controllers.Media
 
                 GetServerName(MakegoodOutstandingViewModel.DatabaseName, SqlConnectionStringBuilder.DataSource, SqlConnectionStringBuilder.UserID, SqlConnectionStringBuilder.Password)
 
-                SqlConnectionStringBuilder.InitialCatalog = MakegoodOutstandingViewModel.DatabaseName
+                If String.IsNullOrWhiteSpace(MakegoodOutstandingViewModel.DatabaseName) = False Then
+
+                    SqlConnectionStringBuilder.InitialCatalog = MakegoodOutstandingViewModel.DatabaseName
+
+                End If
 
                 If String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.DataSource) = False AndAlso String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.InitialCatalog) = False AndAlso
                         String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.UserID) = False AndAlso String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.Password) = False Then
@@ -713,7 +721,11 @@ Namespace Controllers.Media
 
                 GetServerName(DatabaseName, SqlConnectionStringBuilder.DataSource, SqlConnectionStringBuilder.UserID, SqlConnectionStringBuilder.Password)
 
-                SqlConnectionStringBuilder.InitialCatalog = DatabaseName
+                If String.IsNullOrWhiteSpace(DatabaseName) = False Then
+
+                    SqlConnectionStringBuilder.InitialCatalog = DatabaseName
+
+                End If
 
                 If String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.DataSource) = False AndAlso String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.InitialCatalog) = False AndAlso
                         String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.UserID) = False AndAlso String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.Password) = False Then
@@ -896,7 +908,11 @@ Namespace Controllers.Media
 
                 GetServerName(DatabaseName, SqlConnectionStringBuilder.DataSource, SqlConnectionStringBuilder.UserID, SqlConnectionStringBuilder.Password)
 
-                SqlConnectionStringBuilder.InitialCatalog = DatabaseName
+                If String.IsNullOrWhiteSpace(DatabaseName) = False Then
+
+                    SqlConnectionStringBuilder.InitialCatalog = DatabaseName
+
+                End If
 
                 If String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.DataSource) = False AndAlso String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.InitialCatalog) = False AndAlso
                         String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.UserID) = False AndAlso String.IsNullOrWhiteSpace(SqlConnectionStringBuilder.Password) = False Then
@@ -1607,7 +1623,7 @@ Namespace Controllers.Media
                                                      Select Entity.MediaBroadcastWorksheetMarketDetail.LineNumber).Distinct.ToArray
 
                     SubmittedWorksheetLineNumbers = (From SubmittedWorksheetLineNumber In SubmittedWorksheetLineNumbers
-                                                     Where UnsubmittedWorksheetLineNumbers.Contains(SubmittedWorksheetLineNumber)
+                                                     Where UnSubmittedWorksheetLineNumbers.Contains(SubmittedWorksheetLineNumber)
                                                      Select SubmittedWorksheetLineNumber).Distinct.ToArray
 
                     If MediaType = "T" Then
@@ -1716,7 +1732,11 @@ Namespace Controllers.Media
 
                 GetServerName(DatabaseName, SqlConnectionStringBuilder.DataSource, SqlConnectionStringBuilder.UserID, SqlConnectionStringBuilder.Password)
 
-                SqlConnectionStringBuilder.InitialCatalog = DatabaseName
+                If String.IsNullOrWhiteSpace(DatabaseName) = False Then
+
+                    SqlConnectionStringBuilder.InitialCatalog = DatabaseName
+
+                End If
 
                 Try
 

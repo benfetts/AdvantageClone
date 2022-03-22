@@ -1,4 +1,11 @@
-﻿Namespace ProjectSchedule
+﻿Option Strict On
+Namespace ProjectSchedule
+
+    Public Class _ClientContact
+        Public Property Code As String
+        Public Property Name As String
+        Public Property SequenceNumber As Short
+    End Class
 
     <HideModuleName()>
     Public Module Methods
@@ -372,7 +379,7 @@
                     If MarkedComplete = True Then
 
                         Employee = AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, TaskEmployee.EmployeeCode)
-                        Task = AdvantageFramework.Database.Procedures.JobComponentTask.LoadByJobNumberAndJobComponentNumberAndSequenceNumber(DbContext, JobNumber, JobComponentNumber, SequenceNumber)
+                        Task = AdvantageFramework.Database.Procedures.JobComponentTask.LoadByJobNumberAndJobComponentNumberAndSequenceNumber(DbContext, JobNumber, CShort(JobComponentNumber), CShort(SequenceNumber))
 
                         If Not Employee Is Nothing AndAlso Not Task Is Nothing AndAlso AdvantageFramework.ProjectSchedule.AlertManagerOnTempComplete(DbContext) = True Then
 
@@ -387,7 +394,7 @@
 
                         End If
 
-                        CheckToCompleteSchedule(DbContext, JobNumber, JobComponentNumber)
+                        CheckToCompleteSchedule(DbContext, JobNumber, CShort(JobComponentNumber))
 
                         'AdvantageFramework.ProjectManagement.Agile.ClearAllocatedHours(DbContext, JobNumber, JobComponentNumber, SequenceNumber, TaskEmployee.EmployeeCode, True)
 
@@ -783,7 +790,7 @@
             End Try
             If WorkItem IsNot Nothing Then
 
-                WorkItem.AssignmentCompleted = 1
+                WorkItem.AssignmentCompleted = True
 
                 Completed = AdvantageFramework.Database.Procedures.Alert.Update(DbContext, WorkItem)
 
@@ -816,7 +823,7 @@
                 Dim ThisTask As AdvantageFramework.Database.Entities.JobComponentTask
 
                 ThisTask = Nothing
-                ThisTask = AdvantageFramework.Database.Procedures.JobComponentTask.LoadByJobNumberAndJobComponentNumberAndSequenceNumber(DbContext, JobNumber, JobComponentNumber, TaskSequenceNumber)
+                ThisTask = AdvantageFramework.Database.Procedures.JobComponentTask.LoadByJobNumberAndJobComponentNumberAndSequenceNumber(DbContext, JobNumber, CShort(JobComponentNumber), CShort(TaskSequenceNumber))
 
                 If Not ThisTask Is Nothing Then
 
@@ -852,7 +859,7 @@
 
                         End With
 
-                        Subject = "[Task Updated] for Job " & JobNumber.ToString().PadLeft(6, "0") & "-" & JobComponentNumber.ToString().PadLeft(2, "0") & " - " &
+                        Subject = "[Task Updated] for Job " & JobNumber.ToString().PadLeft(6, CChar("0")) & "-" & JobComponentNumber.ToString().PadLeft(2, CChar("0")) & " - " &
                             ThisTask.JobComponent.Description & ".  " & ThisTask.Description
 
                         With NewAlert
@@ -869,8 +876,8 @@
                             .DivisionCode = ThisTask.JobComponent.Job.DivisionCode
                             .ProductCode = ThisTask.JobComponent.Job.ProductCode
                             .JobNumber = JobNumber
-                            .JobComponentNumber = JobComponentNumber
-                            .TaskSequenceNumber = TaskSequenceNumber
+                            .JobComponentNumber = CShort(JobComponentNumber)
+                            .TaskSequenceNumber = CShort(TaskSequenceNumber)
                             .AlertLevel = "PST"
                             .DueDate = ThisTask.DueDate
                             .UserCode = DbContext.UserCode
@@ -945,6 +952,7 @@
             End Try
 
         End Sub
+
         Public Function GetScheduleTasks(ByVal DbContext As AdvantageFramework.Database.DbContext, ByVal JobNumber As Integer, ByVal JobComponentNumber As Integer,
                                          ByVal Sort As String, ByVal UserCode As String, Optional ByVal EmployeeCode As String = "", Optional ByVal TaskCode As String = "",
                                          Optional ByVal RoleCode As String = "", Optional ByVal IncludeCompletedTasks As Boolean = True, Optional ByVal IncludeOnlyPendingTasks As Boolean = False,
@@ -974,7 +982,7 @@
             Dim ScheduleTask As AdvantageFramework.ProjectSchedule.Classes.ScheduleTask = Nothing
             Dim PredecessorSequenceNumbers As Short() = Nothing
             Dim ChildTasks As Generic.IEnumerable(Of AdvantageFramework.ProjectSchedule.Classes.ScheduleTask) = Nothing
-            Dim ClientContactList As IEnumerable = Nothing
+            Dim ClientContactList As List(Of _ClientContact) = Nothing
             Dim JobComponentTaskEmployeeList As Generic.List(Of AdvantageFramework.Database.Entities.JobComponentTaskEmployee) = Nothing
             Dim JobComponentTaskPredecessorList As Generic.List(Of AdvantageFramework.Database.Entities.JobComponentTaskPredecessor) = Nothing
 
@@ -982,7 +990,7 @@
 
                 DataTable = New System.Data.DataTable
 
-                SqlConnection = DbContext.Database.Connection
+                SqlConnection = CType(DbContext.Database.Connection, System.Data.SqlClient.SqlConnection)
                 SqlCommand = New System.Data.SqlClient.SqlCommand("[dbo].[usp_wv_Traffic_Schedule_GetTasks]", SqlConnection)
                 SqlDataAdapter = New System.Data.SqlClient.SqlDataAdapter(SqlCommand)
 
@@ -1059,7 +1067,7 @@
                                             .JobDays = Row.Field(Of Short?)("JOB_DAYS"),
                                             .JobHours = Row.Field(Of Decimal?)("JOB_HRS"),
                                             .Milestone = Row.Field(Of Short?)("MILESTONE"),
-                                            .Predecessor = Row.Field(Of Integer?)("PREDECESSOR"),
+                                            .Predecessor = Row.Field(Of Short?)("PREDECESSOR"),
                                             .DueDateLock = Row.Field(Of Short)("DUE_DATE_LOCK"),
                                             .FunctionComments = Row.Field(Of String)("FNC_COMMENTS"),
                                             .DueDateComments = Row.Field(Of String)("DUE_DATE_COMMENTS"),
@@ -1102,9 +1110,9 @@
 
                     If SequenceNumber >= 0 Then
 
-                        ClientContactList = (From Item In AdvantageFramework.Database.Procedures.JobComponentTaskClientContact.LoadByJobCompAndSequence(DbContext, JobNumber, JobComponentNumber, SequenceNumber)
+                        ClientContactList = (From Item In AdvantageFramework.Database.Procedures.JobComponentTaskClientContact.LoadByJobCompAndSequence(DbContext, JobNumber, CShort(JobComponentNumber), SequenceNumber)
                                              Join ClientContact In AdvantageFramework.Database.Procedures.ClientContact.Load(DbContext) On Item.ClientContactID Equals ClientContact.ContactID
-                                             Select New With {.SequenceNumber = Item.SequenceNumber,
+                                             Select New _ClientContact() With {.SequenceNumber = Item.SequenceNumber,
                                                               .Code = ClientContact.ContactCode,
                                                             .Name = If(ClientContact.MiddleInitial = Nothing, ClientContact.FirstName + " " + ClientContact.LastName, ClientContact.FirstName + " " + ClientContact.MiddleInitial + ". " + ClientContact.LastName)}).ToList
 
@@ -1113,7 +1121,7 @@
                         ClientContactList = (From Item In AdvantageFramework.Database.Procedures.JobComponentTaskClientContact.Load(DbContext)
                                              Join ClientContact In AdvantageFramework.Database.Procedures.ClientContact.Load(DbContext) On Item.ClientContactID Equals ClientContact.ContactID
                                              Where Item.JobNumber = JobNumber AndAlso Item.JobComponentNumber = JobComponentNumber
-                                             Select New With {.SequenceNumber = Item.SequenceNumber,
+                                             Select New _ClientContact() With {.SequenceNumber = Item.SequenceNumber,
                                                           .Code = ClientContact.ContactCode,
                                                             .Name = If(ClientContact.MiddleInitial = Nothing, ClientContact.FirstName + " " + ClientContact.LastName, ClientContact.FirstName + " " + ClientContact.MiddleInitial + ". " + ClientContact.LastName)}).ToList
 
@@ -1125,11 +1133,11 @@
 
                     If SequenceNumber >= 0 Then
 
-                        JobComponentTaskPredecessorList = AdvantageFramework.Database.Procedures.JobComponentTaskPredecessor.LoadByJobNumberAndJobComponentNumberAndSequenceNumber(DbContext, JobNumber, JobComponentNumber, SequenceNumber).ToList
+                        JobComponentTaskPredecessorList = AdvantageFramework.Database.Procedures.JobComponentTaskPredecessor.LoadByJobNumberAndJobComponentNumberAndSequenceNumber(DbContext, JobNumber, CShort(JobComponentNumber), SequenceNumber).ToList
 
                     Else
 
-                        JobComponentTaskPredecessorList = AdvantageFramework.Database.Procedures.JobComponentTaskPredecessor.LoadByJobNumberAndJobComponentNumber(DbContext, JobNumber, JobComponentNumber).ToList
+                        JobComponentTaskPredecessorList = AdvantageFramework.Database.Procedures.JobComponentTaskPredecessor.LoadByJobNumberAndJobComponentNumber(DbContext, JobNumber, CShort(JobComponentNumber)).ToList
 
                     End If
 
@@ -1263,9 +1271,9 @@
                 EmployeeCodes = (From Entity In AdvantageFramework.Database.Procedures.JobComponentTaskEmployee.LoadByJobCompSeq(DbContext, JobNumber, JobComponentNumber, SequenceNumber)
                                  Select Entity.EmployeeCode).ToArray
 
-                GetScheduleTaskEmployees = From Entity In AdvantageFramework.Database.Procedures.EmployeeView.Load(DbContext)
-                                           Where EmployeeCodes.Contains(Entity.Code)
-                                           Select Entity
+                GetScheduleTaskEmployees = CType((From Entity In AdvantageFramework.Database.Procedures.EmployeeView.Load(DbContext)
+                                                  Where EmployeeCodes.Contains(Entity.Code)
+                                                  Select Entity), Entity.Infrastructure.DbQuery(Of Database.Views.Employee))
 
             Catch ex As Exception
                 GetScheduleTaskEmployees = Nothing
@@ -1282,9 +1290,9 @@
                 ContactIDs = (From Entity In AdvantageFramework.Database.Procedures.JobComponentTaskClientContact.LoadByJobCompAndSequence(DbContext, JobNumber, JobComponentNumber, SequenceNumber)
                               Select Entity.ClientContactID).ToArray
 
-                GetScheduleTaskClientContacts = From Entity In AdvantageFramework.Database.Procedures.ClientContact.Load(DbContext)
-                                                Where ContactIDs.Contains(Entity.ContactID)
-                                                Select Entity
+                GetScheduleTaskClientContacts = CType((From Entity In AdvantageFramework.Database.Procedures.ClientContact.Load(DbContext)
+                                                       Where ContactIDs.Contains(Entity.ContactID)
+                                                       Select Entity), Entity.Infrastructure.DbQuery(Of Database.Entities.ClientContact))
 
             Catch ex As Exception
                 GetScheduleTaskClientContacts = Nothing
@@ -1390,7 +1398,7 @@
 
                 DataSet = New System.Data.DataSet
 
-                SqlConnection = DbContext.Database.Connection
+                SqlConnection = CType(DbContext.Database.Connection, System.Data.SqlClient.SqlConnection)
                 SqlCommand = New System.Data.SqlClient.SqlCommand("[dbo].[usp_wv_RESOURCES_EMP_AVAILABILITY]", SqlConnection)
                 SqlDataAdapter = New System.Data.SqlClient.SqlDataAdapter(SqlCommand)
 
@@ -1605,29 +1613,29 @@
 
                         ResultSet1 = New AdvantageFramework.ProjectSchedule.Classes.ResultSet1
 
-                        ResultSet1.ID = GetRowValue(DataRow, "ROW_ID", GetType(Integer))
-                        ResultSet1.EmployeeCode = GetRowValue(DataRow, "EMP_CODE", GetType(String))
-                        ResultSet1.StartDayOfWeek = GetRowValue(DataRow, "S_DAY_OF_WEEK", GetType(String))
-                        ResultSet1.EmployeeStartTime = GetRowValue(DataRow, "EMP_START_TIME", GetType(Date))
-                        ResultSet1.EmployeeEndTime = GetRowValue(DataRow, "EMP_END_TIME", GetType(Date))
-                        ResultSet1.EmployeeDirectHoursGoalPercent = GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_PERC", GetType(Decimal))
-                        ResultSet1.EmployeeDate = GetRowValue(DataRow, "DATE", GetType(Date))
-                        ResultSet1.DayOfWeek = GetRowValue(DataRow, "DAY_OF_WEEK", GetType(Integer))
-                        ResultSet1.DayOfYear = GetRowValue(DataRow, "DAY_OF_YEAR", GetType(Integer))
-                        ResultSet1.WeekOfYear = GetRowValue(DataRow, "WEEK_OF_YEAR", GetType(Date))
-                        ResultSet1.MonthOfYear = GetRowValue(DataRow, "MONTH_OF_YEAR", GetType(Integer))
-                        ResultSet1.Year = GetRowValue(DataRow, "YEAR", GetType(Integer))
-                        ResultSet1.StandardHoursAvailable = GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal))
-                        ResultSet1.EmployeeDirectHoursGoalHours = GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_HOURS", GetType(Decimal))
-                        ResultSet1.HoursUsedNonTask = GetRowValue(DataRow, "HRS_USED_NON_TASK", GetType(Decimal))
-                        ResultSet1.HoursAvailable = GetRowValue(DataRow, "HRS_AVAIL", GetType(Decimal))
-                        ResultSet1.HoursAssignedTask = GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal))
-                        ResultSet1.HoursAppointments = GetRowValue(DataRow, "HRS_APPTS", GetType(Decimal))
-                        ResultSet1.HoursAssignedEvent = GetRowValue(DataRow, "HRS_ASSIGNED_EVENT", GetType(Decimal))
-                        ResultSet1.HoursBalanceAvailable = GetRowValue(DataRow, "HRS_BALANCE_AVAIL", GetType(Decimal))
-                        ResultSet1.Note = GetRowValue(DataRow, "NOTE", GetType(String))
-                        ResultSet1.IsFullDayOff = GetRowValue(DataRow, "IS_FULL_DAY_OFF", GetType(Short))
-                        ResultSet1.IsFirstChoice = GetRowValue(DataRow, "IS_FIRST_CHOICE", GetType(Integer))
+                        ResultSet1.ID = CInt(GetRowValue(DataRow, "ROW_ID", GetType(Integer)))
+                        ResultSet1.EmployeeCode = CStr(GetRowValue(DataRow, "EMP_CODE", GetType(String)))
+                        ResultSet1.StartDayOfWeek = CStr(GetRowValue(DataRow, "S_DAY_OF_WEEK", GetType(String)))
+                        ResultSet1.EmployeeStartTime = CType(GetRowValue(DataRow, "EMP_START_TIME", GetType(Date)), Date)
+                        ResultSet1.EmployeeEndTime = CDate(GetRowValue(DataRow, "EMP_END_TIME", GetType(Date)))
+                        ResultSet1.EmployeeDirectHoursGoalPercent = CDec(GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_PERC", GetType(Decimal)))
+                        ResultSet1.EmployeeDate = CDate(GetRowValue(DataRow, "DATE", GetType(Date)))
+                        ResultSet1.DayOfWeek = CInt(GetRowValue(DataRow, "DAY_OF_WEEK", GetType(Integer)))
+                        ResultSet1.DayOfYear = CInt(GetRowValue(DataRow, "DAY_OF_YEAR", GetType(Integer)))
+                        ResultSet1.WeekOfYear = CDate(GetRowValue(DataRow, "WEEK_OF_YEAR", GetType(Date)))
+                        ResultSet1.MonthOfYear = CInt(GetRowValue(DataRow, "MONTH_OF_YEAR", GetType(Integer)))
+                        ResultSet1.Year = CInt(GetRowValue(DataRow, "YEAR", GetType(Integer)))
+                        ResultSet1.StandardHoursAvailable = CDec(GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal)))
+                        ResultSet1.EmployeeDirectHoursGoalHours = CDec(GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_HOURS", GetType(Decimal)))
+                        ResultSet1.HoursUsedNonTask = CDec(GetRowValue(DataRow, "HRS_USED_NON_TASK", GetType(Decimal)))
+                        ResultSet1.HoursAvailable = CDec(GetRowValue(DataRow, "HRS_AVAIL", GetType(Decimal)))
+                        ResultSet1.HoursAssignedTask = CDec(GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal)))
+                        ResultSet1.HoursAppointments = CDec(GetRowValue(DataRow, "HRS_APPTS", GetType(Decimal)))
+                        ResultSet1.HoursAssignedEvent = CDec(GetRowValue(DataRow, "HRS_ASSIGNED_EVENT", GetType(Decimal)))
+                        ResultSet1.HoursBalanceAvailable = CDec(GetRowValue(DataRow, "HRS_BALANCE_AVAIL", GetType(Decimal)))
+                        ResultSet1.Note = CStr(GetRowValue(DataRow, "NOTE", GetType(String)))
+                        ResultSet1.IsFullDayOff = CShort(GetRowValue(DataRow, "IS_FULL_DAY_OFF", GetType(Short)))
+                        ResultSet1.IsFirstChoice = CInt(GetRowValue(DataRow, "IS_FIRST_CHOICE", GetType(Integer)))
 
                         ResultSet1List.Add(ResultSet1)
 
@@ -1658,15 +1666,15 @@
 
                         ResultSet2 = New AdvantageFramework.ProjectSchedule.Classes.ResultSet2
 
-                        ResultSet2.EnteredStartDate = GetRowValue(DataRow, "ENTERED_START_DATE", GetType(Date))
-                        ResultSet2.EnteredEndDate = GetRowValue(DataRow, "ENTERED_END_DATE", GetType(Date))
-                        ResultSet2.CalculatedStartDate = GetRowValue(DataRow, "CALCULATED_START_DATE", GetType(Date))
-                        ResultSet2.CalculatedEndDate = GetRowValue(DataRow, "CALCULATED_END_DATE", GetType(Date))
-                        ResultSet2.NumberOfDays = GetRowValue(DataRow, "NUM_DAYS", GetType(Integer))
-                        ResultSet2.NumberoOfWeeks = GetRowValue(DataRow, "NUM_WEEKS", GetType(Integer))
-                        ResultSet2.NumberOfMonths = GetRowValue(DataRow, "NUM_MONTHS", GetType(Integer))
-                        ResultSet2.NumberOfYears = GetRowValue(DataRow, "NUM_YEARS", GetType(Integer))
-                        ResultSet2.NumberOfEmployees = GetRowValue(DataRow, "NUM_EMPS", GetType(Integer))
+                        ResultSet2.EnteredStartDate = CDate(GetRowValue(DataRow, "ENTERED_START_DATE", GetType(Date)))
+                        ResultSet2.EnteredEndDate = CDate(GetRowValue(DataRow, "ENTERED_END_DATE", GetType(Date)))
+                        ResultSet2.CalculatedStartDate = CDate(GetRowValue(DataRow, "CALCULATED_START_DATE", GetType(Date)))
+                        ResultSet2.CalculatedEndDate = CDate(GetRowValue(DataRow, "CALCULATED_END_DATE", GetType(Date)))
+                        ResultSet2.NumberOfDays = CInt(GetRowValue(DataRow, "NUM_DAYS", GetType(Integer)))
+                        ResultSet2.NumberoOfWeeks = CInt(GetRowValue(DataRow, "NUM_WEEKS", GetType(Integer)))
+                        ResultSet2.NumberOfMonths = CInt(GetRowValue(DataRow, "NUM_MONTHS", GetType(Integer)))
+                        ResultSet2.NumberOfYears = CInt(GetRowValue(DataRow, "NUM_YEARS", GetType(Integer)))
+                        ResultSet2.NumberOfEmployees = CInt(GetRowValue(DataRow, "NUM_EMPS", GetType(Integer)))
 
                         ResultSet2List.Add(ResultSet2)
 
@@ -1697,28 +1705,28 @@
 
                         ResultSet3 = New AdvantageFramework.ProjectSchedule.Classes.ResultSet3
 
-                        ResultSet3.EmployeeCode = GetRowValue(DataRow, "EMP_CODE", GetType(String))
-                        ResultSet3.EmployeeDirectHoursGoalPercent = GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_PERC", GetType(Decimal))
-                        ResultSet3.StandardHoursAvailable = GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal))
-                        ResultSet3.EmployeeDirectHoursGoalHours = GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_HOURS", GetType(Decimal))
-                        ResultSet3.HoursAssignedTask = GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal))
-                        ResultSet3.HoursAppointments = GetRowValue(DataRow, "HRS_APPTS", GetType(Decimal))
-                        ResultSet3.HoursUsedNonTask = GetRowValue(DataRow, "HRS_USED_NON_TASK", GetType(Decimal))
-                        ResultSet3.HoursAvailable = GetRowValue(DataRow, "HRS_AVAIL", GetType(Decimal))
-                        ResultSet3.HoursBalanceAvailable = GetRowValue(DataRow, "HRS_BALANCE_AVAIL", GetType(Decimal))
-                        ResultSet3.PercentWorked = GetRowValue(DataRow, "PERC_WORKED", GetType(Decimal))
-                        ResultSet3.OfficeCode = GetRowValue(DataRow, "OFFICE_CODE", GetType(String))
-                        ResultSet3.OfficeName = GetRowValue(DataRow, "OFFICE_NAME", GetType(String))
-                        ResultSet3.EmployeeFirstName = GetRowValue(DataRow, "EMP_FNAME", GetType(String))
-                        ResultSet3.EmployeeMiddleInitial = GetRowValue(DataRow, "EMP_MI", GetType(String))
-                        ResultSet3.EmployeeLastName = GetRowValue(DataRow, "EMP_LNAME", GetType(String))
-                        ResultSet3.DepartmentTeamCode = GetRowValue(DataRow, "DP_TM_CODE", GetType(String))
-                        ResultSet3.DepartmentTeamDescription = GetRowValue(DataRow, "DP_TM_DESC", GetType(String))
-                        ResultSet3.EmployeeName = GetRowValue(DataRow, "EMP_FML_NAME", GetType(String))
-                        ResultSet3.IsFirstChoice = GetRowValue(DataRow, "IS_FIRST_CHOICE", GetType(Short))
-                        ResultSet3.EmployeeEndTime = GetRowValue(DataRow, "EMP_END_TIME", GetType(Date))
-                        ResultSet3.EmployeeStartTime = GetRowValue(DataRow, "EMP_START_TIME", GetType(Date))
-                        ResultSet3.EmployeeSeniority = GetRowValue(DataRow, "EMP_SENIORITY", GetType(Short))
+                        ResultSet3.EmployeeCode = CStr(GetRowValue(DataRow, "EMP_CODE", GetType(String)))
+                        ResultSet3.EmployeeDirectHoursGoalPercent = CDec(GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_PERC", GetType(Decimal)))
+                        ResultSet3.StandardHoursAvailable = CDec(GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal)))
+                        ResultSet3.EmployeeDirectHoursGoalHours = CDec(GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_HOURS", GetType(Decimal)))
+                        ResultSet3.HoursAssignedTask = CDec(GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal)))
+                        ResultSet3.HoursAppointments = CDec(GetRowValue(DataRow, "HRS_APPTS", GetType(Decimal)))
+                        ResultSet3.HoursUsedNonTask = CDec(GetRowValue(DataRow, "HRS_USED_NON_TASK", GetType(Decimal)))
+                        ResultSet3.HoursAvailable = CDec(GetRowValue(DataRow, "HRS_AVAIL", GetType(Decimal)))
+                        ResultSet3.HoursBalanceAvailable = CDec(GetRowValue(DataRow, "HRS_BALANCE_AVAIL", GetType(Decimal)))
+                        ResultSet3.PercentWorked = CDec(GetRowValue(DataRow, "PERC_WORKED", GetType(Decimal)))
+                        ResultSet3.OfficeCode = CStr(GetRowValue(DataRow, "OFFICE_CODE", GetType(String)))
+                        ResultSet3.OfficeName = CStr(GetRowValue(DataRow, "OFFICE_NAME", GetType(String)))
+                        ResultSet3.EmployeeFirstName = CStr(GetRowValue(DataRow, "EMP_FNAME", GetType(String)))
+                        ResultSet3.EmployeeMiddleInitial = CStr(GetRowValue(DataRow, "EMP_MI", GetType(String)))
+                        ResultSet3.EmployeeLastName = CStr(GetRowValue(DataRow, "EMP_LNAME", GetType(String)))
+                        ResultSet3.DepartmentTeamCode = CStr(GetRowValue(DataRow, "DP_TM_CODE", GetType(String)))
+                        ResultSet3.DepartmentTeamDescription = CStr(GetRowValue(DataRow, "DP_TM_DESC", GetType(String)))
+                        ResultSet3.EmployeeName = CStr(GetRowValue(DataRow, "EMP_FML_NAME", GetType(String)))
+                        ResultSet3.IsFirstChoice = CShort(GetRowValue(DataRow, "IS_FIRST_CHOICE", GetType(Short)))
+                        ResultSet3.EmployeeEndTime = CDate(GetRowValue(DataRow, "EMP_END_TIME", GetType(Date)))
+                        ResultSet3.EmployeeStartTime = CDate(GetRowValue(DataRow, "EMP_START_TIME", GetType(Date)))
+                        ResultSet3.EmployeeSeniority = CShort(GetRowValue(DataRow, "EMP_SENIORITY", GetType(Short)))
 
                         ResultSet3List.Add(ResultSet3)
 
@@ -1749,9 +1757,9 @@
 
                         ResultSet4 = New AdvantageFramework.ProjectSchedule.Classes.ResultSet4
 
-                        ResultSet4.CTR = GetRowValue(DataRow, "CTR", GetType(Integer))
-                        ResultSet4.Year = GetRowValue(DataRow, "YEAR", GetType(Integer))
-                        ResultSet4.WeekOfYear = GetRowValue(DataRow, "WEEK_OF_YEAR", GetType(Date))
+                        ResultSet4.CTR = CInt(GetRowValue(DataRow, "CTR", GetType(Integer)))
+                        ResultSet4.Year = CInt(GetRowValue(DataRow, "YEAR", GetType(Integer)))
+                        ResultSet4.WeekOfYear = CDate(GetRowValue(DataRow, "WEEK_OF_YEAR", GetType(Date)))
 
                         ResultSet4List.Add(ResultSet4)
 
@@ -1782,21 +1790,21 @@
 
                         ResultSet5 = New AdvantageFramework.ProjectSchedule.Classes.ResultSet5
 
-                        ResultSet5.EmployeeCode = GetRowValue(DataRow, "EMP_CODE", GetType(String))
-                        ResultSet5.EmployeeDirectHoursGoalPercent = GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_PERC", GetType(Decimal))
-                        ResultSet5.DayOfYear = GetRowValue(DataRow, "DAY_OF_YEAR", GetType(Date)) ' Only for SummaryLevel = Day
-                        ResultSet5.WeekOfYear = GetRowValue(DataRow, "WEEK_OF_YEAR", GetType(Date)) ' Only for SummaryLevel = Week
-                        ResultSet5.MonthOfYear = GetRowValue(DataRow, "MONTH_OF_YEAR", GetType(Date)) ' Only for SummarLevel = Month
-                        ResultSet5.Year = GetRowValue(DataRow, "YEAR", GetType(Date)) ' Only for SummaryLevel = Year
-                        ResultSet5.StandardHoursAvailable = GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal))
-                        ResultSet5.EmployeeDirectHoursGoalHours = GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_HOURS", GetType(Decimal))
-                        ResultSet5.HoursUsedNonTask = GetRowValue(DataRow, "HRS_USED_NON_TASK", GetType(Decimal))
-                        ResultSet5.HoursAvailable = GetRowValue(DataRow, "HRS_AVAIL", GetType(Decimal))
-                        ResultSet5.HoursAssignedTask = GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal))
-                        ResultSet5.HoursAppointments = GetRowValue(DataRow, "HRS_APPTS", GetType(Decimal))
-                        ResultSet5.HoursBalanceAvailable = GetRowValue(DataRow, "HRS_BALANCE_AVAIL", GetType(Decimal))
-                        ResultSet5.IsFirstChoice = GetRowValue(DataRow, "IS_FIRST_CHOICE", GetType(Short))
-                        ResultSet5.IsOverBooked = GetRowValue(DataRow, "OVER_BOOKED", GetType(Short))
+                        ResultSet5.EmployeeCode = CStr(GetRowValue(DataRow, "EMP_CODE", GetType(String)))
+                        ResultSet5.EmployeeDirectHoursGoalPercent = CDec(GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_PERC", GetType(Decimal)))
+                        ResultSet5.DayOfYear = CDate(GetRowValue(DataRow, "DAY_OF_YEAR", GetType(Date))) ' Only for SummaryLevel = Day
+                        ResultSet5.WeekOfYear = CDate(GetRowValue(DataRow, "WEEK_OF_YEAR", GetType(Date))) ' Only for SummaryLevel = Week
+                        ResultSet5.MonthOfYear = CDate(GetRowValue(DataRow, "MONTH_OF_YEAR", GetType(Date))) ' Only for SummarLevel = Month
+                        ResultSet5.Year = CDate(GetRowValue(DataRow, "YEAR", GetType(Date))) ' Only for SummaryLevel = Year
+                        ResultSet5.StandardHoursAvailable = CDec(GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal)))
+                        ResultSet5.EmployeeDirectHoursGoalHours = CDec(GetRowValue(DataRow, "EMP_DIRECT_HRS_GOAL_HOURS", GetType(Decimal)))
+                        ResultSet5.HoursUsedNonTask = CDec(GetRowValue(DataRow, "HRS_USED_NON_TASK", GetType(Decimal)))
+                        ResultSet5.HoursAvailable = CDec(GetRowValue(DataRow, "HRS_AVAIL", GetType(Decimal)))
+                        ResultSet5.HoursAssignedTask = CDec(GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal)))
+                        ResultSet5.HoursAppointments = CDec(GetRowValue(DataRow, "HRS_APPTS", GetType(Decimal)))
+                        ResultSet5.HoursBalanceAvailable = CDec(GetRowValue(DataRow, "HRS_BALANCE_AVAIL", GetType(Decimal)))
+                        ResultSet5.IsFirstChoice = CShort(GetRowValue(DataRow, "IS_FIRST_CHOICE", GetType(Short)))
+                        ResultSet5.IsOverBooked = CShort(GetRowValue(DataRow, "OVER_BOOKED", GetType(Short)))
 
                         ResultSet5List.Add(ResultSet5)
 
@@ -1827,42 +1835,42 @@
 
                         ResultSet6 = New AdvantageFramework.ProjectSchedule.Classes.ResultSet6
 
-                        ResultSet6.ID = GetRowValue(DataRow, "ROW_ID", GetType(Integer))
-                        ResultSet6.JobNumber = GetRowValue(DataRow, "JOB_NUMBER", GetType(Integer))
-                        ResultSet6.JobComponentNumber = GetRowValue(DataRow, "JOB_COMPONENT_NBR", GetType(Short))
-                        ResultSet6.FunctionCode = GetRowValue(DataRow, "FNC_CODE", GetType(String))
-                        ResultSet6.TaskDescription = GetRowValue(DataRow, "TASK_DESCRIPTION", GetType(String))
-                        ResultSet6.JobComponentDescription = GetRowValue(DataRow, "JOB_COMP_DESC", GetType(String))
-                        ResultSet6.TaskStartDate = GetRowValue(DataRow, "TASK_START_DATE", GetType(Date))
-                        ResultSet6.JobRevisedDate = GetRowValue(DataRow, "JOB_REVISED_DATE", GetType(Date))
-                        ResultSet6.EmployeeCode = GetRowValue(DataRow, "EMP_CODE", GetType(String))
-                        ResultSet6.JobDescription = GetRowValue(DataRow, "JOB_DESC", GetType(String))
-                        ResultSet6.OfficeCode = GetRowValue(DataRow, "OFFICE_CODE", GetType(String))
-                        ResultSet6.DepartmentTeamCode = GetRowValue(DataRow, "DP_TM_CODE", GetType(String))
-                        ResultSet6.ClientCode = GetRowValue(DataRow, "CL_CODE", GetType(String))
-                        ResultSet6.DivisionCode = GetRowValue(DataRow, "DIV_CODE", GetType(String))
-                        ResultSet6.ProductCode = GetRowValue(DataRow, "PRD_CODE", GetType(String))
-                        ResultSet6.Sort = GetRowValue(DataRow, "SORT", GetType(Date))
-                        ResultSet6.JobHours = GetRowValue(DataRow, "JOB_HRS", GetType(Decimal))
-                        ResultSet6.SequenceNumber = GetRowValue(DataRow, "SEQ_NBR", GetType(Short))
-                        ResultSet6.EmployeeName = GetRowValue(DataRow, "EMP_FML_NAME", GetType(String))
-                        ResultSet6.IsEventTask = GetRowValue(DataRow, "IS_EVENT_TASK", GetType(Short))
-                        ResultSet6.TaskTotalWorkingDays = GetRowValue(DataRow, "TASK_TOTAL_WORKING_DAYS", GetType(Integer))
-                        ResultSet6.HoursPerDay = GetRowValue(DataRow, "HOURS_PER_DAY", GetType(Decimal))
-                        ResultSet6.AdjustedJobHours = GetRowValue(DataRow, "ADJ_JOB_HRS", GetType(Decimal))
-                        ResultSet6.RecType = GetRowValue(DataRow, "REC_TYPE", GetType(String))
-                        ResultSet6.NonTaskID = GetRowValue(DataRow, "NON_TASK_ID", GetType(Short))
-                        ResultSet6.HoursUsedNonTask = GetRowValue(DataRow, "HRS_USED_NON_TASK", GetType(Decimal))
-                        ResultSet6.HoursAvailable = GetRowValue(DataRow, "HRS_AVAIL", GetType(Decimal))
-                        ResultSet6.HoursAssignedTask = GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal))
-                        ResultSet6.HoursAssignedEvent = GetRowValue(DataRow, "HRS_ASSIGNED_EVENT", GetType(Decimal))
-                        ResultSet6.TotalHoursAssigned = GetRowValue(DataRow, "TOTAL_HRS_ASSIGNED", GetType(Decimal))
-                        ResultSet6.HoursBalanceAvailable = GetRowValue(DataRow, "HRS_BALANCE_AVAIL", GetType(Decimal))
-                        ResultSet6.Variance = GetRowValue(DataRow, "VARIANCE", GetType(Decimal))
-                        ResultSet6.StandardHoursAvailable = GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal))
-                        ResultSet6.RedFlag = GetRowValue(DataRow, "RED_FLAG", GetType(Integer))
-                        ResultSet6.HoursPerDayWithAssignment = GetRowValue(DataRow, "HRS_PER_DAY_WITH_ASSN", GetType(Decimal))
-                        ResultSet6.AdjustedJobHoursWithAssignment = GetRowValue(DataRow, "ADJ_JOB_HRS_WITH_ASSN", GetType(Decimal))
+                        ResultSet6.ID = CInt(GetRowValue(DataRow, "ROW_ID", GetType(Integer)))
+                        ResultSet6.JobNumber = CInt(GetRowValue(DataRow, "JOB_NUMBER", GetType(Integer)))
+                        ResultSet6.JobComponentNumber = CShort(GetRowValue(DataRow, "JOB_COMPONENT_NBR", GetType(Short)))
+                        ResultSet6.FunctionCode = CStr(GetRowValue(DataRow, "FNC_CODE", GetType(String)))
+                        ResultSet6.TaskDescription = CStr(GetRowValue(DataRow, "TASK_DESCRIPTION", GetType(String)))
+                        ResultSet6.JobComponentDescription = CStr(GetRowValue(DataRow, "JOB_COMP_DESC", GetType(String)))
+                        ResultSet6.TaskStartDate = CDate(GetRowValue(DataRow, "TASK_START_DATE", GetType(Date)))
+                        ResultSet6.JobRevisedDate = CDate(GetRowValue(DataRow, "JOB_REVISED_DATE", GetType(Date)))
+                        ResultSet6.EmployeeCode = CStr(GetRowValue(DataRow, "EMP_CODE", GetType(String)))
+                        ResultSet6.JobDescription = CStr(GetRowValue(DataRow, "JOB_DESC", GetType(String)))
+                        ResultSet6.OfficeCode = CStr(GetRowValue(DataRow, "OFFICE_CODE", GetType(String)))
+                        ResultSet6.DepartmentTeamCode = CStr(GetRowValue(DataRow, "DP_TM_CODE", GetType(String)))
+                        ResultSet6.ClientCode = CStr(GetRowValue(DataRow, "CL_CODE", GetType(String)))
+                        ResultSet6.DivisionCode = CStr(GetRowValue(DataRow, "DIV_CODE", GetType(String)))
+                        ResultSet6.ProductCode = CStr(GetRowValue(DataRow, "PRD_CODE", GetType(String)))
+                        ResultSet6.Sort = CDate(GetRowValue(DataRow, "SORT", GetType(Date)))
+                        ResultSet6.JobHours = CDec(GetRowValue(DataRow, "JOB_HRS", GetType(Decimal)))
+                        ResultSet6.SequenceNumber = CShort(GetRowValue(DataRow, "SEQ_NBR", GetType(Short)))
+                        ResultSet6.EmployeeName = CStr(GetRowValue(DataRow, "EMP_FML_NAME", GetType(String)))
+                        ResultSet6.IsEventTask = CShort(GetRowValue(DataRow, "IS_EVENT_TASK", GetType(Short)))
+                        ResultSet6.TaskTotalWorkingDays = CInt(GetRowValue(DataRow, "TASK_TOTAL_WORKING_DAYS", GetType(Integer)))
+                        ResultSet6.HoursPerDay = CDec(GetRowValue(DataRow, "HOURS_PER_DAY", GetType(Decimal)))
+                        ResultSet6.AdjustedJobHours = CDec(GetRowValue(DataRow, "ADJ_JOB_HRS", GetType(Decimal)))
+                        ResultSet6.RecType = CStr(GetRowValue(DataRow, "REC_TYPE", GetType(String)))
+                        ResultSet6.NonTaskID = CShort(GetRowValue(DataRow, "NON_TASK_ID", GetType(Short)))
+                        ResultSet6.HoursUsedNonTask = CDec(GetRowValue(DataRow, "HRS_USED_NON_TASK", GetType(Decimal)))
+                        ResultSet6.HoursAvailable = CDec(GetRowValue(DataRow, "HRS_AVAIL", GetType(Decimal)))
+                        ResultSet6.HoursAssignedTask = CDec(GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal)))
+                        ResultSet6.HoursAssignedEvent = CDec(GetRowValue(DataRow, "HRS_ASSIGNED_EVENT", GetType(Decimal)))
+                        ResultSet6.TotalHoursAssigned = CDec(GetRowValue(DataRow, "TOTAL_HRS_ASSIGNED", GetType(Decimal)))
+                        ResultSet6.HoursBalanceAvailable = CDec(GetRowValue(DataRow, "HRS_BALANCE_AVAIL", GetType(Decimal)))
+                        ResultSet6.Variance = CDec(GetRowValue(DataRow, "VARIANCE", GetType(Decimal)))
+                        ResultSet6.StandardHoursAvailable = CDec(GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal)))
+                        ResultSet6.RedFlag = CInt(GetRowValue(DataRow, "RED_FLAG", GetType(Integer)))
+                        ResultSet6.HoursPerDayWithAssignment = CDec(GetRowValue(DataRow, "HRS_PER_DAY_WITH_ASSN", GetType(Decimal)))
+                        ResultSet6.AdjustedJobHoursWithAssignment = CDec(GetRowValue(DataRow, "ADJ_JOB_HRS_WITH_ASSN", GetType(Decimal)))
 
                         ResultSet6List.Add(ResultSet6)
 
@@ -1893,12 +1901,12 @@
 
                         ResultSet7 = New AdvantageFramework.ProjectSchedule.Classes.ResultSet7
 
-                        ResultSet7.TotalJobDue = GetRowValue(DataRow, "TOTAL_JOB_DUE", GetType(Integer))
-                        ResultSet7.StandardHoursAvailable = GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal))
-                        ResultSet7.AppointmentHours = GetRowValue(DataRow, "APPT_HRS", GetType(Decimal))
-                        ResultSet7.HoursOff = GetRowValue(DataRow, "HRS_OFF", GetType(Decimal))
-                        ResultSet7.HoursAssignedTask = GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal))
-                        ResultSet7.ShowUnassigned = GetRowValue(DataRow, "SHOW_UNASSIGNED", GetType(Short))
+                        ResultSet7.TotalJobDue = CInt(GetRowValue(DataRow, "TOTAL_JOB_DUE", GetType(Integer)))
+                        ResultSet7.StandardHoursAvailable = CDec(GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal)))
+                        ResultSet7.AppointmentHours = CDec(GetRowValue(DataRow, "APPT_HRS", GetType(Decimal)))
+                        ResultSet7.HoursOff = CDec(GetRowValue(DataRow, "HRS_OFF", GetType(Decimal)))
+                        ResultSet7.HoursAssignedTask = CDec(GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal)))
+                        ResultSet7.ShowUnassigned = CShort(GetRowValue(DataRow, "SHOW_UNASSIGNED", GetType(Short)))
 
                         ResultSet7List.Add(ResultSet7)
 
@@ -1929,16 +1937,16 @@
 
                         ResultSet8 = New AdvantageFramework.ProjectSchedule.Classes.ResultSet8
 
-                        ResultSet8.EmployeeCode = GetRowValue(DataRow, "EMP_CODE", GetType(String))
-                        ResultSet8.EmployeeName = GetRowValue(DataRow, "EMP_FML_NAME", GetType(String))
-                        ResultSet8.MinimumDate = GetRowValue(DataRow, "MIN_DATE", GetType(Date))
-                        ResultSet8.MaximumDate = GetRowValue(DataRow, "MAX_DATE", GetType(Date))
-                        ResultSet8.StandardHoursAvailable = GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal))
-                        ResultSet8.HoursOff = GetRowValue(DataRow, "HRS_OFF", GetType(Decimal))
-                        ResultSet8.AppointmentHours = GetRowValue(DataRow, "APPT_HRS", GetType(Decimal))
-                        ResultSet8.AdjustedHoursAssignedTask = GetRowValue(DataRow, "ADJ_HRS_ASSIGNED_TASK", GetType(Decimal))
-                        ResultSet8.AdjustedHoursAssignedTask_OTHER = GetRowValue(DataRow, "ADJ_HRS_ASSIGNED_TASK_OTHER", GetType(Decimal))
-                        ResultSet8.Variance = GetRowValue(DataRow, "VARIANCE", GetType(Decimal))
+                        ResultSet8.EmployeeCode = CStr(GetRowValue(DataRow, "EMP_CODE", GetType(String)))
+                        ResultSet8.EmployeeName = CStr(GetRowValue(DataRow, "EMP_FML_NAME", GetType(String)))
+                        ResultSet8.MinimumDate = CDate(GetRowValue(DataRow, "MIN_DATE", GetType(Date)))
+                        ResultSet8.MaximumDate = CDate(GetRowValue(DataRow, "MAX_DATE", GetType(Date)))
+                        ResultSet8.StandardHoursAvailable = CDec(GetRowValue(DataRow, "STD_HRS_AVAIL", GetType(Decimal)))
+                        ResultSet8.HoursOff = CDec(GetRowValue(DataRow, "HRS_OFF", GetType(Decimal)))
+                        ResultSet8.AppointmentHours = CDec(GetRowValue(DataRow, "APPT_HRS", GetType(Decimal)))
+                        ResultSet8.AdjustedHoursAssignedTask = CDec(GetRowValue(DataRow, "ADJ_HRS_ASSIGNED_TASK", GetType(Decimal)))
+                        ResultSet8.AdjustedHoursAssignedTask_OTHER = CDec(GetRowValue(DataRow, "ADJ_HRS_ASSIGNED_TASK_OTHER", GetType(Decimal)))
+                        ResultSet8.Variance = CDec(GetRowValue(DataRow, "VARIANCE", GetType(Decimal)))
 
                         ResultSet8List.Add(ResultSet8)
 
@@ -1969,8 +1977,8 @@
 
                         ResultSet9 = New AdvantageFramework.ProjectSchedule.Classes.ResultSet9
 
-                        ResultSet9.EmployeeCode = GetRowValue(DataRow, "EMP_CODE", GetType(String))
-                        ResultSet9.IsOverBooked = GetRowValue(DataRow, "OVER_BOOKED", GetType(Integer))
+                        ResultSet9.EmployeeCode = CStr(GetRowValue(DataRow, "EMP_CODE", GetType(String)))
+                        ResultSet9.IsOverBooked = CInt(GetRowValue(DataRow, "OVER_BOOKED", GetType(Integer)))
 
                         ResultSet9List.Add(ResultSet9)
 
@@ -2001,13 +2009,13 @@
 
                         ResultSet10 = New AdvantageFramework.ProjectSchedule.Classes.ResultSet10
 
-                        ResultSet10.EmployeeCode = GetRowValue(DataRow, "EMP_CODE", GetType(String))
-                        ResultSet10.HoursAssignedEvent = GetRowValue(DataRow, "HRS_ASSIGNED_EVENT", GetType(Decimal))
-                        ResultSet10.HoursUsedNonTask = GetRowValue(DataRow, "HRS_USED_NON_TASK", GetType(Decimal))
-                        ResultSet10.HoursAvailable = GetRowValue(DataRow, "HRS_AVAIL", GetType(Decimal))
-                        ResultSet10.HoursAssignedTask = GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal))
-                        ResultSet10.HoursAppointments = GetRowValue(DataRow, "HRS_APPTS", GetType(Decimal))
-                        ResultSet10.HoursBalanceAvailable = GetRowValue(DataRow, "HRS_BALANCE_AVAIL", GetType(Decimal))
+                        ResultSet10.EmployeeCode = CStr(GetRowValue(DataRow, "EMP_CODE", GetType(String)))
+                        ResultSet10.HoursAssignedEvent = CDec(GetRowValue(DataRow, "HRS_ASSIGNED_EVENT", GetType(Decimal)))
+                        ResultSet10.HoursUsedNonTask = CDec(GetRowValue(DataRow, "HRS_USED_NON_TASK", GetType(Decimal)))
+                        ResultSet10.HoursAvailable = CDec(GetRowValue(DataRow, "HRS_AVAIL", GetType(Decimal)))
+                        ResultSet10.HoursAssignedTask = CDec(GetRowValue(DataRow, "HRS_ASSIGNED_TASK", GetType(Decimal)))
+                        ResultSet10.HoursAppointments = CDec(GetRowValue(DataRow, "HRS_APPTS", GetType(Decimal)))
+                        ResultSet10.HoursBalanceAvailable = CDec(GetRowValue(DataRow, "HRS_BALANCE_AVAIL", GetType(Decimal)))
 
                         ResultSet10List.Add(ResultSet10)
 
@@ -2453,12 +2461,12 @@
         Public Function LoadClientContacts(ByVal DbContext As AdvantageFramework.Database.DbContext,
                                            Optional ByVal JobNumber As Integer = 0, Optional ByVal JobComponentNumber As Short = 0,
                                            Optional ByVal SequenceNumber As Short = -1, Optional ByVal ClientCode As String = Nothing,
-                                           Optional ByVal DivisionCode As String = Nothing, Optional ByVal ProductCode As String = Nothing) As System.Data.Entity.Infrastructure.DbQuery(Of AdvantageFramework.Database.Entities.ClientContact)
+                                           Optional ByVal DivisionCode As String = Nothing, Optional ByVal ProductCode As String = Nothing) As IQueryable(Of AdvantageFramework.Database.Entities.ClientContact)
 
             'objects
             Dim Job As AdvantageFramework.Database.Entities.Job = Nothing
             Dim ClientContactIDs As Integer() = Nothing
-            Dim ResultSet As Object = Nothing
+            Dim ResultSet As IQueryable(Of AdvantageFramework.Database.Entities.ClientContact) = Nothing
 
             Try
 
@@ -2544,37 +2552,37 @@
 
                             Case ProjectSchedule.FindAndReplaceFields.StartDate
 
-                                Completed = SearchAndReplace_StartDate(DbContext, JobTrafficIDs, SearchForValue, AdditionalCriteria, ReplaceWithValue, RowsChanged)
+                                Completed = SearchAndReplace_StartDate(DbContext, JobTrafficIDs, CDate(SearchForValue), CDate(AdditionalCriteria), CDate(ReplaceWithValue), RowsChanged)
 
                             Case ProjectSchedule.FindAndReplaceFields.DueDate
 
-                                Completed = SearchAndReplace_DueDate(DbContext, JobTrafficIDs, SearchForValue, AdditionalCriteria, ReplaceWithValue, RowsChanged)
+                                Completed = SearchAndReplace_DueDate(DbContext, JobTrafficIDs, CDate(SearchForValue), CDate(AdditionalCriteria), CDate(ReplaceWithValue), RowsChanged)
 
                             Case ProjectSchedule.FindAndReplaceFields.TimeDue
 
-                                Completed = SearchAndReplace_TimeDue(DbContext, JobTrafficIDs, SearchForValue, ReplaceWithValue, RowsChanged)
+                                Completed = SearchAndReplace_TimeDue(DbContext, JobTrafficIDs, CStr(SearchForValue), CStr(ReplaceWithValue), RowsChanged)
 
                             Case ProjectSchedule.FindAndReplaceFields.CompletedDate
 
-                                Completed = SearchAndReplace_CompletedDate(DbContext, JobTrafficIDs, SearchForValue, AdditionalCriteria, ReplaceWithValue, RowsChanged)
+                                Completed = SearchAndReplace_CompletedDate(DbContext, JobTrafficIDs, CDate(SearchForValue), CDate(AdditionalCriteria), CDate(ReplaceWithValue), RowsChanged)
 
                             Case ProjectSchedule.FindAndReplaceFields.EmployeeAssignment
 
-                                Completed = SearchAndReplace_EmployeeAssignment(DbContext, JobTrafficIDs, SearchForValue, ReplaceWithValue, AdditionalCriteria, RowsChanged)
+                                Completed = SearchAndReplace_EmployeeAssignment(DbContext, JobTrafficIDs, CStr(SearchForValue), CStr(ReplaceWithValue), CStr(AdditionalCriteria), RowsChanged)
 
                             Case ProjectSchedule.FindAndReplaceFields.ClientContactAssignment
 
-                                Completed = SearchAndReplace_ClientContactAssignment(DbContext, JobTrafficIDs, SearchForValue, ReplaceWithValue, RowsChanged)
+                                Completed = SearchAndReplace_ClientContactAssignment(DbContext, JobTrafficIDs, CInt(SearchForValue), CInt(ReplaceWithValue), RowsChanged)
 
                             Case ProjectSchedule.FindAndReplaceFields.TaskStatus
 
-                                Completed = SearchAndReplace_TaskStatus(DbContext, JobTrafficIDs, SearchForValue, ReplaceWithValue, RowsChanged)
+                                Completed = SearchAndReplace_TaskStatus(DbContext, JobTrafficIDs, CStr(SearchForValue), CStr(ReplaceWithValue), RowsChanged)
 
                             Case ProjectSchedule.FindAndReplaceFields.Manager
 
                                 Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
 
-                                    Completed = SearchAndReplace_Manager(DbContext, DataContext, JobTrafficIDs, SearchForValue, ReplaceWithValue, RowsChanged)
+                                    Completed = SearchAndReplace_Manager(DbContext, DataContext, JobTrafficIDs, CStr(SearchForValue), CStr(ReplaceWithValue), RowsChanged)
 
                                 End Using
 
@@ -3057,7 +3065,7 @@
 
                         If PropertyDescriptor IsNot Nothing Then
 
-                            If PropertyDescriptor.GetValue(JobTraffic) = SearchForManagerCode Then
+                            If PropertyDescriptor.GetValue(JobTraffic) Is SearchForManagerCode Then
 
                                 PropertyDescriptor.SetValue(JobTraffic, ReplaceWithManagerCode)
 
@@ -3192,7 +3200,7 @@
 
                     Case ProjectSchedule.FindAndReplaceFields.TimeDue
 
-                        If String.IsNullOrEmpty(SearchForValue) = False Then
+                        If String.IsNullOrEmpty(CStr(SearchForValue)) = False Then
 
                             If SearchForValue.ToString.Length > 10 Then
 
@@ -3202,7 +3210,7 @@
 
                         End If
 
-                        If String.IsNullOrEmpty(ReplaceWithValue) = False Then
+                        If String.IsNullOrEmpty(CStr(ReplaceWithValue)) = False Then
 
                             If ReplaceWithValue.ToString.Length > 10 Then
 
@@ -3214,7 +3222,7 @@
 
                     Case ProjectSchedule.FindAndReplaceFields.EmployeeAssignment
 
-                        If String.IsNullOrEmpty(SearchForValue) Then
+                        If String.IsNullOrEmpty(CStr(SearchForValue)) Then
 
                             ErrorMessage = "Invalid Search for Employee"
 
@@ -3230,9 +3238,9 @@
 
                         End If
 
-                        If String.IsNullOrEmpty(AdditionalCriteria) = False Then
+                        If String.IsNullOrEmpty(CStr(AdditionalCriteria)) = False Then
 
-                            If AdvantageFramework.Database.Procedures.Task.LoadByTaskCode(DbContext, AdditionalCriteria) Is Nothing Then
+                            If AdvantageFramework.Database.Procedures.Task.LoadByTaskCode(DbContext, CStr(AdditionalCriteria)) Is Nothing Then
 
                                 ErrorMessage = "Invalid Task Code."
 
@@ -3242,7 +3250,7 @@
 
                     Case ProjectSchedule.FindAndReplaceFields.ClientContactAssignment
 
-                        If SearchForValue = Nothing Then
+                        If SearchForValue Is Nothing Then
 
                             ErrorMessage = "Invalid Search for Contact Code"
 
@@ -3250,7 +3258,7 @@
 
                             ErrorMessage = "Invalid Search for Contact Code"
 
-                        ElseIf ReplaceWithValue <> Nothing Then
+                        ElseIf ReplaceWithValue IsNot Nothing Then
 
                             If AdvantageFramework.Database.Procedures.ClientContact.LoadByContactID(DbContext, CInt(ReplaceWithValue)) Is Nothing Then
 
@@ -3262,7 +3270,7 @@
 
                     Case ProjectSchedule.FindAndReplaceFields.TaskStatus
 
-                        If String.IsNullOrEmpty(SearchForValue) = False Then
+                        If String.IsNullOrEmpty(CStr(SearchForValue)) = False Then
 
                             If (From EnumObject In AdvantageFramework.EnumUtilities.LoadEnumObjects(GetType(AdvantageFramework.ProjectSchedule.TaskStatus))
                                 Where EnumObject.Code = DirectCast(SearchForValue, String)
@@ -3274,7 +3282,7 @@
 
                         End If
 
-                        If String.IsNullOrEmpty(ReplaceWithValue) = False Then
+                        If String.IsNullOrEmpty(CStr(ReplaceWithValue)) = False Then
 
                             If (From EnumObject In AdvantageFramework.EnumUtilities.LoadEnumObjects(GetType(AdvantageFramework.ProjectSchedule.TaskStatus))
                                 Where EnumObject.Code = DirectCast(ReplaceWithValue, String)
@@ -3288,7 +3296,7 @@
 
                     Case ProjectSchedule.FindAndReplaceFields.Manager
 
-                        If String.IsNullOrEmpty(SearchForValue) = False Then
+                        If String.IsNullOrEmpty(CStr(SearchForValue)) = False Then
 
                             If AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, SearchForValue.ToString) Is Nothing Then
 
@@ -3298,7 +3306,7 @@
 
                         End If
 
-                        If String.IsNullOrEmpty(ReplaceWithValue) = False Then
+                        If String.IsNullOrEmpty(CStr(ReplaceWithValue)) = False Then
 
                             If (From Entity In AdvantageFramework.Database.Procedures.EmployeeView.LoadAllActive(DbContext)
                                 Where Entity.Code = DirectCast(ReplaceWithValue, String)
@@ -3500,7 +3508,7 @@
             End Try
 
         End Function
-        Public Function IsUserColumnVisible(ByVal TrafficScheduleUserColumnList As Generic.List(Of AdvantageFramework.Database.Classes.TrafficScheduleUserColumn), ByVal ScheduleTaskProperty As AdvantageFramework.ProjectSchedule.Classes.ScheduleTask.Properties)
+        Public Function IsUserColumnVisible(ByVal TrafficScheduleUserColumnList As Generic.List(Of AdvantageFramework.Database.Classes.TrafficScheduleUserColumn), ByVal ScheduleTaskProperty As AdvantageFramework.ProjectSchedule.Classes.ScheduleTask.Properties) As Boolean
 
             'object
             Dim IsVisible As Boolean = True
@@ -3823,7 +3831,7 @@
                             TaskEmployee.QuotedHours = LoadQuotedHours(DbContext, TaskEmployee.JobNumber, TaskEmployee.JobComponentNumber, TaskEmployee.EmployeeCode, EstimateFunctionCode)
 
                         Catch ex As Exception
-                            TaskEmployee.QuotedHours = 0.0
+                            TaskEmployee.QuotedHours = 0
                         End Try
 
                         Try
@@ -3831,7 +3839,7 @@
                             TaskEmployee.HoursPosted = LoadPostedHours(DbContext, TaskEmployee.JobNumber, TaskEmployee.JobComponentNumber, TaskEmployee.EmployeeCode, EstimateFunctionCode)
 
                         Catch ex As Exception
-                            TaskEmployee.HoursPosted = 0.0
+                            TaskEmployee.HoursPosted = 0
                         End Try
 
                     Next
@@ -3881,13 +3889,13 @@
                                                                                         "        (EMP_TIME.EMP_CODE = '{2}')", JobNumber, JobComponentNumber, EmployeeCode, EstimateFunctionCode)).SingleOrDefault
 
             Catch ex As Exception
-                PostedHours = 0.0
+                PostedHours = CDec(0.0)
             Finally
                 LoadPostedHours = PostedHours
             End Try
 
         End Function
-        Public Function CopyProjectSchedule(ByVal DbContext As AdvantageFramework.Database.DbContext, ByVal JobTrafficIDToCopy As Integer, ByVal NewJobTraffic As AdvantageFramework.Database.Entities.JobTraffic, ByVal IncludeDates As Boolean)
+        Public Function CopyProjectSchedule(ByVal DbContext As AdvantageFramework.Database.DbContext, ByVal JobTrafficIDToCopy As Integer, ByVal NewJobTraffic As AdvantageFramework.Database.Entities.JobTraffic, ByVal IncludeDates As Boolean) As Boolean
 
             'objects
             Dim JobTraffic As AdvantageFramework.Database.Entities.JobTraffic = Nothing
@@ -4053,7 +4061,7 @@
                 DbContext.Database.ExecuteSqlCommand("EXEC dbo.usp_wv_Traffic_Schedule_Calculate_JobPred @job_number, @job_component_nbr, @use_predecessor, @emp_code, @ret_val OUTPUT",
                     SqlParameterJobNumber, SqlParameterJobComponentNumber, SqlParameterPredecessor, SqlParameterEmployeeCode, SqlParameterReturnValue)
 
-                ReturnValue = SqlParameterReturnValue.Value
+                ReturnValue = CInt(SqlParameterReturnValue.Value)
 
                 Calculated = True
 
@@ -4089,7 +4097,7 @@
                 DbContext.Database.ExecuteSqlCommand("EXEC dbo.usp_wv_Traffic_Schedule_Calculate_Pred @job_number, @job_component_nbr, @use_predecessor, @ret_val OUTPUT",
                     SqlParameterJobNumber, SqlParameterJobComponentNumber, SqlParameterPredecessor, SqlParameterReturnValue)
 
-                ReturnValue = SqlParameterReturnValue.Value
+                ReturnValue = CInt(SqlParameterReturnValue.Value)
 
                 Calculated = True
 
@@ -4115,7 +4123,7 @@
 
                 Try
 
-                    If Schedule.ScheduleCalculation IsNot Nothing Then UsePredecessor = Schedule.ScheduleCalculation
+                    If Schedule.ScheduleCalculation IsNot Nothing Then UsePredecessor = CShort(Schedule.ScheduleCalculation)
 
                 Catch ex As Exception
                     UsePredecessor = 0
@@ -4156,7 +4164,7 @@
                                                       SqlParameterPredecessor,
                                                       SqlParameterReturnValue)
 
-                ReturnValue = SqlParameterReturnValue.Value
+                ReturnValue = CInt(SqlParameterReturnValue.Value)
 
                 Calculated = True
 
@@ -4347,7 +4355,7 @@
 
                 DataTable = New System.Data.DataTable
 
-                SqlConnection = DbContext.Database.Connection
+                SqlConnection = CType(DbContext.Database.Connection, System.Data.SqlClient.SqlConnection)
                 SqlCommand = New System.Data.SqlClient.SqlCommand("[dbo].[usp_wv_Traffic_Schedule_GetNextStatus]", SqlConnection)
                 SqlDataAdapter = New System.Data.SqlClient.SqlDataAdapter(SqlCommand)
 
@@ -4413,7 +4421,7 @@
 
                 DataTable = New System.Data.DataTable
 
-                SqlConnection = DbContext.Database.Connection
+                SqlConnection = CType(DbContext.Database.Connection, System.Data.SqlClient.SqlConnection)
                 SqlCommand = New System.Data.SqlClient.SqlCommand("[dbo].[usp_cp_getSettings]", SqlConnection)
                 SqlDataAdapter = New System.Data.SqlClient.SqlDataAdapter(SqlCommand)
 
@@ -4863,7 +4871,7 @@
 
                 If Not String.IsNullOrWhiteSpace(ClientCode) Then
 
-                    DivisionViews = DivisionViews.Where(Function(d) d.ClientCode = ClientCode)
+                    DivisionViews = CType(DivisionViews.Where(Function(d) d.ClientCode = ClientCode), Entity.Infrastructure.DbQuery(Of Database.Views.DivisionView))
 
                 End If
 
@@ -4887,7 +4895,7 @@
 
                 If Not String.IsNullOrWhiteSpace(ClientCode) OrElse Not String.IsNullOrWhiteSpace(DivisionCode) Then
 
-                    ProductViews = ProductViews.Where(Function(p) p.ClientCode = ClientCode AndAlso p.DivisionCode = DivisionCode)
+                    ProductViews = CType(ProductViews.Where(Function(p) p.ClientCode = ClientCode AndAlso p.DivisionCode = DivisionCode), Entity.Infrastructure.DbQuery(Of Database.Views.ProductView))
 
                 End If
 
@@ -4957,7 +4965,7 @@
 
                                 If IsCopy = True AndAlso CopyJobNumber > 0 AndAlso CopyJobComponentNumber > 0 Then
 
-                                    If Not .Where(Function(jc) jc.JobNumber = CopyJobNumber AndAlso jc.JobComponentNumber = CopyJobComponentNumber).Any Then
+                                    If Not .Where(Function(jc) jc.JobNumber = CInt(CopyJobNumber) AndAlso jc.JobComponentNumber = CShort(CopyJobComponentNumber)).Any Then
 
                                         ErrorList.Add("This is not a valid job for copying.")
 
@@ -4997,7 +5005,7 @@
 
                             If IsCopy = True Then
 
-                                Created = CopySchedule(DbContext, JobNumber, JobComponentNumber, CopyJobNumber, CopyJobComponentNumber, TrafficStatus, IncludeStartDate, IncludeDueDate, IncludeTaskEmployee, IncludeTaskComment, IncludeDueDateComment, ProjectManager, IncludeTaskStatus, ErrorMessage)
+                                Created = CopySchedule(DbContext, JobNumber, JobComponentNumber, CInt(CopyJobNumber), CInt(CopyJobComponentNumber), TrafficStatus, IncludeStartDate, IncludeDueDate, IncludeTaskEmployee, IncludeTaskComment, IncludeDueDateComment, ProjectManager, IncludeTaskStatus, ErrorMessage)
 
                                 If Not Created Then
 
@@ -5123,7 +5131,7 @@
         Private Function CopySchedule(ByVal DbContext As AdvantageFramework.Database.DbContext, ByVal JobNumber As Integer, ByVal JobCompNumber As Integer,
                                       ByVal CopyJobNumber As Integer, ByVal CopyJobComponentNumber As Integer, ByVal TrafficCode As String, ByVal IncludeStartDate As Boolean,
                                       ByVal IncludeDueDate As Boolean, ByVal IncludeEmployees As Boolean, ByVal IncludeTaskComment As Boolean, ByVal IncludeDueDateComment As Boolean,
-                                      ByVal ProjectManagerCode As String, ByVal IncludeTaskStatus As String, ByRef ErrorMessage As String) As Boolean
+                                      ByVal ProjectManagerCode As String, ByVal IncludeTaskStatus As Boolean, ByRef ErrorMessage As String) As Boolean
 
             'objects
             Dim Copied As Boolean = False
@@ -5221,7 +5229,7 @@
 
                         NewTask = New Database.Entities.JobComponentTask
 
-                        NewTask = CopyFromTask.DuplicateEntity
+                        NewTask = CType(CopyFromTask.DuplicateEntity, Database.Entities.JobComponentTask)
 
                         NewTask.JobNumber = ToJobNumber
                         NewTask.JobComponentNumber = ToJobComponentNumber
@@ -5342,7 +5350,7 @@
 
             If Setting IsNot Nothing Then
 
-                Column = Setting.Value
+                Column = CStr(Setting.Value)
 
             End If
 
@@ -5361,7 +5369,7 @@
             If Setting IsNot Nothing Then
 
                 If Setting.Value IsNot Nothing Then
-                    Column = "ASSIGN_" & Setting.Value.Substring(8, 1)
+                    Column = "ASSIGN_" & CStr(Setting.Value).Substring(8, 1)
                 End If
 
                 If Column = "" Then
@@ -5389,11 +5397,11 @@
 
                 If SettingLabel IsNot Nothing Then
 
-                    If Not String.IsNullOrWhiteSpace(SettingLabel.Value) Then
+                    If Not String.IsNullOrWhiteSpace(CStr(SettingLabel.Value)) Then
 
                         ManagerLabel = SettingLabel.Value.ToString
 
-                    ElseIf Not String.IsNullOrWhiteSpace(SettingLabel.DefaultValue) Then
+                    ElseIf Not String.IsNullOrWhiteSpace(CStr(SettingLabel.DefaultValue)) Then
 
                         ManagerLabel = SettingLabel.Value.ToString
 
@@ -5419,9 +5427,9 @@
 
             Try
 
-                DefaultStatus = (From Item In AdvantageFramework.Database.Procedures.Setting.LoadBySettingModuleID(DataContext, 2)
-                                 Where Item.Code = "TRF_DFLT_STATUS"
-                                 Select Item.Value).FirstOrDefault
+                DefaultStatus = CStr((From Item In AdvantageFramework.Database.Procedures.Setting.LoadBySettingModuleID(DataContext, 2)
+                                      Where Item.Code = "TRF_DFLT_STATUS"
+                                      Select Item.Value).FirstOrDefault)
 
             Catch ex As Exception
                 DefaultStatus = Nothing
@@ -5547,7 +5555,7 @@
             Return IsValid
 
         End Function
-        Private Function CheckPredecessorsForCircularReference(ByVal SequenceNumber As Short, ByVal PredecessorSequenceNumber As Short, ByVal AllPredecessors As Generic.List(Of AdvantageFramework.Database.Entities.JobComponentTaskPredecessor))
+        Private Function CheckPredecessorsForCircularReference(ByVal SequenceNumber As Short, ByVal PredecessorSequenceNumber As Short, ByVal AllPredecessors As Generic.List(Of AdvantageFramework.Database.Entities.JobComponentTaskPredecessor)) As Boolean
 
             'objects
             Dim IsCircular As Boolean = False
@@ -5702,13 +5710,13 @@
 
                 End If
 
-                If DateTime.TryParse(StartDate, TaskStartDateSqlParameter.Value) = False Then
+                If DateTime.TryParse(StartDate, CDate(TaskStartDateSqlParameter.Value)) = False Then
 
                     TaskStartDateSqlParameter.Value = DBNull.Value
 
                 End If
 
-                If DateTime.TryParse(RevisedDate, TaskDueDateSqlParameter.Value) = False Then
+                If DateTime.TryParse(RevisedDate, CDate(TaskDueDateSqlParameter.Value)) = False Then
 
                     TaskDueDateSqlParameter.Value = DBNull.Value
 
@@ -5724,7 +5732,7 @@
 
                 End If
 
-                If DateTime.TryParse(DueDate, JobDueDateSqlParameter.Value) = False Then
+                If DateTime.TryParse(DueDate, CType(JobDueDateSqlParameter.Value, Date)) = False Then
 
                     JobDueDateSqlParameter.Value = DBNull.Value
 
@@ -5740,7 +5748,7 @@
 
                 End If
 
-                If DateTime.TryParse(JobCompletedDate, JobCompletedDateSqlParameter.Value) = False Then
+                If DateTime.TryParse(JobCompletedDate, CType(JobCompletedDateSqlParameter.Value, Date)) = False Then
 
                     JobCompletedDateSqlParameter.Value = DBNull.Value
 
@@ -5792,7 +5800,7 @@
 
                 Else
 
-                    EmployeeListSqlParameter.Value = String.Join(",", (From Item In EmployeeCodeString.Split(",")
+                    EmployeeListSqlParameter.Value = String.Join(",", (From Item In EmployeeCodeString.Split(CChar(","))
                                                                        Select Item.Trim()).Distinct.ToArray)
 
                 End If
@@ -5825,7 +5833,7 @@
 
                 Else
 
-                    ContactIDsSqlParameter.Value = String.Join(",", (From Item In ClientContactCodeString.Split(",")
+                    ContactIDsSqlParameter.Value = String.Join(",", (From Item In ClientContactCodeString.Split(CChar(","))
                                                                      Select Item.Trim).Distinct.ToArray)
 
                 End If
@@ -5850,7 +5858,7 @@
                                                          DueTimeSqlParameter, JobDueDateSqlParameter, DueDateLockSqlParameter, JobCompletedDateSqlParameter, EstimateFunctionSqlParameter,
                                                          TaskCommentsSqlParameter, DueDateCommentsSqlParameter, RevisionDateCommentsSqlParameter, EmployeeListSqlParameter, PredecessorListSqlParameter,
                                                          TrafficRoleSqlParameter, RowIDSqlParameter, ContactIDsSqlParameter, TaskStatusSqlParameter)
-                    Return RowIDSqlParameter.Value
+                    Return CStr(RowIDSqlParameter.Value)
 
                 Catch ex As Exception
                     Return ex.Message.ToString

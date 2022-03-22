@@ -2515,9 +2515,9 @@ End Class
 
     End Function
 
-    Public Overloads Function CheckModuleAccess(ByVal [Module] As AdvantageFramework.Security.Modules, Optional ByVal TransferToNoAccessPage As Boolean = True) As Integer
+    Public Overloads Function CheckModuleAccess(ByVal [Module] As AdvantageFramework.Security.Modules, Optional ByVal TransferToNoAccessPage As Boolean = True) As Boolean
 
-        Dim ModuleAccess As Integer = 1
+        Dim ModuleAccess As Boolean = False
 
         ModuleAccess = CheckModuleAccess([Module].ToString, TransferToNoAccessPage)
 
@@ -2525,9 +2525,9 @@ End Class
 
     End Function
 
-    Public Overloads Function CheckModuleAccess(ByVal ModuleCode As String, Optional ByVal TransferToNoAccessPage As Boolean = True) As Integer
+    Public Overloads Function CheckModuleAccess(ByVal ModuleCode As String, Optional ByVal TransferToNoAccessPage As Boolean = True) As Boolean
 
-        Dim ModuleAccess As Integer = 1
+        Dim ModuleAccess As Boolean = False
         Dim SessionKey As String = "CheckModuleAccess" & ModuleCode
 
         If Session(SessionKey) Is Nothing Then
@@ -2537,7 +2537,7 @@ End Class
                 Try
                     ModuleAccess = AdvantageFramework.Security.DoesClientPortalUserHaveAccessToModule(_Session, ModuleCode)
                 Catch ex As Exception
-                    ModuleAccess = 1
+                    ModuleAccess = False
                 End Try
 
             Else
@@ -2547,7 +2547,7 @@ End Class
                     ModuleAccess = CheckModuleAccess(_Session.User, ModuleCode, False)
 
                 Catch ex As Exception
-                    ModuleAccess = 1
+                    ModuleAccess = False
                 End Try
 
             End If

@@ -22,6 +22,7 @@
         Protected _ReloadGrid As Boolean = False
         Private WithEvents _GridViewVendorDetailsLevel1Tab1 As AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView = Nothing
         Private _IsLoadingRevisionNumbers As Boolean = False
+        Private _CableNetworkStations As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation) = Nothing
 
 #End Region
 
@@ -33,12 +34,13 @@
 
 #Region " Methods "
 
-        Private Sub New(MediaBroadcastWorksheetMarketID As Integer)
+        Private Sub New(MediaBroadcastWorksheetMarketID As Integer, CableNetworkStations As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation))
 
             ' This call is required by the designer.
             InitializeComponent()
 
             _MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
+            _CableNetworkStations = CableNetworkStations
 
         End Sub
         Private Sub LoadViewModel()
@@ -661,7 +663,7 @@
             Dim BaseView As DevExpress.XtraGrid.Views.Grid.GridView = Nothing
             Dim VendorCreativeGroup As AdvantageFramework.DTO.Media.Traffic.VendorCreativeGroup = Nothing
             Dim Vendor As AdvantageFramework.DTO.Media.Traffic.Vendor = Nothing
-            Dim CableNetworkStationList As Generic.List(Of AdvantageFramework.Database.Entities.CableNetworkStation) = Nothing
+            Dim CableNetworkStationList As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation) = Nothing
             Dim NewSelectedCableNetworks As String = Nothing
 
             If e.Button.Kind = DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis Then
@@ -676,7 +678,7 @@
 
                         Vendor = DataGridViewVendors_Vendors.CurrentView.GetRow(BaseView.SourceRowHandle)
 
-                        CableNetworkStationList = _Controller.GetCableNetworksByVendor(_ViewModel.MediaBroadcastWorksheetMarketID, Vendor, VendorCreativeGroup)
+                        CableNetworkStationList = _Controller.GetCableNetworksByVendor(_ViewModel.MediaBroadcastWorksheetMarketID, Vendor, VendorCreativeGroup, _CableNetworkStations)
 
                         If AdvantageFramework.Media.Presentation.MediaTrafficCableNetworkSelectDialog.ShowFormDialog(CableNetworkStationList, VendorCreativeGroup.CableNetworkStationCodes, (BaseView.FocusedRowHandle >= 0), NewSelectedCableNetworks) = System.Windows.Forms.DialogResult.OK Then
 
@@ -1093,12 +1095,12 @@
 
 #Region "  Show Form Methods "
 
-        Public Shared Function ShowFormDialog(MediaBroadcastWorksheetMarketID As Integer) As System.Windows.Forms.DialogResult
+        Public Shared Function ShowFormDialog(MediaBroadcastWorksheetMarketID As Integer, CableNetworkStations As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)) As System.Windows.Forms.DialogResult
 
             'objects
             Dim MediaTrafficDialog As MediaTrafficDialog = Nothing
 
-            MediaTrafficDialog = New MediaTrafficDialog(MediaBroadcastWorksheetMarketID)
+            MediaTrafficDialog = New MediaTrafficDialog(MediaBroadcastWorksheetMarketID, CableNetworkStations)
 
             ShowFormDialog = MediaTrafficDialog.ShowDialog()
 

@@ -3,7 +3,7 @@
   <Runtime>
     <ConceptualModels>
       <Schema Namespace="AdvantageFramework.Security.Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AdassistUser" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.AdassistUser, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="AdassistUser" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.AdassistUser, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="EmployeeCode" />
           </Key>
@@ -14,7 +14,7 @@
           <Property Name="IsInactive" Type="Int16" />
           <NavigationProperty Name="Employee" Relationship="Self.AdassistUser_Employee" FromRole="AdassistUser_Employee_Source" ToRole="AdassistUser_Employee_Target" />
         </EntityType>
-        <EntityType Name="Employee" customannotation:ClrType="AdvantageFramework.Security.Database.Views.Employee, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="Employee" customannotation:ClrType="AdvantageFramework.Security.Database.Views.Employee, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="Code" />
           </Key>
@@ -33,7 +33,7 @@
           <NavigationProperty Name="UserEmployeeAccesses" Relationship="Self.UserEmployeeAccess_Employee" FromRole="UserEmployeeAccess_Employee_Target" ToRole="UserEmployeeAccess_Employee_Source" />
           <NavigationProperty Name="Users" Relationship="Self.User_Employee" FromRole="User_Employee_Target" ToRole="User_Employee_Source" />
         </EntityType>
-        <EntityType Name="Department" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Department, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="Department" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Department, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="Code" />
           </Key>
@@ -46,7 +46,7 @@
           <Property Name="ServiceFeeTypeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employees" Relationship="Self.Employee_Department" FromRole="Employee_Department_Target" ToRole="Employee_Department_Source" />
         </EntityType>
-        <EntityType Name="Office" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Office, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="Office" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Office, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="Code" />
           </Key>
@@ -56,7 +56,7 @@
           <NavigationProperty Name="Employees" Relationship="Self.Office_Employees" FromRole="Office_Employees_Source" ToRole="Office_Employees_Target" />
           <NavigationProperty Name="Products" Relationship="Self.Product_Office" FromRole="Product_Office_Target" ToRole="Product_Office_Source" />
         </EntityType>
-        <EntityType Name="Product" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Product, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="Product" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Product, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ClientCode" />
             <PropertyRef Name="DivisionCode" />
@@ -75,7 +75,7 @@
           <NavigationProperty Name="Office" Relationship="Self.Product_Office" FromRole="Product_Office_Source" ToRole="Product_Office_Target" />
           <NavigationProperty Name="UserClientDivisionProductAccesses" Relationship="Self.UserClientDivisionProductAccess_Product" FromRole="UserClientDivisionProductAccess_Product_Target" ToRole="UserClientDivisionProductAccess_Product_Source" />
         </EntityType>
-        <EntityType Name="CDPSecurityGroup" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.CDPSecurityGroup, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="CDPSecurityGroup" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.CDPSecurityGroup, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -83,7 +83,7 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="CDPSecurityGroupEmployees" Relationship="Self.CDPSecurityGroupEmployee_CDPSecurityGroup" FromRole="CDPSecurityGroupEmployee_CDPSecurityGroup_Target" ToRole="CDPSecurityGroupEmployee_CDPSecurityGroup_Source" />
         </EntityType>
-        <EntityType Name="CDPSecurityGroupEmployee" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.CDPSecurityGroupEmployee, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="CDPSecurityGroupEmployee" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.CDPSecurityGroupEmployee, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -93,7 +93,7 @@
           <NavigationProperty Name="CDPSecurityGroup" Relationship="Self.CDPSecurityGroupEmployee_CDPSecurityGroup" FromRole="CDPSecurityGroupEmployee_CDPSecurityGroup_Source" ToRole="CDPSecurityGroupEmployee_CDPSecurityGroup_Target" />
           <NavigationProperty Name="Employee" Relationship="Self.CDPSecurityGroupEmployee_Employee" FromRole="CDPSecurityGroupEmployee_Employee_Source" ToRole="CDPSecurityGroupEmployee_Employee_Target" />
         </EntityType>
-        <EntityType Name="Client" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Client, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="Client" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Client, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="Code" />
           </Key>
@@ -105,7 +105,7 @@
           <NavigationProperty Name="Divisions" Relationship="Self.Division_Client" FromRole="Division_Client_Target" ToRole="Division_Client_Source" />
           <NavigationProperty Name="Products" Relationship="Self.Client_Products" FromRole="Client_Products_Source" ToRole="Client_Products_Target" />
         </EntityType>
-        <EntityType Name="ClientContact" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientContact, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ClientContact" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientContact, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ContactID" />
           </Key>
@@ -145,7 +145,7 @@
           <NavigationProperty Name="ClientPortalUsers" Relationship="Self.ClientPortalUser_ClientContact" FromRole="ClientPortalUser_ClientContact_Target" ToRole="ClientPortalUser_ClientContact_Source" />
           <NavigationProperty Name="ClientPortalUserWorkspaces" Relationship="Self.ClientPortalUserWorkspace_ClientContact" FromRole="ClientPortalUserWorkspace_ClientContact_Target" ToRole="ClientPortalUserWorkspace_ClientContact_Source" />
         </EntityType>
-        <EntityType Name="ClientContactDetail" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientContactDetail, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ClientContactDetail" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientContactDetail, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ContactID" />
             <PropertyRef Name="SequenceNumber" />
@@ -156,7 +156,7 @@
           <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ClientContact" Relationship="Self.ClientContactDetail_ClientContact" FromRole="ClientContactDetail_ClientContact_Source" ToRole="ClientContactDetail_ClientContact_Target" />
         </EntityType>
-        <EntityType Name="ClientPortalUser" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUser, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ClientPortalUser" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUser, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -188,7 +188,7 @@
           <NavigationProperty Name="ClientPortalUserApplicationAccesses" Relationship="Self.ClientPortalUserApplicationAccess_ClientPortalUser" FromRole="ClientPortalUserApplicationAccess_ClientPortalUser_Target" ToRole="ClientPortalUserApplicationAccess_ClientPortalUser_Source" />
           <NavigationProperty Name="ClientPortalUserModuleAccesses" Relationship="Self.ClientPortalUserModuleAccess_ClientPortalUser" FromRole="ClientPortalUserModuleAccess_ClientPortalUser_Target" ToRole="ClientPortalUserModuleAccess_ClientPortalUser_Source" />
         </EntityType>
-        <EntityType Name="ClientPortalUserApplicationAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUserApplicationAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ClientPortalUserApplicationAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUserApplicationAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -204,7 +204,7 @@
           <NavigationProperty Name="Application" Relationship="Self.Application_ClientPortalUserApplicationAccesses" FromRole="Application_ClientPortalUserApplicationAccesses_Target" ToRole="Application_ClientPortalUserApplicationAccesses_Source" />
           <NavigationProperty Name="ClientPortalUser" Relationship="Self.ClientPortalUserApplicationAccess_ClientPortalUser" FromRole="ClientPortalUserApplicationAccess_ClientPortalUser_Source" ToRole="ClientPortalUserApplicationAccess_ClientPortalUser_Target" />
         </EntityType>
-        <EntityType Name="Application" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Application, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="Application" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Application, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -216,7 +216,7 @@
           <NavigationProperty Name="GroupApplicationAccesses" Relationship="Self.GroupApplicationAccess_Application" FromRole="GroupApplicationAccess_Application_Target" ToRole="GroupApplicationAccess_Application_Source" />
           <NavigationProperty Name="UserApplicationAccesses" Relationship="Self.UserApplicationAccess_Application" FromRole="UserApplicationAccess_Application_Target" ToRole="UserApplicationAccess_Application_Source" />
         </EntityType>
-        <EntityType Name="ApplicationModule" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ApplicationModule, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ApplicationModule" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ApplicationModule, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -226,7 +226,7 @@
           <NavigationProperty Name="Application" Relationship="Self.ApplicationModule_Application" FromRole="ApplicationModule_Application_Source" ToRole="ApplicationModule_Application_Target" />
           <NavigationProperty Name="Module" Relationship="Self.Module_ApplicationModules" FromRole="Module_ApplicationModules_Target" ToRole="Module_ApplicationModules_Source" />
         </EntityType>
-        <EntityType Name="Module" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Module, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="Module" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Module, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -251,7 +251,7 @@
           <NavigationProperty Name="UserModuleAccesses" Relationship="Self.UserModuleAccess_Module" FromRole="UserModuleAccess_Module_Target" ToRole="UserModuleAccess_Module_Source" />
           <NavigationProperty Name="WorkspaceTemplateItems" Relationship="Self.WorkspaceTemplateItem_Module" FromRole="WorkspaceTemplateItem_Module_Target" ToRole="WorkspaceTemplateItem_Module_Source" />
         </EntityType>
-        <EntityType Name="ClientPortalUserModuleAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUserModuleAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ClientPortalUserModuleAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUserModuleAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -267,7 +267,7 @@
           <NavigationProperty Name="ClientPortalUser" Relationship="Self.ClientPortalUserModuleAccess_ClientPortalUser" FromRole="ClientPortalUserModuleAccess_ClientPortalUser_Source" ToRole="ClientPortalUserModuleAccess_ClientPortalUser_Target" />
           <NavigationProperty Name="Module" Relationship="Self.ClientPortalUserModuleAccess_Module" FromRole="ClientPortalUserModuleAccess_Module_Source" ToRole="ClientPortalUserModuleAccess_Module_Target" />
         </EntityType>
-        <EntityType Name="GroupModuleAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupModuleAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="GroupModuleAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupModuleAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -283,7 +283,7 @@
           <NavigationProperty Name="Group" Relationship="Self.Group_GroupModuleAccesses" FromRole="Group_GroupModuleAccesses_Target" ToRole="Group_GroupModuleAccesses_Source" />
           <NavigationProperty Name="Module" Relationship="Self.GroupModuleAccess_Module" FromRole="GroupModuleAccess_Module_Source" ToRole="GroupModuleAccess_Module_Target" />
         </EntityType>
-        <EntityType Name="Group" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Group, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="Group" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Group, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -296,7 +296,7 @@
           <NavigationProperty Name="GroupUserDefinedReportAccesses" Relationship="Self.GroupUserDefinedReportAccess_Group" FromRole="GroupUserDefinedReportAccess_Group_Target" ToRole="GroupUserDefinedReportAccess_Group_Source" />
           <NavigationProperty Name="GroupUsers" Relationship="Self.GroupUser_Group" FromRole="GroupUser_Group_Target" ToRole="GroupUser_Group_Source" />
         </EntityType>
-        <EntityType Name="GroupApplicationAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupApplicationAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="GroupApplicationAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupApplicationAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -312,7 +312,7 @@
           <NavigationProperty Name="Application" Relationship="Self.GroupApplicationAccess_Application" FromRole="GroupApplicationAccess_Application_Source" ToRole="GroupApplicationAccess_Application_Target" />
           <NavigationProperty Name="Group" Relationship="Self.GroupApplicationAccess_Group" FromRole="GroupApplicationAccess_Group_Source" ToRole="GroupApplicationAccess_Group_Target" />
         </EntityType>
-        <EntityType Name="GroupSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupSetting, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="GroupSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupSetting, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="GroupID" />
             <PropertyRef Name="SettingCode" />
@@ -325,7 +325,7 @@
           <Property Name="DateValue" Type="DateTime" />
           <NavigationProperty Name="Group" Relationship="Self.GroupSetting_Group" FromRole="GroupSetting_Group_Source" ToRole="GroupSetting_Group_Target" />
         </EntityType>
-        <EntityType Name="GroupUserDefinedReportAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupUserDefinedReportAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="GroupUserDefinedReportAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupUserDefinedReportAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -335,7 +335,7 @@
           <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Group" Relationship="Self.GroupUserDefinedReportAccess_Group" FromRole="GroupUserDefinedReportAccess_Group_Source" ToRole="GroupUserDefinedReportAccess_Group_Target" />
         </EntityType>
-        <EntityType Name="GroupUser" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupUser, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="GroupUser" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupUser, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -345,7 +345,7 @@
           <NavigationProperty Name="Group" Relationship="Self.GroupUser_Group" FromRole="GroupUser_Group_Source" ToRole="GroupUser_Group_Target" />
           <NavigationProperty Name="User" Relationship="Self.User_GroupUsers" FromRole="User_GroupUsers_Target" ToRole="User_GroupUsers_Source" />
         </EntityType>
-        <EntityType Name="User" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.User, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="User" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.User, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -370,7 +370,7 @@
           <NavigationProperty Name="UserUserDefinedReportAccesses" Relationship="Self.UserUserDefinedReportAccess_User" FromRole="UserUserDefinedReportAccess_User_Target" ToRole="UserUserDefinedReportAccess_User_Source" />
           <NavigationProperty Name="WorkspaceTemplates" Relationship="Self.WorkspaceTemplate_User" FromRole="WorkspaceTemplate_User_Target" ToRole="WorkspaceTemplate_User_Source" />
         </EntityType>
-        <EntityType Name="UserApplicationAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserApplicationAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserApplicationAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserApplicationAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -386,7 +386,7 @@
           <NavigationProperty Name="Application" Relationship="Self.UserApplicationAccess_Application" FromRole="UserApplicationAccess_Application_Source" ToRole="UserApplicationAccess_Application_Target" />
           <NavigationProperty Name="User" Relationship="Self.UserApplicationAccess_User" FromRole="UserApplicationAccess_User_Source" ToRole="UserApplicationAccess_User_Target" />
         </EntityType>
-        <EntityType Name="UserMenu" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserMenu, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserMenu" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserMenu, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -400,7 +400,7 @@
           <NavigationProperty Name="User" Relationship="Self.UserMenu_User" FromRole="UserMenu_User_Source" ToRole="UserMenu_User_Target" />
           <NavigationProperty Name="UserMenuTab" Relationship="Self.UserMenuTab_UserMenus" FromRole="UserMenuTab_UserMenus_Target" ToRole="UserMenuTab_UserMenus_Source" />
         </EntityType>
-        <EntityType Name="UserMenuTab" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserMenuTab, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserMenuTab" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserMenuTab, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -412,7 +412,7 @@
           <NavigationProperty Name="User" Relationship="Self.UserMenuTab_User" FromRole="UserMenuTab_User_Source" ToRole="UserMenuTab_User_Target" />
           <NavigationProperty Name="UserMenus" Relationship="Self.UserMenuTab_UserMenus" FromRole="UserMenuTab_UserMenus_Source" ToRole="UserMenuTab_UserMenus_Target" />
         </EntityType>
-        <EntityType Name="UserModuleAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserModuleAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserModuleAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserModuleAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -428,7 +428,7 @@
           <NavigationProperty Name="Module" Relationship="Self.UserModuleAccess_Module" FromRole="UserModuleAccess_Module_Source" ToRole="UserModuleAccess_Module_Target" />
           <NavigationProperty Name="User" Relationship="Self.UserModuleAccess_User" FromRole="UserModuleAccess_User_Source" ToRole="UserModuleAccess_User_Target" />
         </EntityType>
-        <EntityType Name="UserSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserSetting, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserSetting, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="UserID" />
             <PropertyRef Name="SettingCode" />
@@ -441,7 +441,7 @@
           <Property Name="DateValue" Type="DateTime" />
           <NavigationProperty Name="User" Relationship="Self.UserSetting_User" FromRole="UserSetting_User_Source" ToRole="UserSetting_User_Target" />
         </EntityType>
-        <EntityType Name="UserUserDefinedReportAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserUserDefinedReportAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserUserDefinedReportAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserUserDefinedReportAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -451,7 +451,7 @@
           <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.UserUserDefinedReportAccess_User" FromRole="UserUserDefinedReportAccess_User_Source" ToRole="UserUserDefinedReportAccess_User_Target" />
         </EntityType>
-        <EntityType Name="WorkspaceTemplate" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceTemplate, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="WorkspaceTemplate" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceTemplate, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -464,7 +464,7 @@
           <NavigationProperty Name="User" Relationship="Self.WorkspaceTemplate_User" FromRole="WorkspaceTemplate_User_Source" ToRole="WorkspaceTemplate_User_Target" />
           <NavigationProperty Name="WorkspaceTemplateDetails" Relationship="Self.WorkspaceTemplateDetail_WorkspaceTemplate" FromRole="WorkspaceTemplateDetail_WorkspaceTemplate_Target" ToRole="WorkspaceTemplateDetail_WorkspaceTemplate_Source" />
         </EntityType>
-        <EntityType Name="WorkspaceTemplateDetail" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceTemplateDetail, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="WorkspaceTemplateDetail" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceTemplateDetail, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -477,7 +477,7 @@
           <NavigationProperty Name="WorkspaceTemplate" Relationship="Self.WorkspaceTemplateDetail_WorkspaceTemplate" FromRole="WorkspaceTemplateDetail_WorkspaceTemplate_Source" ToRole="WorkspaceTemplateDetail_WorkspaceTemplate_Target" />
           <NavigationProperty Name="WorkspaceTemplateItems" Relationship="Self.WorkspaceTemplateItem_WorkspaceTemplateDetail" FromRole="WorkspaceTemplateItem_WorkspaceTemplateDetail_Target" ToRole="WorkspaceTemplateItem_WorkspaceTemplateDetail_Source" />
         </EntityType>
-        <EntityType Name="WorkspaceTemplateItem" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceTemplateItem, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="WorkspaceTemplateItem" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceTemplateItem, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -493,7 +493,7 @@
           <NavigationProperty Name="Module" Relationship="Self.WorkspaceTemplateItem_Module" FromRole="WorkspaceTemplateItem_Module_Source" ToRole="WorkspaceTemplateItem_Module_Target" />
           <NavigationProperty Name="WorkspaceTemplateDetail" Relationship="Self.WorkspaceTemplateItem_WorkspaceTemplateDetail" FromRole="WorkspaceTemplateItem_WorkspaceTemplateDetail_Source" ToRole="WorkspaceTemplateItem_WorkspaceTemplateDetail_Target" />
         </EntityType>
-        <EntityType Name="ModuleInformation" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ModuleInformation, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ModuleInformation" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ModuleInformation, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -521,7 +521,7 @@
           <Property Name="WebvantageLargeImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ReportLargeImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="ModuleSub" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ModuleSub, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ModuleSub" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ModuleSub, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -531,7 +531,7 @@
           <NavigationProperty Name="Module" Relationship="Self.ModuleSub_Module" FromRole="ModuleSub_Module_Source" ToRole="ModuleSub_Module_Target" />
           <NavigationProperty Name="ParentModule" Relationship="Self.ModuleSub_ParentModule" FromRole="ModuleSub_ParentModule_Source" ToRole="ModuleSub_ParentModule_Target" />
         </EntityType>
-        <EntityType Name="ClientPortalUserWorkspace" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUserWorkspace, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ClientPortalUserWorkspace" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUserWorkspace, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -543,7 +543,7 @@
           <NavigationProperty Name="ClientContact" Relationship="Self.ClientPortalUserWorkspace_ClientContact" FromRole="ClientPortalUserWorkspace_ClientContact_Source" ToRole="ClientPortalUserWorkspace_ClientContact_Target" />
           <NavigationProperty Name="ClientPortalWorkspaceObjects" Relationship="Self.ClientPortalWorkspaceObject_ClientPortalUserWorkspace" FromRole="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Target" ToRole="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Source" />
         </EntityType>
-        <EntityType Name="ClientPortalWorkspaceObject" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalWorkspaceObject, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ClientPortalWorkspaceObject" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalWorkspaceObject, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -558,7 +558,7 @@
           <Property Name="SortOrder" Type="Int32" />
           <NavigationProperty Name="ClientPortalUserWorkspace" Relationship="Self.ClientPortalWorkspaceObject_ClientPortalUserWorkspace" FromRole="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Source" ToRole="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Target" />
         </EntityType>
-        <EntityType Name="Division" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Division, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="Division" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Division, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ClientCode" />
             <PropertyRef Name="Code" />
@@ -570,7 +570,7 @@
           <NavigationProperty Name="Client" Relationship="Self.Division_Client" FromRole="Division_Client_Source" ToRole="Division_Client_Target" />
           <NavigationProperty Name="Products" Relationship="Self.Division_Products" FromRole="Division_Products_Source" ToRole="Division_Products_Target" />
         </EntityType>
-        <EntityType Name="UserClientDivisionProductAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserClientDivisionProductAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserClientDivisionProductAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserClientDivisionProductAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="UserCode" />
             <PropertyRef Name="ClientCode" />
@@ -584,7 +584,7 @@
           <Property Name="AllowTimeEntryOnly" Type="Int16" />
           <NavigationProperty Name="Product" Relationship="Self.UserClientDivisionProductAccess_Product" FromRole="UserClientDivisionProductAccess_Product_Source" ToRole="UserClientDivisionProductAccess_Product_Target" />
         </EntityType>
-        <EntityType Name="UserEmployeeAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserEmployeeAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserEmployeeAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserEmployeeAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="UserCode" />
             <PropertyRef Name="EmployeeCode" />
@@ -593,7 +593,7 @@
           <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.UserEmployeeAccess_Employee" FromRole="UserEmployeeAccess_Employee_Source" ToRole="UserEmployeeAccess_Employee_Target" />
         </EntityType>
-        <EntityType Name="AdvantageUserLicenseInUse" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.AdvantageUserLicenseInUse, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="AdvantageUserLicenseInUse" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.AdvantageUserLicenseInUse, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -601,7 +601,7 @@
           <Property Name="Type" Type="Byte" Nullable="false" />
           <Property Name="Assigned" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="ApplicationSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ApplicationSetting, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ApplicationSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ApplicationSetting, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="UserCode" />
             <PropertyRef Name="ApplicationSection" />
@@ -616,7 +616,7 @@
           <Property Name="OrderNumber" Type="Int32" />
           <Property Name="Value" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="CPUserFavoriteModule" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.CPUserFavoriteModule, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="CPUserFavoriteModule" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.CPUserFavoriteModule, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="WorkspaceID" />
@@ -630,7 +630,7 @@
           <Property Name="TopCoord" Type="Int32" />
           <Property Name="LeftCoord" Type="Int32" />
         </EntityType>
-        <EntityType Name="DatabaseSQLUser" customannotation:ClrType="AdvantageFramework.Security.Database.Views.DatabaseSQLUser, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="DatabaseSQLUser" customannotation:ClrType="AdvantageFramework.Security.Database.Views.DatabaseSQLUser, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -645,7 +645,7 @@
           <Property Name="SID" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IsFixedRole" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="EmployeeSummary" customannotation:ClrType="AdvantageFramework.Security.Database.Views.EmployeeSummary, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="EmployeeSummary" customannotation:ClrType="AdvantageFramework.Security.Database.Views.EmployeeSummary, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -659,7 +659,7 @@
           <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GroupDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="GroupPermission" customannotation:ClrType="AdvantageFramework.Security.Database.Views.GroupPermission, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="GroupPermission" customannotation:ClrType="AdvantageFramework.Security.Database.Views.GroupPermission, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -686,7 +686,7 @@
           <Property Name="ApplicationCustom1" Type="Boolean" Nullable="false" />
           <Property Name="ApplicationCustom2" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="GroupPermissionsReport" customannotation:ClrType="AdvantageFramework.Security.Database.Views.GroupPermissionsReport, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="GroupPermissionsReport" customannotation:ClrType="AdvantageFramework.Security.Database.Views.GroupPermissionsReport, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -724,7 +724,7 @@
           <Property Name="ApplicationCustom1" Type="Boolean" Nullable="false" />
           <Property Name="ApplicationCustom2" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="ModuleStructure" customannotation:ClrType="AdvantageFramework.Security.Database.Views.ModuleStructure, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ModuleStructure" customannotation:ClrType="AdvantageFramework.Security.Database.Views.ModuleStructure, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -744,7 +744,7 @@
           <Property Name="ModuleSortOrder" Type="Int32" />
           <Property Name="ModuleHasCustomPermission" Type="Boolean" />
         </EntityType>
-        <EntityType Name="ModuleView" customannotation:ClrType="AdvantageFramework.Security.Database.Views.ModuleView, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ModuleView" customannotation:ClrType="AdvantageFramework.Security.Database.Views.ModuleView, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -789,7 +789,7 @@
           <Property Name="ParentModuleCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ParentModuleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="PasswordHistory" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.PasswordHistory, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="PasswordHistory" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.PasswordHistory, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -798,7 +798,7 @@
           <Property Name="StartDate" Type="DateTime" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="PasswordLockout" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.PasswordLockout, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="PasswordLockout" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.PasswordLockout, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -807,7 +807,7 @@
           <Property Name="Attempts" Type="Int32" />
           <Property Name="LockDate" Type="DateTime" />
         </EntityType>
-        <EntityType Name="ReportAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ReportAccess, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ReportAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ReportAccess, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="UserCode" />
             <PropertyRef Name="ReportCode" />
@@ -816,7 +816,7 @@
           <Property Name="ReportCode" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Enabled" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Report" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Report, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="Report" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Report, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="Code" />
           </Key>
@@ -829,7 +829,7 @@
           <Property Name="SubReportNumber" Type="Int32" />
           <Property Name="Orient" Type="Int16" />
         </EntityType>
-        <EntityType Name="ServerSQLUser" customannotation:ClrType="AdvantageFramework.Security.Database.Views.ServerSQLUser, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ServerSQLUser" customannotation:ClrType="AdvantageFramework.Security.Database.Views.ServerSQLUser, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -845,7 +845,7 @@
           <Property Name="DefaultLanguageName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CredentialID" Type="Int32" />
         </EntityType>
-        <EntityType Name="ServiceFeeReconciliationReportColumn" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationReportColumn, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ServiceFeeReconciliationReportColumn" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationReportColumn, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -862,7 +862,7 @@
           <Property Name="GridViewID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ServiceFeeReconciliationReport" Relationship="Self.ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn" FromRole="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Target" ToRole="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Source" />
         </EntityType>
-        <EntityType Name="ServiceFeeReconciliationReport" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationReport, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ServiceFeeReconciliationReport" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationReport, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -888,7 +888,7 @@
           <NavigationProperty Name="ServiceFeeReconciliationReportColumn" Relationship="Self.ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn" FromRole="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Source" ToRole="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Target" />
           <NavigationProperty Name="ServiceFeeReconciliationReportSummaryItem" Relationship="Self.ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport" FromRole="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Target" ToRole="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Source" />
         </EntityType>
-        <EntityType Name="ServiceFeeReconciliationReportSummaryItem" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationReportSummaryItem, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ServiceFeeReconciliationReportSummaryItem" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationReportSummaryItem, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -902,7 +902,7 @@
           <Property Name="GridViewID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ServiceFeeReconciliationReport" Relationship="Self.ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport" FromRole="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Source" ToRole="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Target" />
         </EntityType>
-        <EntityType Name="ServiceFeeReconciliationSettingCDP" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationSettingCDP, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ServiceFeeReconciliationSettingCDP" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationSettingCDP, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -912,7 +912,7 @@
           <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="ServiceFeeReconciliationSettingDetail" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationSettingDetail, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ServiceFeeReconciliationSettingDetail" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationSettingDetail, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="UserCode" />
             <PropertyRef Name="Type" />
@@ -922,7 +922,7 @@
           <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="ServiceFeeReconciliationSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationSetting, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ServiceFeeReconciliationSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationSetting, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="UserCode" />
           </Key>
@@ -958,7 +958,7 @@
           <Property Name="IncludeServiceFeeTypeLevel" Type="Boolean" Nullable="false" />
           <Property Name="AddFeeDescriptionToGroupBy" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="UserFavoriteModule" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserFavoriteModule, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserFavoriteModule" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserFavoriteModule, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="UserCode" />
             <PropertyRef Name="WorkspaceID" />
@@ -968,7 +968,7 @@
           <Property Name="WorkspaceID" Type="Int32" Nullable="false" />
           <Property Name="ModuleID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="UserLoginAudit" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserLoginAudit, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserLoginAudit" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserLoginAudit, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -982,7 +982,7 @@
           <Property Name="FailureReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Application" Relationship="Self.UserLoginAudit_Application" FromRole="UserLoginAudit_Application_Source" ToRole="UserLoginAudit_Application_Target" />
         </EntityType>
-        <EntityType Name="UserPermission" customannotation:ClrType="AdvantageFramework.Security.Database.Views.UserPermission, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserPermission" customannotation:ClrType="AdvantageFramework.Security.Database.Views.UserPermission, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -1009,7 +1009,7 @@
           <Property Name="ApplicationCustom1" Type="Boolean" Nullable="false" />
           <Property Name="ApplicationCustom2" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="UserPermissionsReport" customannotation:ClrType="AdvantageFramework.Security.Database.Views.UserPermissionsReport, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserPermissionsReport" customannotation:ClrType="AdvantageFramework.Security.Database.Views.UserPermissionsReport, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -1048,7 +1048,7 @@
           <Property Name="ApplicationCustom2" Type="Boolean" Nullable="false" />
           <Property Name="Employee" Type="String" MaxLength="73" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="UserUserDefinedReportPermission" customannotation:ClrType="AdvantageFramework.Security.Database.Views.UserUserDefinedReportPermission, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserUserDefinedReportPermission" customannotation:ClrType="AdvantageFramework.Security.Database.Views.UserUserDefinedReportPermission, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -1061,7 +1061,7 @@
           <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="UserWorkspace" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserWorkspace, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="UserWorkspace" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserWorkspace, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -1073,7 +1073,7 @@
           <Property Name="IsClientPortal" Type="Int32" />
           <NavigationProperty Name="WorkspaceObjects" Relationship="Self.WorkspaceObject_UserWorkspace" FromRole="WorkspaceObject_UserWorkspace_Target" ToRole="WorkspaceObject_UserWorkspace_Source" />
         </EntityType>
-        <EntityType Name="WorkspaceObject" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceObject, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="WorkspaceObject" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceObject, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>

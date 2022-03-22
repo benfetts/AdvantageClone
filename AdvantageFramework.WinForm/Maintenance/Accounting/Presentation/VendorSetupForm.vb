@@ -192,6 +192,8 @@
 
                 RibbonBarOptions_QuickBooks.Visible = VendorControlRightSection_Vendor.IsQuickbooksEnabled
 
+                RibbonBarOptions_ComboStations.Visible = VendorControlRightSection_Vendor.ShowManageComboRadioStations
+
             Else
 
                 RibbonBarOptions_Documents.Visible = False
@@ -214,6 +216,7 @@
                 RibbonBarOptions_Contracts.Visible = False
                 RibbonBarOptions_Markets.Visible = False
                 RibbonBarOptions_QuickBooks.Visible = False
+                RibbonBarOptions_ComboStations.Visible = False
 
             End If
 
@@ -460,6 +463,8 @@
             ButtonItemMarkets_Manage.Image = AdvantageFramework.My.Resources.QuickManageImage
 
             ButtonItemQuickBooks_Refresh.Image = AdvantageFramework.My.Resources.RefreshImage
+
+            ButtonItemComboStations_Manage.Image = AdvantageFramework.My.Resources.QuickManageImage
 
             DataGridViewLeftSection_Vendors.MultiSelect = False
             DataGridViewLeftSection_Vendors.ItemDescription = "Vendor(s)"
@@ -927,9 +932,21 @@
             EnableOrDisableActions()
 
         End Sub
+        Private Sub VendorControlRightSection_Vendor_ComboStationChangedEvent() Handles VendorControlRightSection_Vendor.ComboStationChangedEvent
+
+            RibbonBarOptions_ComboStations.Visible = VendorControlRightSection_Vendor.ShowManageComboRadioStations
+
+            EnableOrDisableActions()
+
+        End Sub
         Private Sub ButtonItemQuickBooks_Refresh_Click(sender As Object, e As EventArgs) Handles ButtonItemQuickBooks_Refresh.Click
 
             VendorControlRightSection_Vendor.RefreshQuickBooksVendor()
+
+        End Sub
+        Private Sub ButtonItemComboStations_Manage_Click(sender As Object, e As EventArgs) Handles ButtonItemComboStations_Manage.Click
+
+            VendorControlRightSection_Vendor.ManageComboRadioStations()
 
         End Sub
 

@@ -121,7 +121,7 @@ BEGIN
 					ON jtd.TRAFFIC_PHASE_ID = tp.TRAFFIC_PHASE_ID
 				 WHERE JOB_NUMBER = @job_number
 				   AND JOB_COMPONENT_NBR = @job_component_nbr
-				   --AND jtd.JOB_COMPLETED_DATE IS NULL;
+				   AND jtd.JOB_COMPLETED_DATE IS NULL;
 		END
 	END
 

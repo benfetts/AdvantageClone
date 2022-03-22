@@ -4281,7 +4281,20 @@
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_EmployeeUtilizationUpdateColumnWidthSettings.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_get_Financial_data.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_media_broadcast_worksheet_etam_export_get_station_ordernumbers.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_manager_load_broadcast_invoices.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_pmt_mgr_wf2.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_def_sales_ar.proc.sql" />
+    <None Include="Programmability\Functions\advfn_invoice_printing_xchge_disocunt_amt.function.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_comscore_precache_books.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_comscore_precache_demographics.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_comscore_precache_stations.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_comscore_cache_results.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_broadcast_loadreachfreq_details_other.proc.sql" />
+    <None Include="Programmability\Functions\advfn_invoice_printing_xchge_rate_amt.function.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_job_traffic_det_by_job_comp.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_gl_cross_office.proc.sql" />
+    <None Include="Programmability\Functions\advtf_broadcast_order_dtl_verification.function.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_broadcast_invoice_detail_report.proc.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="DB1">

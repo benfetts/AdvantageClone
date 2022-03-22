@@ -32,6 +32,7 @@
         Private _MediaBroadcastWorksheetID As Integer? = Nothing
         Private _MediaBroadcastWorksheetPrePostReportCriteriaMediaType As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetPrePostReportCriteriaMediaType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV
         Private _IsPuertoRico As Boolean = False
+        Private _ShowOmitRatings As Boolean = False
 
 #End Region
 
@@ -78,6 +79,7 @@
             _DynamicReport = DynamicReport
             _MediaBroadcastWorksheetPrePostReportCriteriaBuyType = BuyType
             _MediaBroadcastWorksheetPrePostReportCriteriaMediaType = MediaType
+            _ShowOmitRatings = True
 
             If _MediaBroadcastWorksheetPrePostReportCriteriaBuyType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaBuyType.Post Then
 
@@ -455,8 +457,8 @@
             DataGridViewForm_Markets.ShowSelectDeselectAllButtons = True
             DataGridViewForm_Vendors.ShowSelectDeselectAllButtons = True
 
-            DateTimePickerStartDateRange_FromDate.Enabled = False
-            DateTimePickerStartDateRange_ToDate.Enabled = False
+            'DateTimePickerStartDateRange_FromDate.Enabled = False
+            'DateTimePickerStartDateRange_ToDate.Enabled = False
 
             If Not _MediaBroadcastWorksheetID.HasValue Then
 
@@ -489,6 +491,8 @@
 
         End Sub
         Private Sub MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+
+            CheckBoxForm_OmitRatings.Visible = _ShowOmitRatings
 
             RefreshViewModel(True)
 
@@ -560,6 +564,7 @@
                     _ParameterDictionary(AdvantageFramework.Reporting.MediaBroadcastWorksheetInitialCriteria.Session.ToString) = Me.Session
                     _ParameterDictionary(AdvantageFramework.Reporting.MediaBroadcastWorksheetInitialCriteria.MediaBroadcastWorksheetMarketBooks.ToString) = MediaBroadcastWorksheetMarketBooks
                     _ParameterDictionary(AdvantageFramework.Reporting.MediaBroadcastWorksheetInitialCriteria.WorksheetMarketVendors.ToString) = WorksheetMarketVendors
+                    _ParameterDictionary(AdvantageFramework.Reporting.MediaBroadcastWorksheetInitialCriteria.OmitRatings.ToString) = (CheckBoxForm_OmitRatings.Visible AndAlso CheckBoxForm_OmitRatings.Checked)
 
                     _Controller.SaveCriteria(DataGridViewForm_Markets.GetAllRowsDataBoundItems.OfType(Of DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook).ToList, _MediaBroadcastWorksheetPrePostReportCriteriaBuyType, _MediaBroadcastWorksheetPrePostReportCriteriaMediaType)
 
@@ -583,6 +588,60 @@
 
             Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
             Me.Close()
+
+        End Sub
+        Private Sub ButtonForm_Refresh_Click(sender As Object, e As EventArgs) Handles ButtonForm_Refresh.Click
+
+            Dim ClientCode As String = ""
+            Dim StartDate As Date? = Nothing
+            Dim EndDate As Date? = Nothing
+            Dim MarketsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
+            Dim VendorsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
+            Dim RatingServiceID As Integer = 0
+
+            If Me.FormShown Then
+
+                StartDate = DateTimePickerStartDateRange_FromDate.GetValue
+                EndDate = DateTimePickerStartDateRange_ToDate.GetValue
+
+                If SearchableComboBoxForm_Client.HasASelectedValue AndAlso ComboBoxForm_Source.HasASelectedValue AndAlso StartDate.HasValue AndAlso EndDate.HasValue Then
+
+                    Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.Loading
+
+                    MarketsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Markets, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
+                    VendorsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Vendors, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
+
+                    System.Windows.Forms.Application.DoEvents()
+
+                    ClientCode = SearchableComboBoxForm_Client.GetSelectedValue
+
+                    RatingServiceID = ComboBoxForm_Source.GetSelectedValue()
+
+                    _Controller.GetMediaBroadcastWorksheetMarketBooks(ClientCode, StartDate, EndDate, _ViewModel, _MediaBroadcastWorksheetPrePostReportCriteriaBuyType, RatingServiceID)
+
+                    RefreshViewModel(True)
+
+                    DataGridViewForm_Markets.CurrentView.BestFitColumns()
+                    DataGridViewForm_Vendors.CurrentView.BestFitColumns()
+
+                    DataGridViewForm_Markets.SelectAll()
+                    DataGridViewForm_Vendors.SelectAll()
+
+                    DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(MarketsOverlaySplayScreenHandle)
+                    DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(VendorsOverlaySplayScreenHandle)
+
+                    DataGridViewForm_Markets.CurrentView.LoadingPanelVisible = False
+                    DataGridViewForm_Vendors.CurrentView.LoadingPanelVisible = False
+
+                    Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.None
+
+                Else
+
+                    AdvantageFramework.WinForm.MessageBox.Show("Please pick Source, Client, From Date and To Date.")
+
+                End If
+
+            End If
 
         End Sub
         Private Sub DataGridViewForm_Markets_QueryPopupNeedDatasourceEvent(FieldName As String, ByRef OverrideDefaultDatasource As Boolean, ByRef Datasource As Object) Handles DataGridViewForm_Markets.QueryPopupNeedDatasourceEvent
@@ -848,146 +907,141 @@
             End If
 
         End Sub
-        Private Sub DateTimePickerStartDateRange_FromDate_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePickerStartDateRange_FromDate.ValueChanged
+        'Private Sub DateTimePickerStartDateRange_FromDate_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePickerStartDateRange_FromDate.ValueChanged
 
-            Dim Task As System.Threading.Tasks.Task = Nothing
+        '    Dim ClientCode As String = ""
+        '    Dim StartDate As Date = Date.MinValue
+        '    Dim EndDate As Date = Date.MinValue
+        '    Dim MarketsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
+        '    Dim VendorsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
+        '    Dim RatingServiceID As Integer = 0
 
-            Dim ClientCode As String = ""
-            Dim StartDate As Date = Date.MinValue
-            Dim EndDate As Date = Date.MinValue
-            Dim MarketsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
-            Dim VendorsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
-            Dim RatingServiceID As Integer = 0
+        '    If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.Methods.FormActions.None Then
 
-            If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.Methods.FormActions.None Then
+        '        Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.Loading
 
-                Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.Loading
+        '        MarketsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Markets, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
+        '        VendorsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Vendors, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
 
-                MarketsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Markets, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
-                VendorsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Vendors, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
+        '        System.Windows.Forms.Application.DoEvents()
 
-                System.Windows.Forms.Application.DoEvents()
+        '        ClientCode = SearchableComboBoxForm_Client.GetSelectedValue
+        '        StartDate = DateTimePickerStartDateRange_FromDate.GetValue
+        '        EndDate = DateTimePickerStartDateRange_ToDate.GetValue
+        '        RatingServiceID = ComboBoxForm_Source.GetSelectedValue()
 
-                ClientCode = SearchableComboBoxForm_Client.GetSelectedValue
-                StartDate = DateTimePickerStartDateRange_FromDate.GetValue
-                EndDate = DateTimePickerStartDateRange_ToDate.GetValue
-                RatingServiceID = ComboBoxForm_Source.GetSelectedValue()
+        '        _Controller.GetMediaBroadcastWorksheetMarketBooks(ClientCode, StartDate, EndDate, _ViewModel, _MediaBroadcastWorksheetPrePostReportCriteriaBuyType, RatingServiceID)
 
-                _Controller.GetMediaBroadcastWorksheetMarketBooks(ClientCode, StartDate, EndDate, _ViewModel, _MediaBroadcastWorksheetPrePostReportCriteriaBuyType, RatingServiceID)
+        '        Try
 
-                Try
+        '            RefreshViewModel(True)
 
-                    RefreshViewModel(True)
+        '        Catch ex As Exception
 
-                Catch ex As Exception
+        '        End Try
 
-                End Try
+        '        DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(MarketsOverlaySplayScreenHandle)
+        '        DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(VendorsOverlaySplayScreenHandle)
 
-                DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(MarketsOverlaySplayScreenHandle)
-                DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(VendorsOverlaySplayScreenHandle)
+        '        DataGridViewForm_Markets.CurrentView.LoadingPanelVisible = False
+        '        DataGridViewForm_Vendors.CurrentView.LoadingPanelVisible = False
 
-                DataGridViewForm_Markets.CurrentView.LoadingPanelVisible = False
-                DataGridViewForm_Vendors.CurrentView.LoadingPanelVisible = False
+        '        Me.FormAction = WinForm.Presentation.Methods.FormActions.None
 
-                Me.FormAction = WinForm.Presentation.Methods.FormActions.None
+        '    End If
 
-            End If
+        'End Sub
+        'Private Sub DateTimePickerStartDateRange_ToDate_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePickerStartDateRange_ToDate.ValueChanged
 
-        End Sub
-        Private Sub DateTimePickerStartDateRange_ToDate_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePickerStartDateRange_ToDate.ValueChanged
+        '    Dim ClientCode As String = ""
+        '    Dim StartDate As Date = Date.MinValue
+        '    Dim EndDate As Date = Date.MinValue
+        '    Dim MarketsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
+        '    Dim VendorsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
+        '    Dim RatingServiceID As Integer = 0
 
-            Dim Task As System.Threading.Tasks.Task = Nothing
+        '    If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.Methods.FormActions.None Then
 
-            Dim ClientCode As String = ""
-            Dim StartDate As Date = Date.MinValue
-            Dim EndDate As Date = Date.MinValue
-            Dim MarketsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
-            Dim VendorsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
-            Dim RatingServiceID As Integer = 0
+        '        Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.Loading
 
-            If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.Methods.FormActions.None Then
+        '        MarketsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Markets, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
+        '        VendorsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Vendors, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
 
-                Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.Loading
+        '        System.Windows.Forms.Application.DoEvents()
 
-                MarketsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Markets, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
-                VendorsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Vendors, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
+        '        ClientCode = SearchableComboBoxForm_Client.GetSelectedValue
+        '        StartDate = DateTimePickerStartDateRange_FromDate.GetValue
+        '        EndDate = DateTimePickerStartDateRange_ToDate.GetValue
+        '        RatingServiceID = ComboBoxForm_Source.GetSelectedValue()
 
-                System.Windows.Forms.Application.DoEvents()
+        '        _Controller.GetMediaBroadcastWorksheetMarketBooks(ClientCode, StartDate, EndDate, _ViewModel, _MediaBroadcastWorksheetPrePostReportCriteriaBuyType, RatingServiceID)
 
-                ClientCode = SearchableComboBoxForm_Client.GetSelectedValue
-                StartDate = DateTimePickerStartDateRange_FromDate.GetValue
-                EndDate = DateTimePickerStartDateRange_ToDate.GetValue
-                RatingServiceID = ComboBoxForm_Source.GetSelectedValue()
+        '        Try
 
-                _Controller.GetMediaBroadcastWorksheetMarketBooks(ClientCode, StartDate, EndDate, _ViewModel, _MediaBroadcastWorksheetPrePostReportCriteriaBuyType, RatingServiceID)
+        '            RefreshViewModel(True)
 
-                Try
+        '        Catch ex As Exception
 
-                    RefreshViewModel(True)
+        '        End Try
 
-                Catch ex As Exception
+        '        DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(MarketsOverlaySplayScreenHandle)
+        '        DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(VendorsOverlaySplayScreenHandle)
 
-                End Try
+        '        DataGridViewForm_Markets.CurrentView.LoadingPanelVisible = False
+        '        DataGridViewForm_Vendors.CurrentView.LoadingPanelVisible = False
 
-                DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(MarketsOverlaySplayScreenHandle)
-                DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(VendorsOverlaySplayScreenHandle)
+        '        Me.FormAction = WinForm.Presentation.Methods.FormActions.None
 
-                DataGridViewForm_Markets.CurrentView.LoadingPanelVisible = False
-                DataGridViewForm_Vendors.CurrentView.LoadingPanelVisible = False
+        '    End If
 
-                Me.FormAction = WinForm.Presentation.Methods.FormActions.None
+        'End Sub
+        'Private Sub SearchableComboBoxForm_Client_EditValueChanged(sender As Object, e As EventArgs) Handles SearchableComboBoxForm_Client.EditValueChanged
 
-            End If
+        '    Dim ClientCode As String = ""
+        '    Dim StartDate As Date = Date.MinValue
+        '    Dim EndDate As Date = Date.MinValue
+        '    Dim MarketsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
+        '    Dim VendorsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
+        '    Dim RatingServiceID As Integer = 0
 
-        End Sub
-        Private Sub SearchableComboBoxForm_Client_EditValueChanged(sender As Object, e As EventArgs) Handles SearchableComboBoxForm_Client.EditValueChanged
+        '    If Me.FormShown Then
 
-            Dim Task As System.Threading.Tasks.Task = Nothing
-            Dim ClientCode As String = ""
-            Dim StartDate As Date = Date.MinValue
-            Dim EndDate As Date = Date.MinValue
-            Dim MarketsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
-            Dim VendorsOverlaySplayScreenHandle As DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle = Nothing
-            Dim RatingServiceID As Integer = 0
+        '        Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.Loading
 
-            If Me.FormShown Then
+        '        MarketsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Markets, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
+        '        VendorsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Vendors, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
 
-                Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.Loading
+        '        System.Windows.Forms.Application.DoEvents()
 
-                MarketsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Markets, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
-                VendorsOverlaySplayScreenHandle = DevExpress.XtraSplashScreen.SplashScreenManager.ShowOverlayForm(DataGridViewForm_Vendors, True, True, System.Drawing.Color.White, System.Drawing.Color.FromArgb(1, 115, 199), 100, AdvantageFramework.My.Resources.SpinnerImage, Nothing)
+        '        ClientCode = SearchableComboBoxForm_Client.GetSelectedValue
+        '        StartDate = DateTimePickerStartDateRange_FromDate.GetValue
+        '        EndDate = DateTimePickerStartDateRange_ToDate.GetValue
+        '        RatingServiceID = ComboBoxForm_Source.GetSelectedValue()
 
-                System.Windows.Forms.Application.DoEvents()
+        '        _Controller.GetMediaBroadcastWorksheetMarketBooks(ClientCode, StartDate, EndDate, _ViewModel, _MediaBroadcastWorksheetPrePostReportCriteriaBuyType, RatingServiceID)
 
-                ClientCode = SearchableComboBoxForm_Client.GetSelectedValue
-                StartDate = DateTimePickerStartDateRange_FromDate.GetValue
-                EndDate = DateTimePickerStartDateRange_ToDate.GetValue
-                RatingServiceID = ComboBoxForm_Source.GetSelectedValue()
+        '        RefreshViewModel(True)
 
-                _Controller.GetMediaBroadcastWorksheetMarketBooks(ClientCode, StartDate, EndDate, _ViewModel, _MediaBroadcastWorksheetPrePostReportCriteriaBuyType, RatingServiceID)
+        '        DataGridViewForm_Markets.CurrentView.BestFitColumns()
+        '        DataGridViewForm_Vendors.CurrentView.BestFitColumns()
 
-                RefreshViewModel(True)
+        '        DataGridViewForm_Markets.SelectAll()
+        '        DataGridViewForm_Vendors.SelectAll()
 
-                DataGridViewForm_Markets.CurrentView.BestFitColumns()
-                DataGridViewForm_Vendors.CurrentView.BestFitColumns()
+        '        DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(MarketsOverlaySplayScreenHandle)
+        '        DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(VendorsOverlaySplayScreenHandle)
 
-                DataGridViewForm_Markets.SelectAll()
-                DataGridViewForm_Vendors.SelectAll()
+        '        DataGridViewForm_Markets.CurrentView.LoadingPanelVisible = False
+        '        DataGridViewForm_Vendors.CurrentView.LoadingPanelVisible = False
 
-                DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(MarketsOverlaySplayScreenHandle)
-                DevExpress.XtraSplashScreen.SplashScreenManager.CloseOverlayForm(VendorsOverlaySplayScreenHandle)
+        '        Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.None
 
-                DataGridViewForm_Markets.CurrentView.LoadingPanelVisible = False
-                DataGridViewForm_Vendors.CurrentView.LoadingPanelVisible = False
+        '        DateTimePickerStartDateRange_FromDate.Enabled = True
+        '        DateTimePickerStartDateRange_ToDate.Enabled = True
 
-                Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.None
+        '    End If
 
-                DateTimePickerStartDateRange_FromDate.Enabled = True
-                DateTimePickerStartDateRange_ToDate.Enabled = True
-
-            End If
-
-        End Sub
+        'End Sub
         Private Sub ComboBoxForm_Source_SelectedValueChanged(sender As Object, e As EventArgs) Handles ComboBoxForm_Source.SelectedValueChanged
 
             If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.Methods.FormActions.None Then

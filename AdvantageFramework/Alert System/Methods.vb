@@ -831,6 +831,8 @@ Namespace AlertSystem
                         ' Set link back into WV in email
                         Dim HyperLinkRowSet As Boolean = False
                         Dim IncludeContactLink As Boolean = False
+                        Dim EmailBody As String = Alert.EmailBody
+
                         Try
 
                             If ClientPortalAlertEmailRecipients IsNot Nothing AndAlso ClientPortalAlertEmailRecipients.Count > 0 Then
@@ -927,7 +929,22 @@ Namespace AlertSystem
                         Catch ex As Exception
                         End Try
 
-                        'Thumbnail?
+                        ' Subject and description
+                        Try
+
+                            HTMLEmail.AddHeaderRow(Subject)
+                            HTMLEmail.AddKeyValueRow("Subject", If(String.IsNullOrEmpty(Alert.Subject), "", Alert.Subject))
+
+                            UrlToHtmlLink(EmailBody, Agency.WebvantageURL, Agency.ClientPortalURL)
+
+                            If String.IsNullOrWhiteSpace(EmailBody) = False Then HTMLEmail.AddKeyValueRow("Description", EmailBody)
+
+                            HTMLEmail.AddBlankRow()
+
+                        Catch ex As Exception
+                        End Try
+
+                        ' Thumbnail?
                         Try
 
                             If IsProof = True Then
@@ -948,29 +965,26 @@ Namespace AlertSystem
                         End Try
 
                         ' Comments
-                        If IsProof = True AndAlso DocumentID IsNot Nothing AndAlso DocumentID > 0 Then
+                        Try
 
-                            CommentsHistory(DbContext, False, Alert.ID, DocumentID, ThumbnailFilename, Agency, HTMLEmail)
+                            If IsProof = True AndAlso DocumentID IsNot Nothing AndAlso DocumentID > 0 Then
 
-                        Else
+                                CommentsHistory(DbContext, False, Alert.ID, DocumentID, ThumbnailFilename, Agency, HTMLEmail)
 
-                            CommentsHistory(DbContext, False, Alert.ID, Agency, HTMLEmail)
+                            Else
 
-                        End If
+                                CommentsHistory(DbContext, False, Alert.ID, Agency, HTMLEmail)
+
+                            End If
+
+                            HTMLEmail.AddBlankRow()
+
+                        Catch ex As Exception
+                        End Try
 
                         ' Details
                         Try
 
-                            HTMLEmail.AddHeaderRow(Subject)
-                            HTMLEmail.AddKeyValueRow("Subject", If(String.IsNullOrEmpty(Alert.Subject), "", Alert.Subject))
-
-                            Dim EmailBody As String = Alert.EmailBody
-
-                            UrlToHtmlLink(EmailBody, Agency.WebvantageURL, Agency.ClientPortalURL)
-
-                            If String.IsNullOrWhiteSpace(EmailBody) = False Then HTMLEmail.AddKeyValueRow("Description", EmailBody)
-
-                            HTMLEmail.AddBlankRow()
 
                             If AppName = "SupervisorApproval" AndAlso String.IsNullOrWhiteSpace(SupervisorApprovalComment) = False Then
 
@@ -979,9 +993,9 @@ Namespace AlertSystem
 
                             End If
 
-
                         Catch ex As Exception
                         End Try
+
                         ' General Info
                         AlertDetails = AdvantageFramework.Database.Procedures.AlertView.LoadByAlertID(DbContext, Alert.ID)
 

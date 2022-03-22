@@ -3128,6 +3128,21 @@ Partial Public Class popReportViewer
                     rpt.imgPath = imgPath
                     rpt.PODate = Session("POPrintDate")
                     rpt.Void = POHeader.PO_Voided
+                    rpt.Connstring = Session("ConnString")
+                    rpt.UserCode = Session("UserCode")
+
+                    If dtPrintDef.Rows.Count > 0 Then
+                        If IsDBNull(dtPrintDef.Rows(0)(18)) = False Then
+                            If dtPrintDef.Rows(0)(18).ToString() = "1" Then
+                                rpt.UseLocationName = True
+                            End If
+                        End If
+                        If IsDBNull(dtPrintDef.Rows(0)(19)) = False Then
+                            If dtPrintDef.Rows(0)(19).ToString() = "1" Then
+                                rpt.UseClientName = True
+                            End If
+                        End If
+                    End If
 
                     If dtPrintDef.Rows.Count > 0 Then
                         If IsDBNull(dtPrintDef.Rows(0)(18)) = False Then
@@ -4578,22 +4593,22 @@ Partial Public Class popReportViewer
 
                                 Case AdvantageFramework.Timesheet.Methods.TimesheetSort.JobComponent
 
-                                    ThisTimeSheet.DefaultView.Sort = "JOB_NUMBER DESC, JOB_COMPONENT_NBR ASC"
+                                    ThisTimeSheet.DefaultView.Sort = "JOB_NUMBER ASC, JOB_COMPONENT_NBR ASC"
                                     ThisTimeSheet = ThisTimeSheet.DefaultView.ToTable()
 
                                 Case AdvantageFramework.Timesheet.Methods.TimesheetSort.Client
 
-                                    ThisTimeSheet.DefaultView.Sort = "CL_CODE ASC"
+                                    ThisTimeSheet.DefaultView.Sort = "CL_CODE ASC, DIV_CODE ASC"
                                     ThisTimeSheet = ThisTimeSheet.DefaultView.ToTable()
 
                                 Case AdvantageFramework.Timesheet.Methods.TimesheetSort.Division
 
-                                    ThisTimeSheet.DefaultView.Sort = "CL_CODE ASC, DIV_CODE ASC"
+                                    ThisTimeSheet.DefaultView.Sort = "DIV_CODE ASC"
                                     ThisTimeSheet = ThisTimeSheet.DefaultView.ToTable()
 
                                 Case AdvantageFramework.Timesheet.Methods.TimesheetSort.Product
 
-                                    ThisTimeSheet.DefaultView.Sort = "CL_CODE ASC, DIV_CODE ASC, PRD_CODE ASC"
+                                    ThisTimeSheet.DefaultView.Sort = "PRD_CODE ASC, CL_CODE ASC, DIV_CODE ASC"
                                     ThisTimeSheet = ThisTimeSheet.DefaultView.ToTable()
 
                                 Case AdvantageFramework.Timesheet.Methods.TimesheetSort.FunctionCategory

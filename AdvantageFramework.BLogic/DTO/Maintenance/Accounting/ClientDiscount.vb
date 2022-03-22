@@ -38,7 +38,7 @@
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property Name() As String
         <Required>
-        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="p0")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="p2", MinValue:=0, MaxValue:=1.0, UseMaxValue:=True, UseMinValue:=True)>
         Public Property Percent() As Decimal
         <Required>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>

@@ -520,25 +520,64 @@ Namespace Controllers.Dashboard
 
         End Function
 
+        ''<HttpPost>
+        ''Public Function UpdateAssignmentTaskCards(ByVal AlertId As Integer,
+        ''                                          ByVal NewPosition As Integer,
+        ''                                          ByVal JobNumber As Integer,
+        ''                                          ByVal JobComponentNumber As Integer,
+        ''                                          ByVal TaskSequenceNumber As Integer) As JsonResult
+
+        ''    Dim Saved As Boolean = False
+
+        ''    Saved = _Controller.SortAssignmentTaskCards(AlertId, NewPosition, JobNumber, JobComponentNumber, TaskSequenceNumber)
+
+        ''    Return Json(Saved, JsonRequestBehavior.DenyGet)
+
+        ''End Function
+
         <HttpPost>
-        Public Function UpdateCardsOrder(ByVal AlertId As Integer, ByVal NewPosition As Integer, ByVal JobNumber As Integer, ByVal JobComponentNumber As Integer, ByVal TaskSequenceNumber As Integer) As JsonResult
+        Public Function UpdateAssignmentCardsOrder(ByVal AlertId As Integer,
+                                                   ByVal NewPosition As Integer) As JsonResult
 
-            Dim Saved As Boolean = False
+            Dim ErrorMessage As String = String.Empty
 
-            Saved = _Controller.SortAssignmentTaskCards(AlertId, NewPosition, JobNumber, JobComponentNumber, TaskSequenceNumber)
+            ErrorMessage = _Controller.SortAssignmentCards(AlertId, NewPosition)
 
-            Return Json(Saved, JsonRequestBehavior.DenyGet)
+            Return Json(ErrorMessage, JsonRequestBehavior.DenyGet)
 
         End Function
-
         <HttpPost>
-        Public Function UpdateCardsOrderAlerts(ByVal AlertId As Integer, ByVal NewPosition As Integer) As JsonResult
+        Public Function UpdateTaskCardsOrder(ByVal AlertId As Integer,
+                                             ByVal TaskSequenceNumber As Short,
+                                             ByVal NewPosition As Integer) As JsonResult
 
-            Dim Saved As Boolean = False
+            Dim ErrorMessage As String = String.Empty
 
-            Saved = _Controller.SortAlertCards(AlertId, NewPosition)
+            ErrorMessage = _Controller.SortTaskCards(AlertId, TaskSequenceNumber, NewPosition)
 
-            Return Json(Saved, JsonRequestBehavior.DenyGet)
+            Return Json(ErrorMessage, JsonRequestBehavior.DenyGet)
+
+        End Function
+        <HttpPost>
+        Public Function UpdateAlertCardsOrder(ByVal AlertId As Integer,
+                                              ByVal NewPosition As Integer) As JsonResult
+
+            Dim ErrorMessage As String = String.Empty
+
+            ErrorMessage = _Controller.SortAlertCards(AlertId, NewPosition)
+
+            Return Json(ErrorMessage, JsonRequestBehavior.DenyGet)
+
+        End Function
+        <HttpPost>
+        Public Function UpdateProofingCardsOrder(ByVal AlertId As Integer,
+                                                 ByVal NewPosition As Integer) As JsonResult
+
+            Dim ErrorMessage As String = String.Empty
+
+            ErrorMessage = _Controller.SortProofingCards(AlertId, NewPosition)
+
+            Return Json(ErrorMessage, JsonRequestBehavior.DenyGet)
 
         End Function
 

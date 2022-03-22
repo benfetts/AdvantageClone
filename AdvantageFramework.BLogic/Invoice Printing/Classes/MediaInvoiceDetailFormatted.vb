@@ -2552,6 +2552,10 @@
         Public Property ComponentNumber As Nullable(Of Short)
         <System.Runtime.Serialization.DataMemberAttribute()>
         Public Property CloseDate As String
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property GuaranteedImpressionsColumn() As Nullable(Of Short)
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property StartDateColumn() As Nullable(Of Short)
 
 #End Region
 
@@ -2833,6 +2837,8 @@
                 SetColumnValue(MediaInvoicePrintingSetting.OrderDetailCommentColumn, MediaInvoiceDetail.OrderDetailComment, ValueType.Text, False, MediaInvoicePrintingSetting)
                 SetColumnValue(MediaInvoicePrintingSetting.OrderHouseDetailCommentColumn, MediaInvoiceDetail.OrderDetailHouseComment, ValueType.Text, False, MediaInvoicePrintingSetting)
                 SetColumnValue(MediaInvoicePrintingSetting.CloseDateColumn, MediaInvoiceDetail.CloseDate, ValueType.Date, False, MediaInvoicePrintingSetting)
+                SetColumnValue(MediaInvoicePrintingSetting.GuaranteedImpressionsColumn, MediaInvoiceDetail.GuaranteedImpressions, ValueType.Integer, False, MediaInvoicePrintingSetting)
+                SetColumnValue(MediaInvoicePrintingSetting.StartDateColumn, MediaInvoiceDetail.StartDates, ValueType.Date, False, MediaInvoicePrintingSetting)
 
                 SetSubTotalValue(MediaInvoicePrintingSetting.BillAmountColumn, If(MediaInvoicePrintingSetting.ShowCommissionSeparately, MediaInvoiceDetail.CommissionAmount, Nothing), SubTotalValueType.Commission, MediaInvoicePrintingSetting)
                 SetSubTotalValue(MediaInvoicePrintingSetting.PriorBillAmountColumn, If(MediaInvoicePrintingSetting.ShowCommissionSeparately, MediaInvoiceDetail.PriorBillAmountCommissionAmount, Nothing), SubTotalValueType.Commission, MediaInvoicePrintingSetting)
@@ -3062,6 +3068,18 @@
 
                     End If
 
+                ElseIf MediaType = "R" OrElse MediaType = "T" Then
+
+                    If MediaInvoicePrintingSetting.StartDateColumn = 8 Then
+
+                        Me.InsertDateDates = If(MediaInvoiceDetail.StartDates.HasValue, "Start Date: " & MediaInvoiceDetail.StartDates.Value.ToShortDateString, Nothing)
+
+                    Else
+
+                        Me.InsertDateDates = Nothing
+
+                    End If
+
                 Else
 
                     Me.InsertDateDates = Nothing
@@ -3099,6 +3117,18 @@
                     If MediaInvoicePrintingSetting.RemarksColumn = 8 Then
 
                         Me.Remarks = If(String.IsNullOrWhiteSpace(MediaInvoiceDetail.Remarks) = False, "Remarks: " & MediaInvoiceDetail.Remarks, Nothing)
+
+                    Else
+
+                        Me.Remarks = Nothing
+
+                    End If
+
+                ElseIf MediaType = "I" Then
+
+                    If MediaInvoicePrintingSetting.GuaranteedImpressionsColumn = 8 Then
+
+                        Me.Remarks = If(MediaInvoiceDetail.GuaranteedImpressions.GetValueOrDefault(0) > 0, "Guar Imps: " & FormatNumber(MediaInvoiceDetail.GuaranteedImpressions.GetValueOrDefault(0), 0, GroupDigits:=TriState.True), Nothing)
 
                     Else
 

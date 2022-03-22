@@ -1185,6 +1185,13 @@
       <DependentUpon>Reporting_InitialLoadingBillingApproval.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Reporting_InitialLoadingDeferredSalesVsOpenAR.aspx.designer.vb">
+      <DependentUpon>Reporting_InitialLoadingDeferredSalesVsOpenAR.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting_InitialLoadingDeferredSalesVsOpenAR.aspx.vb">
+      <DependentUpon>Reporting_InitialLoadingDeferredSalesVsOpenAR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Reporting_InitialLoadingDirectIndirectTime.aspx.designer.vb">
       <DependentUpon>Reporting_InitialLoadingDirectIndirectTime.aspx</DependentUpon>
     </Compile>
@@ -1197,6 +1204,20 @@
     </Compile>
     <Compile Include="Reporting_InitialLoadingEmployeeTimeAnalysis.aspx.vb">
       <DependentUpon>Reporting_InitialLoadingEmployeeTimeAnalysis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reporting_InitialLoadingGLCrossOffice.aspx.designer.vb">
+      <DependentUpon>Reporting_InitialLoadingGLCrossOffice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting_InitialLoadingGLCrossOffice.aspx.vb">
+      <DependentUpon>Reporting_InitialLoadingGLCrossOffice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reporting_InitialLoadingMonthEndProductionWIP.aspx.designer.vb">
+      <DependentUpon>Reporting_InitialLoadingMonthEndProductionWIP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting_InitialLoadingMonthEndProductionWIP.aspx.vb">
+      <DependentUpon>Reporting_InitialLoadingMonthEndProductionWIP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Reporting_InitialLoadingSecurityUserLoginAudit.aspx.designer.vb">
@@ -1788,13 +1809,6 @@
     </Compile>
     <Compile Include="MyTaskList_Settings.aspx.vb">
       <DependentUpon>MyTaskList_Settings.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProjectSchedule_Gantt.ascx.designer.vb">
-      <DependentUpon>ProjectSchedule_Gantt.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="ProjectSchedule_Gantt.ascx.vb">
-      <DependentUpon>ProjectSchedule_Gantt.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PurchaseOrder_CopyWizard.aspx.designer.vb">
@@ -2721,6 +2735,7 @@
     <Content Include="Images\Logos\pdftron_logo.png" />
     <Content Include="Images\Logos\simplifi_aqua_color.png" />
     <Content Include="Images\Logos\simplifi_logo.png" />
+    <Content Include="JScripts\financial.dashboard.filter.mvc.js" />
     <Content Include="JScripts\financial.dashboard.mvc.js" />
     <Content Include="JScripts\kendo.draganddrop.min.js" />
     <Content Include="JScripts\kendo.listview.min.js" />
@@ -3449,8 +3464,11 @@
     <Content Include="PermaLink.aspx" />
     <Content Include="RadEditorToolbarsNoTools.xml" />
     <Content Include="Reporting_InitialLoadingBillingApproval.aspx" />
+    <Content Include="Reporting_InitialLoadingDeferredSalesVsOpenAR.aspx" />
     <Content Include="Reporting_InitialLoadingDirectIndirectTime.aspx" />
     <Content Include="Reporting_InitialLoadingEmployeeTimeAnalysis.aspx" />
+    <Content Include="Reporting_InitialLoadingGLCrossOffice.aspx" />
+    <Content Include="Reporting_InitialLoadingMonthEndProductionWIP.aspx" />
     <Content Include="Reporting_InitialLoadingSecurityUserLoginAudit.aspx" />
     <Content Include="Reporting_InitialLoadingVendorSpendWithEEOCAndMinorityStatusSummary.aspx" />
     <Content Include="Reporting_InitialLoadingCashTransaction.aspx" />
@@ -4271,7 +4289,6 @@
     <Content Include="MediaOrder_StatusHistory.aspx" />
     <Content Include="ModalFilterDialog.aspx" />
     <Content Include="MyTaskList_Settings.aspx" />
-    <Content Include="ProjectSchedule_Gantt.ascx" />
     <Content Include="PurchaseOrder_CopyWizard.aspx" />
     <Content Include="Reporting_Estimate.aspx" />
     <Content Include="Reporting_InitialLoadingBillingWorksheetMedia.aspx" />
@@ -10456,6 +10473,7 @@
     <Content Include="Views\Dashboard\EmployeeUtilization\_UtilizationGrid.vbhtml" />
     <Content Include="Views\Dashboard\Financial\Index.vbhtml" />
     <Content Include="Views\Dashboard\Financial\_FinancialDashboard.vbhtml" />
+    <Content Include="Views\Dashboard\Financial\_FinancialFilter.vbhtml" />
     <None Include="Web References\localhost\GetRepositoryDoc.wsdl" />
     <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -11402,7 +11420,7 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/WebvantageDev</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost/WebvantageDevNext</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost/Webvantage</IISAppRootUrl>
           <NTLMAuthentication>True</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

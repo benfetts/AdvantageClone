@@ -60,6 +60,7 @@
             Me.ButtonItemPostBuy_StationDaypartSummary = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItemPostBuy_DaypartSummary = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItemReports_Other = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItemReports_PuertoRicoExport = New DevComponents.DotNetBar.ButtonItem()
             Me.RibbonBarPrinting_Print = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
             Me.ButtonItemPrint_Print = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItemPrint_Settings = New DevComponents.DotNetBar.ButtonItem()
@@ -69,7 +70,8 @@
             Me.DataGridViewRightSection_Markets = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
             Me.DashboardViewerDashboard_Dashboard = New AdvantageFramework.WinForm.Presentation.Controls.DashboardViewerControl()
             Me.ToolTipController = New DevExpress.Utils.ToolTipController(Me.components)
-            Me.ButtonItemReports_ETAMExport = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItemPuertoRicoExport_AriannaEstimateRF = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItemPuertoRicoExport_eTamActualRF = New DevComponents.DotNetBar.ButtonItem()
             Me.RibbonBarMergeContainerForm_Options.SuspendLayout()
             Me.RibbonBarMergeContainerForm_Printing.SuspendLayout()
             CType(Me.PanelForm_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -411,7 +413,7 @@
             Me.RibbonBarPrinting_Reports.Dock = System.Windows.Forms.DockStyle.Left
             Me.RibbonBarPrinting_Reports.DragDropSupport = True
             Me.RibbonBarPrinting_Reports.HorizontalItemAlignment = DevComponents.DotNetBar.eHorizontalItemsAlignment.Center
-            Me.RibbonBarPrinting_Reports.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemReports_PreBuy, Me.ButtonItemReports_BroadcastSchedule, Me.ButtonItemReports_PostBuy, Me.ButtonItemReports_Other, Me.ButtonItemReports_ETAMExport})
+            Me.RibbonBarPrinting_Reports.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemReports_PreBuy, Me.ButtonItemReports_BroadcastSchedule, Me.ButtonItemReports_PostBuy, Me.ButtonItemReports_Other, Me.ButtonItemReports_PuertoRicoExport})
             Me.RibbonBarPrinting_Reports.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
             Me.RibbonBarPrinting_Reports.Location = New System.Drawing.Point(156, 0)
             Me.RibbonBarPrinting_Reports.MinimumSize = New System.Drawing.Size(65, 0)
@@ -511,6 +513,16 @@
             Me.ButtonItemReports_Other.Name = "ButtonItemReports_Other"
             Me.ButtonItemReports_Other.SubItemsExpandWidth = 14
             Me.ButtonItemReports_Other.Text = "Other"
+            '
+            'ButtonItemReports_PuertoRicoExport
+            '
+            Me.ButtonItemReports_PuertoRicoExport.AutoExpandOnClick = True
+            Me.ButtonItemReports_PuertoRicoExport.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItemReports_PuertoRicoExport.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItemReports_PuertoRicoExport.Name = "ButtonItemReports_PuertoRicoExport"
+            Me.ButtonItemReports_PuertoRicoExport.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemPuertoRicoExport_eTamActualRF, Me.ButtonItemPuertoRicoExport_AriannaEstimateRF})
+            Me.ButtonItemReports_PuertoRicoExport.SubItemsExpandWidth = 14
+            Me.ButtonItemReports_PuertoRicoExport.Text = "Puerto Rico " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Export"
             '
             'RibbonBarPrinting_Print
             '
@@ -665,13 +677,15 @@
             'ToolTipController
             '
             '
-            'ButtonItemReports_ETAMExport
+            'ButtonItemPuertoRicoExport_AriannaEstimateRF
             '
-            Me.ButtonItemReports_ETAMExport.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItemReports_ETAMExport.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-            Me.ButtonItemReports_ETAMExport.Name = "ButtonItemReports_ETAMExport"
-            Me.ButtonItemReports_ETAMExport.SubItemsExpandWidth = 14
-            Me.ButtonItemReports_ETAMExport.Text = "eTAM" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Export"
+            Me.ButtonItemPuertoRicoExport_AriannaEstimateRF.Name = "ButtonItemPuertoRicoExport_AriannaEstimateRF"
+            Me.ButtonItemPuertoRicoExport_AriannaEstimateRF.Text = "Arianna Estimate R/F"
+            '
+            'ButtonItemPuertoRicoExport_eTamActualRF
+            '
+            Me.ButtonItemPuertoRicoExport_eTamActualRF.Name = "ButtonItemPuertoRicoExport_eTamActualRF"
+            Me.ButtonItemPuertoRicoExport_eTamActualRF.Text = "eTam Actual R/F"
             '
             'MediaBroadcastWorksheetSetupForm
             '
@@ -740,7 +754,9 @@
         Friend WithEvents ButtonItemActions_ShowMissingTrafficInstructions As WinForm.Presentation.Controls.ButtonItem
         Friend WithEvents ButtonItemActions_FilterPendingMakegoods As WinForm.Presentation.Controls.ButtonItem
         Friend WithEvents ButtonItemActions_ReplaceBuyer As DevComponents.DotNetBar.ButtonItem
-        Friend WithEvents ButtonItemReports_ETAMExport As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents ButtonItemReports_PuertoRicoExport As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents ButtonItemPuertoRicoExport_eTamActualRF As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents ButtonItemPuertoRicoExport_AriannaEstimateRF As DevComponents.DotNetBar.ButtonItem
     End Class
 
 End Namespace

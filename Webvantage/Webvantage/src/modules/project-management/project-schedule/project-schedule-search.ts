@@ -122,14 +122,9 @@ export class ProjectScheduleSearch extends ModuleBase {
         if (this.grid.dataSource.pageSize() != this.pageSize || this.grid.dataSource.page() != 1) {
             this.grid.dataSource.query({ page: 1, pageSize: this.pageSize });
         }
-        //this.grid.pager.page(1);  
         this.grid.dataSource.read().then(function () {
-            var foo = me.data.total();
-            console.log("foo ", foo);
-//        this.grid.dataSource.query({ page: 1, pageSize: this.pageSize }).then(function () {
             if (me.data.total() == 1) {
                 var item = me.data.data()[0];
-
                 me.openModule('', me.showDetailView(item.JobNumber, item.JobComponentNumber));
             }
         });
@@ -889,9 +884,6 @@ export class ProjectScheduleSearch extends ModuleBase {
                             JobType: JobType,
                             Text: Text
                         }
-
-                        console.log('Job Datasource', data);
-
                         return data;
                     }
                 }

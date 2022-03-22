@@ -39,7 +39,7 @@
                 MediaOrderPrintSetting = (From Entity In DbContext.GetQuery(Of Database.Entities.MediaOrderPrintSetting)
                                           Where Entity.UserCode.ToUpper = UserCode.ToUpper AndAlso
                                                 Entity.MediaType = MediaType
-                                          Select Entity).SingleOrDefault
+                                          Select Entity).FirstOrDefault
 
             Catch ex As Exception
                 MediaOrderPrintSetting = Nothing

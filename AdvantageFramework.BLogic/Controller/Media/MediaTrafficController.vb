@@ -383,7 +383,8 @@
             End Using
 
         End Function
-        Public Function GetCableNetworksByVendor(MediaBroadcastWorksheetMarketID As Integer, Vendor As AdvantageFramework.DTO.Media.Traffic.Vendor, VendorCreativeGroup As AdvantageFramework.DTO.Media.Traffic.VendorCreativeGroup) As Generic.List(Of AdvantageFramework.Database.Entities.CableNetworkStation)
+        Public Function GetCableNetworksByVendor(MediaBroadcastWorksheetMarketID As Integer, Vendor As AdvantageFramework.DTO.Media.Traffic.Vendor, VendorCreativeGroup As AdvantageFramework.DTO.Media.Traffic.VendorCreativeGroup,
+                                                 CableNetworkStations As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)) As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)
 
             Dim MediaTrafficCreativeGroupIDs As IEnumerable(Of Integer) = Nothing
             Dim OmitCableNetworkStationCodes As Generic.List(Of String) = Nothing
@@ -409,9 +410,9 @@
                 CableNetworkCodes = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketID)
                                      Where Entity.VendorCode = Vendor.VendorCode AndAlso
                                            OmitCableNetworkStationCodes.Contains(Entity.CableNetworkStationCode) = False
-                                     Select Entity.CableNetworkStationCode).ToArray
+                                     Select Entity.CableNetworkStationCode).Distinct.ToArray
 
-                GetCableNetworksByVendor = (From Entity In AdvantageFramework.Database.Procedures.CableNetworkStation.Load(DbContext)
+                GetCableNetworksByVendor = (From Entity In CableNetworkStations
                                             Where CableNetworkCodes.Contains(Entity.Code) = True
                                             Select Entity).ToList
 

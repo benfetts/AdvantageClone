@@ -62,6 +62,22 @@ Namespace GeneralLedger.Reports.Presentation
 
                         StandardGeneralLedgerReport = ReportWriter.Methods.StandardGeneralLedgerReports.DetailByTransaction
 
+                        'Case AdvantageFramework.EnumUtilities.LoadEnumObject(AdvantageFramework.GeneralLedger.ReportWriter.StandardGeneralLedgerReports.TransactionsByYearAndPeriod).Code
+
+                        '    StandardGeneralLedgerReport = ReportWriter.Methods.StandardGeneralLedgerReports.TransactionsByYearAndPeriod
+
+                        'Case AdvantageFramework.EnumUtilities.LoadEnumObject(AdvantageFramework.GeneralLedger.ReportWriter.StandardGeneralLedgerReports.TransactionsByYear).Code
+
+                        '    StandardGeneralLedgerReport = ReportWriter.Methods.StandardGeneralLedgerReports.TransactionsByYear
+
+                        'Case AdvantageFramework.EnumUtilities.LoadEnumObject(AdvantageFramework.GeneralLedger.ReportWriter.StandardGeneralLedgerReports.TransactionsByPeriodAndAccount).Code
+
+                        '    StandardGeneralLedgerReport = ReportWriter.Methods.StandardGeneralLedgerReports.TransactionsByPeriodAndAccount
+
+                        'Case AdvantageFramework.EnumUtilities.LoadEnumObject(AdvantageFramework.GeneralLedger.ReportWriter.StandardGeneralLedgerReports.TransactionsByPeriod).Code
+
+                        '    StandardGeneralLedgerReport = ReportWriter.Methods.StandardGeneralLedgerReports.TransactionsByPeriod
+
                     Case Else
 
                         StandardGeneralLedgerReport = Nothing
@@ -535,6 +551,31 @@ Namespace GeneralLedger.Reports.Presentation
 
                     SetupDetailByAccountReport()
 
+                    'ElseIf Me.SelectedReport = ReportWriter.StandardGeneralLedgerReports.TransactionsByYearAndPeriod OrElse
+                    '       Me.SelectedReport = ReportWriter.StandardGeneralLedgerReports.TransactionsByYear OrElse
+                    '       Me.SelectedReport = ReportWriter.StandardGeneralLedgerReports.TransactionsByPeriodAndAccount OrElse
+                    '       Me.SelectedReport = ReportWriter.StandardGeneralLedgerReports.TransactionsByPeriod Then
+
+                    '    Me.TabItemReportTemplatePresets_OfficeTab.Visible = False
+                    '    Me.TabItemReportTemplatePresets_DepartmentTeamTab.Visible = False
+                    '    Me.TabItemReportTemplatePresets_OtherTab.Visible = False
+                    '    'Me.TabItemReportTemplatePresets_Source.Visible = False
+                    '    Me.TabItemReportTemplatePresets_TypesTab.Visible = False
+                    '    Me.TabItemReportTemplatePresets_BaseTab.Visible = False
+
+                    '    Me.LabelOptions_RecordSource.Visible = False
+                    '    Me.ComboBoxOptions_RecordSource.Visible = False
+
+                    '    LabelOptions_PostPeriodStart.Text = "Starting Post Period"
+                    '    LabelOptions_PostPeriodEnd.Visible = True
+                    '    ComboBoxOptions_PostPeriodEnd.Visible = True
+                    '    ButtonOptions_1Year.Visible = True
+                    '    ButtonOptions_YTD.Visible = True
+                    '    ButtonOptions_2Years.Visible = True
+                    '    ButtonOptions_MTD.Visible = True
+                    '    ComboBoxOptions_PostPeriodEnd.SetRequired(True)
+
+
                 End If
 
             End If
@@ -551,6 +592,16 @@ Namespace GeneralLedger.Reports.Presentation
             ButtonOptions_MTD.Visible = False
             ComboBoxOptions_PostPeriodEnd.SetRequired(False)
 
+            Me.TabItemReportTemplatePresets_OfficeTab.Visible = True
+            Me.TabItemReportTemplatePresets_DepartmentTeamTab.Visible = True
+            Me.TabItemReportTemplatePresets_OtherTab.Visible = True
+            'Me.TabItemReportTemplatePresets_Source.Visible = True
+            Me.TabItemReportTemplatePresets_TypesTab.Visible = True
+            Me.TabItemReportTemplatePresets_BaseTab.Visible = True
+
+            Me.LabelOptions_RecordSource.Visible = True
+            Me.ComboBoxOptions_RecordSource.Visible = True
+
         End Sub
         Private Sub SetupDetailByAccountReport()
 
@@ -562,6 +613,15 @@ Namespace GeneralLedger.Reports.Presentation
             ButtonOptions_2Years.Visible = True
             ButtonOptions_MTD.Visible = True
             ComboBoxOptions_PostPeriodEnd.SetRequired(True)
+
+            Me.TabItemReportTemplatePresets_OfficeTab.Visible = True
+            Me.TabItemReportTemplatePresets_DepartmentTeamTab.Visible = True
+            Me.TabItemReportTemplatePresets_OtherTab.Visible = True
+            'Me.TabItemReportTemplatePresets_Source.Visible = True
+            Me.TabItemReportTemplatePresets_TypesTab.Visible = True
+
+            Me.LabelOptions_RecordSource.Visible = True
+            Me.ComboBoxOptions_RecordSource.Visible = True
 
         End Sub
         Private Sub HideOrShowGeneralLedgerConfigTabs()
@@ -960,6 +1020,9 @@ Namespace GeneralLedger.Reports.Presentation
 
                             _ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.StartingPostPeriodCode.ToString) = ComboBoxOptions_PostPeriodStart.GetSelectedValue
                             _ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.EndingPostPeriodCode.ToString) = ComboBoxOptions_PostPeriodEnd.GetSelectedValue
+                            _ParameterDictionary(AdvantageFramework.Reporting.GLCrossOfficeParameters.StartPeriod.ToString) = ComboBoxOptions_PostPeriodStart.GetSelectedValue
+                            _ParameterDictionary(AdvantageFramework.Reporting.GLCrossOfficeParameters.EndPeriod.ToString) = ComboBoxOptions_PostPeriodEnd.GetSelectedValue
+                            _ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.Offices.ToString) = Offices
                             _ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.Offices.ToString) = Offices
                             _ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.Departments.ToString) = Departments
                             _ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.BaseCodes.ToString) = BaseCodes
@@ -1683,9 +1746,9 @@ Namespace GeneralLedger.Reports.Presentation
 
                     Try
 
-						ComboBoxOptions_PostPeriodStart.SelectedValue = AdvantageFramework.Database.Procedures.PostPeriod.LoadByMonthAndYear(DbContext, PostPeriod.Month.GetValueOrDefault(1), PostPeriod.Year.ToString).Code
+                        ComboBoxOptions_PostPeriodStart.SelectedValue = AdvantageFramework.Database.Procedures.PostPeriod.LoadByMonthAndYear(DbContext, PostPeriod.Month.GetValueOrDefault(1), PostPeriod.Year.ToString).Code
 
-					Catch ex As Exception
+                    Catch ex As Exception
                         ComboBoxOptions_PostPeriodStart.SelectedValue = Nothing
                     End Try
 

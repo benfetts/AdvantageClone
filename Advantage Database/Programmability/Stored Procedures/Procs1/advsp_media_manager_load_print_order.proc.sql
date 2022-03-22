@@ -193,7 +193,8 @@ IF @MediaType = 'N' BEGIN
 		ClientAddress2 = c.CL_ADDRESS2,
 		ClientCity = c.CL_CITY,
 		ClientState = c.CL_STATE,        
-		ClientZip = c.CL_ZIP
+		ClientZip = c.CL_ZIP,
+        NewspaperCirculationQty = CASE WHEN mpd.NP_INCLUDE_CIRC_QTY = 1 AND COST_TYPE = 'NA' AND RATE_TYPE = 'STD' THEN d.NP_CIRCULATION ELSE NULL END
 	FROM dbo.NEWSPAPER_HEADER h
 		INNER JOIN dbo.NEWSPAPER_DETAIL d ON h.ORDER_NBR = d.ORDER_NBR AND d.ACTIVE_REV = 1
 		INNER JOIN dbo.VENDOR v ON h.VN_CODE = v.VN_CODE
@@ -383,8 +384,9 @@ END ELSE IF @MediaType = 'I' BEGIN
 		ClientAddress1 = c.CL_ADDRESS1,
 		ClientAddress2 = c.CL_ADDRESS2,
 		ClientCity = c.CL_CITY,
-		ClientState = c.CL_STATE,        
-		ClientZip = c.CL_ZIP
+		ClientState = c.CL_STATE,
+		ClientZip = c.CL_ZIP,
+        NewspaperCirculationQty = NULL
 	FROM dbo.INTERNET_HEADER h
 		INNER JOIN dbo.INTERNET_DETAIL d ON h.ORDER_NBR = d.ORDER_NBR AND d.ACTIVE_REV = 1
 		INNER JOIN dbo.VENDOR v ON h.VN_CODE = v.VN_CODE
@@ -548,8 +550,9 @@ END ELSE IF @MediaType = 'M' BEGIN
 		ClientAddress1 = c.CL_ADDRESS1,
 		ClientAddress2 = c.CL_ADDRESS2,
 		ClientCity = c.CL_CITY,
-		ClientState = c.CL_STATE,        
-		ClientZip = c.CL_ZIP
+		ClientState = c.CL_STATE,
+		ClientZip = c.CL_ZIP,
+        NewspaperCirculationQty = NULL
 	FROM dbo.MAGAZINE_HEADER h
 		INNER JOIN dbo.MAGAZINE_DETAIL d ON h.ORDER_NBR = d.ORDER_NBR AND d.ACTIVE_REV = 1
 		INNER JOIN dbo.VENDOR v ON h.VN_CODE = v.VN_CODE
@@ -712,8 +715,9 @@ END ELSE IF @MediaType = 'O' BEGIN
 		ClientAddress1 = c.CL_ADDRESS1,
 		ClientAddress2 = c.CL_ADDRESS2,
 		ClientCity = c.CL_CITY,
-		ClientState = c.CL_STATE,        
-		ClientZip = c.CL_ZIP
+		ClientState = c.CL_STATE,
+		ClientZip = c.CL_ZIP,
+        NewspaperCirculationQty = NULL
 	FROM dbo.OUTDOOR_HEADER h
 		INNER JOIN dbo.OUTDOOR_DETAIL d ON h.ORDER_NBR = d.ORDER_NBR AND d.ACTIVE_REV = 1
 		INNER JOIN dbo.VENDOR v ON h.VN_CODE = v.VN_CODE

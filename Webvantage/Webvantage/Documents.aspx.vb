@@ -437,6 +437,7 @@ Partial Public Class DocumentsPage
                     Else
                         Documents.Query.Load()
                     End If
+                    Documents.Sort = "UPLOADED_DATE DESC"
                     Return Documents.DefaultView
                 Catch ex As Exception
                     Me.ShowMessage("CL filter error: " & ex.Message.ToString())
@@ -474,6 +475,7 @@ Partial Public Class DocumentsPage
                     Else
                         Documents.Query.Load()
                     End If
+                    Documents.Sort = "UPLOADED_DATE DESC"
                     Return Documents.DefaultView
                 Catch ex As Exception
                     Me.ShowMessage("DI filter error: " & ex.Message.ToString())
@@ -508,6 +510,7 @@ Partial Public Class DocumentsPage
                     Else
                         Documents.Query.Load()
                     End If
+                    Documents.Sort = "UPLOADED_DATE DESC"
                     Return Documents.DefaultView
                 Catch ex As Exception
                     Me.ShowMessage("PR filter error: " & ex.Message.ToString())
@@ -540,6 +543,7 @@ Partial Public Class DocumentsPage
                     Else
                         Documents.Query.Load()
                     End If
+                    Documents.Sort = "UPLOADED_DATE DESC"
                     Return Documents.DefaultView
                 Catch ex As Exception
                     Me.ShowMessage("CM filter error: " & ex.Message.ToString())
@@ -581,6 +585,7 @@ Partial Public Class DocumentsPage
                     Else
                         Documents.Query.Load()
                     End If
+                    Documents.Sort = "UPLOADED_DATE DESC"
                     Return Documents.DefaultView
                 Catch ex As Exception
                     Me.ShowMessage("JO filter error: " & ex.Message.ToString())
@@ -624,6 +629,7 @@ Partial Public Class DocumentsPage
                     Else
                         Documents.Query.Load()
                     End If
+                    Documents.Sort = "UPLOADED_DATE DESC"
                     Return Documents.DefaultView
                 Catch ex As Exception
                     Me.ShowMessage("JC Filter error:" & ex.Message.ToString())
@@ -655,6 +661,7 @@ Partial Public Class DocumentsPage
                     Else
                         Documents.Query.Load()
                     End If
+                    Documents.Sort = "UPLOADED_DATE DESC"
                     Return Documents.DefaultView
                 Catch ex As Exception
                     Me.ShowMessage("OF Filter error: " & ex.Message.ToString())
@@ -690,6 +697,7 @@ Partial Public Class DocumentsPage
                     Else
                         Documents.Query.Load()
                     End If
+                    Documents.Sort = "UPLOADED_DATE DESC"
                     Return Documents.DefaultView
                 Catch ex As Exception
                     Me.ShowMessage("VN Filter error: " & ex.Message.ToString())
@@ -786,6 +794,7 @@ Partial Public Class DocumentsPage
                             Else
                                 Documents.Query.Load()
                             End If
+                            Documents.Sort = "UPLOADED_DATE DESC"
                             Try
                                 Dim sy As New cSecurity(Session("ConnString"))
                                 Dim off_list As String = String.Empty
@@ -838,6 +847,7 @@ Partial Public Class DocumentsPage
                             Else
                                 Documents.Query.Load()
                             End If
+                            Documents.Sort = "UPLOADED_DATE DESC"
                             'Return Documents.DefaultView
                             Try
                                 Dim sy As New cSecurity(Session("ConnString"))

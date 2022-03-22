@@ -683,7 +683,7 @@
 
             ElseIf SelectedDynamicReport = Reporting.DynamicReports.BroadcastInvoiceSummary Then
 
-                If AdvantageFramework.Reporting.Presentation.BroadcastInvoiceSummaryInitialLoadingDialog.ShowFormDialog(ParameterDictionary) = System.Windows.Forms.DialogResult.Cancel Then
+                If AdvantageFramework.Reporting.Presentation.BroadcastInvoiceSummaryInitialLoadingDialog.ShowFormDialog(ParameterDictionary, False) = System.Windows.Forms.DialogResult.Cancel Then
 
                     LoadData = False
 
@@ -697,9 +697,69 @@
 
                 End If
 
+            ElseIf SelectedDynamicReport = Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+                If AdvantageFramework.Reporting.Presentation.DeferredSalesVsOpenARInitialLoadingDialog.ShowFormDialog(SelectedDynamicReport, False, Nothing, ParameterDictionary) = System.Windows.Forms.DialogResult.Cancel Then
+
+                    LoadData = False
+
+                End If
+
+            ElseIf SelectedDynamicReport = Reporting.DynamicReports.BroadcastInvoiceDetail Then
+
+                If AdvantageFramework.Reporting.Presentation.BroadcastInvoiceSummaryInitialLoadingDialog.ShowFormDialog(ParameterDictionary, True) = System.Windows.Forms.DialogResult.Cancel Then
+
+                    LoadData = False
+
+                End If
+
+            ElseIf SelectedDynamicReport = Reporting.DynamicReports.GLCrossOffice Then
+
+                If AdvantageFramework.Reporting.Presentation.GLCrossOfficeInitialLoadingDialog.ShowFormDialog(SelectedDynamicReport, False, Nothing, ParameterDictionary) = System.Windows.Forms.DialogResult.Cancel Then
+
+                    LoadData = False
+
+                End If
+
             End If
 
             LaunchInitialLoadingDialog = LoadData
+
+        End Function
+        Public Function GetDefaultDocumentDescription(Session As AdvantageFramework.Security.Session, DocumentLevelSettings As Generic.List(Of AdvantageFramework.Database.Classes.DocumentLevelSetting),
+                                                      DocumentLevel As AdvantageFramework.Database.Entities.DocumentLevel) As String
+
+            Dim Description As String = ""
+            Dim AccountPayable As AdvantageFramework.Database.Entities.AccountPayable = Nothing
+            Dim AccountPayableID As Integer = 0
+
+            If DocumentLevelSettings IsNot Nothing AndAlso DocumentLevelSettings.Count > 0 Then
+
+                Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+                    Select Case DocumentLevel
+
+                        Case Database.Entities.DocumentLevel.AccountPayableInvoice
+
+                            AccountPayableID = If(IsNumeric(DocumentLevelSettings.FirstOrDefault.AccountPayableID), DocumentLevelSettings.FirstOrDefault.AccountPayableID, 0)
+
+                            AccountPayable = (From Entity In AdvantageFramework.Database.Procedures.AccountPayable.Load(DbContext)
+                                              Where Entity.ID = AccountPayableID
+                                              Select Entity).OrderByDescending(Function(Entity) Entity.SequenceNumber).FirstOrDefault
+
+                            If AccountPayable IsNot Nothing Then
+
+                                Description = AccountPayable.VendorCode & " - " & AccountPayable.Vendor.Name & ", " & AccountPayable.InvoiceNumber & " - Inv #: " & AccountPayable.InvoiceDescription & " - " & AccountPayable.InvoiceDate.ToShortDateString
+
+                            End If
+
+                    End Select
+
+                End Using
+
+            End If
+
+            GetDefaultDocumentDescription = Description
 
         End Function
 

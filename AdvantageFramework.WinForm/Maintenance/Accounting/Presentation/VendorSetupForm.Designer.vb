@@ -24,12 +24,15 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
-            Me.components = New System.ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(VendorSetupForm))
             Me.ExpandableSplitterControlForm_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
             Me.PanelForm_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
             Me.DataGridViewLeftSection_Vendors = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
             Me.RibbonBarMergeContainerForm_Options = New DevComponents.DotNetBar.RibbonBarMergeContainer()
+            Me.RibbonBarOptions_ComboStations = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
+            Me.ButtonItemComboStations_Manage = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
+            Me.RibbonBarOptions_QuickBooks = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
+            Me.ButtonItemQuickBooks_Refresh = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
             Me.RibbonBarOptions_Markets = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
             Me.ButtonItemMarkets_Manage = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
             Me.RibbonBarOptions_Nielsen = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
@@ -74,8 +77,6 @@
             Me.RibbonBarImport_Import = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
             Me.ButtonItemImport_Wizard = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
             Me.ButtonItemImport_PendingRecords = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
-            Me.RibbonBarOptions_QuickBooks = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
-            Me.ButtonItemQuickBooks_Refresh = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
             CType(Me.PanelForm_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.PanelForm_LeftSection.SuspendLayout()
             Me.RibbonBarMergeContainerForm_Options.SuspendLayout()
@@ -142,6 +143,7 @@
             Me.DataGridViewLeftSection_Vendors.AutoloadRepositoryDatasource = True
             Me.DataGridViewLeftSection_Vendors.AutoUpdateViewCaption = True
             Me.DataGridViewLeftSection_Vendors.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
+            Me.DataGridViewLeftSection_Vendors.DataSource = Nothing
             Me.DataGridViewLeftSection_Vendors.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewLeftSection_Vendors.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewLeftSection_Vendors.ItemDescription = ""
@@ -160,6 +162,7 @@
             'RibbonBarMergeContainerForm_Options
             '
             Me.RibbonBarMergeContainerForm_Options.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RibbonBarMergeContainerForm_Options.Controls.Add(Me.RibbonBarOptions_ComboStations)
             Me.RibbonBarMergeContainerForm_Options.Controls.Add(Me.RibbonBarOptions_QuickBooks)
             Me.RibbonBarMergeContainerForm_Options.Controls.Add(Me.RibbonBarOptions_Markets)
             Me.RibbonBarMergeContainerForm_Options.Controls.Add(Me.RibbonBarOptions_Nielsen)
@@ -175,7 +178,7 @@
             Me.RibbonBarMergeContainerForm_Options.MergeRibbonGroupName = "Report"
             Me.RibbonBarMergeContainerForm_Options.Name = "RibbonBarMergeContainerForm_Options"
             Me.RibbonBarMergeContainerForm_Options.RibbonTabText = "Options"
-            Me.RibbonBarMergeContainerForm_Options.Size = New System.Drawing.Size(1121, 98)
+            Me.RibbonBarMergeContainerForm_Options.Size = New System.Drawing.Size(1448, 98)
             '
             '
             '
@@ -190,6 +193,95 @@
             Me.RibbonBarMergeContainerForm_Options.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.RibbonBarMergeContainerForm_Options.TabIndex = 4
             Me.RibbonBarMergeContainerForm_Options.Visible = False
+            '
+            'RibbonBarOptions_ComboStations
+            '
+            Me.RibbonBarOptions_ComboStations.AutoOverflowEnabled = False
+            Me.RibbonBarOptions_ComboStations.AutoSizeIncludesTitle = True
+            '
+            '
+            '
+            Me.RibbonBarOptions_ComboStations.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBarOptions_ComboStations.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBarOptions_ComboStations.ContainerControlProcessDialogKey = True
+            Me.RibbonBarOptions_ComboStations.Dock = System.Windows.Forms.DockStyle.Left
+            Me.RibbonBarOptions_ComboStations.DragDropSupport = True
+            Me.RibbonBarOptions_ComboStations.HorizontalItemAlignment = DevComponents.DotNetBar.eHorizontalItemsAlignment.Center
+            Me.RibbonBarOptions_ComboStations.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemComboStations_Manage})
+            Me.RibbonBarOptions_ComboStations.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBarOptions_ComboStations.Location = New System.Drawing.Point(1181, 0)
+            Me.RibbonBarOptions_ComboStations.Name = "RibbonBarOptions_ComboStations"
+            Me.RibbonBarOptions_ComboStations.SecurityEnabled = True
+            Me.RibbonBarOptions_ComboStations.Size = New System.Drawing.Size(91, 98)
+            Me.RibbonBarOptions_ComboStations.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RibbonBarOptions_ComboStations.TabIndex = 22
+            Me.RibbonBarOptions_ComboStations.Text = "Combo Stations"
+            '
+            '
+            '
+            Me.RibbonBarOptions_ComboStations.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBarOptions_ComboStations.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBarOptions_ComboStations.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Bottom
+            '
+            'ButtonItemComboStations_Manage
+            '
+            Me.ButtonItemComboStations_Manage.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItemComboStations_Manage.Name = "ButtonItemComboStations_Manage"
+            Me.ButtonItemComboStations_Manage.RibbonWordWrap = False
+            Me.ButtonItemComboStations_Manage.SecurityEnabled = True
+            Me.ButtonItemComboStations_Manage.SubItemsExpandWidth = 14
+            Me.ButtonItemComboStations_Manage.Text = "Manage"
+            Me.ButtonItemComboStations_Manage.Tooltip = "Manage Combo Radio Stations"
+            '
+            'RibbonBarOptions_QuickBooks
+            '
+            Me.RibbonBarOptions_QuickBooks.AutoOverflowEnabled = False
+            Me.RibbonBarOptions_QuickBooks.AutoSizeIncludesTitle = True
+            '
+            '
+            '
+            Me.RibbonBarOptions_QuickBooks.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBarOptions_QuickBooks.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBarOptions_QuickBooks.ContainerControlProcessDialogKey = True
+            Me.RibbonBarOptions_QuickBooks.Dock = System.Windows.Forms.DockStyle.Left
+            Me.RibbonBarOptions_QuickBooks.DragDropSupport = True
+            Me.RibbonBarOptions_QuickBooks.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemQuickBooks_Refresh})
+            Me.RibbonBarOptions_QuickBooks.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBarOptions_QuickBooks.Location = New System.Drawing.Point(1110, 0)
+            Me.RibbonBarOptions_QuickBooks.Name = "RibbonBarOptions_QuickBooks"
+            Me.RibbonBarOptions_QuickBooks.SecurityEnabled = True
+            Me.RibbonBarOptions_QuickBooks.Size = New System.Drawing.Size(71, 98)
+            Me.RibbonBarOptions_QuickBooks.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RibbonBarOptions_QuickBooks.TabIndex = 21
+            Me.RibbonBarOptions_QuickBooks.Text = "QuickBooks"
+            '
+            '
+            '
+            Me.RibbonBarOptions_QuickBooks.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBarOptions_QuickBooks.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBarOptions_QuickBooks.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Bottom
+            '
+            'ButtonItemQuickBooks_Refresh
+            '
+            Me.ButtonItemQuickBooks_Refresh.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItemQuickBooks_Refresh.Name = "ButtonItemQuickBooks_Refresh"
+            Me.ButtonItemQuickBooks_Refresh.RibbonWordWrap = False
+            Me.ButtonItemQuickBooks_Refresh.SecurityEnabled = True
+            Me.ButtonItemQuickBooks_Refresh.SubItemsExpandWidth = 14
+            Me.ButtonItemQuickBooks_Refresh.Text = "Refresh"
+            Me.ButtonItemQuickBooks_Refresh.Tooltip = "Refresh Data from QuickBooks"
             '
             'RibbonBarOptions_Markets
             '
@@ -804,7 +896,7 @@
             Me.PanelForm_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
             Me.PanelForm_RightSection.Location = New System.Drawing.Point(187, 0)
             Me.PanelForm_RightSection.Name = "PanelForm_RightSection"
-            Me.PanelForm_RightSection.Size = New System.Drawing.Size(605, 563)
+            Me.PanelForm_RightSection.Size = New System.Drawing.Size(742, 563)
             Me.PanelForm_RightSection.TabIndex = 2
             '
             'VendorControlRightSection_Vendor
@@ -814,8 +906,9 @@
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.VendorControlRightSection_Vendor.AutoScroll = True
             Me.VendorControlRightSection_Vendor.Location = New System.Drawing.Point(8, 12)
+            Me.VendorControlRightSection_Vendor.Margin = New System.Windows.Forms.Padding(4)
             Me.VendorControlRightSection_Vendor.Name = "VendorControlRightSection_Vendor"
-            Me.VendorControlRightSection_Vendor.Size = New System.Drawing.Size(585, 539)
+            Me.VendorControlRightSection_Vendor.Size = New System.Drawing.Size(722, 539)
             Me.VendorControlRightSection_Vendor.TabIndex = 0
             '
             'RibbonBarMergeContainerForm_Import
@@ -899,55 +992,11 @@
             Me.ButtonItemImport_PendingRecords.SubItemsExpandWidth = 14
             Me.ButtonItemImport_PendingRecords.Text = "Pending Records"
             '
-            'RibbonBarOptions_QuickBooks
-            '
-            Me.RibbonBarOptions_QuickBooks.AutoOverflowEnabled = False
-            Me.RibbonBarOptions_QuickBooks.AutoSizeIncludesTitle = True
-            '
-            '
-            '
-            Me.RibbonBarOptions_QuickBooks.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBarOptions_QuickBooks.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBarOptions_QuickBooks.ContainerControlProcessDialogKey = True
-            Me.RibbonBarOptions_QuickBooks.Dock = System.Windows.Forms.DockStyle.Left
-            Me.RibbonBarOptions_QuickBooks.DragDropSupport = True
-            Me.RibbonBarOptions_QuickBooks.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemQuickBooks_Refresh})
-            Me.RibbonBarOptions_QuickBooks.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBarOptions_QuickBooks.Location = New System.Drawing.Point(1110, 0)
-            Me.RibbonBarOptions_QuickBooks.Name = "RibbonBarOptions_QuickBooks"
-            Me.RibbonBarOptions_QuickBooks.SecurityEnabled = True
-            Me.RibbonBarOptions_QuickBooks.Size = New System.Drawing.Size(71, 98)
-            Me.RibbonBarOptions_QuickBooks.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RibbonBarOptions_QuickBooks.TabIndex = 21
-            Me.RibbonBarOptions_QuickBooks.Text = "QuickBooks"
-            '
-            '
-            '
-            Me.RibbonBarOptions_QuickBooks.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBarOptions_QuickBooks.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBarOptions_QuickBooks.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Bottom
-            '
-            'ButtonItemQuickBooks_Refresh
-            '
-            Me.ButtonItemQuickBooks_Refresh.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-            Me.ButtonItemQuickBooks_Refresh.Name = "ButtonItemQuickBooks_Refresh"
-            Me.ButtonItemQuickBooks_Refresh.RibbonWordWrap = False
-            Me.ButtonItemQuickBooks_Refresh.SecurityEnabled = True
-            Me.ButtonItemQuickBooks_Refresh.SubItemsExpandWidth = 14
-            Me.ButtonItemQuickBooks_Refresh.Text = "Refresh"
-            Me.ButtonItemQuickBooks_Refresh.Tooltip = "Refresh Data from QuickBooks"
-            '
             'VendorSetupForm
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-            Me.ClientSize = New System.Drawing.Size(792, 563)
+            Me.ClientSize = New System.Drawing.Size(929, 563)
             Me.Controls.Add(Me.RibbonBarMergeContainerForm_Options)
             Me.Controls.Add(Me.RibbonBarMergeContainerForm_Import)
             Me.Controls.Add(Me.PanelForm_RightSection)
@@ -1015,6 +1064,8 @@
         Friend WithEvents ButtonItemMarkets_Manage As WinForm.Presentation.Controls.ButtonItem
         Friend WithEvents RibbonBarOptions_QuickBooks As WinForm.Presentation.Controls.RibbonBar
         Friend WithEvents ButtonItemQuickBooks_Refresh As WinForm.Presentation.Controls.ButtonItem
+        Friend WithEvents RibbonBarOptions_ComboStations As WinForm.Presentation.Controls.RibbonBar
+        Friend WithEvents ButtonItemComboStations_Manage As WinForm.Presentation.Controls.ButtonItem
     End Class
 
 End Namespace

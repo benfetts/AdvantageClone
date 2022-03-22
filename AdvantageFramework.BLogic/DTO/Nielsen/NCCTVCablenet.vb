@@ -16,6 +16,7 @@
             NetworkCode
             NetworkName
             StationCode
+            ComscoreStationCode
         End Enum
 
 #End Region
@@ -36,6 +37,8 @@
         Public Property NetworkName() As String
         <System.Runtime.Serialization.DataMemberAttribute()>
         Public Property StationCode() As Nullable(Of Integer)
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property ComscoreStationCode() As Nullable(Of Integer)
 
 #End Region
 
@@ -52,6 +55,7 @@
             Me.NetworkCode = NCCTVCablenet.NetworkCode
             Me.NetworkName = NCCTVCablenet.NetworkName
             Me.StationCode = NCCTVCablenet.StationCode
+            Me.ComscoreStationCode = NCCTVCablenet.ComscoreStationCode
 
         End Sub
 

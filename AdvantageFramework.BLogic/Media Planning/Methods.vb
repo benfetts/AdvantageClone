@@ -2886,57 +2886,61 @@
 
                     If MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) <> 0 Then
 
-                        If FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Demo1.ToString Then
+                        If FirstVisibleQuantityColumn IsNot Nothing Then
 
-                            MediaPlanDetailLevelLineData.Demo1 = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
+                            If FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Demo1.ToString Then
 
-                        ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Demo2.ToString Then
+                                MediaPlanDetailLevelLineData.Demo1 = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
 
-                            MediaPlanDetailLevelLineData.Demo2 = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
+                            ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Demo2.ToString Then
 
-                        ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Units.ToString Then
+                                MediaPlanDetailLevelLineData.Demo2 = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
 
-                            If MediaPlanEstimate.IsUnitsCPM Then
+                            ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Units.ToString Then
 
-                                MediaPlanDetailLevelLineData.Units = ((MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)) * 1000)
+                                If MediaPlanEstimate.IsUnitsCPM Then
 
-                            Else
+                                    MediaPlanDetailLevelLineData.Units = ((MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)) * 1000)
 
-                                MediaPlanDetailLevelLineData.Units = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
+                                Else
+
+                                    MediaPlanDetailLevelLineData.Units = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
+
+                                End If
+
+                            ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Impressions.ToString Then
+
+                                If MediaPlanEstimate.IsImpressionsCPM Then
+
+                                    MediaPlanDetailLevelLineData.Impressions = ((MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)) * 1000)
+
+                                Else
+
+                                    MediaPlanDetailLevelLineData.Impressions = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
+
+                                End If
+
+                            ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Clicks.ToString Then
+
+                                If MediaPlanEstimate.IsClicksCPM Then
+
+                                    MediaPlanDetailLevelLineData.Clicks = ((MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)) * 1000)
+
+                                Else
+
+                                    MediaPlanDetailLevelLineData.Clicks = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
+
+                                End If
+
+                            ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Columns.ToString Then
+
+                                MediaPlanDetailLevelLineData.Columns = Math.Round((MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)) * MediaPlanDetailLevelLineData.InchesLines.GetValueOrDefault(0), 2, MidpointRounding.AwayFromZero)
+
+                            ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.InchesLines.ToString Then
+
+                                MediaPlanDetailLevelLineData.InchesLines = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
 
                             End If
-
-                        ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Impressions.ToString Then
-
-                            If MediaPlanEstimate.IsImpressionsCPM Then
-
-                                MediaPlanDetailLevelLineData.Impressions = ((MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)) * 1000)
-
-                            Else
-
-                                MediaPlanDetailLevelLineData.Impressions = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
-
-                            End If
-
-                        ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Clicks.ToString Then
-
-                            If MediaPlanEstimate.IsClicksCPM Then
-
-                                MediaPlanDetailLevelLineData.Clicks = ((MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)) * 1000)
-
-                            Else
-
-                                MediaPlanDetailLevelLineData.Clicks = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
-
-                            End If
-
-                        ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.Columns.ToString Then
-
-                            MediaPlanDetailLevelLineData.Columns = Math.Round((MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)) * MediaPlanDetailLevelLineData.InchesLines.GetValueOrDefault(0), 2, MidpointRounding.AwayFromZero)
-
-                        ElseIf FirstVisibleQuantityColumn.ColumnName = AdvantageFramework.MediaPlanning.DataColumns.InchesLines.ToString Then
-
-                            MediaPlanDetailLevelLineData.InchesLines = MediaPlanDetailLevelLineData.Dollars.GetValueOrDefault(0) / MediaPlanDetailLevelLineData.Rate.GetValueOrDefault(0)
 
                         End If
 

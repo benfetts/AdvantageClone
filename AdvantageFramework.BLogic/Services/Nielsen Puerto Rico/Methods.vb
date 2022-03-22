@@ -903,6 +903,8 @@
             Dim FileStream As System.IO.FileStream = Nothing
             Dim SftpExceptionStatus As Rebex.Net.SftpExceptionStatus = Nothing
             Dim SFtpExceptionMessage As String = Nothing
+            Dim NPRFileHPUT As AdvantageFramework.Database.Entities.NPRFile = Nothing
+            Dim NPRHutputList As Generic.List(Of AdvantageFramework.Database.Entities.NPRHutput) = Nothing
 
             If AdvantageFramework.FTP.GetDirectoriesFromSFTP(NIELSEN_PUERTO_RICO_URL, 22, Rebex.Net.SslMode.None, "delacruz", "d3l@1920", "data/Advantage", LocalPath, Directories) Then
 
@@ -931,8 +933,8 @@
 
             If Downloaded Then
 
-                'for debugging
-                'DownloadedFiles = System.IO.Directory.GetFiles("C:\NielsenData\DownloadData\PuertoRico", "*.txt").ToList
+                'add CSV files for new format change testing
+                DownloadedFiles.AddRange(System.IO.Directory.GetFiles(LocalPath, "*.csv").ToList)
 
                 For Each DownloadedFile In DownloadedFiles
 
@@ -975,7 +977,31 @@
 
                     Try
 
-                        ProcessFile(DbContext, NPRFile)
+                        If NPRFile.FileName.ToUpper.EndsWith(".TXT") Then
+
+                            ProcessFile(DbContext, NPRFile)
+
+                        ElseIf NPRFile.FileName.ToUpper.EndsWith(".CSV") Then
+
+                            If NPRFile.FileName.ToUpper.Contains("TOTAL TV") = False Then
+
+                                If NPRFiles.Where(Function(F) F.FileName.ToUpper = NPRFile.FileName.ToUpper.Replace(".CSV", " TOTAL TV.CSV")).Count = 1 Then
+
+                                    NPRFileHPUT = NPRFiles.Where(Function(F) F.FileName.ToUpper = NPRFile.FileName.ToUpper.Replace(".CSV", " TOTAL TV.CSV")).Single
+
+                                    NPRHutputList = Nothing
+
+                                    If ProcessCSVHPUT(NPRFileHPUT, NPRHutputList) Then
+
+                                        ProcessCSVFile(DbContext, NPRFile, NPRHutputList, NPRFileHPUT)
+
+                                    End If
+
+                                End If
+
+                            End If
+
+                        End If
 
                     Catch ex As Exception
 
@@ -989,6 +1015,527 @@
             End If
 
             ImportData = Downloaded
+
+        End Function
+        Private Function LoadNPRStations(DbContext As AdvantageFramework.Database.DbContext) As Generic.List(Of AdvantageFramework.Database.Entities.NPRStation)
+
+            LoadNPRStations = (From Entity In DbContext.GetQuery(Of Database.Entities.NPRStation)
+                               Select Entity).ToList
+
+        End Function
+        Private Function ProcessCSVHPUT(NPRFileHPUT As AdvantageFramework.Database.Entities.NPRFile, ByRef NPRHutputList As Generic.List(Of AdvantageFramework.Database.Entities.NPRHutput)) As Boolean
+
+            Dim Processed As Boolean = False
+            Dim TextFieldParser As FileIO.TextFieldParser = Nothing
+            Dim NPRHutput As AdvantageFramework.Database.Entities.NPRHutput = Nothing
+            Dim FileLineData() As String = Nothing
+            Dim FileDate As Date = Nothing
+            Dim Times As String() = Nothing
+            Dim StartTime As TimeSpan = Nothing
+
+            If System.IO.File.Exists(NPRFileHPUT.FileName) Then
+
+                Try
+
+                    If NPRHutputList Is Nothing Then
+
+                        NPRHutputList = New Generic.List(Of AdvantageFramework.Database.Entities.NPRHutput)
+
+                    End If
+
+                    TextFieldParser = New FileIO.TextFieldParser(NPRFileHPUT.FileName)
+
+                    TextFieldParser.TextFieldType = FileIO.FieldType.Delimited
+                    TextFieldParser.Delimiters = {","}
+                    TextFieldParser.HasFieldsEnclosedInQuotes = True
+
+                    Do While Not TextFieldParser.EndOfData
+
+                        Try
+
+                            FileLineData = TextFieldParser.ReadFields
+
+                            If FileLineData(0) = "Heading" AndAlso FileLineData(1) = "Period :" Then
+
+                                FileDate = FileLineData(2).Trim.Replace("=", "").Replace("""", "").Trim
+
+                            ElseIf FileLineData(0) = "Heading" AndAlso FileLineData(1) = "Daypart" Then
+
+                                If FileLineData(4) <> "Total Households" OrElse FileLineData(5) <> "Persons 2+" OrElse FileLineData(6) <> "Males 2+" OrElse FileLineData(7) <> "Females 2+" OrElse
+                                        FileLineData(8) <> "Males 2-5" OrElse FileLineData(9) <> "Females 2-5" OrElse FileLineData(10) <> "Males 6-11" OrElse FileLineData(11) <> "Females 6-11" OrElse
+                                        FileLineData(12) <> "Males 12-14" OrElse FileLineData(13) <> "Females 12-14" OrElse FileLineData(14) <> "Males 15-17" OrElse FileLineData(15) <> "Females 15-17" OrElse
+                                        FileLineData(16) <> "Males 18-20" OrElse FileLineData(17) <> "Females 18-20" OrElse FileLineData(18) <> "Males 21-24" OrElse FileLineData(19) <> "Females 21-24" OrElse
+                                        FileLineData(20) <> "Males 25-34" OrElse FileLineData(21) <> "Females 25-34" OrElse FileLineData(22) <> "Males 35-44" OrElse FileLineData(23) <> "Females 35-44" OrElse
+                                        FileLineData(24) <> "Males 45-49" OrElse FileLineData(25) <> "Females 45-49" OrElse FileLineData(26) <> "Males 50-54" OrElse FileLineData(27) <> "Females 50-54" OrElse
+                                        FileLineData(28) <> "Males 55-64" OrElse FileLineData(29) <> "Females 55-64" OrElse FileLineData(30) <> "Males 65+" OrElse FileLineData(31) <> "Females 65+" Then
+
+                                    Throw New Exception("Invalid headings in file: " * NPRFileHPUT.FileName)
+
+                                End If
+
+                            ElseIf FileLineData(0) = "Data" AndAlso FileLineData(2) = "Total TV" Then
+
+                                NPRHutput = New AdvantageFramework.Database.Entities.NPRHutput
+
+                                Times = FileLineData(3).Split("-")
+
+                                If Times(0).ToLower.Contains("am") Then
+
+                                    StartTime = TimeSpan.Parse(Times(0).ToLower.Replace("am", "").Trim)
+
+                                    If StartTime.Hours = 12 Then
+
+                                        StartTime = StartTime.Add(New TimeSpan(-12, 0, 0))
+
+                                    End If
+
+                                Else
+
+                                    StartTime = TimeSpan.Parse(Times(0).ToLower.Replace("pm", "").Trim)
+
+                                    If StartTime.Hours <> 12 Then
+
+                                        StartTime = StartTime.Add(New TimeSpan(12, 0, 0))
+
+                                    End If
+
+                                End If
+
+                                If StartTime.Hours = 0 OrElse StartTime.Hours = 1 Then
+
+                                    NPRHutput.[Date] = FileDate.AddDays(1).AddTicks(StartTime.Ticks)
+
+                                Else
+
+                                    NPRHutput.[Date] = FileDate.AddTicks(StartTime.Ticks)
+
+                                End If
+
+                                NPRHutput.Homes = CInt(FileLineData(4))
+                                NPRHutput.People2Plus = CInt(FileLineData(5))
+                                NPRHutput.Males2Plus = CInt(FileLineData(6))
+                                NPRHutput.Females2Plus = CInt(FileLineData(7))
+                                NPRHutput.Males2to5 = CInt(FileLineData(8))
+                                NPRHutput.Females2to5 = CInt(FileLineData(9))
+                                NPRHutput.Males6to11 = CInt(FileLineData(10))
+                                NPRHutput.Females6to11 = CInt(FileLineData(11))
+                                NPRHutput.Males12to14 = CInt(FileLineData(12))
+                                NPRHutput.Females12to14 = CInt(FileLineData(13))
+                                NPRHutput.Males15to17 = CInt(FileLineData(14))
+                                NPRHutput.Females15to17 = CInt(FileLineData(15))
+                                NPRHutput.Males18to20 = CInt(FileLineData(16))
+                                NPRHutput.Females18to20 = CInt(FileLineData(17))
+                                NPRHutput.Males21to24 = CInt(FileLineData(18))
+                                NPRHutput.Females21to24 = CInt(FileLineData(19))
+                                NPRHutput.Males25to34 = CInt(FileLineData(20))
+                                NPRHutput.Females25to34 = CInt(FileLineData(21))
+                                NPRHutput.Males35to44 = CInt(FileLineData(22))
+                                NPRHutput.Females35to44 = CInt(FileLineData(23))
+                                NPRHutput.Males45to49 = CInt(FileLineData(24))
+                                NPRHutput.Females45to49 = CInt(FileLineData(25))
+                                NPRHutput.Males50to54 = CInt(FileLineData(26))
+                                NPRHutput.Females50to54 = CInt(FileLineData(27))
+                                NPRHutput.Males55to64 = CInt(FileLineData(28))
+                                NPRHutput.Females55to64 = CInt(FileLineData(29))
+                                NPRHutput.Males65Plus = CInt(FileLineData(30))
+                                NPRHutput.Females65Plus = CInt(FileLineData(31))
+
+                                NPRHutput.WorkingWomen = 0
+
+                                NPRHutputList.Add(NPRHutput)
+
+                            End If
+
+                        Catch ex As Exception
+                            TextFieldParser.Close()
+                            TextFieldParser.Dispose()
+                            Throw ex
+                        End Try
+
+                    Loop
+
+                    Processed = True
+
+                Catch ex As Exception
+                    Throw ex
+                End Try
+
+            End If
+
+            ProcessCSVHPUT = Processed
+
+        End Function
+        Private Function ProcessCSVFile(DbContext As AdvantageFramework.Database.DbContext, NPRFile As AdvantageFramework.Database.Entities.NPRFile,
+                                        NPRHutputList As Generic.List(Of AdvantageFramework.Database.Entities.NPRHutput),
+                                        NPRFileHPUT As AdvantageFramework.Database.Entities.NPRFile) As Boolean
+
+            Dim TextFieldParser As FileIO.TextFieldParser = Nothing
+            Dim NPRUniverse As AdvantageFramework.Database.Entities.NPRUniverse = Nothing
+            Dim NPRIntab As AdvantageFramework.Database.Entities.NPRIntab = Nothing
+            Dim FileLineData() As String = Nothing
+            Dim FileDate As Date = Nothing
+            Dim HeadingSummaryFound As Boolean = False
+            Dim NPRAudienceList As Generic.List(Of AdvantageFramework.Database.Entities.NPRAudience) = Nothing
+            Dim NPRStations As Generic.List(Of AdvantageFramework.Database.Entities.NPRStation) = Nothing
+            Dim NPRAudience As AdvantageFramework.Database.Entities.NPRAudience = Nothing
+            Dim NPRStation As AdvantageFramework.Database.Entities.NPRStation = Nothing
+            Dim Times As String() = Nothing
+            Dim StartTime As TimeSpan = Nothing
+            Dim DbTransaction As System.Data.Entity.DbContextTransaction = Nothing
+            Dim Processed As Boolean = False
+
+            If System.IO.File.Exists(NPRFile.FileName) Then
+
+                Try
+
+                    TextFieldParser = New FileIO.TextFieldParser(NPRFile.FileName)
+
+                    TextFieldParser.TextFieldType = FileIO.FieldType.Delimited
+                    TextFieldParser.Delimiters = {","}
+                    TextFieldParser.HasFieldsEnclosedInQuotes = True
+
+                    NPRUniverse = New AdvantageFramework.Database.Entities.NPRUniverse
+                    NPRUniverse.DbContext = DbContext
+
+                    NPRIntab = New AdvantageFramework.Database.Entities.NPRIntab
+                    NPRIntab.DbContext = DbContext
+
+                    NPRAudienceList = New Generic.List(Of AdvantageFramework.Database.Entities.NPRAudience)
+
+                    NPRStations = LoadNPRStations(DbContext)
+
+                    DbContext.Configuration.AutoDetectChangesEnabled = False
+
+                    Do While Not TextFieldParser.EndOfData
+
+                        Try
+
+                            FileLineData = TextFieldParser.ReadFields
+
+                            If FileLineData(0) = "Heading" AndAlso FileLineData(1) = "Period :" Then
+
+                                FileDate = FileLineData(2).Trim.Replace("=", "").Replace("""", "").Trim
+
+                                NPRUniverse.Date = FileDate
+                                NPRIntab.Date = FileDate
+
+                            ElseIf FileLineData(0) = "Heading" AndAlso FileLineData(1) = "Daypart" Then
+
+                                If FileLineData(4) <> "Total Households" OrElse FileLineData(5) <> "Persons 2+" OrElse FileLineData(6) <> "Males 2+" OrElse FileLineData(7) <> "Females 2+" OrElse
+                                        FileLineData(8) <> "Males 2-5" OrElse FileLineData(9) <> "Females 2-5" OrElse FileLineData(10) <> "Males 6-11" OrElse FileLineData(11) <> "Females 6-11" OrElse
+                                        FileLineData(12) <> "Males 12-14" OrElse FileLineData(13) <> "Females 12-14" OrElse FileLineData(14) <> "Males 15-17" OrElse FileLineData(15) <> "Females 15-17" OrElse
+                                        FileLineData(16) <> "Males 18-20" OrElse FileLineData(17) <> "Females 18-20" OrElse FileLineData(18) <> "Males 21-24" OrElse FileLineData(19) <> "Females 21-24" OrElse
+                                        FileLineData(20) <> "Males 25-34" OrElse FileLineData(21) <> "Females 25-34" OrElse FileLineData(22) <> "Males 35-44" OrElse FileLineData(23) <> "Females 35-44" OrElse
+                                        FileLineData(24) <> "Males 45-49" OrElse FileLineData(25) <> "Females 45-49" OrElse FileLineData(26) <> "Males 50-54" OrElse FileLineData(27) <> "Females 50-54" OrElse
+                                        FileLineData(28) <> "Males 55-64" OrElse FileLineData(29) <> "Females 55-64" OrElse FileLineData(30) <> "Males 65+" OrElse FileLineData(31) <> "Females 65+" OrElse
+                                        FileLineData(32) <> "Total Households" OrElse FileLineData(33) <> "Persons 2+" OrElse FileLineData(34) <> "Males 2+" OrElse FileLineData(35) <> "Females 2+" OrElse
+                                        FileLineData(36) <> "Males 2-5" OrElse FileLineData(37) <> "Females 2-5" OrElse FileLineData(38) <> "Males 6-11" OrElse FileLineData(39) <> "Females 6-11" OrElse
+                                        FileLineData(40) <> "Males 12-14" OrElse FileLineData(41) <> "Females 12-14" OrElse FileLineData(42) <> "Males 15-17" OrElse FileLineData(43) <> "Females 15-17" OrElse
+                                        FileLineData(44) <> "Males 18-20" OrElse FileLineData(45) <> "Females 18-20" OrElse FileLineData(46) <> "Males 21-24" OrElse FileLineData(47) <> "Females 21-24" OrElse
+                                        FileLineData(48) <> "Males 25-34" OrElse FileLineData(49) <> "Females 25-34" OrElse FileLineData(50) <> "Males 35-44" OrElse FileLineData(51) <> "Females 35-44" OrElse
+                                        FileLineData(52) <> "Males 45-49" OrElse FileLineData(53) <> "Females 45-49" OrElse FileLineData(54) <> "Males 50-54" OrElse FileLineData(55) <> "Females 50-54" OrElse
+                                        FileLineData(56) <> "Males 55-64" OrElse FileLineData(57) <> "Females 55-64" OrElse FileLineData(58) <> "Males 65+" OrElse FileLineData(59) <> "Females 65+" Then
+
+                                    Throw New Exception("Invalid headings in file: " * NPRFile.FileName)
+
+                                End If
+
+                            ElseIf FileLineData(0) = "Heading" AndAlso FileLineData(1) = "Summary" Then
+
+                                HeadingSummaryFound = True
+
+                            ElseIf FileLineData(0) = "Data" AndAlso HeadingSummaryFound Then
+
+                                Select Case FileLineData(1)
+
+                                    Case "Total Households"
+
+                                        NPRUniverse.Homes = CInt(FileLineData(3))
+                                        NPRIntab.Homes = CInt(FileLineData(4))
+
+                                    Case "Persons 2+"
+
+                                        NPRUniverse.People2Plus = CInt(FileLineData(3))
+                                        NPRIntab.People2Plus = CInt(FileLineData(4))
+
+                                    Case "Males 2+"
+
+                                        NPRUniverse.Males2Plus = CInt(FileLineData(3))
+                                        NPRIntab.Males2Plus = CInt(FileLineData(4))
+
+                                    Case "Females 2+"
+
+                                        NPRUniverse.Females2Plus = CInt(FileLineData(3))
+                                        NPRIntab.Females2Plus = CInt(FileLineData(4))
+
+                                    Case "Males 2-5"
+
+                                        NPRUniverse.Males2to5 = CInt(FileLineData(3))
+                                        NPRIntab.Males2to5 = CInt(FileLineData(4))
+
+                                    Case "Females 2-5"
+
+                                        NPRUniverse.Females2to5 = CInt(FileLineData(3))
+                                        NPRIntab.Females2to5 = CInt(FileLineData(4))
+
+                                    Case "Males 6-11"
+
+                                        NPRUniverse.Males6to11 = CInt(FileLineData(3))
+                                        NPRIntab.Males6to11 = CInt(FileLineData(4))
+
+                                    Case "Females 6-11"
+
+                                        NPRUniverse.Females6to11 = CInt(FileLineData(3))
+                                        NPRIntab.Females6to11 = CInt(FileLineData(4))
+
+                                    Case "Males 12-14"
+
+                                        NPRUniverse.Males12to14 = CInt(FileLineData(3))
+                                        NPRIntab.Males12to14 = CInt(FileLineData(4))
+
+                                    Case "Females 12-14"
+
+                                        NPRUniverse.Females12to14 = CInt(FileLineData(3))
+                                        NPRIntab.Females12to14 = CInt(FileLineData(4))
+
+                                    Case "Males 15-17"
+
+                                        NPRUniverse.Males15to17 = CInt(FileLineData(3))
+                                        NPRIntab.Males15to17 = CInt(FileLineData(4))
+
+                                    Case "Females 15-17"
+
+                                        NPRUniverse.Females15to17 = CInt(FileLineData(3))
+                                        NPRIntab.Females15to17 = CInt(FileLineData(4))
+
+                                    Case "Males 18-20"
+
+                                        NPRUniverse.Males18to20 = CInt(FileLineData(3))
+                                        NPRIntab.Males18to20 = CInt(FileLineData(4))
+
+                                    Case "Females 18-20"
+
+                                        NPRUniverse.Females18to20 = CInt(FileLineData(3))
+                                        NPRIntab.Females18to20 = CInt(FileLineData(4))
+
+                                    Case "Males 21-24"
+
+                                        NPRUniverse.Males21to24 = CInt(FileLineData(3))
+                                        NPRIntab.Males21to24 = CInt(FileLineData(4))
+
+                                    Case "Females 21-24"
+
+                                        NPRUniverse.Females21to24 = CInt(FileLineData(3))
+                                        NPRIntab.Females21to24 = CInt(FileLineData(4))
+
+                                    Case "Males 25-34"
+
+                                        NPRUniverse.Males25to34 = CInt(FileLineData(3))
+                                        NPRIntab.Males25to34 = CInt(FileLineData(4))
+
+                                    Case "Females 25-34"
+
+                                        NPRUniverse.Females25to34 = CInt(FileLineData(3))
+                                        NPRIntab.Females25to34 = CInt(FileLineData(4))
+
+                                    Case "Males 35-44"
+
+                                        NPRUniverse.Males35to44 = CInt(FileLineData(3))
+                                        NPRIntab.Males35to44 = CInt(FileLineData(4))
+
+                                    Case "Females 35-44"
+
+                                        NPRUniverse.Females35to44 = CInt(FileLineData(3))
+                                        NPRIntab.Females35to44 = CInt(FileLineData(4))
+
+                                    Case "Males 45-49"
+
+                                        NPRUniverse.Males45to49 = CInt(FileLineData(3))
+                                        NPRIntab.Males45to49 = CInt(FileLineData(4))
+
+                                    Case "Females 45-49"
+
+                                        NPRUniverse.Females45to49 = CInt(FileLineData(3))
+                                        NPRIntab.Females45to49 = CInt(FileLineData(4))
+
+                                    Case "Males 50-54"
+
+                                        NPRUniverse.Males50to54 = CInt(FileLineData(3))
+                                        NPRIntab.Males50to54 = CInt(FileLineData(4))
+
+                                    Case "Females 50-54"
+
+                                        NPRUniverse.Females50to54 = CInt(FileLineData(3))
+                                        NPRIntab.Females50to54 = CInt(FileLineData(4))
+
+                                    Case "Males 55-64"
+
+                                        NPRUniverse.Males55to64 = CInt(FileLineData(3))
+                                        NPRIntab.Males55to64 = CInt(FileLineData(4))
+
+                                    Case "Females 55-64"
+
+                                        NPRUniverse.Females55to64 = CInt(FileLineData(3))
+                                        NPRIntab.Females55to64 = CInt(FileLineData(4))
+
+                                    Case "Males 65+"
+
+                                        NPRUniverse.Males65Plus = CInt(FileLineData(3))
+                                        NPRIntab.Males65Plus = CInt(FileLineData(4))
+
+                                    Case "Females 65+"
+
+                                        NPRUniverse.Females65Plus = CInt(FileLineData(3))
+                                        NPRIntab.Females65Plus = CInt(FileLineData(4))
+
+                                End Select
+
+                            ElseIf FileLineData(0) = "Data" AndAlso FileLineData.Length > 10 Then
+
+                                NPRAudience = New AdvantageFramework.Database.Entities.NPRAudience
+                                NPRAudience.DbContext = DbContext
+
+                                If (From Entity In NPRStations
+                                    Where Entity.Name.ToUpper = FileLineData(2).ToUpper
+                                    Select Entity.ID).Any Then
+
+                                    NPRAudience.NPRStationID = (From Entity In NPRStations
+                                                                Where Entity.Name.ToUpper = FileLineData(2).ToUpper
+                                                                Select Entity.ID).First
+
+                                Else
+
+                                    NPRStation = New AdvantageFramework.Database.Entities.NPRStation
+                                    NPRStation.DbContext = DbContext
+                                    NPRStation.Name = FileLineData(2).ToUpper
+
+                                    DbContext.NPRStations.Add(NPRStation)
+                                    DbContext.SaveChanges()
+
+                                    NPRAudience.NPRStationID = NPRStation.ID
+
+                                    NPRStations = LoadNPRStations(DbContext)
+
+                                End If
+
+                                Times = FileLineData(3).Split("-")
+
+                                If Times(0).ToLower.Contains("am") Then
+
+                                    StartTime = TimeSpan.Parse(Times(0).ToLower.Replace("am", "").Trim)
+
+                                    If StartTime.Hours = 12 Then
+
+                                        StartTime = StartTime.Add(New TimeSpan(-12, 0, 0))
+
+                                    End If
+
+                                Else
+
+                                    StartTime = TimeSpan.Parse(Times(0).ToLower.Replace("pm", "").Trim)
+
+                                    If StartTime.Hours <> 12 Then
+
+                                        StartTime = StartTime.Add(New TimeSpan(12, 0, 0))
+
+                                    End If
+
+                                End If
+
+                                If StartTime.Hours = 0 OrElse StartTime.Hours = 1 Then
+
+                                    NPRAudience.[Date] = FileDate.AddDays(1).AddTicks(StartTime.Ticks)
+
+                                Else
+
+                                    NPRAudience.[Date] = FileDate.AddTicks(StartTime.Ticks)
+
+                                End If
+
+                                NPRAudience.Homes = CInt(FileLineData(4))
+                                NPRAudience.People2Plus = CInt(FileLineData(5))
+                                NPRAudience.Males2Plus = CInt(FileLineData(6))
+                                NPRAudience.Females2Plus = CInt(FileLineData(7))
+                                NPRAudience.Males2to5 = CInt(FileLineData(8))
+                                NPRAudience.Females2to5 = CInt(FileLineData(9))
+                                NPRAudience.Males6to11 = CInt(FileLineData(10))
+                                NPRAudience.Females6to11 = CInt(FileLineData(11))
+                                NPRAudience.Males12to14 = CInt(FileLineData(12))
+                                NPRAudience.Females12to14 = CInt(FileLineData(13))
+                                NPRAudience.Males15to17 = CInt(FileLineData(14))
+                                NPRAudience.Females15to17 = CInt(FileLineData(15))
+                                NPRAudience.Males18to20 = CInt(FileLineData(16))
+                                NPRAudience.Females18to20 = CInt(FileLineData(17))
+                                NPRAudience.Males21to24 = CInt(FileLineData(18))
+                                NPRAudience.Females21to24 = CInt(FileLineData(19))
+                                NPRAudience.Males25to34 = CInt(FileLineData(20))
+                                NPRAudience.Females25to34 = CInt(FileLineData(21))
+                                NPRAudience.Males35to44 = CInt(FileLineData(22))
+                                NPRAudience.Females35to44 = CInt(FileLineData(23))
+                                NPRAudience.Males45to49 = CInt(FileLineData(24))
+                                NPRAudience.Females45to49 = CInt(FileLineData(25))
+                                NPRAudience.Males50to54 = CInt(FileLineData(26))
+                                NPRAudience.Females50to54 = CInt(FileLineData(27))
+                                NPRAudience.Males55to64 = CInt(FileLineData(28))
+                                NPRAudience.Females55to64 = CInt(FileLineData(29))
+                                NPRAudience.Males65Plus = CInt(FileLineData(30))
+                                NPRAudience.Females65Plus = CInt(FileLineData(31))
+                                NPRAudience.ProgramName = Mid(FileLineData(32), 1, 100)
+
+                                NPRAudience.WorkingWomen = 0
+
+                                NPRAudienceList.Add(NPRAudience)
+
+                            End If
+
+                        Catch ex As Exception
+                            TextFieldParser.Close()
+                            TextFieldParser.Dispose()
+                            Throw ex
+                        End Try
+
+                    Loop
+
+                    DbContext.Database.Connection.Open()
+
+                    DbTransaction = DbContext.Database.BeginTransaction
+
+                    DbContext.NPRUniverses.Add(NPRUniverse)
+                    DbContext.NPRIntabs.Add(NPRIntab)
+
+                    For Each NPRAudience In NPRAudienceList
+
+                        DbContext.NPRAudiences.Add(NPRAudience)
+
+                    Next
+
+                    For Each NPRHutput In NPRHutputList
+
+                        NPRHutput.DbContext = DbContext
+                        DbContext.NPRHutputs.Add(NPRHutput)
+
+                    Next
+
+                    DbContext.SaveChanges()
+
+                    DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.NPR_FILE SET PROCESSED_TIME = getdate() WHERE NPR_FILE_ID = {0}", NPRFile.ID))
+                    DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.NPR_FILE SET PROCESSED_TIME = getdate() WHERE NPR_FILE_ID = {0}", NPRFileHPUT.ID))
+
+                    DbTransaction.Commit()
+
+                    Processed = True
+
+                Catch ex As Exception
+                    DbTransaction.Rollback()
+                    Throw New Exception(ex.Message & " " & NPRFile.FileName)
+                Finally
+                    DbContext.Configuration.AutoDetectChangesEnabled = True
+                    DbContext.Database.Connection.Close()
+                End Try
+
+            End If
+
+            ProcessCSVFile = Processed
 
         End Function
 

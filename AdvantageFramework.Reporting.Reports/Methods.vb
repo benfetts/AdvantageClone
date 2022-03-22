@@ -1510,6 +1510,10 @@ Public Module Methods
 
             XtraReport = New AdvantageFramework.Reporting.Reports.AdvancedReportWriterReports.CheckRegisterReport
 
+        ElseIf AdvancedReportWriterReport = AdvantageFramework.Reporting.AdvancedReportWriterReports.CheckRegisterWithInvoiceDetails Then
+
+            XtraReport = New AdvantageFramework.Reporting.Reports.AdvancedReportWriterReports.CheckRegisterWithInvoiceDetailsReport
+
         ElseIf AdvancedReportWriterReport = AdvantageFramework.Reporting.AdvancedReportWriterReports.EmployeeInOutBoard Then
 
             XtraReport = New AdvantageFramework.Reporting.Reports.AdvancedReportWriterReports.EmployeeInOutBoardReport
@@ -1653,6 +1657,18 @@ Public Module Methods
         ElseIf AdvancedReportWriterReport = AdvantageFramework.Reporting.AdvancedReportWriterReports.EmployeeTimeAnalysis Then
 
             XtraReport = New AdvantageFramework.Reporting.Reports.AdvancedReportWriterReports.EmployeeTimeAnalysisReport
+
+        ElseIf AdvancedReportWriterReport = AdvantageFramework.Reporting.AdvancedReportWriterReports.DeferredSalesVsOpenAR Then
+
+            XtraReport = New AdvantageFramework.Reporting.Reports.AdvancedReportWriterReports.DeferredSalesVsOpenAR
+
+        ElseIf AdvancedReportWriterReport = AdvantageFramework.Reporting.AdvancedReportWriterReports.BroadcastInvoiceDetail Then
+
+            XtraReport = New AdvantageFramework.Reporting.Reports.AdvancedReportWriterReports.BroadcastInvoiceDetailReport
+
+        ElseIf AdvancedReportWriterReport = AdvantageFramework.Reporting.AdvancedReportWriterReports.GLCrossOffice Then
+
+            XtraReport = New AdvantageFramework.Reporting.Reports.AdvancedReportWriterReports.GLCrossOfficeReport
 
         End If
 
@@ -4441,6 +4457,74 @@ Public Module Methods
 
                 End With
 
+                'Case AdvantageFramework.GeneralLedger.ReportWriter.StandardGeneralLedgerReports.TransactionsByYearAndPeriod
+
+                '    XtraReport = New AdvantageFramework.Reporting.Reports.GeneralLedger.CrossOffice.TransactionsByYearAndPeriod
+
+                '    With DirectCast(XtraReport, AdvantageFramework.Reporting.Reports.GeneralLedger.CrossOffice.TransactionsByYearAndPeriod)
+
+                '        .Session = Session
+
+                '        .DataSource = AdvantageFramework.Reporting.LoadGLCrossOfficeData(ReportingDbContext, ParameterDictionary)
+
+                '        .start_period.Value = ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.StartingPostPeriodCode.ToString)
+                '        .end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.EndingPostPeriodCode.ToString)
+
+                '        .DisplayName = "Transaction By Year and Period Report"
+
+                '    End With
+
+                'Case AdvantageFramework.GeneralLedger.ReportWriter.StandardGeneralLedgerReports.TransactionsByYear
+
+                '    XtraReport = New AdvantageFramework.Reporting.Reports.GeneralLedger.CrossOffice.TransactionsByYear
+
+                '    With DirectCast(XtraReport, AdvantageFramework.Reporting.Reports.GeneralLedger.CrossOffice.TransactionsByYear)
+
+                '        .Session = Session
+
+                '        .DataSource = AdvantageFramework.Reporting.LoadGLCrossOfficeData(ReportingDbContext, ParameterDictionary)
+
+                '        .start_period.Value = ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.StartingPostPeriodCode.ToString)
+                '        .end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.EndingPostPeriodCode.ToString)
+
+                '        .DisplayName = "Transaction By Year Report"
+
+                '    End With
+
+                'Case AdvantageFramework.GeneralLedger.ReportWriter.StandardGeneralLedgerReports.TransactionsByPeriodAndAccount
+
+                '    XtraReport = New AdvantageFramework.Reporting.Reports.GeneralLedger.CrossOffice.TransactionsByPeriodAndAccount
+
+                '    With DirectCast(XtraReport, AdvantageFramework.Reporting.Reports.GeneralLedger.CrossOffice.TransactionsByPeriodAndAccount)
+
+                '        .Session = Session
+
+                '        .DataSource = AdvantageFramework.Reporting.LoadGLCrossOfficeData(ReportingDbContext, ParameterDictionary)
+
+                '        .start_period.Value = ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.StartingPostPeriodCode.ToString)
+                '        .end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.EndingPostPeriodCode.ToString)
+
+                '        .DisplayName = "Transaction By Period and Account Report"
+
+                '    End With
+
+                'Case AdvantageFramework.GeneralLedger.ReportWriter.StandardGeneralLedgerReports.TransactionsByPeriod
+
+                '    XtraReport = New AdvantageFramework.Reporting.Reports.GeneralLedger.CrossOffice.TransactionsByPeriod
+
+                '    With DirectCast(XtraReport, AdvantageFramework.Reporting.Reports.GeneralLedger.CrossOffice.TransactionsByPeriod)
+
+                '        .Session = Session
+
+                '        .DataSource = AdvantageFramework.Reporting.LoadGLCrossOfficeData(ReportingDbContext, ParameterDictionary)
+
+                '        .start_period.Value = ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.StartingPostPeriodCode.ToString)
+                '        .end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.EndingPostPeriodCode.ToString)
+
+                '        .DisplayName = "Transaction By Period Report"
+
+                '    End With
+
         End Select
 
         CreateGeneralLedgerReport = XtraReport
@@ -6599,6 +6683,10 @@ Public Module Methods
 
                     XtraReport = CreateAccountsReceivableAgedwithDisbursementDetail(Session, Report, ParameterDictionary)
 
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.AccountsReceivableAgedDetailbyClientNoGL Then
+
+                    XtraReport = CreateAccountsReceivableAgedDetailbyClientNoGL(Session, Report, ParameterDictionary)
+
                 ElseIf Report = AdvantageFramework.Reporting.ReportTypes.UpdatedRateRequestReport Then
 
                     XtraReport = CreateUpdatedRateRequestReport(Session, ParameterDictionary, Criteria, FilterString, From, [To])
@@ -6671,6 +6759,10 @@ Public Module Methods
 
                     XtraReport = CreateAccountsPayableAgedDetail(Session, Report, ParameterDictionary)
 
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.AccountsPayableAgedDetailNoGL Then
+
+                    XtraReport = CreateAccountsPayableAgedDetailNoGL(Session, Report, ParameterDictionary)
+
                 ElseIf Report = AdvantageFramework.Reporting.ReportTypes.Standard1099NECForm Then
 
                     XtraReport = CreateStandard1099NECFormReport(Session, Report, ParameterDictionary)
@@ -6686,6 +6778,30 @@ Public Module Methods
                 ElseIf Report = AdvantageFramework.Reporting.ReportTypes.PaymentManagerReport Then
 
                     XtraReport = CreatePaymentManagerReport(Session, ParameterDictionary)
+
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.ProductionWIPSummaryByJobDeferredSalesCosIncluded Then
+
+                    XtraReport = CreateProductionWIPSummarybyJobDeferredSalesCosIncluded(Session, Report, ParameterDictionary)
+
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.ProductionWIPSummaryByJobHoursDeferredSalesCos Then
+
+                    XtraReport = CreateProductionWIPSummarybyJobHoursDeferredSalesCos(Session, Report, ParameterDictionary)
+
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.BroadcastInvoiceSummary Then
+
+                    XtraReport = CreateBroadcastInvoiceSummary(Session, ParameterDictionary)
+
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.BroadcastInvoiceDetail Then
+
+                    XtraReport = CreateBroadcastInvoiceDetail(Session, ParameterDictionary)
+
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.ProductionWIPAgedSummaryByJobWithAccrLiabPO Then
+
+                    XtraReport = CreateProductionWIPAgedSummarybyJobwithAccrLiabilityPO(Session, Report, ParameterDictionary)
+
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.ProductionWIPSummaryByJobEstHrsDefRecSls Then
+
+                    XtraReport = CreateProductionWIPSummaryByJobEstHrsDefRecSls(Session, Report, ParameterDictionary)
 
                 End If
 
@@ -9273,12 +9389,24 @@ Public Module Methods
 
                 If NonBroadcastMediaOrderFormat = AdvantageFramework.Media.Methods.NonBroadcastMediaOrderFormats.Portrait Then
 
-                    Report = New AdvantageFramework.Reporting.Reports.MediaManager.PrintOrderReport
+                    If MediaFrom = "Newspaper" Then
 
-                    CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.PrintOrderReport).Session = Session
-                    CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.PrintOrderReport).OrderNumber = OrderNumber
-                    CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.PrintOrderReport).LineNumbers = LineNumbers
-                    CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.PrintOrderReport).MediaFrom = MediaFrom
+                        Report = New AdvantageFramework.Reporting.Reports.MediaManager.NewspaperOrderReport
+
+                        CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.NewspaperOrderReport).Session = Session
+                        CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.NewspaperOrderReport).OrderNumber = OrderNumber
+                        CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.NewspaperOrderReport).LineNumbers = LineNumbers
+
+                    Else
+
+                        Report = New AdvantageFramework.Reporting.Reports.MediaManager.PrintOrderReport
+
+                        CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.PrintOrderReport).Session = Session
+                        CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.PrintOrderReport).OrderNumber = OrderNumber
+                        CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.PrintOrderReport).LineNumbers = LineNumbers
+                        CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.PrintOrderReport).MediaFrom = MediaFrom
+
+                    End If
 
                 ElseIf NonBroadcastMediaOrderFormat = AdvantageFramework.Media.Methods.NonBroadcastMediaOrderFormats.NetOrderWithGrossClientTotals Then
 
@@ -10095,6 +10223,7 @@ Public Module Methods
         Dim HtmlEmailBody As AdvantageFramework.Email.Classes.HtmlEmail = Nothing
         Dim EmailSubject As String = Nothing
         Dim EmailBody As String = Nothing
+        Dim RFPReport As AdvantageFramework.DTO.Media.RFP.RFPReport = Nothing
 
         Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
@@ -10150,7 +10279,7 @@ Public Module Methods
 
                     EmailBody = IIf(String.IsNullOrWhiteSpace(BodyIn), "", BodyIn) & vbCrLf & GenerateRFPVendorRepList.Where(Function(VR) VR.VendorCode = VendorCode).FirstOrDefault.CommentToVendor & vbCrLf
 
-                    EmailBody += CreateRFPReport(Session, DbContext, MediaRFPHeader, HtmlEmailBody)
+                    EmailBody += CreateRFPReport(Session, DbContext, MediaRFPHeader, HtmlEmailBody, RFPReport)
 
                     HtmlEmailBody.Finish()
 
@@ -10297,11 +10426,10 @@ Public Module Methods
         ProcessGenerateRFPs = Processed
 
     End Function
-    Private Function CreateRFPReport(Session As AdvantageFramework.Security.Session, DbContext As AdvantageFramework.Database.DbContext, MediaRFPHeader As AdvantageFramework.Database.Entities.MediaRFPHeader,
-                                     ByRef HtmlEmail As AdvantageFramework.Email.Classes.HtmlEmail) As String
+    Public Function CreateRFPReport(Session As AdvantageFramework.Security.Session, DbContext As AdvantageFramework.Database.DbContext, MediaRFPHeader As AdvantageFramework.Database.Entities.MediaRFPHeader,
+                                     ByRef HtmlEmail As AdvantageFramework.Email.Classes.HtmlEmail, ByRef RFPReport As AdvantageFramework.DTO.Media.RFP.RFPReport) As String
 
         'objects
-        Dim RFPReport As AdvantageFramework.DTO.Media.RFP.RFPReport = Nothing
         Dim StringBuilder As System.Text.StringBuilder = Nothing
         Dim NielsenTVBook As AdvantageFramework.Nielsen.Database.Entities.NielsenTVBook = Nothing
         Dim ComscoreTVBook As AdvantageFramework.Database.Entities.ComscoreTVBook = Nothing
@@ -10486,19 +10614,20 @@ Public Module Methods
 
             GRPTotal += MediaBroadcastWorksheetMarketGoal.GRP
 
-            If RFPReport.FlightDates = "" Then
+            'Commenting out 2022-01-12 we should just load from worksheet 735-2-129 - Add a Print Preview of the RFP that is being sent out so they can check before they send
+            'If RFPReport.FlightDates = "" Then
 
-                For Each MediaBroadcastWorksheetMarketGoalDate In MediaBroadcastWorksheetMarketGoal.MediaBroadcastWorksheetMarketGoalDates
+            '    For Each MediaBroadcastWorksheetMarketGoalDate In MediaBroadcastWorksheetMarketGoal.MediaBroadcastWorksheetMarketGoalDates
 
-                    If Not MediaBroadcastWorksheetMarketGoalDate.IsHiatus Then
+            '        If Not MediaBroadcastWorksheetMarketGoalDate.IsHiatus Then
 
-                        RFPReport.FlightDates += MediaBroadcastWorksheetMarketGoalDate.Date.ToShortDateString & ", "
+            '            RFPReport.FlightDates += MediaBroadcastWorksheetMarketGoalDate.Date.ToShortDateString & ", "
 
-                    End If
+            '        End If
 
-                Next
+            '    Next
 
-            End If
+            'End If
 
         Next
 
@@ -12111,6 +12240,23 @@ Public Module Methods
         GetNonBroadcastMediaOrderFormat = MediaOrderPrintSetting.ReportFormat
 
     End Function
+    Public Function CreateRFPReport(Session As AdvantageFramework.Security.Session, MediaRFPHeaderID As Integer) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim Report As DevExpress.XtraReports.UI.XtraReport = Nothing
+
+        If Session IsNot Nothing Then
+
+            Report = New AdvantageFramework.Reporting.Reports.MediaManager.RequestForProposalReport
+
+            CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.RequestForProposalReport).Session = Session
+            CType(Report, AdvantageFramework.Reporting.Reports.MediaManager.RequestForProposalReport).MediaRFPHeaderID = MediaRFPHeaderID
+
+        End If
+
+        CreateRFPReport = Report
+
+    End Function
     Public Function SetReportHeaderLogoLandscape(DbContext As AdvantageFramework.Database.DbContext, Location As AdvantageFramework.Database.Entities.Location, ByRef XrPictureBoxHeaderLogo As DevExpress.XtraReports.UI.XRPictureBox) As Boolean
 
         'objects
@@ -12423,6 +12569,30 @@ Public Module Methods
         CreateAccountsReceivableAgedDetailbyClient = XtraReport
 
     End Function
+    Private Function CreateAccountsReceivableAgedDetailbyClientNoGL(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
+                                                              ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim XtraReport As AdvantageFramework.Reporting.Reports.MediaWIP.AccountsReceivable.AccountsReceivableAgedDetailbyClientNoGLAccount = Nothing
+
+        XtraReport = New AdvantageFramework.Reporting.Reports.MediaWIP.AccountsReceivable.AccountsReceivableAgedDetailbyClientNoGLAccount
+
+        Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+            XtraReport.DataSource = AdvantageFramework.Reporting.LoadMonthEndAccountsReceivable(ReportingDbContext, ParameterDictionary)
+
+            'XtraReport.UserID.Value = Session.UserCode
+            XtraReport.PeriodCutoff.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndMediaWIPParameters.EndPeriod.ToString)
+            XtraReport.AgingDate.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndMediaWIPParameters.AgingDate.ToString)
+            XtraReport.AgingOption.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndMediaWIPParameters.AgingOption.ToString)
+            XtraReport.IncludeDetails.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndMediaWIPParameters.IncludeDetails.ToString)
+
+
+        End Using
+
+        CreateAccountsReceivableAgedDetailbyClientNoGL = XtraReport
+
+    End Function
     Private Function CreateAccountsReceivableAgedDetailbyProduct(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
                                                               ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
 
@@ -12624,6 +12794,44 @@ Public Module Methods
         CreateProductionWIPAgedSummarybyJobVendorOnly = XtraReport
 
     End Function
+    Private Function CreateProductionWIPSummarybyJobDeferredSalesCosIncluded(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
+                                                              ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim XtraReport As AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPSummarybyJobDefSalesCosInc = Nothing
+
+        XtraReport = New AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPSummarybyJobDefSalesCosInc
+
+        Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+            XtraReport.DataSource = AdvantageFramework.Reporting.LoadMonthEndProductionWIP(ReportingDbContext, ParameterDictionary)
+
+            XtraReport.end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.EndPeriod.ToString)
+
+        End Using
+
+        CreateProductionWIPSummarybyJobDeferredSalesCosIncluded = XtraReport
+
+    End Function
+    Private Function CreateProductionWIPSummarybyJobHoursDeferredSalesCos(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
+                                                              ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim XtraReport As AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPSummarybyJobHrsDefSalesCos = Nothing
+
+        XtraReport = New AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPSummarybyJobHrsDefSalesCos
+
+        Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+            XtraReport.DataSource = AdvantageFramework.Reporting.LoadMonthEndProductionWIP(ReportingDbContext, ParameterDictionary)
+
+            XtraReport.end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.EndPeriod.ToString)
+
+        End Using
+
+        CreateProductionWIPSummarybyJobHoursDeferredSalesCos = XtraReport
+
+    End Function
 
     Private Function CreateAccruedLiabilitySummarybyJobAPLimited(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
                                                               ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
@@ -12817,6 +13025,29 @@ Public Module Methods
         CreateAccountsPayableAgedDetail = XtraReport
 
     End Function
+    Private Function CreateAccountsPayableAgedDetailNoGL(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
+                                                              ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim XtraReport As AdvantageFramework.Reporting.Reports.MediaWIP.AccountsPayable.AccountsPayableAgedDetailNoGLAccount = Nothing
+
+        XtraReport = New AdvantageFramework.Reporting.Reports.MediaWIP.AccountsPayable.AccountsPayableAgedDetailNoGLAccount
+
+        Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+            XtraReport.DataSource = AdvantageFramework.Reporting.LoadMonthEndAccountsPayable(ReportingDbContext, ParameterDictionary)
+
+            XtraReport.end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndAccountsPayableParameters.EndPeriod.ToString)
+
+            XtraReport.aging_date.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndAccountsPayableParameters.AgingDate.ToString)
+
+            XtraReport.aging_option.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndAccountsPayableParameters.AgingOption.ToString)
+
+        End Using
+
+        CreateAccountsPayableAgedDetailNoGL = XtraReport
+
+    End Function
     Private Function CreateStandard1099NECFormReport(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
                                                      ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
 
@@ -12854,6 +13085,81 @@ Public Module Methods
 
     End Function
 
+    Private Function CreateProductionWIPAgedSummarybyJobwithAccrLiabilityPO(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
+                                                              ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim XtraReport As AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPAgedSummarybyJobwithAccrLiabilityPO = Nothing
+
+        XtraReport = New AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPAgedSummarybyJobwithAccrLiabilityPO
+
+        Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+            XtraReport.DataSource = AdvantageFramework.Reporting.LoadMonthEndProductionWIP(ReportingDbContext, ParameterDictionary)
+
+            XtraReport.end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.EndPeriod.ToString)
+
+        End Using
+
+        CreateProductionWIPAgedSummarybyJobwithAccrLiabilityPO = XtraReport
+
+    End Function
+    Private Function CreateBroadcastInvoiceSummary(ByVal Session As AdvantageFramework.Security.Session, ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim Report As DevExpress.XtraReports.UI.XtraReport = Nothing
+
+        If Session IsNot Nothing Then
+
+            Report = New AdvantageFramework.Reporting.Reports.Media.BroadcastInvoiceSummaryReport
+
+            CType(Report, AdvantageFramework.Reporting.Reports.Media.BroadcastInvoiceSummaryReport).Session = Session
+            CType(Report, AdvantageFramework.Reporting.Reports.Media.BroadcastInvoiceSummaryReport).ParameterDictionary = ParameterDictionary
+            'CType(Report, AdvantageFramework.Reporting.Reports.Media.MediaBroadcastWorksheetPostBuyReport).LocationEntity = Location
+
+        End If
+
+        CreateBroadcastInvoiceSummary = Report
+
+    End Function
+    Private Function CreateBroadcastInvoiceDetail(ByVal Session As AdvantageFramework.Security.Session, ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim Report As DevExpress.XtraReports.UI.XtraReport = Nothing
+
+        If Session IsNot Nothing Then
+
+            Report = New AdvantageFramework.Reporting.Reports.Media.BroadcastInvoiceDetailReport
+
+            CType(Report, AdvantageFramework.Reporting.Reports.Media.BroadcastInvoiceDetailReport).Session = Session
+            CType(Report, AdvantageFramework.Reporting.Reports.Media.BroadcastInvoiceDetailReport).ParameterDictionary = ParameterDictionary
+            'CType(Report, AdvantageFramework.Reporting.Reports.Media.MediaBroadcastWorksheetPostBuyReport).LocationEntity = Location
+
+        End If
+
+        CreateBroadcastInvoiceDetail = Report
+
+    End Function
+
+    Private Function CreateProductionWIPSummaryByJobEstHrsDefRecSls(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
+                                                              ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim XtraReport As AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPSummarybyJobEstHrsDefRecSls = Nothing
+
+        XtraReport = New AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPSummarybyJobEstHrsDefRecSls
+
+        Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+            XtraReport.DataSource = AdvantageFramework.Reporting.LoadMonthEndProductionWIP(ReportingDbContext, ParameterDictionary)
+
+            XtraReport.end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.EndPeriod.ToString)
+
+        End Using
+
+        CreateProductionWIPSummaryByJobEstHrsDefRecSls = XtraReport
+
+    End Function
 #End Region
 
 #Region " Broadcast Worksheet Radio Pre/Post Buy Reports "

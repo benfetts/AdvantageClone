@@ -27,6 +27,7 @@
             VendorNCCTVSyscodeID
             VendorNielsenTVStationCode
             VendorIsCableSystem
+            VendorIsComboRadioStation
             CableNetworkStationCode
             CableNetworkStationDescription
             CableNetworkNielsenTVStationCode
@@ -162,6 +163,9 @@
         <Required>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property VendorIsCableSystem() As Boolean
+        <Required>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
+        Public Property VendorIsComboRadioStation() As Boolean
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", CustomColumnCaption:="Cable Network")>
         Public Property CableNetworkStationCode() As String
         Public Property CableNetworkStationDescription() As String

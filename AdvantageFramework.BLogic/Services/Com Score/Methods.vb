@@ -568,6 +568,54 @@
             End If
 
         End Sub
+        Private Sub GetPrecacheBooks(DbContext As AdvantageFramework.Database.DbContext) ', ClientID As String, ClientSecret As String, EndpointPath As String, UseNewURL As Boolean)
+
+            Dim ComscorePrecacheMarketList As Generic.List(Of AdvantageFramework.Database.Entities.ComscorePrecacheMarket) = Nothing
+            Dim ComscorePrecacheMarketStationList As Generic.List(Of AdvantageFramework.Database.Entities.ComscorePrecacheMarketStation) = Nothing
+            Dim ComscorePrecacheMarketDemographicList As Generic.List(Of AdvantageFramework.Database.Entities.ComscorePrecacheMarketDemographic) = Nothing
+            Dim ComscorePrecacheMarketBookList As Generic.List(Of AdvantageFramework.Database.Entities.ComscorePrecacheMarketBook) = Nothing
+            Dim ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook) = Nothing
+
+            ComscorePrecacheMarketList = (From ComscorePrecacheMarket In DbContext.GetQuery(Of AdvantageFramework.Database.Entities.ComscorePrecacheMarket).Include("Market")
+                                          Where ComscorePrecacheMarket.Market IsNot Nothing AndAlso
+                                                ComscorePrecacheMarket.Market.ComscoreMarketNumber.HasValue
+                                          Select ComscorePrecacheMarket).ToList
+
+            For Each ComscorePrecacheMarket In ComscorePrecacheMarketList
+
+                ComscorePrecacheMarketStationList = (From ComscorePrecacheMarketStation In DbContext.GetQuery(Of AdvantageFramework.Database.Entities.ComscorePrecacheMarketStation)
+                                                     Where ComscorePrecacheMarketStation.ComscorePrecacheMarketID = ComscorePrecacheMarket.ID
+                                                     Select ComscorePrecacheMarketStation).ToList
+
+                ComscorePrecacheMarketDemographicList = (From ComscorePrecacheMarketDemographic In DbContext.GetQuery(Of AdvantageFramework.Database.Entities.ComscorePrecacheMarketDemographic)
+                                                         Where ComscorePrecacheMarketDemographic.ComscorePrecacheMarketID = ComscorePrecacheMarket.ID
+                                                         Select ComscorePrecacheMarketDemographic).ToList
+
+                ComscorePrecacheMarketBookList = (From ComscorePrecacheMarketBook In DbContext.GetQuery(Of AdvantageFramework.Database.Entities.ComscorePrecacheMarketBook)
+                                                  Where ComscorePrecacheMarketBook.ComscorePrecacheMarketID = ComscorePrecacheMarket.ID
+                                                  Select ComscorePrecacheMarketBook).ToList
+
+                For Each ComscorePrecacheMarketStation In ComscorePrecacheMarketStationList
+
+                    For Each ComscorePrecacheMarketDemographic In ComscorePrecacheMarketDemographicList
+
+                        For Each ComscorePrecacheMarketBook In ComscorePrecacheMarketBookList
+
+                            ShareHPUTBooks = New List(Of DTO.Media.ShareHPUTBook)
+
+                            ShareHPUTBooks.Add(New DTO.Media.ShareHPUTBook(ComscorePrecacheMarketBook.ComscoreTVBookID))
+
+                            AdvantageFramework.ComScore.CacheBooks(DbContext, ComscorePrecacheMarketStation.StationNumber, {ComscorePrecacheMarketDemographic.ComscoreDemoNumber}, ShareHPUTBooks, ComscorePrecacheMarket.Market.ComscoreMarketNumber.Value)
+
+                        Next
+
+                    Next
+
+                Next
+
+            Next
+
+        End Sub
         Public Sub ProcessDatabase(ByRef DatabaseProfile As AdvantageFramework.Database.DatabaseProfile)
 
             'objects
@@ -621,6 +669,8 @@
                             GetNetworks(DbContext, ClientID, ClientSecret, NewEndpointPath, UseNewURL)
 
                             GetStations(DbContext, ClientID, ClientSecret, NewEndpointPath, UseNewURL)
+
+                            GetPrecacheBooks(DbContext)
 
                             WriteToEventLog("ComScore GetData complete")
 

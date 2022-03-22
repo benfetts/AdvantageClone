@@ -647,6 +647,23 @@ Namespace Controllers.Dashboard
 
         End Function
 
+        Public Function GetOffices() As JsonResult
+
+            'objects
+            Dim Offices As IEnumerable = Nothing
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
+
+                Offices = (From Item In AdvantageFramework.Database.Procedures.Office.LoadAllActive(DbContext)
+                           Select New With {.Code = Item.Code,
+                                            .Name = Item.Name}).ToList
+
+            End Using
+
+            Return Json(Offices, JsonRequestBehavior.AllowGet)
+
+        End Function
+
 #End Region
 #Region " Post "
         <HttpPost>

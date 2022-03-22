@@ -2082,6 +2082,8 @@
             AM = 1
             <AdvantageFramework.EnumUtilities.Attributes.EnumObject("FM", "FM")>
             FM = 2
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("AF", "AF")>
+            AF = 3
         End Enum
 
         Public Enum TVBand

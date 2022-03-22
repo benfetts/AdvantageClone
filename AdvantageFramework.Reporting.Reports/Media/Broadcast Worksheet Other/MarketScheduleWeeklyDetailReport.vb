@@ -31,6 +31,7 @@
         Private _UsePrimaryDemo As Boolean = True
         Private _FromDate As Date = Date.MinValue
         Private _ToDate As Date = Date.MinValue
+        Private _AllMarketScheduleWeeklyDetailReports As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.MarketScheduleWeeklyDetailReport) = Nothing
         Private _MarketScheduleWeeklyDetailReports As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.MarketScheduleWeeklyDetailReport) = Nothing
 
 #End Region
@@ -79,7 +80,7 @@
             Dim TotalAQH As Long = 0
             Dim AQH As Long = 0
             Dim BookRating As Decimal = 0
-
+            Dim GRP As Double = 0
             ' For Each MBWMID In MediaBroadcastWorksheetBroadcastScheduleMarketSummary.Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
 
             ReachTotal = 0
@@ -104,7 +105,7 @@
 
             If DemoInfos.Any(Function(Entity) Entity.SharebookNielsenTVBookID.GetValueOrDefault(0) > 0) AndAlso
                     DemoInfos.Any(Function(Entity) Entity.VendorNielsenTVStationCode.GetValueOrDefault(0) <> 0 OrElse
-                                                    Entity.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) <> 0) Then
+                                                   Entity.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) <> 0) Then
 
                 CumeImpressionsValues = DemoInfos.Select(Function(Entity) If(UsePrimaryDemo, Entity.PrimaryCumeImpressions.GetValueOrDefault(0), Entity.SecondaryCumeImpressions.GetValueOrDefault(0))).Distinct.ToList
 
@@ -126,35 +127,35 @@
                     TotalSpotImpressions = 0
                     Universe = 0
 
-                    For Each DemoInfo In DemoInfos.Where(Function(Entity) CumeInpression = If(UsePrimaryDemo, Entity.PrimaryCumeImpressions, Entity.SecondaryCumeImpressions))
+                    For Each DemoInfo In DemoInfos.Where(Function(DRV) CumeInpression = If(UsePrimaryDemo, CLng(DRV.PrimaryCumeImpressions), CLng(DRV.SecondaryCumeImpressions)))
 
                         RowSpots = 0
-                        Impressions = If(UsePrimaryDemo, DemoInfo.PrimaryBuyImpressions.GetValueOrDefault(0), DemoInfo.SecondaryBuyImpressions.GetValueOrDefault(0))
+                        Impressions = CLng(If(UsePrimaryDemo, DemoInfo.PrimaryBuyImpressions, DemoInfo.SecondaryBuyImpressions))
 
                         TotalImpressions = Impressions
-                        TotalRating += CDec(If(UsePrimaryDemo, DemoInfo.PrimaryRating.GetValueOrDefault(0), DemoInfo.SecondaryRating.GetValueOrDefault(0)))
+                        TotalRating += CDec(If(UsePrimaryDemo, DemoInfo.PrimaryRating, DemoInfo.SecondaryRating))
 
                         If Universe = 0 Then
 
-                            Universe = CLng(If(UsePrimaryDemo, DemoInfo.PrimaryUniverse.GetValueOrDefault(0), DemoInfo.SecondaryUniverse.GetValueOrDefault(0)))
+                            Universe = CLng(If(UsePrimaryDemo, DemoInfo.PrimaryUniverse, DemoInfo.SecondaryUniverse))
 
                         End If
 
-                        RowSpots += DemoInfo.Spots
+                        RowSpots += CInt(DemoInfo.Spots)
 
                         TotalSpots = RowSpots
 
                         TotalSpotImpressions += (Impressions * RowSpots)
 
-                        BookRating = CDec(If(UsePrimaryDemo, DemoInfo.PrimaryBookRating.GetValueOrDefault(0), DemoInfo.SecondaryBookRating.GetValueOrDefault(0)))
+                        BookRating = CDec(If(UsePrimaryDemo, DemoInfo.PrimaryBookRating, DemoInfo.SecondaryBookRating))
 
                         If CumeInpression < Impressions Then
 
-                            AllReachValuesList.Add(CalculateCumlessReach(CDec(If(UsePrimaryDemo, DemoInfo.PrimaryRating.GetValueOrDefault(0), DemoInfo.SecondaryRating.GetValueOrDefault(0))), TotalSpots))
+                            AllReachValuesList.Add(CalculateCumlessReach(CDec(If(UsePrimaryDemo, DemoInfo.PrimaryRating, DemoInfo.SecondaryRating)), TotalSpots))
 
                         Else
 
-                            AllReachValuesList.Add(CalculateTVReach(Impressions, CumeInpression, RowSpots, Universe, CDec(If(UsePrimaryDemo, DemoInfo.PrimaryRating.GetValueOrDefault(0), DemoInfo.SecondaryRating.GetValueOrDefault(0))), BookRating))
+                            AllReachValuesList.Add(CalculateTVReach(Impressions, CumeInpression, RowSpots, Universe, CDec(If(UsePrimaryDemo, DemoInfo.PrimaryRating, DemoInfo.SecondaryRating)), BookRating))
 
                         End If
 
@@ -162,13 +163,37 @@
 
                 Next
 
-            ElseIf MediaBroadcastWorksheetBroadcastScheduleMarketSummaries IsNot Nothing AndAlso MediaBroadcastWorksheetBroadcastScheduleMarketSummaries.Count > 0 Then
+            ElseIf DemoInfos IsNot Nothing AndAlso DemoInfos.Count > 0 Then
 
-                For Each DemoInfo In DemoInfos
+                If UsePrimaryDemo Then
 
-                    AllReachValuesList.Add(If(UsePrimaryDemo, DemoInfo.PrimaryReach.GetValueOrDefault(0), DemoInfo.SecondaryReach.GetValueOrDefault(0)))
+                    For Each DemoInfo In DemoInfos
 
-                Next
+                        RowSpots = 0
+
+                        RowSpots = DemoInfo.Spots.GetValueOrDefault(0)
+
+                        AllReachValuesList.Add(CalculateTVReach(DemoInfo.PrimaryBuyImpressions, DemoInfo.PrimaryCumeImpressions,
+                                                                RowSpots, DemoInfo.PrimaryUniverse,
+                                                                DemoInfo.PrimaryRating, DemoInfo.PrimaryBookRating))
+
+                    Next
+
+                Else
+
+                    For Each DemoInfo In DemoInfos
+
+                        RowSpots = 0
+
+                        RowSpots = DemoInfo.Spots.GetValueOrDefault(0)
+
+                        AllReachValuesList.Add(CalculateTVReach(DemoInfo.SecondaryBuyImpressions, DemoInfo.SecondaryCumeImpressions,
+                                                                RowSpots, DemoInfo.SecondaryUniverse,
+                                                                DemoInfo.SecondaryRating, DemoInfo.SecondaryBookRating))
+
+                    Next
+
+                End If
 
             End If
 
@@ -212,7 +237,17 @@
 
             _Reach = ReachTotal * 100
 
-            _Frequency = CalcFreq(ReachTotal, If(UsePrimaryDemo, ReachFreqDetailLines.Sum(Function(DL) DL.PrimaryGRP), ReachFreqDetailLines.Sum(Function(DL) DL.SecondaryGRP)))
+            If UsePrimaryDemo Then
+
+                GRP = DemoInfos.Sum(Function(Entity) CDbl(Entity.Spots.GetValueOrDefault(0)) * CDbl(Entity.PrimaryRating.GetValueOrDefault(0)))
+
+            Else
+
+                GRP = DemoInfos.Sum(Function(Entity) CDbl(Entity.Spots.GetValueOrDefault(0)) * CDbl(Entity.SecondaryRating.GetValueOrDefault(0)))
+
+            End If
+
+            _Frequency = CalcFreq(ReachTotal, GRP)
 
             'Else
 
@@ -258,7 +293,6 @@
             Dim ReachTotal As Double = 0
             Dim MediaBroadcastWorksheetBroadcastScheduleMarketSummaries As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.MarketScheduleWeeklyDetailReport) = Nothing
             Dim DemoInfos As Generic.List(Of Database.Classes.ReachFreqDetail) = Nothing
-            Dim CumeImpressionsValues As Generic.List(Of Long) = Nothing
             Dim CumesValues As Generic.List(Of Long) = Nothing
             Dim AllReachValuesList As Generic.List(Of Double) = Nothing
             Dim AllReachValues() As Double = Nothing
@@ -272,9 +306,9 @@
             Dim TotalAQH As Long = 0
             Dim AQH As Long = 0
             Dim BookRating As Decimal = 0
+            Dim GRP As Double = 0
 
             ReachTotal = 0
-            CumeImpressionsValues = Nothing
             CumesValues = Nothing
             AllReachValuesList = Nothing
             AllReachValues = Nothing
@@ -293,59 +327,61 @@
 
             MediaBroadcastWorksheetBroadcastScheduleMarketSummaries = MediaBroadcastWorksheetBroadcastScheduleMarketSummary.ToList
 
-            If DemoInfos.Any(Function(Entity) Entity.SharebookNielsenTVBookID.GetValueOrDefault(0) > 0) AndAlso
-                    DemoInfos.Any(Function(Entity) Entity.VendorNielsenTVStationCode.GetValueOrDefault(0) <> 0 OrElse
-                                                   Entity.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) <> 0) Then
+            If DemoInfos.Any(Function(Entity) Entity.NeilsenRadioPeriodID1.GetValueOrDefault(0) > 0) AndAlso
+                    DemoInfos.Any(Function(Entity) Entity.VendorRadioStationComboID.GetValueOrDefault(0) <> 0) Then
 
-                CumeImpressionsValues = DemoInfos.Select(Function(Entity) If(UsePrimaryDemo, Entity.PrimaryCumeImpressions.GetValueOrDefault(0), Entity.SecondaryCumeImpressions.GetValueOrDefault(0))).Distinct.ToList
+                CumesValues = DemoInfos.Select(Function(Entity) If(UsePrimaryDemo, Entity.PrimaryCume.GetValueOrDefault(0), Entity.SecondaryCume.GetValueOrDefault(0))).Distinct.ToList
 
             Else
 
-                CumeImpressionsValues = New Generic.List(Of Long)
+                CumesValues = New Generic.List(Of Long)
 
             End If
 
             AllReachValuesList = New Generic.List(Of Double)
 
-            If CumeImpressionsValues.Count > 0 Then
+            If CumesValues.Count > 0 Then
 
-                For Each CumeInpression In CumeImpressionsValues
+                For Each Cume In CumesValues
 
                     TotalSpots = 0
-                    TotalImpressions = 0
+                    TotalAQH = 0
                     TotalRating = 0
                     TotalSpotImpressions = 0
                     Universe = 0
 
-                    For Each DemoInfo In DemoInfos.Where(Function(Entity) CumeInpression = If(UsePrimaryDemo, Entity.PrimaryCumeImpressions, Entity.SecondaryCumeImpressions))
+                    For Each DemoInfo In DemoInfos.Where(Function(Entity) Cume = If(UsePrimaryDemo, Entity.PrimaryCume, Entity.SecondaryCume))
 
                         RowSpots = 0
-                        Impressions = If(UsePrimaryDemo, DemoInfo.PrimaryAQH.GetValueOrDefault(0), DemoInfo.SecondaryAQH.GetValueOrDefault(0))
+                        AQH = CLng(If(UsePrimaryDemo, DemoInfo.PrimaryAQH, DemoInfo.SecondaryAQH))
 
-                        TotalImpressions = Impressions
-                        TotalRating += CDec(If(UsePrimaryDemo, DemoInfo.PrimaryRating.GetValueOrDefault(0), DemoInfo.SecondaryRating.GetValueOrDefault(0)))
+                        TotalAQH += AQH
+                        TotalRating += CDec(If(UsePrimaryDemo, DemoInfo.PrimaryAQHRating, DemoInfo.SecondaryAQHRating))
+                        Universe = CLng(If(UsePrimaryDemo, DemoInfo.PrimaryUniverse, DemoInfo.SecondaryUniverse))
 
-                        If Universe = 0 Then
-
-                            Universe = CLng(If(UsePrimaryDemo, DemoInfo.PrimaryUniverse.GetValueOrDefault(0), DemoInfo.SecondaryUniverse.GetValueOrDefault(0)))
-
-                        End If
-
-                        RowSpots += DemoInfo.Spots
+                        RowSpots += CInt(DemoInfo.Spots)
 
                         TotalSpots = RowSpots
 
-                        TotalSpotImpressions += (Impressions * RowSpots)
+                        TotalSpotImpressions += (AQH * RowSpots)
 
-                        BookRating = CDec(If(UsePrimaryDemo, DemoInfo.PrimaryBookRating.GetValueOrDefault(0), DemoInfo.SecondaryBookRating.GetValueOrDefault(0)))
+                        BookRating = CDec(If(UsePrimaryDemo, DemoInfo.PrimaryBookAQHRating, DemoInfo.SecondaryBookAQHRating))
 
-                        If CumeInpression < Impressions Then
+                        If DemoInfo.VendorIsComboRadioStation Then
 
-                            AllReachValuesList.Add(CalculateCumlessReach(CDec(If(UsePrimaryDemo, DemoInfo.PrimaryRating.GetValueOrDefault(0), DemoInfo.SecondaryRating.GetValueOrDefault(0))), TotalSpots))
+                            AllReachValuesList.Add(If(UsePrimaryDemo, DemoInfo.PrimaryReach, DemoInfo.SecondaryReach))
 
                         Else
 
-                            AllReachValuesList.Add(CalculateRadioReach(Impressions, CumeInpression, RowSpots, Universe, CDec(If(UsePrimaryDemo, DemoInfo.PrimaryRating.GetValueOrDefault(0), DemoInfo.SecondaryRating.GetValueOrDefault(0))), BookRating))
+                            If Cume < AQH Then
+
+                                AllReachValuesList.Add(CalculateCumlessReach(CDec(If(UsePrimaryDemo, DemoInfo.PrimaryAQHRating, DemoInfo.SecondaryAQHRating)), TotalSpots))
+
+                            Else
+
+                                AllReachValuesList.Add(CalculateRadioReach(AQH, Cume, RowSpots, Universe, CDec(If(UsePrimaryDemo, DemoInfo.PrimaryAQHRating, DemoInfo.SecondaryAQHRating)), BookRating))
+
+                            End If
 
                         End If
 
@@ -353,13 +389,37 @@
 
                 Next
 
-            ElseIf MediaBroadcastWorksheetBroadcastScheduleMarketSummaries IsNot Nothing AndAlso MediaBroadcastWorksheetBroadcastScheduleMarketSummaries.Count > 0 Then
+            ElseIf DemoInfos IsNot Nothing AndAlso DemoInfos.Count > 0 Then
 
-                For Each DemoInfo In DemoInfos
+                If UsePrimaryDemo Then
 
-                    AllReachValuesList.Add(If(UsePrimaryDemo, DemoInfo.PrimaryReach.GetValueOrDefault(0), DemoInfo.SecondaryReach.GetValueOrDefault(0)))
+                    For Each DemoInfo In DemoInfos
 
-                Next
+                        RowSpots = 0
+
+                        RowSpots = DemoInfo.Spots.GetValueOrDefault(0)
+
+                        AllReachValuesList.Add(CalculateRadioReach(DemoInfo.PrimaryAQH, DemoInfo.PrimaryCume,
+                                                                   RowSpots, DemoInfo.PrimaryUniverse,
+                                                                   DemoInfo.PrimaryAQHRating, DemoInfo.PrimaryBookAQHRating))
+
+                    Next
+
+                Else
+
+                    For Each DemoInfo In DemoInfos
+
+                        RowSpots = 0
+
+                        RowSpots = DemoInfo.Spots.GetValueOrDefault(0)
+
+                        AllReachValuesList.Add(CalculateRadioReach(DemoInfo.SecondaryAQH, DemoInfo.SecondaryCume,
+                                                                   RowSpots, DemoInfo.SecondaryUniverse,
+                                                                   DemoInfo.SecondaryAQHRating, DemoInfo.SecondaryBookAQHRating))
+
+                    Next
+
+                End If
 
             End If
 
@@ -399,7 +459,17 @@
 
             _Reach = ReachTotal * 100
 
-            _Frequency = CalcFreq(ReachTotal, If(UsePrimaryDemo, ReachFreqDetailLines.Sum(Function(DL) DL.PrimaryGRP), ReachFreqDetailLines.Sum(Function(DL) DL.SecondaryGRP)))
+            If UsePrimaryDemo Then
+
+                GRP = DemoInfos.Sum(Function(Entity) CDbl(Entity.Spots.GetValueOrDefault(0)) * CDbl(Entity.PrimaryAQHRating.GetValueOrDefault(0)))
+
+            Else
+
+                GRP = DemoInfos.Sum(Function(Entity) CDbl(Entity.Spots.GetValueOrDefault(0)) * CDbl(Entity.SecondaryAQHRating.GetValueOrDefault(0)))
+
+            End If
+
+            _Frequency = CalcFreq(ReachTotal, GRP)
 
         End Sub
 
@@ -438,10 +508,10 @@
 
                 Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
 
-                    _MarketScheduleWeeklyDetailReports = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.MarketScheduleWeeklyDetailReport)(String.Format("exec advsp_media_broadcast_worksheet_other_market_schedule_weekly_detail_report {0}, '{1}', '{2}', '{3}', {4}",
-                                                                                                                                                                         MediaBroadcastWorksheetID, MediaBroadcastWorksheetMarketIDVendorCodes, _FromDate, _ToDate, ShowSecondaryDemo)).ToList
+                    _AllMarketScheduleWeeklyDetailReports = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.MarketScheduleWeeklyDetailReport)(String.Format("exec advsp_media_broadcast_worksheet_other_market_schedule_weekly_detail_report {0}, '{1}', '{2}', '{3}', {4}",
+                                                                                                                                                                                          MediaBroadcastWorksheetID, MediaBroadcastWorksheetMarketIDVendorCodes, _FromDate, _ToDate, ShowSecondaryDemo)).ToList
 
-                    _MarketScheduleWeeklyDetailReports = _MarketScheduleWeeklyDetailReports.Where(Function(R) R.Spots.GetValueOrDefault(0) > 0).ToList
+                    _MarketScheduleWeeklyDetailReports = _AllMarketScheduleWeeklyDetailReports.Where(Function(R) R.Spots.GetValueOrDefault(0) > 0).ToList
 
                     If _MarketScheduleWeeklyDetailReports.Count > 0 Then
 
@@ -1002,31 +1072,31 @@
 
                 MarketScheduleWeeklyDetailReports = _MarketScheduleWeeklyDetailReports.Where(Function(R) R.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID AndAlso R.Spots.GetValueOrDefault(0) > 0).ToList
 
-                MarketWorksheetMarketIdList = New Generic.List(Of Integer)
-                MarketWorksheetMarketIdList.Add(MediaBroadcastWorksheetMarketID) ' = MarketScheduleWeeklyDetailReports.Select(Function(DR) DR.MediaBroadcastWorksheetMarketID).Distinct.ToList
+            MarketWorksheetMarketIdList = New Generic.List(Of Integer)
+            MarketWorksheetMarketIdList.Add(MediaBroadcastWorksheetMarketID) ' = MarketScheduleWeeklyDetailReports.Select(Function(DR) DR.MediaBroadcastWorksheetMarketID).Distinct.ToList
 
-                VendorCodeList = String.Join(",", MarketScheduleWeeklyDetailReports.Select(Function(DR) DR.VendorCode).Distinct.ToArray)
+                VendorCodeList = String.Join(",", _AllMarketScheduleWeeklyDetailReports.Select(Function(DR) DR.VendorCode).Distinct.ToArray)
 
                 UsePrimaryDemoList = New Generic.List(Of Boolean)
-                UsePrimaryDemoList.Add(_UsePrimaryDemo)
+            UsePrimaryDemoList.Add(_UsePrimaryDemo)
 
-                Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
+            Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
 
-                    ReachFreqDetailLines = Reporting.Database.Procedures.MediaBroadcastWorksheetBroadcastScheduleReport.LoadReachFreqDetailsWithExactDates(DbContext, MarketWorksheetMarketIdList, _FromDate, _ToDate, UsePrimaryDemoList, VendorCodeList).ToList()
+                ReachFreqDetailLines = Reporting.Database.Procedures.MediaBroadcastWorksheetBroadcastScheduleReport.LoadReachFreqDetailsWithExactDates(DbContext, MarketWorksheetMarketIdList, _FromDate, _ToDate, UsePrimaryDemoList, VendorCodeList).ToList()
 
-                End Using
+            End Using
 
-                If _IsRadio Then
+            If _IsRadio Then
 
-                    CalculateRadioReachAndFreq(MarketScheduleWeeklyDetailReports, ReachFreqDetailLines, _UsePrimaryDemo)
+                CalculateRadioReachAndFreq(MarketScheduleWeeklyDetailReports, ReachFreqDetailLines, _UsePrimaryDemo)
 
-                Else
+            Else
 
-                    CalculateReachAndFreq(MarketScheduleWeeklyDetailReports, ReachFreqDetailLines, _UsePrimaryDemo)
+                CalculateReachAndFreq(MarketScheduleWeeklyDetailReports, ReachFreqDetailLines, _UsePrimaryDemo)
 
-                End If
+            End If
 
-                GroupFooterMarketName_ReachFrequency.Text = FormatNumber(_Reach, 1).ToString & " / " & FormatNumber(_Frequency, 1).ToString
+            GroupFooterMarketName_ReachFrequency.Text = FormatNumber(_Reach, 1).ToString & " / " & FormatNumber(_Frequency, 1).ToString
 
             End If
 

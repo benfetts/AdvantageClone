@@ -195,6 +195,9 @@
 
             End If
 
+            BandedDataGridViewForm_MarketDetails.CurrentView.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorName.ToString).FieldNameSortGroup = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorCode.ToString
+            BandedDataGridViewForm_MarketDetails.CurrentView.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorName.ToString).SortMode = DevExpress.XtraGrid.ColumnSortMode.Custom
+
             If BandedDataGridViewForm_MarketDetails.CurrentView.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.Daypart.ToString).FilterInfo.FilterString <> "" Then
 
                 RefreshGoals = True
@@ -1463,6 +1466,14 @@
 
             End If
 
+            If BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorIsComboRadioStation.ToString) IsNot Nothing Then
+
+                BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorIsComboRadioStation.ToString).OptionsColumn.AllowShowHide = False
+                BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorIsComboRadioStation.ToString).OptionsColumn.ShowInCustomizationForm = False
+                BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorIsComboRadioStation.ToString).OptionsColumn.ShowInExpressionEditor = False
+
+            End If
+
             If BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookProgram.ToString) IsNot Nothing Then
 
                 BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookProgram.ToString).OptionsColumn.AllowShowHide = False
@@ -2255,6 +2266,23 @@
                 AddColumnToGridBand(GridBand, BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryGrossImpressions.ToString))
                 AddColumnToGridBand(GridBand, BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryCPM.ToString))
 
+                If _ViewModel.Worksheet.IsCanadianWorksheet Then
+
+                    If BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryAQHRating.ToString) IsNot Nothing Then
+
+                        BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryAQHRating.ToString).Caption = "AMA"
+                        BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryAQHRating.ToString).DisplayFormat.FormatString = "f2"
+
+                    End If
+
+                    If BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryAQH.ToString) IsNot Nothing Then
+
+                        BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryAQH.ToString).Caption = "AMA (00)"
+
+                    End If
+
+                End If
+
                 RemoveColumnFromGridBand(GridBand, BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryRating.ToString))
                 RemoveColumnFromGridBand(GridBand, BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryShare.ToString))
                 RemoveColumnFromGridBand(GridBand, BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryHPUT.ToString))
@@ -2300,6 +2328,23 @@
                 AddColumnToGridBand(GridBand, BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryImpressions.ToString))
                 AddColumnToGridBand(GridBand, BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryGrossImpressions.ToString))
                 AddColumnToGridBand(GridBand, BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryCPM.ToString))
+
+                If _ViewModel.Worksheet.IsCanadianWorksheet Then
+
+                    If BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryAQHRating.ToString) IsNot Nothing Then
+
+                        BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryAQHRating.ToString).Caption = "AMA"
+                        BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryAQHRating.ToString).DisplayFormat.FormatString = "f2"
+
+                    End If
+
+                    If BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryAQH.ToString) IsNot Nothing Then
+
+                        BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryAQH.ToString).Caption = "AMA (00)"
+
+                    End If
+
+                End If
 
                 RemoveColumnFromGridBand(GridBand, BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryRating.ToString))
                 RemoveColumnFromGridBand(GridBand, BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryShare.ToString))
@@ -5093,19 +5138,26 @@
 
             Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Loading, "Retrieving Comscore books...")
 
-            Task = System.Threading.Tasks.Task.Factory.StartNew(Sub()
+            Try
 
-                                                                    _Controller.MarketDetails_CacheBooks(_ViewModel)
+                _Controller.MarketDetails_CacheBooks(_ViewModel)
 
-                                                                End Sub)
+            Catch ex As Exception
+                AdvantageFramework.WinForm.MessageBox.Show(ex.Message)
+            End Try
 
+            'Task = System.Threading.Tasks.Task.Factory.StartNew(Sub()
 
-            Do While Task.IsCompleted = False
+            '                                                        _Controller.MarketDetails_CacheBooks(_ViewModel)
 
-                System.Threading.Thread.Sleep(1000)
-                System.Windows.Forms.Application.DoEvents()
+            '                                                    End Sub)
 
-            Loop
+            'Do While Task.IsCompleted = False
+
+            '    System.Threading.Thread.Sleep(1000)
+            '    System.Windows.Forms.Application.DoEvents()
+
+            'Loop
 
             'CacheBooksAsyncCaller = New CacheBooksAsyncCaller(AddressOf _Controller.MarketDetails_CacheBooksAsync)
 
@@ -5663,6 +5715,7 @@
                                 End If
 
                                 FileName = Replace(Replace("Proposal_" & _ViewModel.Worksheet.Name & "_" & _ViewModel.SelectedWorksheetMarket.MarketCode & "_" & _ViewModel.SelectedWorksheetMarket.ID & "_" & Now.ToString("yyyyMMddHHmmss") & ".xml", "\", ""), "/", "")
+                                FileName = AdvantageFramework.FileSystem.CreateValidFileName(FileName)
 
                                 FileStream = New System.IO.FileStream(Folder & FileName, System.IO.FileMode.Create, System.IO.FileAccess.Write)
                                 MemoryStream.WriteTo(FileStream)
@@ -5775,7 +5828,7 @@
 
                     Message += vbCrLf & "Would you like to proceed and delete that activity?"
 
-                    If AdvantageFramework.WinForm.MessageBox.Show("There are pending makegoods for the following vendor(s)/order(s): " & vbCrLf & Message, WinForm.MessageBox.MessageBoxButtons.YesNo) = WinForm.MessageBox.DialogResults.No Then
+                    If AdvantageFramework.WinForm.MessageBox.Show("There are pending makegoods not yet submitted for the following vendor(s)/order(s): " & vbCrLf & Message, WinForm.MessageBox.MessageBoxButtons.YesNo) = WinForm.MessageBox.DialogResults.No Then
 
                         [Continue] = False
 
@@ -5931,6 +5984,8 @@
 
             End If
 
+            ToggleSelectionMode(False)
+
         End Sub
         Private Sub MediaBroadcastWorksheetMarketDetailForm_Activated(sender As Object, e As EventArgs) Handles Me.Activated
 
@@ -5954,6 +6009,10 @@
                     _SubmarketsForm.Visible = ButtonItemSubmarkets_Show.Checked
 
                 End If
+
+                RefreshViewModel(False)
+
+                ToggleSelectionMode(False)
 
             End If
 
@@ -10428,21 +10487,43 @@
 
                 RepositoryItemSpinEdit = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
 
-                RepositoryItemSpinEdit.AllowMouseWheel = False
-                RepositoryItemSpinEdit.AllowNullInput = DevExpress.Utils.DefaultBoolean.False
-                RepositoryItemSpinEdit.EditMask = "f1"
-                RepositoryItemSpinEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-                RepositoryItemSpinEdit.DisplayFormat.FormatString = "f1"
-                RepositoryItemSpinEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-                RepositoryItemSpinEdit.EditFormat.FormatString = "f1"
-                RepositoryItemSpinEdit.Mask.UseMaskAsDisplayFormat = True
-                RepositoryItemSpinEdit.Mask.EditMask = "f1"
-                RepositoryItemSpinEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-                RepositoryItemSpinEdit.IsFloatValue = True
-                RepositoryItemSpinEdit.MinValue = 0
-                RepositoryItemSpinEdit.MaxValue = 99.9
-                RepositoryItemSpinEdit.MaxLength = 4
-                RepositoryItemSpinEdit.Buttons.Clear()
+                If _ViewModel.Worksheet.IsCanadianWorksheet Then
+
+                    RepositoryItemSpinEdit.AllowMouseWheel = False
+                    RepositoryItemSpinEdit.AllowNullInput = DevExpress.Utils.DefaultBoolean.False
+                    RepositoryItemSpinEdit.EditMask = "f2"
+                    RepositoryItemSpinEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                    RepositoryItemSpinEdit.DisplayFormat.FormatString = "f2"
+                    RepositoryItemSpinEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                    RepositoryItemSpinEdit.EditFormat.FormatString = "f2"
+                    RepositoryItemSpinEdit.Mask.UseMaskAsDisplayFormat = True
+                    RepositoryItemSpinEdit.Mask.EditMask = "f2"
+                    RepositoryItemSpinEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+                    RepositoryItemSpinEdit.IsFloatValue = True
+                    RepositoryItemSpinEdit.MinValue = 0
+                    RepositoryItemSpinEdit.MaxValue = 99.99
+                    RepositoryItemSpinEdit.MaxLength = 5
+                    RepositoryItemSpinEdit.Buttons.Clear()
+
+                Else
+
+                    RepositoryItemSpinEdit.AllowMouseWheel = False
+                    RepositoryItemSpinEdit.AllowNullInput = DevExpress.Utils.DefaultBoolean.False
+                    RepositoryItemSpinEdit.EditMask = "f1"
+                    RepositoryItemSpinEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                    RepositoryItemSpinEdit.DisplayFormat.FormatString = "f1"
+                    RepositoryItemSpinEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                    RepositoryItemSpinEdit.EditFormat.FormatString = "f1"
+                    RepositoryItemSpinEdit.Mask.UseMaskAsDisplayFormat = True
+                    RepositoryItemSpinEdit.Mask.EditMask = "f1"
+                    RepositoryItemSpinEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+                    RepositoryItemSpinEdit.IsFloatValue = True
+                    RepositoryItemSpinEdit.MinValue = 0
+                    RepositoryItemSpinEdit.MaxValue = 99.9
+                    RepositoryItemSpinEdit.MaxLength = 4
+                    RepositoryItemSpinEdit.Buttons.Clear()
+
+                End If
 
                 e.RepositoryItem = RepositoryItemSpinEdit
 
@@ -10565,9 +10646,7 @@
             Dim RowHandle As Integer = 0
 
             If e.Column IsNot Nothing AndAlso (e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryAQH.ToString OrElse
-                                                   e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryAQH.ToString OrElse
-                                                   e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryCume.ToString OrElse
-                                                   e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryCume.ToString) Then
+                                               e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryAQH.ToString) Then
 
                 e.DisplayText = FormatNumber((e.Value / 100), 0, TriState.True, TriState.False, TriState.True)
 
@@ -10592,6 +10671,28 @@
             ElseIf e.Column IsNot Nothing AndAlso e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.CableNetworkStationCode.ToString Then
 
                 If e.DisplayText = "[None]" Then
+
+                    e.DisplayText = ""
+
+                End If
+
+            ElseIf e.Column IsNot Nothing AndAlso (e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryCume.ToString OrElse
+                                                   e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryCume.ToString) Then
+
+                If _ViewModel.DataTable.Rows(e.ListSourceRowIndex)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorIsComboRadioStation.ToString) AndAlso e.Value = 0 Then
+
+                    e.DisplayText = ""
+
+                Else
+
+                    e.DisplayText = FormatNumber((e.Value / 100), 0, TriState.True, TriState.False, TriState.True)
+
+                End If
+
+            ElseIf e.Column IsNot Nothing AndAlso (e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryCumeRating.ToString OrElse
+                                                   e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryCumeRating.ToString) Then
+
+                If _ViewModel.DataTable.Rows(e.ListSourceRowIndex)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorIsComboRadioStation.ToString) AndAlso e.Value = 0 Then
 
                     e.DisplayText = ""
 
@@ -12534,6 +12635,8 @@
             Dim MinuteDifference As Integer = 0
             Dim DaysAndTime1 As AdvantageFramework.DTO.DaysAndTime = Nothing
             Dim DaysAndTime2 As AdvantageFramework.DTO.DaysAndTime = Nothing
+            Dim VendorName1 As String = String.Empty
+            Dim VendorName2 As String = String.Empty
 
             If e.Column IsNot Nothing AndAlso e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.StartTime.ToString Then
 
@@ -12580,6 +12683,27 @@
                 DaysAndTime2 = CType(e.RowObject2, System.Data.DataRowView)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.DaysAndTime.ToString)
 
                 e.Result = _Controller.MarketDetails_SortDays(_ViewModel, DaysAndTime1, DaysAndTime2)
+
+                e.Handled = True
+
+            ElseIf e.Column IsNot Nothing AndAlso e.Column.FieldName = AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorName.ToString Then
+
+                VendorName1 = CType(e.RowObject1, System.Data.DataRowView)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorName.ToString)
+                VendorName2 = CType(e.RowObject2, System.Data.DataRowView)(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorName.ToString)
+
+                If VendorName1 = VendorName2 Then
+
+                    e.Result = 0
+
+                ElseIf VendorName1 > VendorName2 Then
+
+                    e.Result = -1
+
+                ElseIf VendorName1 < VendorName2 Then
+
+                    e.Result = 1
+
+                End If
 
                 e.Handled = True
 
@@ -12807,22 +12931,101 @@
 
             'objects
             Dim VendorCode As String = Nothing
+            Dim [Continue] As Boolean = False
 
-            If BandedDataGridViewForm_MarketDetails.CurrentView.IsGroupRow(BandedDataGridViewForm_MarketDetails.CurrentView.FocusedRowHandle) Then
+            CloseGridEditorAndSaveValueToDataSource()
 
-                VendorCode = BandedDataGridViewForm_MarketDetails.CurrentView.GetRowCellValue(BandedDataGridViewForm_MarketDetails.CurrentView.GetChildRowHandle(BandedDataGridViewForm_MarketDetails.CurrentView.FocusedRowHandle, 0), AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorCode.ToString)
+            If Me.FormShown AndAlso Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.None AndAlso HasNoErrors() Then
 
-            Else
+                If _ViewModel.SaveEnabled Then
 
-                VendorCode = BandedDataGridViewForm_MarketDetails.GetFirstSelectedRowCellValue(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorCode.ToString)
+                    If AdvantageFramework.WinForm.MessageBox.Show("You need to save your changes before continuing.  Do you want to save your changes now?", AdvantageFramework.WinForm.MessageBox.MessageBoxButtons.YesNo, "Save Changes?") = AdvantageFramework.WinForm.MessageBox.DialogResults.Yes Then
 
-            End If
+                        Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Saving)
 
-            If VendorCode IsNot Nothing Then
+                        _Controller.MarketDetails_Save(_ViewModel)
 
-                AdvantageFramework.Maintenance.Accounting.Presentation.VendorEditDialog.ShowFormDialog(VendorCode, True)
+                        RefreshMediaBroadcastWorksheetSetupForm()
 
-                _Controller.MarketOrderData_SetVendorRepsOnOrder(VendorCode, _ViewModel.SelectedWorksheetMarket.ID, _ViewModel.Worksheet.MediaTypeCode)
+                        [Continue] = True
+
+                        Me.ClearChanged()
+
+                        Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
+
+                        Me.RaiseClearChanged()
+
+                    End If
+
+                Else
+
+                    [Continue] = True
+
+                End If
+
+                If [Continue] Then
+
+                    If BandedDataGridViewForm_MarketDetails.CurrentView.IsGroupRow(BandedDataGridViewForm_MarketDetails.CurrentView.FocusedRowHandle) Then
+
+                        VendorCode = BandedDataGridViewForm_MarketDetails.CurrentView.GetRowCellValue(BandedDataGridViewForm_MarketDetails.CurrentView.GetChildRowHandle(BandedDataGridViewForm_MarketDetails.CurrentView.FocusedRowHandle, 0), AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorCode.ToString)
+
+                    Else
+
+                        VendorCode = BandedDataGridViewForm_MarketDetails.GetFirstSelectedRowCellValue(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorCode.ToString)
+
+                    End If
+
+                    If VendorCode IsNot Nothing Then
+
+                        If AdvantageFramework.Maintenance.Accounting.Presentation.VendorEditDialog.ShowFormDialog(VendorCode, True) = System.Windows.Forms.DialogResult.OK Then
+
+                            Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Loading)
+
+                            _Controller.MarketOrderData_SetVendorRepsOnOrder(VendorCode, _ViewModel.SelectedWorksheetMarket.ID, _ViewModel.Worksheet.MediaTypeCode)
+
+                            If _ViewModel.Worksheet IsNot Nothing AndAlso _ViewModel.Worksheet.RatingsServiceID = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
+
+                                CacheComscoreData()
+
+                            End If
+
+                            BeginDataUpdate()
+
+                            _Controller.MarketDetails_SelectedWorksheetMarketChanged(_ViewModel, ComboBoxItemMarkets_Markets.ComboBoxEx.SelectedValue)
+
+                            LoadGrid()
+
+                            If _ViewModel.DoesWorksheetAllowSubmarkets Then
+
+                                FormatGridSubmarketBands()
+
+                                Submarkets_Setup()
+
+                            End If
+
+                            EndDataUpdate()
+
+                            ExpandAllGroups()
+
+                            Me.ClearChanged()
+
+                            RefreshViewModel(False)
+
+                            BandedDataGridViewForm_MarketDetails.CurrentView.UpdateSummary()
+
+                            Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
+
+                            Me.RaiseClearChanged()
+
+                        Else
+
+                            _Controller.MarketOrderData_SetVendorRepsOnOrder(VendorCode, _ViewModel.SelectedWorksheetMarket.ID, _ViewModel.Worksheet.MediaTypeCode)
+
+                        End If
+
+                    End If
+
+                End If
 
             End If
 
@@ -12925,7 +13128,7 @@
 
                 If [Continue] Then
 
-                    If AdvantageFramework.Media.Presentation.MediaTrafficDialog.ShowFormDialog(_ViewModel.SelectedWorksheetMarket.ID) = Windows.Forms.DialogResult.OK Then
+                    If AdvantageFramework.Media.Presentation.MediaTrafficDialog.ShowFormDialog(_ViewModel.SelectedWorksheetMarket.ID, _ViewModel.CableNetworkStations) = Windows.Forms.DialogResult.OK Then
 
                         'Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Loading)
 

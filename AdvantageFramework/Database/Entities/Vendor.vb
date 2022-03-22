@@ -151,6 +151,7 @@
             NPRStationID
             UseAlternativeNameFor1099
             Vendor1099Name
+            IsComboRadioStation
             [Function]
             VendorTerm
             GeneralLedgerAccount
@@ -698,6 +699,10 @@
         <Column("VN_1099_NAME", TypeName:="varchar")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
         Public Property Vendor1099Name() As String
+        <Required>
+        <Column("IS_COMBO_RADIO_STATION")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True)>
+        Public Property IsComboRadioStation() As Boolean
 
         Public Overridable Property [Function] As Database.Entities.Function
         Public Overridable Property VendorTerm As Database.Entities.VendorTerm
@@ -729,6 +734,8 @@
         <ForeignKey("ComscoreTVStationID")>
         Public Overridable Property ComscoreTVStation As Database.Entities.ComscoreTVStation
         Public Overridable Property VendorMarkets As ICollection(Of Database.Entities.VendorMarket)
+        <ForeignKey("VendorCode")>
+        Public Overridable Property VendorComboRadioStations As ICollection(Of Database.Entities.VendorComboRadioStation)
 
 #End Region
 

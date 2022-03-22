@@ -1,5 +1,4 @@
-﻿@*<div id="aagrid" style="border: 1px solid #CCC;" onchange="gridDataChanged(this);" tabindex="1"></div>*@
-<div id="aagrid" style="border: 1px solid #CCC;" tabindex="1"></div>
+﻿<div id="aagrid" style="border: 1px solid #CCC;" tabindex="1"></div>
 <div id="ResetOptions" class="toolbar-custom-drop">
     <table>
         <thead>
@@ -96,18 +95,18 @@
     }
 
     .static-sort-desc:before {
-        /*content: " \2193";*/        
+        /*content: " \2193";*/
         content: "\1F80B";
-        position: fixed;        
+        position: fixed;
         color: #428bca;
     }
 
     .static-sort-asc:before {
         /*content: " \2193";*/
         content: "\1F809";
-        position: fixed;        
-        color: #428bca;        
-    }    
+        position: fixed;
+        color: #428bca;
+    }
     /*a.k-state-active {
         background-color: yellow !important;
     }*/
@@ -156,7 +155,7 @@
     /*th[data-title="Task Status"] > a.k-link
     {
         width: 28px;
-        margin-right:0px;        
+        margin-right:0px;
     }*/
 
     .projected {
@@ -190,21 +189,21 @@
         display: none;
     }
 
-    .toolbar-custom-drop .k-button {
-        width: 100%;
-    }
+        .toolbar-custom-drop .k-button {
+            width: 100%;
+        }
 
-    .toolbar-custom-drop tbody td {
-        padding: 2px 8px 2px 8px !important;
-    }
+        .toolbar-custom-drop tbody td {
+            padding: 2px 8px 2px 8px !important;
+        }
 
-    .toolbar-custom-drop tbody td:first-child {
-        padding-left: 2px !important;
-    }
+            .toolbar-custom-drop tbody td:first-child {
+                padding-left: 2px !important;
+            }
 
-    .toolbar-custom-drop tbody td:last-child {
-        padding-right: 2px !important;
-    }
+            .toolbar-custom-drop tbody td:last-child {
+                padding-right: 2px !important;
+            }
 
     .k-grid-filter.k-state-active {
         background-color: yellow !important;
@@ -218,13 +217,12 @@
     #aagrid {
         min-width: 1000px !important;
     }
-    
-    #Search{
+
+    #Search {
         height: 32px !important;
     }
 
-    .aam-standard-light-pink 
-    {    
+    .aam-standard-light-pink {
         box-shadow: inset 0 0 25px 0 #EEACB9 !important;
     }
 
@@ -244,27 +242,28 @@
         box-shadow: inset 0 0 25px 0 #FFEB3B !important;
     }
 
-    #aagrid_active_cell > span > span > span.k-input{
-        color:white;
+    #aagrid_active_cell > span > span > span.k-input {
+        color: white;
     }
 </style>
 
-<script>    
+<script>
+
     var hasAccessToTimesheet = false;
 
     $(document).ready(function () {
         console.clear();
         uid = "";
-        index = 0;        
+        index = 0;
 
         BuildAAViewDropDown();
-        LoadUserColumnSettings();        
+        LoadUserColumnSettings();
     });
 
     let todayDate = kendo.toString(kendo.parseDate(new Date()), 'MM/dd/yyyy');
     let AAManagerDataSource;
     let AreGridRowsReorderable = false;
-    let pageFlag = false;    
+    let pageFlag = false;
     let _staticColumns = ["", "Search", "Status", "Category Icon", "Task Status", "Documents", "Task Flag", "Add Time", "Stopwatch"];
 
     let reorderedColumn = {
@@ -273,9 +272,9 @@
         newIndex: -1
     };
 
-    $("#aagrid").change(function (e) {        
-        if (e.target.id !== "Search") {            
-            if (!pageFlag) {                
+    $("#aagrid").change(function (e) {
+        if (e.target.id !== "Search") {
+            if (!pageFlag) {
                 gridDirty = true;
                 enableSave();
             }
@@ -506,7 +505,7 @@
         TaskStatusDescription: true
     }
 
-    function filterDateEditor(element) {        
+    function filterDateEditor(element) {
         element.kendoDatePicker({
             parseFormats: ['MM-dd-yyyy', 'MM-dd-yy', 'MM/dd/yyyy', 'MM/dd/yy', 'MMddyyyy', 'MMddyy'],
             format: 'MM/dd/yyyy'
@@ -520,7 +519,7 @@
         });
     }
 
-    let filterCheckboxTemplate = function (e) {        
+    let filterCheckboxTemplate = function (e) {
         return "<li class='k-item'><label class='k-label'><input type='checkbox' name='" + e.field + "' value='#= data." + e.field + " #'/><span>#= data.all || (data." + e.field + "?data." + e.field + ": '(Blanks)') # </span></label></li>"
     };
 
@@ -557,31 +556,31 @@
         hint = table.parent(); // Get the wrapper.
 
         return hint; // Return the hint element.
-    }    
+    }
 
-    function createGridDataSource() {          
+    function createGridDataSource() {
         let gridSize = UserViewSettings.GridSize;
         let pageSizes = ["10", "15", "20", "50", "100", "200"];
 
-        if (!gridSize || !pageSizes.includes(gridSize)) {        
-            //if the gridsize isn't in the pagesize array, an irrelevant value has been posted to the 
+        if (!gridSize || !pageSizes.includes(gridSize)) {
+            //if the gridsize isn't in the pagesize array, an irrelevant value has been posted to the
             //pager size dropdown by the datasource.
             //setting the GridSize to 10 will remove the app var setting, as 10 is the grid default.
             UserViewSettings.GridSize = "10";
         }
 
-        AAManagerDataSource = new kendo.data.DataSource({                  
+        AAManagerDataSource = new kendo.data.DataSource({
             transport: {
                     read: (e) => {
-                        let data = AlertFilter;                        
-                
+                        let data = AlertFilter;
+
                         $.ajax({
                             type: "GET",
                             url: "@Href("~/Desktop/Inbox/GetAAManagerData")",
                             dataType: 'json',
                             data: data,
                             success: (results) => {
-                                let newDueDate, newStartDate, newTempCompDate, newSprintStartDate;                                
+                                let newDueDate, newStartDate, newTempCompDate, newSprintStartDate;
                                 $.each(results, (i, e) => {
                                     //drop the time from the DueDate, StartDate, TempCompleteDate and
                                     //SprintStartDate fields to accommodate server / client
@@ -589,10 +588,10 @@
                                     newDueDate = kendo.parseDate(e.DueDate, "MM/dd/yyyy");
                                     newStartDate = kendo.parseDate(e.StartDate, "MM/dd/yyyy");
                                     newTempCompDate = kendo.parseDate(e.TempCompleteDate, "MM/dd/yyyy");
-                                    newSprintStartDate = kendo.parseDate(e.SprintStartDate, "MM/dd/yyyy");                                    
+                                    newSprintStartDate = kendo.parseDate(e.SprintStartDate, "MM/dd/yyyy");
 
-                                    if (newDueDate) {                                        
-                                        newDueDate.setHours(0, 0, 0, 0);                                                      
+                                    if (newDueDate) {
+                                        newDueDate.setHours(0, 0, 0, 0);
                                         e.DueDate = newDueDate;
                                     }
 
@@ -610,7 +609,7 @@
                                         newSprintStartDate.setHours(0, 0, 0, 0);
                                         e.SprintStartDate = newSprintStartDate;
                                     }
-                                });                    
+                                });
                                 e.success(results);
                             },
                             error: (results) => {
@@ -618,10 +617,10 @@
                             }
                         });
 
-                        AlertFilter.InitialLoadFlag = false;                
+                        AlertFilter.InitialLoadFlag = false;
                     }
                 },
-                pageSize: UserViewSettings.GridSize,                
+                pageSize: UserViewSettings.GridSize,
                 group: GetGrouping(),
                 schema: {
                     model: {
@@ -692,10 +691,10 @@
                             AssignedToTitle: { from: 'AssignedToTitle', type: 'string', editable: false, nullable: true },
                             IsMyTaskTempComplete: { from: 'IsMyTaskTempComplete', type: 'bit', nullable: true, editable: false },
                             IsOwnerAssignmentAlert: { from: 'IsOwnerAssignmentAlert', type: 'bit', nullable: true, editable: false },
-                            UserName: { from: 'UserName', type: 'string', nullable: true, editable: false }, 
-                            TempCompleteDate: { from: 'TempCompleteDate', type: 'date', editable: false }, 
-                            TempCompleteDateNoTime: { from: 'TempCompleteDateNoTime', type: 'date', editable: false }, 
-                            CCEmployeeCodes: { from: 'CCEmployeeCodes', type: 'string', nullable: true, editable: false }, 
+                            UserName: { from: 'UserName', type: 'string', nullable: true, editable: false },
+                            TempCompleteDate: { from: 'TempCompleteDate', type: 'date', editable: false },
+                            TempCompleteDateNoTime: { from: 'TempCompleteDateNoTime', type: 'date', editable: false },
+                            CCEmployeeCodes: { from: 'CCEmployeeCodes', type: 'string', nullable: true, editable: false },
                             CCEmployeeNames: { from: 'CCEmployeeNames', type: 'string', nullable: true, editable: false },
                             IsMyAssignmentCompleted: { from: 'IsMyAssignmentCompleted', type: 'bit', nullable: true, editable: false }, //73
                             Board: { from: 'Board', type: 'string', nullable: true, editable: false },//74
@@ -710,7 +709,7 @@
                     }
                 }
         });
-        
+
         return AAManagerDataSource;
     }
 
@@ -1104,4 +1103,71 @@
             <button id="cancelColumnSettings" class="k-button" onclick="closeColumSettings_Click();">Close</button>
         </div>
     </div>
+</script>
+@Code
+
+    Dim UnityMenuModel As Webvantage.ViewModels.UnityMenuModel = Nothing
+
+    UnityMenuModel = New Webvantage.ViewModels.UnityMenuModel
+    UnityMenuModel.JobJacketSchedule.Visible = True
+    UnityMenuModel.JobJacket.Visible = True
+    UnityMenuModel.CurrentPrintPage = "JobTemplate_Print.aspx"
+    UnityMenuModel.TargetTag = ".aagrid"
+
+End Code
+
+@(Html.Action("UnityMenu", "Utilities", UnityMenuModel))
+<script>
+    var unityMenuModel = @Html.Raw(Json.Encode(UnityMenuModel));
+    $("#UnityMenu").kendoContextMenu({
+        target: "#aagrid",
+        filter: "tr[role='row']",
+        select: function (e) {
+            e.preventDefault();
+            var grid = $("#aagrid").data("kendoGrid");
+            var model = grid.dataItem(e.target);
+            if (model) {
+                var jobNumber = model.JobNumber;
+                var jobComponentNumber = model.ComponentNumber;
+                if (jobNumber > 0 && jobComponentNumber > 0) {
+                    var action = $(e.item).attr('Action');
+                    var url = $(e.item).find('a').attr('href');
+                    unityMenuModel.JobNumber = jobNumber;
+                    unityMenuModel.JobComponentNumber = jobComponentNumber;
+                    var data = {
+                        ActionName: action,
+                        UnityMenuModel: unityMenuModel
+                    };
+                    $.post({
+                        url: window.appBase + 'Utilities/' + url,
+                        data: data
+                    }).always(function (response) {
+                        if (response.Success === true) {
+                            if (response.Data.OpenWindow === true) {
+                                if (response.Data.IsSilentOpen === true) {
+                                    CallPrintSendPageSilently(response.Data.Url);
+                                } else {
+                                    if (action == 'AddTime') {
+                                        OpenRadWindow('Add Time', response.Data.Url, 600, 600);
+                                    } else if (action == 'Stopwatch') {
+                                        OpenRadWindow('Timesheet Stopwatch', 'Timesheet_Stopwatch.aspx', 475, 500);
+                                    } else if (action == 'PrintSendOptions') {
+                                        OpenRadWindow('Print/Send Project Schedule', response.Data.Url);
+                                    } else {
+                                        OpenRadWindow('', response.Data.Url);
+                                    }
+                                }
+                            }
+                        } else {
+                            if (response.Message !== '') {
+                                showKendoAlert(response.Message);
+                            }
+                        }
+                    });
+                }
+            } else {
+                console.log("no model");
+            }
+        }
+    });
 </script>

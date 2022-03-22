@@ -1,6 +1,11 @@
 ﻿<template>
     <require from="aurelia-kendoui-bridge/editor/editor"></require>
     <require from="./mention-item"></require>
+    <style>
+        .k-dialog-buttongroup .k-button:last-child {
+            order: initial;
+        }
+    </style>
 
     <ux-dialog>
         <ux-dialog-header show-close-button.bind="true">
@@ -10,18 +15,19 @@
             <div id="editorMentionContainer" style="position:absolute;">
                 <mention-item view-model.ref="mentionItemEditor" mention-comment-div="editorCommentDiv" comment-editor.bind="editor" vertical-offset="300" horizontal-offset="40" mention-container="editorMentionContainer"></mention-item>
             </div>
-            <div id="editorCommentDiv">
+            <!--alert-container class makes the undo/redo buttons color match the theme.-->
+            <div id="editorCommentDiv" class="alert-container">
                 <textarea ak-rich-editor="k-widget.two-way: editor; k-resizable.bind: true; k-tools.bind: defaultTools;" k-on-keydown.delegate="mentionItemEditor.commentKeyDownEvent($event.detail)"></textarea>
             </div>
-                <div if.bind="showUpload">
-                    upload area
-                </div>
+            <div if.bind="showUpload">
+                upload area
+            </div>
         </ux-dialog-body>
         <ux-dialog-footer>
             <div class="k-button-group k-dialog-buttongroup k-dialog-button-layout-normal">
-                <button class="k-button" click.delegate="okClick()">OK</button>
-                <button class="k-button k-primary" click.delegate="saveClick()">${saveLabel}</button>
-                <button class="k-button" click.delegate="cancelClick()">Cancel</button>
+                <button class="k-button" click.delegate="cancelClick()" title="Cancel">Cancel</button>
+                <button class="k-button" click.delegate="okClick()" title.bind="okLabel">${okLabel}</button>
+                <button class="k-button k-primary" click.delegate="saveClick()" title.bind="saveLabel">${saveLabel}</button>
             </div>
         </ux-dialog-footer>
     </ux-dialog>

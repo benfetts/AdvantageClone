@@ -650,6 +650,7 @@
             Dim Job As AdvantageFramework.Database.Entities.Job = Nothing
             Dim GeneralLedgerAccount As AdvantageFramework.Database.Entities.GeneralLedgerAccount = Nothing
             Dim Office As AdvantageFramework.Database.Entities.Office = Nothing
+            Dim GeneralLedgerOfficeCrossReference As AdvantageFramework.Database.Entities.GeneralLedgerOfficeCrossReference = Nothing
 
             If Not BypassRateQuantityCalculation Then
 
@@ -716,11 +717,35 @@
 
                     Else
 
-                        AccountPayableProductionDistributionDetail.OfficeCode = Nothing
-                        AccountPayableProductionDistributionDetail.GLACode = [Function].NonBillableClientGLACode
-                        AccountPayableProductionDistributionDetail.GLADescription = Nothing
+                        If String.IsNullOrWhiteSpace(AccountPayableProductionDistributionDetail.OfficeCode) = False Then
 
-                        GeneralLedgerAccount = AdvantageFramework.Database.Procedures.GeneralLedgerAccount.LoadByGLACode(DbContext, AccountPayableProductionDistributionDetail.GLACode)
+                            GeneralLedgerOfficeCrossReference = AdvantageFramework.Database.Procedures.GeneralLedgerOfficeCrossReference.LoadByOfficeCode(DbContext, AccountPayableProductionDistributionDetail.OfficeCode)
+
+                            If GeneralLedgerOfficeCrossReference IsNot Nothing Then
+
+                                GeneralLedgerAccount = AdvantageFramework.GeneralLedger.SubstituteOfficeSegment(DbContext, [Function].NonBillableClientGLACode, GeneralLedgerOfficeCrossReference.Code)
+
+                                If GeneralLedgerAccount IsNot Nothing Then
+
+                                    AccountPayableProductionDistributionDetail.GLACode = GeneralLedgerAccount.Code
+
+                                End If
+
+                            Else
+
+                                AccountPayableProductionDistributionDetail.GLACode = [Function].NonBillableClientGLACode
+
+                            End If
+
+                        Else
+
+                            AccountPayableProductionDistributionDetail.OfficeCode = Nothing
+                            AccountPayableProductionDistributionDetail.GLACode = [Function].NonBillableClientGLACode
+                            AccountPayableProductionDistributionDetail.GLADescription = Nothing
+
+                            GeneralLedgerAccount = AdvantageFramework.Database.Procedures.GeneralLedgerAccount.LoadByGLACode(DbContext, AccountPayableProductionDistributionDetail.GLACode)
+
+                        End If
 
                         If GeneralLedgerAccount IsNot Nothing Then
 

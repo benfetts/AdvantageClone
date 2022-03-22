@@ -847,6 +847,8 @@
             End Set
         End Property
         <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property GuaranteedImpressions() As Nullable(Of Integer)
+        <System.Runtime.Serialization.DataMemberAttribute()>
         Public Property NumberOfSpots() As Nullable(Of Integer)
             Get
                 NumberOfSpots = _NumberOfSpots

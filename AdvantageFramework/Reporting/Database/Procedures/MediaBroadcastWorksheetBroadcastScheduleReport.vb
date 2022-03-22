@@ -214,7 +214,7 @@
             SqlParameterBroadcastEndYearMonth = New System.Data.SqlClient.SqlParameter("@END_YEAR_MONTH", SqlDbType.VarChar)
             SqlParameterBroadcastEndYearMonth.Value = System.DBNull.Value
 
-            LoadReachFreqDetailsWithExactDates = DbContext.Database.SqlQuery(Of Database.Classes.ReachFreqDetail)("EXEC dbo.advsp_media_broadcast_loadreachfreq_details @MEDIA_BROADCAST_WORKSHEET_MARKET_ID, @START_YEAR_MONTH, @END_YEAR_MONTH, @USE_PRIMARY_DEMO, @VENDOR_FILTER, @EXACT_START_DATE, @EXACT_END_DATE",
+            LoadReachFreqDetailsWithExactDates = DbContext.Database.SqlQuery(Of Database.Classes.ReachFreqDetail)("EXEC dbo.advsp_media_broadcast_loadreachfreq_details_other @MEDIA_BROADCAST_WORKSHEET_MARKET_ID, @START_YEAR_MONTH, @END_YEAR_MONTH, @USE_PRIMARY_DEMO, @VENDOR_FILTER, @EXACT_START_DATE, @EXACT_END_DATE",
                                       SqlParameterMarketWorksheetID, SqlParameterBroadcastStartYearMonth, SqlParameterBroadcastEndYearMonth, SqlParameterUsePrimaryDemo, SqlParameterVendorCodeList, SqlParameteExactStartDate, SqlParameteExactEndDate).ToList
 
         End Function

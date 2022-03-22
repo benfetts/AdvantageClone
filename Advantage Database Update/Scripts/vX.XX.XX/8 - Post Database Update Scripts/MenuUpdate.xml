@@ -1809,6 +1809,43 @@
                 <Applications>
                   <Application>Advantage</Application>
                 </Applications>
+                <Code>Desktop_ReportWriter_AdvancedReportWriterDataSets_BroadcastInvoiceDetailARWRPT</Code>
+                <Description>Broadcast Invoice Detail</Description>
+                <IsInactive>false</IsInactive>
+                <IsMenuItem>false</IsMenuItem>
+                <IsCategory>false</IsCategory>
+                <IsApplication>false</IsApplication>
+                <IsReport>true</IsReport>
+                <IsDesktopObject>false</IsDesktopObject>
+                <IsDashQuery>false</IsDashQuery>
+                <ImageName />
+                <HasCustomPermission>false</HasCustomPermission>
+                <WebvantageURL />
+                <WebvantageImagePathActive />
+                <WebvantageImagePath />
+                <ApplicationName />
+                <MenuName />
+                <ApplicationCode />
+                <CommandString />
+                <IconIndex>0</IconIndex>
+                <AllowMultipleInstances>0</AllowMultipleInstances>
+                <DesktopObjectName />
+                <DesktopObjectSize>0</DesktopObjectSize>
+                <ReportURL />
+                <ReportImagePathActive />
+                <ReportImagePath />
+                <ReportDescription />
+                <ReportPreviewLocation />
+                <ReportIsLocked>false</ReportIsLocked>
+                <WebvantageLargeImagePath />
+                <ReportLargeImagePath />
+                <ParentModuleCode>Desktop_ReportWriter_AdvancedReportWriterDataSets</ParentModuleCode>
+                <SubModules />
+              </MenuBuilder>
+              <MenuBuilder>
+                <Applications>
+                  <Application>Advantage</Application>
+                </Applications>
                 <Code>Desktop_ReportWriter_AdvancedReportWriterDataSets_BroadcastInvoiceSummaryARWRPT</Code>
                 <Description>Broadcast Invoice Summary</Description>
                 <IsInactive>false</IsInactive>
@@ -2586,6 +2623,43 @@
                 <Applications>
                   <Application>Advantage</Application>
                 </Applications>
+                <Code>Desktop_ReportWriter_AdvancedReportWriterDataSets_DeferredSalesVsOpenARARWRPT</Code>
+                <Description>Deferred Sales Vs Open AR</Description>
+                <IsInactive>false</IsInactive>
+                <IsMenuItem>false</IsMenuItem>
+                <IsCategory>false</IsCategory>
+                <IsApplication>false</IsApplication>
+                <IsReport>true</IsReport>
+                <IsDesktopObject>false</IsDesktopObject>
+                <IsDashQuery>false</IsDashQuery>
+                <ImageName />
+                <HasCustomPermission>false</HasCustomPermission>
+                <WebvantageURL />
+                <WebvantageImagePathActive />
+                <WebvantageImagePath />
+                <ApplicationName />
+                <MenuName />
+                <ApplicationCode />
+                <CommandString />
+                <IconIndex>0</IconIndex>
+                <AllowMultipleInstances>0</AllowMultipleInstances>
+                <DesktopObjectName />
+                <DesktopObjectSize>0</DesktopObjectSize>
+                <ReportURL />
+                <ReportImagePathActive />
+                <ReportImagePath />
+                <ReportDescription />
+                <ReportPreviewLocation />
+                <ReportIsLocked>false</ReportIsLocked>
+                <WebvantageLargeImagePath />
+                <ReportLargeImagePath />
+                <ParentModuleCode>Desktop_ReportWriter_AdvancedReportWriterDataSets</ParentModuleCode>
+                <SubModules />
+              </MenuBuilder>
+              <MenuBuilder>
+                <Applications>
+                  <Application>Advantage</Application>
+                </Applications>
                 <Code>Desktop_ReportWriter_AdvancedReportWriterDataSets_DigitalResultsComparisonARWRPT</Code>
                 <Description>Digital Results Comparison</Description>
                 <IsInactive>false</IsInactive>
@@ -3328,6 +3402,43 @@
                 </Applications>
                 <Code>Desktop_ReportWriter_AdvancedReportWriterDataSets_GLChartOfAccountsARWRPT</Code>
                 <Description>General Ledger Chart of Accounts</Description>
+                <IsInactive>false</IsInactive>
+                <IsMenuItem>false</IsMenuItem>
+                <IsCategory>false</IsCategory>
+                <IsApplication>false</IsApplication>
+                <IsReport>true</IsReport>
+                <IsDesktopObject>false</IsDesktopObject>
+                <IsDashQuery>false</IsDashQuery>
+                <ImageName />
+                <HasCustomPermission>false</HasCustomPermission>
+                <WebvantageURL />
+                <WebvantageImagePathActive />
+                <WebvantageImagePath />
+                <ApplicationName />
+                <MenuName />
+                <ApplicationCode />
+                <CommandString />
+                <IconIndex>0</IconIndex>
+                <AllowMultipleInstances>0</AllowMultipleInstances>
+                <DesktopObjectName />
+                <DesktopObjectSize>0</DesktopObjectSize>
+                <ReportURL />
+                <ReportImagePathActive />
+                <ReportImagePath />
+                <ReportDescription />
+                <ReportPreviewLocation />
+                <ReportIsLocked>false</ReportIsLocked>
+                <WebvantageLargeImagePath />
+                <ReportLargeImagePath />
+                <ParentModuleCode>Desktop_ReportWriter_AdvancedReportWriterDataSets</ParentModuleCode>
+                <SubModules />
+              </MenuBuilder>
+              <MenuBuilder>
+                <Applications>
+                  <Application>Advantage</Application>
+                </Applications>
+                <Code>Desktop_ReportWriter_AdvancedReportWriterDataSets_GLCrossOfficeARWRPT</Code>
+                <Description>General Ledger Cross Office</Description>
                 <IsInactive>false</IsInactive>
                 <IsMenuItem>false</IsMenuItem>
                 <IsCategory>false</IsCategory>
@@ -7452,6 +7563,44 @@
                   <Application>Advantage</Application>
                   <Application>Webvantage</Application>
                 </Applications>
+                <Code>Desktop_ReportWriter_DynamicReportDataSets_BroadcastInvoiceDetailDRPT</Code>
+                <Description>Broadcast Invoice Detail</Description>
+                <IsInactive>false</IsInactive>
+                <IsMenuItem>false</IsMenuItem>
+                <IsCategory>false</IsCategory>
+                <IsApplication>false</IsApplication>
+                <IsReport>true</IsReport>
+                <IsDesktopObject>false</IsDesktopObject>
+                <IsDashQuery>false</IsDashQuery>
+                <ImageName />
+                <HasCustomPermission>false</HasCustomPermission>
+                <WebvantageURL />
+                <WebvantageImagePathActive />
+                <WebvantageImagePath />
+                <ApplicationName />
+                <MenuName />
+                <ApplicationCode />
+                <CommandString />
+                <IconIndex>0</IconIndex>
+                <AllowMultipleInstances>0</AllowMultipleInstances>
+                <DesktopObjectName />
+                <DesktopObjectSize>0</DesktopObjectSize>
+                <ReportURL />
+                <ReportImagePathActive />
+                <ReportImagePath />
+                <ReportDescription />
+                <ReportPreviewLocation />
+                <ReportIsLocked>false</ReportIsLocked>
+                <WebvantageLargeImagePath />
+                <ReportLargeImagePath />
+                <ParentModuleCode>Desktop_ReportWriter_DynamicReportDataSets</ParentModuleCode>
+                <SubModules />
+              </MenuBuilder>
+              <MenuBuilder>
+                <Applications>
+                  <Application>Advantage</Application>
+                  <Application>Webvantage</Application>
+                </Applications>
                 <Code>Desktop_ReportWriter_DynamicReportDataSets_BroadcastInvoiceSummaryDRPT</Code>
                 <Description>Broadcast Invoice Summary</Description>
                 <IsInactive>false</IsInactive>
@@ -8246,6 +8395,44 @@
                   <Application>Advantage</Application>
                   <Application>Webvantage</Application>
                 </Applications>
+                <Code>Desktop_ReportWriter_DynamicReportDataSets_DeferredSalesVsOpenARDRPT</Code>
+                <Description>Deferred Sales Vs Open AR</Description>
+                <IsInactive>false</IsInactive>
+                <IsMenuItem>false</IsMenuItem>
+                <IsCategory>false</IsCategory>
+                <IsApplication>false</IsApplication>
+                <IsReport>true</IsReport>
+                <IsDesktopObject>false</IsDesktopObject>
+                <IsDashQuery>false</IsDashQuery>
+                <ImageName />
+                <HasCustomPermission>false</HasCustomPermission>
+                <WebvantageURL />
+                <WebvantageImagePathActive />
+                <WebvantageImagePath />
+                <ApplicationName />
+                <MenuName />
+                <ApplicationCode />
+                <CommandString />
+                <IconIndex>0</IconIndex>
+                <AllowMultipleInstances>0</AllowMultipleInstances>
+                <DesktopObjectName />
+                <DesktopObjectSize>0</DesktopObjectSize>
+                <ReportURL />
+                <ReportImagePathActive />
+                <ReportImagePath />
+                <ReportDescription />
+                <ReportPreviewLocation />
+                <ReportIsLocked>false</ReportIsLocked>
+                <WebvantageLargeImagePath />
+                <ReportLargeImagePath />
+                <ParentModuleCode>Desktop_ReportWriter_DynamicReportDataSets</ParentModuleCode>
+                <SubModules />
+              </MenuBuilder>
+              <MenuBuilder>
+                <Applications>
+                  <Application>Advantage</Application>
+                  <Application>Webvantage</Application>
+                </Applications>
                 <Code>Desktop_ReportWriter_DynamicReportDataSets_DigitalResultsComparisonDRPT</Code>
                 <Description>Digital Results Comparison</Description>
                 <IsInactive>false</IsInactive>
@@ -8932,6 +9119,44 @@
                 </Applications>
                 <Code>Desktop_ReportWriter_DynamicReportDataSets_GLChartOfAccountsDRPT</Code>
                 <Description>General Ledger Chart of Accounts</Description>
+                <IsInactive>false</IsInactive>
+                <IsMenuItem>false</IsMenuItem>
+                <IsCategory>false</IsCategory>
+                <IsApplication>false</IsApplication>
+                <IsReport>true</IsReport>
+                <IsDesktopObject>false</IsDesktopObject>
+                <IsDashQuery>false</IsDashQuery>
+                <ImageName />
+                <HasCustomPermission>false</HasCustomPermission>
+                <WebvantageURL />
+                <WebvantageImagePathActive />
+                <WebvantageImagePath />
+                <ApplicationName />
+                <MenuName />
+                <ApplicationCode />
+                <CommandString />
+                <IconIndex>0</IconIndex>
+                <AllowMultipleInstances>0</AllowMultipleInstances>
+                <DesktopObjectName />
+                <DesktopObjectSize>0</DesktopObjectSize>
+                <ReportURL />
+                <ReportImagePathActive />
+                <ReportImagePath />
+                <ReportDescription />
+                <ReportPreviewLocation />
+                <ReportIsLocked>false</ReportIsLocked>
+                <WebvantageLargeImagePath />
+                <ReportLargeImagePath />
+                <ParentModuleCode>Desktop_ReportWriter_DynamicReportDataSets</ParentModuleCode>
+                <SubModules />
+              </MenuBuilder>
+              <MenuBuilder>
+                <Applications>
+                  <Application>Advantage</Application>
+                  <Application>Webvantage</Application>
+                </Applications>
+                <Code>Desktop_ReportWriter_DynamicReportDataSets_GLCrossOfficeDRPT</Code>
+                <Description>General Ledger Cross Office</Description>
                 <IsInactive>false</IsInactive>
                 <IsMenuItem>false</IsMenuItem>
                 <IsCategory>false</IsCategory>
@@ -15793,6 +16018,42 @@
       </MenuBuilder>-->
       <MenuBuilder>
         <Applications>
+            <Application>Advantage</Application>
+        </Applications>
+        <Code>Media_ComscorePrecache</Code>
+        <Description>Comscore Pre-cache</Description>
+        <IsInactive>false</IsInactive>
+        <IsMenuItem>true</IsMenuItem>
+        <IsCategory>false</IsCategory>
+        <IsApplication>true</IsApplication>
+        <IsReport>false</IsReport>
+        <IsDesktopObject>false</IsDesktopObject>
+        <IsDashQuery>false</IsDashQuery>
+        <ImageName>MaintenanceImage.gif</ImageName>
+        <HasCustomPermission>true</HasCustomPermission>
+        <WebvantageURL />
+        <WebvantageImagePathActive />
+        <WebvantageImagePath />
+        <ApplicationName />
+        <MenuName />
+        <ApplicationCode />
+        <CommandString />
+        <IconIndex>0</IconIndex>
+        <AllowMultipleInstances>0</AllowMultipleInstances>
+        <DesktopObjectName />
+        <DesktopObjectSize>0</DesktopObjectSize>
+        <ReportURL />
+        <ReportImagePathActive />
+        <ReportImagePath />
+        <ReportDescription />
+        <ReportPreviewLocation />
+        <ReportIsLocked>false</ReportIsLocked>
+        <WebvantageLargeImagePath />
+        <ReportLargeImagePath />
+        <ParentModuleCode>Media</ParentModuleCode>
+      </MenuBuilder>
+      <MenuBuilder>
+        <Applications>
           <Application>Advantage</Application>
         </Applications>
         <Code>Media_DigitalCampaignManager</Code>
@@ -17013,6 +17274,43 @@
         <ReportLargeImagePath />
         <ParentModuleCode>Media</ParentModuleCode>
         <SubModules>
+            <MenuBuilder>
+                <Applications>
+                    <Application>Advantage</Application>
+                </Applications>
+                <Code>Media_Reports_BroadcastInvoiceRPT</Code>
+                <Description>Broadcast Invoice</Description>
+                <IsInactive>false</IsInactive>
+                <IsMenuItem>true</IsMenuItem>
+                <IsCategory>false</IsCategory>
+                <IsApplication>false</IsApplication>
+                <IsReport>true</IsReport>
+                <IsDesktopObject>false</IsDesktopObject>
+                <IsDashQuery>false</IsDashQuery>
+                <ImageName>PrintImage.gif</ImageName>
+                <HasCustomPermission>false</HasCustomPermission>
+                <WebvantageURL />
+                <WebvantageImagePathActive />
+                <WebvantageImagePath />
+                <ApplicationName />
+                <MenuName />
+                <ApplicationCode />
+                <CommandString />
+                <IconIndex>0</IconIndex>
+                <AllowMultipleInstances>0</AllowMultipleInstances>
+                <DesktopObjectName />
+                <DesktopObjectSize>0</DesktopObjectSize>
+                <ReportURL></ReportURL>
+                <ReportImagePathActive />
+                <ReportImagePath />
+                <ReportDescription />
+                <ReportPreviewLocation />
+                <ReportIsLocked>false</ReportIsLocked>
+                <WebvantageLargeImagePath />
+                <ReportLargeImagePath />
+                <ParentModuleCode>Media_Reports</ParentModuleCode>
+                <SubModules />
+            </MenuBuilder>
           <MenuBuilder>
             <Applications>
               <Application>Advantage</Application>
@@ -18689,6 +18987,43 @@
         <ParentModuleCode>FinanceAccounting</ParentModuleCode>
         <SubModules />
       </MenuBuilder>-->
+      <MenuBuilder>
+        <Applications>
+          <Application>Advantage</Application>
+        </Applications>
+        <Code>FinanceAccounting_PaymentManagerEnhanced</Code>
+        <Description>Payment Manager (Enhanced)</Description>
+        <IsInactive>false</IsInactive>
+        <IsMenuItem>true</IsMenuItem>
+        <IsCategory>false</IsCategory>
+        <IsApplication>true</IsApplication>
+        <IsReport>false</IsReport>
+        <IsDesktopObject>false</IsDesktopObject>
+        <IsDashQuery>false</IsDashQuery>
+        <ImageName>MediaDateToBillImage.gif</ImageName>
+        <HasCustomPermission>false</HasCustomPermission>
+        <WebvantageURL />
+        <WebvantageImagePathActive />
+        <WebvantageImagePath />
+        <ApplicationName />
+        <MenuName />
+        <ApplicationCode />
+        <CommandString />
+        <IconIndex>0</IconIndex>
+        <AllowMultipleInstances>0</AllowMultipleInstances>
+        <DesktopObjectName />
+        <DesktopObjectSize>0</DesktopObjectSize>
+        <ReportURL />
+        <ReportImagePathActive />
+        <ReportImagePath />
+        <ReportDescription />
+        <ReportPreviewLocation />
+        <ReportIsLocked>false</ReportIsLocked>
+        <WebvantageLargeImagePath />
+        <ReportLargeImagePath />
+        <ParentModuleCode>FinanceAccounting</ParentModuleCode>
+        <SubModules />
+      </MenuBuilder>
       <MenuBuilder>
         <Applications>
           <Application>Advantage</Application>

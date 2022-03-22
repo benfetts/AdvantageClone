@@ -1,6 +1,6 @@
 ﻿Namespace Media.Presentation
 
-	Public Class MediaBroadcastWorksheetMarketNielsenTVBooksDialog
+    Public Class MediaBroadcastWorksheetMarketNielsenTVBooksDialog
 
 #Region " Constants "
 
@@ -16,10 +16,10 @@
 
 #Region " Variables "
 
-		Protected _ViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketNielsenTVBooksViewModel = Nothing
-		Protected _Controller As AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController = Nothing
-		Protected _MediaBroadcastWorksheetID As Integer = 0
-		Protected _MediaBroadcastWorksheetMarketID As Integer = 0
+        Protected _ViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketNielsenTVBooksViewModel = Nothing
+        Protected _Controller As AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController = Nothing
+        Protected _MediaBroadcastWorksheetID As Integer = 0
+        Protected _MediaBroadcastWorksheetMarketID As Integer = 0
 
 #End Region
 
@@ -31,269 +31,282 @@
 
 #Region " Methods "
 
-		Private Sub New(MediaBroadcastWorksheetID As Integer, MediaBroadcastWorksheetMarketID As Integer)
+        Private Sub New(MediaBroadcastWorksheetID As Integer, MediaBroadcastWorksheetMarketID As Integer)
 
-			' This call is required by the designer.
-			InitializeComponent()
+            ' This call is required by the designer.
+            InitializeComponent()
 
-			_MediaBroadcastWorksheetID = MediaBroadcastWorksheetID
-			_MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
+            _MediaBroadcastWorksheetID = MediaBroadcastWorksheetID
+            _MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
 
-		End Sub
-		Private Sub LoadViewModel()
+        End Sub
+        Private Sub LoadViewModel()
 
-			_ViewModel = _Controller.MarketNielsenTVBooks_Load(_MediaBroadcastWorksheetID, _MediaBroadcastWorksheetMarketID)
+            _ViewModel = _Controller.MarketNielsenTVBooks_Load(_MediaBroadcastWorksheetID, _MediaBroadcastWorksheetMarketID)
 
-		End Sub
-		Private Sub LoadGrid()
+        End Sub
+        Private Sub LoadGrid()
 
-			DataGridViewForm_NielsenTVBooks.DataSource = _ViewModel.WorksheetNielsenTVBooks
+            DataGridViewForm_NielsenTVBooks.DataSource = _ViewModel.WorksheetNielsenTVBooks
 
-		End Sub
-		Private Sub FormatGrid()
+        End Sub
+        Private Sub FormatGrid()
 
-			'objects
-			Dim GridColumn As DevExpress.XtraGrid.Columns.GridColumn = Nothing
+            'objects
+            Dim GridColumn As DevExpress.XtraGrid.Columns.GridColumn = Nothing
 
-			For Each GridColumn In DataGridViewForm_NielsenTVBooks.CurrentView.Columns.OfType(Of DevExpress.XtraGrid.Columns.GridColumn)
+            For Each GridColumn In DataGridViewForm_NielsenTVBooks.CurrentView.Columns.OfType(Of DevExpress.XtraGrid.Columns.GridColumn)
 
-				If GridColumn.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.NielsenTVBook.Properties.Selected.ToString Then
+                If GridColumn.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.NielsenTVBook.Properties.Selected.ToString Then
 
-					GridColumn.OptionsColumn.AllowEdit = True
+                    GridColumn.OptionsColumn.AllowEdit = True
 
-				Else
+                Else
 
-					GridColumn.OptionsColumn.AllowEdit = False
+                    GridColumn.OptionsColumn.AllowEdit = False
 
-					If GridColumn.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.NielsenTVBook.Properties.NielsenTVBookID.ToString Then
+                    If GridColumn.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.NielsenTVBook.Properties.NielsenTVBookID.ToString Then
 
-						GridColumn.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.DisplayText
+                        GridColumn.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.DisplayText
 
-					End If
+                    End If
 
-				End If
+                End If
 
-			Next
+            Next
 
-		End Sub
-		Private Sub RefreshViewModel(LoadGrid As Boolean)
+        End Sub
+        Private Sub RefreshViewModel(LoadGrid As Boolean)
 
-			If LoadGrid Then
+            If LoadGrid Then
 
-				DataGridViewForm_NielsenTVBooks.CurrentView.RefreshData()
+                DataGridViewForm_NielsenTVBooks.CurrentView.RefreshData()
 
-			End If
+            End If
 
-			ButtonItemActions_Add.Enabled = _ViewModel.AddEnabled
-			ButtonItemActions_Delete.Enabled = _ViewModel.DeleteEnabled
+            ButtonItemActions_Add.Enabled = _ViewModel.AddEnabled
+            ButtonItemActions_Delete.Enabled = _ViewModel.DeleteEnabled
 
-		End Sub
-		Private Sub SetControlPropertySettings()
+        End Sub
+        Private Sub SetControlPropertySettings()
 
-			DataGridViewForm_NielsenTVBooks.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-			DataGridViewForm_NielsenTVBooks.OptionsBehavior.Editable = True
+            DataGridViewForm_NielsenTVBooks.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            DataGridViewForm_NielsenTVBooks.OptionsBehavior.Editable = True
 
-			DataGridViewForm_NielsenTVBooks.OptionsDetail.EnableMasterViewMode = False
-			DataGridViewForm_NielsenTVBooks.OptionsSelection.MultiSelect = True
+            DataGridViewForm_NielsenTVBooks.OptionsDetail.EnableMasterViewMode = False
+            DataGridViewForm_NielsenTVBooks.OptionsSelection.MultiSelect = True
 
-			DataGridViewForm_NielsenTVBooks.ShowSelectDeselectAllButtons = True
-			DataGridViewForm_NielsenTVBooks.OptionsFilter.AllowFilterEditor = True
-			DataGridViewForm_NielsenTVBooks.OptionsFind.AlwaysVisible = True
+            DataGridViewForm_NielsenTVBooks.ShowSelectDeselectAllButtons = True
+            DataGridViewForm_NielsenTVBooks.OptionsFilter.AllowFilterEditor = True
+            DataGridViewForm_NielsenTVBooks.OptionsFind.AlwaysVisible = True
 
-			Me.ByPassUserEntryChanged = True
-			Me.ShowUnsavedChangesOnFormClosing = False
+            Me.ByPassUserEntryChanged = True
+            Me.ShowUnsavedChangesOnFormClosing = False
 
-		End Sub
+        End Sub
 
 #Region "  Show Form Methods "
 
-		Public Shared Function ShowFormDialog(MediaBroadcastWorksheetID As Integer, MediaBroadcastWorksheetMarketID As Integer) As System.Windows.Forms.DialogResult
+        Public Shared Function ShowFormDialog(MediaBroadcastWorksheetID As Integer, MediaBroadcastWorksheetMarketID As Integer) As System.Windows.Forms.DialogResult
 
-			'objects
-			Dim MediaBroadcastWorksheetMarketNielsenTVBooksDialog As MediaBroadcastWorksheetMarketNielsenTVBooksDialog = Nothing
+            'objects
+            Dim MediaBroadcastWorksheetMarketNielsenTVBooksDialog As MediaBroadcastWorksheetMarketNielsenTVBooksDialog = Nothing
 
-			MediaBroadcastWorksheetMarketNielsenTVBooksDialog = New MediaBroadcastWorksheetMarketNielsenTVBooksDialog(MediaBroadcastWorksheetID, MediaBroadcastWorksheetMarketID)
+            MediaBroadcastWorksheetMarketNielsenTVBooksDialog = New MediaBroadcastWorksheetMarketNielsenTVBooksDialog(MediaBroadcastWorksheetID, MediaBroadcastWorksheetMarketID)
 
-			ShowFormDialog = MediaBroadcastWorksheetMarketNielsenTVBooksDialog.ShowDialog()
+            ShowFormDialog = MediaBroadcastWorksheetMarketNielsenTVBooksDialog.ShowDialog()
 
-		End Function
+        End Function
 
 #End Region
 
 #Region "  Form Event Handlers "
 
-		Private Sub MediaBroadcastWorksheetMarketNielsenTVBooksDialog_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Private Sub MediaBroadcastWorksheetMarketNielsenTVBooksDialog_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-			ButtonItemActions_Add.Image = AdvantageFramework.My.Resources.AddImage
-			ButtonItemActions_Delete.Image = AdvantageFramework.My.Resources.DeleteImage
+            ButtonItemActions_Add.Image = AdvantageFramework.My.Resources.AddImage
+            ButtonItemActions_Delete.Image = AdvantageFramework.My.Resources.DeleteImage
 
-			_Controller = New AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController(Me.Session)
+            _Controller = New AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController(Me.Session)
 
-			SetControlPropertySettings()
+            SetControlPropertySettings()
 
-		End Sub
-		Private Sub MediaBroadcastWorksheetMarketNielsenTVBooksDialog_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
+        End Sub
+        Private Sub MediaBroadcastWorksheetMarketNielsenTVBooksDialog_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
 
-			Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Loading)
+            Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Loading)
 
-			LoadViewModel()
+            LoadViewModel()
 
-			LoadGrid()
+            LoadGrid()
 
-			FormatGrid()
+            FormatGrid()
 
-			RefreshViewModel(False)
+            RefreshViewModel(False)
 
-			RibbonBarFilePanel_Actions.ResetCachedContentSize()
+            RibbonBarFilePanel_Actions.ResetCachedContentSize()
 
-			RibbonBarFilePanel_Actions.Refresh()
+            RibbonBarFilePanel_Actions.Refresh()
 
-			RibbonBarFilePanel_Actions.Width = RibbonBarFilePanel_Actions.GetAutoSizeWidth
+            RibbonBarFilePanel_Actions.Width = RibbonBarFilePanel_Actions.GetAutoSizeWidth
 
-			RibbonBarFilePanel_Actions.Refresh()
+            RibbonBarFilePanel_Actions.Refresh()
 
-			Me.Text = _ViewModel.WorksheetMarket.MarketDescription & " Book Selection"
+            Me.Text = _ViewModel.WorksheetMarket.MarketDescription & " Book Selection"
 
-			Me.ClearChanged()
+            Me.ClearChanged()
 
-			DataGridViewForm_NielsenTVBooks.CurrentView.BestFitColumns()
+            DataGridViewForm_NielsenTVBooks.CurrentView.BestFitColumns()
 
-			Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.None
+            Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.None
 
-			Me.CloseWaitForm()
+            Me.CloseWaitForm()
 
-		End Sub
+        End Sub
 
 #End Region
 
 #Region "  Control Event Handlers "
 
-		Private Sub ButtonItemActions_Add_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonItemActions_Add.Click
+        Private Sub ButtonItemActions_Add_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonItemActions_Add.Click
 
-			'objects
-			Dim ErrorMessage As String = String.Empty
+            'objects
+            Dim ErrorMessage As String = String.Empty
 
-			If DataGridViewForm_NielsenTVBooks.HasASelectedRow Then
+            If DataGridViewForm_NielsenTVBooks.HasASelectedRow Then
 
-				DataGridViewForm_NielsenTVBooks.CurrentView.CloseEditorForUpdating()
+                DataGridViewForm_NielsenTVBooks.CurrentView.CloseEditorForUpdating()
 
-				Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Adding)
+                Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Adding)
 
-				_Controller.MarketNielsenTVBooks_Add(_ViewModel)
+                _Controller.MarketNielsenTVBooks_Add(_ViewModel)
 
-				RefreshViewModel(True)
+                RefreshViewModel(True)
 
-				Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
+                Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
 
-			End If
+            End If
 
-		End Sub
-		Private Sub ButtonItemActions_Delete_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonItemActions_Delete.Click
+        End Sub
+        Private Sub ButtonItemActions_Delete_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonItemActions_Delete.Click
 
-			'objects
-			Dim ErrorMessage As String = String.Empty
+            'objects
+            Dim ErrorMessage As String = String.Empty
 
-			If DataGridViewForm_NielsenTVBooks.HasASelectedRow Then
+            If DataGridViewForm_NielsenTVBooks.HasASelectedRow Then
 
-				DataGridViewForm_NielsenTVBooks.CurrentView.CloseEditorForUpdating()
+                DataGridViewForm_NielsenTVBooks.CurrentView.CloseEditorForUpdating()
 
-				'If AdvantageFramework.WinForm.MessageBox.Show("Are you sure you want to delete?", AdvantageFramework.WinForm.MessageBox.MessageBoxButtons.YesNo) = AdvantageFramework.WinForm.MessageBox.DialogResults.Yes Then
+                'If AdvantageFramework.WinForm.MessageBox.Show("Are you sure you want to delete?", AdvantageFramework.WinForm.MessageBox.MessageBoxButtons.YesNo) = AdvantageFramework.WinForm.MessageBox.DialogResults.Yes Then
 
-				Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Deleting)
+                Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Deleting)
 
-				_Controller.MarketNielsenTVBooks_Delete(_ViewModel)
+                _Controller.MarketNielsenTVBooks_Delete(_ViewModel)
 
-				RefreshViewModel(True)
+                RefreshViewModel(True)
 
-				Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
+                Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
 
-				'End If
+                'End If
 
-			End If
+            End If
 
-		End Sub
-		Private Sub ButtonItemSystem_Close_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonItemSystem_Close.Click
+        End Sub
+        Private Sub ButtonItemSystem_Close_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonItemSystem_Close.Click
 
-			Me.DialogResult = Windows.Forms.DialogResult.OK
-			Me.Close()
+            Me.DialogResult = Windows.Forms.DialogResult.OK
+            Me.Close()
 
-		End Sub
-		Private Sub DataGridViewForm_NielsenTVBooks_SelectionChangedEvent(sender As Object, e As EventArgs) Handles DataGridViewForm_NielsenTVBooks.SelectionChangedEvent
+        End Sub
+        Private Sub DataGridViewForm_NielsenTVBooks_SelectionChangedEvent(sender As Object, e As EventArgs) Handles DataGridViewForm_NielsenTVBooks.SelectionChangedEvent
 
-			_Controller.MarketNielsenTVBooks_NielsenTVBookSelectionChanged(_ViewModel, DataGridViewForm_NielsenTVBooks.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.NielsenTVBook).ToList)
+            _Controller.MarketNielsenTVBooks_NielsenTVBookSelectionChanged(_ViewModel, DataGridViewForm_NielsenTVBooks.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.NielsenTVBook).ToList)
 
-			RefreshViewModel(False)
+            RefreshViewModel(False)
 
-		End Sub
-		Private Sub DataGridViewForm_NielsenTVBooks_ShowingEditorEvent(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles DataGridViewForm_NielsenTVBooks.ShowingEditorEvent
+        End Sub
+        Private Sub DataGridViewForm_NielsenTVBooks_ShowingEditorEvent(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles DataGridViewForm_NielsenTVBooks.ShowingEditorEvent
 
-			If DataGridViewForm_NielsenTVBooks.HasMultipleSelectedRows Then
+            If DataGridViewForm_NielsenTVBooks.HasMultipleSelectedRows Then
 
-				e.Cancel = True
+                e.Cancel = True
 
-			End If
+            End If
 
-		End Sub
-		Private Sub DataGridViewForm_NielsenTVBooks_ColumnEditValueChangingEvent(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs) Handles DataGridViewForm_NielsenTVBooks.ColumnEditValueChangingEvent
+        End Sub
+        Private Sub DataGridViewForm_NielsenTVBooks_ColumnEditValueChangingEvent(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs) Handles DataGridViewForm_NielsenTVBooks.ColumnEditValueChangingEvent
 
-			If Me.FormShown AndAlso Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.None AndAlso DataGridViewForm_NielsenTVBooks.HasMultipleSelectedRows = False Then
+            If Me.FormShown AndAlso Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.None AndAlso DataGridViewForm_NielsenTVBooks.HasMultipleSelectedRows = False Then
 
-				If e.NewValue = True Then
+                If e.NewValue = True Then
 
-					Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Adding)
+                    Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Adding)
 
-					_Controller.MarketNielsenTVBooks_Add(_ViewModel)
+                    _Controller.MarketNielsenTVBooks_Add(_ViewModel)
 
-					RefreshViewModel(True)
+                    RefreshViewModel(True)
 
-					Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
+                    Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
 
-				Else
+                Else
 
-					'If AdvantageFramework.WinForm.MessageBox.Show("Are you sure you want to delete?", AdvantageFramework.WinForm.MessageBox.MessageBoxButtons.YesNo) = AdvantageFramework.WinForm.MessageBox.DialogResults.Yes Then
+                    'If AdvantageFramework.WinForm.MessageBox.Show("Are you sure you want to delete?", AdvantageFramework.WinForm.MessageBox.MessageBoxButtons.YesNo) = AdvantageFramework.WinForm.MessageBox.DialogResults.Yes Then
 
-					Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Deleting)
+                    Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Deleting)
 
-					_Controller.MarketNielsenTVBooks_Delete(_ViewModel)
+                    _Controller.MarketNielsenTVBooks_Delete(_ViewModel)
 
-					RefreshViewModel(True)
+                    RefreshViewModel(True)
 
-					Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
+                    Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
 
-					'Else
+                    'Else
 
-					'	e.Cancel = True
+                    '	e.Cancel = True
 
-					'End If
+                    'End If
 
-				End If
+                End If
 
-			End If
+            End If
 
-		End Sub
-		Private Sub DataGridViewForm_NielsenTVBooks_RepositoryDataSourceLoadingEvent(FieldName As String, ByRef Datasource As Object) Handles DataGridViewForm_NielsenTVBooks.RepositoryDataSourceLoadingEvent
+        End Sub
+        Private Sub DataGridViewForm_NielsenTVBooks_RepositoryDataSourceLoadingEvent(FieldName As String, ByRef Datasource As Object) Handles DataGridViewForm_NielsenTVBooks.RepositoryDataSourceLoadingEvent
 
-			If FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.NielsenTVBook.Properties.NielsenTVBookID.ToString Then
+            If FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.NielsenTVBook.Properties.NielsenTVBookID.ToString Then
 
-				Datasource = _ViewModel.NielsenTVBooks.ToList
+                Datasource = _ViewModel.NielsenTVBooks.ToList
 
-			End If
+            End If
 
-		End Sub
-		Private Sub DataGridViewForm_NielsenTVBooks_CustomColumnDisplayTextEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs) Handles DataGridViewForm_NielsenTVBooks.CustomColumnDisplayTextEvent
+        End Sub
+        Private Sub DataGridViewForm_NielsenTVBooks_CustomColumnDisplayTextEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs) Handles DataGridViewForm_NielsenTVBooks.CustomColumnDisplayTextEvent
 
-			If e.Column.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.NielsenTVBook.Properties.Month.ToString Then
+            If e.Column.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.NielsenTVBook.Properties.Month.ToString Then
 
-				e.DisplayText = MonthName(e.Value, True)
+                e.DisplayText = MonthName(e.Value, True)
 
-			End If
+            End If
 
-		End Sub
+        End Sub
+        Public Sub DeselectAll() Handles DataGridViewForm_NielsenTVBooks.DeselectAllEvent
 
+            _ViewModel.WorksheetNielsenTVBooks.ForEach(Sub(Entity) Entity.Selected = False)
+
+            RefreshViewModel(True)
+
+        End Sub
+        Public Sub SelectAll() Handles DataGridViewForm_NielsenTVBooks.SelectAllEvent
+
+            _ViewModel.WorksheetNielsenTVBooks.ForEach(Sub(Entity) Entity.Selected = True)
+
+            RefreshViewModel(True)
+
+        End Sub
 #End Region
 
 #End Region
 
-	End Class
+    End Class
 
 End Namespace

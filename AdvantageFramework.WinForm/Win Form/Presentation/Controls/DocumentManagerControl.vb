@@ -3,6 +3,8 @@
     Public Class DocumentManagerControl
 
         Public Event SelectedDocumentChanged()
+        Public Event DrapDropEvent(sender As Object, e As Windows.Forms.DragEventArgs)
+        Public Event DragOverEvent(sender As Object, e As Windows.Forms.DragEventArgs)
 
 #Region " Constants "
 
@@ -97,6 +99,11 @@
                 End If
 
             End Get
+        End Property
+        Public WriteOnly Property AllowDropDocuments As Boolean
+            Set(value As Boolean)
+                Me.DataGridViewForm_Documents.AllowDrop = value
+            End Set
         End Property
 
 #End Region
@@ -812,41 +819,6 @@
             End Try
 
         End Function
-        Private Function GetDefaultDescription() As String
-
-            Dim Description As String = ""
-            Dim AccountPayable As AdvantageFramework.Database.Entities.AccountPayable = Nothing
-            Dim AccountPayableID As Integer = 0
-
-            If _DocumentLevelSettings IsNot Nothing AndAlso _DocumentLevelSettings.Count > 0 Then
-
-                Using DbContext As New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
-
-                    Select Case _DocumentLevel
-
-                        Case Database.Entities.DocumentLevel.AccountPayableInvoice
-
-                            AccountPayableID = If(IsNumeric(_DocumentLevelSettings.FirstOrDefault.AccountPayableID), _DocumentLevelSettings.FirstOrDefault.AccountPayableID, 0)
-
-                            AccountPayable = (From Entity In AdvantageFramework.Database.Procedures.AccountPayable.Load(DbContext)
-                                              Where Entity.ID = AccountPayableID
-                                              Select Entity).OrderByDescending(Function(Entity) Entity.SequenceNumber).FirstOrDefault
-
-                            If AccountPayable IsNot Nothing Then
-
-                                Description = AccountPayable.VendorCode & " - " & AccountPayable.Vendor.Name & ", " & AccountPayable.InvoiceNumber & " - Inv #: " & AccountPayable.InvoiceDescription & " - " & AccountPayable.InvoiceDate.ToShortDateString
-
-                            End If
-
-                    End Select
-
-                End Using
-
-            End If
-
-            GetDefaultDescription = Description
-
-        End Function
         Private Function GetDocumentLevelSetting() As AdvantageFramework.Database.Classes.DocumentLevelSetting
 
             'objects
@@ -1273,9 +1245,9 @@
 
 				If DefaultDescription = "" AndAlso _DocumentLevel = Database.Entities.DocumentLevel.AccountPayableInvoice Then
 
-					DefaultDescription = GetDefaultDescription()
+                    DefaultDescription = AdvantageFramework.Desktop.Presentation.GetDefaultDocumentDescription(_Session, _DocumentLevelSettings, _DocumentLevel)
 
-				End If
+                End If
 
 				If AdvantageFramework.Desktop.Presentation.DocumentUploadDialog.ShowFormDialog(_DocumentLevel, _DocumentLevelSettings.FirstOrDefault, _DocumentSubLevel, DefaultDescription) = Windows.Forms.DialogResult.OK Then
 
@@ -1299,9 +1271,9 @@
 
 				If DefaultDescription = "" AndAlso _DocumentLevel = Database.Entities.DocumentLevel.AccountPayableInvoice Then
 
-					DefaultDescription = GetDefaultDescription()
+                    DefaultDescription = AdvantageFramework.Desktop.Presentation.GetDefaultDocumentDescription(_Session, _DocumentLevelSettings, _DocumentLevel)
 
-				End If
+                End If
 
 				If AdvantageFramework.WinForm.Presentation.SendASPUploadEmail(_Session, _DocumentLevel, _DocumentSubLevel, _DocumentLevelSettings.FirstOrDefault) Then
 
@@ -1328,9 +1300,9 @@
 
 				If DefaultDescription = "" AndAlso DocumentLevel = Database.Entities.DocumentLevel.AccountPayableInvoice Then
 
-					DefaultDescription = GetDefaultDescription()
+                    DefaultDescription = AdvantageFramework.Desktop.Presentation.GetDefaultDocumentDescription(_Session, _DocumentLevelSettings, _DocumentLevel)
 
-				End If
+                End If
 
 				_DocumentLevel = DocumentLevel
 
@@ -1361,9 +1333,9 @@
 
 				If DefaultDescription = "" AndAlso DocumentLevel = Database.Entities.DocumentLevel.AccountPayableInvoice Then
 
-					DefaultDescription = GetDefaultDescription()
+                    DefaultDescription = AdvantageFramework.Desktop.Presentation.GetDefaultDocumentDescription(_Session, _DocumentLevelSettings, _DocumentLevel)
 
-				End If
+                End If
 
 				_DocumentLevel = DocumentLevel
 
@@ -1761,6 +1733,16 @@
                 End If
 
             End If
+
+        End Sub
+        Private Sub DataGridViewForm_Documents_DragDrop(sender As Object, e As Windows.Forms.DragEventArgs) Handles DataGridViewForm_Documents.DragDrop
+
+            RaiseEvent DrapDropEvent(sender, e)
+
+        End Sub
+        Private Sub DataGridViewForm_Documents_DragOver(sender As Object, e As Windows.Forms.DragEventArgs) Handles DataGridViewForm_Documents.DragOver
+
+            RaiseEvent DragOverEvent(sender, e)
 
         End Sub
 

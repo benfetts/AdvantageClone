@@ -1,3 +1,4 @@
+Option Strict On
 Imports System.Data
 Imports System.Data.SqlClient
 Imports Webvantage.cGlobals
@@ -103,7 +104,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("ESTIMATE_NUMBER")) = False Then
-                        CurrEstNum = DtRealData.Rows(i)("ESTIMATE_NUMBER")
+                        CurrEstNum = CInt(DtRealData.Rows(i)("ESTIMATE_NUMBER"))
                     Else
                         CurrEstNum = -1
                     End If
@@ -113,7 +114,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_COMPONENT_NBR")) = False Then
-                        CurrEstCompNum = DtRealData.Rows(i)("EST_COMPONENT_NBR")
+                        CurrEstCompNum = CInt(DtRealData.Rows(i)("EST_COMPONENT_NBR"))
                     Else
                         CurrEstCompNum = -1
                     End If
@@ -123,7 +124,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_QUOTE_NBR")) = False Then
-                        CurrQuoteNum = DtRealData.Rows(i)("EST_QUOTE_NBR")
+                        CurrQuoteNum = CInt(DtRealData.Rows(i)("EST_QUOTE_NBR"))
                     Else
                         CurrQuoteNum = -1
                     End If
@@ -133,7 +134,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_QUOTE_DESC")) = False Then
-                        CurrEstQuoteDesc = DtRealData.Rows(i)("EST_QUOTE_DESC")
+                        CurrEstQuoteDesc = CStr(DtRealData.Rows(i)("EST_QUOTE_DESC"))
                     Else
                         CurrEstQuoteDesc = ""
                     End If
@@ -143,7 +144,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_REV_NBR")) = False Then
-                        CurrEstRevNum = DtRealData.Rows(i)("EST_REV_NBR")
+                        CurrEstRevNum = CInt(DtRealData.Rows(i)("EST_REV_NBR"))
                     Else
                         CurrEstRevNum = -1
                     End If
@@ -153,7 +154,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("SEQ_NBR")) = False Then
-                        CurrSeqNbr = DtRealData.Rows(i)("SEQ_NBR")
+                        CurrSeqNbr = CInt(DtRealData.Rows(i)("SEQ_NBR"))
                     Else
                         CurrSeqNbr = -1
                     End If
@@ -163,7 +164,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("FNC_CODE")) = False Then
-                        CurrFncCode = DtRealData.Rows(i)("FNC_CODE")
+                        CurrFncCode = CStr(DtRealData.Rows(i)("FNC_CODE"))
                     Else
                         CurrFncCode = ""
                     End If
@@ -173,7 +174,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("FNC_DESCRIPTION")) = False Then
-                        CurrFncDesc = DtRealData.Rows(i)("FNC_DESCRIPTION")
+                        CurrFncDesc = CStr(DtRealData.Rows(i)("FNC_DESCRIPTION"))
                     Else
                         CurrFncDesc = ""
                     End If
@@ -183,7 +184,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_FNC_COMMENT")) = False Then
-                        CurrEstFncComment = DtRealData.Rows(i)("EST_FNC_COMMENT")
+                        CurrEstFncComment = CStr(DtRealData.Rows(i)("EST_FNC_COMMENT"))
                     Else
                         CurrEstFncComment = ""
                     End If
@@ -193,7 +194,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_REV_SUP_BY_CDE")) = False Then
-                        CurrEstRevSupByCode = DtRealData.Rows(i)("EST_REV_SUP_BY_CDE")
+                        CurrEstRevSupByCode = CStr(DtRealData.Rows(i)("EST_REV_SUP_BY_CDE"))
                     Else
                         CurrEstRevSupByCode = ""
                     End If
@@ -203,7 +204,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_REV_SUP_BY_NTE")) = False Then
-                        CurrEstRevSupByNote = DtRealData.Rows(i)("EST_REV_SUP_BY_NTE")
+                        CurrEstRevSupByNote = CStr(DtRealData.Rows(i)("EST_REV_SUP_BY_NTE"))
                     Else
                         CurrEstRevSupByNote = ""
                     End If
@@ -213,7 +214,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_REV_QUANTITY")) = False Then
-                        CurrEstRevQty = DtRealData.Rows(i)("EST_REV_QUANTITY")
+                        CurrEstRevQty = CDec(DtRealData.Rows(i)("EST_REV_QUANTITY"))
                     Else
                         CurrEstRevQty = CType(0.0, Decimal)
                     End If
@@ -223,7 +224,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_REV_RATE")) = False Then
-                        CurrEstRevRate = DtRealData.Rows(i)("EST_REV_RATE")
+                        CurrEstRevRate = CDec(DtRealData.Rows(i)("EST_REV_RATE"))
                     Else
                         CurrEstRevRate = CType(0.0, Decimal)
                     End If
@@ -233,7 +234,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_REV_EXT_AMT")) = False Then
-                        CurrEstRevExtAmt = DtRealData.Rows(i)("EST_REV_EXT_AMT")
+                        CurrEstRevExtAmt = CDec(DtRealData.Rows(i)("EST_REV_EXT_AMT"))
                     Else
                         CurrEstRevExtAmt = CType(0.0, Decimal)
                     End If
@@ -243,7 +244,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX_CODE")) = False Then
-                        CurrTaxCode = DtRealData.Rows(i)("TAX_CODE")
+                        CurrTaxCode = CStr(DtRealData.Rows(i)("TAX_CODE"))
                     Else
                         CurrTaxCode = ""
                     End If
@@ -253,7 +254,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_REV_COMM_PCT")) = False Then
-                        CurrEstRevCommPct = DtRealData.Rows(i)("EST_REV_COMM_PCT")
+                        CurrEstRevCommPct = CDec(DtRealData.Rows(i)("EST_REV_COMM_PCT"))
                     Else
                         CurrEstRevCommPct = CType(0.0, Decimal)
                     End If
@@ -263,7 +264,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_MARKUP_AMT")) = False Then
-                        CurrExtMarkupAmt = DtRealData.Rows(i)("EXT_MARKUP_AMT")
+                        CurrExtMarkupAmt = CDec(DtRealData.Rows(i)("EXT_MARKUP_AMT"))
                     Else
                         CurrExtMarkupAmt = CType(0.0, Decimal)
                     End If
@@ -273,7 +274,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("LINE_TOTAL")) = False Then
-                        CurrLineTotal = DtRealData.Rows(i)("LINE_TOTAL")
+                        CurrLineTotal = CDec(DtRealData.Rows(i)("LINE_TOTAL"))
                     Else
                         CurrLineTotal = CType(0.0, Decimal)
                     End If
@@ -283,7 +284,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_REV_CONT_PCT")) = False Then
-                        CurrEstRevContPct = DtRealData.Rows(i)("EST_REV_CONT_PCT")
+                        CurrEstRevContPct = CDec(DtRealData.Rows(i)("EST_REV_CONT_PCT"))
                     Else
                         CurrEstRevContPct = CType(0.0, Decimal)
                     End If
@@ -293,7 +294,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_CONTINGENCY")) = False Then
-                        CurrExtContingency = DtRealData.Rows(i)("EXT_CONTINGENCY")
+                        CurrExtContingency = CDec(DtRealData.Rows(i)("EXT_CONTINGENCY"))
                     Else
                         CurrExtContingency = CType(0.0, Decimal)
                     End If
@@ -303,7 +304,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("INCL_CPU")) = False Then
-                        CurrInclCPU = DtRealData.Rows(i)("INCL_CPU")
+                        CurrInclCPU = CInt(DtRealData.Rows(i)("INCL_CPU"))
                     Else
                         CurrInclCPU = -1
                     End If
@@ -313,7 +314,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX_STATE_PCT")) = False Then
-                        CurrTaxStatePct = DtRealData.Rows(i)("TAX_STATE_PCT")
+                        CurrTaxStatePct = CDec(DtRealData.Rows(i)("TAX_STATE_PCT"))
                     Else
                         CurrTaxStatePct = CType(0.0, Decimal)
                     End If
@@ -323,7 +324,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX_COUNTY_PCT")) = False Then
-                        CurrTaxCountyPct = DtRealData.Rows(i)("TAX_COUNTY_PCT")
+                        CurrTaxCountyPct = CDec(DtRealData.Rows(i)("TAX_COUNTY_PCT"))
                     Else
                         CurrTaxCountyPct = CType(0.0, Decimal)
                     End If
@@ -333,7 +334,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX_CITY_PCT")) = False Then
-                        CurrTaxCityPct = DtRealData.Rows(i)("TAX_CITY_PCT")
+                        CurrTaxCityPct = CDec(DtRealData.Rows(i)("TAX_CITY_PCT"))
                     Else
                         CurrTaxCityPct = CType(0.0, Decimal)
                     End If
@@ -343,7 +344,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX_COMM")) = False Then
-                        CurrTaxComm = DtRealData.Rows(i)("TAX_COMM")
+                        CurrTaxComm = CInt(DtRealData.Rows(i)("TAX_COMM"))
                     Else
                         CurrTaxComm = -1
                     End If
@@ -353,7 +354,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX_COMM_ONLY")) = False Then
-                        CurrTaxCommOnly = DtRealData.Rows(i)("TAX_COMM_ONLY")
+                        CurrTaxCommOnly = CInt(DtRealData.Rows(i)("TAX_COMM_ONLY"))
                     Else
                         CurrTaxCommOnly = -1
                     End If
@@ -363,7 +364,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX_RESALE")) = False Then
-                        CurrTaxResale = DtRealData.Rows(i)("TAX_RESALE")
+                        CurrTaxResale = CInt(DtRealData.Rows(i)("TAX_RESALE"))
                     Else
                         CurrTaxResale = -1
                     End If
@@ -373,7 +374,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_NONRESALE_TAX")) = False Then
-                        CurrExtNonResaleTax = DtRealData.Rows(i)("EXT_NONRESALE_TAX")
+                        CurrExtNonResaleTax = CDec(DtRealData.Rows(i)("EXT_NONRESALE_TAX"))
                     Else
                         CurrExtNonResaleTax = CType(0.0, Decimal)
                     End If
@@ -383,7 +384,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_STATE_RESALE")) = False Then
-                        CurrExtStateResale = DtRealData.Rows(i)("EXT_STATE_RESALE")
+                        CurrExtStateResale = CDec(DtRealData.Rows(i)("EXT_STATE_RESALE"))
                     Else
                         CurrExtStateResale = CType(0.0, Decimal)
                     End If
@@ -393,7 +394,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_COUNTY_RESALE")) = False Then
-                        CurrExtCountyResale = DtRealData.Rows(i)("EXT_COUNTY_RESALE")
+                        CurrExtCountyResale = CDec(DtRealData.Rows(i)("EXT_COUNTY_RESALE"))
                     Else
                         CurrExtCountyResale = CType(0.0, Decimal)
                     End If
@@ -403,7 +404,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_CITY_RESALE")) = False Then
-                        CurrExtCityResale = DtRealData.Rows(i)("EXT_CITY_RESALE")
+                        CurrExtCityResale = CDec(DtRealData.Rows(i)("EXT_CITY_RESALE"))
                     Else
                         CurrExtCityResale = CType(0.0, Decimal)
                     End If
@@ -413,7 +414,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_MU_CONT")) = False Then
-                        CurrExtMuCont = DtRealData.Rows(i)("EXT_MU_CONT")
+                        CurrExtMuCont = CDec(DtRealData.Rows(i)("EXT_MU_CONT"))
                     Else
                         CurrExtMuCont = CType(0.0, Decimal)
                     End If
@@ -423,7 +424,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_STATE_CONT")) = False Then
-                        CurrExtStateCont = DtRealData.Rows(i)("EXT_STATE_CONT")
+                        CurrExtStateCont = CDec(DtRealData.Rows(i)("EXT_STATE_CONT"))
                     Else
                         CurrExtStateCont = CType(0.0, Decimal)
                     End If
@@ -433,7 +434,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_COUNTY_CONT")) = False Then
-                        CurrExtCountyCont = DtRealData.Rows(i)("EXT_COUNTY_CONT")
+                        CurrExtCountyCont = CDec(DtRealData.Rows(i)("EXT_COUNTY_CONT"))
                     Else
                         CurrExtCountyCont = CType(0.0, Decimal)
                     End If
@@ -443,7 +444,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_CITY_CONT")) = False Then
-                        CurrExtCityCont = DtRealData.Rows(i)("EXT_CITY_CONT")
+                        CurrExtCityCont = CDec(DtRealData.Rows(i)("EXT_CITY_CONT"))
                     Else
                         CurrExtCityCont = CType(0.0, Decimal)
                     End If
@@ -453,7 +454,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EXT_NR_CONT")) = False Then
-                        CurrExtNrCont = DtRealData.Rows(i)("EXT_NR_CONT")
+                        CurrExtNrCont = CDec(DtRealData.Rows(i)("EXT_NR_CONT"))
                     Else
                         CurrExtNrCont = CType(0.0, Decimal)
                     End If
@@ -463,7 +464,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("LINE_TOTAL_CONT")) = False Then
-                        CurrLineTotalCont = DtRealData.Rows(i)("LINE_TOTAL_CONT")
+                        CurrLineTotalCont = CDec(DtRealData.Rows(i)("LINE_TOTAL_CONT"))
                     Else
                         CurrLineTotalCont = CType(0.0, Decimal)
                     End If
@@ -473,7 +474,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_CPM_FLAG")) = False Then
-                        CurrEstCPMFlag = DtRealData.Rows(i)("EST_CPM_FLAG")
+                        CurrEstCPMFlag = CInt(DtRealData.Rows(i)("EST_CPM_FLAG"))
                     Else
                         CurrEstCPMFlag = -1
                     End If
@@ -483,7 +484,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_FNC_TYPE")) = False Then
-                        CurrEstFncType = DtRealData.Rows(i)("EST_FNC_TYPE")
+                        CurrEstFncType = CStr(DtRealData.Rows(i)("EST_FNC_TYPE"))
                     Else
                         CurrEstFncType = ""
                     End If
@@ -493,7 +494,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_COMM_FLAG")) = False Then
-                        CurrEstCommFlag = DtRealData.Rows(i)("EST_COMM_FLAG")
+                        CurrEstCommFlag = CInt(DtRealData.Rows(i)("EST_COMM_FLAG"))
                     Else
                         CurrEstCommFlag = -1
                     End If
@@ -503,7 +504,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_TAX_FLAG")) = False Then
-                        CurrEstTaxFlag = DtRealData.Rows(i)("EST_TAX_FLAG")
+                        CurrEstTaxFlag = CInt(DtRealData.Rows(i)("EST_TAX_FLAG"))
                     Else
                         CurrEstTaxFlag = -1
                     End If
@@ -513,7 +514,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_NONBILL_FLAG")) = False Then
-                        CurrEstNonbillFlag = DtRealData.Rows(i)("EST_NONBILL_FLAG")
+                        CurrEstNonbillFlag = CInt(DtRealData.Rows(i)("EST_NONBILL_FLAG"))
                     Else
                         CurrEstNonbillFlag = -1
                     End If
@@ -523,7 +524,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("FEE_TIME")) = False Then
-                        CurrFeeTime = DtRealData.Rows(i)("FEE_TIME")
+                        CurrFeeTime = CInt(DtRealData.Rows(i)("FEE_TIME"))
                     Else
                         CurrFeeTime = -1
                     End If
@@ -533,7 +534,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EMPLOYEE_TITLE_ID")) = False Then
-                        CurrEmployeeTitleId = DtRealData.Rows(i)("EMPLOYEE_TITLE_ID")
+                        CurrEmployeeTitleId = CInt(DtRealData.Rows(i)("EMPLOYEE_TITLE_ID"))
                     Else
                         CurrEmployeeTitleId = -1
                     End If
@@ -543,7 +544,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("FNC_TYPE")) = False Then
-                        CurrFncType = DtRealData.Rows(i)("FNC_TYPE")
+                        CurrFncType = CStr(DtRealData.Rows(i)("FNC_TYPE"))
                     Else
                         CurrFncType = ""
                     End If
@@ -553,7 +554,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_PHASE_ID")) = False Then
-                        CurrEstPhaseId = DtRealData.Rows(i)("EST_PHASE_ID")
+                        CurrEstPhaseId = CInt(DtRealData.Rows(i)("EST_PHASE_ID"))
                     Else
                         CurrEstPhaseId = -1
                     End If
@@ -563,7 +564,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_PHASE_DESC")) = False Then
-                        CurrEstPhaseDesc = DtRealData.Rows(i)("EST_PHASE_DESC")
+                        CurrEstPhaseDesc = CStr(DtRealData.Rows(i)("EST_PHASE_DESC"))
                     Else
                         CurrEstPhaseDesc = ""
                     End If
@@ -573,7 +574,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("FNC_HEADING_ID")) = False Then
-                        CurrFncHeadingId = DtRealData.Rows(i)("FNC_HEADING_ID")
+                        CurrFncHeadingId = CInt(DtRealData.Rows(i)("FNC_HEADING_ID"))
                     Else
                         CurrFncHeadingId = -1
                     End If
@@ -583,7 +584,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("FNC_HEADING_DESC")) = False Then
-                        CurrFncHeadingDesc = DtRealData.Rows(i)("FNC_HEADING_DESC")
+                        CurrFncHeadingDesc = CStr(DtRealData.Rows(i)("FNC_HEADING_DESC"))
                     Else
                         CurrFncHeadingDesc = ""
                     End If
@@ -593,7 +594,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("FNC_HEADING_SEQ")) = False Then
-                        CurrFncHeadingSeq = DtRealData.Rows(i)("FNC_HEADING_SEQ")
+                        CurrFncHeadingSeq = CInt(DtRealData.Rows(i)("FNC_HEADING_SEQ"))
                     Else
                         CurrFncHeadingSeq = -1
                     End If
@@ -603,7 +604,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("FNC_CONSOLIDATION")) = False Then
-                        CurrFncConsolidation = DtRealData.Rows(i)("FNC_CONSOLIDATION")
+                        CurrFncConsolidation = CStr(DtRealData.Rows(i)("FNC_CONSOLIDATION"))
                     Else
                         CurrFncConsolidation = ""
                     End If
@@ -613,7 +614,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("FNC_CONSOL_DESC")) = False Then
-                        CurrFncConsolidationDesc = DtRealData.Rows(i)("FNC_CONSOL_DESC")
+                        CurrFncConsolidationDesc = CStr(DtRealData.Rows(i)("FNC_CONSOL_DESC"))
                     Else
                         CurrFncConsolidationDesc = ""
                     End If
@@ -623,7 +624,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX_STATE_PERCENT")) = False Then
-                        CurrDfltTaxStatePct = DtRealData.Rows(i)("TAX_STATE_PERCENT")
+                        CurrDfltTaxStatePct = CDec(DtRealData.Rows(i)("TAX_STATE_PERCENT"))
                     Else
                         CurrDfltTaxStatePct = CType(0.0, Decimal)
                     End If
@@ -633,7 +634,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX_COUNTY_PERCENT")) = False Then
-                        CurrDfltTaxCountyPct = DtRealData.Rows(i)("TAX_COUNTY_PERCENT")
+                        CurrDfltTaxCountyPct = CDec(DtRealData.Rows(i)("TAX_COUNTY_PERCENT"))
                     Else
                         CurrDfltTaxCountyPct = CType(0.0, Decimal)
                     End If
@@ -643,7 +644,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX_CITY_PERCENT")) = False Then
-                        CurrDfltTaxCityPct = DtRealData.Rows(i)("TAX_CITY_PERCENT")
+                        CurrDfltTaxCityPct = CDec(DtRealData.Rows(i)("TAX_CITY_PERCENT"))
                     Else
                         CurrDfltTaxCityPct = CType(0.0, Decimal)
                     End If
@@ -653,7 +654,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EMP_TITLE")) = False Then
-                        CurrEmpTitle = DtRealData.Rows(i)("EMP_TITLE")
+                        CurrEmpTitle = CStr(DtRealData.Rows(i)("EMP_TITLE"))
                     Else
                         CurrEmpTitle = ""
                     End If
@@ -663,7 +664,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("QUOTE_W_CONTINGENCY")) = False Then
-                        CurrQuotewithCont = DtRealData.Rows(i)("QUOTE_W_CONTINGENCY")
+                        CurrQuotewithCont = CDec(DtRealData.Rows(i)("QUOTE_W_CONTINGENCY"))
                     Else
                         CurrQuotewithCont = CType(0.0, Decimal)
                     End If
@@ -673,7 +674,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("TAX")) = False Then
-                        CurrTax = DtRealData.Rows(i)("TAX")
+                        CurrTax = CDec(DtRealData.Rows(i)("TAX"))
                     Else
                         CurrTax = CType(0.0, Decimal)
                     End If
@@ -683,7 +684,7 @@ Imports Webvantage.MiscFN
 
                 Try
                     If IsDBNull(DtRealData.Rows(i)("EST_REV_EXT_MU_AMT")) = False Then
-                        CurrEstRevExtmarkupAmt = DtRealData.Rows(i)("EST_REV_EXT_MU_AMT")
+                        CurrEstRevExtmarkupAmt = CDec(DtRealData.Rows(i)("EST_REV_EXT_MU_AMT"))
                     Else
                         CurrEstRevExtmarkupAmt = CType(0.0, Decimal)
                     End If
@@ -1108,7 +1109,7 @@ Imports Webvantage.MiscFN
     Public Function InsertNewFunction(ByVal EstNum As Integer, ByVal EstCompNum As Integer,
                                    ByVal QuoteNum As Integer, ByVal EstRevNum As Integer,
                                    ByVal FncCode As String, ByVal UserID As String, ByVal EmpCode As String, ByVal FncComment As String,
-                                   ByVal SupComment As String, Optional ByVal QtyHrs As Decimal = 0.0, Optional ByVal EventGenId As Integer = 0, Optional ByVal NumOccurences As Integer = 0,
+                                   ByVal SupComment As String, Optional ByVal QtyHrs As Decimal = 0, Optional ByVal EventGenId As Integer = 0, Optional ByVal NumOccurences As Integer = 0,
                                    Optional ByVal blendedrate As String = "") As String
 
         If EstNum > 0 And EstCompNum > 0 Then
@@ -1189,7 +1190,7 @@ Imports Webvantage.MiscFN
 
             Dim i As String
             Try
-                i = oSQL.ExecuteNonQuery(mConnString, CommandType.StoredProcedure, "usp_wv_ESTIMATE_REV_DET_INSERT_DFLT", arParams)
+                i = CStr(oSQL.ExecuteNonQuery(mConnString, CommandType.StoredProcedure, "usp_wv_ESTIMATE_REV_DET_INSERT_DFLT", arParams))
                 Return i.ToString()
             Catch ex As Exception
                 Return ex.Message.ToString
@@ -1225,7 +1226,7 @@ Imports Webvantage.MiscFN
         Return ds
     End Function
 
-    Public Function GetEstimateQuotesDT(ByVal estnum As Integer, ByVal estcompnum As Integer)
+    Public Function GetEstimateQuotesDT(ByVal estnum As Integer, ByVal estcompnum As Integer) As DataTable
         Dim dt As DataTable
         Dim arParams(2) As SqlParameter
 
@@ -1278,7 +1279,7 @@ Imports Webvantage.MiscFN
     End Function
 
 
-    Public Function GetEstimateQuoteDetailsCopy(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer, ByVal revnum As Integer)
+    Public Function GetEstimateQuoteDetailsCopy(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer, ByVal revnum As Integer) As Boolean
         Dim ds As DataSet
         Dim arParams(4) As SqlParameter
 
@@ -1309,7 +1310,7 @@ Imports Webvantage.MiscFN
 
     End Function
 
-    Public Function GetEstimateQuoteFunctionCopy(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer, ByVal revnum As Integer, ByVal seqnum As Integer)
+    Public Function GetEstimateQuoteFunctionCopy(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer, ByVal revnum As Integer, ByVal seqnum As Integer) As Boolean
         Dim ds As DataSet
         Dim arParams(5) As SqlParameter
 
@@ -1343,7 +1344,7 @@ Imports Webvantage.MiscFN
 
     End Function
 
-    Public Function GetEstimateQuoteDetailsDS(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer, ByVal revnum As Integer)
+    Public Function GetEstimateQuoteDetailsDS(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer, ByVal revnum As Integer) As DataSet
         Dim ds As DataSet
         Dim arParams(4) As SqlParameter
 
@@ -1373,7 +1374,7 @@ Imports Webvantage.MiscFN
 
     End Function
 
-    Public Function GetEstimateQuoteSummary(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer, ByVal revnum As Integer, ByVal phase As String, ByVal display As String)
+    Public Function GetEstimateQuoteSummary(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer, ByVal revnum As Integer, ByVal phase As String, ByVal display As String) As DataSet
         Dim ds As DataSet
 
         'Get the real data
@@ -1407,7 +1408,7 @@ Imports Webvantage.MiscFN
 
     End Function
 
-    Public Function GetEstimateQuoteDetailsAlert(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer, ByVal revnum As Integer)
+    Public Function GetEstimateQuoteDetailsAlert(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer, ByVal revnum As Integer) As DataSet
         Dim ds As DataSet
         Dim arParams(4) As SqlParameter
 
@@ -1437,7 +1438,7 @@ Imports Webvantage.MiscFN
 
     End Function
 
-    Public Function GetEstimateQuoteDetailsAll(ByVal estnum As Integer, ByVal estcompnum As Integer)
+    Public Function GetEstimateQuoteDetailsAll(ByVal estnum As Integer, ByVal estcompnum As Integer) As DataSet
         Dim ds As DataSet
         Dim arParams(2) As SqlParameter
 
@@ -1493,7 +1494,7 @@ Imports Webvantage.MiscFN
 
     End Function
 
-    Public Function GetEstimateQuoteRevisions(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer)
+    Public Function GetEstimateQuoteRevisions(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer) As SqlDataReader
         Dim dr As SqlDataReader
         Dim arParams(3) As SqlParameter
 
@@ -1519,7 +1520,7 @@ Imports Webvantage.MiscFN
         Return dr
     End Function
 
-    Public Function GetEstimateQuoteMax(ByVal estnum As Integer, ByVal estcompnum As Integer)
+    Public Function GetEstimateQuoteMax(ByVal estnum As Integer, ByVal estcompnum As Integer) As Integer
         Dim dr As SqlDataReader
         Dim arParams(2) As SqlParameter
         Dim max As Integer = 0
@@ -1533,7 +1534,7 @@ Imports Webvantage.MiscFN
         arParams(1) = parameterEstCompNumber
 
         Try
-            max = oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_Quote_GetMaxQuote", arParams)
+            max = CInt(oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_Quote_GetMaxQuote", arParams))
         Catch ex As Exception
             Err.Raise(Err.Number, "Class:cEstimating Routine:GetEstimateQuoteMax", Err.Description)
         Finally
@@ -1543,7 +1544,7 @@ Imports Webvantage.MiscFN
         Return max
     End Function
 
-    Public Function GetEstimateQuoteMaxRevision(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer)
+    Public Function GetEstimateQuoteMaxRevision(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer) As Integer
         Dim dr As SqlDataReader
         Dim arParams(3) As SqlParameter
         Dim max As Integer = 0
@@ -1560,7 +1561,7 @@ Imports Webvantage.MiscFN
         arParams(2) = parameterQuoteNumber
 
         Try
-            max = oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_Quote_GetMaxRevision", arParams)
+            max = CInt(oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_Quote_GetMaxRevision", arParams))
         Catch ex As Exception
             Err.Raise(Err.Number, "Class:cEstimating Routine:GetEstimateQuoteRevision", Err.Description)
         Finally
@@ -1573,7 +1574,7 @@ Imports Webvantage.MiscFN
     Public Function AddNewQuote(ByVal EstNbr As Integer,
                                    ByVal EstCompNbr As Integer,
                                    ByVal QuoteNbr As Integer,
-                                   ByVal EstRevNbr As Integer)
+                                   ByVal EstRevNbr As Integer) As Boolean
         Try
             Dim arParams(4) As SqlParameter
 
@@ -1620,7 +1621,7 @@ Imports Webvantage.MiscFN
                                    ByVal UserID As String,
                                    ByVal BlendedRate As String,
                                    ByVal QuoteCommentHtml As String,
-                                   ByVal RevisionCommentHtml As String)
+                                   ByVal RevisionCommentHtml As String) As Boolean
         Try
             Dim arParams(17) As SqlParameter
 
@@ -1735,7 +1736,7 @@ Imports Webvantage.MiscFN
                                    ByVal DetailComment As String,
                                    ByVal SuppliedByComment As String,
                                    ByVal DetailCommentHtml As String,
-                                   ByVal SuppliedByCommentHtml As String)
+                                   ByVal SuppliedByCommentHtml As String) As Boolean
         Try
             Dim arParams(8) As SqlParameter
 
@@ -2002,7 +2003,7 @@ Imports Webvantage.MiscFN
     End Function
 
     Public Function DeleteQuoteApproval(ByVal EstNbr As Integer,
-                                   ByVal EstCompNbr As Integer)
+                                   ByVal EstCompNbr As Integer) As Boolean
         Try
             Dim arParams(2) As SqlParameter
 
@@ -2026,7 +2027,7 @@ Imports Webvantage.MiscFN
     End Function
 
     Public Function DeleteQuoteApprovalInternal(ByVal EstNbr As Integer,
-                                   ByVal EstCompNbr As Integer)
+                                   ByVal EstCompNbr As Integer) As Boolean
         Try
             Dim arParams(2) As SqlParameter
 
@@ -2052,7 +2053,7 @@ Imports Webvantage.MiscFN
     Public Function GetQuoteApproval(ByVal EstNbr As Integer,
                                    ByVal EstCompNbr As Integer,
                                    ByVal QuoteNbr As Integer,
-                                   ByVal EstRevNbr As Integer)
+                                   ByVal EstRevNbr As Integer) As SqlDataReader
         Try
             Dim dr As SqlDataReader
             Dim arParams(4) As SqlParameter
@@ -2088,7 +2089,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstCompNbr As Integer,
                                    ByVal QuoteNbr As Integer,
                                    ByVal EstRevNbr As Integer,
-                                   ByVal ApprovalType As String)
+                                   ByVal ApprovalType As String) As SqlDataReader
         Try
             Dim dr As SqlDataReader
             Dim arParams(5) As SqlParameter
@@ -2128,7 +2129,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstCompNbr As Integer,
                                    ByVal QuoteNbr As Integer,
                                    ByVal EstRevNbr As Integer,
-                                   ByVal ApprovalType As String)
+                                   ByVal ApprovalType As String) As SqlDataReader
         Try
             Dim dr As SqlDataReader
             Dim arParams(5) As SqlParameter
@@ -2166,7 +2167,7 @@ Imports Webvantage.MiscFN
 
     Public Function GetApprovals(ByVal EstNbr As Integer,
                                    ByVal EstCompNbr As Integer,
-                                   ByVal ApprovalType As String)
+                                   ByVal ApprovalType As String) As SqlDataReader
         Try
             Dim dr As SqlDataReader
             Dim arParams(3) As SqlParameter
@@ -2196,7 +2197,7 @@ Imports Webvantage.MiscFN
 
     Public Function GetApprovalByQuote(ByVal EstNbr As Integer,
                                    ByVal EstCompNbr As Integer,
-                                   ByVal EstQuoteNbr As Integer)
+                                   ByVal EstQuoteNbr As Integer) As SqlDataReader
         Try
             Dim dr As SqlDataReader
             Dim arParams(3) As SqlParameter
@@ -2228,7 +2229,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstCompNbr As Integer,
                                    ByVal EstQuoteNbr As Integer,
                                    ByVal EstRevNbr As Integer,
-                                   ByVal ApprovalType As String)
+                                   ByVal ApprovalType As String) As SqlDataReader
         Try
             Dim dr As SqlDataReader
             Dim arParams(5) As SqlParameter
@@ -2266,7 +2267,7 @@ Imports Webvantage.MiscFN
 
     Public Function GetInternalApprovals(ByVal EstNbr As Integer,
                                    ByVal EstCompNbr As Integer,
-                                   ByVal ApprovalType As String)
+                                   ByVal ApprovalType As String) As SqlDataReader
         Try
             Dim dr As SqlDataReader
             Dim arParams(3) As SqlParameter
@@ -2296,7 +2297,7 @@ Imports Webvantage.MiscFN
 
     Public Function GetInternalApprovalByQuote(ByVal EstNbr As Integer,
                                    ByVal EstCompNbr As Integer,
-                                   ByVal EstQuoteNbr As Integer)
+                                   ByVal EstQuoteNbr As Integer) As SqlDataReader
         Try
             Dim dr As SqlDataReader
             Dim arParams(3) As SqlParameter
@@ -2328,7 +2329,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstCompNbr As Integer,
                                    ByVal EstQuoteNbr As Integer,
                                    ByVal EstRevNbr As Integer,
-                                   ByVal ApprovalType As String)
+                                   ByVal ApprovalType As String) As SqlDataReader
         Try
             Dim dr As SqlDataReader
             Dim arParams(5) As SqlParameter
@@ -2371,7 +2372,7 @@ Imports Webvantage.MiscFN
                                    ByVal SpecVer As Integer,
                                    ByVal SpecRev As Integer,
                                    ByVal SpecQtySeqNbr As Integer,
-                                   ByVal JobQty As Integer)
+                                   ByVal JobQty As Integer) As Boolean
         Try
             Dim arParams(8) As SqlParameter
 
@@ -2442,7 +2443,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function GetEstimateJobSpecs(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal jobnum As Integer, ByVal jobcompnum As Integer)
+    Public Function GetEstimateJobSpecs(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal jobnum As Integer, ByVal jobcompnum As Integer) As SqlDataReader
         Dim dr As SqlDataReader
         Dim arParams(4) As SqlParameter
 
@@ -2471,7 +2472,7 @@ Imports Webvantage.MiscFN
         Return dr
     End Function
 
-    Public Function GetEstimatePhases(ByVal estnum As Integer, ByVal estcompnum As Integer)
+    Public Function GetEstimatePhases(ByVal estnum As Integer, ByVal estcompnum As Integer) As DataSet
         Dim ds As DataSet
         Dim arParams(2) As SqlParameter
 
@@ -2494,7 +2495,7 @@ Imports Webvantage.MiscFN
         Return ds
     End Function
 
-    Public Function GetEstimatePhaseDesc(ByVal estnum As Integer, ByVal estcompnum As Integer)
+    Public Function GetEstimatePhaseDesc(ByVal estnum As Integer, ByVal estcompnum As Integer) As DataSet
         Dim ds As DataSet
         Dim arParams(2) As SqlParameter
 
@@ -2523,7 +2524,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstRevNbr As Integer,
                                    ByVal SeqNbr As String,
                                    ByVal EstPhaseID As Integer,
-                                   ByVal EstPhaseDesc As String)
+                                   ByVal EstPhaseDesc As String) As Boolean
         Try
             Dim arParams(7) As SqlParameter
 
@@ -2566,7 +2567,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function GetEstimateQuoteSpecs(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer)
+    Public Function GetEstimateQuoteSpecs(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal quotenum As Integer) As DataTable
         Dim dt As DataTable
         Dim arParams(4) As SqlParameter
 
@@ -2595,7 +2596,7 @@ Imports Webvantage.MiscFN
         Return dt
     End Function
 
-    Public Function GetEstimateImportSpecs(ByVal estnum As Integer, ByVal estcompnum As Integer)
+    Public Function GetEstimateImportSpecs(ByVal estnum As Integer, ByVal estcompnum As Integer) As DataTable
         Dim dt As DataTable
         Dim arParams(2) As SqlParameter
 
@@ -2618,7 +2619,7 @@ Imports Webvantage.MiscFN
         Return dt
     End Function
 
-    Public Function GetEstimateImportSpecsJC(ByVal jobnum As Integer, ByVal jobcompnum As Integer)
+    Public Function GetEstimateImportSpecsJC(ByVal jobnum As Integer, ByVal jobcompnum As Integer) As DataTable
         Dim dt As DataTable
         Dim arParams(2) As SqlParameter
 
@@ -2744,7 +2745,7 @@ Imports Webvantage.MiscFN
         arParams(2) = parameterProductCode
 
         Try
-            i = oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_GetEstBillRateFlag", arParams)
+            i = CInt(oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_GetEstBillRateFlag", arParams))
             Return i
         Catch
             Return 0
@@ -2759,7 +2760,7 @@ Imports Webvantage.MiscFN
                                    ByVal CopyFromEstNbr As Integer,
                                    ByVal CopyFromEstCompNbr As Integer,
                                    ByVal CopyFromQuoteNbr As Integer,
-                                   ByVal CopyFromRevisionNumber As Integer)
+                                   ByVal CopyFromRevisionNumber As Integer) As Boolean
         Try
             Dim arParams(8) As SqlParameter
 
@@ -2878,7 +2879,7 @@ Imports Webvantage.MiscFN
 
             Dim i As Integer = 0
 
-            i = oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_CountHeaderComponents", arParams)
+            i = CInt(oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_CountHeaderComponents", arParams))
 
             Return i
 
@@ -2901,7 +2902,7 @@ Imports Webvantage.MiscFN
 
             Dim i As Integer = 0
 
-            i = oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_CountCompQuotes", arParams)
+            i = CInt(oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_CountCompQuotes", arParams))
 
             Return i
 
@@ -2955,7 +2956,7 @@ Imports Webvantage.MiscFN
                                    ByVal JobNum As Integer,
                                    ByVal JobCompNum As Integer,
                                    ByVal CDPContact As String,
-                                   ByVal CampaignID As Integer)
+                                   ByVal CampaignID As Integer) As String
         Try
             Dim arParams(14) As SqlParameter
 
@@ -3029,7 +3030,7 @@ Imports Webvantage.MiscFN
 
             Try
                 oSQL.ExecuteNonQuery(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_AddNew_AddEstimate", arParams)
-                Return EST.Value
+                Return CStr(EST.Value)
             Catch ex As Exception
                 Return ex.Message.ToString
             End Try
@@ -3040,7 +3041,7 @@ Imports Webvantage.MiscFN
 
     Public Function AddNewEstimateComponent(ByVal EstNbr As Integer,
                                             ByVal CDPContact As String,
-                                            ByVal EstCompDesc As String)
+                                            ByVal EstCompDesc As String) As String
         Try
             Dim arParams(4) As SqlParameter
 
@@ -3066,7 +3067,7 @@ Imports Webvantage.MiscFN
 
             Try
                 oSQL.ExecuteNonQuery(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_AddNew_AddEstimateComponent", arParams)
-                Return EST.Value
+                Return CStr(EST.Value)
             Catch ex As Exception
                 Return ex.Message.ToString
             End Try
@@ -3461,7 +3462,7 @@ Imports Webvantage.MiscFN
 
             Dim i As String
             Try
-                i = oSQL.ExecuteNonQuery(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_AddNew_AddFunction", arParams)
+                i = CStr(oSQL.ExecuteNonQuery(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_AddNew_AddFunction", arParams))
                 Return ""
             Catch ex As Exception
                 Return ex.Message.ToString
@@ -3607,7 +3608,7 @@ Imports Webvantage.MiscFN
     End Function
 
     Public Function JobComponentCount(ByVal EstNum As String) As Integer
-        Dim SessionKey As String = "JobComponentCount" & EstNum.PadLeft(6, "0")
+        Dim SessionKey As String = "JobComponentCount" & EstNum.PadLeft(6, CChar("0"))
         Dim ReturnInteger As Integer = 0
         If HttpContext.Current.Session(SessionKey) Is Nothing Then
             Dim arparams(1) As SqlParameter
@@ -3639,7 +3640,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function CheckJobNumberEstimateDR(ByVal strEstNum As String)
+    Public Function CheckJobNumberEstimateDR(ByVal strEstNum As String) As SqlDataReader
 
         Dim dr As SqlDataReader
         Dim arparams(2) As SqlParameter
@@ -3658,7 +3659,7 @@ Imports Webvantage.MiscFN
 
     End Function
 
-    Public Function GetEstimateNumJob(ByVal strJobNum As String)
+    Public Function GetEstimateNumJob(ByVal strJobNum As String) As SqlDataReader
 
         Dim dr As SqlDataReader
         Dim arparams(2) As SqlParameter
@@ -3704,7 +3705,7 @@ Imports Webvantage.MiscFN
 
     End Function
 
-    Public Function GetEstJob(ByVal JobNum As Integer, ByVal JobCompNum As Integer)
+    Public Function GetEstJob(ByVal JobNum As Integer, ByVal JobCompNum As Integer) As SqlDataReader
         Try
             Dim arParams(2) As SqlParameter
 
@@ -3745,7 +3746,7 @@ Imports Webvantage.MiscFN
         arParams(3) = parameterProductCode
 
         Try
-            i = oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_getContactCodeID", arParams)
+            i = CInt(oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_getContactCodeID", arParams))
             Return i
         Catch
             Return 0
@@ -3972,7 +3973,7 @@ Imports Webvantage.MiscFN
                                    ByVal CmpSummary As Integer,
                                    ByVal VendorDesc As Integer,
                                    ByVal ExclNonbillable As Integer,
-                                   Optional ByRef ErrorMessage As String = "")
+                                   Optional ByRef ErrorMessage As String = "") As Boolean
         Try
             Dim arParams(50) As SqlParameter
 
@@ -4243,7 +4244,7 @@ Imports Webvantage.MiscFN
                                    ByVal CmpSummary As Integer,
                                    ByVal VendorDesc As Integer,
                                    ByVal ExclNonbillable As Integer,
-                                   Optional ByRef ErrorMessage As String = "")
+                                   Optional ByRef ErrorMessage As String = "") As Boolean
         Try
             Dim arParams(50) As SqlParameter
 
@@ -4464,7 +4465,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function GetPrintDef(ByVal UserID As String)
+    Public Function GetPrintDef(ByVal UserID As String) As SqlDataReader
         Try
             Dim dr As SqlDataReader
             Dim arParams(1) As SqlParameter
@@ -4484,7 +4485,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function GetPrintDefDT(ByVal UserID As String)
+    Public Function GetPrintDefDT(ByVal UserID As String) As DataTable
         Try
             Dim dt As DataTable
             Dim arParams(1) As SqlParameter
@@ -4504,7 +4505,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetails(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String)
+    Public Function getPrintDetails(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String) As DataTable
         Try
             'Get the real data
             Dim arParams(3) As SqlParameter
@@ -4536,7 +4537,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsDS(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String)
+    Public Function getPrintDetailsDS(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String) As DataSet
         Try
             'Get the real data
             Dim arParams(3) As SqlParameter
@@ -4568,7 +4569,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsCombined(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal groupby As String)
+    Public Function getPrintDetailsCombined(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal groupby As String) As DataTable
         Try
             'Get the real data
             Dim arParams(5) As SqlParameter
@@ -4605,7 +4606,7 @@ Imports Webvantage.MiscFN
 
 
 
-    Public Function getPrintDetailsFH(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String)
+    Public Function getPrintDetailsFH(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String) As DataTable
         Try
             'Get the real data
             Dim arParams(3) As SqlParameter
@@ -4637,7 +4638,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetails002(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal reporttype As Integer)
+    Public Function getPrintDetails002(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal reporttype As Integer) As DataTable
         Try
             'Get the real data
             Dim arParams(5) As SqlParameter
@@ -4669,7 +4670,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetails002Combined(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal reporttype As Integer)
+    Public Function getPrintDetails002Combined(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal reporttype As Integer) As DataTable
         Try
             'Get the real data
             Dim arParams(6) As SqlParameter
@@ -4704,7 +4705,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetails003(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal reporttype As Integer)
+    Public Function getPrintDetails003(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal reporttype As Integer) As DataTable
         Try
             'Get the real data
             Dim arParams(5) As SqlParameter
@@ -4736,7 +4737,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetails003Combined(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal reporttype As Integer)
+    Public Function getPrintDetails003Combined(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal reporttype As Integer) As DataTable
         Try
             'Get the real data
             Dim arParams(6) As SqlParameter
@@ -4777,7 +4778,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstRevNbr As Integer,
                                    ByVal FncCode As String,
                                    ByVal EstRate As Decimal,
-                                   ByVal UserID As String)
+                                   ByVal UserID As String) As DataTable
         Try
             Dim dt As DataTable
             Dim arParams(8) As SqlParameter
@@ -4821,7 +4822,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetails003DS(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal reporttype As Integer)
+    Public Function getPrintDetails003DS(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal reporttype As Integer) As DataSet
         Try
             'Get the real data
             Dim arParams(5) As SqlParameter
@@ -4856,7 +4857,7 @@ Imports Webvantage.MiscFN
     Public Function getCommentsCombined(ByVal EstNbr As Integer,
                                         ByVal QteNbr As Integer,
                                         ByVal FncCode As String,
-                                        ByVal UserID As String)
+                                        ByVal UserID As String) As DataTable
         Try
             Dim dt As DataTable
             Dim arParams(4) As SqlParameter
@@ -4892,7 +4893,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstCompNbr As Integer,
                                    ByVal QuoteNbr As Integer,
                                    ByVal EstRevNbr As Integer,
-                                   ByVal FncHeadingId As Integer)
+                                   ByVal FncHeadingId As Integer) As DataTable
         Try
             Dim dt As DataTable
             Dim arParams(6) As SqlParameter
@@ -4928,7 +4929,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsSS1(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String)
+    Public Function getPrintDetailsSS1(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String) As DataTable
         Try
             'Get the real data
             Dim arParams(4) As SqlParameter
@@ -4963,7 +4964,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsSS2(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String)
+    Public Function getPrintDetailsSS2(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String) As DataTable
         Try
             'Get the real data
             Dim arParams(3) As SqlParameter
@@ -4995,7 +4996,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsQuarry(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String)
+    Public Function getPrintDetailsQuarry(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String) As DataTable
         Try
             'Get the real data
             Dim arParams(4) As SqlParameter
@@ -5030,7 +5031,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsTap(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal rptType As String)
+    Public Function getPrintDetailsTap(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal rptType As String) As DataSet
         Try
             'Get the real data
             Dim arParams(5) As SqlParameter
@@ -5068,7 +5069,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsTotals(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String)
+    Public Function getPrintDetailsTotals(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String) As DataTable
         Try
             'Get the real data
             Dim arParams(4) As SqlParameter
@@ -5103,7 +5104,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsTotalsQuarry(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal rptType As String)
+    Public Function getPrintDetailsTotalsQuarry(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal rptType As String) As DataTable
         Try
             'Get the real data
             Dim arParams(5) As SqlParameter
@@ -5141,7 +5142,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsJVS(ByVal jobnum As Integer, ByVal jobcompnum As Integer)
+    Public Function getPrintDetailsJVS(ByVal jobnum As Integer, ByVal jobcompnum As Integer) As DataTable
         Try
             'Get the real data
             Dim arParams(2) As SqlParameter
@@ -5161,7 +5162,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsBWD(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal combine As Integer)
+    Public Function getPrintDetailsBWD(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal combine As Integer) As DataTable
         Try
             'Get the real data
             Dim arParams(5) As SqlParameter
@@ -5196,7 +5197,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function getPrintDetailsCombinedBWD(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal groupby As String)
+    Public Function getPrintDetailsCombinedBWD(ByVal estnum As Integer, ByVal estcompnum As Integer, ByVal UserID As String, ByVal quotes As String, ByVal comps As String, ByVal groupby As String) As DataTable
         Try
             'Get the real data
             Dim arParams(5) As SqlParameter
@@ -5263,7 +5264,7 @@ Imports Webvantage.MiscFN
                                        ByVal MarkupPct As Decimal,
                                        ByVal EstDesc As String,
                                        ByVal UserID As String,
-                                       ByVal CampaignID As Integer)
+                                       ByVal CampaignID As Integer) As String
         Try
             Dim arParams(11) As SqlParameter
 
@@ -5321,7 +5322,7 @@ Imports Webvantage.MiscFN
 
             Try
                 oSQL.ExecuteNonQuery(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_Copy_AddEstimate", arParams)
-                Return EST.Value
+                Return CStr(EST.Value)
             Catch ex As Exception
                 Return ex.Message.ToString
             End Try
@@ -5336,7 +5337,7 @@ Imports Webvantage.MiscFN
                                                 ByVal EstCompDesc As String,
                                                 ByVal JobNum As Integer,
                                                 ByVal JobCompNum As Integer,
-                                                ByVal CDPContactID As String)
+                                                ByVal CDPContactID As String) As String
         Try
             Dim arParams(8) As SqlParameter
 
@@ -5378,7 +5379,7 @@ Imports Webvantage.MiscFN
 
             Try
                 oSQL.ExecuteNonQuery(mConnString, CommandType.StoredProcedure, "usp_wv_Estimating_Copy_AddEstimateComponent", arParams)
-                Return EST.Value
+                Return CStr(EST.Value)
             Catch ex As Exception
                 Return ex.Message.ToString
             End Try
@@ -5393,7 +5394,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstComp As Integer,
                                    ByVal QuoteNbr As Integer,
                                    ByVal EstRevNbr As Integer,
-                                   ByVal Recalculate As Integer)
+                                   ByVal Recalculate As Integer) As Boolean
         Try
             Dim arParams(7) As SqlParameter
 
@@ -5441,7 +5442,7 @@ Imports Webvantage.MiscFN
 
 #Region " Estimate Job History "
 
-    Public Function GetJobsForHistory(ByVal client As String, ByVal division As String, ByVal product As String, ByVal jobtype As String, ByVal fromdate As DateTime, ByVal todate As DateTime, ByVal closed As Boolean, ByVal UserID As String)
+    Public Function GetJobsForHistory(ByVal client As String, ByVal division As String, ByVal product As String, ByVal jobtype As String, ByVal fromdate As DateTime, ByVal todate As DateTime, ByVal closed As Boolean, ByVal UserID As String) As DataSet
         Try
             Dim arParams(8) As SqlParameter
 
@@ -5500,7 +5501,7 @@ Imports Webvantage.MiscFN
                                            ByVal QuoteNbr As Integer,
                                            ByVal EstRevNbr As Integer,
                                            ByVal JobNbr As Integer,
-                                           ByVal JobCompNbr As Integer)
+                                           ByVal JobCompNbr As Integer) As Boolean
         Try
             Dim arParams(6) As SqlParameter
 
@@ -5549,7 +5550,7 @@ Imports Webvantage.MiscFN
                                            ByVal EstRevNbr As Integer,
                                            ByVal JobNbr As Integer,
                                            ByVal JobCompNbr As Integer,
-                                           ByVal Action As String)
+                                           ByVal Action As String) As Boolean
         Try
             Dim arParams(7) As SqlParameter
 
@@ -5598,7 +5599,7 @@ Imports Webvantage.MiscFN
                                            ByVal EstRevNbr As Integer,
                                            ByVal JobNbr As Integer,
                                            ByVal JobCompNbr As Integer,
-                                           ByVal Action As String)
+                                           ByVal Action As String) As Integer
         Try
             Dim arParams(7) As SqlParameter
             Dim Check As Integer
@@ -5632,7 +5633,7 @@ Imports Webvantage.MiscFN
             arParams(6) = paramAction
 
             Try
-                Check = oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "advsp_estimate_approval_check", arParams)
+                Check = CInt(oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "advsp_estimate_approval_check", arParams))
                 Return Check
             Catch ex As Exception
                 Return 0
@@ -5894,7 +5895,7 @@ Imports Webvantage.MiscFN
         Return ds
     End Function
 
-    Public Overloads Function GetRequestNumber(ByVal EstNo As Integer, ByVal EstComp As Integer, ByVal user As String)
+    Public Overloads Function GetRequestNumber(ByVal EstNo As Integer, ByVal EstComp As Integer, ByVal user As String) As Integer
         Dim num As Integer
         Dim ar(3) As SqlParameter
 
@@ -5912,7 +5913,7 @@ Imports Webvantage.MiscFN
         ar(2) = paramUser
 
         Try
-            num = oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Vendor_Quote_GetRequestNum", ar)
+            num = CInt(oSQL.ExecuteScalar(mConnString, CommandType.StoredProcedure, "usp_wv_Vendor_Quote_GetRequestNum", ar))
         Catch ex As Exception
             Err.Raise(Err.Number, "Class:cDropDowns Routine:GetRequestNum", Err.Description)
         End Try
@@ -5965,7 +5966,7 @@ Imports Webvantage.MiscFN
                                    ByVal VendorMemo As String,
                                    ByVal CreatedBy As String,
                                    ByVal CreateDate As DateTime,
-                                   ByVal UserID As String)
+                                   ByVal UserID As String) As Boolean
         Try
             Dim arParams(8) As SqlParameter
 
@@ -6018,7 +6019,7 @@ Imports Webvantage.MiscFN
                                    ByVal VendorQteDesc As String,
                                    ByVal VendorMemo As String,
                                    ByVal CreateDate As DateTime,
-                                   ByVal UserID As String)
+                                   ByVal UserID As String) As Boolean
         Try
             Dim arParams(8) As SqlParameter
 
@@ -6069,7 +6070,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstComp As Integer,
                                    ByVal VendorQteNo As Integer,
                                    ByVal VendorMemo As String,
-                                   ByVal UserID As String)
+                                   ByVal UserID As String) As Boolean
         Try
             Dim arParams(8) As SqlParameter
 
@@ -6121,7 +6122,7 @@ Imports Webvantage.MiscFN
                                    ByVal VendorQteNo As Integer,
                                    ByVal EstQuote As Integer,
                                    ByVal EstRev As Integer,
-                                   ByVal QteSpecs As String)
+                                   ByVal QteSpecs As String) As Boolean
         Try
             Dim arParams(8) As SqlParameter
 
@@ -6166,7 +6167,7 @@ Imports Webvantage.MiscFN
                                    ByVal VendorQteNo As Integer,
                                    ByVal QuoteNo As Integer,
                                    ByVal RevNo As Integer,
-                                   ByVal QteSpecs As String)
+                                   ByVal QteSpecs As String) As Boolean
         Try
             Dim arParams(6) As SqlParameter
 
@@ -6209,7 +6210,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstComp As Integer,
                                    ByVal VendorQteNo As Integer,
                                    ByVal FncCode As String,
-                                   ByVal FncNotes As String)
+                                   ByVal FncNotes As String) As Boolean
         Try
             Dim arParams(8) As SqlParameter
 
@@ -6253,7 +6254,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstComp As Integer,
                                    ByVal VendorQteNo As Integer,
                                    ByVal FncCode As String,
-                                   ByVal FncNotes As String)
+                                   ByVal FncNotes As String) As Boolean
         Try
             Dim arParams(6) As SqlParameter
 
@@ -6297,7 +6298,7 @@ Imports Webvantage.MiscFN
                                    ByVal Dispatch As String,
                                    ByVal DueDate As String,
                                    ByVal ReplyDate As String,
-                                   ByVal submitted As String)
+                                   ByVal submitted As String) As Boolean
         Try
             Dim arParams(10) As SqlParameter
 
@@ -6381,7 +6382,7 @@ Imports Webvantage.MiscFN
                                    ByVal VnNotes As String,
                                    ByVal Dispatch As String,
                                    ByVal Reply As String,
-                                   ByVal DueDate As String)
+                                   ByVal DueDate As String) As Boolean
         Try
             Dim arParams(9) As SqlParameter
 
@@ -6448,7 +6449,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstComp As Integer,
                                    ByVal VendorQteNo As Integer,
                                    ByVal VnCode As String,
-                                   ByVal VnNotes As String)
+                                   ByVal VnNotes As String) As Boolean
         Try
             Dim arParams(5) As SqlParameter
 
@@ -6491,7 +6492,7 @@ Imports Webvantage.MiscFN
                                    ByVal EstComp As Integer,
                                    ByVal VendorQteNo As Integer,
                                    ByVal VnCode As String,
-                                   ByVal VnContCode As String)
+                                   ByVal VnContCode As String) As Boolean
         Try
             Dim arParams(6) As SqlParameter
 
@@ -6535,7 +6536,7 @@ Imports Webvantage.MiscFN
                                    ByVal VendorQteNo As Integer,
                                    ByVal VnCode As String,
                                    ByVal Dispatch As DateTime,
-                                   ByVal SubmittedBy As String)
+                                   ByVal SubmittedBy As String) As Boolean
         Try
             Dim arParams(6) As SqlParameter
 
@@ -6625,7 +6626,7 @@ Imports Webvantage.MiscFN
                                    ByVal ApprovalNotes As String,
                                    ByVal ApprovedBy As String,
                                    ByVal ApprovalDate As String,
-                                   ByVal Qty As Integer)
+                                   ByVal Qty As Integer) As Boolean
         Try
             Dim arParams(17) As SqlParameter
 
@@ -6730,7 +6731,7 @@ Imports Webvantage.MiscFN
                                    ByVal QuoteNo As Integer,
                                    ByVal RevNo As Integer,
                                    ByVal FncCode As String,
-                                   ByVal Qty As Integer)
+                                   ByVal Qty As Integer) As Boolean
         Try
             Dim arParams(7) As SqlParameter
 
@@ -6781,7 +6782,7 @@ Imports Webvantage.MiscFN
                                    ByVal FncCode As String,
                                    ByVal VnCode As String,
                                    ByVal ReplyNotes As String,
-                                   ByVal ApprovalNotes As String)
+                                   ByVal ApprovalNotes As String) As Boolean
         Try
             Dim arParams(9) As SqlParameter
 
@@ -6847,7 +6848,7 @@ Imports Webvantage.MiscFN
                                    ByVal ApprovedBy As String,
                                    ByVal ApprovedDate As String,
                                    ByVal Qty As Integer,
-                                   ByVal CreateDate As DateTime)
+                                   ByVal CreateDate As DateTime) As Boolean
         Try
             Dim arParams(16) As SqlParameter
 
@@ -6930,7 +6931,7 @@ Imports Webvantage.MiscFN
         End Try
     End Function
 
-    Public Function POVendorContacts(ByVal funct_id As Integer, ByVal vn_code As String, ByVal string1 As String)
+    Public Function POVendorContacts(ByVal funct_id As Integer, ByVal vn_code As String, ByVal string1 As String) As DataTable
         Dim dr As DataTable
 
         Dim arParams(3) As SqlParameter
@@ -6963,7 +6964,7 @@ Imports Webvantage.MiscFN
                                    ByVal VenQteNum As Integer,
                                    ByVal CreatedBy As String,
                                    ByVal CreateDate As DateTime,
-                                   ByVal UserID As String)
+                                   ByVal UserID As String) As Boolean
         Try
             Dim arParams(7) As SqlParameter
 
@@ -7086,7 +7087,7 @@ Imports Webvantage.MiscFN
                                    ByVal Fax As String,
                                    ByVal FaxExt As String,
                                    ByVal Email As String,
-                                   ByVal Cell As String)
+                                   ByVal Cell As String) As Boolean
         Try
             Dim arParams(19) As SqlParameter
 
@@ -7195,7 +7196,7 @@ Imports Webvantage.MiscFN
                                    ByVal Fax As String,
                                    ByVal FaxExt As String,
                                    ByVal Email As String,
-                                   ByVal Cell As String)
+                                   ByVal Cell As String) As Boolean
         Try
             Dim arParams(19) As SqlParameter
 
@@ -7291,12 +7292,12 @@ Imports Webvantage.MiscFN
     Public Sub New(Optional ByVal ConnectionString As String = "", Optional ByVal UserID As String = "")
         'mConnString = ConnectionString
         'mUserID = UserID
-        mConnString = HttpContext.Current.Session("ConnString")
+        mConnString = CStr(HttpContext.Current.Session("ConnString"))
         Try
             If UserID <> "" Then
                 mUserID = UserID
             Else
-                mUserID = HttpContext.Current.Session("UserCode")
+                mUserID = CStr(HttpContext.Current.Session("UserCode"))
             End If
         Catch ex As Exception
             mUserID = ""

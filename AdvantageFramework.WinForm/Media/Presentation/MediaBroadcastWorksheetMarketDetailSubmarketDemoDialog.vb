@@ -85,6 +85,7 @@
             GridBand.Columns.Add(BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorNCCTVSyscodeID.ToString))
             GridBand.Columns.Add(BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorNielsenTVStationCode.ToString))
             GridBand.Columns.Add(BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorIsCableSystem.ToString))
+            GridBand.Columns.Add(BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.VendorIsComboRadioStation.ToString))
             GridBand.Columns.Add(BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.CableNetworkStationCode.ToString))
             GridBand.Columns.Add(BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.CableNetworkNielsenTVStationCode.ToString))
             GridBand.Columns.Add(BandedDataGridViewForm_MarketDetails.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.Daypart.ToString))

@@ -574,6 +574,8 @@
                 rowInternetQtyOverrideText.Visible = False
                 rowSeparationPolicy.Visible = False
                 rowIncludeImpressions.Visible = False
+                rowBroadcastShowTotalNetForGrossOrder.Visible = False
+                rowNewspaperIncludeCirculationQTY.Visible = False
 
                 If _OrderPrintSetting.MediaType = "I" Then
 
@@ -640,6 +642,7 @@
                     rowCloseInfo.Visible = True
                     rowRateInfo.Visible = True
                     rowPrintDayDate.Visible = True
+                    rowNewspaperIncludeCirculationQTY.Visible = True
 
                 ElseIf _OrderPrintSetting.MediaType = "O" Then
 
@@ -675,6 +678,7 @@
                     rowPrimaryCPM.Visible = True
                     rowPrimaryAQH.Visible = True
                     rowSeparationPolicy.Visible = True
+                    rowBroadcastShowTotalNetForGrossOrder.Visible = True
 
                 ElseIf _OrderPrintSetting.MediaType = "T" Then
 
@@ -694,6 +698,7 @@
                     rowPrimaryCPM.Visible = True
                     rowPrimaryImpressions.Visible = True
                     rowSeparationPolicy.Visible = True
+                    rowBroadcastShowTotalNetForGrossOrder.Visible = True
 
                 End If
 

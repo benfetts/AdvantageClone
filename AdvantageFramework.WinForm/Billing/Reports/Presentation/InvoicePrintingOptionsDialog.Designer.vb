@@ -24,114 +24,173 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
-            Me.components = New System.ComponentModel.Container()
-            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(InvoicePrintingOptionsDialog))
-            Me.RibbonBarOptions_Actions = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
-            Me.ButtonItemActions_Export = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
-            Me.ButtonItemActions_Save = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItemActions_Cancel = New DevComponents.DotNetBar.ButtonItem()
-            Me.VerticalGridProduction_Settings = New AdvantageFramework.WinForm.Presentation.Controls.VerticalGrid()
-            Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-            Me.category65 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowUseLocationPrintOptions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowLocationCode = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowCustomInvoiceID = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowApplyExchangeRate = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowExchangeRateAmount = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowHideExchangeRateMessage = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowUseInvoiceCategoryDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInvoiceTitle = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeInvoiceDueDate = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category2 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.category3 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowAddressBlockType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintClientName = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintDivisionName = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintProductDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintContactAfterAddress = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowContactType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowShowCodes = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category4 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowIncludeClientReference = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowClientRefLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeClientPO = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowClientPOLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeAccountExecutive = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeSalesClass = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowSalesClassLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowShowCampaign = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowCampaignLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category5 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowIncludeInvoiceComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeBillingApprovalComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeBillingApprovalFunctionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeJobComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeJobComponentComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeEstimateComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeEstimateComponentComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeEstimateQuoteComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeEstimateRevisionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeEstimateFunctionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowShowCampaignComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category1 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowHeaderGroupBy = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowHideJobInfo = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowHideComponentNumberAndDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category6 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.category7 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowReportFormatType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowSummaryLevel = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category8 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowGroupingOptionType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowGroupingOptionInsideDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowGroupingOptionOutsideDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category9 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowSortFunctionByType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintFunctionType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowShowFunctionDetail = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowShowZeroFunctionAmounts = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIndicateTaxableFunctions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowHideFunctionTotals = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowShowEmployeeHours = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowShowQuantity = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category66 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.row0 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.row1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.row2 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowEmployeeTimeFunctionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.row3 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.row4 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.row5 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncomeOnlyFunctionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.row6 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.row7 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.row8 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowAccountsPayableFunctionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category10 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.category11 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowTotalsShowTaxSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowTaxTotalLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowTotalsShowCommissionSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowTotalsShowBillingHistory = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category12 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowInvoiceFooterCommentType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInvoiceFooterComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.categoryBackupReportOptions = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowIncludeBackupReport = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowBackupReportColumnOption = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowBackupReportCommentOptionEmployeeTimeFunction = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowBackupReportCommentOptionAccountsPayableFunction = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowBackupReportCommentOptionIncomeOnlyFunction = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowBackupReportBreakupByJobComponent = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.RibbonBarOptions_SaveOptions = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
-            Me.ButtonItemSaveOptions_Agency = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItemSaveOptions_Clients = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItemSaveOptions_OneTime = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItemSaveOptions_Products = New DevComponents.DotNetBar.ButtonItem()
-            Me.TabControlForm_Options = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelProductionTab_Production = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabItemOptions_ProductionTab = New DevComponents.DotNetBar.TabItem(Me.components)
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(InvoicePrintingOptionsDialog))
+        Me.RibbonBarOptions_Actions = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
+        Me.ButtonItemActions_Export = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
+        Me.ButtonItemActions_Save = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItemActions_Cancel = New DevComponents.DotNetBar.ButtonItem()
+        Me.VerticalGridProduction_Settings = New AdvantageFramework.WinForm.Presentation.Controls.VerticalGrid()
+        Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.category65 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowUseLocationPrintOptions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowLocationCode = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowCustomInvoiceID = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowApplyExchangeRate = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowExchangeRateAmount = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowHideExchangeRateMessage = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowUseInvoiceCategoryDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowInvoiceTitle = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeInvoiceDueDate = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category2 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.category3 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowAddressBlockType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowPrintClientName = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowPrintDivisionName = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowPrintProductDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowPrintContactAfterAddress = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowContactType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowShowCodes = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category4 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowIncludeClientReference = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowClientRefLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeClientPO = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowClientPOLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeAccountExecutive = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeSalesClass = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowSalesClassLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowShowCampaign = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowCampaignLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category5 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowIncludeInvoiceComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeBillingApprovalComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeBillingApprovalFunctionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeJobComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeJobComponentComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeEstimateComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeEstimateComponentComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeEstimateQuoteComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeEstimateRevisionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncludeEstimateFunctionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowShowCampaignComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category1 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowHeaderGroupBy = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowHideJobInfo = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowHideComponentNumberAndDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category6 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.category7 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowReportFormatType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowSummaryLevel = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category8 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowGroupingOptionType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowGroupingOptionInsideDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowGroupingOptionOutsideDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category9 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowSortFunctionByType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowPrintFunctionType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowShowFunctionDetail = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowShowZeroFunctionAmounts = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIndicateTaxableFunctions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowHideFunctionTotals = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowShowEmployeeHours = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowShowQuantity = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category66 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.row0 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.row1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.row2 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowEmployeeTimeFunctionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.row3 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.row4 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.row5 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowIncomeOnlyFunctionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.row6 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.row7 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.row8 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowAccountsPayableFunctionComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category10 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.category11 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowTotalsShowTaxSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowTaxTotalLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowTotalsShowCommissionSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowTotalsShowBillingHistory = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.category12 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowInvoiceFooterCommentType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowInvoiceFooterComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.categoryBackupReportOptions = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+        Me.rowIncludeBackupReport = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowBackupReportColumnOption = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowBackupReportCommentOptionEmployeeTimeFunction = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowBackupReportCommentOptionAccountsPayableFunction = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowBackupReportCommentOptionIncomeOnlyFunction = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.rowBackupReportBreakupByJobComponent = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+        Me.RibbonBarOptions_SaveOptions = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
+        Me.ButtonItemSaveOptions_Agency = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItemSaveOptions_Clients = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItemSaveOptions_OneTime = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItemSaveOptions_Products = New DevComponents.DotNetBar.ButtonItem()
+        Me.TabControlForm_Options = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelInternetTab_Internet = New DevComponents.DotNetBar.TabControlPanel()
+            Me.VerticalGridInternet_Settings = New AdvantageFramework.WinForm.Presentation.Controls.VerticalGrid()
+            Me.MediaInvoiceInternetSettingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+            Me.rowInternetCustomInvoiceID = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category33 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.category34 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowInternetUseInvoiceCategoryDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetInvoiceTitle = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetPrintInvoiceDueDate = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category35 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowInternetShowClientPO = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetClientPOLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowSalesClass = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetSalesClassLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowCampaign = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetCampaignLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowClientReference = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category32 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowInternetShowOrderComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowOrderHouseComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowCampaignComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category71 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowInternetHeaderGroupBy = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowOrderDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowOrderSubtotals = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category36 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowInternetShowLineDetail = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category37 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowInternetOrderNumberColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetVendorNameColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowVendorCode = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetOrderMonthsColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetNetAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetCommissionAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetTaxAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetBillAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetPriorBillAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetBilledToDateAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category38 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowInternetShowZeroLineAmounts = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetSortLinesBy = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetLineNumberColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetHeadlineColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetStartDatesColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetEndDatesColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetCreativeSizeColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetAdNumberColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetURLColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetInternetTypeColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetCloseDateColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetJobComponentNumberColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetJobDescriptionColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetComponentDescriptionColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetExtraChargesColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetGuaranteedImpressionsColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category39 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowInternetShowCommissionSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowRebateSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowTaxSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInternetShowBillingHistory = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.TabItemOptions_InternetTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelComboTab_Combo = New DevComponents.DotNetBar.TabControlPanel()
             Me.VerticalGridCombo_Settings = New AdvantageFramework.WinForm.Presentation.Controls.VerticalGrid()
             Me.ComboInvoiceSettingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -156,6 +215,31 @@
             Me.rowComboInvoiceFooterCommentType = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowComboInvoiceFooterComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.TabItemOptions_ComboTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelMediaTab_Media = New DevComponents.DotNetBar.TabControlPanel()
+            Me.VerticalGridMedia_Settings = New AdvantageFramework.WinForm.Presentation.Controls.VerticalGrid()
+            Me.MediaInvoiceSettingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+            Me.rowUseLocationPrintOptions1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowLocationCode1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowApplyExchangeRate1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowExchangeRateAmount1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowHideExchangeRateMessage1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category13 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.category14 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowAddressBlockType1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowPrintClientName1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowPrintDivisionName1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowPrintProductDescription1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowPrintContactAfterAddress1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowContactType1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowShowCodes1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category15 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowIncludeBillingComment1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.category16 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
+            Me.rowInvoiceFooterCommentType1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowInvoiceFooterComment1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.TabItemOptions_MediaTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelProductionTab_Production = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabItemOptions_ProductionTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelTVTab_TV = New DevComponents.DotNetBar.TabControlPanel()
             Me.VerticalGridTV_Settings = New AdvantageFramework.WinForm.Presentation.Controls.VerticalGrid()
             Me.MediaInvoiceTVSettingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -339,66 +423,6 @@
             Me.rowOutdoorShowTaxSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowOutdoorShowBillingHistory = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.TabItemOptions_OutdoorTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelInternetTab_Internet = New DevComponents.DotNetBar.TabControlPanel()
-            Me.VerticalGridInternet_Settings = New AdvantageFramework.WinForm.Presentation.Controls.VerticalGrid()
-            Me.MediaInvoiceInternetSettingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-            Me.rowInternetCustomInvoiceID = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category33 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.category34 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowInternetUseInvoiceCategoryDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetInvoiceTitle = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetPrintInvoiceDueDate = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category35 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowInternetShowClientPO = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetClientPOLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowSalesClass = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetSalesClassLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowCampaign = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetCampaignLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowClientReference = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category32 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowInternetShowOrderComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowOrderHouseComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowCampaignComment = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category71 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowInternetHeaderGroupBy = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowOrderDescription = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowOrderSubtotals = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category36 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowInternetShowLineDetail = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category37 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowInternetOrderNumberColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetVendorNameColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowVendorCode = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetOrderMonthsColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetNetAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetCommissionAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetTaxAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetBillAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetPriorBillAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetBilledToDateAmountColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category38 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowInternetShowZeroLineAmounts = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetSortLinesBy = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetLineNumberColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetHeadlineColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetStartDatesColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetEndDatesColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetCreativeSizeColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetAdNumberColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetURLColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetInternetTypeColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetCloseDateColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetJobComponentNumberColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetJobDescriptionColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetComponentDescriptionColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetExtraChargesColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category39 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowInternetShowCommissionSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowRebateSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowTaxSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInternetShowBillingHistory = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.TabItemOptions_InternetTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelNewspaperTab_Newspaper = New DevComponents.DotNetBar.TabControlPanel()
             Me.VerticalGridNewspaper_Settings = New AdvantageFramework.WinForm.Presentation.Controls.VerticalGrid()
             Me.MediaInvoiceNewspaperSettingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -523,31 +547,10 @@
             Me.rowMagazineShowTaxSeparately = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowMagazineShowBillingHistory = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.TabItemOptions_MagazineTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelMediaTab_Media = New DevComponents.DotNetBar.TabControlPanel()
-            Me.VerticalGridMedia_Settings = New AdvantageFramework.WinForm.Presentation.Controls.VerticalGrid()
-            Me.MediaInvoiceSettingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-            Me.rowUseLocationPrintOptions1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowLocationCode1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowApplyExchangeRate1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowExchangeRateAmount1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category13 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.category14 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowAddressBlockType1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintClientName1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintDivisionName1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintProductDescription1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintContactAfterAddress1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowContactType1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowShowCodes1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category15 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowIncludeBillingComment1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.category16 = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
-            Me.rowInvoiceFooterCommentType1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowInvoiceFooterComment1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.TabItemOptions_MediaTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelForm_FormatLabel = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelForm_Format = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.rowHideExchangeRateMessage1 = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowRadioStartDateColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowTVStartDateColumn = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             CType(Me.PanelForm_Form, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.PanelForm_Form.SuspendLayout()
             Me.RibbonControlForm_MainRibbon.SuspendLayout()
@@ -557,10 +560,16 @@
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.TabControlForm_Options, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlForm_Options.SuspendLayout()
-            Me.TabControlPanelProductionTab_Production.SuspendLayout()
+            Me.TabControlPanelInternetTab_Internet.SuspendLayout()
+            CType(Me.VerticalGridInternet_Settings, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.MediaInvoiceInternetSettingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlPanelComboTab_Combo.SuspendLayout()
             CType(Me.VerticalGridCombo_Settings, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.ComboInvoiceSettingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.TabControlPanelMediaTab_Media.SuspendLayout()
+            CType(Me.VerticalGridMedia_Settings, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.MediaInvoiceSettingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.TabControlPanelProductionTab_Production.SuspendLayout()
             Me.TabControlPanelTVTab_TV.SuspendLayout()
             CType(Me.VerticalGridTV_Settings, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.MediaInvoiceTVSettingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -570,18 +579,12 @@
             Me.TabControlPanelOutdoorTab_Outdoor.SuspendLayout()
             CType(Me.VerticalGridOutdoor_Settings, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.MediaInvoiceOutdoorSettingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelInternetTab_Internet.SuspendLayout()
-            CType(Me.VerticalGridInternet_Settings, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.MediaInvoiceInternetSettingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlPanelNewspaperTab_Newspaper.SuspendLayout()
             CType(Me.VerticalGridNewspaper_Settings, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.MediaInvoiceNewspaperSettingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlPanelMagazineTab_Magazine.SuspendLayout()
             CType(Me.VerticalGridMagazine_Settings, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.MediaInvoiceMagazineSettingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelMediaTab_Media.SuspendLayout()
-            CType(Me.VerticalGridMedia_Settings, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.MediaInvoiceSettingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             '
             '_DefaultLookAndFeel
@@ -1437,13 +1440,13 @@
             Me.TabControlForm_Options.CanReorderTabs = True
             Me.TabControlForm_Options.ColorScheme.TabBackground = System.Drawing.Color.White
             Me.TabControlForm_Options.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelMediaTab_Media)
-            Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelProductionTab_Production)
             Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelComboTab_Combo)
             Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelTVTab_TV)
             Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelRadioTab_Radio)
-            Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelOutdoorTab_Outdoor)
             Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelInternetTab_Internet)
+            Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelMediaTab_Media)
+            Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelProductionTab_Production)
+            Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelOutdoorTab_Outdoor)
             Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelNewspaperTab_Newspaper)
             Me.TabControlForm_Options.Controls.Add(Me.TabControlPanelMagazineTab_Magazine)
             Me.TabControlForm_Options.ForeColor = System.Drawing.Color.Black
@@ -1465,30 +1468,400 @@
             Me.TabControlForm_Options.Tabs.Add(Me.TabItemOptions_RadioTab)
             Me.TabControlForm_Options.Tabs.Add(Me.TabItemOptions_TVTab)
             '
-            'TabControlPanelProductionTab_Production
+            'TabControlPanelInternetTab_Internet
             '
-            Me.TabControlPanelProductionTab_Production.Controls.Add(Me.VerticalGridProduction_Settings)
-            Me.TabControlPanelProductionTab_Production.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelProductionTab_Production.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelProductionTab_Production.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelProductionTab_Production.Name = "TabControlPanelProductionTab_Production"
-            Me.TabControlPanelProductionTab_Production.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelProductionTab_Production.Size = New System.Drawing.Size(679, 456)
-            Me.TabControlPanelProductionTab_Production.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelProductionTab_Production.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelProductionTab_Production.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelProductionTab_Production.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelProductionTab_Production.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelInternetTab_Internet.Controls.Add(Me.VerticalGridInternet_Settings)
+            Me.TabControlPanelInternetTab_Internet.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelInternetTab_Internet.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelInternetTab_Internet.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelInternetTab_Internet.Name = "TabControlPanelInternetTab_Internet"
+            Me.TabControlPanelInternetTab_Internet.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelInternetTab_Internet.Size = New System.Drawing.Size(679, 456)
+            Me.TabControlPanelInternetTab_Internet.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelInternetTab_Internet.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelInternetTab_Internet.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelInternetTab_Internet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelInternetTab_Internet.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelProductionTab_Production.Style.GradientAngle = 90
-            Me.TabControlPanelProductionTab_Production.TabIndex = 1
-            Me.TabControlPanelProductionTab_Production.TabItem = Me.TabItemOptions_ProductionTab
+            Me.TabControlPanelInternetTab_Internet.Style.GradientAngle = 90
+            Me.TabControlPanelInternetTab_Internet.TabIndex = 5
+            Me.TabControlPanelInternetTab_Internet.TabItem = Me.TabItemOptions_InternetTab
             '
-            'TabItemOptions_ProductionTab
+            'VerticalGridInternet_Settings
             '
-            Me.TabItemOptions_ProductionTab.AttachedControl = Me.TabControlPanelProductionTab_Production
-            Me.TabItemOptions_ProductionTab.Name = "TabItemOptions_ProductionTab"
-            Me.TabItemOptions_ProductionTab.Text = "Production"
+            Me.VerticalGridInternet_Settings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.VerticalGridInternet_Settings.Appearance.RowHeaderPanel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.VerticalGridInternet_Settings.Appearance.RowHeaderPanel.Options.UseFont = True
+            Me.VerticalGridInternet_Settings.Cursor = System.Windows.Forms.Cursors.Default
+            Me.VerticalGridInternet_Settings.CustomizationFormBounds = New System.Drawing.Rectangle(1384, 433, 216, 265)
+            Me.VerticalGridInternet_Settings.DataSource = Me.MediaInvoiceInternetSettingBindingSource
+            Me.VerticalGridInternet_Settings.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView
+            Me.VerticalGridInternet_Settings.Location = New System.Drawing.Point(4, 4)
+            Me.VerticalGridInternet_Settings.Name = "VerticalGridInternet_Settings"
+            Me.VerticalGridInternet_Settings.OptionsBehavior.RecordsMouseWheel = True
+            Me.VerticalGridInternet_Settings.OptionsBehavior.ResizeRowHeaders = False
+            Me.VerticalGridInternet_Settings.OptionsBehavior.UseEnterAsTab = True
+            Me.VerticalGridInternet_Settings.Rows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetCustomInvoiceID, Me.category33, Me.category71, Me.category36, Me.category39})
+            Me.VerticalGridInternet_Settings.ShowButtonMode = DevExpress.XtraVerticalGrid.ShowButtonModeEnum.ShowAlways
+            Me.VerticalGridInternet_Settings.Size = New System.Drawing.Size(671, 448)
+            Me.VerticalGridInternet_Settings.TabIndex = 2
+            Me.VerticalGridInternet_Settings.TreeButtonStyle = DevExpress.XtraVerticalGrid.TreeButtonStyle.TreeView
+            '
+            'MediaInvoiceInternetSettingBindingSource
+            '
+            Me.MediaInvoiceInternetSettingBindingSource.DataSource = GetType(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting)
+            '
+            'rowInternetCustomInvoiceID
+            '
+            Me.rowInternetCustomInvoiceID.Name = "rowInternetCustomInvoiceID"
+            Me.rowInternetCustomInvoiceID.Properties.Caption = "Custom Invoice"
+            Me.rowInternetCustomInvoiceID.Properties.FieldName = "InternetCustomInvoiceID"
+            '
+            'category33
+            '
+            Me.category33.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.category34, Me.category35, Me.category32})
+            Me.category33.Name = "category33"
+            Me.category33.Properties.Caption = "Header Options"
+            '
+            'category34
+            '
+            Me.category34.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetUseInvoiceCategoryDescription, Me.rowInternetInvoiceTitle, Me.rowInternetPrintInvoiceDueDate})
+            Me.category34.Height = 17
+            Me.category34.Name = "category34"
+            Me.category34.Properties.Caption = "Title Options"
+            '
+            'rowInternetUseInvoiceCategoryDescription
+            '
+            Me.rowInternetUseInvoiceCategoryDescription.Name = "rowInternetUseInvoiceCategoryDescription"
+            Me.rowInternetUseInvoiceCategoryDescription.Properties.Caption = "Use Invoice Category Description"
+            Me.rowInternetUseInvoiceCategoryDescription.Properties.FieldName = "InternetUseInvoiceCategoryDescription"
+            '
+            'rowInternetInvoiceTitle
+            '
+            Me.rowInternetInvoiceTitle.Name = "rowInternetInvoiceTitle"
+            Me.rowInternetInvoiceTitle.Properties.Caption = "Invoice Title"
+            Me.rowInternetInvoiceTitle.Properties.FieldName = "InternetInvoiceTitle"
+            '
+            'rowInternetPrintInvoiceDueDate
+            '
+            Me.rowInternetPrintInvoiceDueDate.Name = "rowInternetPrintInvoiceDueDate"
+            Me.rowInternetPrintInvoiceDueDate.Properties.Caption = "Invoice Due Date"
+            Me.rowInternetPrintInvoiceDueDate.Properties.FieldName = "InternetPrintInvoiceDueDate"
+            '
+            'category35
+            '
+            Me.category35.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetShowClientPO, Me.rowInternetClientPOLocation, Me.rowInternetShowSalesClass, Me.rowInternetSalesClassLocation, Me.rowInternetShowCampaign, Me.rowInternetCampaignLocation, Me.rowInternetShowClientReference})
+            Me.category35.Name = "category35"
+            Me.category35.Properties.Caption = "Include Fields"
+            '
+            'rowInternetShowClientPO
+            '
+            Me.rowInternetShowClientPO.Name = "rowInternetShowClientPO"
+            Me.rowInternetShowClientPO.Properties.Caption = "Show Client PO"
+            Me.rowInternetShowClientPO.Properties.FieldName = "InternetShowClientPO"
+            '
+            'rowInternetClientPOLocation
+            '
+            Me.rowInternetClientPOLocation.Name = "rowInternetClientPOLocation"
+            Me.rowInternetClientPOLocation.Properties.Caption = "Client PO Location"
+            Me.rowInternetClientPOLocation.Properties.FieldName = "InternetClientPOLocation"
+            '
+            'rowInternetShowSalesClass
+            '
+            Me.rowInternetShowSalesClass.Name = "rowInternetShowSalesClass"
+            Me.rowInternetShowSalesClass.Properties.Caption = "Show Sales Class"
+            Me.rowInternetShowSalesClass.Properties.FieldName = "InternetShowSalesClass"
+            '
+            'rowInternetSalesClassLocation
+            '
+            Me.rowInternetSalesClassLocation.Name = "rowInternetSalesClassLocation"
+            Me.rowInternetSalesClassLocation.Properties.Caption = "Sales Class Location"
+            Me.rowInternetSalesClassLocation.Properties.FieldName = "InternetSalesClassLocation"
+            '
+            'rowInternetShowCampaign
+            '
+            Me.rowInternetShowCampaign.Name = "rowInternetShowCampaign"
+            Me.rowInternetShowCampaign.Properties.Caption = "Show Campaign"
+            Me.rowInternetShowCampaign.Properties.FieldName = "InternetShowCampaign"
+            '
+            'rowInternetCampaignLocation
+            '
+            Me.rowInternetCampaignLocation.Name = "rowInternetCampaignLocation"
+            Me.rowInternetCampaignLocation.Properties.Caption = "Campaign Location"
+            Me.rowInternetCampaignLocation.Properties.FieldName = "InternetCampaignLocation"
+            '
+            'rowInternetShowClientReference
+            '
+            Me.rowInternetShowClientReference.Name = "rowInternetShowClientReference"
+            Me.rowInternetShowClientReference.Properties.Caption = "Show Client Reference"
+            Me.rowInternetShowClientReference.Properties.FieldName = "InternetShowClientReference"
+            Me.rowInternetShowClientReference.Visible = False
+            '
+            'category32
+            '
+            Me.category32.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetShowOrderComment, Me.rowInternetShowOrderHouseComment, Me.rowInternetShowCampaignComment})
+            Me.category32.Name = "category32"
+            Me.category32.Properties.Caption = "Comments"
+            '
+            'rowInternetShowOrderComment
+            '
+            Me.rowInternetShowOrderComment.Name = "rowInternetShowOrderComment"
+            Me.rowInternetShowOrderComment.Properties.Caption = "Show Order Comment"
+            Me.rowInternetShowOrderComment.Properties.FieldName = "InternetShowOrderComment"
+            '
+            'rowInternetShowOrderHouseComment
+            '
+            Me.rowInternetShowOrderHouseComment.Name = "rowInternetShowOrderHouseComment"
+            Me.rowInternetShowOrderHouseComment.Properties.Caption = "Show Order House Comment"
+            Me.rowInternetShowOrderHouseComment.Properties.FieldName = "InternetShowOrderHouseComment"
+            '
+            'rowInternetShowCampaignComment
+            '
+            Me.rowInternetShowCampaignComment.Name = "rowInternetShowCampaignComment"
+            Me.rowInternetShowCampaignComment.Properties.Caption = "Show Campaign Comment"
+            Me.rowInternetShowCampaignComment.Properties.FieldName = "InternetShowCampaignComment"
+            '
+            'category71
+            '
+            Me.category71.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetHeaderGroupBy, Me.rowInternetShowOrderDescription, Me.rowInternetShowOrderSubtotals})
+            Me.category71.Name = "category71"
+            Me.category71.Properties.Caption = "Order Options"
+            '
+            'rowInternetHeaderGroupBy
+            '
+            Me.rowInternetHeaderGroupBy.Name = "rowInternetHeaderGroupBy"
+            Me.rowInternetHeaderGroupBy.Properties.Caption = "Group Orders By"
+            Me.rowInternetHeaderGroupBy.Properties.FieldName = "InternetHeaderGroupBy"
+            '
+            'rowInternetShowOrderDescription
+            '
+            Me.rowInternetShowOrderDescription.Name = "rowInternetShowOrderDescription"
+            Me.rowInternetShowOrderDescription.Properties.Caption = "Show Order Description"
+            Me.rowInternetShowOrderDescription.Properties.FieldName = "InternetShowOrderDescription"
+            '
+            'rowInternetShowOrderSubtotals
+            '
+            Me.rowInternetShowOrderSubtotals.Name = "rowInternetShowOrderSubtotals"
+            Me.rowInternetShowOrderSubtotals.Properties.Caption = "Show Order Subtotals"
+            Me.rowInternetShowOrderSubtotals.Properties.FieldName = "InternetShowOrderSubtotals"
+            '
+            'category36
+            '
+            Me.category36.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetShowLineDetail, Me.category37, Me.category38})
+            Me.category36.Name = "category36"
+            Me.category36.Properties.Caption = "Detail, Sorting & Grouping"
+            '
+            'rowInternetShowLineDetail
+            '
+            Me.rowInternetShowLineDetail.Name = "rowInternetShowLineDetail"
+            Me.rowInternetShowLineDetail.Properties.Caption = "Grouping Option"
+            Me.rowInternetShowLineDetail.Properties.FieldName = "InternetShowLineDetail"
+            '
+            'category37
+            '
+            Me.category37.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetOrderNumberColumn, Me.rowInternetVendorNameColumn, Me.rowInternetShowVendorCode, Me.rowInternetOrderMonthsColumn, Me.rowInternetNetAmountColumn, Me.rowInternetCommissionAmountColumn, Me.rowInternetTaxAmountColumn, Me.rowInternetBillAmountColumn, Me.rowInternetPriorBillAmountColumn, Me.rowInternetBilledToDateAmountColumn})
+            Me.category37.Name = "category37"
+            Me.category37.Properties.Caption = "Order Column Options"
+            '
+            'rowInternetOrderNumberColumn
+            '
+            Me.rowInternetOrderNumberColumn.Name = "rowInternetOrderNumberColumn"
+            Me.rowInternetOrderNumberColumn.Properties.Caption = "Order Number"
+            Me.rowInternetOrderNumberColumn.Properties.FieldName = "InternetOrderNumberColumn"
+            '
+            'rowInternetVendorNameColumn
+            '
+            Me.rowInternetVendorNameColumn.Name = "rowInternetVendorNameColumn"
+            Me.rowInternetVendorNameColumn.Properties.Caption = "Vendor Name"
+            Me.rowInternetVendorNameColumn.Properties.FieldName = "InternetVendorNameColumn"
+            '
+            'rowInternetShowVendorCode
+            '
+            Me.rowInternetShowVendorCode.Name = "rowInternetShowVendorCode"
+            Me.rowInternetShowVendorCode.Properties.Caption = "Vendor Code"
+            Me.rowInternetShowVendorCode.Properties.FieldName = "InternetShowVendorCode"
+            '
+            'rowInternetOrderMonthsColumn
+            '
+            Me.rowInternetOrderMonthsColumn.Name = "rowInternetOrderMonthsColumn"
+            Me.rowInternetOrderMonthsColumn.Properties.Caption = "Order Months"
+            Me.rowInternetOrderMonthsColumn.Properties.FieldName = "InternetOrderMonthsColumn"
+            '
+            'rowInternetNetAmountColumn
+            '
+            Me.rowInternetNetAmountColumn.Name = "rowInternetNetAmountColumn"
+            Me.rowInternetNetAmountColumn.Properties.Caption = "Net Amount"
+            Me.rowInternetNetAmountColumn.Properties.FieldName = "InternetNetAmountColumn"
+            '
+            'rowInternetCommissionAmountColumn
+            '
+            Me.rowInternetCommissionAmountColumn.Name = "rowInternetCommissionAmountColumn"
+            Me.rowInternetCommissionAmountColumn.Properties.Caption = "Commission Amount"
+            Me.rowInternetCommissionAmountColumn.Properties.FieldName = "InternetCommissionAmountColumn"
+            '
+            'rowInternetTaxAmountColumn
+            '
+            Me.rowInternetTaxAmountColumn.Name = "rowInternetTaxAmountColumn"
+            Me.rowInternetTaxAmountColumn.Properties.Caption = "Tax Amount"
+            Me.rowInternetTaxAmountColumn.Properties.FieldName = "InternetTaxAmountColumn"
+            '
+            'rowInternetBillAmountColumn
+            '
+            Me.rowInternetBillAmountColumn.Name = "rowInternetBillAmountColumn"
+            Me.rowInternetBillAmountColumn.Properties.Caption = "Bill Amount"
+            Me.rowInternetBillAmountColumn.Properties.FieldName = "InternetBillAmountColumn"
+            '
+            'rowInternetPriorBillAmountColumn
+            '
+            Me.rowInternetPriorBillAmountColumn.Name = "rowInternetPriorBillAmountColumn"
+            Me.rowInternetPriorBillAmountColumn.Properties.Caption = "Prior Bill Amount"
+            Me.rowInternetPriorBillAmountColumn.Properties.FieldName = "InternetPriorBillAmountColumn"
+            '
+            'rowInternetBilledToDateAmountColumn
+            '
+            Me.rowInternetBilledToDateAmountColumn.Name = "rowInternetBilledToDateAmountColumn"
+            Me.rowInternetBilledToDateAmountColumn.Properties.Caption = "Billed To Date Amount"
+            Me.rowInternetBilledToDateAmountColumn.Properties.FieldName = "InternetBilledToDateAmountColumn"
+            '
+            'category38
+            '
+            Me.category38.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetShowZeroLineAmounts, Me.rowInternetSortLinesBy, Me.rowInternetLineNumberColumn, Me.rowInternetHeadlineColumn, Me.rowInternetStartDatesColumn, Me.rowInternetEndDatesColumn, Me.rowInternetCreativeSizeColumn, Me.rowInternetAdNumberColumn, Me.rowInternetURLColumn, Me.rowInternetInternetTypeColumn, Me.rowInternetCloseDateColumn, Me.rowInternetJobComponentNumberColumn, Me.rowInternetJobDescriptionColumn, Me.rowInternetComponentDescriptionColumn, Me.rowInternetExtraChargesColumn, Me.rowInternetGuaranteedImpressionsColumn})
+            Me.category38.Name = "category38"
+            Me.category38.Properties.Caption = "Order/Line Options"
+            '
+            'rowInternetShowZeroLineAmounts
+            '
+            Me.rowInternetShowZeroLineAmounts.Name = "rowInternetShowZeroLineAmounts"
+            Me.rowInternetShowZeroLineAmounts.Properties.Caption = "Show Zero Line Amounts"
+            Me.rowInternetShowZeroLineAmounts.Properties.FieldName = "InternetShowZeroLineAmounts"
+            '
+            'rowInternetSortLinesBy
+            '
+            Me.rowInternetSortLinesBy.Name = "rowInternetSortLinesBy"
+            Me.rowInternetSortLinesBy.Properties.Caption = "Sort Lines By"
+            Me.rowInternetSortLinesBy.Properties.FieldName = "InternetSortLinesBy"
+            '
+            'rowInternetLineNumberColumn
+            '
+            Me.rowInternetLineNumberColumn.Name = "rowInternetLineNumberColumn"
+            Me.rowInternetLineNumberColumn.Properties.Caption = "Line Number"
+            Me.rowInternetLineNumberColumn.Properties.FieldName = "InternetLineNumberColumn"
+            '
+            'rowInternetHeadlineColumn
+            '
+            Me.rowInternetHeadlineColumn.Name = "rowInternetHeadlineColumn"
+            Me.rowInternetHeadlineColumn.Properties.Caption = "Headline"
+            Me.rowInternetHeadlineColumn.Properties.FieldName = "InternetHeadlineColumn"
+            '
+            'rowInternetStartDatesColumn
+            '
+            Me.rowInternetStartDatesColumn.Name = "rowInternetStartDatesColumn"
+            Me.rowInternetStartDatesColumn.Properties.Caption = "Start Dates"
+            Me.rowInternetStartDatesColumn.Properties.FieldName = "InternetStartDatesColumn"
+            '
+            'rowInternetEndDatesColumn
+            '
+            Me.rowInternetEndDatesColumn.Name = "rowInternetEndDatesColumn"
+            Me.rowInternetEndDatesColumn.Properties.Caption = "End Dates"
+            Me.rowInternetEndDatesColumn.Properties.FieldName = "InternetEndDatesColumn"
+            '
+            'rowInternetCreativeSizeColumn
+            '
+            Me.rowInternetCreativeSizeColumn.Name = "rowInternetCreativeSizeColumn"
+            Me.rowInternetCreativeSizeColumn.Properties.Caption = "Creative Size"
+            Me.rowInternetCreativeSizeColumn.Properties.FieldName = "InternetCreativeSizeColumn"
+            '
+            'rowInternetAdNumberColumn
+            '
+            Me.rowInternetAdNumberColumn.Name = "rowInternetAdNumberColumn"
+            Me.rowInternetAdNumberColumn.Properties.Caption = "Ad Number"
+            Me.rowInternetAdNumberColumn.Properties.FieldName = "InternetAdNumberColumn"
+            '
+            'rowInternetURLColumn
+            '
+            Me.rowInternetURLColumn.Name = "rowInternetURLColumn"
+            Me.rowInternetURLColumn.Properties.Caption = "URL"
+            Me.rowInternetURLColumn.Properties.FieldName = "InternetURLColumn"
+            '
+            'rowInternetInternetTypeColumn
+            '
+            Me.rowInternetInternetTypeColumn.Name = "rowInternetInternetTypeColumn"
+            Me.rowInternetInternetTypeColumn.Properties.Caption = "Type"
+            Me.rowInternetInternetTypeColumn.Properties.FieldName = "InternetInternetTypeColumn"
+            '
+            'rowInternetCloseDateColumn
+            '
+            Me.rowInternetCloseDateColumn.Name = "rowInternetCloseDateColumn"
+            Me.rowInternetCloseDateColumn.Properties.Caption = "Close Date"
+            Me.rowInternetCloseDateColumn.Properties.FieldName = "InternetCloseDateColumn"
+            '
+            'rowInternetJobComponentNumberColumn
+            '
+            Me.rowInternetJobComponentNumberColumn.Name = "rowInternetJobComponentNumberColumn"
+            Me.rowInternetJobComponentNumberColumn.Properties.Caption = "Job Component Number"
+            Me.rowInternetJobComponentNumberColumn.Properties.FieldName = "InternetJobComponentNumberColumn"
+            '
+            'rowInternetJobDescriptionColumn
+            '
+            Me.rowInternetJobDescriptionColumn.Name = "rowInternetJobDescriptionColumn"
+            Me.rowInternetJobDescriptionColumn.Properties.Caption = "Job Description"
+            Me.rowInternetJobDescriptionColumn.Properties.FieldName = "InternetJobDescriptionColumn"
+            '
+            'rowInternetComponentDescriptionColumn
+            '
+            Me.rowInternetComponentDescriptionColumn.Name = "rowInternetComponentDescriptionColumn"
+            Me.rowInternetComponentDescriptionColumn.Properties.Caption = "Component Description"
+            Me.rowInternetComponentDescriptionColumn.Properties.FieldName = "InternetComponentDescriptionColumn"
+            '
+            'rowInternetExtraChargesColumn
+            '
+            Me.rowInternetExtraChargesColumn.Name = "rowInternetExtraChargesColumn"
+            Me.rowInternetExtraChargesColumn.Properties.Caption = "Extra Charges"
+            Me.rowInternetExtraChargesColumn.Properties.FieldName = "InternetExtraChargesColumn"
+            '
+            'rowInternetGuaranteedImpressionsColumn
+            '
+            Me.rowInternetGuaranteedImpressionsColumn.Name = "rowInternetGuaranteedImpressionsColumn"
+            Me.rowInternetGuaranteedImpressionsColumn.Properties.Caption = "Guaranteed Impressions"
+            Me.rowInternetGuaranteedImpressionsColumn.Properties.FieldName = "InternetGuaranteedImpressionsColumn"
+            '
+            'category39
+            '
+            Me.category39.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetShowCommissionSeparately, Me.rowInternetShowRebateSeparately, Me.rowInternetShowTaxSeparately, Me.rowInternetShowBillingHistory})
+            Me.category39.Name = "category39"
+            Me.category39.Properties.Caption = "Footer Options"
+            '
+            'rowInternetShowCommissionSeparately
+            '
+            Me.rowInternetShowCommissionSeparately.Name = "rowInternetShowCommissionSeparately"
+            Me.rowInternetShowCommissionSeparately.Properties.Caption = "Show Commission Separately"
+            Me.rowInternetShowCommissionSeparately.Properties.FieldName = "InternetShowCommissionSeparately"
+            '
+            'rowInternetShowRebateSeparately
+            '
+            Me.rowInternetShowRebateSeparately.Name = "rowInternetShowRebateSeparately"
+            Me.rowInternetShowRebateSeparately.Properties.Caption = "Show Rebate Separately"
+            Me.rowInternetShowRebateSeparately.Properties.FieldName = "InternetShowRebateSeparately"
+            '
+            'rowInternetShowTaxSeparately
+            '
+            Me.rowInternetShowTaxSeparately.Name = "rowInternetShowTaxSeparately"
+            Me.rowInternetShowTaxSeparately.Properties.Caption = "Show Tax Separately"
+            Me.rowInternetShowTaxSeparately.Properties.FieldName = "InternetShowTaxSeparately"
+            '
+            'rowInternetShowBillingHistory
+            '
+            Me.rowInternetShowBillingHistory.Name = "rowInternetShowBillingHistory"
+            Me.rowInternetShowBillingHistory.Properties.Caption = "Show Billing History"
+            Me.rowInternetShowBillingHistory.Properties.FieldName = "InternetShowBillingHistory"
+            '
+            'TabItemOptions_InternetTab
+            '
+            Me.TabItemOptions_InternetTab.AttachedControl = Me.TabControlPanelInternetTab_Internet
+            Me.TabItemOptions_InternetTab.Name = "TabItemOptions_InternetTab"
+            Me.TabItemOptions_InternetTab.Text = "Internet"
             '
             'TabControlPanelComboTab_Combo
             '
@@ -1665,6 +2038,197 @@
             Me.TabItemOptions_ComboTab.Text = "Combo"
             Me.TabItemOptions_ComboTab.Visible = False
             '
+            'TabControlPanelMediaTab_Media
+            '
+            Me.TabControlPanelMediaTab_Media.Controls.Add(Me.VerticalGridMedia_Settings)
+            Me.TabControlPanelMediaTab_Media.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelMediaTab_Media.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelMediaTab_Media.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelMediaTab_Media.Name = "TabControlPanelMediaTab_Media"
+            Me.TabControlPanelMediaTab_Media.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelMediaTab_Media.Size = New System.Drawing.Size(679, 456)
+            Me.TabControlPanelMediaTab_Media.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelMediaTab_Media.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelMediaTab_Media.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelMediaTab_Media.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelMediaTab_Media.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelMediaTab_Media.Style.GradientAngle = 90
+            Me.TabControlPanelMediaTab_Media.TabIndex = 2
+            Me.TabControlPanelMediaTab_Media.TabItem = Me.TabItemOptions_MediaTab
+            '
+            'VerticalGridMedia_Settings
+            '
+            Me.VerticalGridMedia_Settings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.VerticalGridMedia_Settings.Appearance.RowHeaderPanel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.VerticalGridMedia_Settings.Appearance.RowHeaderPanel.Options.UseFont = True
+            Me.VerticalGridMedia_Settings.Cursor = System.Windows.Forms.Cursors.Default
+            Me.VerticalGridMedia_Settings.CustomizationFormBounds = New System.Drawing.Rectangle(1384, 433, 216, 265)
+            Me.VerticalGridMedia_Settings.DataSource = Me.MediaInvoiceSettingBindingSource
+            Me.VerticalGridMedia_Settings.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView
+            Me.VerticalGridMedia_Settings.Location = New System.Drawing.Point(4, 4)
+            Me.VerticalGridMedia_Settings.Name = "VerticalGridMedia_Settings"
+            Me.VerticalGridMedia_Settings.OptionsBehavior.RecordsMouseWheel = True
+            Me.VerticalGridMedia_Settings.OptionsBehavior.ResizeRowHeaders = False
+            Me.VerticalGridMedia_Settings.OptionsBehavior.UseEnterAsTab = True
+            Me.VerticalGridMedia_Settings.Rows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowUseLocationPrintOptions1, Me.rowLocationCode1, Me.rowApplyExchangeRate1, Me.rowExchangeRateAmount1, Me.rowHideExchangeRateMessage1, Me.category13, Me.category16})
+            Me.VerticalGridMedia_Settings.ShowButtonMode = DevExpress.XtraVerticalGrid.ShowButtonModeEnum.ShowAlways
+            Me.VerticalGridMedia_Settings.Size = New System.Drawing.Size(671, 448)
+            Me.VerticalGridMedia_Settings.TabIndex = 1
+            Me.VerticalGridMedia_Settings.TreeButtonStyle = DevExpress.XtraVerticalGrid.TreeButtonStyle.TreeView
+            '
+            'MediaInvoiceSettingBindingSource
+            '
+            Me.MediaInvoiceSettingBindingSource.DataSource = GetType(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceSetting)
+            '
+            'rowUseLocationPrintOptions1
+            '
+            Me.rowUseLocationPrintOptions1.Name = "rowUseLocationPrintOptions1"
+            Me.rowUseLocationPrintOptions1.Properties.Caption = "Use Location Print Options"
+            Me.rowUseLocationPrintOptions1.Properties.FieldName = "UseLocationPrintOptions"
+            '
+            'rowLocationCode1
+            '
+            Me.rowLocationCode1.Name = "rowLocationCode1"
+            Me.rowLocationCode1.Properties.Caption = "Location"
+            Me.rowLocationCode1.Properties.FieldName = "LocationCode"
+            '
+            'rowApplyExchangeRate1
+            '
+            Me.rowApplyExchangeRate1.Name = "rowApplyExchangeRate1"
+            Me.rowApplyExchangeRate1.Properties.Caption = "Apply Exchange Rate"
+            Me.rowApplyExchangeRate1.Properties.FieldName = "ApplyExchangeRate"
+            '
+            'rowExchangeRateAmount1
+            '
+            Me.rowExchangeRateAmount1.Name = "rowExchangeRateAmount1"
+            Me.rowExchangeRateAmount1.Properties.Caption = "Exchange Rate Amount"
+            Me.rowExchangeRateAmount1.Properties.FieldName = "ExchangeRateAmount"
+            '
+            'rowHideExchangeRateMessage1
+            '
+            Me.rowHideExchangeRateMessage1.Name = "rowHideExchangeRateMessage1"
+            Me.rowHideExchangeRateMessage1.Properties.Caption = "Hide Exchange Rate Message"
+            Me.rowHideExchangeRateMessage1.Properties.FieldName = "HideExchangeRateMessage"
+            '
+            'category13
+            '
+            Me.category13.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.category14, Me.category15})
+            Me.category13.Height = 17
+            Me.category13.Name = "category13"
+            Me.category13.Properties.Caption = "Header Options"
+            '
+            'category14
+            '
+            Me.category14.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowAddressBlockType1, Me.rowPrintClientName1, Me.rowPrintDivisionName1, Me.rowPrintProductDescription1, Me.rowPrintContactAfterAddress1, Me.rowContactType1, Me.rowShowCodes1})
+            Me.category14.Name = "category14"
+            Me.category14.Properties.Caption = "Address Block"
+            '
+            'rowAddressBlockType1
+            '
+            Me.rowAddressBlockType1.Name = "rowAddressBlockType1"
+            Me.rowAddressBlockType1.Properties.Caption = "Address Block Type"
+            Me.rowAddressBlockType1.Properties.FieldName = "AddressBlockType"
+            '
+            'rowPrintClientName1
+            '
+            Me.rowPrintClientName1.Name = "rowPrintClientName1"
+            Me.rowPrintClientName1.Properties.Caption = "Print Client Name"
+            Me.rowPrintClientName1.Properties.FieldName = "PrintClientName"
+            '
+            'rowPrintDivisionName1
+            '
+            Me.rowPrintDivisionName1.Name = "rowPrintDivisionName1"
+            Me.rowPrintDivisionName1.Properties.Caption = "Print Division Name"
+            Me.rowPrintDivisionName1.Properties.FieldName = "PrintDivisionName"
+            '
+            'rowPrintProductDescription1
+            '
+            Me.rowPrintProductDescription1.Name = "rowPrintProductDescription1"
+            Me.rowPrintProductDescription1.Properties.Caption = "Print Product Description"
+            Me.rowPrintProductDescription1.Properties.FieldName = "PrintProductDescription"
+            '
+            'rowPrintContactAfterAddress1
+            '
+            Me.rowPrintContactAfterAddress1.Name = "rowPrintContactAfterAddress1"
+            Me.rowPrintContactAfterAddress1.Properties.Caption = "Print Contact After Address"
+            Me.rowPrintContactAfterAddress1.Properties.FieldName = "PrintContactAfterAddress"
+            '
+            'rowContactType1
+            '
+            Me.rowContactType1.Name = "rowContactType1"
+            Me.rowContactType1.Properties.Caption = "Contact Type"
+            Me.rowContactType1.Properties.FieldName = "ContactType"
+            '
+            'rowShowCodes1
+            '
+            Me.rowShowCodes1.Name = "rowShowCodes1"
+            Me.rowShowCodes1.Properties.Caption = "Show Codes"
+            Me.rowShowCodes1.Properties.FieldName = "ShowCodes"
+            '
+            'category15
+            '
+            Me.category15.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowIncludeBillingComment1})
+            Me.category15.Name = "category15"
+            Me.category15.Properties.Caption = "Comments"
+            '
+            'rowIncludeBillingComment1
+            '
+            Me.rowIncludeBillingComment1.Name = "rowIncludeBillingComment1"
+            Me.rowIncludeBillingComment1.Properties.Caption = "Invoice Comment"
+            Me.rowIncludeBillingComment1.Properties.FieldName = "IncludeBillingComment"
+            '
+            'category16
+            '
+            Me.category16.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInvoiceFooterCommentType1, Me.rowInvoiceFooterComment1})
+            Me.category16.Name = "category16"
+            Me.category16.Properties.Caption = "Footer Options"
+            '
+            'rowInvoiceFooterCommentType1
+            '
+            Me.rowInvoiceFooterCommentType1.Name = "rowInvoiceFooterCommentType1"
+            Me.rowInvoiceFooterCommentType1.Properties.Caption = "Type"
+            Me.rowInvoiceFooterCommentType1.Properties.FieldName = "InvoiceFooterCommentType"
+            '
+            'rowInvoiceFooterComment1
+            '
+            Me.rowInvoiceFooterComment1.Name = "rowInvoiceFooterComment1"
+            Me.rowInvoiceFooterComment1.Properties.Caption = "Comment"
+            Me.rowInvoiceFooterComment1.Properties.FieldName = "InvoiceFooterComment"
+            '
+            'TabItemOptions_MediaTab
+            '
+            Me.TabItemOptions_MediaTab.AttachedControl = Me.TabControlPanelMediaTab_Media
+            Me.TabItemOptions_MediaTab.Name = "TabItemOptions_MediaTab"
+            Me.TabItemOptions_MediaTab.Text = "Media"
+            '
+            'TabControlPanelProductionTab_Production
+            '
+            Me.TabControlPanelProductionTab_Production.Controls.Add(Me.VerticalGridProduction_Settings)
+            Me.TabControlPanelProductionTab_Production.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelProductionTab_Production.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelProductionTab_Production.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelProductionTab_Production.Name = "TabControlPanelProductionTab_Production"
+            Me.TabControlPanelProductionTab_Production.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelProductionTab_Production.Size = New System.Drawing.Size(679, 456)
+            Me.TabControlPanelProductionTab_Production.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelProductionTab_Production.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelProductionTab_Production.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelProductionTab_Production.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelProductionTab_Production.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelProductionTab_Production.Style.GradientAngle = 90
+            Me.TabControlPanelProductionTab_Production.TabIndex = 1
+            Me.TabControlPanelProductionTab_Production.TabItem = Me.TabItemOptions_ProductionTab
+            '
+            'TabItemOptions_ProductionTab
+            '
+            Me.TabItemOptions_ProductionTab.AttachedControl = Me.TabControlPanelProductionTab_Production
+            Me.TabItemOptions_ProductionTab.Name = "TabItemOptions_ProductionTab"
+            Me.TabItemOptions_ProductionTab.Text = "Production"
+            '
             'TabControlPanelTVTab_TV
             '
             Me.TabControlPanelTVTab_TV.Controls.Add(Me.VerticalGridTV_Settings)
@@ -1691,7 +2255,7 @@
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.VerticalGridTV_Settings.Appearance.RowHeaderPanel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
             Me.VerticalGridTV_Settings.Appearance.RowHeaderPanel.Options.UseFont = True
-            Me.VerticalGridTV_Settings.Cursor = System.Windows.Forms.Cursors.Hand
+            Me.VerticalGridTV_Settings.Cursor = System.Windows.Forms.Cursors.Default
             Me.VerticalGridTV_Settings.CustomizationFormBounds = New System.Drawing.Rectangle(1384, 433, 216, 265)
             Me.VerticalGridTV_Settings.DataSource = Me.MediaInvoiceTVSettingBindingSource
             Me.VerticalGridTV_Settings.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView
@@ -1923,7 +2487,7 @@
             '
             'category62
             '
-            Me.category62.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowTVShowZeroLineAmounts, Me.rowTVSortLinesBy, Me.rowTVLineNumberColumn, Me.rowTVProgramColumn, Me.rowTVSpotLengthColumn, Me.rowTVTagColumn, Me.rowTVStartEndTimesColumn, Me.rowTVNumberOfSpotsColumn, Me.rowTVRemarksColumn, Me.rowTVCloseDateColumn, Me.rowTVJobComponentNumberColumn, Me.rowTVJobDescriptionColumn, Me.rowTVComponentDescriptionColumn, Me.rowTVOrderDetailCommentColumn, Me.rowTVOrderHouseDetailCommentColumn, Me.rowTVExtraChargesColumn})
+            Me.category62.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowTVShowZeroLineAmounts, Me.rowTVSortLinesBy, Me.rowTVLineNumberColumn, Me.rowTVProgramColumn, Me.rowTVSpotLengthColumn, Me.rowTVTagColumn, Me.rowTVStartEndTimesColumn, Me.rowTVNumberOfSpotsColumn, Me.rowTVRemarksColumn, Me.rowTVCloseDateColumn, Me.rowTVJobComponentNumberColumn, Me.rowTVJobDescriptionColumn, Me.rowTVComponentDescriptionColumn, Me.rowTVOrderDetailCommentColumn, Me.rowTVOrderHouseDetailCommentColumn, Me.rowTVExtraChargesColumn, Me.rowTVStartDateColumn})
             Me.category62.Name = "category62"
             Me.category62.Properties.Caption = "Order/Line Options"
             '
@@ -2318,7 +2882,7 @@
             '
             'category54
             '
-            Me.category54.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowRadioShowZeroLineAmounts, Me.rowRadioSortLinesBy, Me.rowRadioLineNumberColumn, Me.rowRadioProgramColumn, Me.rowRadioSpotLengthColumn, Me.rowRadioTagColumn, Me.rowRadioStartEndTimesColumn, Me.rowRadioNumberOfSpotsColumn, Me.rowRadioRemarksColumn, Me.rowRadioCloseDateColumn, Me.rowRadioJobComponentNumberColumn, Me.rowRadioJobDescriptionColumn, Me.rowRadioComponentDescriptionColumn, Me.rowRadioOrderDetailCommentColumn, Me.rowRadioOrderHouseDetailCommentColumn, Me.rowRadioExtraChargesColumn})
+            Me.category54.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowRadioShowZeroLineAmounts, Me.rowRadioSortLinesBy, Me.rowRadioLineNumberColumn, Me.rowRadioProgramColumn, Me.rowRadioSpotLengthColumn, Me.rowRadioTagColumn, Me.rowRadioStartEndTimesColumn, Me.rowRadioNumberOfSpotsColumn, Me.rowRadioRemarksColumn, Me.rowRadioCloseDateColumn, Me.rowRadioJobComponentNumberColumn, Me.rowRadioJobDescriptionColumn, Me.rowRadioComponentDescriptionColumn, Me.rowRadioOrderDetailCommentColumn, Me.rowRadioOrderHouseDetailCommentColumn, Me.rowRadioExtraChargesColumn, Me.rowRadioStartDateColumn})
             Me.category54.Name = "category54"
             Me.category54.Properties.Caption = "Order/Line Options"
             '
@@ -2848,395 +3412,6 @@
             Me.TabItemOptions_OutdoorTab.AttachedControl = Me.TabControlPanelOutdoorTab_Outdoor
             Me.TabItemOptions_OutdoorTab.Name = "TabItemOptions_OutdoorTab"
             Me.TabItemOptions_OutdoorTab.Text = "Outdoor"
-            '
-            'TabControlPanelInternetTab_Internet
-            '
-            Me.TabControlPanelInternetTab_Internet.Controls.Add(Me.VerticalGridInternet_Settings)
-            Me.TabControlPanelInternetTab_Internet.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelInternetTab_Internet.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelInternetTab_Internet.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelInternetTab_Internet.Name = "TabControlPanelInternetTab_Internet"
-            Me.TabControlPanelInternetTab_Internet.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelInternetTab_Internet.Size = New System.Drawing.Size(679, 456)
-            Me.TabControlPanelInternetTab_Internet.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelInternetTab_Internet.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelInternetTab_Internet.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelInternetTab_Internet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelInternetTab_Internet.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelInternetTab_Internet.Style.GradientAngle = 90
-            Me.TabControlPanelInternetTab_Internet.TabIndex = 5
-            Me.TabControlPanelInternetTab_Internet.TabItem = Me.TabItemOptions_InternetTab
-            '
-            'VerticalGridInternet_Settings
-            '
-            Me.VerticalGridInternet_Settings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.VerticalGridInternet_Settings.Appearance.RowHeaderPanel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.VerticalGridInternet_Settings.Appearance.RowHeaderPanel.Options.UseFont = True
-            Me.VerticalGridInternet_Settings.Cursor = System.Windows.Forms.Cursors.Default
-            Me.VerticalGridInternet_Settings.CustomizationFormBounds = New System.Drawing.Rectangle(1384, 433, 216, 265)
-            Me.VerticalGridInternet_Settings.DataSource = Me.MediaInvoiceInternetSettingBindingSource
-            Me.VerticalGridInternet_Settings.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView
-            Me.VerticalGridInternet_Settings.Location = New System.Drawing.Point(4, 4)
-            Me.VerticalGridInternet_Settings.Name = "VerticalGridInternet_Settings"
-            Me.VerticalGridInternet_Settings.OptionsBehavior.RecordsMouseWheel = True
-            Me.VerticalGridInternet_Settings.OptionsBehavior.ResizeRowHeaders = False
-            Me.VerticalGridInternet_Settings.OptionsBehavior.UseEnterAsTab = True
-            Me.VerticalGridInternet_Settings.Rows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetCustomInvoiceID, Me.category33, Me.category71, Me.category36, Me.category39})
-            Me.VerticalGridInternet_Settings.ShowButtonMode = DevExpress.XtraVerticalGrid.ShowButtonModeEnum.ShowAlways
-            Me.VerticalGridInternet_Settings.Size = New System.Drawing.Size(671, 448)
-            Me.VerticalGridInternet_Settings.TabIndex = 2
-            Me.VerticalGridInternet_Settings.TreeButtonStyle = DevExpress.XtraVerticalGrid.TreeButtonStyle.TreeView
-            '
-            'MediaInvoiceInternetSettingBindingSource
-            '
-            Me.MediaInvoiceInternetSettingBindingSource.DataSource = GetType(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting)
-            '
-            'rowInternetCustomInvoiceID
-            '
-            Me.rowInternetCustomInvoiceID.Name = "rowInternetCustomInvoiceID"
-            Me.rowInternetCustomInvoiceID.Properties.Caption = "Custom Invoice"
-            Me.rowInternetCustomInvoiceID.Properties.FieldName = "InternetCustomInvoiceID"
-            '
-            'category33
-            '
-            Me.category33.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.category34, Me.category35, Me.category32})
-            Me.category33.Name = "category33"
-            Me.category33.Properties.Caption = "Header Options"
-            '
-            'category34
-            '
-            Me.category34.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetUseInvoiceCategoryDescription, Me.rowInternetInvoiceTitle, Me.rowInternetPrintInvoiceDueDate})
-            Me.category34.Height = 17
-            Me.category34.Name = "category34"
-            Me.category34.Properties.Caption = "Title Options"
-            '
-            'rowInternetUseInvoiceCategoryDescription
-            '
-            Me.rowInternetUseInvoiceCategoryDescription.Name = "rowInternetUseInvoiceCategoryDescription"
-            Me.rowInternetUseInvoiceCategoryDescription.Properties.Caption = "Use Invoice Category Description"
-            Me.rowInternetUseInvoiceCategoryDescription.Properties.FieldName = "InternetUseInvoiceCategoryDescription"
-            '
-            'rowInternetInvoiceTitle
-            '
-            Me.rowInternetInvoiceTitle.Name = "rowInternetInvoiceTitle"
-            Me.rowInternetInvoiceTitle.Properties.Caption = "Invoice Title"
-            Me.rowInternetInvoiceTitle.Properties.FieldName = "InternetInvoiceTitle"
-            '
-            'rowInternetPrintInvoiceDueDate
-            '
-            Me.rowInternetPrintInvoiceDueDate.Name = "rowInternetPrintInvoiceDueDate"
-            Me.rowInternetPrintInvoiceDueDate.Properties.Caption = "Invoice Due Date"
-            Me.rowInternetPrintInvoiceDueDate.Properties.FieldName = "InternetPrintInvoiceDueDate"
-            '
-            'category35
-            '
-            Me.category35.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetShowClientPO, Me.rowInternetClientPOLocation, Me.rowInternetShowSalesClass, Me.rowInternetSalesClassLocation, Me.rowInternetShowCampaign, Me.rowInternetCampaignLocation, Me.rowInternetShowClientReference})
-            Me.category35.Name = "category35"
-            Me.category35.Properties.Caption = "Include Fields"
-            '
-            'rowInternetShowClientPO
-            '
-            Me.rowInternetShowClientPO.Name = "rowInternetShowClientPO"
-            Me.rowInternetShowClientPO.Properties.Caption = "Show Client PO"
-            Me.rowInternetShowClientPO.Properties.FieldName = "InternetShowClientPO"
-            '
-            'rowInternetClientPOLocation
-            '
-            Me.rowInternetClientPOLocation.Name = "rowInternetClientPOLocation"
-            Me.rowInternetClientPOLocation.Properties.Caption = "Client PO Location"
-            Me.rowInternetClientPOLocation.Properties.FieldName = "InternetClientPOLocation"
-            '
-            'rowInternetShowSalesClass
-            '
-            Me.rowInternetShowSalesClass.Name = "rowInternetShowSalesClass"
-            Me.rowInternetShowSalesClass.Properties.Caption = "Show Sales Class"
-            Me.rowInternetShowSalesClass.Properties.FieldName = "InternetShowSalesClass"
-            '
-            'rowInternetSalesClassLocation
-            '
-            Me.rowInternetSalesClassLocation.Name = "rowInternetSalesClassLocation"
-            Me.rowInternetSalesClassLocation.Properties.Caption = "Sales Class Location"
-            Me.rowInternetSalesClassLocation.Properties.FieldName = "InternetSalesClassLocation"
-            '
-            'rowInternetShowCampaign
-            '
-            Me.rowInternetShowCampaign.Name = "rowInternetShowCampaign"
-            Me.rowInternetShowCampaign.Properties.Caption = "Show Campaign"
-            Me.rowInternetShowCampaign.Properties.FieldName = "InternetShowCampaign"
-            '
-            'rowInternetCampaignLocation
-            '
-            Me.rowInternetCampaignLocation.Name = "rowInternetCampaignLocation"
-            Me.rowInternetCampaignLocation.Properties.Caption = "Campaign Location"
-            Me.rowInternetCampaignLocation.Properties.FieldName = "InternetCampaignLocation"
-            '
-            'rowInternetShowClientReference
-            '
-            Me.rowInternetShowClientReference.Name = "rowInternetShowClientReference"
-            Me.rowInternetShowClientReference.Properties.Caption = "Show Client Reference"
-            Me.rowInternetShowClientReference.Properties.FieldName = "InternetShowClientReference"
-            Me.rowInternetShowClientReference.Visible = False
-            '
-            'category32
-            '
-            Me.category32.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetShowOrderComment, Me.rowInternetShowOrderHouseComment, Me.rowInternetShowCampaignComment})
-            Me.category32.Name = "category32"
-            Me.category32.Properties.Caption = "Comments"
-            '
-            'rowInternetShowOrderComment
-            '
-            Me.rowInternetShowOrderComment.Name = "rowInternetShowOrderComment"
-            Me.rowInternetShowOrderComment.Properties.Caption = "Show Order Comment"
-            Me.rowInternetShowOrderComment.Properties.FieldName = "InternetShowOrderComment"
-            '
-            'rowInternetShowOrderHouseComment
-            '
-            Me.rowInternetShowOrderHouseComment.Name = "rowInternetShowOrderHouseComment"
-            Me.rowInternetShowOrderHouseComment.Properties.Caption = "Show Order House Comment"
-            Me.rowInternetShowOrderHouseComment.Properties.FieldName = "InternetShowOrderHouseComment"
-            '
-            'rowInternetShowCampaignComment
-            '
-            Me.rowInternetShowCampaignComment.Name = "rowInternetShowCampaignComment"
-            Me.rowInternetShowCampaignComment.Properties.Caption = "Show Campaign Comment"
-            Me.rowInternetShowCampaignComment.Properties.FieldName = "InternetShowCampaignComment"
-            '
-            'category71
-            '
-            Me.category71.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetHeaderGroupBy, Me.rowInternetShowOrderDescription, Me.rowInternetShowOrderSubtotals})
-            Me.category71.Name = "category71"
-            Me.category71.Properties.Caption = "Order Options"
-            '
-            'rowInternetHeaderGroupBy
-            '
-            Me.rowInternetHeaderGroupBy.Name = "rowInternetHeaderGroupBy"
-            Me.rowInternetHeaderGroupBy.Properties.Caption = "Group Orders By"
-            Me.rowInternetHeaderGroupBy.Properties.FieldName = "InternetHeaderGroupBy"
-            '
-            'rowInternetShowOrderDescription
-            '
-            Me.rowInternetShowOrderDescription.Name = "rowInternetShowOrderDescription"
-            Me.rowInternetShowOrderDescription.Properties.Caption = "Show Order Description"
-            Me.rowInternetShowOrderDescription.Properties.FieldName = "InternetShowOrderDescription"
-            '
-            'rowInternetShowOrderSubtotals
-            '
-            Me.rowInternetShowOrderSubtotals.Name = "rowInternetShowOrderSubtotals"
-            Me.rowInternetShowOrderSubtotals.Properties.Caption = "Show Order Subtotals"
-            Me.rowInternetShowOrderSubtotals.Properties.FieldName = "InternetShowOrderSubtotals"
-            '
-            'category36
-            '
-            Me.category36.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetShowLineDetail, Me.category37, Me.category38})
-            Me.category36.Name = "category36"
-            Me.category36.Properties.Caption = "Detail, Sorting & Grouping"
-            '
-            'rowInternetShowLineDetail
-            '
-            Me.rowInternetShowLineDetail.Name = "rowInternetShowLineDetail"
-            Me.rowInternetShowLineDetail.Properties.Caption = "Grouping Option"
-            Me.rowInternetShowLineDetail.Properties.FieldName = "InternetShowLineDetail"
-            '
-            'category37
-            '
-            Me.category37.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetOrderNumberColumn, Me.rowInternetVendorNameColumn, Me.rowInternetShowVendorCode, Me.rowInternetOrderMonthsColumn, Me.rowInternetNetAmountColumn, Me.rowInternetCommissionAmountColumn, Me.rowInternetTaxAmountColumn, Me.rowInternetBillAmountColumn, Me.rowInternetPriorBillAmountColumn, Me.rowInternetBilledToDateAmountColumn})
-            Me.category37.Name = "category37"
-            Me.category37.Properties.Caption = "Order Column Options"
-            '
-            'rowInternetOrderNumberColumn
-            '
-            Me.rowInternetOrderNumberColumn.Name = "rowInternetOrderNumberColumn"
-            Me.rowInternetOrderNumberColumn.Properties.Caption = "Order Number"
-            Me.rowInternetOrderNumberColumn.Properties.FieldName = "InternetOrderNumberColumn"
-            '
-            'rowInternetVendorNameColumn
-            '
-            Me.rowInternetVendorNameColumn.Name = "rowInternetVendorNameColumn"
-            Me.rowInternetVendorNameColumn.Properties.Caption = "Vendor Name"
-            Me.rowInternetVendorNameColumn.Properties.FieldName = "InternetVendorNameColumn"
-            '
-            'rowInternetShowVendorCode
-            '
-            Me.rowInternetShowVendorCode.Name = "rowInternetShowVendorCode"
-            Me.rowInternetShowVendorCode.Properties.Caption = "Vendor Code"
-            Me.rowInternetShowVendorCode.Properties.FieldName = "InternetShowVendorCode"
-            '
-            'rowInternetOrderMonthsColumn
-            '
-            Me.rowInternetOrderMonthsColumn.Name = "rowInternetOrderMonthsColumn"
-            Me.rowInternetOrderMonthsColumn.Properties.Caption = "Order Months"
-            Me.rowInternetOrderMonthsColumn.Properties.FieldName = "InternetOrderMonthsColumn"
-            '
-            'rowInternetNetAmountColumn
-            '
-            Me.rowInternetNetAmountColumn.Name = "rowInternetNetAmountColumn"
-            Me.rowInternetNetAmountColumn.Properties.Caption = "Net Amount"
-            Me.rowInternetNetAmountColumn.Properties.FieldName = "InternetNetAmountColumn"
-            '
-            'rowInternetCommissionAmountColumn
-            '
-            Me.rowInternetCommissionAmountColumn.Name = "rowInternetCommissionAmountColumn"
-            Me.rowInternetCommissionAmountColumn.Properties.Caption = "Commission Amount"
-            Me.rowInternetCommissionAmountColumn.Properties.FieldName = "InternetCommissionAmountColumn"
-            '
-            'rowInternetTaxAmountColumn
-            '
-            Me.rowInternetTaxAmountColumn.Name = "rowInternetTaxAmountColumn"
-            Me.rowInternetTaxAmountColumn.Properties.Caption = "Tax Amount"
-            Me.rowInternetTaxAmountColumn.Properties.FieldName = "InternetTaxAmountColumn"
-            '
-            'rowInternetBillAmountColumn
-            '
-            Me.rowInternetBillAmountColumn.Name = "rowInternetBillAmountColumn"
-            Me.rowInternetBillAmountColumn.Properties.Caption = "Bill Amount"
-            Me.rowInternetBillAmountColumn.Properties.FieldName = "InternetBillAmountColumn"
-            '
-            'rowInternetPriorBillAmountColumn
-            '
-            Me.rowInternetPriorBillAmountColumn.Name = "rowInternetPriorBillAmountColumn"
-            Me.rowInternetPriorBillAmountColumn.Properties.Caption = "Prior Bill Amount"
-            Me.rowInternetPriorBillAmountColumn.Properties.FieldName = "InternetPriorBillAmountColumn"
-            '
-            'rowInternetBilledToDateAmountColumn
-            '
-            Me.rowInternetBilledToDateAmountColumn.Name = "rowInternetBilledToDateAmountColumn"
-            Me.rowInternetBilledToDateAmountColumn.Properties.Caption = "Billed To Date Amount"
-            Me.rowInternetBilledToDateAmountColumn.Properties.FieldName = "InternetBilledToDateAmountColumn"
-            '
-            'category38
-            '
-            Me.category38.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetShowZeroLineAmounts, Me.rowInternetSortLinesBy, Me.rowInternetLineNumberColumn, Me.rowInternetHeadlineColumn, Me.rowInternetStartDatesColumn, Me.rowInternetEndDatesColumn, Me.rowInternetCreativeSizeColumn, Me.rowInternetAdNumberColumn, Me.rowInternetURLColumn, Me.rowInternetInternetTypeColumn, Me.rowInternetCloseDateColumn, Me.rowInternetJobComponentNumberColumn, Me.rowInternetJobDescriptionColumn, Me.rowInternetComponentDescriptionColumn, Me.rowInternetExtraChargesColumn})
-            Me.category38.Name = "category38"
-            Me.category38.Properties.Caption = "Order/Line Options"
-            '
-            'rowInternetShowZeroLineAmounts
-            '
-            Me.rowInternetShowZeroLineAmounts.Name = "rowInternetShowZeroLineAmounts"
-            Me.rowInternetShowZeroLineAmounts.Properties.Caption = "Show Zero Line Amounts"
-            Me.rowInternetShowZeroLineAmounts.Properties.FieldName = "InternetShowZeroLineAmounts"
-            '
-            'rowInternetSortLinesBy
-            '
-            Me.rowInternetSortLinesBy.Name = "rowInternetSortLinesBy"
-            Me.rowInternetSortLinesBy.Properties.Caption = "Sort Lines By"
-            Me.rowInternetSortLinesBy.Properties.FieldName = "InternetSortLinesBy"
-            '
-            'rowInternetLineNumberColumn
-            '
-            Me.rowInternetLineNumberColumn.Name = "rowInternetLineNumberColumn"
-            Me.rowInternetLineNumberColumn.Properties.Caption = "Line Number"
-            Me.rowInternetLineNumberColumn.Properties.FieldName = "InternetLineNumberColumn"
-            '
-            'rowInternetHeadlineColumn
-            '
-            Me.rowInternetHeadlineColumn.Name = "rowInternetHeadlineColumn"
-            Me.rowInternetHeadlineColumn.Properties.Caption = "Headline"
-            Me.rowInternetHeadlineColumn.Properties.FieldName = "InternetHeadlineColumn"
-            '
-            'rowInternetStartDatesColumn
-            '
-            Me.rowInternetStartDatesColumn.Name = "rowInternetStartDatesColumn"
-            Me.rowInternetStartDatesColumn.Properties.Caption = "Start Dates"
-            Me.rowInternetStartDatesColumn.Properties.FieldName = "InternetStartDatesColumn"
-            '
-            'rowInternetEndDatesColumn
-            '
-            Me.rowInternetEndDatesColumn.Name = "rowInternetEndDatesColumn"
-            Me.rowInternetEndDatesColumn.Properties.Caption = "End Dates"
-            Me.rowInternetEndDatesColumn.Properties.FieldName = "InternetEndDatesColumn"
-            '
-            'rowInternetCreativeSizeColumn
-            '
-            Me.rowInternetCreativeSizeColumn.Name = "rowInternetCreativeSizeColumn"
-            Me.rowInternetCreativeSizeColumn.Properties.Caption = "Creative Size"
-            Me.rowInternetCreativeSizeColumn.Properties.FieldName = "InternetCreativeSizeColumn"
-            '
-            'rowInternetAdNumberColumn
-            '
-            Me.rowInternetAdNumberColumn.Name = "rowInternetAdNumberColumn"
-            Me.rowInternetAdNumberColumn.Properties.Caption = "Ad Number"
-            Me.rowInternetAdNumberColumn.Properties.FieldName = "InternetAdNumberColumn"
-            '
-            'rowInternetURLColumn
-            '
-            Me.rowInternetURLColumn.Name = "rowInternetURLColumn"
-            Me.rowInternetURLColumn.Properties.Caption = "URL"
-            Me.rowInternetURLColumn.Properties.FieldName = "InternetURLColumn"
-            '
-            'rowInternetInternetTypeColumn
-            '
-            Me.rowInternetInternetTypeColumn.Name = "rowInternetInternetTypeColumn"
-            Me.rowInternetInternetTypeColumn.Properties.Caption = "Type"
-            Me.rowInternetInternetTypeColumn.Properties.FieldName = "InternetInternetTypeColumn"
-            '
-            'rowInternetCloseDateColumn
-            '
-            Me.rowInternetCloseDateColumn.Name = "rowInternetCloseDateColumn"
-            Me.rowInternetCloseDateColumn.Properties.Caption = "Close Date"
-            Me.rowInternetCloseDateColumn.Properties.FieldName = "InternetCloseDateColumn"
-            '
-            'rowInternetJobComponentNumberColumn
-            '
-            Me.rowInternetJobComponentNumberColumn.Name = "rowInternetJobComponentNumberColumn"
-            Me.rowInternetJobComponentNumberColumn.Properties.Caption = "Job Component Number"
-            Me.rowInternetJobComponentNumberColumn.Properties.FieldName = "InternetJobComponentNumberColumn"
-            '
-            'rowInternetJobDescriptionColumn
-            '
-            Me.rowInternetJobDescriptionColumn.Name = "rowInternetJobDescriptionColumn"
-            Me.rowInternetJobDescriptionColumn.Properties.Caption = "Job Description"
-            Me.rowInternetJobDescriptionColumn.Properties.FieldName = "InternetJobDescriptionColumn"
-            '
-            'rowInternetComponentDescriptionColumn
-            '
-            Me.rowInternetComponentDescriptionColumn.Name = "rowInternetComponentDescriptionColumn"
-            Me.rowInternetComponentDescriptionColumn.Properties.Caption = "Component Description"
-            Me.rowInternetComponentDescriptionColumn.Properties.FieldName = "InternetComponentDescriptionColumn"
-            '
-            'rowInternetExtraChargesColumn
-            '
-            Me.rowInternetExtraChargesColumn.Name = "rowInternetExtraChargesColumn"
-            Me.rowInternetExtraChargesColumn.Properties.Caption = "Extra Charges"
-            Me.rowInternetExtraChargesColumn.Properties.FieldName = "InternetExtraChargesColumn"
-            '
-            'category39
-            '
-            Me.category39.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInternetShowCommissionSeparately, Me.rowInternetShowRebateSeparately, Me.rowInternetShowTaxSeparately, Me.rowInternetShowBillingHistory})
-            Me.category39.Name = "category39"
-            Me.category39.Properties.Caption = "Footer Options"
-            '
-            'rowInternetShowCommissionSeparately
-            '
-            Me.rowInternetShowCommissionSeparately.Name = "rowInternetShowCommissionSeparately"
-            Me.rowInternetShowCommissionSeparately.Properties.Caption = "Show Commission Separately"
-            Me.rowInternetShowCommissionSeparately.Properties.FieldName = "InternetShowCommissionSeparately"
-            '
-            'rowInternetShowRebateSeparately
-            '
-            Me.rowInternetShowRebateSeparately.Name = "rowInternetShowRebateSeparately"
-            Me.rowInternetShowRebateSeparately.Properties.Caption = "Show Rebate Separately"
-            Me.rowInternetShowRebateSeparately.Properties.FieldName = "InternetShowRebateSeparately"
-            '
-            'rowInternetShowTaxSeparately
-            '
-            Me.rowInternetShowTaxSeparately.Name = "rowInternetShowTaxSeparately"
-            Me.rowInternetShowTaxSeparately.Properties.Caption = "Show Tax Separately"
-            Me.rowInternetShowTaxSeparately.Properties.FieldName = "InternetShowTaxSeparately"
-            '
-            'rowInternetShowBillingHistory
-            '
-            Me.rowInternetShowBillingHistory.Name = "rowInternetShowBillingHistory"
-            Me.rowInternetShowBillingHistory.Properties.Caption = "Show Billing History"
-            Me.rowInternetShowBillingHistory.Properties.FieldName = "InternetShowBillingHistory"
-            '
-            'TabItemOptions_InternetTab
-            '
-            Me.TabItemOptions_InternetTab.AttachedControl = Me.TabControlPanelInternetTab_Internet
-            Me.TabItemOptions_InternetTab.Name = "TabItemOptions_InternetTab"
-            Me.TabItemOptions_InternetTab.Text = "Internet"
             '
             'TabControlPanelNewspaperTab_Newspaper
             '
@@ -4039,166 +4214,6 @@
             Me.TabItemOptions_MagazineTab.Name = "TabItemOptions_MagazineTab"
             Me.TabItemOptions_MagazineTab.Text = "Magazine"
             '
-            'TabControlPanelMediaTab_Media
-            '
-            Me.TabControlPanelMediaTab_Media.Controls.Add(Me.VerticalGridMedia_Settings)
-            Me.TabControlPanelMediaTab_Media.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelMediaTab_Media.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelMediaTab_Media.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelMediaTab_Media.Name = "TabControlPanelMediaTab_Media"
-            Me.TabControlPanelMediaTab_Media.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelMediaTab_Media.Size = New System.Drawing.Size(679, 456)
-            Me.TabControlPanelMediaTab_Media.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelMediaTab_Media.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelMediaTab_Media.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelMediaTab_Media.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelMediaTab_Media.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelMediaTab_Media.Style.GradientAngle = 90
-            Me.TabControlPanelMediaTab_Media.TabIndex = 2
-            Me.TabControlPanelMediaTab_Media.TabItem = Me.TabItemOptions_MediaTab
-            '
-            'VerticalGridMedia_Settings
-            '
-            Me.VerticalGridMedia_Settings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.VerticalGridMedia_Settings.Appearance.RowHeaderPanel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.VerticalGridMedia_Settings.Appearance.RowHeaderPanel.Options.UseFont = True
-            Me.VerticalGridMedia_Settings.Cursor = System.Windows.Forms.Cursors.Default
-            Me.VerticalGridMedia_Settings.CustomizationFormBounds = New System.Drawing.Rectangle(1384, 433, 216, 265)
-            Me.VerticalGridMedia_Settings.DataSource = Me.MediaInvoiceSettingBindingSource
-            Me.VerticalGridMedia_Settings.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView
-            Me.VerticalGridMedia_Settings.Location = New System.Drawing.Point(4, 4)
-            Me.VerticalGridMedia_Settings.Name = "VerticalGridMedia_Settings"
-            Me.VerticalGridMedia_Settings.OptionsBehavior.RecordsMouseWheel = True
-            Me.VerticalGridMedia_Settings.OptionsBehavior.ResizeRowHeaders = False
-            Me.VerticalGridMedia_Settings.OptionsBehavior.UseEnterAsTab = True
-            Me.VerticalGridMedia_Settings.Rows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowUseLocationPrintOptions1, Me.rowLocationCode1, Me.rowApplyExchangeRate1, Me.rowExchangeRateAmount1, Me.rowHideExchangeRateMessage1, Me.category13, Me.category16})
-            Me.VerticalGridMedia_Settings.ShowButtonMode = DevExpress.XtraVerticalGrid.ShowButtonModeEnum.ShowAlways
-            Me.VerticalGridMedia_Settings.Size = New System.Drawing.Size(671, 448)
-            Me.VerticalGridMedia_Settings.TabIndex = 1
-            Me.VerticalGridMedia_Settings.TreeButtonStyle = DevExpress.XtraVerticalGrid.TreeButtonStyle.TreeView
-            '
-            'MediaInvoiceSettingBindingSource
-            '
-            Me.MediaInvoiceSettingBindingSource.DataSource = GetType(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceSetting)
-            '
-            'rowUseLocationPrintOptions1
-            '
-            Me.rowUseLocationPrintOptions1.Name = "rowUseLocationPrintOptions1"
-            Me.rowUseLocationPrintOptions1.Properties.Caption = "Use Location Print Options"
-            Me.rowUseLocationPrintOptions1.Properties.FieldName = "UseLocationPrintOptions"
-            '
-            'rowLocationCode1
-            '
-            Me.rowLocationCode1.Name = "rowLocationCode1"
-            Me.rowLocationCode1.Properties.Caption = "Location"
-            Me.rowLocationCode1.Properties.FieldName = "LocationCode"
-            '
-            'rowApplyExchangeRate1
-            '
-            Me.rowApplyExchangeRate1.Name = "rowApplyExchangeRate1"
-            Me.rowApplyExchangeRate1.Properties.Caption = "Apply Exchange Rate"
-            Me.rowApplyExchangeRate1.Properties.FieldName = "ApplyExchangeRate"
-            '
-            'rowExchangeRateAmount1
-            '
-            Me.rowExchangeRateAmount1.Name = "rowExchangeRateAmount1"
-            Me.rowExchangeRateAmount1.Properties.Caption = "Exchange Rate Amount"
-            Me.rowExchangeRateAmount1.Properties.FieldName = "ExchangeRateAmount"
-            '
-            'category13
-            '
-            Me.category13.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.category14, Me.category15})
-            Me.category13.Height = 17
-            Me.category13.Name = "category13"
-            Me.category13.Properties.Caption = "Header Options"
-            '
-            'category14
-            '
-            Me.category14.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowAddressBlockType1, Me.rowPrintClientName1, Me.rowPrintDivisionName1, Me.rowPrintProductDescription1, Me.rowPrintContactAfterAddress1, Me.rowContactType1, Me.rowShowCodes1})
-            Me.category14.Name = "category14"
-            Me.category14.Properties.Caption = "Address Block"
-            '
-            'rowAddressBlockType1
-            '
-            Me.rowAddressBlockType1.Name = "rowAddressBlockType1"
-            Me.rowAddressBlockType1.Properties.Caption = "Address Block Type"
-            Me.rowAddressBlockType1.Properties.FieldName = "AddressBlockType"
-            '
-            'rowPrintClientName1
-            '
-            Me.rowPrintClientName1.Name = "rowPrintClientName1"
-            Me.rowPrintClientName1.Properties.Caption = "Print Client Name"
-            Me.rowPrintClientName1.Properties.FieldName = "PrintClientName"
-            '
-            'rowPrintDivisionName1
-            '
-            Me.rowPrintDivisionName1.Name = "rowPrintDivisionName1"
-            Me.rowPrintDivisionName1.Properties.Caption = "Print Division Name"
-            Me.rowPrintDivisionName1.Properties.FieldName = "PrintDivisionName"
-            '
-            'rowPrintProductDescription1
-            '
-            Me.rowPrintProductDescription1.Name = "rowPrintProductDescription1"
-            Me.rowPrintProductDescription1.Properties.Caption = "Print Product Description"
-            Me.rowPrintProductDescription1.Properties.FieldName = "PrintProductDescription"
-            '
-            'rowPrintContactAfterAddress1
-            '
-            Me.rowPrintContactAfterAddress1.Name = "rowPrintContactAfterAddress1"
-            Me.rowPrintContactAfterAddress1.Properties.Caption = "Print Contact After Address"
-            Me.rowPrintContactAfterAddress1.Properties.FieldName = "PrintContactAfterAddress"
-            '
-            'rowContactType1
-            '
-            Me.rowContactType1.Name = "rowContactType1"
-            Me.rowContactType1.Properties.Caption = "Contact Type"
-            Me.rowContactType1.Properties.FieldName = "ContactType"
-            '
-            'rowShowCodes1
-            '
-            Me.rowShowCodes1.Name = "rowShowCodes1"
-            Me.rowShowCodes1.Properties.Caption = "Show Codes"
-            Me.rowShowCodes1.Properties.FieldName = "ShowCodes"
-            '
-            'category15
-            '
-            Me.category15.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowIncludeBillingComment1})
-            Me.category15.Name = "category15"
-            Me.category15.Properties.Caption = "Comments"
-            '
-            'rowIncludeBillingComment1
-            '
-            Me.rowIncludeBillingComment1.Name = "rowIncludeBillingComment1"
-            Me.rowIncludeBillingComment1.Properties.Caption = "Invoice Comment"
-            Me.rowIncludeBillingComment1.Properties.FieldName = "IncludeBillingComment"
-            '
-            'category16
-            '
-            Me.category16.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowInvoiceFooterCommentType1, Me.rowInvoiceFooterComment1})
-            Me.category16.Name = "category16"
-            Me.category16.Properties.Caption = "Footer Options"
-            '
-            'rowInvoiceFooterCommentType1
-            '
-            Me.rowInvoiceFooterCommentType1.Name = "rowInvoiceFooterCommentType1"
-            Me.rowInvoiceFooterCommentType1.Properties.Caption = "Type"
-            Me.rowInvoiceFooterCommentType1.Properties.FieldName = "InvoiceFooterCommentType"
-            '
-            'rowInvoiceFooterComment1
-            '
-            Me.rowInvoiceFooterComment1.Name = "rowInvoiceFooterComment1"
-            Me.rowInvoiceFooterComment1.Properties.Caption = "Comment"
-            Me.rowInvoiceFooterComment1.Properties.FieldName = "InvoiceFooterComment"
-            '
-            'TabItemOptions_MediaTab
-            '
-            Me.TabItemOptions_MediaTab.AttachedControl = Me.TabControlPanelMediaTab_Media
-            Me.TabItemOptions_MediaTab.Name = "TabItemOptions_MediaTab"
-            Me.TabItemOptions_MediaTab.Text = "Media"
-            '
             'LabelForm_FormatLabel
             '
             Me.LabelForm_FormatLabel.BackColor = System.Drawing.Color.White
@@ -4228,11 +4243,17 @@
             Me.LabelForm_Format.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelForm_Format.TabIndex = 1
             '
-            'rowHideExchangeRateMessage1
+            'rowRadioStartDateColumn
             '
-            Me.rowHideExchangeRateMessage1.Name = "rowHideExchangeRateMessage1"
-            Me.rowHideExchangeRateMessage1.Properties.Caption = "Hide Exchange Rate Message"
-            Me.rowHideExchangeRateMessage1.Properties.FieldName = "HideExchangeRateMessage"
+            Me.rowRadioStartDateColumn.Name = "rowRadioStartDateColumn"
+            Me.rowRadioStartDateColumn.Properties.Caption = "Start Date"
+            Me.rowRadioStartDateColumn.Properties.FieldName = "RadioStartDateColumn"
+            '
+            'rowTVStartDateColumn
+            '
+            Me.rowTVStartDateColumn.Name = "rowTVStartDateColumn"
+            Me.rowTVStartDateColumn.Properties.Caption = "Start Date"
+            Me.rowTVStartDateColumn.Properties.FieldName = "TVStartDateColumn"
             '
             'InvoicePrintingOptionsDialog
             '
@@ -4257,10 +4278,16 @@
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.TabControlForm_Options, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlForm_Options.ResumeLayout(False)
-            Me.TabControlPanelProductionTab_Production.ResumeLayout(False)
+            Me.TabControlPanelInternetTab_Internet.ResumeLayout(False)
+            CType(Me.VerticalGridInternet_Settings, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.MediaInvoiceInternetSettingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlPanelComboTab_Combo.ResumeLayout(False)
             CType(Me.VerticalGridCombo_Settings, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.ComboInvoiceSettingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.TabControlPanelMediaTab_Media.ResumeLayout(False)
+            CType(Me.VerticalGridMedia_Settings, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.MediaInvoiceSettingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.TabControlPanelProductionTab_Production.ResumeLayout(False)
             Me.TabControlPanelTVTab_TV.ResumeLayout(False)
             CType(Me.VerticalGridTV_Settings, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.MediaInvoiceTVSettingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4270,21 +4297,15 @@
             Me.TabControlPanelOutdoorTab_Outdoor.ResumeLayout(False)
             CType(Me.VerticalGridOutdoor_Settings, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.MediaInvoiceOutdoorSettingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlPanelInternetTab_Internet.ResumeLayout(False)
-            CType(Me.VerticalGridInternet_Settings, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.MediaInvoiceInternetSettingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlPanelNewspaperTab_Newspaper.ResumeLayout(False)
             CType(Me.VerticalGridNewspaper_Settings, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.MediaInvoiceNewspaperSettingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlPanelMagazineTab_Magazine.ResumeLayout(False)
-            CType(Me.VerticalGridMagazine_Settings, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.MediaInvoiceMagazineSettingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlPanelMediaTab_Media.ResumeLayout(False)
-            CType(Me.VerticalGridMedia_Settings, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.MediaInvoiceSettingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.ResumeLayout(False)
+            CType(Me.MediaInvoiceNewspaperSettingBindingSource,System.ComponentModel.ISupportInitialize).EndInit
+        Me.TabControlPanelMagazineTab_Magazine.ResumeLayout(false)
+        CType(Me.VerticalGridMagazine_Settings,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.MediaInvoiceMagazineSettingBindingSource,System.ComponentModel.ISupportInitialize).EndInit
+        Me.ResumeLayout(false)
 
-        End Sub
+End Sub
         Private WithEvents RibbonBarOptions_Actions As AdvantageFramework.WinForm.Presentation.Controls.RibbonBar
         Private WithEvents ButtonItemActions_Save As DevComponents.DotNetBar.ButtonItem
         Private WithEvents ButtonItemActions_Cancel As DevComponents.DotNetBar.ButtonItem
@@ -4807,6 +4828,9 @@
         Friend WithEvents rowBackupReportBreakupByJobComponent As DevExpress.XtraVerticalGrid.Rows.EditorRow
         Friend WithEvents rowHideExchangeRateMessage As DevExpress.XtraVerticalGrid.Rows.EditorRow
         Friend WithEvents rowHideExchangeRateMessage1 As DevExpress.XtraVerticalGrid.Rows.EditorRow
+        Friend WithEvents rowInternetGuaranteedImpressionsColumn As DevExpress.XtraVerticalGrid.Rows.EditorRow
+        Friend WithEvents rowTVStartDateColumn As DevExpress.XtraVerticalGrid.Rows.EditorRow
+        Friend WithEvents rowRadioStartDateColumn As DevExpress.XtraVerticalGrid.Rows.EditorRow
     End Class
 
 End Namespace

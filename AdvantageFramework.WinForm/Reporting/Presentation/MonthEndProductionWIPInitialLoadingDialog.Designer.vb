@@ -134,6 +134,7 @@
             Me.ComboBoxTopSection_ReportSeries.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
             Me.ComboBoxTopSection_ReportSeries.FocusHighlightEnabled = True
             Me.ComboBoxTopSection_ReportSeries.FormattingEnabled = True
+            'Me.ComboBoxTopSection_ReportSeries.IsDisposingDataSource = False
             Me.ComboBoxTopSection_ReportSeries.ItemHeight = 15
             Me.ComboBoxTopSection_ReportSeries.Location = New System.Drawing.Point(124, 13)
             Me.ComboBoxTopSection_ReportSeries.Name = "ComboBoxTopSection_ReportSeries"
@@ -196,6 +197,7 @@
             Me.ComboBoxTopSection_Report.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
             Me.ComboBoxTopSection_Report.FocusHighlightEnabled = True
             Me.ComboBoxTopSection_Report.FormattingEnabled = True
+            'Me.ComboBoxTopSection_Report.IsDisposingDataSource = False
             Me.ComboBoxTopSection_Report.ItemHeight = 15
             Me.ComboBoxTopSection_Report.Location = New System.Drawing.Point(124, 38)
             Me.ComboBoxTopSection_Report.Name = "ComboBoxTopSection_Report"
@@ -231,6 +233,43 @@
             Me.TabControlForm_JDA.Tabs.Add(Me.TabItemJDA_VersionAndOptionsTab)
             Me.TabControlForm_JDA.Tabs.Add(Me.TabItemJDA_SelectOfficesTab)
             Me.TabControlForm_JDA.Tabs.Add(Me.TabItemJDA_SelectClientsTab)
+            '
+            'TabControlSelectClientsTab_SelectClients
+            '
+            Me.TabControlSelectClientsTab_SelectClients.Controls.Add(Me.CDPChooserControlSelectClients_SelectClients)
+            Me.TabControlSelectClientsTab_SelectClients.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlSelectClientsTab_SelectClients.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlSelectClientsTab_SelectClients.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlSelectClientsTab_SelectClients.Name = "TabControlSelectClientsTab_SelectClients"
+            Me.TabControlSelectClientsTab_SelectClients.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlSelectClientsTab_SelectClients.Size = New System.Drawing.Size(1017, 540)
+            Me.TabControlSelectClientsTab_SelectClients.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlSelectClientsTab_SelectClients.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlSelectClientsTab_SelectClients.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlSelectClientsTab_SelectClients.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlSelectClientsTab_SelectClients.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlSelectClientsTab_SelectClients.Style.GradientAngle = 90
+            Me.TabControlSelectClientsTab_SelectClients.TabIndex = 3
+            Me.TabControlSelectClientsTab_SelectClients.TabItem = Me.TabItemJDA_SelectClientsTab
+            '
+            'CDPChooserControlSelectClients_SelectClients
+            '
+            Me.CDPChooserControlSelectClients_SelectClients.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.CDPChooserControlSelectClients_SelectClients.BackColor = System.Drawing.Color.Transparent
+            Me.CDPChooserControlSelectClients_SelectClients.Location = New System.Drawing.Point(4, 4)
+            Me.CDPChooserControlSelectClients_SelectClients.Name = "CDPChooserControlSelectClients_SelectClients"
+            Me.CDPChooserControlSelectClients_SelectClients.Size = New System.Drawing.Size(1009, 532)
+            Me.CDPChooserControlSelectClients_SelectClients.TabIndex = 1
+            '
+            'TabItemJDA_SelectClientsTab
+            '
+            Me.TabItemJDA_SelectClientsTab.AttachedControl = Me.TabControlSelectClientsTab_SelectClients
+            Me.TabItemJDA_SelectClientsTab.Name = "TabItemJDA_SelectClientsTab"
+            Me.TabItemJDA_SelectClientsTab.Text = "Select Clients"
+            Me.TabItemJDA_SelectClientsTab.Visible = True
             '
             'TabControlPanelVersionAndOptionsTab_VersionAndOptions
             '
@@ -317,7 +356,8 @@
             Me.DateTimePickerAgingDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.DateTimePickerAgingDate.TabIndex = 58
             Me.DateTimePickerAgingDate.TabOnEnter = True
-            Me.DateTimePickerAgingDate.Value = New Date(2022, 1, 12, 0, 0, 0, 0)
+            Me.DateTimePickerAgingDate.Value = New Date(2022, 1, 20, 0, 0, 0, 0)
+            Me.DateTimePickerAgingDate.Visible = False
             '
             'RadioButtonForm_Invoice
             '
@@ -572,6 +612,7 @@
             Me.ComboBoxForm_EndPostPeriod.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
             Me.ComboBoxForm_EndPostPeriod.FocusHighlightEnabled = True
             Me.ComboBoxForm_EndPostPeriod.FormattingEnabled = True
+            'Me.ComboBoxForm_EndPostPeriod.IsDisposingDataSource = False
             Me.ComboBoxForm_EndPostPeriod.ItemHeight = 14
             Me.ComboBoxForm_EndPostPeriod.Location = New System.Drawing.Point(87, 14)
             Me.ComboBoxForm_EndPostPeriod.Name = "ComboBoxForm_EndPostPeriod"

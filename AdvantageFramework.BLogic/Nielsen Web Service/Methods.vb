@@ -3378,6 +3378,7 @@
                     .ColumnMappings.Add("NetworkCode", "NETWORK_CODE")
                     .ColumnMappings.Add("NetworkName", "NETWORK_NAME")
                     .ColumnMappings.Add("StationCode", "STATION_CODE")
+                    .ColumnMappings.Add("ComscoreStationCode", "COMSCORE_STATION_CODE")
 
                     .BulkCopyTimeout = 0
                     .BatchSize = DataTable.Rows.Count
@@ -3932,6 +3933,7 @@
                                 NCCTVCablenet.NetworkCode = Cablenet.NetworkCode
                                 NCCTVCablenet.NetworkName = Cablenet.NetworkName
                                 NCCTVCablenet.StationCode = Cablenet.StationCode
+                                NCCTVCablenet.ComscoreStationCode = Cablenet.ComscoreStationCode
 
                                 NielsenDBContext.Entry(NCCTVCablenet).State = Entity.EntityState.Modified
                                 NielsenDBContext.SaveChanges()

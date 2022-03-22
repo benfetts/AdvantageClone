@@ -139,7 +139,7 @@ function GetClients() {
             for (let i = 0; i < clients.length; i++) {
                 $("#chartgridClient th[data-field=Client" + j + "] ").html(clients[i].Client);
                 j++;
-            }
+            }            
 
             if (clients.length === 1) {
                 grid.showColumn(1);
@@ -477,6 +477,7 @@ function LoadUserGridViewYTD() {
     EUFilter.Page = 2;
 
     kendo.ui.progress($("#TopToolBar"), true);
+    kendo.ui.progress($("#officeFilterContainer"), true);
 
     //if (EUFilter.InitialLoadFlag) {
     let grid = $("#ytdgrid").data("kendoGrid");
@@ -693,6 +694,7 @@ function LoadUserChartGridView() {
 
     grid.dataSource.read().then(() => {
         kendo.ui.progress($("#TopToolBar"), false);
+        kendo.ui.progress($("#officeFilterContainer"), false);
     });
     //}
 
@@ -1003,6 +1005,9 @@ function CreateFinancialViewChartGridClient() {
         //editable: "incell",
         resizable: true,
         filterable: false,
+        noRecords: {
+            template: "No data available."
+        },
         //columns: generateColumns(FinancialDataSourceChartClient[0])
         columns: [
             { field: "Year", title: "", width: 100, headerAttributes: { style: "text-align: center" } },
@@ -1248,6 +1253,7 @@ function onYear1Click(year) {
     $("#Year3Button").removeClass("k-state-active");
 
     kendo.ui.progress($("#TopToolBar"), true);
+    kendo.ui.progress($("#officeFilterContainer"), true);
 
     setTimeout(function () {
 
@@ -1294,6 +1300,7 @@ function onYear1Click(year) {
         chart.dataSource.read().then(() => {
             kendo.ui.progress($("#chartMonth"), false);
             kendo.ui.progress($("#TopToolBar"), false);
+            kendo.ui.progress($("#officeFilterContainer"), false);
             chart.refresh();
         });
 
@@ -1400,19 +1407,19 @@ function onYear1Click(year) {
 
     }, 0);
 
-    setTimeout(function () {
+    //setTimeout(function () {
 
-        EUFilter.Page = 9;
+    //    EUFilter.Page = 9;
 
-        let grid = $("#billablegrid").data("kendoGrid");
-        grid.setDataSource(grid.dataSource);
-        //grid.dataSource.read();
+    //    let grid = $("#billablegrid").data("kendoGrid");
+    //    grid.setDataSource(grid.dataSource);
+    //    //grid.dataSource.read();
 
-        grid.dataSource.read().then(() => {
-            //kendo.ui.progress($("#TopToolBar"), false);
-        });
+    //    grid.dataSource.read().then(() => {
+    //        //kendo.ui.progress($("#TopToolBar"), false);
+    //    });
 
-    }, 0);
+    //}, 0);
 
     setTimeout(function () {
 
@@ -1459,6 +1466,7 @@ function onYear2Click(year) {
     $("#Year3Button").removeClass("k-state-active");
 
     kendo.ui.progress($("#TopToolBar"), true);
+    kendo.ui.progress($("#officeFilterContainer"), true);
 
     setTimeout(function () {
 
@@ -1501,6 +1509,7 @@ function onYear2Click(year) {
         chart.dataSource.read().then(() => {
             kendo.ui.progress($("#chartMonth"), false);
             kendo.ui.progress($("#TopToolBar"), false);
+            kendo.ui.progress($("#officeFilterContainer"), false);
             chart.refresh();
         });
     }, 0);
@@ -1633,6 +1642,7 @@ function onYear3Click(year) {
     $("#Year2Button").removeClass("k-state-active");
 
     kendo.ui.progress($("#TopToolBar"), true);
+    kendo.ui.progress($("#officeFilterContainer"), true);
 
     setTimeout(function () {
 
@@ -1675,6 +1685,7 @@ function onYear3Click(year) {
         chart.dataSource.read().then(() => {
             kendo.ui.progress($("#chartMonth"), false);
             kendo.ui.progress($("#TopToolBar"), false);
+            kendo.ui.progress($("#officeFilterContainer"), false);
             chart.refresh();
         });
     }, 0);
@@ -1760,15 +1771,15 @@ function onYear3Click(year) {
 
     }, 0);
 
-    setTimeout(function () {
+    //setTimeout(function () {
 
-        EUFilter.Page = 9;
+    //    EUFilter.Page = 9;
 
-        let grid = $("#billablegrid").data("kendoGrid");
-        grid.setDataSource(grid.dataSource);
-        grid.dataSource.read();
+    //    let grid = $("#billablegrid").data("kendoGrid");
+    //    grid.setDataSource(grid.dataSource);
+    //    grid.dataSource.read();
 
-    }, 0);
+    //}, 0);
 
     setTimeout(function () {
 
@@ -1810,6 +1821,7 @@ function RefreshGridByMonth(month) {
     EUFilter.ToMonth = month;
 
     kendo.ui.progress($("#TopToolBar"), true);
+    kendo.ui.progress($("#officeFilterContainer"), true);
 
     var prioryear = parseInt(EUFilter.FromYear) - 1;
 
@@ -1852,6 +1864,7 @@ function RefreshGridByMonth(month) {
         chart.dataSource.read().then(() => {
             kendo.ui.progress($("#chartMonth"), false);
             kendo.ui.progress($("#TopToolBar"), false);
+            kendo.ui.progress($("#officeFilterContainer"), false);
             chart.refresh();
         });
     }, 0);
@@ -1997,6 +2010,9 @@ function RefreshGrid() {
 
     var prioryear = parseInt(EUFilter.FromYear) - 1;
 
+    kendo.ui.progress($("#TopToolBar"), true);
+    kendo.ui.progress($("#officeFilterContainer"), true);
+
     setTimeout(function () {
 
         EUFilter.Page = 1;
@@ -2013,7 +2029,11 @@ function RefreshGrid() {
         EUFilter.Page = 2;
         let DataGrid2 = $("#ytdgrid").data("kendoGrid");
         //DataGrid2.setDataSource(DataGrid2.dataSource);
-        DataGrid2.dataSource.read();
+        //DataGrid2.dataSource.read();
+
+        DataGrid2.dataSource.read().then(() => {
+            //kendo.ui.progress($("#TopToolBar"), false);
+        });
 
         $("#ytdgrid th[data-field=Category] ").html(EUFilter.FromYear + " YTD");
         $("#ytdgrid th[data-field=MTD] ").html("YTD " + prioryear);
@@ -2022,9 +2042,21 @@ function RefreshGrid() {
     setTimeout(function () {
 
         EUFilter.Page = 3;
+        CreateFinancialChart();
         var chart = $("#chartMonth").data("kendoChart");
-        chart.dataSource.read();
-        chart.refresh();
+
+        kendo.ui.progress($("#chartMonth"), true);
+
+        chart.options.title.text = EUFilter.FromYear + " Monthly Financial Performance";
+        //chart.dataSource.read();
+        //chart.refresh();
+
+        chart.dataSource.read().then(() => {
+            kendo.ui.progress($("#chartMonth"), false);
+            kendo.ui.progress($("#TopToolBar"), false);
+            kendo.ui.progress($("#officeFilterContainer"), false);
+            chart.refresh();
+        });
     }, 0);
 
     setTimeout(function () {
@@ -2043,9 +2075,17 @@ function RefreshGrid() {
         EUFilter.Page = 5;
 
         var chart = $('#chartytd').data('kendoChart');
+
+        kendo.ui.progress($("#chartytd"), true);
+
         chart.options.title.text = "YTD Financial Performance";
-        chart.dataSource.read();
-        chart.refresh();
+        //chart.dataSource.read();
+        //chart.refresh();
+
+        chart.dataSource.read().then(() => {
+            kendo.ui.progress($("#chartytd"), false);
+            chart.refresh();
+        });
 
     }, 0);
 
@@ -2070,10 +2110,22 @@ function RefreshGrid() {
 
         EUFilter.Page = 7;
 
+        var prioryear = parseInt(EUFilter.FromYear) - 1;
+
+        CreateFinancialChartClient();
+
         var chart = $('#chartClient').data('kendoChart');
-        chart.dataSource.read();
+
+        kendo.ui.progress($("#chartClient"), true);
+
         chart.options.title.text = "Top 10 Clients: " + prioryear + " vs " + EUFilter.FromYear + " - Sales";
-        chart.refresh();
+        //chart.dataSource.read();
+        //chart.refresh();
+
+        chart.dataSource.read().then(() => {
+            kendo.ui.progress($("#chartClient"), false);
+            chart.refresh();
+        });
 
     }, 0);
 
@@ -2088,15 +2140,15 @@ function RefreshGrid() {
 
     }, 0);
 
-    setTimeout(function () {
+    //setTimeout(function () {
 
-        EUFilter.Page = 9;
+    //    EUFilter.Page = 9;
 
-        let grid = $("#billablegrid").data("kendoGrid");
-        grid.setDataSource(grid.dataSource);
-        grid.dataSource.read();
+    //    let grid = $("#billablegrid").data("kendoGrid");
+    //    grid.setDataSource(grid.dataSource);
+    //    grid.dataSource.read();
 
-    }, 0);
+    //}, 0);
 
     setTimeout(function () {
 

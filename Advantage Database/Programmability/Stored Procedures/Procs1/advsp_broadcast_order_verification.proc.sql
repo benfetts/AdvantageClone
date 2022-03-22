@@ -1,4 +1,4 @@
-CREATE PROC advsp_broadcast_order_verification
+CREATE PROC [dbo].[advsp_broadcast_order_verification]
 	@OrderNumberLineNumbers varchar(MAX),
 	@OrderYearMonths varchar(MAX),
 	@OrderNumbers varchar(MAX),
@@ -66,7 +66,7 @@ DECLARE @ActualSpots TABLE (
 )
 
 INSERT INTO @view 
-exec advsp_broadcast_order_dtl_verification @OrderNumberLineNumbers, 1, @OrderYearMonths, @OrderNumbers, @ShowWeekOf
+SELECT * FROM dbo.advtf_broadcast_order_dtl_verification (@OrderNumberLineNumbers, 1, @OrderYearMonths, @OrderNumbers, @ShowWeekOf)
 
 DECLARE @bookend_table TABLE (
 	OrderNumber int NOT NULL,

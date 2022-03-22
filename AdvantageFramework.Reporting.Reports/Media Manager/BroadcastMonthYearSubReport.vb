@@ -22,7 +22,15 @@
 
 #Region " Properties "
 
+        Private Sub LabelTotalNetWhenGrossOrder_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles LabelTotalNetWhenGrossOrder.BeforePrint
 
+            If DirectCast(Me.GetCurrentRow, AdvantageFramework.MediaManager.Classes.BroadcastOrderYearMonth).ShowTotalNetWhenGrossOrder = False Then
+
+                e.Cancel = True
+
+            End If
+
+        End Sub
 
 #End Region
 

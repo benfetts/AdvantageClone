@@ -1,4 +1,6 @@
-﻿Imports Newtonsoft.Json
+﻿Option Strict On
+
+Imports Newtonsoft.Json
 Imports System.Collections.Generic
 Imports System.Web.Mvc
 Imports Webvantage.ViewModels
@@ -264,12 +266,12 @@ Namespace Controllers
 
                                 SqlDataReader.Read()
 
-                                If SqlDataReader("ESTIMATE_NUMBER") <> 0 Then
+                                If CInt(SqlDataReader("ESTIMATE_NUMBER")) <> 0 Then
 
                                     QueryString.Add("JT", "0")
                                     QueryString.Add("newEst", "edit")
-                                    QueryString.EstimateNumber = SqlDataReader("ESTIMATE_NUMBER")
-                                    QueryString.EstimateComponentNumber = SqlDataReader("EST_COMPONENT_NBR")
+                                    QueryString.EstimateNumber = CInt(SqlDataReader("ESTIMATE_NUMBER"))
+                                    QueryString.EstimateComponentNumber = CInt(SqlDataReader("EST_COMPONENT_NBR"))
 
                                 Else
 
@@ -343,7 +345,7 @@ Namespace Controllers
                             QueryString.Page = "Employee/Timesheet/Entry"
                             QueryString.Add("Type", "New")
                             QueryString.Add("single", "1")
-                            QueryString.EmployeeCode = Session("EmpCode")
+                            QueryString.EmployeeCode = CStr(Session("EmpCode"))
                             QueryString.Add("new", "0")
 
                             If UnityMenuModel.AlertID > 0 Then
@@ -354,7 +356,7 @@ Namespace Controllers
 
                                     If Alert IsNot Nothing AndAlso Alert.NonTaskID IsNot Nothing Then
 
-                                        EmployeeNonTask = AdvantageFramework.Database.Procedures.EmployeeNonTask.LoadByEmployeeNonTaskID(DbContext, Alert.NonTaskID)
+                                        EmployeeNonTask = AdvantageFramework.Database.Procedures.EmployeeNonTask.LoadByEmployeeNonTaskID(DbContext, CType(Alert.NonTaskID, Long))
 
                                     End If
 
@@ -394,7 +396,7 @@ Namespace Controllers
 
                             QueryString.Page = UnityMenuModel.CurrentPrintPage
                             QueryString.Add("fromapp", "jobtemplate")
-                            QueryString.Add("mode", Webvantage.BasePrintSendPage.PageMode.Print)
+                            QueryString.Add("mode", CStr(Webvantage.BasePrintSendPage.PageMode.Print))
 
                             If UnityMenuModel.EstimateNumber > 0 Then QueryString.EstimateNumber = UnityMenuModel.EstimateNumber
                             If UnityMenuModel.EstimateComponentNumber > 0 Then QueryString.EstimateComponentNumber = UnityMenuModel.EstimateComponentNumber
@@ -407,7 +409,7 @@ Namespace Controllers
 
                             QueryString.Page = UnityMenuModel.CurrentPrintPage
                             QueryString.Add("fromapp", "jobtemplate")
-                            QueryString.Add("mode", Webvantage.BasePrintSendPage.PageMode.SendAlert)
+                            QueryString.Add("mode", CStr(Webvantage.BasePrintSendPage.PageMode.SendAlert))
                             QueryString.Add("content", "1")
 
                             If UnityMenuModel.EstimateNumber > 0 Then QueryString.EstimateNumber = UnityMenuModel.EstimateNumber
@@ -421,7 +423,7 @@ Namespace Controllers
 
                             QueryString.Page = UnityMenuModel.CurrentPrintPage
                             QueryString.Add("fromapp", "jobtemplate")
-                            QueryString.Add("mode", Webvantage.BasePrintSendPage.PageMode.SendAssignment)
+                            QueryString.Add("mode", CStr(Webvantage.BasePrintSendPage.PageMode.SendAssignment))
                             QueryString.Add("content", "1")
 
                             If UnityMenuModel.EstimateNumber > 0 Then QueryString.EstimateNumber = UnityMenuModel.EstimateNumber
@@ -435,7 +437,7 @@ Namespace Controllers
 
                             QueryString.Page = UnityMenuModel.CurrentPrintPage '"JobTemplate_Print.aspx"
                             QueryString.Add("fromapp", "jobtemplate")
-                            QueryString.Add("mode", Webvantage.BasePrintSendPage.PageMode.SendEmail)
+                            QueryString.Add("mode", CStr(Webvantage.BasePrintSendPage.PageMode.SendEmail))
                             QueryString.Add("content", "1")
 
                             If UnityMenuModel.EstimateNumber > 0 Then QueryString.EstimateNumber = UnityMenuModel.EstimateNumber
@@ -449,7 +451,7 @@ Namespace Controllers
 
                             QueryString.Page = UnityMenuModel.CurrentPrintPage
                             QueryString.Add("fromapp", "jobtemplate")
-                            QueryString.Add("mode", Webvantage.BasePrintSendPage.PageMode.Options)
+                            QueryString.Add("mode", CStr(Webvantage.BasePrintSendPage.PageMode.Options))
 
                             If UnityMenuModel.EstimateNumber > 0 Then QueryString.EstimateNumber = UnityMenuModel.EstimateNumber
                             If UnityMenuModel.EstimateComponentNumber > 0 Then QueryString.EstimateComponentNumber = UnityMenuModel.EstimateComponentNumber
@@ -476,7 +478,7 @@ Namespace Controllers
 
                                 End If
 
-                                If oValidation.ValidateJobCompIsViewable(Me.SecuritySession.UserCode, UnityMenuModel.JobNumber, UnityMenuModel.JobComponentNumber, "ts") = False Then
+                                If oValidation.ValidateJobCompIsViewable(Me.SecuritySession.UserCode, CStr(UnityMenuModel.JobNumber), CStr(UnityMenuModel.JobComponentNumber), "ts") = False Then
 
                                     Success = False
 
@@ -638,7 +640,7 @@ Namespace Controllers
             End Try
 
         End Function
-        Public Function Thumbnail(<FromRoute> ByVal DocumentID As String) As ActionResult
+        Public Function Thumbnail(<FromRoute> ByVal DocumentID As Long) As ActionResult
 
             Dim Document As AdvantageFramework.Database.Entities.Document = Nothing
             Dim ThumbnailBytes As Byte() = Nothing
@@ -739,14 +741,14 @@ Namespace Controllers
                     If System.Web.HttpContext.Current.Session("UserGUID") IsNot Nothing Then
 
                         BasePage._Session = New AdvantageFramework.Security.Session(AdvantageFramework.Security.Application.Client_Portal,
-                                                                                    System.Web.HttpContext.Current.Session("ConnString"), System.Web.HttpContext.Current.Session("UserCode"),
-                                                                                    CInt(System.Web.HttpContext.Current.Session("AdvantageUserLicenseInUseID")), System.Web.HttpContext.Current.Session("ConnString"))
+                                                                                    CStr(System.Web.HttpContext.Current.Session("ConnString")), CStr(System.Web.HttpContext.Current.Session("UserCode")),
+                                                                                    CInt(System.Web.HttpContext.Current.Session("AdvantageUserLicenseInUseID")), CStr(System.Web.HttpContext.Current.Session("ConnString")))
 
                     Else
 
                         BasePage._Session = New AdvantageFramework.Security.Session(AdvantageFramework.Security.Application.Webvantage,
-                                                                                    System.Web.HttpContext.Current.Session("ConnString"), System.Web.HttpContext.Current.Session("UserCode"),
-                                                                                    CInt(System.Web.HttpContext.Current.Session("AdvantageUserLicenseInUseID")), System.Web.HttpContext.Current.Session("ConnString"))
+                                                                                    CStr(System.Web.HttpContext.Current.Session("ConnString")), CStr(System.Web.HttpContext.Current.Session("UserCode")),
+                                                                                    CInt(System.Web.HttpContext.Current.Session("AdvantageUserLicenseInUseID")), CStr(System.Web.HttpContext.Current.Session("ConnString")))
 
                     End If
 
@@ -754,7 +756,7 @@ Namespace Controllers
 
                 Else
 
-                    BasePage._Session = System.Web.HttpContext.Current.Session("Security_Session")
+                    BasePage._Session = CType(System.Web.HttpContext.Current.Session("Security_Session"), Security.Session)
 
                 End If
 
@@ -784,14 +786,14 @@ Namespace Controllers
 
             End If
 
-            JobJacketDocumentsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.Desktop_DocumentManagerLevels_JobComponent, False) = 1)
-            JobJacketCreativeBriefVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_CreativeBrief, False) = 1)
-            JobJacketSpecificationsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_Specifications, False) = 1)
-            JobJacketVersionsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_JobVersions, False) = 1)
-            JobJacketScheduleVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_ProjectSchedule, False) = 1)
-            JobJacketSnapshotVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_DesktopObjects_ProjectViewpointSnapshot, False) = 1)
+            JobJacketDocumentsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.Desktop_DocumentManagerLevels_JobComponent, False) = True)
+            JobJacketCreativeBriefVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_CreativeBrief, False) = True)
+            JobJacketSpecificationsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_Specifications, False) = True)
+            JobJacketVersionsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_JobVersions, False) = True)
+            JobJacketScheduleVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_ProjectSchedule, False) = True)
+            JobJacketSnapshotVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_DesktopObjects_ProjectViewpointSnapshot, False) = True)
 
-            JobJacketBoardsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_Boards, False) = 1)
+            JobJacketBoardsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_Boards, False) = True)
 
             If BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.Employee_Timesheet, False) = False Or MiscFN.IsClientPortal = True Then
 
@@ -804,7 +806,7 @@ Namespace Controllers
 
             If MiscFN.IsClientPortal() Then
 
-                JobJacketDocumentsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_Documents, False) = 1)
+                JobJacketDocumentsVisible = BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_Documents, False)
                 JobJacketEstimatesVisible = False
                 JobJacketQvAVisible = False
                 JobJacketPurchaseOrdersVisible = False
@@ -826,11 +828,11 @@ Namespace Controllers
 
                 End If
 
-                JobJacketDocumentsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.Desktop_DocumentManager, False) = 1)
-                JobJacketEstimatesVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_Estimating, False) = 1)
-                JobJacketQvAVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_DashboardQueries_QuotevsActualsDQ, False) = 1)
-                JobJacketPurchaseOrdersVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_PurchaseOrders, False) = 1)
-                JobJacketEventsVisible = (BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_ProjectEvents, False) = 1)
+                JobJacketDocumentsVisible = BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.Desktop_DocumentManager, False)
+                JobJacketEstimatesVisible = BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_Estimating, False)
+                JobJacketQvAVisible = BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_DashboardQueries_QuotevsActualsDQ, False)
+                JobJacketPurchaseOrdersVisible = BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_PurchaseOrders, False)
+                JobJacketEventsVisible = BasePage.CheckModuleAccess(AdvantageFramework.Security.Modules.ProjectManagement_ProjectEvents, False)
 
             End If
 
@@ -998,7 +1000,7 @@ Namespace Controllers
                                  .Code = Item.Code, .Name = Item.Name + " (" + Item.Code + ")"}).ToList
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
             End Using
 
@@ -1040,7 +1042,7 @@ Namespace Controllers
                                  .Code = Item.Code, .Name = Item.Name + " (" + Item.Code + ")"}).ToList
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
             End Using
 
@@ -1070,7 +1072,7 @@ Namespace Controllers
                 DbContext.Database.ExecuteSqlCommand("EXEC [dbo].[usp_wv_dd_GetClients_Index] @UserID, @OfficeCode, @ClientCode, @SprintID, @Text, @Index out", arParams.ToArray)
 
                 If Not IsDBNull(outParam.Value) Then
-                    index = outParam.Value
+                    index = CInt(outParam.Value)
                 End If
 
             End Using
@@ -1088,7 +1090,7 @@ Namespace Controllers
 
             Dim arParams As New List(Of SqlParameter)
             arParams.Add(New SqlParameter("@UserID", Me.SecuritySession.UserCode))
-            arParams.Add(New SqlParameter("@ClientCode", If(ClientCode IsNot Nothing, ClientCode, DBNull.Value)))
+            arParams.Add(New SqlParameter("@ClientCode", IIf(ClientCode IsNot Nothing, ClientCode, DBNull.Value)))
             arParams.Add(New SqlParameter("@OfficeCode", If(OfficeCode IsNot Nothing, OfficeCode, "")))
             arParams.Add(New SqlParameter("@SprintID", SprintID))
             arParams.Add(New SqlParameter("@Text", Text))
@@ -1118,7 +1120,7 @@ Namespace Controllers
 
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
 
             End Using
@@ -1151,7 +1153,7 @@ Namespace Controllers
                 DbContext.Database.ExecuteSqlCommand("EXEC [dbo].[usp_wv_dd_GetDivisions_Index] @UserID, @OfficeCode, @ClientCode, @DivisionCode, @SprintID, @Text, @Index out", arParams.ToArray)
 
                 If Not IsDBNull(outParam.Value) Then
-                    index = outParam.Value
+                    index = CInt(outParam.Value)
                 End If
 
             End Using
@@ -1168,9 +1170,9 @@ Namespace Controllers
             Dim totalRows As Integer = 0
             Dim arParams As New List(Of SqlParameter)
             arParams.Add(New SqlParameter("@UserID", Me.SecuritySession.UserCode))
-            arParams.Add(New SqlParameter("@OfficeCode", If(OfficeCode IsNot Nothing, OfficeCode, DBNull.Value)))
-            arParams.Add(New SqlParameter("@ClientCode", If(ClientCode IsNot Nothing, ClientCode, DBNull.Value)))
-            arParams.Add(New SqlParameter("@DivisionCode", If(DivisionCode IsNot Nothing, DivisionCode, DBNull.Value)))
+            arParams.Add(New SqlParameter("@OfficeCode", IIf(OfficeCode IsNot Nothing, OfficeCode, DBNull.Value)))
+            arParams.Add(New SqlParameter("@ClientCode", IIf(ClientCode IsNot Nothing, ClientCode, DBNull.Value)))
+            arParams.Add(New SqlParameter("@DivisionCode", IIf(DivisionCode IsNot Nothing, DivisionCode, DBNull.Value)))
             arParams.Add(New SqlParameter("@SprintID", SprintID))
             arParams.Add(New SqlParameter("@Text", Text))
             arParams.Add(New SqlParameter("@Skip", Skip))
@@ -1198,7 +1200,7 @@ Namespace Controllers
                                 .Name = Item.Name + " (" + Item.ClientCode + If(Item.ClientCode = Item.DivisionCode, "", "/" + Item.DivisionCode) + If(Item.DivisionCode = Item.Code, "", "/" + Item.Code) + ")"}).ToList
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
 
             End Using
@@ -1234,7 +1236,7 @@ Namespace Controllers
                 DbContext.Database.ExecuteSqlCommand("EXEC [dbo].[usp_wv_dd_GetProducts_Index] @UserID, @ClientCode, @DivisionCode, @ProductID, @SprintID, @Text, @Index out", arParams.ToArray)
 
                 If Not IsDBNull(outParam.Value) Then
-                    index = outParam.Value
+                    index = CInt(outParam.Value)
                 End If
 
             End Using
@@ -1283,7 +1285,7 @@ Namespace Controllers
         End Function
 
         <HttpGet>
-        Public Function SearchCDPForJob(ByVal JobNumber As Integer)
+        Public Function SearchCDPForJob(ByVal JobNumber As Integer) As JsonResult
             Dim CDPs As List(Of CDP) = Nothing
             Dim arParams As New List(Of SqlParameter)
             arParams.Add(New SqlParameter("@JobNumber", JobNumber))
@@ -1353,7 +1355,7 @@ Namespace Controllers
                 Jobst = (From Item In DbContext.Database.SqlQuery(Of JobDDDTO)("usp_wv_dd_JobJacket_Paging @UserID,@OfficeCode,@ClientCode,@DivisionCode,@ProductCode,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed,@SprintID,@Text,@Skip,@Take,@CPID,@TotalRows OUT", arParams.ToArray)).ToList
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
 
                 Jobs = Jobst.Select(Function(Item) New With {
@@ -1363,7 +1365,7 @@ Namespace Controllers
                             .DivisionCode = Item.DivisionCode,
                             .ProductCode = Item.ProductCode,
                             .Description = Item.Name,
-                            .Name = AdvantageFramework.StringUtilities.PadWithCharacter(Item.Code, 6, "0", True, True) _
+                            .Name = AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.Code), 6, "0", True, True) _
                                 & " - " & Item.Name _
                                 & If(CompareClientCode Or CompareDivisionCode Or CompareProductCode,
                                 "",
@@ -1417,7 +1419,7 @@ Namespace Controllers
                 DbContext.Database.ExecuteSqlCommand("EXEC [dbo].[usp_wv_dd_GetAllJobs_Index] @UserID, @OfficeCode, @ClientCode, @DivisionCode,@ProductCode,@JobCode,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed,@SprintID, @Text, @Index out", arParams.ToArray)
 
                 If Not IsDBNull(outParam.Value) Then
-                    index = outParam.Value
+                    index = CInt(outParam.Value)
                 End If
 
             End Using
@@ -1476,7 +1478,7 @@ Namespace Controllers
                 Jobst = (From Item In DbContext.Database.SqlQuery(Of JobDDDTO)("usp_wv_dd_JobJacket_PS_Paging @UserID,@OfficeCode,@ClientCode,@DivisionCode,@ProductCode,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed,@Text,@Skip,@Take,@TotalRows OUT", arParams.ToArray)).ToList
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
 
                 Jobs = Jobst.Select(Function(Item) New With {
@@ -1485,7 +1487,7 @@ Namespace Controllers
                                 .ClientCode = Item.ClientCode,
                                 .DivisionCode = Item.DivisionCode,
                                 .ProductCode = Item.ProductCode,
-                                .Name = AdvantageFramework.StringUtilities.PadWithCharacter(Item.Code, 6, "0", True, True) _
+                                .Name = AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.Code), 6, "0", True, True) _
                                     & " - " & Item.Name _
                                     & If(CompareClientCode Or CompareDivisionCode Or CompareProductCode,
                                     "",
@@ -1537,7 +1539,7 @@ Namespace Controllers
                 DbContext.Database.ExecuteSqlCommand("EXEC [dbo].[usp_wv_dd_GetAllJobs_PS_Index] @UserID, @OfficeCode, @ClientCode, @DivisionCode,@ProductCode,@JobCode,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed, @Text, @Index out", arParams.ToArray)
 
                 If Not IsDBNull(outParam.Value) Then
-                    index = outParam.Value
+                    index = CInt(outParam.Value)
                 End If
 
             End Using
@@ -1548,7 +1550,7 @@ Namespace Controllers
 
 
         <HttpGet>
-        Public Function SearchCampaignDetailTypes()
+        Public Function SearchCampaignDetailTypes() As JsonResult
             Dim CampaignDetailTypes As IEnumerable = Nothing
 
             CampaignDetailTypes = (From EnumObject In AdvantageFramework.EnumUtilities.LoadEnumObjects(GetType(AdvantageFramework.Database.Entities.CampaignDetailTypes))
@@ -1559,7 +1561,7 @@ Namespace Controllers
         End Function
 
         <HttpGet>
-        Public Function SearchDepartmentTeam()
+        Public Function SearchDepartmentTeam() As JsonResult
             Dim DepartmentTeam As IEnumerable = Nothing
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
@@ -1623,12 +1625,12 @@ Namespace Controllers
                 Jobst = (From Item In DbContext.Database.SqlQuery(Of JobDDDTO)("usp_wv_dd_JobJacket_Estimates_Paging  @UserID,@OfficeCode,@ClientCode,@DivisionCode,@ProductCode,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed,@Text,@Skip,@Take,@TotalRows OUT", arParams.ToArray)).ToList
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
 
                 Jobs = Jobst.Select(Function(Item) New With {
                             .Code = Item.Code,
-                            .Name = AdvantageFramework.StringUtilities.PadWithCharacter(Item.Code, 6, "0", True, True) _
+                            .Name = AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.Code), 6, "0", True, True) _
                                 & " - " & Item.Name _
                                 & If(CompareClientCode Or CompareDivisionCode Or CompareProductCode,
                                 "",
@@ -1679,7 +1681,7 @@ Namespace Controllers
                 DbContext.Database.ExecuteSqlCommand("EXEC [dbo].[usp_wv_dd_GetAllJobs_Estimates_Index] @UserID, @OfficeCode, @ClientCode, @DivisionCode,@ProductCode,@JobCode,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed, @Text, @Index out", arParams.ToArray)
 
                 If Not IsDBNull(outParam.Value) Then
-                    index = outParam.Value
+                    index = CInt(outParam.Value)
                 End If
 
             End Using
@@ -1767,7 +1769,7 @@ Namespace Controllers
                 'open jobs. Please use client filters first.
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
 
                 JobComponents = (From Item In JobComponentViews
@@ -1779,8 +1781,8 @@ Namespace Controllers
                                                 .ProductCode = Item.ProductCode,
                                                 .JobCode = Item.JobCode,
                                                 .Description = Item.Name,
-                                                .Name = If(FilterJobNumber, "", AdvantageFramework.StringUtilities.PadWithCharacter(Item.JobCode, 6, "0", True, True) & "/") &
-                                                        AdvantageFramework.StringUtilities.PadWithCharacter(Item.JobCompCode, 3, "0", True, True) & " - " &
+                                                .Name = If(FilterJobNumber, "", AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.JobCode), 6, "0", True, True) & "/") &
+                                                        AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.JobCompCode), 3, "0", True, True) & " - " &
                                                         Item.Name & If(CompareClientCode Or CompareDivisionCode Or CompareProductCode,
                                                         "",
                                                         " (" & Item.ClientCode & If(Item.ClientCode = Item.DivisionCode, "", "/" & Item.DivisionCode) & If(Item.DivisionCode = Item.ProductCode, "", "/" & Item.ProductCode) & ")")}).ToList
@@ -1834,7 +1836,7 @@ Namespace Controllers
                 DbContext.Database.ExecuteSqlCommand("EXEC [dbo].[usp_wv_dd_GetAllJobComps_Index] @UserID, @OfficeCode, @ClientCode, @DivisionCode,@ProductCode,@JobCode,@CompenentID,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed,@SprintID, @Text, @Index out", arParams.ToArray)
 
                 If Not IsDBNull(outParam.Value) Then
-                    index = outParam.Value
+                    index = CInt(outParam.Value)
                 End If
 
             End Using
@@ -1931,31 +1933,31 @@ Namespace Controllers
                 End Try
                 Try
 
-                    Text = RebuildJobComponentSearchText(Text, "/")
+                    Text = RebuildJobComponentSearchText(Text, CChar("/"))
 
                 Catch ex As Exception
                 End Try
                 Try
 
-                    Text = RebuildJobComponentSearchText(Text, "-")
+                    Text = RebuildJobComponentSearchText(Text, CChar("-"))
 
                 Catch ex As Exception
                 End Try
                 Try
 
-                    Text = RebuildJobComponentSearchText(Text, ",")
+                    Text = RebuildJobComponentSearchText(Text, CChar(","))
 
                 Catch ex As Exception
                 End Try
                 Try
 
-                    Text = RebuildJobComponentSearchText(Text, "\")
+                    Text = RebuildJobComponentSearchText(Text, CChar("\"))
 
                 Catch ex As Exception
                 End Try
                 Try
 
-                    Text = RebuildJobComponentSearchText(Text, "|")
+                    Text = RebuildJobComponentSearchText(Text, CChar("|"))
 
                 Catch ex As Exception
                 End Try
@@ -2007,7 +2009,7 @@ Namespace Controllers
 
                     If IsDBNull(outParam.Value) = False AndAlso IsNumeric(outParam.Value) = True Then
 
-                        totalRows = outParam.Value
+                        totalRows = CInt(outParam.Value)
 
                     End If
 
@@ -2023,16 +2025,16 @@ Namespace Controllers
                                                 .ProductCode = Item.ProductCode,
                                                 .JobCode = Item.JobCode,
                                                 .Description = Item.Name,
-                                                .Name = If(FilterJobNumber, "", AdvantageFramework.StringUtilities.PadWithCharacter(Item.JobCode, 6, "0", True, True) & "/") &
-                                                        AdvantageFramework.StringUtilities.PadWithCharacter(Item.JobCompCode, 3, "0", True, True) & " - " &
-                                                        IIf(Item.JobDescription = Item.JobComponentDescription, Item.JobComponentDescription, Item.JobDescription & " - " & Item.JobComponentDescription) & If(CompareClientCode Or CompareDivisionCode Or CompareProductCode,
+                                                .Name = If(FilterJobNumber, "", AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.JobCode), 6, "0", True, True) & "/") &
+                                                        AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.JobCompCode), 3, "0", True, True) & " - " &
+                                                        If(Item.JobDescription = Item.JobComponentDescription, Item.JobComponentDescription, Item.JobDescription & " - " & Item.JobComponentDescription) & If(CompareClientCode Or CompareDivisionCode Or CompareProductCode,
                                                         "",
                                                         " (" & Item.ClientCode & If(Item.ClientCode = Item.DivisionCode, "", "/" & Item.DivisionCode) & If(Item.DivisionCode = Item.ProductCode, "", "/" & Item.ProductCode) & ")")}).ToList
             End Using
 
             Return MaxJson(New With {.JobComponents = JobComponents, .Total = totalRows}, JsonRequestBehavior.AllowGet)
         End Function
-        Private Function RebuildJobComponentSearchText(ByVal SearchValue As String, ByVal SplitCharacter As String) As String
+        Private Function RebuildJobComponentSearchText(ByVal SearchValue As String, ByVal SplitCharacter As Char) As String
 
             Dim ar() As String
             Dim ReturnValue As String = SearchValue
@@ -2047,7 +2049,7 @@ Namespace Controllers
 
                         If IsNumeric(ar(0).Trim()) = True AndAlso IsNumeric(ar(1).Trim()) = True Then
 
-                            ReturnValue = ar(0).Trim().ToString().PadLeft(6, "0") & "/" & ar(1).Trim().ToString().PadLeft(3, "0")
+                            ReturnValue = ar(0).Trim().ToString().PadLeft(6, CChar("0")) & "/" & ar(1).Trim().ToString().PadLeft(3, CChar("0"))
 
                         End If
 
@@ -2112,7 +2114,7 @@ Namespace Controllers
 
                     If Not IsDBNull(outParam.Value) Then
 
-                        index = outParam.Value
+                        index = CInt(outParam.Value)
 
                     End If
 
@@ -2178,7 +2180,7 @@ Namespace Controllers
                 JobComponentViews = (From Item In DbContext.Database.SqlQuery(Of JobCompDDDTO)("usp_wv_dd_GetAllJobComps_PS_Paging @UserID,@OfficeCode,@ClientCode,@DivisionCode,@ProductCode,@JobCode,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed,@Text,@Skip,@Take, @TotalRows out", arParams.ToArray)).ToList
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
 
                 JobComponents = (From Item In JobComponentViews
@@ -2190,8 +2192,8 @@ Namespace Controllers
                                                 .ProductCode = Item.ProductCode,
                                                 .JobCode = Item.JobCode,
                                                 .Description = Item.Name,
-                                                .Name = If(FilterJobNumber, "", AdvantageFramework.StringUtilities.PadWithCharacter(Item.JobCode, 6, "0", True, True) & "/") &
-                                                        AdvantageFramework.StringUtilities.PadWithCharacter(Item.JobCompCode, 3, "0", True, True) & " - " &
+                                                .Name = If(FilterJobNumber, "", AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.JobCode), 6, "0", True, True) & "/") &
+                                                        AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.JobCompCode), 3, "0", True, True) & " - " &
                                                         Item.Name & If(CompareClientCode Or CompareDivisionCode Or CompareProductCode,
                                                         "",
                                                         " (" & Item.ClientCode & If(Item.ClientCode = Item.DivisionCode, "", "/" & Item.DivisionCode) & If(Item.DivisionCode = Item.ProductCode, "", "/" & Item.ProductCode) & ")")}).ToList
@@ -2245,7 +2247,7 @@ Namespace Controllers
                 DbContext.Database.ExecuteSqlCommand("EXEC [dbo].[usp_wv_dd_GetAllJobComps_PS_Index] @UserID, @OfficeCode, @ClientCode, @DivisionCode,@ProductCode,@JobCode,@CompenentID,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed, @Text, @Index out", arParams.ToArray)
 
                 If Not IsDBNull(outParam.Value) Then
-                    index = outParam.Value
+                    index = CInt(outParam.Value)
                 End If
 
             End Using
@@ -2311,7 +2313,7 @@ Namespace Controllers
                 JobComponentViews = (From Item In DbContext.Database.SqlQuery(Of JobCompDDDTO)("usp_wv_dd_GetAllJobComps_Estimates_Paging  @UserID,@OfficeCode,@ClientCode,@DivisionCode,@ProductCode,@JobCode,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed,@Text,@Skip,@Take, @TotalRows out", arParams.ToArray)).ToList
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
 
                 JobComponents = (From Item In JobComponentViews
@@ -2323,8 +2325,8 @@ Namespace Controllers
                                                 .ProductCode = Item.ProductCode,
                                                 .JobCode = Item.JobCode,
                                                 .Description = Item.Name,
-                                                .Name = If(FilterJobNumber, "", AdvantageFramework.StringUtilities.PadWithCharacter(Item.JobCode, 6, "0", True, True) & "/") &
-                                                        AdvantageFramework.StringUtilities.PadWithCharacter(Item.JobCompCode, 3, "0", True, True) & " - " &
+                                                .Name = If(FilterJobNumber, "", AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.JobCode), 6, "0", True, True) & "/") &
+                                                        AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.JobCompCode), 3, "0", True, True) & " - " &
                                                         Item.Name & If(CompareClientCode Or CompareDivisionCode Or CompareProductCode,
                                                         "",
                                                         " (" & Item.ClientCode & If(Item.ClientCode = Item.DivisionCode, "", "/" & Item.DivisionCode) & If(Item.DivisionCode = Item.ProductCode, "", "/" & Item.ProductCode) & ")")}).ToList
@@ -2378,7 +2380,7 @@ Namespace Controllers
                 DbContext.Database.ExecuteSqlCommand("EXEC [dbo].[usp_wv_dd_GetAllJobComps_Estimate_Index] @UserID, @OfficeCode, @ClientCode, @DivisionCode,@ProductCode,@JobCode,@CompenentID,@AccountExecutive,@CampaignID,@SalesClass,@JobType,@ShowClosed, @Text, @Index out", arParams.ToArray)
 
                 If Not IsDBNull(outParam.Value) Then
-                    index = outParam.Value
+                    index = CInt(outParam.Value)
                 End If
 
             End Using
@@ -2413,15 +2415,15 @@ Namespace Controllers
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
                 JobComponents = (From Item In DbContext.Database.SqlQuery(Of JobCompDDDTO)("usp_wv_dd_GetAllJobCompsJJ_V2 @UserID, @ShowClosedJobs", arParams.ToArray)
-                                 Where Item.JobCode = If(FilterJobNumber, JobCode, Item.JobCode) AndAlso
+                                 Where Item.JobCode = If(FilterJobNumber, CInt(JobCode), Item.JobCode) AndAlso
                                         Item.ClientCode = If(CompareClientCode, ClientCode, Item.ClientCode) AndAlso
                                         Item.DivisionCode = If(CompareDivisionCode, DivisionCode, Item.DivisionCode) AndAlso
                                         Item.ProductCode = If(CompareProductCode, ProductCode, Item.ProductCode) AndAlso
                                         Item.OfficeCode = If(String.IsNullOrWhiteSpace(OfficeCode), Item.OfficeCode, OfficeCode)
                                  Order By Item.JobCode Descending, Item.JobCompCode
                                  Select New With {.Code = Item,
-                                                      .Name = If(FilterJobNumber, "", AdvantageFramework.StringUtilities.PadWithCharacter(Item.JobCode, 6, "0", True, True) & "/") &
-                                                              AdvantageFramework.StringUtilities.PadWithCharacter(Item.JobCompCode, 3, "0", True, True) & " - " &
+                                                      .Name = If(FilterJobNumber, "", AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.JobCode), 6, "0", True, True) & "/") &
+                                                              AdvantageFramework.StringUtilities.PadWithCharacter(CStr(Item.JobCompCode), 3, "0", True, True) & " - " &
                                                               Item.Name & If(CompareClientCode Or CompareDivisionCode Or CompareProductCode,
                                 "",
                                 " (" & Item.ClientCode & If(Item.ClientCode = Item.DivisionCode, "", "/" & Item.DivisionCode) & If(Item.DivisionCode = Item.ProductCode, "", "/" & Item.ProductCode) & ")")}).ToList
@@ -2497,7 +2499,7 @@ Namespace Controllers
                                         }).ToList
 
                 If Not IsDBNull(outParam.Value) Then
-                    totalRows = outParam.Value
+                    totalRows = CInt(outParam.Value)
                 End If
 
 
@@ -2600,8 +2602,8 @@ Namespace Controllers
                 End Using
             Else
                 arParams.Add(New SqlParameter("@USER_CODE", Me.SecuritySession.UserCode))
-                arParams.Add(New SqlParameter("@Role", If(Role IsNot Nothing, Role, DBNull.Value)))
-                arParams.Add(New SqlParameter("@TaskCode", If(TaskCode IsNot Nothing, TaskCode, DBNull.Value)))
+                arParams.Add(New SqlParameter("@Role", IIf(Role IsNot Nothing, Role, DBNull.Value)))
+                arParams.Add(New SqlParameter("@TaskCode", IIf(TaskCode IsNot Nothing, TaskCode, DBNull.Value)))
 
                 Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
                     Employees = (From Item In DbContext.Database.SqlQuery(Of EmployeeDDDTO)("exec usp_wv_dd_GetEmpCodesByRole @USER_CODE, @Role,@TaskCode", arParams.ToArray)
@@ -2716,7 +2718,7 @@ Namespace Controllers
 
                 Estmates = (From Item In DbContext.Database.SqlQuery(Of EstimateDDDTO)("EXEC [dbo].[usp_wv_dd_GetEstimates]  @ClientCode, @DivisionCode, @ProductCode, @UserID, @JobCode, @ComponentCode, @OfficeCode, @CampaignID, @SalesClass", arParams.ToArray) Select New With {
                                    .Code = Item.Code,
-                                   .Name = Item.Code.ToString.PadLeft(6, "0") + " - " + Item.Name & " (" & Item.ClientCode & If(Item.ClientCode = Item.DivisionCode Or Item.DivisionCode = Nothing, "", "/" & Item.DivisionCode) & If(Item.DivisionCode = Item.ProductCode Or Item.ProductCode = Nothing, "", "/" & Item.ProductCode) & ")"
+                                   .Name = Item.Code.ToString.PadLeft(6, CChar("0")) & " - " & Item.Name & " (" & Item.ClientCode & If(Item.ClientCode = Item.DivisionCode Or Item.DivisionCode = Nothing, "", "/" & Item.DivisionCode) & If(Item.DivisionCode = Item.ProductCode Or Item.ProductCode = Nothing, "", "/" & Item.ProductCode) & ")"
                                    }).ToList
 
             End Using
@@ -2754,7 +2756,7 @@ Namespace Controllers
 
                 Estmates = (From Item In DbContext.Database.SqlQuery(Of EstimateComponentDDDTO)("EXEC [dbo].[usp_wv_dd_GetEstimateComp_v2] @ClientCode, @DivisionCode, @ProductCode, @UserID, @EstimateCode, @JobCode, @ComponentCode, @OfficeCode, @CampaignID, @SalesClass", arParams.ToArray) Select New With {
                                    .Code = Item,
-                                   .Name = If(EstimateCode > 0, "", Item.EstimateCode.ToString.PadLeft(6, "0") & "/") + Item.Code.ToString.PadLeft(3, "0") & " - " + Item.Name & " (" & Item.ClientCode & If(Item.ClientCode = Item.DivisionCode Or Item.DivisionCode = Nothing, "", "/" & Item.DivisionCode) & If(Item.DivisionCode = Item.ProductCode Or Item.ProductCode = Nothing, "", "/" & Item.ProductCode) & ")"
+                                   .Name = If(EstimateCode > 0, "", Item.EstimateCode.ToString.PadLeft(6, CChar("0")) & "/") & Item.Code.ToString.PadLeft(3, CChar("0")) & " - " & Item.Name & " (" & Item.ClientCode & If(Item.ClientCode = Item.DivisionCode Or Item.DivisionCode = Nothing, "", "/" & Item.DivisionCode) & If(Item.DivisionCode = Item.ProductCode Or Item.ProductCode = Nothing, "", "/" & Item.ProductCode) & ")"
                                    }).ToList
 
             End Using
@@ -2829,9 +2831,9 @@ Namespace Controllers
             Dim Bookmarks As IEnumerable
             Dim s As String
 
-            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(Session("ConnString"), Session("UserCode"))
+            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(CStr(Session("ConnString")), CStr(Session("UserCode")))
 
-            Bookmarks = BmMethods.GetBookmarks(Session("UserCode"), s, Search)
+            Bookmarks = BmMethods.GetBookmarks(CStr(Session("UserCode")), s, Search)
 
             Return MaxJson(Bookmarks, JsonRequestBehavior.AllowGet)
 
@@ -2842,9 +2844,9 @@ Namespace Controllers
             Dim Count As Integer = 0
             Dim s As String
 
-            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(Session("ConnString"), Session("UserCode"))
+            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(CStr(Session("ConnString")), CStr(Session("UserCode")))
 
-            Count = BmMethods.GetOpenByDefaultCount(Session("UserCode"))
+            Count = BmMethods.GetOpenByDefaultCount(CStr(Session("UserCode")))
 
             Return MaxJson(Count, JsonRequestBehavior.AllowGet)
 
@@ -2855,7 +2857,7 @@ Namespace Controllers
 
             'objects
             Dim Deleted As Boolean = False
-            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(Session("ConnString"), Session("UserCode"))
+            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(CStr(Session("ConnString")), CStr(Session("UserCode")))
 
             Deleted = BmMethods.DeleteBookmark(BookMarkID)
 
@@ -2868,7 +2870,7 @@ Namespace Controllers
 
             'objects
             Dim Updated As Boolean = False
-            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(Session("ConnString"), Session("UserCode"))
+            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(CStr(Session("ConnString")), CStr(Session("UserCode")))
 
             Updated = BmMethods.UpdateBookmarkOpenByDefault(BookMarkID, OpenByDefault)
 
@@ -2946,7 +2948,7 @@ Namespace Controllers
 
         End Function
 
-        Public Function Savetimezone(ByVal TimeZoneID As Integer)
+        Public Function Savetimezone(ByVal TimeZoneID As Integer) As Boolean
             Dim Success As Boolean = False
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
@@ -2957,7 +2959,7 @@ Namespace Controllers
 
                     If Employee IsNot Nothing Then
 
-                        Employee.TimeZoneID = TimeZoneID
+                        Employee.TimeZoneID = CStr(TimeZoneID)
 
                         Success = AdvantageFramework.Database.Procedures.EmployeeView.Update(DbContext, DataContext, Employee)
 
@@ -2968,6 +2970,8 @@ Namespace Controllers
 
                 End Using
             End Using
+
+            Return Success
 
         End Function
 
@@ -2989,7 +2993,7 @@ Namespace Controllers
         <HttpGet>
         Public Function GetSessionTimeout() As JsonResult
             Dim TimeoutMilliseconds As Double
-            Dim sss As SessionStateSection = WebConfigurationManager.GetSection("system.web/sessionState")
+            Dim sss As SessionStateSection = CType(WebConfigurationManager.GetSection("system.web/sessionState"), SessionStateSection)
 
             If sss IsNot Nothing Then
 
@@ -3007,7 +3011,7 @@ Namespace Controllers
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
-                Count = AdvantageFramework.Database.Procedures.JobComponentTask.LoadByJobNumberAndJobComponentNumber(DbContext, JobNumber, JobComponentNumber).Count()
+                Count = AdvantageFramework.Database.Procedures.JobComponentTask.LoadByJobNumberAndJobComponentNumber(DbContext, JobNumber, CShort(JobComponentNumber)).Count()
 
             End Using
 
@@ -3071,7 +3075,7 @@ Namespace Controllers
         End Function
 
         <HttpGet>
-        Function SearchPostPeriod()
+        Function SearchPostPeriod() As JsonResult
             Dim PostPeriods As IEnumerable = Nothing
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
@@ -3191,7 +3195,7 @@ Namespace Controllers
         End Function
         Function GetJobInfo(ByVal JobNumber As Integer, ByVal JobComponentNumber As Integer) As JsonResult
 
-            Return GetJobInfoForSchedule(JobNumber, JobComponentNumber)
+            Return GetJobInfoForSchedule(JobNumber, CShort(JobComponentNumber))
 
         End Function
 

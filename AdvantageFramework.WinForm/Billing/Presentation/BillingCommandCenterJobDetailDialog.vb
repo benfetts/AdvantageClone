@@ -4596,7 +4596,7 @@
 
                         If BillingRate IsNot Nothing Then
 
-                            EmployeeTimeItem.BillableRate = BillingRate.BILLING_RATE.GetValueOrDefault(0)
+                            EmployeeTimeItem.BillableRate = FormatNumber(BillingRate.BILLING_RATE.GetValueOrDefault(0), 2)
                             EmployeeTimeItem.IsNonBillable = BillingRate.NOBILL_FLAG.GetValueOrDefault(0)
                             EmployeeTimeItem.FeeTimeType = BillingRate.FEE_TIME_FLAG.GetValueOrDefault(0)
                             EmployeeTimeItem.TaxCommissionOnly = BillingRate.TAX_COMM_ONLY.GetValueOrDefault(0)

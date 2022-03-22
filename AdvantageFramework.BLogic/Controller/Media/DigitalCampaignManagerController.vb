@@ -110,7 +110,7 @@
 
             Try
 
-                CalculatedQuantity = Math.Round(Convert.ToDecimal((Amount / Rate) * If(UseCPM, 1000, 1)), If(QuantityScale > 0, QuantityScale, 0), MidpointRounding.AwayFromZero)
+                CalculatedQuantity = Math.Round(Convert.ToDecimal((Amount / Rate) * If(UseCPM, 1000, 1)), If(QuantityScale <> 0, QuantityScale, 0), MidpointRounding.AwayFromZero)
 
                 If QuantityScale <= 0 Then
 
@@ -211,7 +211,7 @@
 
                     Case QtyRateAmount.Amount
 
-                        If Rate IsNot Nothing AndAlso Rate > 0 Then
+                        If Rate IsNot Nothing AndAlso Rate <> 0 Then
 
                             Quantity = CalculateQuantity(Rate, Amount, QuantityScale, UseCPM)
 
@@ -439,15 +439,15 @@
 
                     For Each DigitalEstimateDetail In AllDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex AndAlso DED.YearMonth > MaxYearMonth).OrderBy(Function(DED) DED.YearMonth).ToList
 
-                        DigitalEstimateDetail.PlanSpend += If(NewRemainingSpend > 0, NewRemainingSpend, 0)
-                        DigitalEstimateDetail.PlanRevenue += If(NewRemainingRevenue > 0, NewRemainingRevenue, 0)
-                        DigitalEstimateDetail.PlanNetCharge += If(NewRemainingNetCharge > 0, NewRemainingNetCharge, 0)
+                        DigitalEstimateDetail.PlanSpend += If(NewRemainingSpend <> 0, NewRemainingSpend, 0)
+                        DigitalEstimateDetail.PlanRevenue += If(NewRemainingRevenue <> 0, NewRemainingRevenue, 0)
+                        DigitalEstimateDetail.PlanNetCharge += If(NewRemainingNetCharge <> 0, NewRemainingNetCharge, 0)
 
                         If DigitalEstimateDetail.CostType <> "NA" Then
 
-                            DigitalEstimateDetail.PlanImpressions += If(NewRemainingImpressions > 0, NewRemainingImpressions, 0)
+                            DigitalEstimateDetail.PlanImpressions += If(NewRemainingImpressions <> 0, NewRemainingImpressions, 0)
 
-                            If DigitalEstimateDetail.PlanRate > 0 Then
+                            If DigitalEstimateDetail.PlanRate <> 0 Then
 
                                 CalculateQuantityRateAndAmount(DigitalEstimateDetail.PlanImpressions, DigitalEstimateDetail.PlanRate, DigitalEstimateDetail.PlanSpend, QtyRateAmount.Amount, UseCPM:=DigitalEstimateDetail.IsCPM)
 
@@ -463,31 +463,31 @@
 
                     If RollForwardToCount > 1 Then 'handle any rounding issues
 
-                        If NewRemainingSpend > 0 AndAlso (NewRemainingSpend * RollForwardToCount) <> SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingSpend) Then
+                        If NewRemainingSpend <> 0 AndAlso (NewRemainingSpend * RollForwardToCount) <> SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingSpend) Then
 
                             LastDigitalEstimateDetail.PlanSpend += SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingSpend) - (NewRemainingSpend * RollForwardToCount)
 
                         End If
 
-                        If NewRemainingRevenue > 0 AndAlso (NewRemainingRevenue * RollForwardToCount) <> SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingRevenue) Then
+                        If NewRemainingRevenue <> 0 AndAlso (NewRemainingRevenue * RollForwardToCount) <> SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingRevenue) Then
 
                             LastDigitalEstimateDetail.PlanRevenue += SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingRevenue) - (NewRemainingRevenue * RollForwardToCount)
 
                         End If
 
-                        If NewRemainingNetCharge > 0 AndAlso (NewRemainingNetCharge * RollForwardToCount) <> SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingNetCharge) Then
+                        If NewRemainingNetCharge <> 0 AndAlso (NewRemainingNetCharge * RollForwardToCount) <> SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingNetCharge) Then
 
                             LastDigitalEstimateDetail.PlanNetCharge += SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingNetCharge) - (NewRemainingNetCharge * RollForwardToCount)
 
                         End If
 
-                        If NewRemainingImpressions > 0 AndAlso (NewRemainingImpressions * RollForwardToCount) <> SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingImpressions) Then
+                        If NewRemainingImpressions <> 0 AndAlso (NewRemainingImpressions * RollForwardToCount) <> SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingImpressions) Then
 
                             If LastDigitalEstimateDetail.CostType <> "NA" Then
 
                                 LastDigitalEstimateDetail.PlanImpressions += SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingImpressions) - (NewRemainingImpressions * RollForwardToCount)
 
-                                If LastDigitalEstimateDetail.PlanRate > 0 Then
+                                If LastDigitalEstimateDetail.PlanRate <> 0 Then
 
                                     CalculateQuantityRateAndAmount(LastDigitalEstimateDetail.PlanImpressions, LastDigitalEstimateDetail.PlanRate, LastDigitalEstimateDetail.PlanSpend, QtyRateAmount.Amount, UseCPM:=LastDigitalEstimateDetail.IsCPM)
 
@@ -530,15 +530,15 @@
                     NewRemainingRevenue = SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingRevenue)
                     NewRemainingNetCharge = SelectedDigitalEstimateDetails.Where(Function(DED) DED.RowIndex = RowIndex).Sum(Function(DED) DED.RemainingNetCharge)
 
-                    RollForwardToDigitalEstimateDetail.PlanSpend += If(NewRemainingSpend > 0, NewRemainingSpend, 0)
-                    RollForwardToDigitalEstimateDetail.PlanRevenue += If(NewRemainingRevenue > 0, NewRemainingRevenue, 0)
-                    RollForwardToDigitalEstimateDetail.PlanNetCharge += If(NewRemainingNetCharge > 0, NewRemainingNetCharge, 0)
+                    RollForwardToDigitalEstimateDetail.PlanSpend += If(NewRemainingSpend <> 0, NewRemainingSpend, 0)
+                    RollForwardToDigitalEstimateDetail.PlanRevenue += If(NewRemainingRevenue <> 0, NewRemainingRevenue, 0)
+                    RollForwardToDigitalEstimateDetail.PlanNetCharge += If(NewRemainingNetCharge <> 0, NewRemainingNetCharge, 0)
 
                     If RollForwardToDigitalEstimateDetail.CostType <> "NA" Then
 
-                        RollForwardToDigitalEstimateDetail.PlanImpressions += If(NewRemainingImpressions > 0, NewRemainingImpressions, 0)
+                        RollForwardToDigitalEstimateDetail.PlanImpressions += If(NewRemainingImpressions <> 0, NewRemainingImpressions, 0)
 
-                        If RollForwardToDigitalEstimateDetail.PlanRate > 0 Then
+                        If RollForwardToDigitalEstimateDetail.PlanRate <> 0 Then
 
                             CalculateQuantityRateAndAmount(RollForwardToDigitalEstimateDetail.PlanImpressions, RollForwardToDigitalEstimateDetail.PlanRate, RollForwardToDigitalEstimateDetail.PlanSpend, QtyRateAmount.Amount, UseCPM:=RollForwardToDigitalEstimateDetail.IsCPM)
 
@@ -594,34 +594,34 @@
 
                         WeightedPercent = FormatNumber(DigitalEstimateDetail.PlanSpend / RollForwardToDigitalEstimateDetails.Sum(Function(DED) DED.PlanSpend), 5)
 
-                        If NewRemainingSpend > 0 Then
+                        If NewRemainingSpend <> 0 Then
 
                             DigitalEstimateDetail.PlanSpend += FormatNumber(NewRemainingSpend * WeightedPercent, 2)
                             AppliedSpend += FormatNumber(NewRemainingSpend * WeightedPercent, 2)
 
                         End If
 
-                        If NewRemainingRevenue > 0 Then
+                        If NewRemainingRevenue <> 0 Then
 
                             DigitalEstimateDetail.PlanRevenue += FormatNumber(NewRemainingRevenue * WeightedPercent, 2)
                             AppliedRevenue += FormatNumber(NewRemainingRevenue * WeightedPercent, 2)
 
                         End If
 
-                        If NewRemainingNetCharge > 0 Then
+                        If NewRemainingNetCharge <> 0 Then
 
                             DigitalEstimateDetail.PlanNetCharge += FormatNumber(NewRemainingNetCharge * WeightedPercent, 2)
                             AppliedNetCharge += FormatNumber(NewRemainingNetCharge * WeightedPercent, 2)
 
                         End If
 
-                        If NewRemainingImpressions > 0 Then
+                        If NewRemainingImpressions <> 0 Then
 
                             If DigitalEstimateDetail.CostType <> "NA" Then
 
                                 DigitalEstimateDetail.PlanImpressions += Math.Round(Fix(NewRemainingImpressions * WeightedPercent * 100) / 100, MidpointRounding.AwayFromZero)
 
-                                If DigitalEstimateDetail.PlanRate > 0 Then
+                                If DigitalEstimateDetail.PlanRate <> 0 Then
 
                                     CalculateQuantityRateAndAmount(DigitalEstimateDetail.PlanImpressions, DigitalEstimateDetail.PlanRate, DigitalEstimateDetail.PlanSpend, QtyRateAmount.Amount, UseCPM:=DigitalEstimateDetail.IsCPM)
 
@@ -641,31 +641,31 @@
 
                     If RollForwardToDigitalEstimateDetails.Count > 1 Then 'handle any rounding issues
 
-                        If NewRemainingSpend > 0 AndAlso NewRemainingSpend <> AppliedSpend Then
+                        If NewRemainingSpend <> 0 AndAlso NewRemainingSpend <> AppliedSpend Then
 
                             LastDigitalEstimateDetail.PlanSpend += NewRemainingSpend - AppliedSpend
 
                         End If
 
-                        If NewRemainingRevenue > 0 AndAlso NewRemainingRevenue <> AppliedRevenue Then
+                        If NewRemainingRevenue <> 0 AndAlso NewRemainingRevenue <> AppliedRevenue Then
 
                             LastDigitalEstimateDetail.PlanRevenue += NewRemainingRevenue - AppliedRevenue
 
                         End If
 
-                        If NewRemainingNetCharge > 0 AndAlso NewRemainingNetCharge <> AppliedNetCharge Then
+                        If NewRemainingNetCharge <> 0 AndAlso NewRemainingNetCharge <> AppliedNetCharge Then
 
                             LastDigitalEstimateDetail.PlanNetCharge += NewRemainingNetCharge - AppliedNetCharge
 
                         End If
 
-                        If NewRemainingImpressions > 0 AndAlso NewRemainingImpressions <> AppliedImpressions Then
+                        If NewRemainingImpressions <> 0 AndAlso NewRemainingImpressions <> AppliedImpressions Then
 
                             If LastDigitalEstimateDetail.CostType <> "NA" Then
 
                                 LastDigitalEstimateDetail.PlanImpressions += NewRemainingImpressions - AppliedImpressions
 
-                                If LastDigitalEstimateDetail.PlanRate > 0 Then
+                                If LastDigitalEstimateDetail.PlanRate <> 0 Then
 
                                     CalculateQuantityRateAndAmount(LastDigitalEstimateDetail.PlanImpressions, LastDigitalEstimateDetail.PlanRate, LastDigitalEstimateDetail.PlanSpend, QtyRateAmount.Amount, UseCPM:=LastDigitalEstimateDetail.IsCPM)
 

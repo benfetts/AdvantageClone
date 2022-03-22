@@ -265,94 +265,50 @@
             <div style="width: 100%; border-bottom: 1px solid #CCC; margin-bottom: 6px;"><span style="">ConceptShare Reviews</span></div>
             <telerik:RadGrid ID="RadGridDigitalAssetReviews" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" GridLines="None" PageSize="25" EnableEmbeddedSkins="True" Width="100%">
                 <PagerStyle Mode="NextPrevAndNumeric" AlwaysVisible="true" Position="Bottom"></PagerStyle>
-                <MasterTableView DataKeyNames="Review.Id, Review.ProjectId, Review.ReviewType" Width="100%">
+                <MasterTableView DataKeyNames="ID" Width="100%">
                     <Columns>
                         <telerik:GridTemplateColumn UniqueName="GridTemplateColumnViewDetails" HeaderAbbr="FIXED">
                             <HeaderStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                             <ItemStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                             <FooterStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                             <ItemTemplate>
-                                <asp:HiddenField ID="HiddenFieldReviewID" runat="server" Value='<%#Eval("Review.Id")%>' />
-                                <asp:ImageButton ID="ImageButtonThumbnail" runat="server" CommandName="ViewDetails" ToolTip="View details" AlternateText="View details" />
+                                <asp:HiddenField ID="HiddenFieldReviewID" runat="server" Value='<%#Eval("ID")%>' />
                                 <div id="DivViewDetails" runat="server" class="icon-background background-color-sidebar">
                                     <asp:ImageButton ID="ImageButtonViewDetails" runat="server" CommandName="ViewDetails" ToolTip="View details" AlternateText="View details" SkinID="ImageButtonViewWhite" />
                                 </div>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridBoundColumn DataField="Review.Title" SortExpression="Title" HeaderText="Review Name" UniqueName="GridBoundColumnTitle">
+                        <telerik:GridBoundColumn DataField="Subject" SortExpression="Subject" 
+                            HeaderText="Review Name" UniqueName="GridBoundColumnTitle">
                             <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" CssClass="radgrid-description-column" />
                             <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" CssClass="radgrid-description-column" />
                             <FooterStyle HorizontalAlign="Left" VerticalAlign="Middle" CssClass="radgrid-description-column" />
                         </telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Review.ReviewType" SortExpression="" HeaderText="Type" UniqueName="GridBoundColumnReviewType">
-                            <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="100" />
-                            <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="100" />
-                            <FooterStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="100" />
+                        <telerik:GridBoundColumn DataField="Body" SortExpression="Body" 
+                            HeaderText="Review Description" UniqueName="GridBoundColumnDescription">
+                            <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" CssClass="radgrid-description-column" />
+                            <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" CssClass="radgrid-description-column" />
+                            <FooterStyle HorizontalAlign="Left" VerticalAlign="Middle" CssClass="radgrid-description-column" />
                         </telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Review.CreatedByName" SortExpression="CreatedByName" HeaderText="Owner" UniqueName="GridBoundColumnCreatedByName">
-                            <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="250" />
-                            <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="250" />
-                            <FooterStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="250" />
+                        <telerik:GridBoundColumn DataField="GeneratedDate" DataFormatString="{0:d}" HeaderText="Created" SortExpression="DateCreated" UniqueName="GridBoundColumnDateCreated">
+                            <HeaderStyle CssClass="radgrid-datetime-column" />
+                            <ItemStyle CssClass="radgrid-datetime-column" />
+                            <FooterStyle CssClass="radgrid-datetime-column" />
                         </telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="" DataFormatString="" HeaderText="Assigned To" SortExpression="" UniqueName="GridBoundColumnAssignedTo" Visible="false">
-                            <HeaderStyle CssClass="radgrid-employee-name-column" />
-                            <ItemStyle CssClass="radgrid-employee-name-column" />
-                            <FooterStyle CssClass="radgrid-employee-name-column" />
+                        <telerik:GridBoundColumn DataField="DueDate" DataFormatString="{0:d}" HeaderText="Due" SortExpression="DueDate" UniqueName="GridBoundColumnDueDate" Visible="false">
+                            <HeaderStyle CssClass="radgrid-datetime-column" />
+                            <ItemStyle CssClass="radgrid-datetime-column" />
+                            <FooterStyle CssClass="radgrid-datetime-column" />
                         </telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Review.StatusName" SortExpression="" HeaderText="Status" UniqueName="GridBoundColumnStatusName">
-                            <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="200" />
-                            <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="200" />
-                            <FooterStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="200" />
-                        </telerik:GridBoundColumn>
-                        <telerik:GridTemplateColumn UniqueName="GridTemplateColumnCompleted" HeaderText="Completed">
+                        <telerik:GridTemplateColumn UniqueName="GridTemplateColumnCompleted" HeaderText="Completed" Visible="false">
                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="40" />
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="40" />
                             <FooterStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="40" />
                             <ItemTemplate>
-                                <asp:Label ID="LabelCompleted" runat="server" Text='<%#Eval("Completed")%>'></asp:Label>
+                                <asp:Label ID="LabelCompleted" runat="server"></asp:Label>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridBoundColumn DataField="Review.DateCreated" DataFormatString="{0:d}" HeaderText="Created" SortExpression="DateCreated" UniqueName="GridBoundColumnDateCreated">
-                            <HeaderStyle CssClass="radgrid-datetime-column" />
-                            <ItemStyle CssClass="radgrid-datetime-column" />
-                            <FooterStyle CssClass="radgrid-datetime-column" />
-                        </telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Review.DueDate" DataFormatString="{0:d}" HeaderText="Due" SortExpression="DueDate" UniqueName="GridBoundColumnDueDate">
-                            <HeaderStyle CssClass="radgrid-datetime-column" />
-                            <ItemStyle CssClass="radgrid-datetime-column" />
-                            <FooterStyle CssClass="radgrid-datetime-column" />
-                        </telerik:GridBoundColumn>
-                        <telerik:GridTemplateColumn UniqueName="GridTemplateColumnReviewInfo" Display="false">
-                            <HeaderStyle CssClass="radgrid-icon-column" />
-                            <ItemStyle CssClass="radgrid-icon-column" />
-                            <FooterStyle CssClass="radgrid-icon-column" />
-                            <ItemTemplate>
-                                <div id="DivAddComments" runat="server" class="icon-background background-color-sidebar">
-                                    <asp:ImageButton ID="ImageButtonAddComments" runat="server" SkinID="ImageButtonCommentWhite" ToolTip="Click to add comment to this document" />
-                                </div>
-                            </ItemTemplate>
-                        </telerik:GridTemplateColumn>
-                        <telerik:GridTemplateColumn UniqueName="GridTemplateColumnProofingTool">
-                            <HeaderStyle CssClass="radgrid-icon-column" />
-                            <ItemStyle CssClass="radgrid-icon-column" />
-                            <FooterStyle CssClass="radgrid-icon-column" />
-                            <ItemTemplate>
-                                <div id="DivProofingTool" runat="server" class="icon-background background-color-sidebar" title="Click to open proofing tool">
-                                    <asp:LinkButton ID="LinkButtonProofingTool" runat="server" Text="Pr" ToolTip="Click to open proofing tool" CssClass="icon-text" CommandName="ProofingTool" CommandArgument='' />
-                                </div>
-                            </ItemTemplate>
-                        </telerik:GridTemplateColumn>
-                        <telerik:GridTemplateColumn UniqueName="GridTemplateColumnFeedbackSummary" Display="true">
-                            <HeaderStyle CssClass="radgrid-icon-column" />
-                            <ItemStyle CssClass="radgrid-icon-column" />
-                            <FooterStyle CssClass="radgrid-icon-column" />
-                            <ItemTemplate>
-                                <div id="DivFeedbackSummary" runat="server" class="icon-background background-color-sidebar">
-                                    <asp:ImageButton ID="ImageButtonFeedbackSummary" runat="server" ImageUrl="~/Images/Icons/White/256/document_pulse.png" CssClass="icon-image" ToolTip="Click to generate feedback summary for this review" CommandName="FeedbackSummary" CommandArgument='<%#Eval("Review.Id")%>' />
-                                </div>
-                            </ItemTemplate>
-                        </telerik:GridTemplateColumn>
-                        <telerik:GridTemplateColumn UniqueName="GridTemplateColumnDelete" Display="True">
+                        <telerik:GridTemplateColumn UniqueName="GridTemplateColumnDelete" Display="False">
                             <HeaderStyle CssClass="radgrid-icon-column" />
                             <ItemStyle CssClass="radgrid-icon-column" />
                             <FooterStyle CssClass="radgrid-icon-column" />

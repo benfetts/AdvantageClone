@@ -1714,6 +1714,20 @@
 
                         BroadcastResearchViewModel.SpotTVResearchResultList = AdvantageFramework.ComScore.GetLocalTimeViews(DbContext, BroadcastResearchViewModel)
 
+                        If BroadcastResearchViewModel.SpotTVResearchResultList.Count = 0 Then
+
+                            If BroadcastResearchViewModel.SpotTVSelectedResearchCriteria IsNot Nothing Then
+
+                                InfoMessage = "No data found for market: " & BroadcastResearchViewModel.SpotTVSelectedResearchCriteria.MarketCode & ".  Please call customer support and verify your Comscore subscription includes this market and the books selected."
+
+                            Else
+
+                                InfoMessage = "No data found for selected market.  Please call customer support and verify your Comscore subscription includes this market and the books selected."
+
+                            End If
+
+                        End If
+
                     End If
 
                     MediaSpotTVResearchMetricList = AdvantageFramework.Database.Procedures.MediaSpotTVResearchMetric.LoadByMediaSpotTVResearchID(DbContext, BroadcastResearchViewModel.SpotTVSelectedResearchCriteria.ID).ToList
@@ -1876,7 +1890,7 @@
 
                     Else
 
-                        ErrorMessage = "This research criteria is no longer valid in the system."
+                        ErrorMessage = "This research criteria Is no longer valid In the system."
 
                     End If
 
@@ -2208,7 +2222,7 @@
 
                     Using NielsenDbContext As New AdvantageFramework.Nielsen.Database.DbContext(Me.Session.NielsenConnectionString, Nothing)
 
-                        ProgramWeeks = NielsenDbContext.Database.SqlQuery(Of ProgramWeek)("SELECT program_name, week FROM dbo.[advtf_nielsen_program_get_by_week]( {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, 180)",
+                        ProgramWeeks = NielsenDbContext.Database.SqlQuery(Of ProgramWeek)("Select program_name, week FROM dbo.[advtf_nielsen_program_get_by_week]( {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, 180)",
                             BookID, StationCode, MediaSpotTVResearchDayTime.StartHour, MediaSpotTVResearchDayTime.EndHour, If(MediaSpotTVResearchDayTime.Sunday, 1, 0), If(MediaSpotTVResearchDayTime.Monday, 1, 0),
                             If(MediaSpotTVResearchDayTime.Tuesday, 1, 0), If(MediaSpotTVResearchDayTime.Wednesday, 1, 0), If(MediaSpotTVResearchDayTime.Thursday, 1, 0), If(MediaSpotTVResearchDayTime.Friday, 1, 0), If(MediaSpotTVResearchDayTime.Saturday, 1, 0)).ToList
 

@@ -835,6 +835,18 @@
 
                     DynamicReportObjects = LoadEmployeeTimeAnaylsisData(ReportingDbContext, ParameterDictionary)
 
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+                    DynamicReportObjects = LoadDeferredSalesVsOpenARData(ReportingDbContext, ParameterDictionary)
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.BroadcastInvoiceDetail Then
+
+                    DynamicReportObjects = LoadBroadcastInvoiceDetail(ReportingDbContext, ParameterDictionary)
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.GLCrossOffice Then
+
+                    DynamicReportObjects = LoadGLCrossOfficeData(ReportingDbContext, ParameterDictionary)
+
                 End If
 
                 If ObjectQuery IsNot Nothing Then
@@ -1366,6 +1378,18 @@
                 ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.EmployeeTimeAnalysis Then
 
                     DynamicReportObjects = New Generic.List(Of AdvantageFramework.Reporting.Database.Classes.EmployeeTimeAnalysisReport)
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+                    DynamicReportObjects = New Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DeferredSalesVsOpenAR)
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.BroadcastInvoiceDetail Then
+
+                    DynamicReportObjects = New Generic.List(Of AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceDetail)
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.GLCrossOffice Then
+
+                    DynamicReportObjects = New Generic.List(Of AdvantageFramework.Reporting.Database.Classes.GLCrossOffice)
 
                 End If
 
@@ -5782,6 +5806,18 @@
 
                     ObjectType = GetType(AdvantageFramework.Reporting.Database.Classes.EmployeeTimeAnalysisReport)
 
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+                    ObjectType = GetType(AdvantageFramework.Reporting.Database.Classes.DeferredSalesVsOpenAR)
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.BroadcastInvoiceDetail Then
+
+                    ObjectType = GetType(AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceDetail)
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.GLCrossOffice Then
+
+                    ObjectType = GetType(AdvantageFramework.Reporting.Database.Classes.GLCrossOffice)
+
                 End If
 
             Catch ex As Exception
@@ -7630,6 +7666,18 @@
 
                     ObjectType = GetType(AdvantageFramework.Reporting.Database.Classes.EmployeeTimeAnalysisReport)
 
+                ElseIf AdvancedReportWriterReport = AdvantageFramework.Reporting.AdvancedReportWriterReports.DeferredSalesVsOpenAR Then
+
+                    ObjectType = GetType(AdvantageFramework.Reporting.Database.Classes.DeferredSalesVsOpenAR)
+
+                ElseIf AdvancedReportWriterReport = AdvantageFramework.Reporting.AdvancedReportWriterReports.BroadcastInvoiceDetail Then
+
+                    ObjectType = GetType(AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceDetail)
+
+                ElseIf AdvancedReportWriterReport = AdvantageFramework.Reporting.AdvancedReportWriterReports.GLCrossOffice Then
+
+                    ObjectType = GetType(AdvantageFramework.Reporting.Database.Classes.GLCrossOffice)
+
                 End If
 
             Catch ex As Exception
@@ -8070,6 +8118,18 @@
 
                     KeyExpression = AdvantageFramework.Reporting.Database.Classes.EmployeeTimeAnalysisReport.Properties.EmployeeCode.ToString
 
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+                    KeyExpression = AdvantageFramework.Reporting.Database.Classes.DeferredSalesVsOpenAR.Properties.OfficeCode.ToString
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.BroadcastInvoiceDetail Then
+
+                    KeyExpression = AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceDetail.Properties.OrderNumber.ToString
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.GLCrossOffice Then
+
+                    KeyExpression = AdvantageFramework.Reporting.Database.Classes.GLCrossOffice.Properties.OfficeCode.ToString
+
                 End If
 
             Catch ex As Exception
@@ -8501,6 +8561,18 @@
                 ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.EmployeeTimeAnalysis Then
 
                     DefaultSort = AdvantageFramework.Reporting.Database.Classes.EmployeeTimeAnalysisReport.Properties.EmployeeCode.ToString
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+                    DefaultSort = AdvantageFramework.Reporting.Database.Classes.DeferredSalesVsOpenAR.Properties.OfficeCode.ToString
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.BroadcastInvoiceDetail Then
+
+                    DefaultSort = AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceDetail.Properties.Market.ToString
+
+                ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.GLCrossOffice Then
+
+                    DefaultSort = AdvantageFramework.Reporting.Database.Classes.GLCrossOffice.Properties.OfficeCode.ToString
 
                 End If
 
@@ -10741,6 +10813,24 @@
 
                         End If
 
+                        If MediaBroadcastWorksheetPreBuyReport.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico AndAlso Session.IsNielsenPuertoRicoSetup Then
+
+                            MediaBroadcastWorksheetMarket = AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketID)
+
+                            If MediaBroadcastWorksheetMarket IsNot Nothing AndAlso MediaBroadcastWorksheetMarket.PeriodStart.HasValue AndAlso MediaBroadcastWorksheetMarket.PeriodEnd.HasValue Then
+
+                                MediaBroadcastWorksheetPreBuyReport.SchedulePeriod = MediaBroadcastWorksheetMarket.PeriodStart.Value.ToShortDateString & "-" & MediaBroadcastWorksheetMarket.PeriodEnd.Value.ToShortDateString
+
+                            End If
+
+                            If MediaBroadcastWorksheetMarketBook.PeriodStart.HasValue AndAlso MediaBroadcastWorksheetMarketBook.PeriodEnd.HasValue Then
+
+                                MediaBroadcastWorksheetPreBuyReport.PreBuyPeriod = MediaBroadcastWorksheetMarketBook.PeriodStart.Value.ToShortDateString & "-" & MediaBroadcastWorksheetMarketBook.PeriodEnd.Value.ToShortDateString
+
+                            End If
+
+                        End If
+
                         If MediaBroadcastWorksheetMarketBook IsNot Nothing AndAlso MediaBroadcastWorksheetMarketBook.HPUTBookID.HasValue AndAlso MediaBroadcastWorksheetMarketBook.HPUTBookID.Value > 0 Then
 
                             If MediaBroadcastWorksheetPreBuyReport.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen AndAlso Session.IsNielsenSetup Then
@@ -11328,6 +11418,116 @@
                                 End If
 
                             Next
+
+                        Next
+
+                    End If
+
+                    If MediaBroadcastWorksheetPreBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPreBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico) AndAlso Session.IsNielsenPuertoRicoSetup Then
+
+                        For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetPreBuyReports.Where(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico).Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
+
+                            MediaBroadcastWorksheetMarketBook = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First
+
+                            If MediaBroadcastWorksheetMarketBook.UsePrimaryDemo AndAlso MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.HasValue Then
+
+                                MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.Value)
+
+                            ElseIf MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.HasValue Then
+
+                                MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.Value)
+
+                            End If
+
+                            If MediaDemographic IsNot Nothing Then
+
+                                NielsenMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.NielsenMarketNumber
+
+                                StationCodes = (From Entity In MediaBroadcastWorksheetPreBuyReports
+                                                Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                      Entity.NielsenTVStationCode.HasValue AndAlso
+                                                      Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
+                                                Select CStr(Entity.NielsenTVStationCode.Value)).Distinct.ToArray
+
+                                For Each StationCode In StationCodes
+
+                                    MediaBroadcastWorksheetPreBuyReport = (From Entity In MediaBroadcastWorksheetPreBuyReports
+                                                                           Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                 Entity.NielsenTVStationCode = StationCode AndAlso
+                                                                                 Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
+                                                                           Select Entity).FirstOrDefault
+
+                                    If MediaBroadcastWorksheetPreBuyReport IsNot Nothing Then
+
+                                        NPRStation = (From Entity In DbContext.GetQuery(Of AdvantageFramework.Database.Entities.NPRStation)
+                                                      Where Entity.ID = CInt(StationCode)
+                                                      Select Entity).SingleOrDefault
+
+                                        If NPRStation IsNot Nothing Then
+
+                                            MediaBroadcastWorksheetMarketDetailIDs = (From Entity In MediaBroadcastWorksheetPreBuyReports
+                                                                                      Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                            Entity.NielsenTVStationCode = StationCode AndAlso
+                                                                                            Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
+                                                                                      Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToArray
+
+                                            MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+
+                                            MediaSpotTVResearchDaytimeTypes.AddRange(From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketDetailIDs(DbContext, MediaBroadcastWorksheetMarketDetailIDs).ToList
+                                                                                     Select New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(Entity))
+
+                                            TVWorksheetRatingAndShareDataList = Nothing
+
+                                            If MediaBroadcastWorksheetMarketBook.PeriodStart.HasValue AndAlso MediaBroadcastWorksheetMarketBook.PeriodEnd.HasValue Then
+
+                                                TVWorksheetRatingAndShareDataList = MediaBroadcastWorksheetController.GetNielsenTVPuertoRicoRatings(MediaBroadcastWorksheetMarketBook.PeriodStart.Value, MediaBroadcastWorksheetMarketBook.PeriodEnd.Value, CInt(StationCode), MediaSpotTVResearchDaytimeTypes, MediaDemographic.ID, Nothing)
+
+                                            Else
+
+                                                MediaBroadcastWorksheetMarket = AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketID)
+
+                                                If MediaBroadcastWorksheetMarket IsNot Nothing AndAlso MediaBroadcastWorksheetMarket.PeriodStart.HasValue AndAlso MediaBroadcastWorksheetMarket.PeriodEnd.HasValue Then
+
+                                                    TVWorksheetRatingAndShareDataList = MediaBroadcastWorksheetController.GetNielsenTVPuertoRicoRatings(MediaBroadcastWorksheetMarket.PeriodStart.Value, MediaBroadcastWorksheetMarket.PeriodEnd.Value, CInt(StationCode), MediaSpotTVResearchDaytimeTypes, MediaDemographic.ID, Nothing)
+
+                                                End If
+
+                                            End If
+
+                                            If TVWorksheetRatingAndShareDataList IsNot Nothing AndAlso TVWorksheetRatingAndShareDataList.Count > 0 Then
+
+                                                For Each TVWorksheetRatingAndShareData In TVWorksheetRatingAndShareDataList
+
+                                                    MediaBroadcastWorksheetPreBuyReport = (From Entity In MediaBroadcastWorksheetPreBuyReports
+                                                                                           Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                                 Entity.NielsenTVStationCode = StationCode AndAlso
+                                                                                                 Entity.MediaBroadcastWorksheetMarketDetailID = TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID).SingleOrDefault
+
+                                                    If MediaBroadcastWorksheetPreBuyReport IsNot Nothing Then
+
+                                                        If MediaBroadcastWorksheetMarketBook.UseImpressions Then
+
+                                                            MediaBroadcastWorksheetPreBuyReport.SpotUpdatedEstimate = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
+
+                                                        Else
+
+                                                            MediaBroadcastWorksheetPreBuyReport.SpotUpdatedEstimate = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
+
+                                                        End If
+
+                                                    End If
+
+                                                Next
+
+                                            End If
+
+                                        End If
+
+                                    End If
+
+                                Next
+
+                            End If
 
                         Next
 
@@ -12755,6 +12955,159 @@
 
                     End If
 
+                    If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico) AndAlso Session.IsNielsenPuertoRicoSetup Then
+
+                        MediaBroadcastWorksheetController = New AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController(Session)
+
+                        For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetPostBuyReports.Where(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico).Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
+
+                            MediaBroadcastWorksheetMarketBook = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First
+
+                            If MediaBroadcastWorksheetMarketBook.UsePrimaryDemo Then
+
+                                If MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.HasValue Then
+
+                                    MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.Value)
+
+                                Else
+
+                                    MediaDemographic = Nothing
+
+                                End If
+
+                            Else
+
+                                If MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.HasValue Then
+
+                                    MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.Value)
+
+                                Else
+
+                                    MediaDemographic = Nothing
+
+                                End If
+
+                            End If
+
+                            If MediaDemographic IsNot Nothing Then
+
+                                NielsenMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.NielsenMarketNumber
+
+                                StationCodes = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                Where Entity.NielsenTVStationCode.HasValue AndAlso
+                                                      Entity.NielsenMarketNumber = NielsenMarketNumber
+                                                Select CStr(Entity.NielsenTVStationCode.Value)).Distinct.ToArray
+
+                                For Each StationCode In StationCodes
+
+                                    MediaBroadcastWorksheetPostBuyReport = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                                            Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                  Entity.NielsenTVStationCode = CInt(StationCode)
+                                                                            Select Entity).FirstOrDefault
+
+                                    If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
+
+                                        AllMediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+                                        MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+
+                                        DetailIDs = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                     Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                           Entity.NielsenTVStationCode = CInt(StationCode) AndAlso
+                                                           Entity.DetailID.HasValue
+                                                     Select Entity.DetailID.Value).ToArray
+
+                                        NPRStation = (From Entity In DbContext.GetQuery(Of AdvantageFramework.Database.Entities.NPRStation)
+                                                      Where Entity.ID = CInt(StationCode)
+                                                      Select Entity).SingleOrDefault
+
+                                        If DetailIDs IsNot Nothing AndAlso DetailIDs.Count > 0 AndAlso NPRStation IsNot Nothing Then
+
+                                            AllMediaSpotTVResearchDaytimeTypes.AddRange((From Entity In AdvantageFramework.Database.Procedures.AccountPayableTVBroadcastDetail.Load(DbContext)
+                                                                                         Where DetailIDs.Contains(Entity.ID)
+                                                                                         Select Entity).ToList.Select(Function(E) New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(E, True)))
+
+                                            MediaSpotTVResearchDaytimeTypes = AllMediaSpotTVResearchDaytimeTypes
+
+                                            If RunBySpotBook OrElse MediaSpotTVResearchDaytimeTypes.Count > 0 Then
+
+                                                If TVWorksheetRatingAndShareDataList Is Nothing Then
+
+                                                    TVWorksheetRatingAndShareDataList = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.TVWorksheetRatingAndShareData)
+
+                                                End If
+
+                                                For Each MediaSpotTVResearchDaytimeType In MediaSpotTVResearchDaytimeTypes.Where(Function(Entity) Entity.ExactSpotDate.HasValue).ToList
+
+                                                    TVWorksheetRatingAndShareData = (From Entity In MediaBroadcastWorksheetController.GetNielsenTVPuertoRicoRatings(MediaSpotTVResearchDaytimeType.ExactSpotDate.Value.ToShortDateString, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value.ToShortDateString, CInt(StationCode), MediaSpotTVResearchDaytimeTypes, MediaDemographic.ID, Nothing).ToList
+                                                                                     Where Entity.MediaDemoID = MediaDemographic.ID AndAlso
+                                                                                           Entity.MediaBroadcastWorksheetMarketDetailID = MediaSpotTVResearchDaytimeType.ID
+                                                                                     Select Entity).SingleOrDefault
+
+                                                    'If TVWorksheetRatingAndShareDatas.Count = 1 Then
+                                                    '    TVWorksheetRatingAndShareData = TVWorksheetRatingAndShareDatas.First
+                                                    'Else
+                                                    '    TVWorksheetRatingAndShareData = TVWorksheetRatingAndShareDatas.FirstOrDefault
+                                                    'End If
+
+                                                    If TVWorksheetRatingAndShareData IsNot Nothing Then
+
+                                                        TVWorksheetRatingAndShareDataList.Add(TVWorksheetRatingAndShareData)
+
+                                                    End If
+
+                                                Next
+
+                                            End If
+
+                                            If TVWorksheetRatingAndShareDataList IsNot Nothing AndAlso TVWorksheetRatingAndShareDataList.Count > 0 Then
+
+                                                For Each TVWorksheetRatingAndShareData In TVWorksheetRatingAndShareDataList
+
+                                                    MediaBroadcastWorksheetPostBuyReport = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                                                            Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                                  Entity.NielsenTVStationCode = StationCode AndAlso
+                                                                                                  Entity.DetailID = TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID).FirstOrDefault
+
+                                                    If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
+
+                                                        MediaBroadcastWorksheetPostBuyReport.DetailProgram = TVWorksheetRatingAndShareData.ProgramName
+
+                                                    End If
+
+                                                    If MediaBroadcastWorksheetPostBuyReport IsNot Nothing AndAlso ((MediaBroadcastWorksheetMarketBook.UseImpressions = False AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePost = False) OrElse
+                                                                                                                   (MediaBroadcastWorksheetMarketBook.UseImpressions AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions = False)) Then
+
+                                                        MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
+                                                        MediaBroadcastWorksheetPostBuyReport.DetailActualRating = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
+
+                                                        If MediaBroadcastWorksheetMarketBook.UseImpressions Then
+
+                                                            MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
+
+                                                        Else
+
+                                                            MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
+
+                                                        End If
+
+                                                    End If
+
+                                                Next
+
+                                            End If
+
+                                        End If
+
+                                    End If
+
+                                Next
+
+                            End If
+
+                        Next
+
+                    End If
+
                     MediaBroadcastWorksheetMarketDetailIDs = (From Entity In MediaBroadcastWorksheetPostBuyReports
                                                               Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToArray
 
@@ -12882,6 +13235,7 @@
             Dim ShareHPUTBookController As AdvantageFramework.Controller.Media.ShareHPUTBookController = Nothing
             Dim NielsenTVBooks As Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.NielsenTVBook) = Nothing
             Dim OldComscoreMarketNumber As Integer = 0
+            Dim OmitRatings As Boolean = False
 
             Try
 
@@ -12889,6 +13243,7 @@
 
                 MediaBroadcastWorksheetMarketBookList = ParameterDictionary(AdvantageFramework.Reporting.MediaBroadcastWorksheetInitialCriteria.MediaBroadcastWorksheetMarketBooks.ToString)
                 WorksheetMarketVendors = ParameterDictionary(AdvantageFramework.Reporting.MediaBroadcastWorksheetInitialCriteria.WorksheetMarketVendors.ToString)
+                OmitRatings = ParameterDictionary(AdvantageFramework.Reporting.MediaBroadcastWorksheetInitialCriteria.OmitRatings.ToString)
 
                 MediaBroadcastWorksheetIDs = (From Entity In MediaBroadcastWorksheetMarketBookList
                                               Select Entity.MediaBroadcastWorksheetID).Distinct.ToArray
@@ -13018,7 +13373,8 @@
 
                     Next
 
-                    If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen) AndAlso Session.IsNielsenSetup Then
+                    If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen) AndAlso Session.IsNielsenSetup AndAlso
+                            OmitRatings = False Then
 
                         Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
 
@@ -13616,7 +13972,8 @@
 
                     End If
 
-                    If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore) AndAlso Session.IsComscoreSetup Then
+                    If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore) AndAlso Session.IsComscoreSetup AndAlso
+                            OmitRatings = False Then
 
                         ShareHPUTBooks = New Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook)
 
@@ -14285,7 +14642,8 @@
 
                                 StationCodes = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
                                                 Where Entity.NielsenRadioStationComboID.HasValue AndAlso
-                                                      Entity.NielsenMarketNumber = NielsenMarketNumber
+                                                      Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                      Entity.NielsenRadioStationComboID.Value > 0
                                                 Select CStr(Entity.NielsenRadioStationComboID.Value)).Distinct.ToArray
 
                                 For Each StationCode In StationCodes
@@ -14519,6 +14877,7 @@
             Dim SpotBookIDs As Dictionary(Of Integer, Integer) = Nothing
             Dim SpotMediaSpotTVResearchDaytimeTypes As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType) = Nothing
             Dim RunBySpotBook As Boolean = False
+            Dim OmitRatings As Boolean = False
 
             Try
 
@@ -14526,6 +14885,7 @@
 
                 MediaBroadcastWorksheetMarketBookList = ParameterDictionary(AdvantageFramework.Reporting.MediaBroadcastWorksheetInitialCriteria.MediaBroadcastWorksheetMarketBooks.ToString)
                 WorksheetMarketVendors = ParameterDictionary(AdvantageFramework.Reporting.MediaBroadcastWorksheetInitialCriteria.WorksheetMarketVendors.ToString)
+                OmitRatings = ParameterDictionary(AdvantageFramework.Reporting.MediaBroadcastWorksheetInitialCriteria.OmitRatings.ToString)
 
                 MediaBroadcastWorksheetIDs = (From Entity In MediaBroadcastWorksheetMarketBookList
                                               Select Entity.MediaBroadcastWorksheetID).Distinct.ToArray
@@ -14603,51 +14963,354 @@
 
                 If MediaBroadcastWorksheetRadioPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetRadioPostBuyReports.Count > 0 Then
 
-                    Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+                    If (Session.IsNielsenSetup OrElse Session.IsEastlanSetup) AndAlso OmitRatings = False Then
+
+                        Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+
+                            For Each MediaBroadcastWorksheetRadioPostBuyReport In MediaBroadcastWorksheetRadioPostBuyReports
+
+                                MediaBroadcastWorksheetRadioPostBuyReport.StationName = MediaBroadcastWorksheetRadioPostBuyReport.VendorName
+
+                                MediaBroadcastWorksheetMarketBook = (From Entity In MediaBroadcastWorksheetMarketBookList
+                                                                     Where Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetRadioPostBuyReport.MediaBroadcastWorksheetMarketID
+                                                                     Select Entity).FirstOrDefault
+
+                                If MediaBroadcastWorksheetMarketBook IsNot Nothing AndAlso MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1.HasValue AndAlso MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1.Value > 0 Then
+
+                                    If MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen AndAlso Session.IsNielsenSetup Then
+
+                                        NielsenRadioPeriodEntity = AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByID(NielsenDbContext, MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1.Value)
+
+                                        If NielsenRadioPeriodEntity IsNot Nothing Then
+
+                                            NielsenRadioPeriod = New AdvantageFramework.DTO.Media.NielsenRadioPeriod(NielsenRadioPeriodEntity)
+
+                                            If NielsenRadioPeriod IsNot Nothing Then
+
+                                                MediaBroadcastWorksheetRadioPostBuyReport.PostBook = NielsenRadioPeriod.Description
+
+                                            End If
+
+                                        End If
+
+                                    ElseIf MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan AndAlso Session.IsEastlanSetup Then
+
+                                        NielsenRadioPeriodEntity = AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByID(NielsenDbContext, MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1.Value)
+
+                                        If NielsenRadioPeriodEntity IsNot Nothing Then
+
+                                            NielsenRadioPeriod = New AdvantageFramework.DTO.Media.NielsenRadioPeriod(NielsenRadioPeriodEntity)
+
+                                            If NielsenRadioPeriod IsNot Nothing Then
+
+                                                MediaBroadcastWorksheetRadioPostBuyReport.PostBook = NielsenRadioPeriod.Description
+
+                                            End If
+
+                                        End If
+
+                                        'ElseIf MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.NielsenCounty  AndAlso Session.IsNielsenCountySetup  Then
+
+                                    End If
+
+                                End If
+
+                            Next
+
+                            MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = DemographicID)
+
+                            If (MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = Nielsen.Database.Entities.Methods.RadioSource.Nielsen AndAlso Session.IsNielsenSetup AndAlso OmitRatings = False) OrElse
+                                    (MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = Nielsen.Database.Entities.Methods.RadioSource.Eastlan AndAlso Session.IsEastlanSetup AndAlso OmitRatings = False) Then
+
+                                For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetRadioPostBuyReports.Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
+
+                                    MediaBroadcastWorksheetMarketBook = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First
+
+                                    BookIDs = New String() {MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1.ToString}
+
+                                    If MediaDemographic IsNot Nothing Then
+
+                                        MediaDemoTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaDemoType) From {New AdvantageFramework.Classes.Media.Nielsen.MediaDemoType With {.ID = MediaDemographic.ID,
+                                                                                                                                                                                                        .Description = MediaDemographic.Description}}
+
+                                    Else
+
+                                        MediaDemoTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaDemoType)
+
+                                    End If
+
+                                    MediaDemoDetailTypes = (From MediaDemographicDetail In AdvantageFramework.Database.Procedures.MediaDemographicDetail.Load(DbContext).Where(Function(Entity) Entity.MediaDemographicID = DemographicID).ToList
+                                                            Select New AdvantageFramework.Classes.Media.Nielsen.MediaDemoDetailType With {.MediaDemographicID = MediaDemographicDetail.MediaDemographicID,
+                                                                                                                                          .NielsenDemographicID = MediaDemographicDetail.NielsenDemographicID}).ToList
+
+                                    NielsenMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.NielsenMarketNumber
+
+                                    StationCodes = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
+                                                    Where Entity.NielsenRadioStationComboID.HasValue AndAlso
+                                                          Entity.NielsenMarketNumber = NielsenMarketNumber
+                                                    Select CStr(Entity.NielsenRadioStationComboID.Value)).Distinct.ToArray
+
+                                    For Each StationCode In StationCodes
+
+                                        MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+
+                                        DetailIDs = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
+                                                     Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                           Entity.NielsenRadioStationComboID = StationCode AndAlso
+                                                           Entity.DetailID.HasValue
+                                                     Select Entity.DetailID.Value).ToArray
+
+                                        If DetailIDs IsNot Nothing AndAlso DetailIDs.Count > 0 Then
+
+                                            MediaSpotTVResearchDaytimeTypes.AddRange((From Entity In AdvantageFramework.Database.Procedures.AccountPayableRadioBroadcastDetail.Load(DbContext)
+                                                                                      Where DetailIDs.Contains(Entity.ID)
+                                                                                      Select Entity).ToList.Select(Function(E) New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(E)))
+
+                                            If Not RunBySpotBook Then
+
+                                                RadioWorksheetRatingDataList = GetNielsenRadioRatingAndShareData(Session, NielsenMarketNumber, BookIDs, MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketRadioGeographyID, New String() {StationCode},
+                                                                                                                {DemographicID}, MediaDemoTypes, MediaDemoDetailTypes, MediaSpotTVResearchDaytimeTypes)
+
+                                            Else
+
+                                                SpotBookIDs = New Dictionary(Of Integer, Integer)
+
+                                                RadioWorksheetRatingDataList = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.RadioWorksheetRatingData)
+
+                                                For Each MediaSpotTVResearchDaytimeType In MediaSpotTVResearchDaytimeTypes
+
+                                                    NielsenRadioPeriodEntity = Nothing
+
+                                                    If (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByNielsenRadioMarketNumberAndSource(NielsenDbContext, NielsenMarketNumber, MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource)
+                                                        Where Entity.StartDate <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                              Entity.EndDate >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
+                                                        Select Entity).Count = 1 Then
+
+                                                        NielsenRadioPeriodEntity = (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByNielsenRadioMarketNumberAndSource(NielsenDbContext, NielsenMarketNumber, MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource)
+                                                                                    Where Entity.StartDate <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                          Entity.EndDate >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
+                                                                                    Select Entity).Single
+
+                                                    ElseIf (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByNielsenRadioMarketNumberAndSource(NielsenDbContext, NielsenMarketNumber, MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource)
+                                                            Where Entity.StartDate <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                  Entity.EndDate >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
+                                                            Select Entity).Count > 1 Then
+
+                                                        NielsenRadioPeriodEntity = (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByNielsenRadioMarketNumberAndSource(NielsenDbContext, NielsenMarketNumber, MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource)
+                                                                                    Where Entity.StartDate <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                          Entity.EndDate >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
+                                                                                    Select Entity).OrderBy(Function(Entity) Entity.EndDate).FirstOrDefault
+
+                                                    End If
+
+                                                    If NielsenRadioPeriodEntity IsNot Nothing Then
+
+                                                        SpotBookIDs.Add(MediaSpotTVResearchDaytimeType.ID, NielsenRadioPeriodEntity.ID)
+
+                                                    Else 'find previous book
+
+                                                        NielsenRadioPeriodEntity = (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByNielsenRadioMarketNumberAndSource(NielsenDbContext, NielsenMarketNumber, MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource)
+                                                                                    Where Entity.EndDate < MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
+                                                                                    Select Entity).OrderByDescending(Function(Entity) Entity.EndDate).FirstOrDefault
+
+                                                        If NielsenRadioPeriodEntity IsNot Nothing Then
+
+                                                            SpotBookIDs.Add(MediaSpotTVResearchDaytimeType.ID, NielsenRadioPeriodEntity.ID)
+
+                                                        End If
+
+                                                    End If
+
+                                                Next
+
+                                                For Each BookID In SpotBookIDs.Values.Distinct.ToList
+
+                                                    SpotMediaSpotTVResearchDaytimeTypes = MediaSpotTVResearchDaytimeTypes.Where(Function(D) SpotBookIDs.Where(Function(V) V.Value = BookID).Select(Function(V) V.Key).Contains(D.ID)).ToList
+
+                                                    RadioWorksheetRatingDataList.AddRange(GetNielsenRadioRatingAndShareData(Session, NielsenMarketNumber, {BookID}, MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketRadioGeographyID, New String() {StationCode},
+                                                                                                             {DemographicID}, MediaDemoTypes, MediaDemoDetailTypes, SpotMediaSpotTVResearchDaytimeTypes))
+
+                                                Next
+
+                                            End If
+
+                                            For Each RadioWorksheetRatingData In RadioWorksheetRatingDataList
+
+                                                MediaBroadcastWorksheetRadioPostBuyReport = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
+                                                                                             Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                                   Entity.NielsenRadioStationComboID = RadioWorksheetRatingData.NielsenRadioStationComboID AndAlso
+                                                                                                   Entity.DetailID = RadioWorksheetRatingData.MediaBroadcastWorksheetMarketDetailID).FirstOrDefault
+
+                                                If MediaBroadcastWorksheetRadioPostBuyReport IsNot Nothing Then
+
+                                                    'If SpotBookIDs.Contains(RadioWorksheetRatingData.MediaBroadcastWorksheetMarketDetailID) Then
+
+                                                    MediaBroadcastWorksheetRadioPostBuyReport.BookName = RadioWorksheetRatingData.BookName
+                                                    'MediaBroadcastWorksheetRadioPostBuyReport.PostBook = RadioWorksheetRatingData.BookName
+
+                                                    'End If
+
+                                                    If String.IsNullOrWhiteSpace(MediaBroadcastWorksheetRadioPostBuyReport.PostBook) Then
+
+                                                        MediaBroadcastWorksheetRadioPostBuyReport.PostBook = RadioWorksheetRatingData.BookName
+
+                                                    End If
+
+                                                End If
+
+                                                If MediaBroadcastWorksheetRadioPostBuyReport IsNot Nothing AndAlso ((MediaBroadcastWorksheetMarketBook.UseImpressions = False AndAlso MediaBroadcastWorksheetRadioPostBuyReport.OverridePost = False) OrElse
+                                                                                                                (MediaBroadcastWorksheetMarketBook.UseImpressions AndAlso MediaBroadcastWorksheetRadioPostBuyReport.OverridePostAQH = False)) OrElse MediaBroadcastWorksheetMarketBook.IsFromMediaManager Then
+
+                                                    If MediaBroadcastWorksheetMarketBook.IsFromMediaManager = False OrElse (MediaBroadcastWorksheetMarketBook.IsFromMediaManager AndAlso MediaBroadcastWorksheetRadioPostBuyReport.OverridePostAQH = False) Then
+
+                                                        MediaBroadcastWorksheetRadioPostBuyReport.DetailActualImpression = FormatNumber(RadioWorksheetRatingData.AQH / 100, 2)
+
+                                                    End If
+
+                                                    If MediaBroadcastWorksheetMarketBook.IsFromMediaManager = False OrElse (MediaBroadcastWorksheetMarketBook.IsFromMediaManager AndAlso MediaBroadcastWorksheetRadioPostBuyReport.OverridePost = False) Then
+
+                                                        MediaBroadcastWorksheetRadioPostBuyReport.DetailActualRating = FormatNumber(RadioWorksheetRatingData.AQHRating, 2)
+
+                                                    End If
+
+                                                    If MediaBroadcastWorksheetMarketBook.UseImpressions Then
+
+                                                        MediaBroadcastWorksheetRadioPostBuyReport.DetailActual = FormatNumber(RadioWorksheetRatingData.AQH / 100, 2)
+
+                                                    Else
+
+                                                        MediaBroadcastWorksheetRadioPostBuyReport.DetailActual = FormatNumber(RadioWorksheetRatingData.AQHRating, 2)
+
+                                                    End If
+
+                                                    MediaBroadcastWorksheetRadioPostBuyReport.DetailBook = RadioWorksheetRatingData.BookName
+                                                    MediaBroadcastWorksheetRadioPostBuyReport.DetailNielsenRadioPeriodID = RadioWorksheetRatingData.NielsenRadioPeriodID
+
+                                                End If
+
+                                            Next
+
+                                        End If
+
+                                    Next
+
+                                Next
+
+                            End If
+
+                            MediaBroadcastWorksheetRadioPostBuyReports.ForEach(Sub(Entity)
+
+                                                                                   If String.IsNullOrWhiteSpace(Entity.PostBook) AndAlso String.IsNullOrWhiteSpace(Entity.BookName) = False Then
+
+                                                                                       Entity.PostBook = Entity.BookName.Replace("-LO", "-L")
+
+                                                                                   End If
+
+                                                                               End Sub)
+
+                        End Using
+
+                    Else
 
                         For Each MediaBroadcastWorksheetRadioPostBuyReport In MediaBroadcastWorksheetRadioPostBuyReports
 
                             MediaBroadcastWorksheetRadioPostBuyReport.StationName = MediaBroadcastWorksheetRadioPostBuyReport.VendorName
 
-                            MediaBroadcastWorksheetMarketBook = (From Entity In MediaBroadcastWorksheetMarketBookList
-                                                                 Where Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetRadioPostBuyReport.MediaBroadcastWorksheetMarketID
-                                                                 Select Entity).FirstOrDefault
+                        Next
 
-                            If MediaBroadcastWorksheetMarketBook IsNot Nothing AndAlso MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1.HasValue AndAlso MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1.Value > 0 Then
+                    End If
 
-                                If MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen AndAlso Session.IsNielsenSetup Then
+                    MediaBroadcastWorksheetRadioPostBuyDRWs = MediaBroadcastWorksheetRadioPostBuyReports.Select(Function(Entity) New AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetRadioPostBuyDRWReport(Entity)).ToList
 
-                                    NielsenRadioPeriodEntity = AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByID(NielsenDbContext, MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1.Value)
+                    MediaBroadcastWorksheetMarketDetailIDs = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
+                                                              Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToArray
 
-                                    If NielsenRadioPeriodEntity IsNot Nothing Then
+                    For Each MediaBroadcastWorksheetMarketDetailID In MediaBroadcastWorksheetMarketDetailIDs
 
-                                        NielsenRadioPeriod = New AdvantageFramework.DTO.Media.NielsenRadioPeriod(NielsenRadioPeriodEntity)
+                        For Each Line In MediaBroadcastWorksheetRadioPostBuyDRWs.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID)
 
-                                        If NielsenRadioPeriod IsNot Nothing Then
+                            MediaBroadcastWorksheetRadioPostBuyReport = MediaBroadcastWorksheetRadioPostBuyReports.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).FirstOrDefault
 
-                                            MediaBroadcastWorksheetRadioPostBuyReport.PostBook = NielsenRadioPeriod.Description
+                            If MediaBroadcastWorksheetRadioPostBuyReport IsNot Nothing Then
 
-                                        End If
+                                Line.ActualGrossImpression = Math.Round((From Entity In MediaBroadcastWorksheetRadioPostBuyReports
+                                                                         Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
+                                                                         Select Entity.DetailActualImpression.GetValueOrDefault(0)).Sum, 1)
+
+
+                                Line.ActualGRP = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
+                                                  Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
+                                                  Select Entity.DetailActualRating.GetValueOrDefault(0)).Sum
+
+                                Line.ActualImpression = Math.Round(Line.DetailActualImpression.GetValueOrDefault(0), 1)
+                                Line.ActualRtg = Line.DetailActualRating.GetValueOrDefault(0)
+
+                                Line.EstimatedImpression = Math.Round(MediaBroadcastWorksheetRadioPostBuyReport.DetailEstimateImpression.GetValueOrDefault(0), 1)
+                                Line.EstimatedRtg = MediaBroadcastWorksheetRadioPostBuyReport.DetailEstimateRating.GetValueOrDefault(0)
+
+                                Line.EstimatedGRP = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
+                                                     Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
+                                                     Select Entity.DetailEstimateRating.GetValueOrDefault(0)).Sum
+
+                                Line.EstimatedGrossImpression = Math.Round((From Entity In MediaBroadcastWorksheetRadioPostBuyReports
+                                                                            Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
+                                                                            Select Entity.DetailEstimateImpression.GetValueOrDefault(0)).Sum, 1)
+
+                                Line.RefreshIndexes()
+
+                                If MediaBroadcastWorksheetRadioPostBuyReport.OverridePost Then
+
+                                    Line.ActualRtg = Line.EstimatedRtg.GetValueOrDefault(0)
+
+                                    If Line.EstimatedRtg.GetValueOrDefault(0) = 0 Then
+
+                                        Line.RatingsIndex = 0
+
+                                    Else
+
+                                        Line.RatingsIndex = Line.ActualRtg.GetValueOrDefault(0) / Line.EstimatedRtg * 100
 
                                     End If
 
-                                ElseIf MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan AndAlso Session.IsEastlanSetup Then
+                                Else
 
-                                    NielsenRadioPeriodEntity = AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByID(NielsenDbContext, MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1.Value)
+                                    Line.ActualRtg = Line.DetailActualRating.GetValueOrDefault(0)
 
-                                    If NielsenRadioPeriodEntity IsNot Nothing Then
+                                    Line.RatingsIndex = Line.DetailActualRatingIndex
 
-                                        NielsenRadioPeriod = New AdvantageFramework.DTO.Media.NielsenRadioPeriod(NielsenRadioPeriodEntity)
+                                End If
 
-                                        If NielsenRadioPeriod IsNot Nothing Then
+                                If MediaBroadcastWorksheetRadioPostBuyReport.OverridePost Then
 
-                                            MediaBroadcastWorksheetRadioPostBuyReport.PostBook = NielsenRadioPeriod.Description
+                                    Line.ActualGRP = Line.EstimatedGRP.GetValueOrDefault(0)
 
-                                        End If
+                                End If
+
+                                If MediaBroadcastWorksheetRadioPostBuyReport.OverridePostAQH Then
+
+                                    Line.ActualImpression = Math.Round(Line.EstimatedImpression.GetValueOrDefault(0), 1)
+
+                                    If Line.EstimatedImpression.GetValueOrDefault(0) = 0 Then
+
+                                        Line.ImpressionIndex = 0
+
+                                    Else
+
+                                        Line.ImpressionIndex = Line.ActualImpression.GetValueOrDefault(0) / Line.EstimatedImpression * 100
 
                                     End If
 
-                                    'ElseIf MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.NielsenCounty  AndAlso Session.IsNielsenCountySetup  Then
+                                Else
+
+                                    Line.ActualImpression = Math.Round(Line.DetailActualImpression.GetValueOrDefault(0), 1)
+
+                                    Line.ImpressionIndex = Line.DetailActualImpressionIndex
+
+                                End If
+
+                                If MediaBroadcastWorksheetRadioPostBuyReport.OverridePostAQH Then
+
+                                    Line.ActualGrossImpression = Math.Round(Line.EstimatedGrossImpression.GetValueOrDefault(0), 1)
 
                                 End If
 
@@ -14655,298 +15318,7 @@
 
                         Next
 
-                        MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = DemographicID)
-
-                        If (MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = Nielsen.Database.Entities.Methods.RadioSource.Nielsen AndAlso Session.IsNielsenSetup) OrElse
-                                 (MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = Nielsen.Database.Entities.Methods.RadioSource.Eastlan AndAlso Session.IsEastlanSetup) Then
-
-                            For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetRadioPostBuyReports.Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
-
-                                MediaBroadcastWorksheetMarketBook = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First
-
-                                BookIDs = New String() {MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1.ToString}
-
-                                If MediaDemographic IsNot Nothing Then
-
-                                    MediaDemoTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaDemoType) From {New AdvantageFramework.Classes.Media.Nielsen.MediaDemoType With {.ID = MediaDemographic.ID,
-                                                                                                                                                                                                        .Description = MediaDemographic.Description}}
-
-                                Else
-
-                                    MediaDemoTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaDemoType)
-
-                                End If
-
-                                MediaDemoDetailTypes = (From MediaDemographicDetail In AdvantageFramework.Database.Procedures.MediaDemographicDetail.Load(DbContext).Where(Function(Entity) Entity.MediaDemographicID = DemographicID).ToList
-                                                        Select New AdvantageFramework.Classes.Media.Nielsen.MediaDemoDetailType With {.MediaDemographicID = MediaDemographicDetail.MediaDemographicID,
-                                                                                                                                      .NielsenDemographicID = MediaDemographicDetail.NielsenDemographicID}).ToList
-
-                                NielsenMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.NielsenMarketNumber
-
-                                StationCodes = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
-                                                Where Entity.NielsenRadioStationComboID.HasValue AndAlso
-                                                      Entity.NielsenMarketNumber = NielsenMarketNumber
-                                                Select CStr(Entity.NielsenRadioStationComboID.Value)).Distinct.ToArray
-
-                                For Each StationCode In StationCodes
-
-                                    MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
-
-                                    DetailIDs = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
-                                                 Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                       Entity.NielsenRadioStationComboID = StationCode AndAlso
-                                                       Entity.DetailID.HasValue
-                                                 Select Entity.DetailID.Value).ToArray
-
-                                    If DetailIDs IsNot Nothing AndAlso DetailIDs.Count > 0 Then
-
-                                        MediaSpotTVResearchDaytimeTypes.AddRange((From Entity In AdvantageFramework.Database.Procedures.AccountPayableRadioBroadcastDetail.Load(DbContext)
-                                                                                  Where DetailIDs.Contains(Entity.ID)
-                                                                                  Select Entity).ToList.Select(Function(E) New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(E)))
-
-                                        If Not RunBySpotBook Then
-
-                                            RadioWorksheetRatingDataList = GetNielsenRadioRatingAndShareData(Session, NielsenMarketNumber, BookIDs, MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketRadioGeographyID, New String() {StationCode},
-                                                                                                             {DemographicID}, MediaDemoTypes, MediaDemoDetailTypes, MediaSpotTVResearchDaytimeTypes)
-
-                                        Else
-
-                                            SpotBookIDs = New Dictionary(Of Integer, Integer)
-
-                                            RadioWorksheetRatingDataList = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.RadioWorksheetRatingData)
-
-                                            For Each MediaSpotTVResearchDaytimeType In MediaSpotTVResearchDaytimeTypes
-
-                                                NielsenRadioPeriodEntity = Nothing
-
-                                                If (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByNielsenRadioMarketNumberAndSource(NielsenDbContext, NielsenMarketNumber, MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource)
-                                                    Where Entity.StartDate <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                          Entity.EndDate >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
-                                                    Select Entity).Count = 1 Then
-
-                                                    NielsenRadioPeriodEntity = (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByNielsenRadioMarketNumberAndSource(NielsenDbContext, NielsenMarketNumber, MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource)
-                                                                                Where Entity.StartDate <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                      Entity.EndDate >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
-                                                                                Select Entity).Single
-
-                                                ElseIf (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByNielsenRadioMarketNumberAndSource(NielsenDbContext, NielsenMarketNumber, MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource)
-                                                        Where Entity.StartDate <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                              Entity.EndDate >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
-                                                        Select Entity).Count > 1 Then
-
-                                                    NielsenRadioPeriodEntity = (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByNielsenRadioMarketNumberAndSource(NielsenDbContext, NielsenMarketNumber, MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource)
-                                                                                Where Entity.StartDate <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                      Entity.EndDate >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
-                                                                                Select Entity).OrderBy(Function(Entity) Entity.EndDate).FirstOrDefault
-
-                                                End If
-
-                                                If NielsenRadioPeriodEntity IsNot Nothing Then
-
-                                                    SpotBookIDs.Add(MediaSpotTVResearchDaytimeType.ID, NielsenRadioPeriodEntity.ID)
-
-                                                Else 'find previous book
-
-                                                    NielsenRadioPeriodEntity = (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.LoadByNielsenRadioMarketNumberAndSource(NielsenDbContext, NielsenMarketNumber, MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource)
-                                                                                Where Entity.EndDate < MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
-                                                                                Select Entity).OrderByDescending(Function(Entity) Entity.EndDate).FirstOrDefault
-
-                                                    If NielsenRadioPeriodEntity IsNot Nothing Then
-
-                                                        SpotBookIDs.Add(MediaSpotTVResearchDaytimeType.ID, NielsenRadioPeriodEntity.ID)
-
-                                                    End If
-
-                                                End If
-
-                                            Next
-
-                                            For Each BookID In SpotBookIDs.Values.Distinct.ToList
-
-                                                SpotMediaSpotTVResearchDaytimeTypes = MediaSpotTVResearchDaytimeTypes.Where(Function(D) SpotBookIDs.Where(Function(V) V.Value = BookID).Select(Function(V) V.Key).Contains(D.ID)).ToList
-
-                                                RadioWorksheetRatingDataList.AddRange(GetNielsenRadioRatingAndShareData(Session, NielsenMarketNumber, {BookID}, MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketRadioGeographyID, New String() {StationCode},
-                                                                                                             {DemographicID}, MediaDemoTypes, MediaDemoDetailTypes, SpotMediaSpotTVResearchDaytimeTypes))
-
-                                            Next
-
-                                        End If
-
-                                        For Each RadioWorksheetRatingData In RadioWorksheetRatingDataList
-
-                                            MediaBroadcastWorksheetRadioPostBuyReport = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
-                                                                                         Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                               Entity.NielsenRadioStationComboID = RadioWorksheetRatingData.NielsenRadioStationComboID AndAlso
-                                                                                               Entity.DetailID = RadioWorksheetRatingData.MediaBroadcastWorksheetMarketDetailID).FirstOrDefault
-
-                                            If MediaBroadcastWorksheetRadioPostBuyReport IsNot Nothing Then
-
-                                                'If SpotBookIDs.Contains(RadioWorksheetRatingData.MediaBroadcastWorksheetMarketDetailID) Then
-
-                                                MediaBroadcastWorksheetRadioPostBuyReport.BookName = RadioWorksheetRatingData.BookName
-                                                'MediaBroadcastWorksheetRadioPostBuyReport.PostBook = RadioWorksheetRatingData.BookName
-
-                                                'End If
-
-                                                If String.IsNullOrWhiteSpace(MediaBroadcastWorksheetRadioPostBuyReport.PostBook) Then
-
-                                                    MediaBroadcastWorksheetRadioPostBuyReport.PostBook = RadioWorksheetRatingData.BookName
-
-                                                End If
-
-                                            End If
-
-                                            If MediaBroadcastWorksheetRadioPostBuyReport IsNot Nothing AndAlso ((MediaBroadcastWorksheetMarketBook.UseImpressions = False AndAlso MediaBroadcastWorksheetRadioPostBuyReport.OverridePost = False) OrElse
-                                                                                                                (MediaBroadcastWorksheetMarketBook.UseImpressions AndAlso MediaBroadcastWorksheetRadioPostBuyReport.OverridePostAQH = False)) OrElse MediaBroadcastWorksheetMarketBook.IsFromMediaManager Then
-
-                                                If MediaBroadcastWorksheetMarketBook.IsFromMediaManager = False OrElse (MediaBroadcastWorksheetMarketBook.IsFromMediaManager AndAlso MediaBroadcastWorksheetRadioPostBuyReport.OverridePostAQH = False) Then
-
-                                                    MediaBroadcastWorksheetRadioPostBuyReport.DetailActualImpression = FormatNumber(RadioWorksheetRatingData.AQH / 100, 2)
-
-                                                End If
-
-                                                If MediaBroadcastWorksheetMarketBook.IsFromMediaManager = False OrElse (MediaBroadcastWorksheetMarketBook.IsFromMediaManager AndAlso MediaBroadcastWorksheetRadioPostBuyReport.OverridePost = False) Then
-
-                                                    MediaBroadcastWorksheetRadioPostBuyReport.DetailActualRating = FormatNumber(RadioWorksheetRatingData.AQHRating, 2)
-
-                                                End If
-
-                                                If MediaBroadcastWorksheetMarketBook.UseImpressions Then
-
-                                                    MediaBroadcastWorksheetRadioPostBuyReport.DetailActual = FormatNumber(RadioWorksheetRatingData.AQH / 100, 2)
-
-                                                Else
-
-                                                    MediaBroadcastWorksheetRadioPostBuyReport.DetailActual = FormatNumber(RadioWorksheetRatingData.AQHRating, 2)
-
-                                                End If
-
-                                                MediaBroadcastWorksheetRadioPostBuyReport.DetailBook = RadioWorksheetRatingData.BookName
-                                                MediaBroadcastWorksheetRadioPostBuyReport.DetailNielsenRadioPeriodID = RadioWorksheetRatingData.NielsenRadioPeriodID
-
-                                            End If
-
-                                        Next
-
-                                    End If
-
-                                Next
-
-                            Next
-
-                        End If
-
-                        MediaBroadcastWorksheetMarketDetailIDs = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
-                                                                  Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToArray
-
-                        MediaBroadcastWorksheetRadioPostBuyReports.ForEach(Sub(Entity)
-
-                                                                               If String.IsNullOrWhiteSpace(Entity.PostBook) AndAlso String.IsNullOrWhiteSpace(Entity.BookName) = False Then
-
-                                                                                   Entity.PostBook = Entity.BookName.Replace("-LO", "-L")
-
-                                                                               End If
-
-                                                                           End Sub)
-
-                        MediaBroadcastWorksheetRadioPostBuyDRWs = MediaBroadcastWorksheetRadioPostBuyReports.Select(Function(Entity) New AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetRadioPostBuyDRWReport(Entity)).ToList
-
-                        For Each MediaBroadcastWorksheetMarketDetailID In MediaBroadcastWorksheetMarketDetailIDs
-
-                            For Each Line In MediaBroadcastWorksheetRadioPostBuyDRWs.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID)
-
-                                MediaBroadcastWorksheetRadioPostBuyReport = MediaBroadcastWorksheetRadioPostBuyReports.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).FirstOrDefault
-
-                                If MediaBroadcastWorksheetRadioPostBuyReport IsNot Nothing Then
-
-                                    Line.ActualGrossImpression = Math.Round((From Entity In MediaBroadcastWorksheetRadioPostBuyReports
-                                                                             Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
-                                                                             Select Entity.DetailActualImpression.GetValueOrDefault(0)).Sum, 1)
-
-
-                                    Line.ActualGRP = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
-                                                      Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
-                                                      Select Entity.DetailActualRating.GetValueOrDefault(0)).Sum
-
-                                    Line.ActualImpression = Math.Round(Line.DetailActualImpression.GetValueOrDefault(0), 1)
-                                    Line.ActualRtg = Line.DetailActualRating.GetValueOrDefault(0)
-
-                                    Line.EstimatedImpression = Math.Round(MediaBroadcastWorksheetRadioPostBuyReport.DetailEstimateImpression.GetValueOrDefault(0), 1)
-                                    Line.EstimatedRtg = MediaBroadcastWorksheetRadioPostBuyReport.DetailEstimateRating.GetValueOrDefault(0)
-
-                                    Line.EstimatedGRP = (From Entity In MediaBroadcastWorksheetRadioPostBuyReports
-                                                         Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
-                                                         Select Entity.DetailEstimateRating.GetValueOrDefault(0)).Sum
-
-                                    Line.EstimatedGrossImpression = Math.Round((From Entity In MediaBroadcastWorksheetRadioPostBuyReports
-                                                                                Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
-                                                                                Select Entity.DetailEstimateImpression.GetValueOrDefault(0)).Sum, 1)
-
-                                    Line.RefreshIndexes()
-
-                                    If MediaBroadcastWorksheetRadioPostBuyReport.OverridePost Then
-
-                                        Line.ActualRtg = Line.EstimatedRtg.GetValueOrDefault(0)
-
-                                        If Line.EstimatedRtg.GetValueOrDefault(0) = 0 Then
-
-                                            Line.RatingsIndex = 0
-
-                                        Else
-
-                                            Line.RatingsIndex = Line.ActualRtg.GetValueOrDefault(0) / Line.EstimatedRtg * 100
-
-                                        End If
-
-                                    Else
-
-                                        Line.ActualRtg = Line.DetailActualRating.GetValueOrDefault(0)
-
-                                        Line.RatingsIndex = Line.DetailActualRatingIndex
-
-                                    End If
-
-                                    If MediaBroadcastWorksheetRadioPostBuyReport.OverridePost Then
-
-                                        Line.ActualGRP = Line.EstimatedGRP.GetValueOrDefault(0)
-
-                                    End If
-
-                                    If MediaBroadcastWorksheetRadioPostBuyReport.OverridePostAQH Then
-
-                                        Line.ActualImpression = Math.Round(Line.EstimatedImpression.GetValueOrDefault(0), 1)
-
-                                        If Line.EstimatedImpression.GetValueOrDefault(0) = 0 Then
-
-                                            Line.ImpressionIndex = 0
-
-                                        Else
-
-                                            Line.ImpressionIndex = Line.ActualImpression.GetValueOrDefault(0) / Line.EstimatedImpression * 100
-
-                                        End If
-
-                                    Else
-
-                                        Line.ActualImpression = Math.Round(Line.DetailActualImpression.GetValueOrDefault(0), 1)
-
-                                        Line.ImpressionIndex = Line.DetailActualImpressionIndex
-
-                                    End If
-
-                                    If MediaBroadcastWorksheetRadioPostBuyReport.OverridePostAQH Then
-
-                                        Line.ActualGrossImpression = Math.Round(Line.EstimatedGrossImpression.GetValueOrDefault(0), 1)
-
-                                    End If
-
-                                End If
-
-                            Next
-
-                        Next
-
-                    End Using
+                    Next
 
                 End If
 
@@ -18074,25 +18446,25 @@
                 'Dim SqlParameterOrderOption As System.Data.SqlClient.SqlParameter = Nothing
                 'Dim SqlParameterWIPOption As System.Data.SqlClient.SqlParameter = Nothing
 
-                'Dim SqlParameterClientCodeList As System.Data.SqlClient.SqlParameter = Nothing
-                'Dim SqlParameterClientDivisionCodeList As System.Data.SqlClient.SqlParameter = Nothing
-                'Dim SqlParameterClientDivisionProductCodeList As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterClientCodeList As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterClientDivisionCodeList As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterClientDivisionProductCodeList As System.Data.SqlClient.SqlParameter = Nothing
                 Dim SqlParameterOfficeList As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterUserCode As System.Data.SqlClient.SqlParameter = Nothing
                 Dim SqlParameterAgingOption As System.Data.SqlClient.SqlParameter = Nothing
                 Dim SqlParameterAgingDate As System.Data.SqlClient.SqlParameter = Nothing
-                'Dim SqlParameterUserCode As System.Data.SqlClient.SqlParameter = Nothing
 
                 SqlParameterEndPeriod = New System.Data.SqlClient.SqlParameter("@end_period", SqlDbType.VarChar)
                 'SqlParameterOrderOption = New System.Data.SqlClient.SqlParameter("@order_option", SqlDbType.TinyInt)
                 'SqlParameterWIPOption = New System.Data.SqlClient.SqlParameter("@wip_option", SqlDbType.VarChar)
 
-                'SqlParameterClientCodeList = New System.Data.SqlClient.SqlParameter("@CLIENT_LIST", SqlDbType.VarChar)
-                'SqlParameterClientDivisionCodeList = New System.Data.SqlClient.SqlParameter("@DIVISION_LIST", SqlDbType.VarChar)
-                'SqlParameterClientDivisionProductCodeList = New System.Data.SqlClient.SqlParameter("@PRODUCT_LIST", SqlDbType.VarChar)
+                SqlParameterClientCodeList = New System.Data.SqlClient.SqlParameter("@CLIENT_LIST", SqlDbType.VarChar)
+                SqlParameterClientDivisionCodeList = New System.Data.SqlClient.SqlParameter("@DIVISION_LIST", SqlDbType.VarChar)
+                SqlParameterClientDivisionProductCodeList = New System.Data.SqlClient.SqlParameter("@PRODUCT_LIST", SqlDbType.VarChar)
                 SqlParameterOfficeList = New System.Data.SqlClient.SqlParameter("@OFFICE_LIST", SqlDbType.VarChar)
                 SqlParameterAgingOption = New System.Data.SqlClient.SqlParameter("@aging_option", SqlDbType.TinyInt)
                 SqlParameterAgingDate = New System.Data.SqlClient.SqlParameter("@aging_date", SqlDbType.Date)
-                'SqlParameterUserCode = New System.Data.SqlClient.SqlParameter("@USER_CODE", SqlDbType.VarChar)
+                SqlParameterUserCode = New System.Data.SqlClient.SqlParameter("@UserId", SqlDbType.VarChar)
 
                 SqlParameterEndPeriod.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.EndPeriod.ToString)
                 SqlParameterAgingDate.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.AgingDate.ToString)
@@ -18100,35 +18472,35 @@
                 'SqlParameterOrderOption.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.OrderOption.ToString)
                 'SqlParameterWIPOption.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.WIPOption.ToString)
 
-                'If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedClients.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedClients.ToString) IsNot Nothing Then
+                If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedClients.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedClients.ToString) IsNot Nothing Then
 
-                '    SqlParameterClientCodeList.Value = String.Join(",", DirectCast(ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedClients.ToString), IEnumerable(Of String)).ToArray)
+                    SqlParameterClientCodeList.Value = String.Join(",", DirectCast(ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedClients.ToString), IEnumerable(Of String)).ToArray)
 
-                'Else
+                Else
 
-                '    SqlParameterClientCodeList.Value = System.DBNull.Value
+                    SqlParameterClientCodeList.Value = System.DBNull.Value
 
-                'End If
+                End If
 
-                'If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedDivisions.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedDivisions.ToString) IsNot Nothing Then
+                If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedDivisions.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedDivisions.ToString) IsNot Nothing Then
 
-                '    SqlParameterClientDivisionCodeList.Value = String.Join(",", DirectCast(ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedDivisions.ToString), IEnumerable(Of String)).ToArray)
+                    SqlParameterClientDivisionCodeList.Value = String.Join(",", DirectCast(ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedDivisions.ToString), IEnumerable(Of String)).ToArray)
 
-                'Else
+                Else
 
-                '    SqlParameterClientDivisionCodeList.Value = System.DBNull.Value
+                    SqlParameterClientDivisionCodeList.Value = System.DBNull.Value
 
-                'End If
+                End If
 
-                'If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedProducts.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedProducts.ToString) IsNot Nothing Then
+                If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedProducts.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedProducts.ToString) IsNot Nothing Then
 
-                '    SqlParameterClientDivisionProductCodeList.Value = String.Join(",", DirectCast(ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedProducts.ToString), IEnumerable(Of String)).ToArray)
+                    SqlParameterClientDivisionProductCodeList.Value = String.Join(",", DirectCast(ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedProducts.ToString), IEnumerable(Of String)).ToArray)
 
-                'Else
+                Else
 
-                '    SqlParameterClientDivisionProductCodeList.Value = System.DBNull.Value
+                    SqlParameterClientDivisionProductCodeList.Value = System.DBNull.Value
 
-                'End If
+                End If
 
                 If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedOffices.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedOffices.ToString) IsNot Nothing Then
 
@@ -18139,10 +18511,10 @@
                     SqlParameterOfficeList.Value = System.DBNull.Value
 
                 End If
-                'SqlParameterUserCode.Value = ReportingDbContext.UserCode
+                SqlParameterUserCode.Value = ReportingDbContext.UserCode
 
-                LoadMonthEndProductionWIP = ReportingDbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.MonthEndProductionWIP)("exec dbo.advsp_production_wip_detail @end_period, @OFFICE_LIST, @aging_date, @aging_option",
-                                                     SqlParameterEndPeriod, SqlParameterOfficeList, SqlParameterAgingDate, SqlParameterAgingOption).ToList
+                LoadMonthEndProductionWIP = ReportingDbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.MonthEndProductionWIP)("exec dbo.advsp_production_wip_detail @end_period, @OFFICE_LIST, @CLIENT_LIST, @DIVISION_LIST, @PRODUCT_LIST, @aging_date, @aging_option, @UserId",
+                                                     SqlParameterEndPeriod, SqlParameterOfficeList, SqlParameterClientCodeList, SqlParameterClientDivisionCodeList, SqlParameterClientDivisionProductCodeList, SqlParameterAgingDate, SqlParameterAgingOption, SqlParameterUserCode).ToList
             Catch ex As Exception
                 LoadMonthEndProductionWIP = Nothing
             End Try
@@ -19138,7 +19510,8 @@
 
                                 StationCodes = (From Entity In MediaBroadcastWorksheetRadioPreBuyReports
                                                 Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                      Entity.NielsenRadioStationComboID.HasValue
+                                                      Entity.NielsenRadioStationComboID.HasValue AndAlso
+                                                      Entity.NielsenRadioStationComboID.Value > 0
                                                 Select CStr(Entity.NielsenRadioStationComboID.Value)).Distinct.ToArray
 
                                 For Each StationCode In StationCodes
@@ -19165,30 +19538,34 @@
                                             RadioWorksheetRatingDataList = MediaBroadcastWorksheetController.GetNielsenRadioRatingData(DbContext, NielsenDbContext, NielsenMarketNumber, BookIDs.ToArray, MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketRadioGeographyID,
                                                                                                                                        New String() {StationCode}, {DemographicID}, MediaSpotTVResearchDaytimeTypes, MediaDemoTypes, MediaDemoDetailTypes, IsAgencyASP)
 
-                                            For Each MediaBroadcastWorksheetMarketDetailID In MediaBroadcastWorksheetMarketDetailIDs
+                                            If RadioWorksheetRatingDataList IsNot Nothing AndAlso RadioWorksheetRatingDataList.Count > 0 Then
 
-                                                MediaBroadcastWorksheetRadioPreBuyReport = (From Entity In MediaBroadcastWorksheetRadioPreBuyReports
-                                                                                            Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                For Each MediaBroadcastWorksheetMarketDetailID In MediaBroadcastWorksheetMarketDetailIDs
+
+                                                    MediaBroadcastWorksheetRadioPreBuyReport = (From Entity In MediaBroadcastWorksheetRadioPreBuyReports
+                                                                                                Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
                                                                                                   Entity.NielsenRadioStationComboID = StationCode AndAlso
                                                                                                   Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).SingleOrDefault
 
-                                                If MediaBroadcastWorksheetRadioPreBuyReport IsNot Nothing Then
+                                                    If MediaBroadcastWorksheetRadioPreBuyReport IsNot Nothing Then
 
-                                                    If MediaBroadcastWorksheetMarketBook.UseImpressions Then
+                                                        If MediaBroadcastWorksheetMarketBook.UseImpressions Then
 
-                                                        MediaBroadcastWorksheetRadioPreBuyReport.SpotUpdatedEstimate = Math.Round(RadioWorksheetRatingDataList.Where(Function(DL) DL.NielsenRadioStationComboID = StationCode AndAlso
+                                                            MediaBroadcastWorksheetRadioPreBuyReport.SpotUpdatedEstimate = Math.Round(RadioWorksheetRatingDataList.Where(Function(DL) DL.NielsenRadioStationComboID = StationCode AndAlso
                                                                                                                              DL.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(DL) DL.AQH) / 100, 2, MidpointRounding.AwayFromZero)
 
-                                                    Else
+                                                        Else
 
-                                                        MediaBroadcastWorksheetRadioPreBuyReport.SpotUpdatedEstimate = Math.Round(RadioWorksheetRatingDataList.Where(Function(DL) DL.NielsenRadioStationComboID = StationCode AndAlso
+                                                            MediaBroadcastWorksheetRadioPreBuyReport.SpotUpdatedEstimate = Math.Round(RadioWorksheetRatingDataList.Where(Function(DL) DL.NielsenRadioStationComboID = StationCode AndAlso
                                                                                                                              DL.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(DL) DL.AQHRating), 2, MidpointRounding.AwayFromZero)
+
+                                                        End If
 
                                                     End If
 
-                                                End If
+                                                Next
 
-                                            Next
+                                            End If
 
                                             'For Each RadioWorksheetRatingData In RadioWorksheetRatingDataList
 
@@ -19397,7 +19774,7 @@
 
 
         End Function
-        Private Function LoadBroadcastInvoiceSummary(DbContext As AdvantageFramework.Reporting.Database.DbContext, ParameterDictionary As Generic.Dictionary(Of String, Object)) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceSummary)
+        Public Function LoadBroadcastInvoiceSummary(DbContext As AdvantageFramework.Reporting.Database.DbContext, ParameterDictionary As Generic.Dictionary(Of String, Object)) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceSummary)
 
             'objects
             Dim DynamicReportObjects As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceSummary) = Nothing
@@ -19560,6 +19937,144 @@
 
             Catch ex As Exception
                 LoadEmployeeTimeAnaylsisData = Nothing
+            End Try
+        End Function
+
+        Public Function LoadDeferredSalesVsOpenARData(ByVal DbContext As AdvantageFramework.Reporting.Database.DbContext, ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DeferredSalesVsOpenAR)
+            Try
+                'objects
+                Dim SelectedOffices As Generic.List(Of String) = Nothing
+                Dim SelectedDepartments As Generic.List(Of String) = Nothing
+                Dim SelectedEmployees As Generic.List(Of String) = Nothing
+
+                'Dim SqlParameterReportType As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterPeriodCutoff As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterIncludeMedia As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+
+                SqlParameterPeriodCutoff = New System.Data.SqlClient.SqlParameter("@period_cutoff", SqlDbType.VarChar)
+                SqlParameterIncludeMedia = New System.Data.SqlClient.SqlParameter("@include_media", SqlDbType.SmallInt)
+                SqlParameterUserID = New System.Data.SqlClient.SqlParameter("@UserID", SqlDbType.VarChar)
+
+                SqlParameterPeriodCutoff.Value = ParameterDictionary(AdvantageFramework.Reporting.DeferredSalesVsOpenARInitialParameters.PeriodCutoff.ToString)
+                SqlParameterIncludeMedia.Value = ParameterDictionary(AdvantageFramework.Reporting.DeferredSalesVsOpenARInitialParameters.IncludeMedia.ToString)
+                SqlParameterUserID.Value = DbContext.UserCode
+
+
+                LoadDeferredSalesVsOpenARData = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DeferredSalesVsOpenAR)("exec dbo.advsp_def_sales_ar @period_cutoff, @include_media, @UserID",
+                                                         SqlParameterPeriodCutoff, SqlParameterIncludeMedia, SqlParameterUserID).ToList
+
+
+            Catch ex As Exception
+                LoadDeferredSalesVsOpenARData = Nothing
+            End Try
+        End Function
+        Public Function LoadBroadcastInvoiceDetail(DbContext As AdvantageFramework.Reporting.Database.DbContext, ParameterDictionary As Generic.Dictionary(Of String, Object)) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceDetail)
+
+            'objects
+            Dim SqlParameterStartPeriod As System.Data.SqlClient.SqlParameter = Nothing
+            Dim SqlParameterEndPeriod As System.Data.SqlClient.SqlParameter = Nothing
+            Dim SqlParameterIncludeTV As System.Data.SqlClient.SqlParameter = Nothing
+            Dim SqlParameterIncludeRadio As System.Data.SqlClient.SqlParameter = Nothing
+            Dim SqlParameterOrderStatus As System.Data.SqlClient.SqlParameter = Nothing
+            Dim SqlParameterOfficeCodeList As System.Data.SqlClient.SqlParameter = Nothing
+            Dim SqlParameterClientCodeList As System.Data.SqlClient.SqlParameter = Nothing
+            Dim SqlParameterClientDivisionCodeList As System.Data.SqlClient.SqlParameter = Nothing
+            Dim SqlParameterClientDivisionProductCodeList As System.Data.SqlClient.SqlParameter = Nothing
+            Dim BroadcastInvoiceDetailList As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceDetail) = Nothing
+
+            Try
+
+                SqlParameterStartPeriod = New System.Data.SqlClient.SqlParameter("@StartPeriod", SqlDbType.Int)
+                SqlParameterEndPeriod = New System.Data.SqlClient.SqlParameter("@EndPeriod", SqlDbType.Int)
+                SqlParameterIncludeTV = New System.Data.SqlClient.SqlParameter("@IncludeTV", SqlDbType.Bit)
+                SqlParameterIncludeRadio = New System.Data.SqlClient.SqlParameter("@IncludeRadio", SqlDbType.Bit)
+                SqlParameterOrderStatus = New System.Data.SqlClient.SqlParameter("@OrderStatus", SqlDbType.SmallInt)
+                SqlParameterOfficeCodeList = New System.Data.SqlClient.SqlParameter("@OfficeCodeList", SqlDbType.VarChar)
+                SqlParameterClientCodeList = New System.Data.SqlClient.SqlParameter("@ClientCodeList", SqlDbType.VarChar)
+                SqlParameterClientDivisionCodeList = New System.Data.SqlClient.SqlParameter("@ClientDivisionCodeList", SqlDbType.VarChar)
+                SqlParameterClientDivisionProductCodeList = New System.Data.SqlClient.SqlParameter("@ClientDivisionProductCodeList", SqlDbType.VarChar)
+
+                SqlParameterStartPeriod.Value = ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.StartPeriod.ToString)
+                SqlParameterEndPeriod.Value = ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.EndPeriod.ToString)
+                SqlParameterIncludeTV.Value = ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.IncludeTV.ToString)
+                SqlParameterIncludeRadio.Value = ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.IncludeRadio.ToString)
+                SqlParameterOrderStatus.Value = ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.OrderStatus.ToString)
+
+                If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedOffices.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedOffices.ToString) IsNot Nothing Then
+
+                    SqlParameterOfficeCodeList.Value = String.Join(",", DirectCast(ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedOffices.ToString), IEnumerable(Of String)).ToArray)
+
+                Else
+
+                    SqlParameterOfficeCodeList.Value = System.DBNull.Value
+
+                End If
+
+                If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedClients.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedClients.ToString) IsNot Nothing Then
+
+                    SqlParameterClientCodeList.Value = String.Join(",", DirectCast(ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedClients.ToString), IEnumerable(Of String)).ToArray)
+
+                Else
+
+                    SqlParameterClientCodeList.Value = System.DBNull.Value
+
+                End If
+
+                If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedDivisions.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedDivisions.ToString) IsNot Nothing Then
+
+                    SqlParameterClientDivisionCodeList.Value = String.Join(",", DirectCast(ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedDivisions.ToString), IEnumerable(Of String)).ToArray)
+
+                Else
+
+                    SqlParameterClientDivisionCodeList.Value = System.DBNull.Value
+
+                End If
+
+                If ParameterDictionary.Keys.Contains(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedProducts.ToString) AndAlso ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedProducts.ToString) IsNot Nothing Then
+
+                    SqlParameterClientDivisionProductCodeList.Value = String.Join(",", DirectCast(ParameterDictionary(AdvantageFramework.Reporting.BroadcastInvoiceSummaryParameters.SelectedProducts.ToString), IEnumerable(Of String)).ToArray)
+
+                Else
+
+                    SqlParameterClientDivisionProductCodeList.Value = System.DBNull.Value
+
+                End If
+
+                BroadcastInvoiceDetailList = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.BroadcastInvoiceDetail) _
+                                                          ("EXEC advsp_broadcast_invoice_detail_report @StartPeriod, @EndPeriod, @IncludeTV, @IncludeRadio, @OrderStatus, @OfficeCodeList, @ClientCodeList, @ClientDivisionCodeList, @ClientDivisionProductCodeList",
+                                                           SqlParameterStartPeriod, SqlParameterEndPeriod, SqlParameterIncludeTV, SqlParameterIncludeRadio, SqlParameterOrderStatus,
+                                                           SqlParameterOfficeCodeList, SqlParameterClientCodeList, SqlParameterClientDivisionCodeList, SqlParameterClientDivisionProductCodeList).ToList
+
+            Catch ex As Exception
+                BroadcastInvoiceDetailList = Nothing
+            Finally
+                LoadBroadcastInvoiceDetail = BroadcastInvoiceDetailList
+            End Try
+
+        End Function
+        Public Function LoadGLCrossOfficeData(ByVal DbContext As AdvantageFramework.Reporting.Database.DbContext, ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.GLCrossOffice)
+            Try
+                'objects
+                Dim SqlParameterStartPeriod As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterEndPeriod As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+
+                SqlParameterStartPeriod = New System.Data.SqlClient.SqlParameter("@start_period", SqlDbType.VarChar)
+                SqlParameterEndPeriod = New System.Data.SqlClient.SqlParameter("@end_period", SqlDbType.VarChar)
+                SqlParameterUserID = New System.Data.SqlClient.SqlParameter("@UserID", SqlDbType.VarChar)
+
+                SqlParameterStartPeriod.Value = ParameterDictionary(AdvantageFramework.Reporting.GLCrossOfficeParameters.StartPeriod.ToString)
+                SqlParameterEndPeriod.Value = ParameterDictionary(AdvantageFramework.Reporting.GLCrossOfficeParameters.EndPeriod.ToString)
+                SqlParameterUserID.Value = DbContext.UserCode
+
+
+                LoadGLCrossOfficeData = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.GLCrossOffice)("exec dbo.advsp_gl_cross_office @start_period, @end_period, @UserID",
+                                                         SqlParameterStartPeriod, SqlParameterEndPeriod, SqlParameterUserID).ToList
+
+
+            Catch ex As Exception
+                LoadGLCrossOfficeData = Nothing
             End Try
         End Function
 

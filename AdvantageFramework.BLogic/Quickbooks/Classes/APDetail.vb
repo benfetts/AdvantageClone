@@ -10,6 +10,7 @@
         Public Property IsProduction As Boolean
         Public Property JobNumber As Nullable(Of Integer)
         Public Property JobComponentNumber As Nullable(Of Short)
+        Public Property QuickBooksClientID As String
 
     End Class
 

@@ -3877,7 +3877,7 @@
 
                         Message += vbCrLf & "Would you like to proceed and delete that activity?"
 
-                        If AdvantageFramework.WinForm.MessageBox.Show("There are pending makegoods for the following vendor(s)/order(s): " & vbCrLf & Message, WinForm.MessageBox.MessageBoxButtons.YesNo) = WinForm.MessageBox.DialogResults.No Then
+                        If AdvantageFramework.WinForm.MessageBox.Show("There are pending makegoods not yet submitted for the following vendor(s)/order(s): " & vbCrLf & Message, WinForm.MessageBox.MessageBoxButtons.YesNo) = WinForm.MessageBox.DialogResults.No Then
 
                             [Continue] = False
 
@@ -5412,6 +5412,11 @@
                    DataGridViewOrderDetails_OrderDetails.CurrentView.FocusedColumn.FieldName = AdvantageFramework.MediaManager.Classes.MediaManagerReviewDetail.Properties.MarketCode.ToString Then
                 'DataGridViewOrderDetails_OrderDetails.CurrentView.FocusedColumn.FieldName = AdvantageFramework.MediaManager.Classes.MediaManagerReviewDetail.Properties.Rate.ToString OrElse
                 If MediaManagerReviewDetail.ImportedFrom = "AW" Then
+
+                    e.Cancel = True
+
+                ElseIf DataGridViewOrderDetails_OrderDetails.CurrentView.FocusedColumn.FieldName = AdvantageFramework.MediaManager.Classes.MediaManagerReviewDetail.Properties.EndDate.ToString AndAlso
+                        {"R", "T"}.Contains(Mid(MediaManagerReviewDetail.MediaFrom, 1, 1)) Then
 
                     e.Cancel = True
 

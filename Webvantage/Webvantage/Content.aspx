@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/ChildPage.Master" CodeBehind="Content.aspx.vb" Inherits="Webvantage.ContentPage" %>
-<%@ Register Src="~/ProjectSchedule_Gantt.ascx" TagPrefix="Content" TagName="ProjectSchedule_Gantt" %>
+<%--<%@ Register Src="~/ProjectSchedule_Gantt.ascx" TagPrefix="Content" TagName="ProjectSchedule_Gantt" %>--%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderHead" runat="server">
     <script type="text/javascript" src="CSS/mfb/mfb.js"></script>
     <link type="text/css" href="CSS/mfb/mfb.min.css" rel="stylesheet" />

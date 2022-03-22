@@ -2124,6 +2124,20 @@ Namespace Controllers.Desktop
 
         End Function
         <HttpGet>
+        Public Function GetProofingRoutingSetting() As JsonResult
+
+            Dim AgencyProofingRoutingSetting As String = ""
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
+
+                AgencyProofingRoutingSetting = DbContext.Database.SqlQuery(Of String)("SELECT AGY_SETTINGS_VALUE FROM AGY_SETTINGS WITH(NOLOCK) WHERE  AGY_SETTINGS_CODE = 'ALRT_ASSGN_CS_RT_DFL'").SingleOrDefault
+
+            End Using
+
+            Return MaxJson(AgencyProofingRoutingSetting, JsonRequestBehavior.AllowGet)
+
+        End Function
+        <HttpGet>
         Public Function isClientPortal() As JsonResult
 
             Return Json(IsClientPortalActive(), JsonRequestBehavior.AllowGet)
@@ -4036,7 +4050,7 @@ Namespace Controllers.Desktop
             Dim RepositoryLimitText As String = ""
             Dim LimitRepository As Boolean = False
             Dim AllowProofHQ As Boolean = False
-
+            Dim DefaultRoutingForProofingAssignment = True
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
                 AllowUpload = Me.AllowRepositoryUpload(DbContext, RepositorySizeLimit, RepositoryFileSizeLimit, RepositoryLimitText, LimitRepository)
@@ -4052,6 +4066,7 @@ Namespace Controllers.Desktop
                 'Get from session if since it is agency setting and not user setting
                 DefaultAssignment = GetAgencyDefaultToRoutedOnNewAssignmentSetting()
                 AllowProofHQ = GetAgencyAllowProofHQSetting()
+                DefaultRoutingForProofingAssignment = GetAgencyDefaultToRoutedOnNewProofingSetting()
 
             End Using
 
@@ -4059,7 +4074,8 @@ Namespace Controllers.Desktop
                                      .RepositoryLimitText = RepositoryLimitText,
                                      .AllowUpload = AllowUpload,
                                      .DefaultAssignment = DefaultAssignment,
-                                     .AllowProofHQ = AllowProofHQ}, JsonRequestBehavior.AllowGet)
+                                     .AllowProofHQ = AllowProofHQ,
+                                     .DefaultRoutingForProofingAssignment = DefaultRoutingForProofingAssignment}, JsonRequestBehavior.AllowGet)
 
         End Function
         <HttpPost>
@@ -7036,6 +7052,21 @@ Namespace Controllers.Desktop
             Return DefaultToRouted
 
         End Function
+
+        Private Function GetAgencyDefaultToRoutedOnNewProofingSetting() As Boolean
+
+            Dim DefaultToRouted As Boolean = True
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
+
+                DefaultToRouted = DbContext.Database.SqlQuery(Of Boolean)(String.Format("SELECT ISNULL(CAST(A.AGY_SETTINGS_VALUE AS BIT), 1) FROM AGY_SETTINGS A WITH(NOLOCK) " &
+                                                                                " WHERE A.AGY_SETTINGS_CODE = 'ALRT_ASSGN_CS_RT_DFL';")).SingleOrDefault
+
+            End Using
+            Return DefaultToRouted
+
+        End Function
+
         Private Sub LoadDocumentRepositoryLimits(ByVal DbContext As AdvantageFramework.Database.DbContext,
                                                  ByRef RepositorySizeLimit As Long,
                                                  ByRef RespositoryFileSizeLimit As Long,

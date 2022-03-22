@@ -1,6 +1,4 @@
-﻿Imports DevExpress.XtraGrid.Views.Base
-
-Namespace WinForm.Presentation
+﻿Namespace WinForm.Presentation
 
     Public Class CRUDDialog
 
@@ -96,6 +94,7 @@ Namespace WinForm.Presentation
             AdSizeCode
             ImportMediaRFPTemplate
             GLSummaryClearAndRepost
+            ComscoreMarket
         End Enum
 
 #End Region
@@ -895,6 +894,14 @@ Namespace WinForm.Presentation
                 Case Type.GLSummaryClearAndRepost
 
                     Me.Text = "GL Summary Clear and Repost"
+
+                    ButtonForm_Add.Visible = False
+                    ButtonForm_Edit.Visible = False
+                    ButtonForm_Delete.Visible = False
+
+                Case Type.ComscoreMarket
+
+                    Me.Text = "Markets"
 
                     ButtonForm_Add.Visible = False
                     ButtonForm_Edit.Visible = False
@@ -1773,6 +1780,12 @@ Namespace WinForm.Presentation
                                     End If
 
                                     DataGridViewForm_Objects.CurrentView.ViewCaption = DataGridViewForm_Objects.CurrentView.RowCount.ToString & " Open Post Periods"
+
+                                Case Type.ComscoreMarket
+
+                                    DataGridViewForm_Objects.DataSource = AdvantageFramework.Database.Procedures.Market.LoadAllActiveComscore(DbContext).ToList
+
+                                    DataGridViewForm_Objects.FocusToFindPanel(True)
 
                             End Select
 
@@ -2959,7 +2972,7 @@ Namespace WinForm.Presentation
             SelectRows()
 
         End Sub
-        Private Sub DataGridViewForm_Objects_CellValueChangedEvent(e As CellValueChangedEventArgs) Handles DataGridViewForm_Objects.CellValueChangedEvent
+        Private Sub DataGridViewForm_Objects_CellValueChangedEvent(e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles DataGridViewForm_Objects.CellValueChangedEvent
 
             'objects
             Dim DatabaseProfile As AdvantageFramework.Database.DatabaseProfile = Nothing

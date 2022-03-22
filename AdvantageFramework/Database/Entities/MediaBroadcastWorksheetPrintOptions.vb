@@ -60,6 +60,7 @@
             PrintSecondaryTVImpressions
             PrintPrimaryCPM
             PrintSecondaryCPM
+            PrintRemoveLinesWithoutSpots
         End Enum
 
 #End Region
@@ -263,6 +264,10 @@
         <Column("PRINT_SECONDARY_CPM")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property PrintSecondaryCPM As Boolean
+        <Required>
+        <Column("PRINT_REMOVE_LINES_WITHOUT_SPOTS")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
+        Public Property PrintRemoveLinesWithoutSpots As Boolean
 
 #End Region
 

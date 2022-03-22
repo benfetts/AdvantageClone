@@ -5,7 +5,7 @@
 #Region " Enum "
 
         Public Enum ApiMethods
-			CheckForValidSettings
+            CheckForValidSettings
             'CopyJob
             'CopyJobComponent
             'CreateJob
@@ -95,29 +95,29 @@
         Private Sub AdvantageAPI_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles Me.BeforePrint
 
             'objects
-            Dim Bitmap As Drawing.Bitmap = New Drawing.Bitmap(My.Application.Info.DirectoryPath & "\Images\APIClassDiagramLoads.png")
-            Dim Height As Integer = Nothing
+            'Dim Bitmap As Drawing.Bitmap = New Drawing.Bitmap(My.Application.Info.DirectoryPath & "\Images\APIClassDiagramLoads.png")
+            'Dim Height As Integer = Nothing
 
-            Try
+            'Try
 
-                If Bitmap.Width > PictureBoxPage2_PublicClassLayout.SizeF.Width Then
+            'If Bitmap.Width > PictureBoxPage2_PublicClassLayout.SizeF.Width Then
 
-                    Height = CInt((Bitmap.Height * PictureBoxPage2_PublicClassLayout.SizeF.Width) / Bitmap.Width)
-                    PictureBoxPage2_PublicClassLayout.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Squeeze
+            '    Height = CInt((Bitmap.Height * PictureBoxPage2_PublicClassLayout.SizeF.Width) / Bitmap.Width)
+            '    PictureBoxPage2_PublicClassLayout.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Squeeze
 
-                Else
+            'Else
 
-                    Height = Bitmap.Height
-                    PictureBoxPage2_PublicClassLayout.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Normal
+            '    Height = Bitmap.Height
+            '    PictureBoxPage2_PublicClassLayout.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Normal
 
-                End If
+            'End If
 
-                PictureBoxPage2_PublicClassLayout.SizeF = New Drawing.SizeF(PictureBoxPage2_PublicClassLayout.SizeF.Width, Height)
-                PictureBoxPage2_PublicClassLayout.Image = Bitmap
+            'PictureBoxPage2_PublicClassLayout.SizeF = New Drawing.SizeF(PictureBoxPage2_PublicClassLayout.SizeF.Width, Height)
+            'PictureBoxPage2_PublicClassLayout.Image = Bitmap
 
-            Catch ex As Exception
+            'Catch ex As Exception
 
-            End Try
+            'End Try
 
         End Sub
         Private Sub TablePage3_Methods_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles TablePage3_Methods.BeforePrint

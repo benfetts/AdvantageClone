@@ -44,7 +44,7 @@
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property Name() As String
         <Required>
-        <AdvantageFramework.BaseClasses.Attributes.DecimalPrecision(3, 2)>
+        <AdvantageFramework.BaseClasses.Attributes.DecimalPrecision(5, 4)>
         <Column("PERCENT")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property Percent() As Decimal

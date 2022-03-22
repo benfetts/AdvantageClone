@@ -93,7 +93,7 @@ SELECT @OrderNumbers = COALESCE(@OrderNumbers + ', ','') + CAST(ORDER_NBR as var
 FROM (SELECT DISTINCT ORDER_NBR FROM #INVOICE) orders
 
 INSERT INTO @view
-exec advsp_broadcast_order_dtl_verification @OrderNumberLineNumberList, 0, NULL, @OrderNumbers, 1
+SELECT * FROM dbo.advtf_broadcast_order_dtl_verification (@OrderNumberLineNumberList, 0, NULL, @OrderNumbers, 1)
 
 INSERT #AP_NET_AMOUNT (AP_NET_AMOUNT, ORDER_NBR, LINE_NBR, InvoiceNumber, VendorCode, VendorName, InvoiceDate, AccountPayableID, OrderGrossRate, OrderNetRate, InvoiceQtySpots, AP_GROSS_AMOUNT,
 	MediaType, ClientCode, DivisionCode, ProductCode, LineCancelled, OrderQtySpots, GrossOrderAmount, NetOrderAmount, MonthYear, MonthNumber, YearNumber)

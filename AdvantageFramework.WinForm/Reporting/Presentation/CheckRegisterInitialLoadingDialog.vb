@@ -73,6 +73,12 @@
 
             End If
 
+            If DynamicReport = Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+
+                CheckRegisterInitialLoadingDialog.TitleText = "Check Register with Invoice Details Criteria"
+
+            End If
+
             ShowFormDialog = CheckRegisterInitialLoadingDialog.ShowDialog()
 
             If ShowFormDialog = Windows.Forms.DialogResult.OK Then

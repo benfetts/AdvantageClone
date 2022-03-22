@@ -77,9 +77,9 @@
 
             End If
 
-            If VendorControlForm_Vendor.IsDefaultsNotesTabSelected OrElse _
-                    VendorControlForm_Vendor.IsMediaInfoTabSelected OrElse _
-                    VendorControlForm_Vendor.IsMediaDeliveryTabSelected OrElse _
+            If VendorControlForm_Vendor.IsDefaultsNotesTabSelected OrElse
+                    VendorControlForm_Vendor.IsMediaInfoTabSelected OrElse
+                    VendorControlForm_Vendor.IsMediaDeliveryTabSelected OrElse
                     VendorControlForm_Vendor.IsDefaultCommentsTabSelected Then
 
                 RibbonBarOptions_CheckSpelling.Visible = True
@@ -89,6 +89,8 @@
                 RibbonBarOptions_CheckSpelling.Visible = False
 
             End If
+
+            RibbonBarOptions_ComboStations.Visible = VendorControlForm_Vendor.ShowManageComboRadioStations
 
         End Sub
         Private Function Save() As Boolean
@@ -194,21 +196,23 @@
             ButtonItemDocuments_Delete.Image = AdvantageFramework.My.Resources.DetailDeleteImage
             ButtonItemDocuments_Download.Image = AdvantageFramework.My.Resources.DownloadDocument
             ButtonItemDocuments_Upload.Image = AdvantageFramework.My.Resources.UpdateImage
-			ButtonItemUpload_EmailLink.Icon = AdvantageFramework.My.Resources.EmailSendIcon
-			ButtonItemDocuments_OpenURL.Image = AdvantageFramework.My.Resources.Link
+            ButtonItemUpload_EmailLink.Icon = AdvantageFramework.My.Resources.EmailSendIcon
+            ButtonItemDocuments_OpenURL.Image = AdvantageFramework.My.Resources.Link
 
-			Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+            ButtonItemComboStations_Manage.Image = AdvantageFramework.My.Resources.QuickManageImage
 
-				If AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext) = False Then
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
 
-					ButtonItemDocuments_Upload.SubItems.Remove(ButtonItemUpload_EmailLink)
-					ButtonItemDocuments_Upload.SplitButton = False
+                If AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext) = False Then
 
-				End If
+                    ButtonItemDocuments_Upload.SubItems.Remove(ButtonItemUpload_EmailLink)
+                    ButtonItemDocuments_Upload.SplitButton = False
 
-			End Using
+                End If
 
-			If _VendorCode <> "" Then
+            End Using
+
+            If _VendorCode <> "" Then
 
                 ButtonItemActions_Add.Visible = False
                 ButtonItemActions_Save.Visible = True
@@ -508,19 +512,19 @@
             EnableOrDisableActions()
 
         End Sub
-		Private Sub ButtonItemDocuments_Upload_Click(sender As Object, e As EventArgs) Handles ButtonItemDocuments_Upload.Click
+        Private Sub ButtonItemDocuments_Upload_Click(sender As Object, e As EventArgs) Handles ButtonItemDocuments_Upload.Click
 
-			VendorControlForm_Vendor.UploadDocument()
+            VendorControlForm_Vendor.UploadDocument()
 
-			EnableOrDisableActions()
+            EnableOrDisableActions()
 
-		End Sub
-		Private Sub ButtonItemUpload_EmailLink_Click(sender As Object, e As EventArgs) Handles ButtonItemUpload_EmailLink.Click
+        End Sub
+        Private Sub ButtonItemUpload_EmailLink_Click(sender As Object, e As EventArgs) Handles ButtonItemUpload_EmailLink.Click
 
-			VendorControlForm_Vendor.SendASPUploadEmail()
+            VendorControlForm_Vendor.SendASPUploadEmail()
 
-		End Sub
-		Private Sub ButtonItemDocuments_Download_Click(sender As Object, e As EventArgs) Handles ButtonItemDocuments_Download.Click
+        End Sub
+        Private Sub ButtonItemDocuments_Download_Click(sender As Object, e As EventArgs) Handles ButtonItemDocuments_Download.Click
 
             VendorControlForm_Vendor.DownloadDocument()
 
@@ -539,6 +543,18 @@
             VendorControlForm_Vendor.DeletedDocument()
 
             EnableOrDisableActions()
+
+        End Sub
+        Private Sub VendorControlForm_Vendor_ComboStationChangedEvent() Handles VendorControlForm_Vendor.ComboStationChangedEvent
+
+            RibbonBarOptions_ComboStations.Visible = VendorControlForm_Vendor.ShowManageComboRadioStations
+
+            EnableOrDisableActions()
+
+        End Sub
+        Private Sub ButtonItemComboStations_Manage_Click(sender As Object, e As EventArgs) Handles ButtonItemComboStations_Manage.Click
+
+            VendorControlForm_Vendor.ManageComboRadioStations()
 
         End Sub
 

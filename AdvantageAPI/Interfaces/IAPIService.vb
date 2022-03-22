@@ -684,6 +684,34 @@ Public Interface IAPIService
     <OperationContract()>
     Function LoadTrialBalance(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodEnd As String) As TrialBalanceAPIResponse
 
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadEmployeeUtilization(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String,
+                                                Password As String, GroupBy As String, StartDate As Date, EndDate As Date) As EmployeeUtilizationAPIResponse
+
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadJobDetail(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String,
+                                  EmployeeDateCutoff As String, IncomeOnlyDateCutoff As String, AccountsPayablePostingPeriodCutoff As String,
+                                  CurrentStartDate As String, CurrentEndDate As String, CurrentPeriod As String,
+                                  JobDateCriteria As Integer, JobStartDate As String, JobEndDate As String, IncludeClosed As Boolean,
+                                  IncludeBilledRange As Boolean, StartingPostPeriodCode As String, EndingPostPeriodCode As String) As JobDetailItemAPIResponse
+
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadJobDetailItem(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String,
+                                  EmployeeDateCutoff As String, IncomeOnlyDateCutoff As String, AccountsPayablePostingPeriodCutoff As String,
+                                  CurrentStartDate As String, CurrentEndDate As String, CurrentPeriod As String,
+                                  JobDateCriteria As Integer, JobStartDate As String, JobEndDate As String, IncludeClosed As Boolean,
+                                  IncludeBilledRange As Boolean, StartingPostPeriodCode As String, EndingPostPeriodCode As String) As JobDetailItemAPIResponse
+
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadJobDetailFunction(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String,
+                                  EmployeeDateCutoff As String, IncomeOnlyDateCutoff As String, AccountsPayablePostingPeriodCutoff As String,
+                                  CurrentStartDate As String, CurrentEndDate As String, CurrentPeriod As String,
+                                  JobDateCriteria As Integer, JobStartDate As String, JobEndDate As String, IncludeClosed As Boolean,
+                                  IncludeBilledRange As Boolean, StartingPostPeriodCode As String, EndingPostPeriodCode As String) As JobDetailItemAPIResponse
 
 
 #End Region

@@ -29,6 +29,7 @@
             Me.TabControlPanelMediaBroadcastWorksheetCriteriaDemographicsTab_Demographics = New DevComponents.DotNetBar.TabControlPanel()
             Me.GroupBoxDemographics_Selection = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
             Me.GroupBoxForm_StartDateRange = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.CheckBoxForm_OmitRatings = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
             Me.LabelStartDateRange_FromDate = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
             Me.DateTimePickerStartDateRange_FromDate = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
             Me.DateTimePickerStartDateRange_ToDate = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
@@ -40,6 +41,7 @@
             Me.LabelForm_Source = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
             Me.ComboBoxForm_Source = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
             Me.DataGridViewForm_Vendors = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonForm_Refresh = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
             Me.TabControlPanelMediaBroadcastWorksheetCriteriaDemographicsTab_Demographics.SuspendLayout()
             CType(Me.GroupBoxDemographics_Selection, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.GroupBoxForm_StartDateRange, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -113,6 +115,8 @@
             '
             Me.GroupBoxForm_StartDateRange.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.GroupBoxForm_StartDateRange.Controls.Add(Me.ButtonForm_Refresh)
+            Me.GroupBoxForm_StartDateRange.Controls.Add(Me.CheckBoxForm_OmitRatings)
             Me.GroupBoxForm_StartDateRange.Controls.Add(Me.LabelStartDateRange_FromDate)
             Me.GroupBoxForm_StartDateRange.Controls.Add(Me.DateTimePickerStartDateRange_FromDate)
             Me.GroupBoxForm_StartDateRange.Controls.Add(Me.DateTimePickerStartDateRange_ToDate)
@@ -122,6 +126,30 @@
             Me.GroupBoxForm_StartDateRange.Size = New System.Drawing.Size(625, 46)
             Me.GroupBoxForm_StartDateRange.TabIndex = 4
             Me.GroupBoxForm_StartDateRange.Text = "Date Range"
+            '
+            'CheckBoxForm_OmitRatings
+            '
+            Me.CheckBoxForm_OmitRatings.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxForm_OmitRatings.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxForm_OmitRatings.CheckValue = 0
+            Me.CheckBoxForm_OmitRatings.CheckValueChecked = 1
+            Me.CheckBoxForm_OmitRatings.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxForm_OmitRatings.CheckValueUnchecked = 0
+            Me.CheckBoxForm_OmitRatings.ChildControls = Nothing
+            Me.CheckBoxForm_OmitRatings.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxForm_OmitRatings.Location = New System.Drawing.Point(359, 20)
+            Me.CheckBoxForm_OmitRatings.Name = "CheckBoxForm_OmitRatings"
+            Me.CheckBoxForm_OmitRatings.OldestSibling = Nothing
+            Me.CheckBoxForm_OmitRatings.SecurityEnabled = True
+            Me.CheckBoxForm_OmitRatings.SiblingControls = Nothing
+            Me.CheckBoxForm_OmitRatings.Size = New System.Drawing.Size(97, 20)
+            Me.CheckBoxForm_OmitRatings.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxForm_OmitRatings.TabIndex = 30
+            Me.CheckBoxForm_OmitRatings.TabOnEnter = True
+            Me.CheckBoxForm_OmitRatings.Text = "Omit Ratings"
             '
             'LabelStartDateRange_FromDate
             '
@@ -195,6 +223,7 @@
             Me.DateTimePickerStartDateRange_FromDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.DateTimePickerStartDateRange_FromDate.TabIndex = 1
             Me.DateTimePickerStartDateRange_FromDate.TabOnEnter = True
+            Me.DateTimePickerStartDateRange_FromDate.Value = New Date(2022, 1, 25, 9, 51, 11, 372)
             '
             'DateTimePickerStartDateRange_ToDate
             '
@@ -254,6 +283,7 @@
             Me.DateTimePickerStartDateRange_ToDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.DateTimePickerStartDateRange_ToDate.TabIndex = 3
             Me.DateTimePickerStartDateRange_ToDate.TabOnEnter = True
+            Me.DateTimePickerStartDateRange_ToDate.Value = New Date(2022, 1, 25, 9, 51, 11, 403)
             '
             'LabelStartDateRange_ToDate
             '
@@ -457,6 +487,19 @@
             Me.DataGridViewForm_Vendors.UseEmbeddedNavigator = False
             Me.DataGridViewForm_Vendors.ViewCaptionHeight = -1
             '
+            'ButtonForm_Refresh
+            '
+            Me.ButtonForm_Refresh.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonForm_Refresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.ButtonForm_Refresh.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonForm_Refresh.Location = New System.Drawing.Point(462, 20)
+            Me.ButtonForm_Refresh.Name = "ButtonForm_Refresh"
+            Me.ButtonForm_Refresh.SecurityEnabled = True
+            Me.ButtonForm_Refresh.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonForm_Refresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonForm_Refresh.TabIndex = 31
+            Me.ButtonForm_Refresh.Text = "Refresh"
+            '
             'MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -502,6 +545,8 @@
         Friend WithEvents LabelForm_Source As WinForm.MVC.Presentation.Controls.Label
         Friend WithEvents ComboBoxForm_Source As WinForm.MVC.Presentation.Controls.ComboBox
         Friend WithEvents DataGridViewForm_Vendors As WinForm.MVC.Presentation.Controls.DataGridView
+        Friend WithEvents CheckBoxForm_OmitRatings As WinForm.Presentation.Controls.CheckBox
+        Friend WithEvents ButtonForm_Refresh As WinForm.MVC.Presentation.Controls.Button
     End Class
 
 End Namespace

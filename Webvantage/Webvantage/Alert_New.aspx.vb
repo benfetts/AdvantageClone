@@ -3799,15 +3799,52 @@ Partial Public Class Alert_New
 
                 Dim url As String
                 Dim csec As New cSecurity(Session("ConnString"))
-                Dim dr As SqlClient.SqlDataReader
-                dr = csec.getSettingsCP()
-                If dr.HasRows = True Then
-                    Do While dr.Read
-                        url = Request.Url.Scheme & "://" & dr.GetString(0)
-                    Loop
-                    dr.Close()
+                'Dim dr As SqlClient.SqlDataReader
+                'dr = csec.getSettingsCP()
+                'If dr.HasRows = True Then
+                '    Do While dr.Read
+                '        url = dr.GetString(0)
+                '    Loop
+                '    dr.Close()
+                '    If url.StartsWith("https://") = False AndAlso url.StartsWith("http://") = False Then
+                '        url = Request.Url.Scheme & "://" & url
+                '    End If
+                'Else
+                '    url = Request.Url.Scheme & "://" & Request.Url.Host & Request.ApplicationPath
+                'End If
+                If MiscFN.IsClientPortal = True Then
+
+                    url = HttpContext.Current.Session("ClientPortalURL")
+
                 Else
-                    url = Request.Url.Scheme & "://" & Request.Url.Host & "/" & Request.ApplicationPath
+
+                    url = HttpContext.Current.Session("WebvantageURL")
+
+                End If
+
+                If String.IsNullOrWhiteSpace(url) = True Then
+
+                    Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
+
+                        Dim Agency As AdvantageFramework.Database.Entities.Agency = Nothing
+                        Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
+
+                        If Agency IsNot Nothing Then
+
+                            If MiscFN.IsClientPortal = True Then
+
+                                url = Agency.ClientPortalURL
+
+                            Else
+
+                                url = Agency.WebvantageURL
+
+                            End If
+
+                        End If
+
+                    End Using
+
                 End If
 
                 Dim MyEmailBody As New AdvantageFramework.Email.Classes.HtmlEmail(True)

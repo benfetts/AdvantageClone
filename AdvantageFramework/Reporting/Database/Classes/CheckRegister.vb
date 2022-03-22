@@ -47,6 +47,7 @@
             CheckAmount
             DiscountAmount
             CheckVoided
+            VoidedCheckAmount
             VoidComments
             CheckManualFlag
             'DebitGLAccount
@@ -115,6 +116,7 @@
         Private _CheckAmount As Nullable(Of Decimal) = Nothing
         Private _DiscountAmount As Nullable(Of Decimal) = Nothing
         Private _CheckVoided As String = Nothing
+        Private _VoidedCheckAmount As Nullable(Of Decimal) = Nothing
         Private _VoidComments As String = Nothing
         Private _CheckManualFlag As String = Nothing
         'Private _DebitGLAccount As String = Nothing
@@ -433,6 +435,15 @@
             End Get
             Set(ByVal value As String)
                 _CheckVoided = value
+            End Set
+        End Property
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="n2")>
+        Public Property VoidedCheckAmount() As Nullable(Of Decimal)
+            Get
+                VoidedCheckAmount = _VoidedCheckAmount
+            End Get
+            Set(ByVal value As Nullable(Of Decimal))
+                _VoidedCheckAmount = value
             End Set
         End Property
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>

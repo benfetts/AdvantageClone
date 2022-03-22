@@ -27,38 +27,83 @@
             Me.components = New System.ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmployeeControl))
             Me.TabControlControl_EmployeeDetails = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelTimeTrackingTab_TimeTracking = New DevComponents.DotNetBar.TabControlPanel()
-            Me.NumericInputTimeTracking_BillableHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
-            Me.LabelTimeTracking_BillableHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.SearchableComboBoxTimeTracking_DefaultFunction = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
-            Me.GridView3 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
-            Me.SearchableComboBoxTimeTracking_Supervisor = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
-            Me.GridView2 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
-            Me.NumericInputTimeTracking_SeniorityPriority = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
-            Me.NumericInputTimeTracking_DirectHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
-            Me.NumericInputTimeTracking_StandardAnnualHours = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
-            Me.LabelTimeTracking_StandardAnnualHours = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelTimeTracking_DirectHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelTimeTracking_MonthlyBillableHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelTimeTracking_HoursGoals = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.ComboBoxTimeTracking_ReportMissingTime = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.LabelTimeTracking_DefaultFunction = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelTimeTracking_ReportMissingTimeLbl = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelTimeTracking_SeniorityPriority = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelTimeTracking_VacationSickPersonalTime = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.DataGridViewTimeTracking_EmployeeTimeOff = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.LabelTimeTracking_EmployeeStatus = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelTimeTracking_StandardWorkDays = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.DataGridViewTimeTracking_WorkDays = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.LabelTimeTracking_Supervisor = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemEmployeeDetails_TimeTrackingTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelAlertsTab_Alerts = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelAlerts_Alerts = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.TabControlAlerts_Alerts = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelConceptShareTab_ConceptShare = New DevComponents.DotNetBar.TabControlPanel()
+            Me.ButtonConceptShare_RemoveUser = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.CheckBoxConceptShare_ShowPassword = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxConceptShare_IsActive = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.ButtonConceptShare_UpdateUser = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.ButtonConceptShare_CreateUser = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.TextBoxConceptShare_Password = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelConceptShare_Password = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemAlerts_ConceptShareTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelSettingsTab_Settings = New DevComponents.DotNetBar.TabControlPanel()
+            Me.CheckBoxSettings_IgnoreCalendarSync = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.TextBoxSettings_VCCPassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxSettings_VCCUserName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelSettings_VCCPassword = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelSettings_VCCUserName = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelSettings_VCC = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxSettings_AdobeSignatureFile = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelSettings_AdobeSignature = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.ButtonSettings_AdobeSignatureFileDelete = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.ButtonSettings_AdobeSignatureFileSelect = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.TextBoxSettings_AdobeSignatureFilePassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelSettings_AdobeSignatureFilePassword = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelSettings_AdobeSignatureFile = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.CheckBoxSettings_IsAPIUser = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.TextBoxSettings_ProofHQPassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxSettings_ProofHQUserName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelSettings_ProofHQPassword = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelSettings_ProofHQUserName = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelSettings_ProofHQ = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxSettings_SugarCRMPassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxSettings_SugarCRMUserName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelSettings_SugarCRMPassword = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelSettings_SugarCRMUserName = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelSettings_SugarCRM = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxSettingsRightColumn_EmailPassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxSettingsRightColumn_EmailUserName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxSettingsRightColumn_ReplyToAddress = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxSettingsRightColumn_EmailAddress = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelSettingsRightColumn_EmailPassword = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelSettingsRightColumn_EmailUsername = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelSettingsRightColumn_ReplyToAddress = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.LabelSettingsRightColumn_EmailAddress = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemAlerts_SettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DataGridViewAdditionalEmails_AdditionalEmails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.TabItemAlerts_AdditionalEmailsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelAlertGroupsTab_AlertGroups = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelAlertGroups_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.ButtonRightSection_RemoveAlertGroup = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.ButtonRightSection_AddAlertGroup = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.DataGridViewRightSection_EmployeeAlertGroups = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.ExpandableSplitterControlAlertGroups_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelAlertGroups_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewLeftSection_AvailableAlertGroups = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.TabItemAlerts_AlertGroupsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanel_CalendarTime = New DevComponents.DotNetBar.TabControlPanel()
+            Me.CheckBoxForm_SSL = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.TextBoxCalendarTime_Port = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.Label3 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxCalendarTime_Host = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.Label2 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.ComboBoxCalendarTime_Type = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
+            Me.Label1 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxCalendarTime_EmailPassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxCalendarTime_EmailUserName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxCalendarTime_EmailAddress = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.Label13 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.Label14 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.Label16 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemAlerts_CalendarTimeTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabItemEmployeeDetails_AlertsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelGeneralInformation_GeneralInformation = New DevComponents.DotNetBar.TabControlPanel()
             Me.PanelGeneralInformation_GeneralInformation = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
             Me.SearchableComboBoxGeneralInformation_AssignedOffice = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
@@ -133,83 +178,38 @@
             Me.TextBoxGeneralInformation_FirstName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             Me.TextBoxGeneralInformation_MiddleInitial = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             Me.TabItemEmployeeDetails_GeneralInformation = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelAlertsTab_Alerts = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelAlerts_Alerts = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.TabControlAlerts_Alerts = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelSettingsTab_Settings = New DevComponents.DotNetBar.TabControlPanel()
-            Me.CheckBoxSettings_IgnoreCalendarSync = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.TextBoxSettings_VCCPassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxSettings_VCCUserName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelSettings_VCCPassword = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelSettings_VCCUserName = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelSettings_VCC = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxSettings_AdobeSignatureFile = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelSettings_AdobeSignature = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.ButtonSettings_AdobeSignatureFileDelete = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.ButtonSettings_AdobeSignatureFileSelect = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.TextBoxSettings_AdobeSignatureFilePassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelSettings_AdobeSignatureFilePassword = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelSettings_AdobeSignatureFile = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.CheckBoxSettings_IsAPIUser = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.TextBoxSettings_ProofHQPassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxSettings_ProofHQUserName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelSettings_ProofHQPassword = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelSettings_ProofHQUserName = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelSettings_ProofHQ = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxSettings_SugarCRMPassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxSettings_SugarCRMUserName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelSettings_SugarCRMPassword = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelSettings_SugarCRMUserName = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelSettings_SugarCRM = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxSettingsRightColumn_EmailPassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxSettingsRightColumn_EmailUserName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxSettingsRightColumn_ReplyToAddress = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxSettingsRightColumn_EmailAddress = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelSettingsRightColumn_EmailPassword = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelSettingsRightColumn_EmailUsername = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelSettingsRightColumn_ReplyToAddress = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.LabelSettingsRightColumn_EmailAddress = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemAlerts_SettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DataGridViewAdditionalEmails_AdditionalEmails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.TabItemAlerts_AdditionalEmailsTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelAlertGroupsTab_AlertGroups = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelAlertGroups_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.ButtonRightSection_RemoveAlertGroup = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.ButtonRightSection_AddAlertGroup = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.DataGridViewRightSection_EmployeeAlertGroups = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.ExpandableSplitterControlAlertGroups_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelAlertGroups_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewLeftSection_AvailableAlertGroups = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.TabItemAlerts_AlertGroupsTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanel_CalendarTime = New DevComponents.DotNetBar.TabControlPanel()
-            Me.CheckBoxForm_SSL = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.TextBoxCalendarTime_Port = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.Label3 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxCalendarTime_Host = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.Label2 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.ComboBoxCalendarTime_Type = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
-            Me.Label1 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxCalendarTime_EmailPassword = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxCalendarTime_EmailUserName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxCalendarTime_EmailAddress = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.Label13 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.Label14 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.Label16 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemAlerts_CalendarTimeTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelConceptShareTab_ConceptShare = New DevComponents.DotNetBar.TabControlPanel()
-            Me.ButtonConceptShare_RemoveUser = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.CheckBoxConceptShare_ShowPassword = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxConceptShare_IsActive = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.ButtonConceptShare_UpdateUser = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.ButtonConceptShare_CreateUser = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.TextBoxConceptShare_Password = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelConceptShare_Password = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemAlerts_ConceptShareTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabItemEmployeeDetails_AlertsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking = New DevComponents.DotNetBar.TabControlPanel()
+            Me.NumericInputTimeTracking_BillableHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
+            Me.LabelTimeTracking_BillableHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.SearchableComboBoxTimeTracking_DefaultFunction = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
+            Me.GridView3 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
+            Me.SearchableComboBoxTimeTracking_Supervisor = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
+            Me.GridView2 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
+            Me.NumericInputTimeTracking_SeniorityPriority = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
+            Me.NumericInputTimeTracking_DirectHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
+            Me.NumericInputTimeTracking_StandardAnnualHours = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
+            Me.LabelTimeTracking_StandardAnnualHours = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelTimeTracking_DirectHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelTimeTracking_MonthlyBillableHoursGoal = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelTimeTracking_HoursGoals = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.ComboBoxTimeTracking_ReportMissingTime = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.LabelTimeTracking_DefaultFunction = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelTimeTracking_ReportMissingTimeLbl = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelTimeTracking_SeniorityPriority = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelTimeTracking_VacationSickPersonalTime = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.DataGridViewTimeTracking_EmployeeTimeOff = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.LabelTimeTracking_EmployeeStatus = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelTimeTracking_StandardWorkDays = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.DataGridViewTimeTracking_WorkDays = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.LabelTimeTracking_Supervisor = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemEmployeeDetails_TimeTrackingTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelPOsAndExpenseReportsTab_POsAndExpenseReports = New DevComponents.DotNetBar.TabControlPanel()
             Me.NumericInputPOsAndExpenseReports_POAmountLimit = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
             Me.SearchableComboBoxPOsAndExpenseReports_CreditCardGLAccount = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
@@ -299,16 +299,20 @@
             Me.TabItemEmployeeDetails_DocumentsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             CType(Me.TabControlControl_EmployeeDetails, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlControl_EmployeeDetails.SuspendLayout()
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.SuspendLayout()
-            CType(Me.NumericInputTimeTracking_BillableHoursGoal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.SearchableComboBoxTimeTracking_Supervisor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.NumericInputTimeTracking_SeniorityPriority.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.NumericInputTimeTracking_DirectHoursGoal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.NumericInputTimeTracking_StandardAnnualHours.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.TabControlPanelAlertsTab_Alerts.SuspendLayout()
+            CType(Me.PanelAlerts_Alerts, System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.PanelAlerts_Alerts.SuspendLayout()
+            CType(Me.TabControlAlerts_Alerts, System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.TabControlAlerts_Alerts.SuspendLayout()
+            Me.TabControlPanelConceptShareTab_ConceptShare.SuspendLayout()
+            Me.TabControlPanelSettingsTab_Settings.SuspendLayout()
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.SuspendLayout()
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.SuspendLayout()
+            CType(Me.PanelAlertGroups_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.PanelAlertGroups_RightSection.SuspendLayout()
+            CType(Me.PanelAlertGroups_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.PanelAlertGroups_LeftSection.SuspendLayout()
+            Me.TabControlPanel_CalendarTime.SuspendLayout()
             Me.TabControlPanelGeneralInformation_GeneralInformation.SuspendLayout()
             CType(Me.PanelGeneralInformation_GeneralInformation, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.PanelGeneralInformation_GeneralInformation.SuspendLayout()
@@ -337,20 +341,16 @@
             Me.PanelRoles_RightSection.SuspendLayout()
             CType(Me.PanelRoles_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.PanelRoles_LeftSection.SuspendLayout()
-            Me.TabControlPanelAlertsTab_Alerts.SuspendLayout()
-            CType(Me.PanelAlerts_Alerts, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelAlerts_Alerts.SuspendLayout()
-            CType(Me.TabControlAlerts_Alerts, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlAlerts_Alerts.SuspendLayout()
-            Me.TabControlPanelSettingsTab_Settings.SuspendLayout()
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.SuspendLayout()
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.SuspendLayout()
-            CType(Me.PanelAlertGroups_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelAlertGroups_RightSection.SuspendLayout()
-            CType(Me.PanelAlertGroups_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelAlertGroups_LeftSection.SuspendLayout()
-            Me.TabControlPanel_CalendarTime.SuspendLayout()
-            Me.TabControlPanelConceptShareTab_ConceptShare.SuspendLayout()
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.SuspendLayout()
+            CType(Me.NumericInputTimeTracking_BillableHoursGoal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.SearchableComboBoxTimeTracking_Supervisor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.NumericInputTimeTracking_SeniorityPriority.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.NumericInputTimeTracking_DirectHoursGoal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.NumericInputTimeTracking_StandardAnnualHours.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlPanelPOsAndExpenseReportsTab_POsAndExpenseReports.SuspendLayout()
             CType(Me.NumericInputPOsAndExpenseReports_POAmountLimit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.SearchableComboBoxPOsAndExpenseReports_CreditCardGLAccount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -423,158 +423,414 @@
             Me.TabControlControl_EmployeeDetails.Tabs.Add(Me.TabItemEmployeeDetails_DocumentsTab)
             Me.TabControlControl_EmployeeDetails.Text = "TabControl1"
             '
-            'TabControlPanelTimeTrackingTab_TimeTracking
+            'TabControlPanelAlertsTab_Alerts
             '
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.NumericInputTimeTracking_BillableHoursGoal)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_BillableHoursGoal)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.SearchableComboBoxTimeTracking_DefaultFunction)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.SearchableComboBoxTimeTracking_Supervisor)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.NumericInputTimeTracking_SeniorityPriority)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.NumericInputTimeTracking_DirectHoursGoal)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.NumericInputTimeTracking_MonthlyBillableHoursGoal)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.NumericInputTimeTracking_StandardAnnualHours)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_StandardAnnualHours)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_DirectHoursGoal)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_MonthlyBillableHoursGoal)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_HoursGoals)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.ComboBoxTimeTracking_ReportMissingTime)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.RadioButtonControlTimeTracking_EmployeeStatusExempt)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.RadioButtonControlTimeTracking_EmployeeStatusNA)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_DefaultFunction)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_ReportMissingTimeLbl)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_SeniorityPriority)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_VacationSickPersonalTime)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.DataGridViewTimeTracking_EmployeeTimeOff)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_EmployeeStatus)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_StandardWorkDays)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.DataGridViewTimeTracking_WorkDays)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_Supervisor)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Name = "TabControlPanelTimeTrackingTab_TimeTracking"
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Size = New System.Drawing.Size(738, 523)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelAlertsTab_Alerts.Controls.Add(Me.PanelAlerts_Alerts)
+            Me.TabControlPanelAlertsTab_Alerts.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelAlertsTab_Alerts.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelAlertsTab_Alerts.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelAlertsTab_Alerts.Name = "TabControlPanelAlertsTab_Alerts"
+            Me.TabControlPanelAlertsTab_Alerts.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelAlertsTab_Alerts.Size = New System.Drawing.Size(738, 523)
+            Me.TabControlPanelAlertsTab_Alerts.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelAlertsTab_Alerts.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelAlertsTab_Alerts.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelAlertsTab_Alerts.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelAlertsTab_Alerts.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.GradientAngle = 90
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.TabIndex = 9
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.TabItem = Me.TabItemEmployeeDetails_TimeTrackingTab
+            Me.TabControlPanelAlertsTab_Alerts.Style.GradientAngle = 90
+            Me.TabControlPanelAlertsTab_Alerts.TabIndex = 5
+            Me.TabControlPanelAlertsTab_Alerts.TabItem = Me.TabItemEmployeeDetails_AlertsTab
             '
-            'NumericInputTimeTracking_BillableHoursGoal
+            'PanelAlerts_Alerts
             '
-            Me.NumericInputTimeTracking_BillableHoursGoal.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputTimeTracking_BillableHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.NumericInputTimeTracking_BillableHoursGoal.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
-            Me.NumericInputTimeTracking_BillableHoursGoal.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputTimeTracking_BillableHoursGoal.EnterMoveNextControl = True
-            Me.NumericInputTimeTracking_BillableHoursGoal.Location = New System.Drawing.Point(640, 189)
-            Me.NumericInputTimeTracking_BillableHoursGoal.Name = "NumericInputTimeTracking_BillableHoursGoal"
-            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.DisplayFormat.FormatString = "f"
-            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.EditFormat.FormatString = "f"
-            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.Mask.EditMask = "f"
-            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
-            Me.NumericInputTimeTracking_BillableHoursGoal.SecurityEnabled = True
-            Me.NumericInputTimeTracking_BillableHoursGoal.Size = New System.Drawing.Size(92, 20)
-            Me.NumericInputTimeTracking_BillableHoursGoal.TabIndex = 23
+            Me.PanelAlerts_Alerts.Controls.Add(Me.TabControlAlerts_Alerts)
+            Me.PanelAlerts_Alerts.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelAlerts_Alerts.Location = New System.Drawing.Point(1, 1)
+            Me.PanelAlerts_Alerts.Name = "PanelAlerts_Alerts"
+            Me.PanelAlerts_Alerts.Size = New System.Drawing.Size(736, 521)
+            Me.PanelAlerts_Alerts.TabIndex = 0
             '
-            'LabelTimeTracking_BillableHoursGoal
+            'TabControlAlerts_Alerts
             '
-            Me.LabelTimeTracking_BillableHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelTimeTracking_BillableHoursGoal.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelTimeTracking_BillableHoursGoal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_BillableHoursGoal.Location = New System.Drawing.Point(487, 188)
-            Me.LabelTimeTracking_BillableHoursGoal.Name = "LabelTimeTracking_BillableHoursGoal"
-            Me.LabelTimeTracking_BillableHoursGoal.Size = New System.Drawing.Size(147, 20)
-            Me.LabelTimeTracking_BillableHoursGoal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_BillableHoursGoal.TabIndex = 22
-            Me.LabelTimeTracking_BillableHoursGoal.Text = "Billable Hours Percent Goal:"
-            '
-            'CheckBoxTimeTracking_OmitFromMissingTimeTracking
-            '
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.TabControlAlerts_Alerts.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.BackColor = System.Drawing.Color.White
+            Me.TabControlAlerts_Alerts.BackColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(247, Byte), Integer))
+            Me.TabControlAlerts_Alerts.CanReorderTabs = False
+            Me.TabControlAlerts_Alerts.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlAlerts_Alerts.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanelSettingsTab_Settings)
+            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanelConceptShareTab_ConceptShare)
+            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanelAdditionalEmails_AdditionalEmails)
+            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanelAlertGroupsTab_AlertGroups)
+            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanel_CalendarTime)
+            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanel1)
+            Me.TabControlAlerts_Alerts.ForeColor = System.Drawing.Color.Black
+            Me.TabControlAlerts_Alerts.Location = New System.Drawing.Point(6, 6)
+            Me.TabControlAlerts_Alerts.Name = "TabControlAlerts_Alerts"
+            Me.TabControlAlerts_Alerts.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlAlerts_Alerts.SelectedTabIndex = 0
+            Me.TabControlAlerts_Alerts.Size = New System.Drawing.Size(724, 510)
+            Me.TabControlAlerts_Alerts.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlAlerts_Alerts.TabIndex = 0
+            Me.TabControlAlerts_Alerts.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlAlerts_Alerts.Tabs.Add(Me.TabItemAlerts_SettingsTab)
+            Me.TabControlAlerts_Alerts.Tabs.Add(Me.TabItemAlerts_AlertGroupsTab)
+            Me.TabControlAlerts_Alerts.Tabs.Add(Me.TabItemAlerts_ConceptShareTab)
+            Me.TabControlAlerts_Alerts.Tabs.Add(Me.TabItemAlerts_CalendarTimeTab)
+            Me.TabControlAlerts_Alerts.Tabs.Add(Me.TabItemAlerts_AdditionalEmailsTab)
+            Me.TabControlAlerts_Alerts.Text = "Tabcontrol"
+            '
+            'TabControlPanelConceptShareTab_ConceptShare
+            '
+            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.ButtonConceptShare_RemoveUser)
+            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.CheckBoxConceptShare_ShowPassword)
+            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.CheckBoxConceptShare_IsActive)
+            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.ButtonConceptShare_UpdateUser)
+            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.ButtonConceptShare_CreateUser)
+            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.TextBoxConceptShare_Password)
+            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.LabelConceptShare_Password)
+            Me.TabControlPanelConceptShareTab_ConceptShare.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelConceptShareTab_ConceptShare.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelConceptShareTab_ConceptShare.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelConceptShareTab_ConceptShare.Name = "TabControlPanelConceptShareTab_ConceptShare"
+            Me.TabControlPanelConceptShareTab_ConceptShare.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelConceptShareTab_ConceptShare.Size = New System.Drawing.Size(724, 483)
+            Me.TabControlPanelConceptShareTab_ConceptShare.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelConceptShareTab_ConceptShare.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelConceptShareTab_ConceptShare.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelConceptShareTab_ConceptShare.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelConceptShareTab_ConceptShare.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelConceptShareTab_ConceptShare.Style.GradientAngle = 90
+            Me.TabControlPanelConceptShareTab_ConceptShare.TabIndex = 0
+            Me.TabControlPanelConceptShareTab_ConceptShare.TabItem = Me.TabItemAlerts_ConceptShareTab
+            '
+            'ButtonConceptShare_RemoveUser
+            '
+            Me.ButtonConceptShare_RemoveUser.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonConceptShare_RemoveUser.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonConceptShare_RemoveUser.Location = New System.Drawing.Point(166, 4)
+            Me.ButtonConceptShare_RemoveUser.Name = "ButtonConceptShare_RemoveUser"
+            Me.ButtonConceptShare_RemoveUser.SecurityEnabled = True
+            Me.ButtonConceptShare_RemoveUser.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonConceptShare_RemoveUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonConceptShare_RemoveUser.TabIndex = 2
+            Me.ButtonConceptShare_RemoveUser.Text = "Remove User"
+            '
+            'CheckBoxConceptShare_ShowPassword
+            '
+            Me.CheckBoxConceptShare_ShowPassword.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.CheckBoxConceptShare_ShowPassword.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.CheckValue = 0
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.CheckValueChecked = 1
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.CheckValueUnchecked = 0
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.ChildControls = CType(resources.GetObject("CheckBoxTimeTracking_OmitFromMissingTimeTracking.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Location = New System.Drawing.Point(487, 57)
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Name = "CheckBoxTimeTracking_OmitFromMissingTimeTracking"
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.OldestSibling = Nothing
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.SecurityEnabled = True
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.SiblingControls = CType(resources.GetObject("CheckBoxTimeTracking_OmitFromMissingTimeTracking.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Size = New System.Drawing.Size(245, 20)
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.TabIndex = 12
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.TabOnEnter = True
-            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Text = "Omit from Missing Time Tracking"
+            Me.CheckBoxConceptShare_ShowPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxConceptShare_ShowPassword.CheckValue = 0
+            Me.CheckBoxConceptShare_ShowPassword.CheckValueChecked = 1
+            Me.CheckBoxConceptShare_ShowPassword.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxConceptShare_ShowPassword.CheckValueUnchecked = 0
+            Me.CheckBoxConceptShare_ShowPassword.ChildControls = CType(resources.GetObject("CheckBoxConceptShare_ShowPassword.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxConceptShare_ShowPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxConceptShare_ShowPassword.Location = New System.Drawing.Point(620, 30)
+            Me.CheckBoxConceptShare_ShowPassword.Name = "CheckBoxConceptShare_ShowPassword"
+            Me.CheckBoxConceptShare_ShowPassword.OldestSibling = Nothing
+            Me.CheckBoxConceptShare_ShowPassword.SecurityEnabled = True
+            Me.CheckBoxConceptShare_ShowPassword.SiblingControls = CType(resources.GetObject("CheckBoxConceptShare_ShowPassword.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxConceptShare_ShowPassword.Size = New System.Drawing.Size(100, 21)
+            Me.CheckBoxConceptShare_ShowPassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxConceptShare_ShowPassword.TabIndex = 5
+            Me.CheckBoxConceptShare_ShowPassword.TabOnEnter = True
+            Me.CheckBoxConceptShare_ShowPassword.Text = "Show Password"
             '
-            'SearchableComboBoxTimeTracking_DefaultFunction
+            'CheckBoxConceptShare_IsActive
             '
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.ActiveFilterString = ""
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.AddInactiveItemsOnSelectedValue = True
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.CheckBoxConceptShare_IsActive.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.AutoFillMode = False
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.BookmarkingEnabled = False
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.[Function]
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.DataSource = Nothing
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.DisableMouseWheel = False
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.DisplayName = ""
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.EnterMoveNextControl = True
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.Location = New System.Drawing.Point(487, 83)
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.Name = "SearchableComboBoxTimeTracking_DefaultFunction"
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties.DisplayMember = "Description"
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties.NullText = "Select Function"
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties.PopupView = Me.GridView3
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties.ValueMember = "Code"
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.SecurityEnabled = True
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.SelectedValue = Nothing
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.Size = New System.Drawing.Size(245, 20)
-            Me.SearchableComboBoxTimeTracking_DefaultFunction.TabIndex = 14
+            Me.CheckBoxConceptShare_IsActive.BackColor = System.Drawing.Color.White
             '
-            'GridView3
             '
-            Me.GridView3.AFActiveFilterString = ""
-            Me.GridView3.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView3.AutoFilterLookupColumns = False
-            Me.GridView3.AutoloadRepositoryDatasource = True
-            Me.GridView3.DataSourceClearing = False
-            Me.GridView3.EnableDisabledRows = False
-            Me.GridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView3.Name = "GridView3"
-            Me.GridView3.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView3.OptionsView.ShowGroupPanel = False
-            Me.GridView3.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView3.RunStandardValidation = True
-            Me.GridView3.SkipAddingControlsOnModifyColumn = False
-            Me.GridView3.SkipSettingFontOnModifyColumn = False
             '
-            'SearchableComboBoxTimeTracking_Supervisor
+            Me.CheckBoxConceptShare_IsActive.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxConceptShare_IsActive.CheckValue = 0
+            Me.CheckBoxConceptShare_IsActive.CheckValueChecked = 1
+            Me.CheckBoxConceptShare_IsActive.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxConceptShare_IsActive.CheckValueUnchecked = 0
+            Me.CheckBoxConceptShare_IsActive.ChildControls = CType(resources.GetObject("CheckBoxConceptShare_IsActive.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxConceptShare_IsActive.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxConceptShare_IsActive.Location = New System.Drawing.Point(85, 57)
+            Me.CheckBoxConceptShare_IsActive.Name = "CheckBoxConceptShare_IsActive"
+            Me.CheckBoxConceptShare_IsActive.OldestSibling = Nothing
+            Me.CheckBoxConceptShare_IsActive.SecurityEnabled = True
+            Me.CheckBoxConceptShare_IsActive.SiblingControls = CType(resources.GetObject("CheckBoxConceptShare_IsActive.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxConceptShare_IsActive.Size = New System.Drawing.Size(635, 21)
+            Me.CheckBoxConceptShare_IsActive.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxConceptShare_IsActive.TabIndex = 6
+            Me.CheckBoxConceptShare_IsActive.TabOnEnter = True
+            Me.CheckBoxConceptShare_IsActive.Text = "Is Active"
+            '
+            'ButtonConceptShare_UpdateUser
+            '
+            Me.ButtonConceptShare_UpdateUser.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonConceptShare_UpdateUser.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonConceptShare_UpdateUser.Location = New System.Drawing.Point(85, 4)
+            Me.ButtonConceptShare_UpdateUser.Name = "ButtonConceptShare_UpdateUser"
+            Me.ButtonConceptShare_UpdateUser.SecurityEnabled = True
+            Me.ButtonConceptShare_UpdateUser.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonConceptShare_UpdateUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonConceptShare_UpdateUser.TabIndex = 1
+            Me.ButtonConceptShare_UpdateUser.Text = "Update User"
+            '
+            'ButtonConceptShare_CreateUser
+            '
+            Me.ButtonConceptShare_CreateUser.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonConceptShare_CreateUser.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonConceptShare_CreateUser.Location = New System.Drawing.Point(4, 4)
+            Me.ButtonConceptShare_CreateUser.Name = "ButtonConceptShare_CreateUser"
+            Me.ButtonConceptShare_CreateUser.SecurityEnabled = True
+            Me.ButtonConceptShare_CreateUser.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonConceptShare_CreateUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonConceptShare_CreateUser.TabIndex = 0
+            Me.ButtonConceptShare_CreateUser.Text = "Create User"
+            '
+            'TextBoxConceptShare_Password
+            '
+            Me.TextBoxConceptShare_Password.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxConceptShare_Password.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxConceptShare_Password.Border.Class = "TextBoxBorder"
+            Me.TextBoxConceptShare_Password.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxConceptShare_Password.CheckSpellingOnValidate = False
+            Me.TextBoxConceptShare_Password.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxConceptShare_Password.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxConceptShare_Password.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxConceptShare_Password.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxConceptShare_Password.FocusHighlightEnabled = True
+            Me.TextBoxConceptShare_Password.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxConceptShare_Password.Location = New System.Drawing.Point(85, 30)
+            Me.TextBoxConceptShare_Password.MaxFileSize = CType(0, Long)
+            Me.TextBoxConceptShare_Password.Name = "TextBoxConceptShare_Password"
+            Me.TextBoxConceptShare_Password.SecurityEnabled = True
+            Me.TextBoxConceptShare_Password.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxConceptShare_Password.Size = New System.Drawing.Size(529, 21)
+            Me.TextBoxConceptShare_Password.StartingFolderName = Nothing
+            Me.TextBoxConceptShare_Password.TabIndex = 4
+            Me.TextBoxConceptShare_Password.TabOnEnter = True
+            Me.TextBoxConceptShare_Password.UseSystemPasswordChar = True
+            '
+            'LabelConceptShare_Password
+            '
+            Me.LabelConceptShare_Password.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelConceptShare_Password.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelConceptShare_Password.Location = New System.Drawing.Point(4, 30)
+            Me.LabelConceptShare_Password.Name = "LabelConceptShare_Password"
+            Me.LabelConceptShare_Password.Size = New System.Drawing.Size(75, 21)
+            Me.LabelConceptShare_Password.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelConceptShare_Password.TabIndex = 3
+            Me.LabelConceptShare_Password.Text = "Password:"
+            '
+            'TabItemAlerts_ConceptShareTab
+            '
+            Me.TabItemAlerts_ConceptShareTab.AttachedControl = Me.TabControlPanelConceptShareTab_ConceptShare
+            Me.TabItemAlerts_ConceptShareTab.Name = "TabItemAlerts_ConceptShareTab"
+            Me.TabItemAlerts_ConceptShareTab.Text = "ConceptShare"
+            Me.TabItemAlerts_ConceptShareTab.Visible = False
+            '
+            'TabControlPanelSettingsTab_Settings
+            '
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.CheckBoxSettings_IgnoreCalendarSync)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_VCCPassword)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_VCCUserName)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_VCCPassword)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_VCCUserName)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_VCC)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_AdobeSignatureFile)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_AdobeSignature)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.ButtonSettings_AdobeSignatureFileDelete)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.ButtonSettings_AdobeSignatureFileSelect)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_AdobeSignatureFilePassword)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_AdobeSignatureFilePassword)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_AdobeSignatureFile)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.CheckBoxSettings_IsAPIUser)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_ProofHQPassword)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_ProofHQUserName)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_ProofHQPassword)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_ProofHQUserName)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_ProofHQ)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_SugarCRMPassword)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_SugarCRMUserName)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_SugarCRMPassword)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_SugarCRMUserName)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_SugarCRM)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettingsRightColumn_EmailPassword)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettingsRightColumn_EmailUserName)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettingsRightColumn_ReplyToAddress)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettingsRightColumn_EmailAddress)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettingsRightColumn_EmailPassword)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettingsRightColumn_EmailUsername)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettingsRightColumn_ReplyToAddress)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.CheckBoxSettingsRightColumn_ReceivesAlerts)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail)
+            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettingsRightColumn_EmailAddress)
+            Me.TabControlPanelSettingsTab_Settings.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSettingsTab_Settings.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSettingsTab_Settings.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSettingsTab_Settings.Name = "TabControlPanelSettingsTab_Settings"
+            Me.TabControlPanelSettingsTab_Settings.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSettingsTab_Settings.Size = New System.Drawing.Size(724, 483)
+            Me.TabControlPanelSettingsTab_Settings.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSettingsTab_Settings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSettingsTab_Settings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSettingsTab_Settings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSettingsTab_Settings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSettingsTab_Settings.Style.GradientAngle = 90
+            Me.TabControlPanelSettingsTab_Settings.TabIndex = 0
+            Me.TabControlPanelSettingsTab_Settings.TabItem = Me.TabItemAlerts_SettingsTab
+            '
+            'CheckBoxSettings_IgnoreCalendarSync
+            '
+            Me.CheckBoxSettings_IgnoreCalendarSync.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.CheckBoxSettings_IgnoreCalendarSync.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxSettings_IgnoreCalendarSync.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxSettings_IgnoreCalendarSync.CheckValue = 0
+            Me.CheckBoxSettings_IgnoreCalendarSync.CheckValueChecked = 1
+            Me.CheckBoxSettings_IgnoreCalendarSync.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxSettings_IgnoreCalendarSync.CheckValueUnchecked = 0
+            Me.CheckBoxSettings_IgnoreCalendarSync.ChildControls = CType(resources.GetObject("CheckBoxSettings_IgnoreCalendarSync.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxSettings_IgnoreCalendarSync.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxSettings_IgnoreCalendarSync.Location = New System.Drawing.Point(432, 7)
+            Me.CheckBoxSettings_IgnoreCalendarSync.Name = "CheckBoxSettings_IgnoreCalendarSync"
+            Me.CheckBoxSettings_IgnoreCalendarSync.OldestSibling = Nothing
+            Me.CheckBoxSettings_IgnoreCalendarSync.SecurityEnabled = True
+            Me.CheckBoxSettings_IgnoreCalendarSync.SiblingControls = CType(resources.GetObject("CheckBoxSettings_IgnoreCalendarSync.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxSettings_IgnoreCalendarSync.Size = New System.Drawing.Size(286, 20)
+            Me.CheckBoxSettings_IgnoreCalendarSync.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxSettings_IgnoreCalendarSync.TabIndex = 3
+            Me.CheckBoxSettings_IgnoreCalendarSync.TabOnEnter = True
+            Me.CheckBoxSettings_IgnoreCalendarSync.Text = "Ignore Calendar Sync"
+            '
+            'TextBoxSettings_VCCPassword
+            '
+            Me.TextBoxSettings_VCCPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxSettings_VCCPassword.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxSettings_VCCPassword.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettings_VCCPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettings_VCCPassword.CheckSpellingOnValidate = False
+            Me.TextBoxSettings_VCCPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxSettings_VCCPassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettings_VCCPassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettings_VCCPassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettings_VCCPassword.FocusHighlightEnabled = True
+            Me.TextBoxSettings_VCCPassword.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettings_VCCPassword.Location = New System.Drawing.Point(115, 427)
+            Me.TextBoxSettings_VCCPassword.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettings_VCCPassword.Name = "TextBoxSettings_VCCPassword"
+            Me.TextBoxSettings_VCCPassword.SecurityEnabled = True
+            Me.TextBoxSettings_VCCPassword.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettings_VCCPassword.Size = New System.Drawing.Size(603, 21)
+            Me.TextBoxSettings_VCCPassword.StartingFolderName = Nothing
+            Me.TextBoxSettings_VCCPassword.TabIndex = 33
+            Me.TextBoxSettings_VCCPassword.TabOnEnter = True
+            Me.TextBoxSettings_VCCPassword.UseSystemPasswordChar = True
+            '
+            'TextBoxSettings_VCCUserName
+            '
+            Me.TextBoxSettings_VCCUserName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxSettings_VCCUserName.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettings_VCCUserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettings_VCCUserName.CheckSpellingOnValidate = False
+            Me.TextBoxSettings_VCCUserName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxSettings_VCCUserName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettings_VCCUserName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettings_VCCUserName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettings_VCCUserName.FocusHighlightEnabled = True
+            Me.TextBoxSettings_VCCUserName.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettings_VCCUserName.Location = New System.Drawing.Point(115, 400)
+            Me.TextBoxSettings_VCCUserName.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettings_VCCUserName.Name = "TextBoxSettings_VCCUserName"
+            Me.TextBoxSettings_VCCUserName.SecurityEnabled = True
+            Me.TextBoxSettings_VCCUserName.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettings_VCCUserName.Size = New System.Drawing.Size(603, 21)
+            Me.TextBoxSettings_VCCUserName.StartingFolderName = Nothing
+            Me.TextBoxSettings_VCCUserName.TabIndex = 31
+            Me.TextBoxSettings_VCCUserName.TabOnEnter = True
+            '
+            'LabelSettings_VCCPassword
+            '
+            Me.LabelSettings_VCCPassword.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettings_VCCPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_VCCPassword.Location = New System.Drawing.Point(7, 427)
+            Me.LabelSettings_VCCPassword.Name = "LabelSettings_VCCPassword"
+            Me.LabelSettings_VCCPassword.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettings_VCCPassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_VCCPassword.TabIndex = 32
+            Me.LabelSettings_VCCPassword.Text = "Password:"
+            '
+            'LabelSettings_VCCUserName
+            '
+            Me.LabelSettings_VCCUserName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettings_VCCUserName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_VCCUserName.Location = New System.Drawing.Point(7, 401)
+            Me.LabelSettings_VCCUserName.Name = "LabelSettings_VCCUserName"
+            Me.LabelSettings_VCCUserName.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettings_VCCUserName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_VCCUserName.TabIndex = 30
+            Me.LabelSettings_VCCUserName.Text = "User Name:"
+            '
+            'LabelSettings_VCC
+            '
+            Me.LabelSettings_VCC.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelSettings_VCC.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettings_VCC.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_VCC.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelSettings_VCC.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelSettings_VCC.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_VCC.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_VCC.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_VCC.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_VCC.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelSettings_VCC.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelSettings_VCC.Location = New System.Drawing.Point(7, 374)
+            Me.LabelSettings_VCC.Name = "LabelSettings_VCC"
+            Me.LabelSettings_VCC.Size = New System.Drawing.Size(711, 20)
+            Me.LabelSettings_VCC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_VCC.TabIndex = 29
+            Me.LabelSettings_VCC.Text = "VCC"
+            '
+            'TextBoxSettings_AdobeSignatureFile
+            '
+            Me.TextBoxSettings_AdobeSignatureFile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxSettings_AdobeSignatureFile.BackColor = System.Drawing.Color.White
             '
             Me.SearchableComboBoxTimeTracking_Supervisor.ActiveFilterString = ""
             Me.SearchableComboBoxTimeTracking_Supervisor.AddInactiveItemsOnSelectedValue = True
@@ -600,42 +856,29 @@
             '
             'GridView2
             '
-            Me.GridView2.AFActiveFilterString = ""
-            Me.GridView2.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView2.AutoFilterLookupColumns = False
-            Me.GridView2.AutoloadRepositoryDatasource = True
-            Me.GridView2.DataSourceClearing = False
-            Me.GridView2.EnableDisabledRows = False
-            Me.GridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView2.Name = "GridView2"
-            Me.GridView2.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView2.OptionsView.ShowGroupPanel = False
-            Me.GridView2.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView2.RunStandardValidation = True
-            Me.GridView2.SkipAddingControlsOnModifyColumn = False
-            Me.GridView2.SkipSettingFontOnModifyColumn = False
+            Me.TextBoxSettings_AdobeSignatureFile.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettings_AdobeSignatureFile.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettings_AdobeSignatureFile.CheckSpellingOnValidate = False
+            Me.TextBoxSettings_AdobeSignatureFile.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxSettings_AdobeSignatureFile.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettings_AdobeSignatureFile.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettings_AdobeSignatureFile.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettings_AdobeSignatureFile.FocusHighlightEnabled = True
+            Me.TextBoxSettings_AdobeSignatureFile.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettings_AdobeSignatureFile.Location = New System.Drawing.Point(277, 322)
+            Me.TextBoxSettings_AdobeSignatureFile.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettings_AdobeSignatureFile.Name = "TextBoxSettings_AdobeSignatureFile"
+            Me.TextBoxSettings_AdobeSignatureFile.SecurityEnabled = True
+            Me.TextBoxSettings_AdobeSignatureFile.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettings_AdobeSignatureFile.Size = New System.Drawing.Size(441, 21)
+            Me.TextBoxSettings_AdobeSignatureFile.StartingFolderName = Nothing
+            Me.TextBoxSettings_AdobeSignatureFile.TabIndex = 26
+            Me.TextBoxSettings_AdobeSignatureFile.TabOnEnter = True
+            Me.TextBoxSettings_AdobeSignatureFile.Visible = False
             '
-            'NumericInputTimeTracking_SeniorityPriority
+            'LabelSettings_AdobeSignature
             '
-            Me.NumericInputTimeTracking_SeniorityPriority.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputTimeTracking_SeniorityPriority.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Integer]
-            Me.NumericInputTimeTracking_SeniorityPriority.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputTimeTracking_SeniorityPriority.EnterMoveNextControl = True
-            Me.NumericInputTimeTracking_SeniorityPriority.Location = New System.Drawing.Point(109, 83)
-            Me.NumericInputTimeTracking_SeniorityPriority.Name = "NumericInputTimeTracking_SeniorityPriority"
-            Me.NumericInputTimeTracking_SeniorityPriority.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-            Me.NumericInputTimeTracking_SeniorityPriority.Properties.DisplayFormat.FormatString = "f0"
-            Me.NumericInputTimeTracking_SeniorityPriority.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputTimeTracking_SeniorityPriority.Properties.EditFormat.FormatString = "f0"
-            Me.NumericInputTimeTracking_SeniorityPriority.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputTimeTracking_SeniorityPriority.Properties.IsFloatValue = False
-            Me.NumericInputTimeTracking_SeniorityPriority.Properties.Mask.EditMask = "f0"
-            Me.NumericInputTimeTracking_SeniorityPriority.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputTimeTracking_SeniorityPriority.Properties.MaxValue = New Decimal(New Integer() {2147483647, 0, 0, 0})
-            Me.NumericInputTimeTracking_SeniorityPriority.Properties.MinValue = New Decimal(New Integer() {-2147483648, 0, 0, -2147483648})
-            Me.NumericInputTimeTracking_SeniorityPriority.SecurityEnabled = True
-            Me.NumericInputTimeTracking_SeniorityPriority.Size = New System.Drawing.Size(255, 20)
-            Me.NumericInputTimeTracking_SeniorityPriority.TabIndex = 8
+            Me.LabelSettings_AdobeSignature.BackColor = System.Drawing.Color.White
             '
             'NumericInputTimeTracking_DirectHoursGoal
             '
@@ -657,431 +900,1133 @@
             Me.NumericInputTimeTracking_DirectHoursGoal.Size = New System.Drawing.Size(92, 20)
             Me.NumericInputTimeTracking_DirectHoursGoal.TabIndex = 25
             '
-            'NumericInputTimeTracking_MonthlyBillableHoursGoal
+            Me.LabelSettings_AdobeSignature.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_AdobeSignature.Location = New System.Drawing.Point(6, 322)
+            Me.LabelSettings_AdobeSignature.Name = "LabelSettings_AdobeSignature"
+            Me.LabelSettings_AdobeSignature.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettings_AdobeSignature.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_AdobeSignature.TabIndex = 23
+            Me.LabelSettings_AdobeSignature.Text = "File:"
             '
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.EnterMoveNextControl = True
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Location = New System.Drawing.Point(640, 162)
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Name = "NumericInputTimeTracking_MonthlyBillableHoursGoal"
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.DisplayFormat.FormatString = "f"
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.EditFormat.FormatString = "f"
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.Mask.EditMask = "f"
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.SecurityEnabled = True
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Size = New System.Drawing.Size(92, 20)
-            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.TabIndex = 21
+            'ButtonSettings_AdobeSignatureFileDelete
             '
-            'NumericInputTimeTracking_StandardAnnualHours
+            Me.ButtonSettings_AdobeSignatureFileDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSettings_AdobeSignatureFileDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSettings_AdobeSignatureFileDelete.Location = New System.Drawing.Point(196, 322)
+            Me.ButtonSettings_AdobeSignatureFileDelete.Name = "ButtonSettings_AdobeSignatureFileDelete"
+            Me.ButtonSettings_AdobeSignatureFileDelete.SecurityEnabled = True
+            Me.ButtonSettings_AdobeSignatureFileDelete.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSettings_AdobeSignatureFileDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSettings_AdobeSignatureFileDelete.TabIndex = 25
+            Me.ButtonSettings_AdobeSignatureFileDelete.Text = "Delete"
             '
-            Me.NumericInputTimeTracking_StandardAnnualHours.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputTimeTracking_StandardAnnualHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.NumericInputTimeTracking_StandardAnnualHours.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
-            Me.NumericInputTimeTracking_StandardAnnualHours.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputTimeTracking_StandardAnnualHours.EnterMoveNextControl = True
-            Me.NumericInputTimeTracking_StandardAnnualHours.Location = New System.Drawing.Point(640, 136)
-            Me.NumericInputTimeTracking_StandardAnnualHours.Name = "NumericInputTimeTracking_StandardAnnualHours"
-            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.DisplayFormat.FormatString = "f"
-            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.EditFormat.FormatString = "f"
-            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.Mask.EditMask = "f"
-            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputTimeTracking_StandardAnnualHours.SecurityEnabled = True
-            Me.NumericInputTimeTracking_StandardAnnualHours.Size = New System.Drawing.Size(92, 20)
-            Me.NumericInputTimeTracking_StandardAnnualHours.TabIndex = 19
+            'ButtonSettings_AdobeSignatureFileSelect
             '
-            'LabelTimeTracking_StandardAnnualHours
+            Me.ButtonSettings_AdobeSignatureFileSelect.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSettings_AdobeSignatureFileSelect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSettings_AdobeSignatureFileSelect.Location = New System.Drawing.Point(115, 322)
+            Me.ButtonSettings_AdobeSignatureFileSelect.Name = "ButtonSettings_AdobeSignatureFileSelect"
+            Me.ButtonSettings_AdobeSignatureFileSelect.SecurityEnabled = True
+            Me.ButtonSettings_AdobeSignatureFileSelect.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSettings_AdobeSignatureFileSelect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSettings_AdobeSignatureFileSelect.TabIndex = 24
+            Me.ButtonSettings_AdobeSignatureFileSelect.Text = "Select"
             '
-            Me.LabelTimeTracking_StandardAnnualHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelTimeTracking_StandardAnnualHours.BackColor = System.Drawing.Color.White
+            'TextBoxSettings_AdobeSignatureFilePassword
             '
-            '
-            '
-            Me.LabelTimeTracking_StandardAnnualHours.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_StandardAnnualHours.Location = New System.Drawing.Point(487, 136)
-            Me.LabelTimeTracking_StandardAnnualHours.Name = "LabelTimeTracking_StandardAnnualHours"
-            Me.LabelTimeTracking_StandardAnnualHours.Size = New System.Drawing.Size(147, 20)
-            Me.LabelTimeTracking_StandardAnnualHours.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_StandardAnnualHours.TabIndex = 18
-            Me.LabelTimeTracking_StandardAnnualHours.Text = "Standard Annual Hours:"
-            '
-            'LabelTimeTracking_DirectHoursGoal
-            '
-            Me.LabelTimeTracking_DirectHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelTimeTracking_DirectHoursGoal.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelTimeTracking_DirectHoursGoal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_DirectHoursGoal.Location = New System.Drawing.Point(487, 214)
-            Me.LabelTimeTracking_DirectHoursGoal.Name = "LabelTimeTracking_DirectHoursGoal"
-            Me.LabelTimeTracking_DirectHoursGoal.Size = New System.Drawing.Size(147, 20)
-            Me.LabelTimeTracking_DirectHoursGoal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_DirectHoursGoal.TabIndex = 24
-            Me.LabelTimeTracking_DirectHoursGoal.Text = "Direct Hours Percent Goal:"
-            '
-            'LabelTimeTracking_MonthlyBillableHoursGoal
-            '
-            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelTimeTracking_MonthlyBillableHoursGoal.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelTimeTracking_MonthlyBillableHoursGoal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Location = New System.Drawing.Point(487, 162)
-            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Name = "LabelTimeTracking_MonthlyBillableHoursGoal"
-            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Size = New System.Drawing.Size(147, 20)
-            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_MonthlyBillableHoursGoal.TabIndex = 20
-            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Text = "Monthly Billable Hours Goal:"
-            '
-            'LabelTimeTracking_HoursGoals
-            '
-            Me.LabelTimeTracking_HoursGoals.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelTimeTracking_HoursGoals.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_HoursGoals.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelTimeTracking_HoursGoals.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelTimeTracking_HoursGoals.Location = New System.Drawing.Point(487, 110)
-            Me.LabelTimeTracking_HoursGoals.Name = "LabelTimeTracking_HoursGoals"
-            Me.LabelTimeTracking_HoursGoals.Size = New System.Drawing.Size(245, 20)
-            Me.LabelTimeTracking_HoursGoals.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_HoursGoals.TabIndex = 17
-            Me.LabelTimeTracking_HoursGoals.Text = "Hours Goals"
-            '
-            'CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet
-            '
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.TextBoxSettings_AdobeSignatureFilePassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.BackColor = System.Drawing.Color.White
+            Me.TextBoxSettings_AdobeSignatureFilePassword.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.CheckValue = 0
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.CheckValueChecked = 1
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.CheckValueUnchecked = 0
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.ChildControls = CType(resources.GetObject("CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Location = New System.Drawing.Point(487, 31)
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Name = "CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet"
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.OldestSibling = Nothing
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.SecurityEnabled = True
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.SiblingControls = CType(resources.GetObject("CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Size = New System.Drawing.Size(245, 20)
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.TabIndex = 11
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.TabOnEnter = True
-            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Text = "Activate Missing Time Alert on Timesheet"
+            Me.TextBoxSettings_AdobeSignatureFilePassword.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettings_AdobeSignatureFilePassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettings_AdobeSignatureFilePassword.CheckSpellingOnValidate = False
+            Me.TextBoxSettings_AdobeSignatureFilePassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxSettings_AdobeSignatureFilePassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettings_AdobeSignatureFilePassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettings_AdobeSignatureFilePassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettings_AdobeSignatureFilePassword.FocusHighlightEnabled = True
+            Me.TextBoxSettings_AdobeSignatureFilePassword.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettings_AdobeSignatureFilePassword.Location = New System.Drawing.Point(114, 348)
+            Me.TextBoxSettings_AdobeSignatureFilePassword.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettings_AdobeSignatureFilePassword.Name = "TextBoxSettings_AdobeSignatureFilePassword"
+            Me.TextBoxSettings_AdobeSignatureFilePassword.SecurityEnabled = True
+            Me.TextBoxSettings_AdobeSignatureFilePassword.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettings_AdobeSignatureFilePassword.Size = New System.Drawing.Size(604, 21)
+            Me.TextBoxSettings_AdobeSignatureFilePassword.StartingFolderName = Nothing
+            Me.TextBoxSettings_AdobeSignatureFilePassword.TabIndex = 28
+            Me.TextBoxSettings_AdobeSignatureFilePassword.TabOnEnter = True
+            Me.TextBoxSettings_AdobeSignatureFilePassword.UseSystemPasswordChar = True
             '
-            'ComboBoxTimeTracking_ReportMissingTime
+            'LabelSettings_AdobeSignatureFilePassword
             '
-            Me.ComboBoxTimeTracking_ReportMissingTime.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxTimeTracking_ReportMissingTime.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.LabelSettings_AdobeSignatureFilePassword.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettings_AdobeSignatureFilePassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_AdobeSignatureFilePassword.Location = New System.Drawing.Point(6, 348)
+            Me.LabelSettings_AdobeSignatureFilePassword.Name = "LabelSettings_AdobeSignatureFilePassword"
+            Me.LabelSettings_AdobeSignatureFilePassword.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettings_AdobeSignatureFilePassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_AdobeSignatureFilePassword.TabIndex = 27
+            Me.LabelSettings_AdobeSignatureFilePassword.Text = "Password:"
+            '
+            'LabelSettings_AdobeSignatureFile
+            '
+            Me.LabelSettings_AdobeSignatureFile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.ComboBoxTimeTracking_ReportMissingTime.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-            Me.ComboBoxTimeTracking_ReportMissingTime.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxTimeTracking_ReportMissingTime.AutoFindItemInDataSource = False
-            Me.ComboBoxTimeTracking_ReportMissingTime.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxTimeTracking_ReportMissingTime.BookmarkingEnabled = False
-            Me.ComboBoxTimeTracking_ReportMissingTime.ClientCode = ""
-            Me.ComboBoxTimeTracking_ReportMissingTime.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.ReportMissingTime
-            Me.ComboBoxTimeTracking_ReportMissingTime.DisableMouseWheel = False
-            Me.ComboBoxTimeTracking_ReportMissingTime.DisplayMember = "Value"
-            Me.ComboBoxTimeTracking_ReportMissingTime.DisplayName = ""
-            Me.ComboBoxTimeTracking_ReportMissingTime.DivisionCode = ""
-            Me.ComboBoxTimeTracking_ReportMissingTime.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxTimeTracking_ReportMissingTime.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.ComboBoxTimeTracking_ReportMissingTime.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.AgencyDefault
-            Me.ComboBoxTimeTracking_ReportMissingTime.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxTimeTracking_ReportMissingTime.FocusHighlightEnabled = True
-            Me.ComboBoxTimeTracking_ReportMissingTime.FormattingEnabled = True
-            Me.ComboBoxTimeTracking_ReportMissingTime.ItemHeight = 15
-            Me.ComboBoxTimeTracking_ReportMissingTime.Location = New System.Drawing.Point(487, 5)
-            Me.ComboBoxTimeTracking_ReportMissingTime.Name = "ComboBoxTimeTracking_ReportMissingTime"
-            Me.ComboBoxTimeTracking_ReportMissingTime.ReadOnly = False
-            Me.ComboBoxTimeTracking_ReportMissingTime.SecurityEnabled = True
-            Me.ComboBoxTimeTracking_ReportMissingTime.Size = New System.Drawing.Size(245, 21)
-            Me.ComboBoxTimeTracking_ReportMissingTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxTimeTracking_ReportMissingTime.TabIndex = 10
-            Me.ComboBoxTimeTracking_ReportMissingTime.TabOnEnter = True
-            Me.ComboBoxTimeTracking_ReportMissingTime.ValueMember = "Key"
-            Me.ComboBoxTimeTracking_ReportMissingTime.WatermarkText = "Select Report Missing Time"
+            Me.LabelSettings_AdobeSignatureFile.BackColor = System.Drawing.Color.White
             '
-            'RadioButtonControlTimeTracking_EmployeeStatusNonExempt
+            '
+            '
+            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_AdobeSignatureFile.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelSettings_AdobeSignatureFile.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelSettings_AdobeSignatureFile.Location = New System.Drawing.Point(7, 296)
+            Me.LabelSettings_AdobeSignatureFile.Name = "LabelSettings_AdobeSignatureFile"
+            Me.LabelSettings_AdobeSignatureFile.Size = New System.Drawing.Size(711, 20)
+            Me.LabelSettings_AdobeSignatureFile.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_AdobeSignatureFile.TabIndex = 22
+            Me.LabelSettings_AdobeSignatureFile.Text = "Adobe Signature File"
+            '
+            'CheckBoxSettings_IsAPIUser
+            '
+            Me.CheckBoxSettings_IsAPIUser.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxSettings_IsAPIUser.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxSettings_IsAPIUser.CheckValue = 0
+            Me.CheckBoxSettings_IsAPIUser.CheckValueChecked = 1
+            Me.CheckBoxSettings_IsAPIUser.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxSettings_IsAPIUser.CheckValueUnchecked = 0
+            Me.CheckBoxSettings_IsAPIUser.ChildControls = CType(resources.GetObject("CheckBoxSettings_IsAPIUser.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxSettings_IsAPIUser.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxSettings_IsAPIUser.Location = New System.Drawing.Point(326, 7)
+            Me.CheckBoxSettings_IsAPIUser.Name = "CheckBoxSettings_IsAPIUser"
+            Me.CheckBoxSettings_IsAPIUser.OldestSibling = Nothing
+            Me.CheckBoxSettings_IsAPIUser.SecurityEnabled = True
+            Me.CheckBoxSettings_IsAPIUser.SiblingControls = CType(resources.GetObject("CheckBoxSettings_IsAPIUser.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxSettings_IsAPIUser.Size = New System.Drawing.Size(100, 20)
+            Me.CheckBoxSettings_IsAPIUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxSettings_IsAPIUser.TabIndex = 2
+            Me.CheckBoxSettings_IsAPIUser.TabOnEnter = True
+            Me.CheckBoxSettings_IsAPIUser.Text = "Is API User"
+            '
+            'TextBoxSettings_ProofHQPassword
+            '
+            Me.TextBoxSettings_ProofHQPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxSettings_ProofHQPassword.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxSettings_ProofHQPassword.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettings_ProofHQPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettings_ProofHQPassword.CheckSpellingOnValidate = False
+            Me.TextBoxSettings_ProofHQPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxSettings_ProofHQPassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettings_ProofHQPassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettings_ProofHQPassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettings_ProofHQPassword.FocusHighlightEnabled = True
+            Me.TextBoxSettings_ProofHQPassword.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettings_ProofHQPassword.Location = New System.Drawing.Point(115, 269)
+            Me.TextBoxSettings_ProofHQPassword.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettings_ProofHQPassword.Name = "TextBoxSettings_ProofHQPassword"
+            Me.TextBoxSettings_ProofHQPassword.SecurityEnabled = True
+            Me.TextBoxSettings_ProofHQPassword.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettings_ProofHQPassword.Size = New System.Drawing.Size(603, 21)
+            Me.TextBoxSettings_ProofHQPassword.StartingFolderName = Nothing
+            Me.TextBoxSettings_ProofHQPassword.TabIndex = 21
+            Me.TextBoxSettings_ProofHQPassword.TabOnEnter = True
+            Me.TextBoxSettings_ProofHQPassword.UseSystemPasswordChar = True
+            '
+            'TextBoxSettings_ProofHQUserName
+            '
+            Me.TextBoxSettings_ProofHQUserName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxSettings_ProofHQUserName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxSettings_ProofHQUserName.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettings_ProofHQUserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettings_ProofHQUserName.CheckSpellingOnValidate = False
+            Me.TextBoxSettings_ProofHQUserName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxSettings_ProofHQUserName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettings_ProofHQUserName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettings_ProofHQUserName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettings_ProofHQUserName.FocusHighlightEnabled = True
+            Me.TextBoxSettings_ProofHQUserName.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettings_ProofHQUserName.Location = New System.Drawing.Point(115, 243)
+            Me.TextBoxSettings_ProofHQUserName.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettings_ProofHQUserName.Name = "TextBoxSettings_ProofHQUserName"
+            Me.TextBoxSettings_ProofHQUserName.SecurityEnabled = True
+            Me.TextBoxSettings_ProofHQUserName.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettings_ProofHQUserName.Size = New System.Drawing.Size(603, 21)
+            Me.TextBoxSettings_ProofHQUserName.StartingFolderName = Nothing
+            Me.TextBoxSettings_ProofHQUserName.TabIndex = 19
+            Me.TextBoxSettings_ProofHQUserName.TabOnEnter = True
+            '
+            'LabelSettings_ProofHQPassword
+            '
+            Me.LabelSettings_ProofHQPassword.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettings_ProofHQPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_ProofHQPassword.Location = New System.Drawing.Point(7, 268)
+            Me.LabelSettings_ProofHQPassword.Name = "LabelSettings_ProofHQPassword"
+            Me.LabelSettings_ProofHQPassword.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettings_ProofHQPassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_ProofHQPassword.TabIndex = 20
+            Me.LabelSettings_ProofHQPassword.Text = "Password:"
+            '
+            'LabelSettings_ProofHQUserName
+            '
+            Me.LabelSettings_ProofHQUserName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettings_ProofHQUserName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_ProofHQUserName.Location = New System.Drawing.Point(7, 242)
+            Me.LabelSettings_ProofHQUserName.Name = "LabelSettings_ProofHQUserName"
+            Me.LabelSettings_ProofHQUserName.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettings_ProofHQUserName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_ProofHQUserName.TabIndex = 18
+            Me.LabelSettings_ProofHQUserName.Text = "User Name:"
+            '
+            'LabelSettings_ProofHQ
+            '
+            Me.LabelSettings_ProofHQ.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelSettings_ProofHQ.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_ProofHQ.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_ProofHQ.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelSettings_ProofHQ.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelSettings_ProofHQ.Location = New System.Drawing.Point(7, 216)
+            Me.LabelSettings_ProofHQ.Name = "LabelSettings_ProofHQ"
+            Me.LabelSettings_ProofHQ.Size = New System.Drawing.Size(711, 20)
+            Me.LabelSettings_ProofHQ.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_ProofHQ.TabIndex = 17
+            Me.LabelSettings_ProofHQ.Text = "Proof HQ"
+            '
+            'TextBoxSettings_SugarCRMPassword
+            '
+            Me.TextBoxSettings_SugarCRMPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxSettings_SugarCRMPassword.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxSettings_SugarCRMPassword.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettings_SugarCRMPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettings_SugarCRMPassword.CheckSpellingOnValidate = False
+            Me.TextBoxSettings_SugarCRMPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxSettings_SugarCRMPassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettings_SugarCRMPassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettings_SugarCRMPassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettings_SugarCRMPassword.FocusHighlightEnabled = True
+            Me.TextBoxSettings_SugarCRMPassword.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettings_SugarCRMPassword.Location = New System.Drawing.Point(114, 190)
+            Me.TextBoxSettings_SugarCRMPassword.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettings_SugarCRMPassword.Name = "TextBoxSettings_SugarCRMPassword"
+            Me.TextBoxSettings_SugarCRMPassword.SecurityEnabled = True
+            Me.TextBoxSettings_SugarCRMPassword.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettings_SugarCRMPassword.Size = New System.Drawing.Size(604, 21)
+            Me.TextBoxSettings_SugarCRMPassword.StartingFolderName = Nothing
+            Me.TextBoxSettings_SugarCRMPassword.TabIndex = 16
+            Me.TextBoxSettings_SugarCRMPassword.TabOnEnter = True
+            Me.TextBoxSettings_SugarCRMPassword.UseSystemPasswordChar = True
+            '
+            'TextBoxSettings_SugarCRMUserName
+            '
+            Me.TextBoxSettings_SugarCRMUserName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxSettings_SugarCRMUserName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxSettings_SugarCRMUserName.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettings_SugarCRMUserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettings_SugarCRMUserName.CheckSpellingOnValidate = False
+            Me.TextBoxSettings_SugarCRMUserName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxSettings_SugarCRMUserName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettings_SugarCRMUserName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettings_SugarCRMUserName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettings_SugarCRMUserName.FocusHighlightEnabled = True
+            Me.TextBoxSettings_SugarCRMUserName.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettings_SugarCRMUserName.Location = New System.Drawing.Point(114, 164)
+            Me.TextBoxSettings_SugarCRMUserName.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettings_SugarCRMUserName.Name = "TextBoxSettings_SugarCRMUserName"
+            Me.TextBoxSettings_SugarCRMUserName.SecurityEnabled = True
+            Me.TextBoxSettings_SugarCRMUserName.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettings_SugarCRMUserName.Size = New System.Drawing.Size(604, 21)
+            Me.TextBoxSettings_SugarCRMUserName.StartingFolderName = Nothing
+            Me.TextBoxSettings_SugarCRMUserName.TabIndex = 14
+            Me.TextBoxSettings_SugarCRMUserName.TabOnEnter = True
+            '
+            'LabelSettings_SugarCRMPassword
+            '
+            Me.LabelSettings_SugarCRMPassword.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettings_SugarCRMPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_SugarCRMPassword.Location = New System.Drawing.Point(6, 189)
+            Me.LabelSettings_SugarCRMPassword.Name = "LabelSettings_SugarCRMPassword"
+            Me.LabelSettings_SugarCRMPassword.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettings_SugarCRMPassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_SugarCRMPassword.TabIndex = 15
+            Me.LabelSettings_SugarCRMPassword.Text = "Password:"
+            '
+            'LabelSettings_SugarCRMUserName
+            '
+            Me.LabelSettings_SugarCRMUserName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettings_SugarCRMUserName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_SugarCRMUserName.Location = New System.Drawing.Point(6, 163)
+            Me.LabelSettings_SugarCRMUserName.Name = "LabelSettings_SugarCRMUserName"
+            Me.LabelSettings_SugarCRMUserName.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettings_SugarCRMUserName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_SugarCRMUserName.TabIndex = 13
+            Me.LabelSettings_SugarCRMUserName.Text = "User Name:"
+            '
+            'LabelSettings_SugarCRM
+            '
+            Me.LabelSettings_SugarCRM.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelSettings_SugarCRM.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelSettings_SugarCRM.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettings_SugarCRM.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelSettings_SugarCRM.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelSettings_SugarCRM.Location = New System.Drawing.Point(6, 137)
+            Me.LabelSettings_SugarCRM.Name = "LabelSettings_SugarCRM"
+            Me.LabelSettings_SugarCRM.Size = New System.Drawing.Size(712, 20)
+            Me.LabelSettings_SugarCRM.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettings_SugarCRM.TabIndex = 12
+            Me.LabelSettings_SugarCRM.Text = "SugarCRM"
+            '
+            'TextBoxSettingsRightColumn_EmailPassword
+            '
+            Me.TextBoxSettingsRightColumn_EmailPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxSettingsRightColumn_EmailPassword.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxSettingsRightColumn_EmailPassword.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettingsRightColumn_EmailPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettingsRightColumn_EmailPassword.CheckSpellingOnValidate = False
+            Me.TextBoxSettingsRightColumn_EmailPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxSettingsRightColumn_EmailPassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettingsRightColumn_EmailPassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettingsRightColumn_EmailPassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettingsRightColumn_EmailPassword.FocusHighlightEnabled = True
+            Me.TextBoxSettingsRightColumn_EmailPassword.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettingsRightColumn_EmailPassword.Location = New System.Drawing.Point(114, 111)
+            Me.TextBoxSettingsRightColumn_EmailPassword.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettingsRightColumn_EmailPassword.Name = "TextBoxSettingsRightColumn_EmailPassword"
+            Me.TextBoxSettingsRightColumn_EmailPassword.SecurityEnabled = True
+            Me.TextBoxSettingsRightColumn_EmailPassword.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettingsRightColumn_EmailPassword.Size = New System.Drawing.Size(604, 21)
+            Me.TextBoxSettingsRightColumn_EmailPassword.StartingFolderName = Nothing
+            Me.TextBoxSettingsRightColumn_EmailPassword.TabIndex = 11
+            Me.TextBoxSettingsRightColumn_EmailPassword.TabOnEnter = True
+            Me.TextBoxSettingsRightColumn_EmailPassword.UseSystemPasswordChar = True
+            '
+            'TextBoxSettingsRightColumn_EmailUserName
+            '
+            Me.TextBoxSettingsRightColumn_EmailUserName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxSettingsRightColumn_EmailUserName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxSettingsRightColumn_EmailUserName.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettingsRightColumn_EmailUserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettingsRightColumn_EmailUserName.CheckSpellingOnValidate = False
+            Me.TextBoxSettingsRightColumn_EmailUserName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxSettingsRightColumn_EmailUserName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettingsRightColumn_EmailUserName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettingsRightColumn_EmailUserName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettingsRightColumn_EmailUserName.FocusHighlightEnabled = True
+            Me.TextBoxSettingsRightColumn_EmailUserName.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettingsRightColumn_EmailUserName.Location = New System.Drawing.Point(114, 85)
+            Me.TextBoxSettingsRightColumn_EmailUserName.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettingsRightColumn_EmailUserName.Name = "TextBoxSettingsRightColumn_EmailUserName"
+            Me.TextBoxSettingsRightColumn_EmailUserName.SecurityEnabled = True
+            Me.TextBoxSettingsRightColumn_EmailUserName.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettingsRightColumn_EmailUserName.Size = New System.Drawing.Size(604, 21)
+            Me.TextBoxSettingsRightColumn_EmailUserName.StartingFolderName = Nothing
+            Me.TextBoxSettingsRightColumn_EmailUserName.TabIndex = 9
+            Me.TextBoxSettingsRightColumn_EmailUserName.TabOnEnter = True
+            '
+            'TextBoxSettingsRightColumn_ReplyToAddress
+            '
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.CheckSpellingOnValidate = False
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.FocusHighlightEnabled = True
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.Location = New System.Drawing.Point(114, 59)
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.Name = "TextBoxSettingsRightColumn_ReplyToAddress"
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.SecurityEnabled = True
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.Size = New System.Drawing.Size(604, 21)
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.StartingFolderName = Nothing
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.TabIndex = 7
+            Me.TextBoxSettingsRightColumn_ReplyToAddress.TabOnEnter = True
+            '
+            'TextBoxSettingsRightColumn_EmailAddress
+            '
+            Me.TextBoxSettingsRightColumn_EmailAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxSettingsRightColumn_EmailAddress.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxSettingsRightColumn_EmailAddress.Border.Class = "TextBoxBorder"
+            Me.TextBoxSettingsRightColumn_EmailAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxSettingsRightColumn_EmailAddress.CheckSpellingOnValidate = False
+            Me.TextBoxSettingsRightColumn_EmailAddress.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
+            Me.TextBoxSettingsRightColumn_EmailAddress.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxSettingsRightColumn_EmailAddress.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxSettingsRightColumn_EmailAddress.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxSettingsRightColumn_EmailAddress.FocusHighlightEnabled = True
+            Me.TextBoxSettingsRightColumn_EmailAddress.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxSettingsRightColumn_EmailAddress.Location = New System.Drawing.Point(114, 32)
+            Me.TextBoxSettingsRightColumn_EmailAddress.MaxFileSize = CType(0, Long)
+            Me.TextBoxSettingsRightColumn_EmailAddress.Name = "TextBoxSettingsRightColumn_EmailAddress"
+            Me.TextBoxSettingsRightColumn_EmailAddress.SecurityEnabled = True
+            Me.TextBoxSettingsRightColumn_EmailAddress.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxSettingsRightColumn_EmailAddress.Size = New System.Drawing.Size(604, 21)
+            Me.TextBoxSettingsRightColumn_EmailAddress.StartingFolderName = Nothing
+            Me.TextBoxSettingsRightColumn_EmailAddress.TabIndex = 5
+            Me.TextBoxSettingsRightColumn_EmailAddress.TabOnEnter = True
+            '
+            'LabelSettingsRightColumn_EmailPassword
+            '
+            Me.LabelSettingsRightColumn_EmailPassword.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettingsRightColumn_EmailPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettingsRightColumn_EmailPassword.Location = New System.Drawing.Point(6, 110)
+            Me.LabelSettingsRightColumn_EmailPassword.Name = "LabelSettingsRightColumn_EmailPassword"
+            Me.LabelSettingsRightColumn_EmailPassword.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettingsRightColumn_EmailPassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettingsRightColumn_EmailPassword.TabIndex = 10
+            Me.LabelSettingsRightColumn_EmailPassword.Text = "Email Password:"
+            '
+            'LabelSettingsRightColumn_EmailUsername
+            '
+            Me.LabelSettingsRightColumn_EmailUsername.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettingsRightColumn_EmailUsername.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettingsRightColumn_EmailUsername.Location = New System.Drawing.Point(6, 84)
+            Me.LabelSettingsRightColumn_EmailUsername.Name = "LabelSettingsRightColumn_EmailUsername"
+            Me.LabelSettingsRightColumn_EmailUsername.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettingsRightColumn_EmailUsername.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettingsRightColumn_EmailUsername.TabIndex = 8
+            Me.LabelSettingsRightColumn_EmailUsername.Text = "Email User Name:"
+            '
+            'LabelSettingsRightColumn_ReplyToAddress
+            '
+            Me.LabelSettingsRightColumn_ReplyToAddress.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSettingsRightColumn_ReplyToAddress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettingsRightColumn_ReplyToAddress.Location = New System.Drawing.Point(6, 58)
+            Me.LabelSettingsRightColumn_ReplyToAddress.Name = "LabelSettingsRightColumn_ReplyToAddress"
+            Me.LabelSettingsRightColumn_ReplyToAddress.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettingsRightColumn_ReplyToAddress.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettingsRightColumn_ReplyToAddress.TabIndex = 6
+            Me.LabelSettingsRightColumn_ReplyToAddress.Text = "Reply To Address:"
+            '
+            'CheckBoxSettingsRightColumn_ReceivesAlerts
+            '
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.CheckValue = 0
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.CheckValueChecked = 1
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.CheckValueUnchecked = 0
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.ChildControls = CType(resources.GetObject("CheckBoxSettingsRightColumn_ReceivesAlerts.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.Location = New System.Drawing.Point(220, 7)
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.Name = "CheckBoxSettingsRightColumn_ReceivesAlerts"
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.OldestSibling = Nothing
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.SecurityEnabled = True
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.SiblingControls = CType(resources.GetObject("CheckBoxSettingsRightColumn_ReceivesAlerts.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.Size = New System.Drawing.Size(100, 20)
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.TabIndex = 1
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.TabOnEnter = True
+            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.Text = "Receives Alerts"
+            '
+            'CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail
+            '
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.CheckValue = 0
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.CheckValueChecked = 1
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.CheckValueUnchecked = 0
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.ChildControls = CType(resources.GetObject("CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.Location = New System.Drawing.Point(114, 7)
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.Name = "CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail"
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.OldestSibling = Nothing
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.SecurityEnabled = True
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.SiblingControls = CType(resources.GetObject("CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.Size = New System.Drawing.Size(100, 20)
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.TabIndex = 0
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.TabOnEnter = True
+            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.Text = "Receives Email"
+            '
+            'LabelSettingsRightColumn_EmailAddress
+            '
+            Me.LabelSettingsRightColumn_EmailAddress.BackColor = System.Drawing.Color.White
+            '
             '
             Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.BackColor = System.Drawing.Color.White
             '
+            Me.LabelSettingsRightColumn_EmailAddress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSettingsRightColumn_EmailAddress.Location = New System.Drawing.Point(6, 32)
+            Me.LabelSettingsRightColumn_EmailAddress.Name = "LabelSettingsRightColumn_EmailAddress"
+            Me.LabelSettingsRightColumn_EmailAddress.Size = New System.Drawing.Size(102, 20)
+            Me.LabelSettingsRightColumn_EmailAddress.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSettingsRightColumn_EmailAddress.TabIndex = 4
+            Me.LabelSettingsRightColumn_EmailAddress.Text = "Email Address:"
             '
+            'TabItemAlerts_SettingsTab
             '
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.Location = New System.Drawing.Point(275, 57)
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.Name = "RadioButtonControlTimeTracking_EmployeeStatusNonExempt"
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.SecurityEnabled = True
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.Size = New System.Drawing.Size(89, 20)
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.TabIndex = 6
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.TabOnEnter = True
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.TabStop = False
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.Text = "Non-Exempt"
+            Me.TabItemAlerts_SettingsTab.AttachedControl = Me.TabControlPanelSettingsTab_Settings
+            Me.TabItemAlerts_SettingsTab.Name = "TabItemAlerts_SettingsTab"
+            Me.TabItemAlerts_SettingsTab.Text = "Settings"
             '
-            'RadioButtonControlTimeTracking_EmployeeStatusExempt
+            'TabControlPanelAdditionalEmails_AdditionalEmails
             '
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.BackColor = System.Drawing.Color.White
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Controls.Add(Me.DataGridViewAdditionalEmails_AdditionalEmails)
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Name = "TabControlPanelAdditionalEmails_AdditionalEmails"
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Size = New System.Drawing.Size(724, 483)
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.GradientAngle = 90
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.TabIndex = 27
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.TabItem = Me.TabItemAlerts_AdditionalEmailsTab
             '
+            'DataGridViewAdditionalEmails_AdditionalEmails
             '
-            '
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.Location = New System.Drawing.Point(192, 57)
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.Name = "RadioButtonControlTimeTracking_EmployeeStatusExempt"
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.SecurityEnabled = True
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.Size = New System.Drawing.Size(77, 20)
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.TabIndex = 5
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.TabOnEnter = True
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.TabStop = False
-            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.Text = "Exempt"
-            '
-            'RadioButtonControlTimeTracking_EmployeeStatusNA
-            '
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.Location = New System.Drawing.Point(109, 57)
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.Name = "RadioButtonControlTimeTracking_EmployeeStatusNA"
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.SecurityEnabled = True
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.Size = New System.Drawing.Size(77, 20)
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.TabIndex = 4
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.TabOnEnter = True
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.TabStop = False
-            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.Text = "N/A"
-            '
-            'CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval
-            '
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.CheckValue = 0
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.CheckValueChecked = 1
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.CheckValueUnchecked = 0
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.ChildControls = CType(resources.GetObject("CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.Location = New System.Drawing.Point(109, 31)
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.Name = "CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval"
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.OldestSibling = Nothing
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.SecurityEnabled = True
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.SiblingControls = CType(resources.GetObject("CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.Size = New System.Drawing.Size(255, 20)
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.TabIndex = 2
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.TabOnEnter = True
-            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.Text = "Exempt from Time Entry Supervisor Approval"
-            '
-            'LabelTimeTracking_DefaultFunction
-            '
-            Me.LabelTimeTracking_DefaultFunction.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelTimeTracking_DefaultFunction.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_DefaultFunction.Location = New System.Drawing.Point(370, 83)
-            Me.LabelTimeTracking_DefaultFunction.Name = "LabelTimeTracking_DefaultFunction"
-            Me.LabelTimeTracking_DefaultFunction.Size = New System.Drawing.Size(111, 20)
-            Me.LabelTimeTracking_DefaultFunction.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_DefaultFunction.TabIndex = 13
-            Me.LabelTimeTracking_DefaultFunction.Text = "Default Function:"
-            '
-            'LabelTimeTracking_ReportMissingTimeLbl
-            '
-            Me.LabelTimeTracking_ReportMissingTimeLbl.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelTimeTracking_ReportMissingTimeLbl.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_ReportMissingTimeLbl.Location = New System.Drawing.Point(370, 6)
-            Me.LabelTimeTracking_ReportMissingTimeLbl.Name = "LabelTimeTracking_ReportMissingTimeLbl"
-            Me.LabelTimeTracking_ReportMissingTimeLbl.Size = New System.Drawing.Size(111, 20)
-            Me.LabelTimeTracking_ReportMissingTimeLbl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_ReportMissingTimeLbl.TabIndex = 9
-            Me.LabelTimeTracking_ReportMissingTimeLbl.Text = "Report Missing Time:"
-            '
-            'LabelTimeTracking_SeniorityPriority
-            '
-            Me.LabelTimeTracking_SeniorityPriority.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelTimeTracking_SeniorityPriority.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_SeniorityPriority.Location = New System.Drawing.Point(6, 83)
-            Me.LabelTimeTracking_SeniorityPriority.Name = "LabelTimeTracking_SeniorityPriority"
-            Me.LabelTimeTracking_SeniorityPriority.Size = New System.Drawing.Size(97, 20)
-            Me.LabelTimeTracking_SeniorityPriority.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_SeniorityPriority.TabIndex = 7
-            Me.LabelTimeTracking_SeniorityPriority.Text = "Seniority / Priority:"
-            '
-            'LabelTimeTracking_VacationSickPersonalTime
-            '
-            Me.LabelTimeTracking_VacationSickPersonalTime.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.AllowDragAndDrop = False
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelTimeTracking_VacationSickPersonalTime.BackColor = System.Drawing.Color.White
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.AutoFilterLookupColumns = False
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.AutoloadRepositoryDatasource = True
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.AutoUpdateViewCaption = True
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.ItemDescription = "Email(s)"
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.Location = New System.Drawing.Point(4, 4)
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.MultiSelect = True
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.Name = "DataGridViewAdditionalEmails_AdditionalEmails"
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.RunStandardValidation = True
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.Size = New System.Drawing.Size(716, 475)
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.TabIndex = 2
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.UseEmbeddedNavigator = False
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.ViewCaptionHeight = -1
             '
+            'TabItemAlerts_AdditionalEmailsTab
             '
+            Me.TabItemAlerts_AdditionalEmailsTab.AttachedControl = Me.TabControlPanelAdditionalEmails_AdditionalEmails
+            Me.TabItemAlerts_AdditionalEmailsTab.Name = "TabItemAlerts_AdditionalEmailsTab"
+            Me.TabItemAlerts_AdditionalEmailsTab.Text = "Additional Emails"
             '
-            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_VacationSickPersonalTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelTimeTracking_VacationSickPersonalTime.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelTimeTracking_VacationSickPersonalTime.Location = New System.Drawing.Point(6, 345)
-            Me.LabelTimeTracking_VacationSickPersonalTime.Name = "LabelTimeTracking_VacationSickPersonalTime"
-            Me.LabelTimeTracking_VacationSickPersonalTime.Size = New System.Drawing.Size(726, 20)
-            Me.LabelTimeTracking_VacationSickPersonalTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_VacationSickPersonalTime.TabIndex = 26
-            Me.LabelTimeTracking_VacationSickPersonalTime.Text = "Vacation/Sick/Personal Time "
+            'TabControlPanelAlertGroupsTab_AlertGroups
             '
-            'DataGridViewTimeTracking_EmployeeTimeOff
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Controls.Add(Me.PanelAlertGroups_RightSection)
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Controls.Add(Me.ExpandableSplitterControlAlertGroups_LeftRight)
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Controls.Add(Me.PanelAlertGroups_LeftSection)
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Name = "TabControlPanelAlertGroupsTab_AlertGroups"
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Size = New System.Drawing.Size(724, 483)
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.GradientAngle = 90
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.TabIndex = 1
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.TabItem = Me.TabItemAlerts_AlertGroupsTab
             '
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.AllowDragAndDrop = False
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            'PanelAlertGroups_RightSection
+            '
+            Me.PanelAlertGroups_RightSection.Controls.Add(Me.ButtonRightSection_RemoveAlertGroup)
+            Me.PanelAlertGroups_RightSection.Controls.Add(Me.ButtonRightSection_AddAlertGroup)
+            Me.PanelAlertGroups_RightSection.Controls.Add(Me.DataGridViewRightSection_EmployeeAlertGroups)
+            Me.PanelAlertGroups_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelAlertGroups_RightSection.Location = New System.Drawing.Point(313, 1)
+            Me.PanelAlertGroups_RightSection.Name = "PanelAlertGroups_RightSection"
+            Me.PanelAlertGroups_RightSection.Size = New System.Drawing.Size(410, 481)
+            Me.PanelAlertGroups_RightSection.TabIndex = 2
+            '
+            'ButtonRightSection_RemoveAlertGroup
+            '
+            Me.ButtonRightSection_RemoveAlertGroup.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonRightSection_RemoveAlertGroup.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonRightSection_RemoveAlertGroup.Location = New System.Drawing.Point(6, 32)
+            Me.ButtonRightSection_RemoveAlertGroup.Name = "ButtonRightSection_RemoveAlertGroup"
+            Me.ButtonRightSection_RemoveAlertGroup.SecurityEnabled = True
+            Me.ButtonRightSection_RemoveAlertGroup.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonRightSection_RemoveAlertGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonRightSection_RemoveAlertGroup.TabIndex = 1
+            Me.ButtonRightSection_RemoveAlertGroup.Text = "<"
+            '
+            'ButtonRightSection_AddAlertGroup
+            '
+            Me.ButtonRightSection_AddAlertGroup.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonRightSection_AddAlertGroup.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonRightSection_AddAlertGroup.Location = New System.Drawing.Point(6, 6)
+            Me.ButtonRightSection_AddAlertGroup.Name = "ButtonRightSection_AddAlertGroup"
+            Me.ButtonRightSection_AddAlertGroup.SecurityEnabled = True
+            Me.ButtonRightSection_AddAlertGroup.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonRightSection_AddAlertGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonRightSection_AddAlertGroup.TabIndex = 0
+            Me.ButtonRightSection_AddAlertGroup.Text = ">"
+            '
+            'DataGridViewRightSection_EmployeeAlertGroups
+            '
+            Me.DataGridViewRightSection_EmployeeAlertGroups.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewRightSection_EmployeeAlertGroups.AllowDragAndDrop = False
+            Me.DataGridViewRightSection_EmployeeAlertGroups.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewRightSection_EmployeeAlertGroups.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewRightSection_EmployeeAlertGroups.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewRightSection_EmployeeAlertGroups.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.AutoFilterLookupColumns = False
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.AutoloadRepositoryDatasource = True
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.AutoUpdateViewCaption = True
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.ItemDescription = ""
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.Location = New System.Drawing.Point(6, 371)
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.MultiSelect = True
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.Name = "DataGridViewTimeTracking_EmployeeTimeOff"
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.RunStandardValidation = True
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.Size = New System.Drawing.Size(726, 111)
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.TabIndex = 27
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.UseEmbeddedNavigator = False
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.ViewCaptionHeight = -1
+            Me.DataGridViewRightSection_EmployeeAlertGroups.AutoFilterLookupColumns = False
+            Me.DataGridViewRightSection_EmployeeAlertGroups.AutoloadRepositoryDatasource = True
+            Me.DataGridViewRightSection_EmployeeAlertGroups.AutoUpdateViewCaption = True
+            Me.DataGridViewRightSection_EmployeeAlertGroups.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewRightSection_EmployeeAlertGroups.DataSource = Nothing
+            Me.DataGridViewRightSection_EmployeeAlertGroups.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewRightSection_EmployeeAlertGroups.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewRightSection_EmployeeAlertGroups.ItemDescription = ""
+            Me.DataGridViewRightSection_EmployeeAlertGroups.Location = New System.Drawing.Point(87, 6)
+            Me.DataGridViewRightSection_EmployeeAlertGroups.MultiSelect = True
+            Me.DataGridViewRightSection_EmployeeAlertGroups.Name = "DataGridViewRightSection_EmployeeAlertGroups"
+            Me.DataGridViewRightSection_EmployeeAlertGroups.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewRightSection_EmployeeAlertGroups.RunStandardValidation = True
+            Me.DataGridViewRightSection_EmployeeAlertGroups.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewRightSection_EmployeeAlertGroups.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewRightSection_EmployeeAlertGroups.Size = New System.Drawing.Size(316, 469)
+            Me.DataGridViewRightSection_EmployeeAlertGroups.TabIndex = 2
+            Me.DataGridViewRightSection_EmployeeAlertGroups.UseEmbeddedNavigator = False
+            Me.DataGridViewRightSection_EmployeeAlertGroups.ViewCaptionHeight = -1
             '
-            'LabelTimeTracking_EmployeeStatus
+            'ExpandableSplitterControlAlertGroups_LeftRight
+            '
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.ExpandableControl = Me.PanelAlertGroups_LeftSection
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.Location = New System.Drawing.Point(307, 1)
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.Name = "ExpandableSplitterControlAlertGroups_LeftRight"
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.Size = New System.Drawing.Size(6, 481)
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.TabIndex = 4
+            Me.ExpandableSplitterControlAlertGroups_LeftRight.TabStop = False
+            '
+            'PanelAlertGroups_LeftSection
+            '
+            Me.PanelAlertGroups_LeftSection.Controls.Add(Me.DataGridViewLeftSection_AvailableAlertGroups)
+            Me.PanelAlertGroups_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelAlertGroups_LeftSection.Location = New System.Drawing.Point(1, 1)
+            Me.PanelAlertGroups_LeftSection.Name = "PanelAlertGroups_LeftSection"
+            Me.PanelAlertGroups_LeftSection.Size = New System.Drawing.Size(306, 481)
+            Me.PanelAlertGroups_LeftSection.TabIndex = 0
+            '
+            'DataGridViewLeftSection_AvailableAlertGroups
+            '
+            Me.DataGridViewLeftSection_AvailableAlertGroups.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewLeftSection_AvailableAlertGroups.AllowDragAndDrop = False
+            Me.DataGridViewLeftSection_AvailableAlertGroups.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewLeftSection_AvailableAlertGroups.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewLeftSection_AvailableAlertGroups.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewLeftSection_AvailableAlertGroups.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewLeftSection_AvailableAlertGroups.AutoFilterLookupColumns = False
+            Me.DataGridViewLeftSection_AvailableAlertGroups.AutoloadRepositoryDatasource = True
+            Me.DataGridViewLeftSection_AvailableAlertGroups.AutoUpdateViewCaption = True
+            Me.DataGridViewLeftSection_AvailableAlertGroups.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
+            Me.DataGridViewLeftSection_AvailableAlertGroups.DataSource = Nothing
+            Me.DataGridViewLeftSection_AvailableAlertGroups.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewLeftSection_AvailableAlertGroups.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewLeftSection_AvailableAlertGroups.ItemDescription = ""
+            Me.DataGridViewLeftSection_AvailableAlertGroups.Location = New System.Drawing.Point(6, 6)
+            Me.DataGridViewLeftSection_AvailableAlertGroups.MultiSelect = True
+            Me.DataGridViewLeftSection_AvailableAlertGroups.Name = "DataGridViewLeftSection_AvailableAlertGroups"
+            Me.DataGridViewLeftSection_AvailableAlertGroups.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewLeftSection_AvailableAlertGroups.RunStandardValidation = True
+            Me.DataGridViewLeftSection_AvailableAlertGroups.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewLeftSection_AvailableAlertGroups.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewLeftSection_AvailableAlertGroups.Size = New System.Drawing.Size(294, 469)
+            Me.DataGridViewLeftSection_AvailableAlertGroups.TabIndex = 1
+            Me.DataGridViewLeftSection_AvailableAlertGroups.UseEmbeddedNavigator = False
+            Me.DataGridViewLeftSection_AvailableAlertGroups.ViewCaptionHeight = -1
+            '
+            'TabItemAlerts_AlertGroupsTab
+            '
+            Me.TabItemAlerts_AlertGroupsTab.AttachedControl = Me.TabControlPanelAlertGroupsTab_AlertGroups
+            Me.TabItemAlerts_AlertGroupsTab.Name = "TabItemAlerts_AlertGroupsTab"
+            Me.TabItemAlerts_AlertGroupsTab.Text = "Alert Groups"
+            '
+            'TabControlPanel_CalendarTime
+            '
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.CheckBoxForm_SSL)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.TextBoxCalendarTime_Port)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label3)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.TextBoxCalendarTime_Host)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label2)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.ComboBoxCalendarTime_Type)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label1)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.TextBoxCalendarTime_EmailPassword)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.TextBoxCalendarTime_EmailUserName)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.TextBoxCalendarTime_EmailAddress)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label13)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label14)
+            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label16)
+            Me.TabControlPanel_CalendarTime.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanel_CalendarTime.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanel_CalendarTime.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanel_CalendarTime.Name = "TabControlPanel_CalendarTime"
+            Me.TabControlPanel_CalendarTime.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanel_CalendarTime.Size = New System.Drawing.Size(724, 483)
+            Me.TabControlPanel_CalendarTime.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanel_CalendarTime.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanel_CalendarTime.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanel_CalendarTime.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanel_CalendarTime.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanel_CalendarTime.Style.GradientAngle = 90
+            Me.TabControlPanel_CalendarTime.TabIndex = 14
+            Me.TabControlPanel_CalendarTime.TabItem = Me.TabItemAlerts_CalendarTimeTab
+            '
+            'CheckBoxForm_SSL
+            '
+            Me.CheckBoxForm_SSL.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.CheckBoxForm_SSL.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxForm_SSL.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxForm_SSL.CheckValue = 0
+            Me.CheckBoxForm_SSL.CheckValueChecked = 1
+            Me.CheckBoxForm_SSL.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxForm_SSL.CheckValueUnchecked = 0
+            Me.CheckBoxForm_SSL.ChildControls = CType(resources.GetObject("CheckBoxForm_SSL.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxForm_SSL.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxForm_SSL.Location = New System.Drawing.Point(114, 161)
+            Me.CheckBoxForm_SSL.Name = "CheckBoxForm_SSL"
+            Me.CheckBoxForm_SSL.OldestSibling = Nothing
+            Me.CheckBoxForm_SSL.SecurityEnabled = True
+            Me.CheckBoxForm_SSL.SiblingControls = CType(resources.GetObject("CheckBoxForm_SSL.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxForm_SSL.Size = New System.Drawing.Size(602, 21)
+            Me.CheckBoxForm_SSL.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxForm_SSL.TabIndex = 28
+            Me.CheckBoxForm_SSL.TabOnEnter = True
+            Me.CheckBoxForm_SSL.Text = "Use SSL"
+            '
+            'TextBoxCalendarTime_Port
+            '
+            Me.TextBoxCalendarTime_Port.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxCalendarTime_Port.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxCalendarTime_Port.Border.Class = "TextBoxBorder"
+            Me.TextBoxCalendarTime_Port.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxCalendarTime_Port.CheckSpellingOnValidate = False
+            Me.TextBoxCalendarTime_Port.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxCalendarTime_Port.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxCalendarTime_Port.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxCalendarTime_Port.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxCalendarTime_Port.FocusHighlightEnabled = True
+            Me.TextBoxCalendarTime_Port.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxCalendarTime_Port.Location = New System.Drawing.Point(114, 134)
+            Me.TextBoxCalendarTime_Port.MaxFileSize = CType(0, Long)
+            Me.TextBoxCalendarTime_Port.Name = "TextBoxCalendarTime_Port"
+            Me.TextBoxCalendarTime_Port.SecurityEnabled = True
+            Me.TextBoxCalendarTime_Port.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxCalendarTime_Port.Size = New System.Drawing.Size(65, 21)
+            Me.TextBoxCalendarTime_Port.StartingFolderName = Nothing
+            Me.TextBoxCalendarTime_Port.TabIndex = 27
+            Me.TextBoxCalendarTime_Port.TabOnEnter = True
+            '
+            'Label3
+            '
+            Me.Label3.BackColor = System.Drawing.Color.White
+            '
             '
             Me.LabelTimeTracking_EmployeeStatus.BackColor = System.Drawing.Color.White
             '
+            Me.Label3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label3.Location = New System.Drawing.Point(7, 135)
+            Me.Label3.Name = "Label3"
+            Me.Label3.Size = New System.Drawing.Size(102, 20)
+            Me.Label3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label3.TabIndex = 26
+            Me.Label3.Text = "Port Number:"
             '
+            'TextBoxCalendarTime_Host
             '
-            Me.LabelTimeTracking_EmployeeStatus.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_EmployeeStatus.Location = New System.Drawing.Point(6, 57)
-            Me.LabelTimeTracking_EmployeeStatus.Name = "LabelTimeTracking_EmployeeStatus"
-            Me.LabelTimeTracking_EmployeeStatus.Size = New System.Drawing.Size(97, 20)
-            Me.LabelTimeTracking_EmployeeStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_EmployeeStatus.TabIndex = 3
-            Me.LabelTimeTracking_EmployeeStatus.Text = "Status:"
+            Me.TextBoxCalendarTime_Host.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxCalendarTime_Host.BackColor = System.Drawing.Color.White
             '
             'LabelTimeTracking_StandardWorkDays
             '
-            Me.LabelTimeTracking_StandardWorkDays.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelTimeTracking_StandardWorkDays.BackColor = System.Drawing.Color.White
             '
+            Me.TextBoxCalendarTime_Host.Border.Class = "TextBoxBorder"
+            Me.TextBoxCalendarTime_Host.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxCalendarTime_Host.CheckSpellingOnValidate = False
+            Me.TextBoxCalendarTime_Host.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxCalendarTime_Host.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxCalendarTime_Host.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxCalendarTime_Host.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxCalendarTime_Host.FocusHighlightEnabled = True
+            Me.TextBoxCalendarTime_Host.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxCalendarTime_Host.Location = New System.Drawing.Point(114, 108)
+            Me.TextBoxCalendarTime_Host.MaxFileSize = CType(0, Long)
+            Me.TextBoxCalendarTime_Host.Name = "TextBoxCalendarTime_Host"
+            Me.TextBoxCalendarTime_Host.SecurityEnabled = True
+            Me.TextBoxCalendarTime_Host.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxCalendarTime_Host.Size = New System.Drawing.Size(602, 21)
+            Me.TextBoxCalendarTime_Host.StartingFolderName = Nothing
+            Me.TextBoxCalendarTime_Host.TabIndex = 25
+            Me.TextBoxCalendarTime_Host.TabOnEnter = True
             '
+            'Label2
             '
-            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_StandardWorkDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelTimeTracking_StandardWorkDays.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelTimeTracking_StandardWorkDays.Location = New System.Drawing.Point(6, 110)
-            Me.LabelTimeTracking_StandardWorkDays.Name = "LabelTimeTracking_StandardWorkDays"
-            Me.LabelTimeTracking_StandardWorkDays.Size = New System.Drawing.Size(475, 20)
-            Me.LabelTimeTracking_StandardWorkDays.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_StandardWorkDays.TabIndex = 15
-            Me.LabelTimeTracking_StandardWorkDays.Text = "Standard Work Days"
+            Me.Label2.BackColor = System.Drawing.Color.White
             '
             'DataGridViewTimeTracking_WorkDays
             '
-            Me.DataGridViewTimeTracking_WorkDays.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewTimeTracking_WorkDays.AllowDragAndDrop = False
-            Me.DataGridViewTimeTracking_WorkDays.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewTimeTracking_WorkDays.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewTimeTracking_WorkDays.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewTimeTracking_WorkDays.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            '
+            Me.Label2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label2.Location = New System.Drawing.Point(7, 109)
+            Me.Label2.Name = "Label2"
+            Me.Label2.Size = New System.Drawing.Size(102, 20)
+            Me.Label2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label2.TabIndex = 24
+            Me.Label2.Text = "Host:"
+            '
+            'ComboBoxCalendarTime_Type
+            '
+            Me.ComboBoxCalendarTime_Type.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxCalendarTime_Type.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewTimeTracking_WorkDays.AutoFilterLookupColumns = False
-            Me.DataGridViewTimeTracking_WorkDays.AutoloadRepositoryDatasource = True
-            Me.DataGridViewTimeTracking_WorkDays.AutoUpdateViewCaption = True
-            Me.DataGridViewTimeTracking_WorkDays.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewTimeTracking_WorkDays.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewTimeTracking_WorkDays.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewTimeTracking_WorkDays.ItemDescription = ""
-            Me.DataGridViewTimeTracking_WorkDays.Location = New System.Drawing.Point(6, 136)
-            Me.DataGridViewTimeTracking_WorkDays.MultiSelect = True
-            Me.DataGridViewTimeTracking_WorkDays.Name = "DataGridViewTimeTracking_WorkDays"
-            Me.DataGridViewTimeTracking_WorkDays.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewTimeTracking_WorkDays.RunStandardValidation = True
-            Me.DataGridViewTimeTracking_WorkDays.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewTimeTracking_WorkDays.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewTimeTracking_WorkDays.Size = New System.Drawing.Size(475, 203)
-            Me.DataGridViewTimeTracking_WorkDays.TabIndex = 16
-            Me.DataGridViewTimeTracking_WorkDays.UseEmbeddedNavigator = False
-            Me.DataGridViewTimeTracking_WorkDays.ViewCaptionHeight = -1
+            Me.ComboBoxCalendarTime_Type.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+            Me.ComboBoxCalendarTime_Type.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxCalendarTime_Type.AutoFindItemInDataSource = False
+            Me.ComboBoxCalendarTime_Type.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxCalendarTime_Type.BookmarkingEnabled = False
+            Me.ComboBoxCalendarTime_Type.ClientCode = ""
+            Me.ComboBoxCalendarTime_Type.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.EnumObjects
+            Me.ComboBoxCalendarTime_Type.DisableMouseWheel = False
+            Me.ComboBoxCalendarTime_Type.DisplayMember = "Description"
+            Me.ComboBoxCalendarTime_Type.DisplayName = ""
+            Me.ComboBoxCalendarTime_Type.DivisionCode = ""
+            Me.ComboBoxCalendarTime_Type.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxCalendarTime_Type.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.ComboBoxCalendarTime_Type.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.ComboBoxCalendarTime_Type.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxCalendarTime_Type.FocusHighlightEnabled = True
+            Me.ComboBoxCalendarTime_Type.FormattingEnabled = True
+            Me.ComboBoxCalendarTime_Type.ItemHeight = 16
+            Me.ComboBoxCalendarTime_Type.Location = New System.Drawing.Point(114, 4)
+            Me.ComboBoxCalendarTime_Type.Name = "ComboBoxCalendarTime_Type"
+            Me.ComboBoxCalendarTime_Type.ReadOnly = False
+            Me.ComboBoxCalendarTime_Type.SecurityEnabled = True
+            Me.ComboBoxCalendarTime_Type.Size = New System.Drawing.Size(356, 22)
+            Me.ComboBoxCalendarTime_Type.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxCalendarTime_Type.TabIndex = 23
+            Me.ComboBoxCalendarTime_Type.TabOnEnter = True
+            Me.ComboBoxCalendarTime_Type.ValueMember = "Code"
+            Me.ComboBoxCalendarTime_Type.WatermarkText = "Select"
+            '
+            'Label1
+            '
+            Me.Label1.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.Label1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label1.Location = New System.Drawing.Point(6, 5)
+            Me.Label1.Name = "Label1"
+            Me.Label1.Size = New System.Drawing.Size(102, 20)
+            Me.Label1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label1.TabIndex = 21
+            Me.Label1.Text = "Calendar Type:"
+            '
+            'TextBoxCalendarTime_EmailPassword
+            '
+            Me.TextBoxCalendarTime_EmailPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxCalendarTime_EmailPassword.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxCalendarTime_EmailPassword.Border.Class = "TextBoxBorder"
+            Me.TextBoxCalendarTime_EmailPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxCalendarTime_EmailPassword.CheckSpellingOnValidate = False
+            Me.TextBoxCalendarTime_EmailPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxCalendarTime_EmailPassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxCalendarTime_EmailPassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxCalendarTime_EmailPassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxCalendarTime_EmailPassword.FocusHighlightEnabled = True
+            Me.TextBoxCalendarTime_EmailPassword.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxCalendarTime_EmailPassword.Location = New System.Drawing.Point(114, 83)
+            Me.TextBoxCalendarTime_EmailPassword.MaxFileSize = CType(0, Long)
+            Me.TextBoxCalendarTime_EmailPassword.Name = "TextBoxCalendarTime_EmailPassword"
+            Me.TextBoxCalendarTime_EmailPassword.SecurityEnabled = True
+            Me.TextBoxCalendarTime_EmailPassword.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxCalendarTime_EmailPassword.Size = New System.Drawing.Size(602, 21)
+            Me.TextBoxCalendarTime_EmailPassword.StartingFolderName = Nothing
+            Me.TextBoxCalendarTime_EmailPassword.TabIndex = 20
+            Me.TextBoxCalendarTime_EmailPassword.TabOnEnter = True
+            Me.TextBoxCalendarTime_EmailPassword.UseSystemPasswordChar = True
+            '
+            'TextBoxCalendarTime_EmailUserName
+            '
+            Me.TextBoxCalendarTime_EmailUserName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxCalendarTime_EmailUserName.BackColor = System.Drawing.Color.White
             '
             'LabelTimeTracking_Supervisor
             '
-            Me.LabelTimeTracking_Supervisor.BackColor = System.Drawing.Color.White
+            Me.LabelHRAndRateInformation_TerminationDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelHRAndRateInformation_TerminationDate.Location = New System.Drawing.Point(6, 136)
+            Me.LabelHRAndRateInformation_TerminationDate.Name = "LabelHRAndRateInformation_TerminationDate"
+            Me.LabelHRAndRateInformation_TerminationDate.Size = New System.Drawing.Size(124, 20)
+            Me.LabelHRAndRateInformation_TerminationDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelHRAndRateInformation_TerminationDate.TabIndex = 9
+            Me.LabelHRAndRateInformation_TerminationDate.Text = "Termination Date:"
             '
+            Me.TextBoxCalendarTime_EmailUserName.Border.Class = "TextBoxBorder"
+            Me.TextBoxCalendarTime_EmailUserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxCalendarTime_EmailUserName.CheckSpellingOnValidate = False
+            Me.TextBoxCalendarTime_EmailUserName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxCalendarTime_EmailUserName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxCalendarTime_EmailUserName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxCalendarTime_EmailUserName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxCalendarTime_EmailUserName.FocusHighlightEnabled = True
+            Me.TextBoxCalendarTime_EmailUserName.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxCalendarTime_EmailUserName.Location = New System.Drawing.Point(114, 58)
+            Me.TextBoxCalendarTime_EmailUserName.MaxFileSize = CType(0, Long)
+            Me.TextBoxCalendarTime_EmailUserName.Name = "TextBoxCalendarTime_EmailUserName"
+            Me.TextBoxCalendarTime_EmailUserName.SecurityEnabled = True
+            Me.TextBoxCalendarTime_EmailUserName.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxCalendarTime_EmailUserName.Size = New System.Drawing.Size(602, 21)
+            Me.TextBoxCalendarTime_EmailUserName.StartingFolderName = Nothing
+            Me.TextBoxCalendarTime_EmailUserName.TabIndex = 18
+            Me.TextBoxCalendarTime_EmailUserName.TabOnEnter = True
             '
+            'TextBoxCalendarTime_EmailAddress
             '
-            Me.LabelTimeTracking_Supervisor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelTimeTracking_Supervisor.Location = New System.Drawing.Point(6, 6)
-            Me.LabelTimeTracking_Supervisor.Name = "LabelTimeTracking_Supervisor"
-            Me.LabelTimeTracking_Supervisor.Size = New System.Drawing.Size(97, 20)
-            Me.LabelTimeTracking_Supervisor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_Supervisor.TabIndex = 0
-            Me.LabelTimeTracking_Supervisor.Text = "Supervisor:"
+            Me.TextBoxCalendarTime_EmailAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxCalendarTime_EmailAddress.BackColor = System.Drawing.Color.White
             '
             'TabItemEmployeeDetails_TimeTrackingTab
             '
-            Me.TabItemEmployeeDetails_TimeTrackingTab.AttachedControl = Me.TabControlPanelTimeTrackingTab_TimeTracking
-            Me.TabItemEmployeeDetails_TimeTrackingTab.Name = "TabItemEmployeeDetails_TimeTrackingTab"
-            Me.TabItemEmployeeDetails_TimeTrackingTab.Text = "Time Tracking"
+            '
+            Me.TextBoxCalendarTime_EmailAddress.Border.Class = "TextBoxBorder"
+            Me.TextBoxCalendarTime_EmailAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxCalendarTime_EmailAddress.CheckSpellingOnValidate = False
+            Me.TextBoxCalendarTime_EmailAddress.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
+            Me.TextBoxCalendarTime_EmailAddress.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxCalendarTime_EmailAddress.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxCalendarTime_EmailAddress.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxCalendarTime_EmailAddress.FocusHighlightEnabled = True
+            Me.TextBoxCalendarTime_EmailAddress.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxCalendarTime_EmailAddress.Location = New System.Drawing.Point(114, 31)
+            Me.TextBoxCalendarTime_EmailAddress.MaxFileSize = CType(0, Long)
+            Me.TextBoxCalendarTime_EmailAddress.Name = "TextBoxCalendarTime_EmailAddress"
+            Me.TextBoxCalendarTime_EmailAddress.SecurityEnabled = True
+            Me.TextBoxCalendarTime_EmailAddress.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxCalendarTime_EmailAddress.Size = New System.Drawing.Size(602, 21)
+            Me.TextBoxCalendarTime_EmailAddress.StartingFolderName = Nothing
+            Me.TextBoxCalendarTime_EmailAddress.TabIndex = 16
+            Me.TextBoxCalendarTime_EmailAddress.TabOnEnter = True
+            '
+            'Label13
+            '
+            Me.Label13.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.Label13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label13.Location = New System.Drawing.Point(6, 83)
+            Me.Label13.Name = "Label13"
+            Me.Label13.Size = New System.Drawing.Size(102, 20)
+            Me.Label13.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label13.TabIndex = 19
+            Me.Label13.Text = "Email Password:"
+            '
+            'Label14
+            '
+            Me.Label14.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.Label14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label14.Location = New System.Drawing.Point(6, 57)
+            Me.Label14.Name = "Label14"
+            Me.Label14.Size = New System.Drawing.Size(102, 20)
+            Me.Label14.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label14.TabIndex = 17
+            Me.Label14.Text = "Email User Name:"
+            '
+            'Label16
+            '
+            Me.Label16.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.Label16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label16.Location = New System.Drawing.Point(6, 31)
+            Me.Label16.Name = "Label16"
+            Me.Label16.Size = New System.Drawing.Size(102, 20)
+            Me.Label16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label16.TabIndex = 15
+            Me.Label16.Text = "Email Address:"
+            '
+            'TabItemAlerts_CalendarTimeTab
+            '
+            Me.TabItemAlerts_CalendarTimeTab.AttachedControl = Me.TabControlPanel_CalendarTime
+            Me.TabItemAlerts_CalendarTimeTab.Name = "TabItemAlerts_CalendarTimeTab"
+            Me.TabItemAlerts_CalendarTimeTab.Text = "Calendar Time"
+            '
+            'TabControlPanel1
+            '
+            Me.TabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanel1.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanel1.Name = "TabControlPanel1"
+            Me.TabControlPanel1.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanel1.Size = New System.Drawing.Size(724, 483)
+            Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanel1.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanel1.Style.GradientAngle = 90
+            Me.TabControlPanel1.TabIndex = 10
+            '
+            'TabItemEmployeeDetails_AlertsTab
+            '
+            Me.TabItemEmployeeDetails_AlertsTab.AttachedControl = Me.TabControlPanelAlertsTab_Alerts
+            Me.TabItemEmployeeDetails_AlertsTab.Name = "TabItemEmployeeDetails_AlertsTab"
+            Me.TabItemEmployeeDetails_AlertsTab.Text = "Alerts && Settings"
             '
             'TabControlPanelGeneralInformation_GeneralInformation
             '
@@ -2455,1555 +3400,667 @@
             Me.TabItemEmployeeDetails_GeneralInformation.Name = "TabItemEmployeeDetails_GeneralInformation"
             Me.TabItemEmployeeDetails_GeneralInformation.Text = "General Information"
             '
-            'TabControlPanelAlertsTab_Alerts
+            'TabControlPanelTimeTrackingTab_TimeTracking
             '
-            Me.TabControlPanelAlertsTab_Alerts.Controls.Add(Me.PanelAlerts_Alerts)
-            Me.TabControlPanelAlertsTab_Alerts.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelAlertsTab_Alerts.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelAlertsTab_Alerts.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelAlertsTab_Alerts.Name = "TabControlPanelAlertsTab_Alerts"
-            Me.TabControlPanelAlertsTab_Alerts.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelAlertsTab_Alerts.Size = New System.Drawing.Size(738, 523)
-            Me.TabControlPanelAlertsTab_Alerts.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelAlertsTab_Alerts.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelAlertsTab_Alerts.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelAlertsTab_Alerts.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelAlertsTab_Alerts.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.NumericInputTimeTracking_BillableHoursGoal)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_BillableHoursGoal)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.SearchableComboBoxTimeTracking_DefaultFunction)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.SearchableComboBoxTimeTracking_Supervisor)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.NumericInputTimeTracking_SeniorityPriority)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.NumericInputTimeTracking_DirectHoursGoal)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.NumericInputTimeTracking_MonthlyBillableHoursGoal)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.NumericInputTimeTracking_StandardAnnualHours)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_StandardAnnualHours)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_DirectHoursGoal)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_MonthlyBillableHoursGoal)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_HoursGoals)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.ComboBoxTimeTracking_ReportMissingTime)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.RadioButtonControlTimeTracking_EmployeeStatusExempt)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.RadioButtonControlTimeTracking_EmployeeStatusNA)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_DefaultFunction)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_ReportMissingTimeLbl)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_SeniorityPriority)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_VacationSickPersonalTime)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.DataGridViewTimeTracking_EmployeeTimeOff)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_EmployeeStatus)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_StandardWorkDays)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.DataGridViewTimeTracking_WorkDays)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Controls.Add(Me.LabelTimeTracking_Supervisor)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Name = "TabControlPanelTimeTrackingTab_TimeTracking"
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Size = New System.Drawing.Size(738, 523)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelAlertsTab_Alerts.Style.GradientAngle = 90
-            Me.TabControlPanelAlertsTab_Alerts.TabIndex = 5
-            Me.TabControlPanelAlertsTab_Alerts.TabItem = Me.TabItemEmployeeDetails_AlertsTab
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.Style.GradientAngle = 90
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.TabIndex = 9
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.TabItem = Me.TabItemEmployeeDetails_TimeTrackingTab
             '
-            'PanelAlerts_Alerts
+            'NumericInputTimeTracking_BillableHoursGoal
             '
-            Me.PanelAlerts_Alerts.Controls.Add(Me.TabControlAlerts_Alerts)
-            Me.PanelAlerts_Alerts.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelAlerts_Alerts.Location = New System.Drawing.Point(1, 1)
-            Me.PanelAlerts_Alerts.Name = "PanelAlerts_Alerts"
-            Me.PanelAlerts_Alerts.Size = New System.Drawing.Size(736, 521)
-            Me.PanelAlerts_Alerts.TabIndex = 0
+            Me.NumericInputTimeTracking_BillableHoursGoal.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputTimeTracking_BillableHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.NumericInputTimeTracking_BillableHoursGoal.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
+            Me.NumericInputTimeTracking_BillableHoursGoal.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputTimeTracking_BillableHoursGoal.EnterMoveNextControl = True
+            Me.NumericInputTimeTracking_BillableHoursGoal.Location = New System.Drawing.Point(640, 189)
+            Me.NumericInputTimeTracking_BillableHoursGoal.Name = "NumericInputTimeTracking_BillableHoursGoal"
+            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.DisplayFormat.FormatString = "f"
+            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.EditFormat.FormatString = "f"
+            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.Mask.EditMask = "f"
+            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputTimeTracking_BillableHoursGoal.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
+            Me.NumericInputTimeTracking_BillableHoursGoal.SecurityEnabled = True
+            Me.NumericInputTimeTracking_BillableHoursGoal.Size = New System.Drawing.Size(92, 20)
+            Me.NumericInputTimeTracking_BillableHoursGoal.TabIndex = 23
             '
-            'TabControlAlerts_Alerts
+            'LabelTimeTracking_BillableHoursGoal
             '
-            Me.TabControlAlerts_Alerts.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.LabelTimeTracking_BillableHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelTimeTracking_BillableHoursGoal.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelTimeTracking_BillableHoursGoal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_BillableHoursGoal.Location = New System.Drawing.Point(487, 188)
+            Me.LabelTimeTracking_BillableHoursGoal.Name = "LabelTimeTracking_BillableHoursGoal"
+            Me.LabelTimeTracking_BillableHoursGoal.Size = New System.Drawing.Size(147, 20)
+            Me.LabelTimeTracking_BillableHoursGoal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_BillableHoursGoal.TabIndex = 22
+            Me.LabelTimeTracking_BillableHoursGoal.Text = "Billable Hours Percent Goal:"
+            '
+            'CheckBoxTimeTracking_OmitFromMissingTimeTracking
+            '
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlAlerts_Alerts.BackColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(247, Byte), Integer))
-            Me.TabControlAlerts_Alerts.CanReorderTabs = False
-            Me.TabControlAlerts_Alerts.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlAlerts_Alerts.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanelSettingsTab_Settings)
-            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanelAdditionalEmails_AdditionalEmails)
-            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanelAlertGroupsTab_AlertGroups)
-            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanel_CalendarTime)
-            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanelConceptShareTab_ConceptShare)
-            Me.TabControlAlerts_Alerts.Controls.Add(Me.TabControlPanel1)
-            Me.TabControlAlerts_Alerts.ForeColor = System.Drawing.Color.Black
-            Me.TabControlAlerts_Alerts.Location = New System.Drawing.Point(6, 6)
-            Me.TabControlAlerts_Alerts.Name = "TabControlAlerts_Alerts"
-            Me.TabControlAlerts_Alerts.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlAlerts_Alerts.SelectedTabIndex = 0
-            Me.TabControlAlerts_Alerts.Size = New System.Drawing.Size(724, 510)
-            Me.TabControlAlerts_Alerts.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlAlerts_Alerts.TabIndex = 0
-            Me.TabControlAlerts_Alerts.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlAlerts_Alerts.Tabs.Add(Me.TabItemAlerts_SettingsTab)
-            Me.TabControlAlerts_Alerts.Tabs.Add(Me.TabItemAlerts_AlertGroupsTab)
-            Me.TabControlAlerts_Alerts.Tabs.Add(Me.TabItemAlerts_ConceptShareTab)
-            Me.TabControlAlerts_Alerts.Tabs.Add(Me.TabItemAlerts_CalendarTimeTab)
-            Me.TabControlAlerts_Alerts.Tabs.Add(Me.TabItemAlerts_AdditionalEmailsTab)
-            Me.TabControlAlerts_Alerts.Text = "Tabcontrol"
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.BackColor = System.Drawing.Color.White
             '
-            'TabControlPanelSettingsTab_Settings
             '
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.CheckBoxSettings_IgnoreCalendarSync)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_VCCPassword)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_VCCUserName)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_VCCPassword)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_VCCUserName)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_VCC)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_AdobeSignatureFile)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_AdobeSignature)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.ButtonSettings_AdobeSignatureFileDelete)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.ButtonSettings_AdobeSignatureFileSelect)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_AdobeSignatureFilePassword)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_AdobeSignatureFilePassword)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_AdobeSignatureFile)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.CheckBoxSettings_IsAPIUser)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_ProofHQPassword)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_ProofHQUserName)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_ProofHQPassword)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_ProofHQUserName)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_ProofHQ)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_SugarCRMPassword)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettings_SugarCRMUserName)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_SugarCRMPassword)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_SugarCRMUserName)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettings_SugarCRM)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettingsRightColumn_EmailPassword)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettingsRightColumn_EmailUserName)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettingsRightColumn_ReplyToAddress)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.TextBoxSettingsRightColumn_EmailAddress)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettingsRightColumn_EmailPassword)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettingsRightColumn_EmailUsername)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettingsRightColumn_ReplyToAddress)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.CheckBoxSettingsRightColumn_ReceivesAlerts)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail)
-            Me.TabControlPanelSettingsTab_Settings.Controls.Add(Me.LabelSettingsRightColumn_EmailAddress)
-            Me.TabControlPanelSettingsTab_Settings.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelSettingsTab_Settings.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelSettingsTab_Settings.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelSettingsTab_Settings.Name = "TabControlPanelSettingsTab_Settings"
-            Me.TabControlPanelSettingsTab_Settings.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelSettingsTab_Settings.Size = New System.Drawing.Size(724, 483)
-            Me.TabControlPanelSettingsTab_Settings.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelSettingsTab_Settings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelSettingsTab_Settings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelSettingsTab_Settings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelSettingsTab_Settings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelSettingsTab_Settings.Style.GradientAngle = 90
-            Me.TabControlPanelSettingsTab_Settings.TabIndex = 0
-            Me.TabControlPanelSettingsTab_Settings.TabItem = Me.TabItemAlerts_SettingsTab
             '
-            'CheckBoxSettings_IgnoreCalendarSync
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.CheckValue = 0
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.CheckValueChecked = 1
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.CheckValueUnchecked = 0
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.ChildControls = CType(resources.GetObject("CheckBoxTimeTracking_OmitFromMissingTimeTracking.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Location = New System.Drawing.Point(487, 57)
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Name = "CheckBoxTimeTracking_OmitFromMissingTimeTracking"
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.OldestSibling = Nothing
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.SecurityEnabled = True
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.SiblingControls = CType(resources.GetObject("CheckBoxTimeTracking_OmitFromMissingTimeTracking.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Size = New System.Drawing.Size(245, 20)
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.TabIndex = 12
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.TabOnEnter = True
+            Me.CheckBoxTimeTracking_OmitFromMissingTimeTracking.Text = "Omit from Missing Time Tracking"
             '
-            Me.CheckBoxSettings_IgnoreCalendarSync.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            'SearchableComboBoxTimeTracking_DefaultFunction
+            '
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.ActiveFilterString = ""
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.AddInactiveItemsOnSelectedValue = True
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.CheckBoxSettings_IgnoreCalendarSync.BackColor = System.Drawing.Color.White
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.AutoFillMode = False
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.BookmarkingEnabled = False
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.[Function]
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.DataSource = Nothing
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.DisableMouseWheel = False
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.DisplayName = ""
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.EnterMoveNextControl = True
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.Location = New System.Drawing.Point(487, 83)
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.Name = "SearchableComboBoxTimeTracking_DefaultFunction"
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties.DisplayMember = "Description"
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties.NullText = "Select Function"
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties.PopupView = Me.GridView3
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties.ValueMember = "Code"
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.SecurityEnabled = True
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.SelectedValue = Nothing
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.Size = New System.Drawing.Size(245, 20)
+            Me.SearchableComboBoxTimeTracking_DefaultFunction.TabIndex = 14
+            '
+            'GridView3
+            '
+            Me.GridView3.AFActiveFilterString = ""
+            Me.GridView3.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView3.AutoFilterLookupColumns = False
+            Me.GridView3.AutoloadRepositoryDatasource = True
+            Me.GridView3.DataSourceClearing = False
+            Me.GridView3.EnableDisabledRows = False
+            Me.GridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView3.Name = "GridView3"
+            Me.GridView3.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView3.OptionsView.ShowGroupPanel = False
+            Me.GridView3.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView3.RunStandardValidation = True
+            Me.GridView3.SkipAddingControlsOnModifyColumn = False
+            Me.GridView3.SkipSettingFontOnModifyColumn = False
+            '
+            'SearchableComboBoxTimeTracking_Supervisor
+            '
+            Me.SearchableComboBoxTimeTracking_Supervisor.ActiveFilterString = ""
+            Me.SearchableComboBoxTimeTracking_Supervisor.AddInactiveItemsOnSelectedValue = True
+            Me.SearchableComboBoxTimeTracking_Supervisor.AutoFillMode = False
+            Me.SearchableComboBoxTimeTracking_Supervisor.BookmarkingEnabled = False
+            Me.SearchableComboBoxTimeTracking_Supervisor.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.Employee
+            Me.SearchableComboBoxTimeTracking_Supervisor.DataSource = Nothing
+            Me.SearchableComboBoxTimeTracking_Supervisor.DisableMouseWheel = False
+            Me.SearchableComboBoxTimeTracking_Supervisor.DisplayName = ""
+            Me.SearchableComboBoxTimeTracking_Supervisor.EnterMoveNextControl = True
+            Me.SearchableComboBoxTimeTracking_Supervisor.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxTimeTracking_Supervisor.Location = New System.Drawing.Point(109, 6)
+            Me.SearchableComboBoxTimeTracking_Supervisor.Name = "SearchableComboBoxTimeTracking_Supervisor"
+            Me.SearchableComboBoxTimeTracking_Supervisor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxTimeTracking_Supervisor.Properties.DisplayMember = "Name"
+            Me.SearchableComboBoxTimeTracking_Supervisor.Properties.NullText = "Select Employee"
+            Me.SearchableComboBoxTimeTracking_Supervisor.Properties.PopupView = Me.GridView2
+            Me.SearchableComboBoxTimeTracking_Supervisor.Properties.ValueMember = "Code"
+            Me.SearchableComboBoxTimeTracking_Supervisor.SecurityEnabled = True
+            Me.SearchableComboBoxTimeTracking_Supervisor.SelectedValue = Nothing
+            Me.SearchableComboBoxTimeTracking_Supervisor.Size = New System.Drawing.Size(255, 20)
+            Me.SearchableComboBoxTimeTracking_Supervisor.TabIndex = 1
+            '
+            'GridView2
+            '
+            Me.GridView2.AFActiveFilterString = ""
+            Me.GridView2.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView2.AutoFilterLookupColumns = False
+            Me.GridView2.AutoloadRepositoryDatasource = True
+            Me.GridView2.DataSourceClearing = False
+            Me.GridView2.EnableDisabledRows = False
+            Me.GridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView2.Name = "GridView2"
+            Me.GridView2.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView2.OptionsView.ShowGroupPanel = False
+            Me.GridView2.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView2.RunStandardValidation = True
+            Me.GridView2.SkipAddingControlsOnModifyColumn = False
+            Me.GridView2.SkipSettingFontOnModifyColumn = False
+            '
+            'NumericInputTimeTracking_SeniorityPriority
+            '
+            Me.NumericInputTimeTracking_SeniorityPriority.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputTimeTracking_SeniorityPriority.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Integer]
+            Me.NumericInputTimeTracking_SeniorityPriority.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputTimeTracking_SeniorityPriority.EnterMoveNextControl = True
+            Me.NumericInputTimeTracking_SeniorityPriority.Location = New System.Drawing.Point(109, 83)
+            Me.NumericInputTimeTracking_SeniorityPriority.Name = "NumericInputTimeTracking_SeniorityPriority"
+            Me.NumericInputTimeTracking_SeniorityPriority.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputTimeTracking_SeniorityPriority.Properties.DisplayFormat.FormatString = "f0"
+            Me.NumericInputTimeTracking_SeniorityPriority.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputTimeTracking_SeniorityPriority.Properties.EditFormat.FormatString = "f0"
+            Me.NumericInputTimeTracking_SeniorityPriority.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputTimeTracking_SeniorityPriority.Properties.IsFloatValue = False
+            Me.NumericInputTimeTracking_SeniorityPriority.Properties.Mask.EditMask = "f0"
+            Me.NumericInputTimeTracking_SeniorityPriority.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputTimeTracking_SeniorityPriority.Properties.MaxValue = New Decimal(New Integer() {2147483647, 0, 0, 0})
+            Me.NumericInputTimeTracking_SeniorityPriority.Properties.MinValue = New Decimal(New Integer() {-2147483648, 0, 0, -2147483648})
+            Me.NumericInputTimeTracking_SeniorityPriority.SecurityEnabled = True
+            Me.NumericInputTimeTracking_SeniorityPriority.Size = New System.Drawing.Size(255, 20)
+            Me.NumericInputTimeTracking_SeniorityPriority.TabIndex = 8
+            '
+            'NumericInputTimeTracking_DirectHoursGoal
+            '
+            Me.NumericInputTimeTracking_DirectHoursGoal.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputTimeTracking_DirectHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.NumericInputTimeTracking_DirectHoursGoal.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
+            Me.NumericInputTimeTracking_DirectHoursGoal.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputTimeTracking_DirectHoursGoal.EnterMoveNextControl = True
+            Me.NumericInputTimeTracking_DirectHoursGoal.Location = New System.Drawing.Point(640, 215)
+            Me.NumericInputTimeTracking_DirectHoursGoal.Name = "NumericInputTimeTracking_DirectHoursGoal"
+            Me.NumericInputTimeTracking_DirectHoursGoal.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputTimeTracking_DirectHoursGoal.Properties.DisplayFormat.FormatString = "f"
+            Me.NumericInputTimeTracking_DirectHoursGoal.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputTimeTracking_DirectHoursGoal.Properties.EditFormat.FormatString = "f"
+            Me.NumericInputTimeTracking_DirectHoursGoal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputTimeTracking_DirectHoursGoal.Properties.Mask.EditMask = "f"
+            Me.NumericInputTimeTracking_DirectHoursGoal.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputTimeTracking_DirectHoursGoal.SecurityEnabled = True
+            Me.NumericInputTimeTracking_DirectHoursGoal.Size = New System.Drawing.Size(92, 20)
+            Me.NumericInputTimeTracking_DirectHoursGoal.TabIndex = 25
+            '
+            'NumericInputTimeTracking_MonthlyBillableHoursGoal
+            '
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.EnterMoveNextControl = True
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Location = New System.Drawing.Point(640, 162)
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Name = "NumericInputTimeTracking_MonthlyBillableHoursGoal"
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.DisplayFormat.FormatString = "f"
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.EditFormat.FormatString = "f"
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.Mask.EditMask = "f"
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.SecurityEnabled = True
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Size = New System.Drawing.Size(92, 20)
+            Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.TabIndex = 21
+            '
+            'NumericInputTimeTracking_StandardAnnualHours
+            '
+            Me.NumericInputTimeTracking_StandardAnnualHours.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputTimeTracking_StandardAnnualHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.NumericInputTimeTracking_StandardAnnualHours.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Decimal]
+            Me.NumericInputTimeTracking_StandardAnnualHours.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputTimeTracking_StandardAnnualHours.EnterMoveNextControl = True
+            Me.NumericInputTimeTracking_StandardAnnualHours.Location = New System.Drawing.Point(640, 136)
+            Me.NumericInputTimeTracking_StandardAnnualHours.Name = "NumericInputTimeTracking_StandardAnnualHours"
+            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.DisplayFormat.FormatString = "f"
+            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.EditFormat.FormatString = "f"
+            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.Mask.EditMask = "f"
+            Me.NumericInputTimeTracking_StandardAnnualHours.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputTimeTracking_StandardAnnualHours.SecurityEnabled = True
+            Me.NumericInputTimeTracking_StandardAnnualHours.Size = New System.Drawing.Size(92, 20)
+            Me.NumericInputTimeTracking_StandardAnnualHours.TabIndex = 19
+            '
+            'LabelTimeTracking_StandardAnnualHours
+            '
+            Me.LabelTimeTracking_StandardAnnualHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelTimeTracking_StandardAnnualHours.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.CheckBoxSettings_IgnoreCalendarSync.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxSettings_IgnoreCalendarSync.CheckValue = 0
-            Me.CheckBoxSettings_IgnoreCalendarSync.CheckValueChecked = 1
-            Me.CheckBoxSettings_IgnoreCalendarSync.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxSettings_IgnoreCalendarSync.CheckValueUnchecked = 0
-            Me.CheckBoxSettings_IgnoreCalendarSync.ChildControls = CType(resources.GetObject("CheckBoxSettings_IgnoreCalendarSync.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxSettings_IgnoreCalendarSync.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxSettings_IgnoreCalendarSync.Location = New System.Drawing.Point(432, 7)
-            Me.CheckBoxSettings_IgnoreCalendarSync.Name = "CheckBoxSettings_IgnoreCalendarSync"
-            Me.CheckBoxSettings_IgnoreCalendarSync.OldestSibling = Nothing
-            Me.CheckBoxSettings_IgnoreCalendarSync.SecurityEnabled = True
-            Me.CheckBoxSettings_IgnoreCalendarSync.SiblingControls = CType(resources.GetObject("CheckBoxSettings_IgnoreCalendarSync.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxSettings_IgnoreCalendarSync.Size = New System.Drawing.Size(286, 20)
-            Me.CheckBoxSettings_IgnoreCalendarSync.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxSettings_IgnoreCalendarSync.TabIndex = 3
-            Me.CheckBoxSettings_IgnoreCalendarSync.TabOnEnter = True
-            Me.CheckBoxSettings_IgnoreCalendarSync.Text = "Ignore Calendar Sync"
+            Me.LabelTimeTracking_StandardAnnualHours.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_StandardAnnualHours.Location = New System.Drawing.Point(487, 136)
+            Me.LabelTimeTracking_StandardAnnualHours.Name = "LabelTimeTracking_StandardAnnualHours"
+            Me.LabelTimeTracking_StandardAnnualHours.Size = New System.Drawing.Size(147, 20)
+            Me.LabelTimeTracking_StandardAnnualHours.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_StandardAnnualHours.TabIndex = 18
+            Me.LabelTimeTracking_StandardAnnualHours.Text = "Standard Annual Hours:"
             '
-            'TextBoxSettings_VCCPassword
+            'LabelTimeTracking_DirectHoursGoal
             '
-            Me.TextBoxSettings_VCCPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.LabelTimeTracking_DirectHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelTimeTracking_DirectHoursGoal.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelTimeTracking_DirectHoursGoal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_DirectHoursGoal.Location = New System.Drawing.Point(487, 214)
+            Me.LabelTimeTracking_DirectHoursGoal.Name = "LabelTimeTracking_DirectHoursGoal"
+            Me.LabelTimeTracking_DirectHoursGoal.Size = New System.Drawing.Size(147, 20)
+            Me.LabelTimeTracking_DirectHoursGoal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_DirectHoursGoal.TabIndex = 24
+            Me.LabelTimeTracking_DirectHoursGoal.Text = "Direct Hours Percent Goal:"
+            '
+            'LabelTimeTracking_MonthlyBillableHoursGoal
+            '
+            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelTimeTracking_MonthlyBillableHoursGoal.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelTimeTracking_MonthlyBillableHoursGoal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Location = New System.Drawing.Point(487, 162)
+            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Name = "LabelTimeTracking_MonthlyBillableHoursGoal"
+            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Size = New System.Drawing.Size(147, 20)
+            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_MonthlyBillableHoursGoal.TabIndex = 20
+            Me.LabelTimeTracking_MonthlyBillableHoursGoal.Text = "Monthly Billable Hours Goal:"
+            '
+            'LabelTimeTracking_HoursGoals
+            '
+            Me.LabelTimeTracking_HoursGoals.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelTimeTracking_HoursGoals.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_HoursGoals.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_HoursGoals.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelTimeTracking_HoursGoals.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelTimeTracking_HoursGoals.Location = New System.Drawing.Point(487, 110)
+            Me.LabelTimeTracking_HoursGoals.Name = "LabelTimeTracking_HoursGoals"
+            Me.LabelTimeTracking_HoursGoals.Size = New System.Drawing.Size(245, 20)
+            Me.LabelTimeTracking_HoursGoals.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_HoursGoals.TabIndex = 17
+            Me.LabelTimeTracking_HoursGoals.Text = "Hours Goals"
+            '
+            'CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet
+            '
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettings_VCCPassword.BackColor = System.Drawing.Color.White
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.TextBoxSettings_VCCPassword.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettings_VCCPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettings_VCCPassword.CheckSpellingOnValidate = False
-            Me.TextBoxSettings_VCCPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxSettings_VCCPassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettings_VCCPassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettings_VCCPassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettings_VCCPassword.FocusHighlightEnabled = True
-            Me.TextBoxSettings_VCCPassword.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettings_VCCPassword.Location = New System.Drawing.Point(115, 427)
-            Me.TextBoxSettings_VCCPassword.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettings_VCCPassword.Name = "TextBoxSettings_VCCPassword"
-            Me.TextBoxSettings_VCCPassword.SecurityEnabled = True
-            Me.TextBoxSettings_VCCPassword.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettings_VCCPassword.Size = New System.Drawing.Size(603, 21)
-            Me.TextBoxSettings_VCCPassword.StartingFolderName = Nothing
-            Me.TextBoxSettings_VCCPassword.TabIndex = 33
-            Me.TextBoxSettings_VCCPassword.TabOnEnter = True
-            Me.TextBoxSettings_VCCPassword.UseSystemPasswordChar = True
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.CheckValue = 0
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.CheckValueChecked = 1
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.CheckValueUnchecked = 0
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.ChildControls = CType(resources.GetObject("CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Location = New System.Drawing.Point(487, 31)
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Name = "CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet"
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.OldestSibling = Nothing
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.SecurityEnabled = True
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.SiblingControls = CType(resources.GetObject("CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Size = New System.Drawing.Size(245, 20)
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.TabIndex = 11
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.TabOnEnter = True
+            Me.CheckBoxTimeTracking_ActivateMissingTimeAlertOnTimesheet.Text = "Activate Missing Time Alert on Timesheet"
             '
-            'TextBoxSettings_VCCUserName
+            'ComboBoxTimeTracking_ReportMissingTime
             '
-            Me.TextBoxSettings_VCCUserName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxSettings_VCCUserName.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettings_VCCUserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettings_VCCUserName.CheckSpellingOnValidate = False
-            Me.TextBoxSettings_VCCUserName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxSettings_VCCUserName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettings_VCCUserName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettings_VCCUserName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettings_VCCUserName.FocusHighlightEnabled = True
-            Me.TextBoxSettings_VCCUserName.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettings_VCCUserName.Location = New System.Drawing.Point(115, 400)
-            Me.TextBoxSettings_VCCUserName.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettings_VCCUserName.Name = "TextBoxSettings_VCCUserName"
-            Me.TextBoxSettings_VCCUserName.SecurityEnabled = True
-            Me.TextBoxSettings_VCCUserName.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettings_VCCUserName.Size = New System.Drawing.Size(603, 21)
-            Me.TextBoxSettings_VCCUserName.StartingFolderName = Nothing
-            Me.TextBoxSettings_VCCUserName.TabIndex = 31
-            Me.TextBoxSettings_VCCUserName.TabOnEnter = True
-            '
-            'LabelSettings_VCCPassword
-            '
-            Me.LabelSettings_VCCPassword.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettings_VCCPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_VCCPassword.Location = New System.Drawing.Point(7, 427)
-            Me.LabelSettings_VCCPassword.Name = "LabelSettings_VCCPassword"
-            Me.LabelSettings_VCCPassword.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettings_VCCPassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_VCCPassword.TabIndex = 32
-            Me.LabelSettings_VCCPassword.Text = "Password:"
-            '
-            'LabelSettings_VCCUserName
-            '
-            Me.LabelSettings_VCCUserName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettings_VCCUserName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_VCCUserName.Location = New System.Drawing.Point(7, 401)
-            Me.LabelSettings_VCCUserName.Name = "LabelSettings_VCCUserName"
-            Me.LabelSettings_VCCUserName.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettings_VCCUserName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_VCCUserName.TabIndex = 30
-            Me.LabelSettings_VCCUserName.Text = "User Name:"
-            '
-            'LabelSettings_VCC
-            '
-            Me.LabelSettings_VCC.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.ComboBoxTimeTracking_ReportMissingTime.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxTimeTracking_ReportMissingTime.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelSettings_VCC.BackColor = System.Drawing.Color.White
+            Me.ComboBoxTimeTracking_ReportMissingTime.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+            Me.ComboBoxTimeTracking_ReportMissingTime.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxTimeTracking_ReportMissingTime.AutoFindItemInDataSource = False
+            Me.ComboBoxTimeTracking_ReportMissingTime.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxTimeTracking_ReportMissingTime.BookmarkingEnabled = False
+            Me.ComboBoxTimeTracking_ReportMissingTime.ClientCode = ""
+            Me.ComboBoxTimeTracking_ReportMissingTime.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.ReportMissingTime
+            Me.ComboBoxTimeTracking_ReportMissingTime.DisableMouseWheel = False
+            Me.ComboBoxTimeTracking_ReportMissingTime.DisplayMember = "Value"
+            Me.ComboBoxTimeTracking_ReportMissingTime.DisplayName = ""
+            Me.ComboBoxTimeTracking_ReportMissingTime.DivisionCode = ""
+            Me.ComboBoxTimeTracking_ReportMissingTime.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxTimeTracking_ReportMissingTime.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxTimeTracking_ReportMissingTime.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.AgencyDefault
+            Me.ComboBoxTimeTracking_ReportMissingTime.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxTimeTracking_ReportMissingTime.FocusHighlightEnabled = True
+            Me.ComboBoxTimeTracking_ReportMissingTime.FormattingEnabled = True
+            Me.ComboBoxTimeTracking_ReportMissingTime.ItemHeight = 15
+            Me.ComboBoxTimeTracking_ReportMissingTime.Location = New System.Drawing.Point(487, 5)
+            Me.ComboBoxTimeTracking_ReportMissingTime.Name = "ComboBoxTimeTracking_ReportMissingTime"
+            Me.ComboBoxTimeTracking_ReportMissingTime.ReadOnly = False
+            Me.ComboBoxTimeTracking_ReportMissingTime.SecurityEnabled = True
+            Me.ComboBoxTimeTracking_ReportMissingTime.Size = New System.Drawing.Size(245, 21)
+            Me.ComboBoxTimeTracking_ReportMissingTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxTimeTracking_ReportMissingTime.TabIndex = 10
+            Me.ComboBoxTimeTracking_ReportMissingTime.TabOnEnter = True
+            Me.ComboBoxTimeTracking_ReportMissingTime.ValueMember = "Key"
+            Me.ComboBoxTimeTracking_ReportMissingTime.WatermarkText = "Select Report Missing Time"
+            '
+            'RadioButtonControlTimeTracking_EmployeeStatusNonExempt
+            '
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.LabelSettings_VCC.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_VCC.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelSettings_VCC.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelSettings_VCC.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_VCC.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_VCC.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_VCC.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_VCC.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelSettings_VCC.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelSettings_VCC.Location = New System.Drawing.Point(7, 374)
-            Me.LabelSettings_VCC.Name = "LabelSettings_VCC"
-            Me.LabelSettings_VCC.Size = New System.Drawing.Size(711, 20)
-            Me.LabelSettings_VCC.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_VCC.TabIndex = 29
-            Me.LabelSettings_VCC.Text = "VCC"
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.Location = New System.Drawing.Point(275, 57)
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.Name = "RadioButtonControlTimeTracking_EmployeeStatusNonExempt"
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.SecurityEnabled = True
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.Size = New System.Drawing.Size(89, 20)
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.TabIndex = 6
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.TabOnEnter = True
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.TabStop = False
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNonExempt.Text = "Non-Exempt"
             '
-            'TextBoxSettings_AdobeSignatureFile
+            'RadioButtonControlTimeTracking_EmployeeStatusExempt
             '
-            Me.TextBoxSettings_AdobeSignatureFile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.Location = New System.Drawing.Point(192, 57)
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.Name = "RadioButtonControlTimeTracking_EmployeeStatusExempt"
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.SecurityEnabled = True
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.Size = New System.Drawing.Size(77, 20)
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.TabIndex = 5
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.TabOnEnter = True
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.TabStop = False
+            Me.RadioButtonControlTimeTracking_EmployeeStatusExempt.Text = "Exempt"
+            '
+            'RadioButtonControlTimeTracking_EmployeeStatusNA
+            '
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.Location = New System.Drawing.Point(109, 57)
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.Name = "RadioButtonControlTimeTracking_EmployeeStatusNA"
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.SecurityEnabled = True
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.Size = New System.Drawing.Size(77, 20)
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.TabIndex = 4
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.TabOnEnter = True
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.TabStop = False
+            Me.RadioButtonControlTimeTracking_EmployeeStatusNA.Text = "N/A"
+            '
+            'CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval
+            '
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.CheckValue = 0
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.CheckValueChecked = 1
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.CheckValueUnchecked = 0
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.ChildControls = CType(resources.GetObject("CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.Location = New System.Drawing.Point(109, 31)
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.Name = "CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval"
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.OldestSibling = Nothing
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.SecurityEnabled = True
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.SiblingControls = CType(resources.GetObject("CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.Size = New System.Drawing.Size(255, 20)
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.TabIndex = 2
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.TabOnEnter = True
+            Me.CheckBoxTimeTracking_ExemptFromTimeEntrySupervisorApproval.Text = "Exempt from Time Entry Supervisor Approval"
+            '
+            'LabelTimeTracking_DefaultFunction
+            '
+            Me.LabelTimeTracking_DefaultFunction.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelTimeTracking_DefaultFunction.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_DefaultFunction.Location = New System.Drawing.Point(370, 83)
+            Me.LabelTimeTracking_DefaultFunction.Name = "LabelTimeTracking_DefaultFunction"
+            Me.LabelTimeTracking_DefaultFunction.Size = New System.Drawing.Size(111, 20)
+            Me.LabelTimeTracking_DefaultFunction.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_DefaultFunction.TabIndex = 13
+            Me.LabelTimeTracking_DefaultFunction.Text = "Default Function:"
+            '
+            'LabelTimeTracking_ReportMissingTimeLbl
+            '
+            Me.LabelTimeTracking_ReportMissingTimeLbl.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelTimeTracking_ReportMissingTimeLbl.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_ReportMissingTimeLbl.Location = New System.Drawing.Point(370, 6)
+            Me.LabelTimeTracking_ReportMissingTimeLbl.Name = "LabelTimeTracking_ReportMissingTimeLbl"
+            Me.LabelTimeTracking_ReportMissingTimeLbl.Size = New System.Drawing.Size(111, 20)
+            Me.LabelTimeTracking_ReportMissingTimeLbl.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_ReportMissingTimeLbl.TabIndex = 9
+            Me.LabelTimeTracking_ReportMissingTimeLbl.Text = "Report Missing Time:"
+            '
+            'LabelTimeTracking_SeniorityPriority
+            '
+            Me.LabelTimeTracking_SeniorityPriority.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelTimeTracking_SeniorityPriority.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_SeniorityPriority.Location = New System.Drawing.Point(6, 83)
+            Me.LabelTimeTracking_SeniorityPriority.Name = "LabelTimeTracking_SeniorityPriority"
+            Me.LabelTimeTracking_SeniorityPriority.Size = New System.Drawing.Size(97, 20)
+            Me.LabelTimeTracking_SeniorityPriority.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_SeniorityPriority.TabIndex = 7
+            Me.LabelTimeTracking_SeniorityPriority.Text = "Seniority / Priority:"
+            '
+            'LabelTimeTracking_VacationSickPersonalTime
+            '
+            Me.LabelTimeTracking_VacationSickPersonalTime.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettings_AdobeSignatureFile.BackColor = System.Drawing.Color.White
+            Me.LabelTimeTracking_VacationSickPersonalTime.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.TextBoxSettings_AdobeSignatureFile.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettings_AdobeSignatureFile.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettings_AdobeSignatureFile.CheckSpellingOnValidate = False
-            Me.TextBoxSettings_AdobeSignatureFile.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxSettings_AdobeSignatureFile.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettings_AdobeSignatureFile.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettings_AdobeSignatureFile.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettings_AdobeSignatureFile.FocusHighlightEnabled = True
-            Me.TextBoxSettings_AdobeSignatureFile.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettings_AdobeSignatureFile.Location = New System.Drawing.Point(277, 322)
-            Me.TextBoxSettings_AdobeSignatureFile.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettings_AdobeSignatureFile.Name = "TextBoxSettings_AdobeSignatureFile"
-            Me.TextBoxSettings_AdobeSignatureFile.SecurityEnabled = True
-            Me.TextBoxSettings_AdobeSignatureFile.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettings_AdobeSignatureFile.Size = New System.Drawing.Size(441, 21)
-            Me.TextBoxSettings_AdobeSignatureFile.StartingFolderName = Nothing
-            Me.TextBoxSettings_AdobeSignatureFile.TabIndex = 26
-            Me.TextBoxSettings_AdobeSignatureFile.TabOnEnter = True
-            Me.TextBoxSettings_AdobeSignatureFile.Visible = False
+            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_VacationSickPersonalTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_VacationSickPersonalTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelTimeTracking_VacationSickPersonalTime.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelTimeTracking_VacationSickPersonalTime.Location = New System.Drawing.Point(6, 345)
+            Me.LabelTimeTracking_VacationSickPersonalTime.Name = "LabelTimeTracking_VacationSickPersonalTime"
+            Me.LabelTimeTracking_VacationSickPersonalTime.Size = New System.Drawing.Size(726, 20)
+            Me.LabelTimeTracking_VacationSickPersonalTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_VacationSickPersonalTime.TabIndex = 26
+            Me.LabelTimeTracking_VacationSickPersonalTime.Text = "Vacation/Sick/Personal Time "
             '
-            'LabelSettings_AdobeSignature
+            'DataGridViewTimeTracking_EmployeeTimeOff
             '
-            Me.LabelSettings_AdobeSignature.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettings_AdobeSignature.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_AdobeSignature.Location = New System.Drawing.Point(6, 322)
-            Me.LabelSettings_AdobeSignature.Name = "LabelSettings_AdobeSignature"
-            Me.LabelSettings_AdobeSignature.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettings_AdobeSignature.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_AdobeSignature.TabIndex = 23
-            Me.LabelSettings_AdobeSignature.Text = "File:"
-            '
-            'ButtonSettings_AdobeSignatureFileDelete
-            '
-            Me.ButtonSettings_AdobeSignatureFileDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSettings_AdobeSignatureFileDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSettings_AdobeSignatureFileDelete.Location = New System.Drawing.Point(196, 322)
-            Me.ButtonSettings_AdobeSignatureFileDelete.Name = "ButtonSettings_AdobeSignatureFileDelete"
-            Me.ButtonSettings_AdobeSignatureFileDelete.SecurityEnabled = True
-            Me.ButtonSettings_AdobeSignatureFileDelete.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSettings_AdobeSignatureFileDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSettings_AdobeSignatureFileDelete.TabIndex = 25
-            Me.ButtonSettings_AdobeSignatureFileDelete.Text = "Delete"
-            '
-            'ButtonSettings_AdobeSignatureFileSelect
-            '
-            Me.ButtonSettings_AdobeSignatureFileSelect.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSettings_AdobeSignatureFileSelect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSettings_AdobeSignatureFileSelect.Location = New System.Drawing.Point(115, 322)
-            Me.ButtonSettings_AdobeSignatureFileSelect.Name = "ButtonSettings_AdobeSignatureFileSelect"
-            Me.ButtonSettings_AdobeSignatureFileSelect.SecurityEnabled = True
-            Me.ButtonSettings_AdobeSignatureFileSelect.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSettings_AdobeSignatureFileSelect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSettings_AdobeSignatureFileSelect.TabIndex = 24
-            Me.ButtonSettings_AdobeSignatureFileSelect.Text = "Select"
-            '
-            'TextBoxSettings_AdobeSignatureFilePassword
-            '
-            Me.TextBoxSettings_AdobeSignatureFilePassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.AllowDragAndDrop = False
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettings_AdobeSignatureFilePassword.BackColor = System.Drawing.Color.White
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.AutoFilterLookupColumns = False
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.AutoloadRepositoryDatasource = True
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.AutoUpdateViewCaption = True
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.DataSource = Nothing
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.ItemDescription = ""
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.Location = New System.Drawing.Point(6, 371)
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.MultiSelect = True
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.Name = "DataGridViewTimeTracking_EmployeeTimeOff"
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.RunStandardValidation = True
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.Size = New System.Drawing.Size(726, 111)
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.TabIndex = 27
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.UseEmbeddedNavigator = False
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.ViewCaptionHeight = -1
+            '
+            'LabelTimeTracking_EmployeeStatus
+            '
+            Me.LabelTimeTracking_EmployeeStatus.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.TextBoxSettings_AdobeSignatureFilePassword.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettings_AdobeSignatureFilePassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettings_AdobeSignatureFilePassword.CheckSpellingOnValidate = False
-            Me.TextBoxSettings_AdobeSignatureFilePassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxSettings_AdobeSignatureFilePassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettings_AdobeSignatureFilePassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettings_AdobeSignatureFilePassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettings_AdobeSignatureFilePassword.FocusHighlightEnabled = True
-            Me.TextBoxSettings_AdobeSignatureFilePassword.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettings_AdobeSignatureFilePassword.Location = New System.Drawing.Point(114, 348)
-            Me.TextBoxSettings_AdobeSignatureFilePassword.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettings_AdobeSignatureFilePassword.Name = "TextBoxSettings_AdobeSignatureFilePassword"
-            Me.TextBoxSettings_AdobeSignatureFilePassword.SecurityEnabled = True
-            Me.TextBoxSettings_AdobeSignatureFilePassword.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettings_AdobeSignatureFilePassword.Size = New System.Drawing.Size(604, 21)
-            Me.TextBoxSettings_AdobeSignatureFilePassword.StartingFolderName = Nothing
-            Me.TextBoxSettings_AdobeSignatureFilePassword.TabIndex = 28
-            Me.TextBoxSettings_AdobeSignatureFilePassword.TabOnEnter = True
-            Me.TextBoxSettings_AdobeSignatureFilePassword.UseSystemPasswordChar = True
+            Me.LabelTimeTracking_EmployeeStatus.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_EmployeeStatus.Location = New System.Drawing.Point(6, 57)
+            Me.LabelTimeTracking_EmployeeStatus.Name = "LabelTimeTracking_EmployeeStatus"
+            Me.LabelTimeTracking_EmployeeStatus.Size = New System.Drawing.Size(97, 20)
+            Me.LabelTimeTracking_EmployeeStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_EmployeeStatus.TabIndex = 3
+            Me.LabelTimeTracking_EmployeeStatus.Text = "Status:"
             '
-            'LabelSettings_AdobeSignatureFilePassword
+            'LabelTimeTracking_StandardWorkDays
             '
-            Me.LabelSettings_AdobeSignatureFilePassword.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettings_AdobeSignatureFilePassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_AdobeSignatureFilePassword.Location = New System.Drawing.Point(6, 348)
-            Me.LabelSettings_AdobeSignatureFilePassword.Name = "LabelSettings_AdobeSignatureFilePassword"
-            Me.LabelSettings_AdobeSignatureFilePassword.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettings_AdobeSignatureFilePassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_AdobeSignatureFilePassword.TabIndex = 27
-            Me.LabelSettings_AdobeSignatureFilePassword.Text = "Password:"
-            '
-            'LabelSettings_AdobeSignatureFile
-            '
-            Me.LabelSettings_AdobeSignatureFile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.LabelTimeTracking_StandardWorkDays.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelSettings_AdobeSignatureFile.BackColor = System.Drawing.Color.White
+            Me.LabelTimeTracking_StandardWorkDays.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_AdobeSignatureFile.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_AdobeSignatureFile.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelSettings_AdobeSignatureFile.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelSettings_AdobeSignatureFile.Location = New System.Drawing.Point(7, 296)
-            Me.LabelSettings_AdobeSignatureFile.Name = "LabelSettings_AdobeSignatureFile"
-            Me.LabelSettings_AdobeSignatureFile.Size = New System.Drawing.Size(711, 20)
-            Me.LabelSettings_AdobeSignatureFile.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_AdobeSignatureFile.TabIndex = 22
-            Me.LabelSettings_AdobeSignatureFile.Text = "Adobe Signature File"
+            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelTimeTracking_StandardWorkDays.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_StandardWorkDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelTimeTracking_StandardWorkDays.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelTimeTracking_StandardWorkDays.Location = New System.Drawing.Point(6, 110)
+            Me.LabelTimeTracking_StandardWorkDays.Name = "LabelTimeTracking_StandardWorkDays"
+            Me.LabelTimeTracking_StandardWorkDays.Size = New System.Drawing.Size(475, 20)
+            Me.LabelTimeTracking_StandardWorkDays.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_StandardWorkDays.TabIndex = 15
+            Me.LabelTimeTracking_StandardWorkDays.Text = "Standard Work Days"
             '
-            'CheckBoxSettings_IsAPIUser
+            'DataGridViewTimeTracking_WorkDays
             '
-            Me.CheckBoxSettings_IsAPIUser.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxSettings_IsAPIUser.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxSettings_IsAPIUser.CheckValue = 0
-            Me.CheckBoxSettings_IsAPIUser.CheckValueChecked = 1
-            Me.CheckBoxSettings_IsAPIUser.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxSettings_IsAPIUser.CheckValueUnchecked = 0
-            Me.CheckBoxSettings_IsAPIUser.ChildControls = CType(resources.GetObject("CheckBoxSettings_IsAPIUser.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxSettings_IsAPIUser.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxSettings_IsAPIUser.Location = New System.Drawing.Point(326, 7)
-            Me.CheckBoxSettings_IsAPIUser.Name = "CheckBoxSettings_IsAPIUser"
-            Me.CheckBoxSettings_IsAPIUser.OldestSibling = Nothing
-            Me.CheckBoxSettings_IsAPIUser.SecurityEnabled = True
-            Me.CheckBoxSettings_IsAPIUser.SiblingControls = CType(resources.GetObject("CheckBoxSettings_IsAPIUser.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxSettings_IsAPIUser.Size = New System.Drawing.Size(100, 20)
-            Me.CheckBoxSettings_IsAPIUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxSettings_IsAPIUser.TabIndex = 2
-            Me.CheckBoxSettings_IsAPIUser.TabOnEnter = True
-            Me.CheckBoxSettings_IsAPIUser.Text = "Is API User"
-            '
-            'TextBoxSettings_ProofHQPassword
-            '
-            Me.TextBoxSettings_ProofHQPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.DataGridViewTimeTracking_WorkDays.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewTimeTracking_WorkDays.AllowDragAndDrop = False
+            Me.DataGridViewTimeTracking_WorkDays.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewTimeTracking_WorkDays.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewTimeTracking_WorkDays.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewTimeTracking_WorkDays.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettings_ProofHQPassword.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxSettings_ProofHQPassword.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettings_ProofHQPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettings_ProofHQPassword.CheckSpellingOnValidate = False
-            Me.TextBoxSettings_ProofHQPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxSettings_ProofHQPassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettings_ProofHQPassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettings_ProofHQPassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettings_ProofHQPassword.FocusHighlightEnabled = True
-            Me.TextBoxSettings_ProofHQPassword.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettings_ProofHQPassword.Location = New System.Drawing.Point(115, 269)
-            Me.TextBoxSettings_ProofHQPassword.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettings_ProofHQPassword.Name = "TextBoxSettings_ProofHQPassword"
-            Me.TextBoxSettings_ProofHQPassword.SecurityEnabled = True
-            Me.TextBoxSettings_ProofHQPassword.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettings_ProofHQPassword.Size = New System.Drawing.Size(603, 21)
-            Me.TextBoxSettings_ProofHQPassword.StartingFolderName = Nothing
-            Me.TextBoxSettings_ProofHQPassword.TabIndex = 21
-            Me.TextBoxSettings_ProofHQPassword.TabOnEnter = True
-            Me.TextBoxSettings_ProofHQPassword.UseSystemPasswordChar = True
-            '
-            'TextBoxSettings_ProofHQUserName
-            '
-            Me.TextBoxSettings_ProofHQUserName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettings_ProofHQUserName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxSettings_ProofHQUserName.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettings_ProofHQUserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettings_ProofHQUserName.CheckSpellingOnValidate = False
-            Me.TextBoxSettings_ProofHQUserName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxSettings_ProofHQUserName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettings_ProofHQUserName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettings_ProofHQUserName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettings_ProofHQUserName.FocusHighlightEnabled = True
-            Me.TextBoxSettings_ProofHQUserName.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettings_ProofHQUserName.Location = New System.Drawing.Point(115, 243)
-            Me.TextBoxSettings_ProofHQUserName.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettings_ProofHQUserName.Name = "TextBoxSettings_ProofHQUserName"
-            Me.TextBoxSettings_ProofHQUserName.SecurityEnabled = True
-            Me.TextBoxSettings_ProofHQUserName.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettings_ProofHQUserName.Size = New System.Drawing.Size(603, 21)
-            Me.TextBoxSettings_ProofHQUserName.StartingFolderName = Nothing
-            Me.TextBoxSettings_ProofHQUserName.TabIndex = 19
-            Me.TextBoxSettings_ProofHQUserName.TabOnEnter = True
-            '
-            'LabelSettings_ProofHQPassword
-            '
-            Me.LabelSettings_ProofHQPassword.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettings_ProofHQPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_ProofHQPassword.Location = New System.Drawing.Point(7, 268)
-            Me.LabelSettings_ProofHQPassword.Name = "LabelSettings_ProofHQPassword"
-            Me.LabelSettings_ProofHQPassword.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettings_ProofHQPassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_ProofHQPassword.TabIndex = 20
-            Me.LabelSettings_ProofHQPassword.Text = "Password:"
-            '
-            'LabelSettings_ProofHQUserName
-            '
-            Me.LabelSettings_ProofHQUserName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettings_ProofHQUserName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_ProofHQUserName.Location = New System.Drawing.Point(7, 242)
-            Me.LabelSettings_ProofHQUserName.Name = "LabelSettings_ProofHQUserName"
-            Me.LabelSettings_ProofHQUserName.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettings_ProofHQUserName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_ProofHQUserName.TabIndex = 18
-            Me.LabelSettings_ProofHQUserName.Text = "User Name:"
-            '
-            'LabelSettings_ProofHQ
-            '
-            Me.LabelSettings_ProofHQ.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelSettings_ProofHQ.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_ProofHQ.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_ProofHQ.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_ProofHQ.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelSettings_ProofHQ.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelSettings_ProofHQ.Location = New System.Drawing.Point(7, 216)
-            Me.LabelSettings_ProofHQ.Name = "LabelSettings_ProofHQ"
-            Me.LabelSettings_ProofHQ.Size = New System.Drawing.Size(711, 20)
-            Me.LabelSettings_ProofHQ.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_ProofHQ.TabIndex = 17
-            Me.LabelSettings_ProofHQ.Text = "Proof HQ"
-            '
-            'TextBoxSettings_SugarCRMPassword
-            '
-            Me.TextBoxSettings_SugarCRMPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettings_SugarCRMPassword.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxSettings_SugarCRMPassword.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettings_SugarCRMPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettings_SugarCRMPassword.CheckSpellingOnValidate = False
-            Me.TextBoxSettings_SugarCRMPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxSettings_SugarCRMPassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettings_SugarCRMPassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettings_SugarCRMPassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettings_SugarCRMPassword.FocusHighlightEnabled = True
-            Me.TextBoxSettings_SugarCRMPassword.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettings_SugarCRMPassword.Location = New System.Drawing.Point(114, 190)
-            Me.TextBoxSettings_SugarCRMPassword.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettings_SugarCRMPassword.Name = "TextBoxSettings_SugarCRMPassword"
-            Me.TextBoxSettings_SugarCRMPassword.SecurityEnabled = True
-            Me.TextBoxSettings_SugarCRMPassword.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettings_SugarCRMPassword.Size = New System.Drawing.Size(604, 21)
-            Me.TextBoxSettings_SugarCRMPassword.StartingFolderName = Nothing
-            Me.TextBoxSettings_SugarCRMPassword.TabIndex = 16
-            Me.TextBoxSettings_SugarCRMPassword.TabOnEnter = True
-            Me.TextBoxSettings_SugarCRMPassword.UseSystemPasswordChar = True
-            '
-            'TextBoxSettings_SugarCRMUserName
-            '
-            Me.TextBoxSettings_SugarCRMUserName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettings_SugarCRMUserName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxSettings_SugarCRMUserName.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettings_SugarCRMUserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettings_SugarCRMUserName.CheckSpellingOnValidate = False
-            Me.TextBoxSettings_SugarCRMUserName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxSettings_SugarCRMUserName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettings_SugarCRMUserName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettings_SugarCRMUserName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettings_SugarCRMUserName.FocusHighlightEnabled = True
-            Me.TextBoxSettings_SugarCRMUserName.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettings_SugarCRMUserName.Location = New System.Drawing.Point(114, 164)
-            Me.TextBoxSettings_SugarCRMUserName.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettings_SugarCRMUserName.Name = "TextBoxSettings_SugarCRMUserName"
-            Me.TextBoxSettings_SugarCRMUserName.SecurityEnabled = True
-            Me.TextBoxSettings_SugarCRMUserName.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettings_SugarCRMUserName.Size = New System.Drawing.Size(604, 21)
-            Me.TextBoxSettings_SugarCRMUserName.StartingFolderName = Nothing
-            Me.TextBoxSettings_SugarCRMUserName.TabIndex = 14
-            Me.TextBoxSettings_SugarCRMUserName.TabOnEnter = True
-            '
-            'LabelSettings_SugarCRMPassword
-            '
-            Me.LabelSettings_SugarCRMPassword.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettings_SugarCRMPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_SugarCRMPassword.Location = New System.Drawing.Point(6, 189)
-            Me.LabelSettings_SugarCRMPassword.Name = "LabelSettings_SugarCRMPassword"
-            Me.LabelSettings_SugarCRMPassword.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettings_SugarCRMPassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_SugarCRMPassword.TabIndex = 15
-            Me.LabelSettings_SugarCRMPassword.Text = "Password:"
-            '
-            'LabelSettings_SugarCRMUserName
-            '
-            Me.LabelSettings_SugarCRMUserName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettings_SugarCRMUserName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_SugarCRMUserName.Location = New System.Drawing.Point(6, 163)
-            Me.LabelSettings_SugarCRMUserName.Name = "LabelSettings_SugarCRMUserName"
-            Me.LabelSettings_SugarCRMUserName.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettings_SugarCRMUserName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_SugarCRMUserName.TabIndex = 13
-            Me.LabelSettings_SugarCRMUserName.Text = "User Name:"
-            '
-            'LabelSettings_SugarCRM
-            '
-            Me.LabelSettings_SugarCRM.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelSettings_SugarCRM.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_SugarCRM.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelSettings_SugarCRM.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettings_SugarCRM.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelSettings_SugarCRM.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelSettings_SugarCRM.Location = New System.Drawing.Point(6, 137)
-            Me.LabelSettings_SugarCRM.Name = "LabelSettings_SugarCRM"
-            Me.LabelSettings_SugarCRM.Size = New System.Drawing.Size(712, 20)
-            Me.LabelSettings_SugarCRM.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettings_SugarCRM.TabIndex = 12
-            Me.LabelSettings_SugarCRM.Text = "SugarCRM"
-            '
-            'TextBoxSettingsRightColumn_EmailPassword
-            '
-            Me.TextBoxSettingsRightColumn_EmailPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettingsRightColumn_EmailPassword.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxSettingsRightColumn_EmailPassword.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettingsRightColumn_EmailPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettingsRightColumn_EmailPassword.CheckSpellingOnValidate = False
-            Me.TextBoxSettingsRightColumn_EmailPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxSettingsRightColumn_EmailPassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettingsRightColumn_EmailPassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettingsRightColumn_EmailPassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettingsRightColumn_EmailPassword.FocusHighlightEnabled = True
-            Me.TextBoxSettingsRightColumn_EmailPassword.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettingsRightColumn_EmailPassword.Location = New System.Drawing.Point(114, 111)
-            Me.TextBoxSettingsRightColumn_EmailPassword.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettingsRightColumn_EmailPassword.Name = "TextBoxSettingsRightColumn_EmailPassword"
-            Me.TextBoxSettingsRightColumn_EmailPassword.SecurityEnabled = True
-            Me.TextBoxSettingsRightColumn_EmailPassword.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettingsRightColumn_EmailPassword.Size = New System.Drawing.Size(604, 21)
-            Me.TextBoxSettingsRightColumn_EmailPassword.StartingFolderName = Nothing
-            Me.TextBoxSettingsRightColumn_EmailPassword.TabIndex = 11
-            Me.TextBoxSettingsRightColumn_EmailPassword.TabOnEnter = True
-            Me.TextBoxSettingsRightColumn_EmailPassword.UseSystemPasswordChar = True
-            '
-            'TextBoxSettingsRightColumn_EmailUserName
-            '
-            Me.TextBoxSettingsRightColumn_EmailUserName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettingsRightColumn_EmailUserName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxSettingsRightColumn_EmailUserName.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettingsRightColumn_EmailUserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettingsRightColumn_EmailUserName.CheckSpellingOnValidate = False
-            Me.TextBoxSettingsRightColumn_EmailUserName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxSettingsRightColumn_EmailUserName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettingsRightColumn_EmailUserName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettingsRightColumn_EmailUserName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettingsRightColumn_EmailUserName.FocusHighlightEnabled = True
-            Me.TextBoxSettingsRightColumn_EmailUserName.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettingsRightColumn_EmailUserName.Location = New System.Drawing.Point(114, 85)
-            Me.TextBoxSettingsRightColumn_EmailUserName.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettingsRightColumn_EmailUserName.Name = "TextBoxSettingsRightColumn_EmailUserName"
-            Me.TextBoxSettingsRightColumn_EmailUserName.SecurityEnabled = True
-            Me.TextBoxSettingsRightColumn_EmailUserName.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettingsRightColumn_EmailUserName.Size = New System.Drawing.Size(604, 21)
-            Me.TextBoxSettingsRightColumn_EmailUserName.StartingFolderName = Nothing
-            Me.TextBoxSettingsRightColumn_EmailUserName.TabIndex = 9
-            Me.TextBoxSettingsRightColumn_EmailUserName.TabOnEnter = True
-            '
-            'TextBoxSettingsRightColumn_ReplyToAddress
-            '
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.CheckSpellingOnValidate = False
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.FocusHighlightEnabled = True
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.Location = New System.Drawing.Point(114, 59)
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.Name = "TextBoxSettingsRightColumn_ReplyToAddress"
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.SecurityEnabled = True
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.Size = New System.Drawing.Size(604, 21)
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.StartingFolderName = Nothing
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.TabIndex = 7
-            Me.TextBoxSettingsRightColumn_ReplyToAddress.TabOnEnter = True
-            '
-            'TextBoxSettingsRightColumn_EmailAddress
-            '
-            Me.TextBoxSettingsRightColumn_EmailAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxSettingsRightColumn_EmailAddress.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxSettingsRightColumn_EmailAddress.Border.Class = "TextBoxBorder"
-            Me.TextBoxSettingsRightColumn_EmailAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxSettingsRightColumn_EmailAddress.CheckSpellingOnValidate = False
-            Me.TextBoxSettingsRightColumn_EmailAddress.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
-            Me.TextBoxSettingsRightColumn_EmailAddress.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxSettingsRightColumn_EmailAddress.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxSettingsRightColumn_EmailAddress.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxSettingsRightColumn_EmailAddress.FocusHighlightEnabled = True
-            Me.TextBoxSettingsRightColumn_EmailAddress.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxSettingsRightColumn_EmailAddress.Location = New System.Drawing.Point(114, 32)
-            Me.TextBoxSettingsRightColumn_EmailAddress.MaxFileSize = CType(0, Long)
-            Me.TextBoxSettingsRightColumn_EmailAddress.Name = "TextBoxSettingsRightColumn_EmailAddress"
-            Me.TextBoxSettingsRightColumn_EmailAddress.SecurityEnabled = True
-            Me.TextBoxSettingsRightColumn_EmailAddress.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxSettingsRightColumn_EmailAddress.Size = New System.Drawing.Size(604, 21)
-            Me.TextBoxSettingsRightColumn_EmailAddress.StartingFolderName = Nothing
-            Me.TextBoxSettingsRightColumn_EmailAddress.TabIndex = 5
-            Me.TextBoxSettingsRightColumn_EmailAddress.TabOnEnter = True
-            '
-            'LabelSettingsRightColumn_EmailPassword
-            '
-            Me.LabelSettingsRightColumn_EmailPassword.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettingsRightColumn_EmailPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettingsRightColumn_EmailPassword.Location = New System.Drawing.Point(6, 110)
-            Me.LabelSettingsRightColumn_EmailPassword.Name = "LabelSettingsRightColumn_EmailPassword"
-            Me.LabelSettingsRightColumn_EmailPassword.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettingsRightColumn_EmailPassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettingsRightColumn_EmailPassword.TabIndex = 10
-            Me.LabelSettingsRightColumn_EmailPassword.Text = "Email Password:"
-            '
-            'LabelSettingsRightColumn_EmailUsername
-            '
-            Me.LabelSettingsRightColumn_EmailUsername.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettingsRightColumn_EmailUsername.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettingsRightColumn_EmailUsername.Location = New System.Drawing.Point(6, 84)
-            Me.LabelSettingsRightColumn_EmailUsername.Name = "LabelSettingsRightColumn_EmailUsername"
-            Me.LabelSettingsRightColumn_EmailUsername.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettingsRightColumn_EmailUsername.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettingsRightColumn_EmailUsername.TabIndex = 8
-            Me.LabelSettingsRightColumn_EmailUsername.Text = "Email User Name:"
-            '
-            'LabelSettingsRightColumn_ReplyToAddress
-            '
-            Me.LabelSettingsRightColumn_ReplyToAddress.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettingsRightColumn_ReplyToAddress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettingsRightColumn_ReplyToAddress.Location = New System.Drawing.Point(6, 58)
-            Me.LabelSettingsRightColumn_ReplyToAddress.Name = "LabelSettingsRightColumn_ReplyToAddress"
-            Me.LabelSettingsRightColumn_ReplyToAddress.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettingsRightColumn_ReplyToAddress.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettingsRightColumn_ReplyToAddress.TabIndex = 6
-            Me.LabelSettingsRightColumn_ReplyToAddress.Text = "Reply To Address:"
-            '
-            'CheckBoxSettingsRightColumn_ReceivesAlerts
-            '
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.CheckValue = 0
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.CheckValueChecked = 1
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.CheckValueUnchecked = 0
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.ChildControls = CType(resources.GetObject("CheckBoxSettingsRightColumn_ReceivesAlerts.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.Location = New System.Drawing.Point(220, 7)
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.Name = "CheckBoxSettingsRightColumn_ReceivesAlerts"
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.OldestSibling = Nothing
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.SecurityEnabled = True
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.SiblingControls = CType(resources.GetObject("CheckBoxSettingsRightColumn_ReceivesAlerts.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.Size = New System.Drawing.Size(100, 20)
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.TabIndex = 1
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.TabOnEnter = True
-            Me.CheckBoxSettingsRightColumn_ReceivesAlerts.Text = "Receives Alerts"
-            '
-            'CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail
-            '
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.CheckValue = 0
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.CheckValueChecked = 1
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.CheckValueUnchecked = 0
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.ChildControls = CType(resources.GetObject("CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.Location = New System.Drawing.Point(114, 7)
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.Name = "CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail"
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.OldestSibling = Nothing
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.SecurityEnabled = True
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.SiblingControls = CType(resources.GetObject("CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.Size = New System.Drawing.Size(100, 20)
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.TabIndex = 0
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.TabOnEnter = True
-            Me.CheckBoxSettingsRightColumn_ReceivesAlertsAndEmail.Text = "Receives Email"
-            '
-            'LabelSettingsRightColumn_EmailAddress
-            '
-            Me.LabelSettingsRightColumn_EmailAddress.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSettingsRightColumn_EmailAddress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSettingsRightColumn_EmailAddress.Location = New System.Drawing.Point(6, 32)
-            Me.LabelSettingsRightColumn_EmailAddress.Name = "LabelSettingsRightColumn_EmailAddress"
-            Me.LabelSettingsRightColumn_EmailAddress.Size = New System.Drawing.Size(102, 20)
-            Me.LabelSettingsRightColumn_EmailAddress.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSettingsRightColumn_EmailAddress.TabIndex = 4
-            Me.LabelSettingsRightColumn_EmailAddress.Text = "Email Address:"
-            '
-            'TabItemAlerts_SettingsTab
-            '
-            Me.TabItemAlerts_SettingsTab.AttachedControl = Me.TabControlPanelSettingsTab_Settings
-            Me.TabItemAlerts_SettingsTab.Name = "TabItemAlerts_SettingsTab"
-            Me.TabItemAlerts_SettingsTab.Text = "Settings"
-            '
-            'TabControlPanelAdditionalEmails_AdditionalEmails
-            '
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Controls.Add(Me.DataGridViewAdditionalEmails_AdditionalEmails)
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Name = "TabControlPanelAdditionalEmails_AdditionalEmails"
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Size = New System.Drawing.Size(724, 483)
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.Style.GradientAngle = 90
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.TabIndex = 27
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.TabItem = Me.TabItemAlerts_AdditionalEmailsTab
-            '
-            'DataGridViewAdditionalEmails_AdditionalEmails
-            '
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.AllowDragAndDrop = False
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.AutoFilterLookupColumns = False
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.AutoloadRepositoryDatasource = True
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.AutoUpdateViewCaption = True
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.DataSource = Nothing
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.ItemDescription = "Email(s)"
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.Location = New System.Drawing.Point(4, 4)
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.MultiSelect = True
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.Name = "DataGridViewAdditionalEmails_AdditionalEmails"
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.RunStandardValidation = True
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.Size = New System.Drawing.Size(716, 475)
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.TabIndex = 2
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.UseEmbeddedNavigator = False
-            Me.DataGridViewAdditionalEmails_AdditionalEmails.ViewCaptionHeight = -1
-            '
-            'TabItemAlerts_AdditionalEmailsTab
-            '
-            Me.TabItemAlerts_AdditionalEmailsTab.AttachedControl = Me.TabControlPanelAdditionalEmails_AdditionalEmails
-            Me.TabItemAlerts_AdditionalEmailsTab.Name = "TabItemAlerts_AdditionalEmailsTab"
-            Me.TabItemAlerts_AdditionalEmailsTab.Text = "Additional Emails"
-            '
-            'TabControlPanelAlertGroupsTab_AlertGroups
-            '
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Controls.Add(Me.PanelAlertGroups_RightSection)
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Controls.Add(Me.ExpandableSplitterControlAlertGroups_LeftRight)
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Controls.Add(Me.PanelAlertGroups_LeftSection)
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Name = "TabControlPanelAlertGroupsTab_AlertGroups"
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Size = New System.Drawing.Size(724, 483)
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.Style.GradientAngle = 90
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.TabIndex = 1
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.TabItem = Me.TabItemAlerts_AlertGroupsTab
-            '
-            'PanelAlertGroups_RightSection
-            '
-            Me.PanelAlertGroups_RightSection.Controls.Add(Me.ButtonRightSection_RemoveAlertGroup)
-            Me.PanelAlertGroups_RightSection.Controls.Add(Me.ButtonRightSection_AddAlertGroup)
-            Me.PanelAlertGroups_RightSection.Controls.Add(Me.DataGridViewRightSection_EmployeeAlertGroups)
-            Me.PanelAlertGroups_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelAlertGroups_RightSection.Location = New System.Drawing.Point(313, 1)
-            Me.PanelAlertGroups_RightSection.Name = "PanelAlertGroups_RightSection"
-            Me.PanelAlertGroups_RightSection.Size = New System.Drawing.Size(410, 481)
-            Me.PanelAlertGroups_RightSection.TabIndex = 2
-            '
-            'ButtonRightSection_RemoveAlertGroup
-            '
-            Me.ButtonRightSection_RemoveAlertGroup.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonRightSection_RemoveAlertGroup.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonRightSection_RemoveAlertGroup.Location = New System.Drawing.Point(6, 32)
-            Me.ButtonRightSection_RemoveAlertGroup.Name = "ButtonRightSection_RemoveAlertGroup"
-            Me.ButtonRightSection_RemoveAlertGroup.SecurityEnabled = True
-            Me.ButtonRightSection_RemoveAlertGroup.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonRightSection_RemoveAlertGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonRightSection_RemoveAlertGroup.TabIndex = 1
-            Me.ButtonRightSection_RemoveAlertGroup.Text = "<"
-            '
-            'ButtonRightSection_AddAlertGroup
-            '
-            Me.ButtonRightSection_AddAlertGroup.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonRightSection_AddAlertGroup.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonRightSection_AddAlertGroup.Location = New System.Drawing.Point(6, 6)
-            Me.ButtonRightSection_AddAlertGroup.Name = "ButtonRightSection_AddAlertGroup"
-            Me.ButtonRightSection_AddAlertGroup.SecurityEnabled = True
-            Me.ButtonRightSection_AddAlertGroup.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonRightSection_AddAlertGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonRightSection_AddAlertGroup.TabIndex = 0
-            Me.ButtonRightSection_AddAlertGroup.Text = ">"
-            '
-            'DataGridViewRightSection_EmployeeAlertGroups
-            '
-            Me.DataGridViewRightSection_EmployeeAlertGroups.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewRightSection_EmployeeAlertGroups.AllowDragAndDrop = False
-            Me.DataGridViewRightSection_EmployeeAlertGroups.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewRightSection_EmployeeAlertGroups.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewRightSection_EmployeeAlertGroups.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewRightSection_EmployeeAlertGroups.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewRightSection_EmployeeAlertGroups.AutoFilterLookupColumns = False
-            Me.DataGridViewRightSection_EmployeeAlertGroups.AutoloadRepositoryDatasource = True
-            Me.DataGridViewRightSection_EmployeeAlertGroups.AutoUpdateViewCaption = True
-            Me.DataGridViewRightSection_EmployeeAlertGroups.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewRightSection_EmployeeAlertGroups.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewRightSection_EmployeeAlertGroups.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewRightSection_EmployeeAlertGroups.ItemDescription = ""
-            Me.DataGridViewRightSection_EmployeeAlertGroups.Location = New System.Drawing.Point(87, 6)
-            Me.DataGridViewRightSection_EmployeeAlertGroups.MultiSelect = True
-            Me.DataGridViewRightSection_EmployeeAlertGroups.Name = "DataGridViewRightSection_EmployeeAlertGroups"
-            Me.DataGridViewRightSection_EmployeeAlertGroups.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewRightSection_EmployeeAlertGroups.RunStandardValidation = True
-            Me.DataGridViewRightSection_EmployeeAlertGroups.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewRightSection_EmployeeAlertGroups.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewRightSection_EmployeeAlertGroups.Size = New System.Drawing.Size(316, 469)
-            Me.DataGridViewRightSection_EmployeeAlertGroups.TabIndex = 2
-            Me.DataGridViewRightSection_EmployeeAlertGroups.UseEmbeddedNavigator = False
-            Me.DataGridViewRightSection_EmployeeAlertGroups.ViewCaptionHeight = -1
-            '
-            'ExpandableSplitterControlAlertGroups_LeftRight
-            '
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.ExpandableControl = Me.PanelAlertGroups_LeftSection
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.Location = New System.Drawing.Point(307, 1)
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.Name = "ExpandableSplitterControlAlertGroups_LeftRight"
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.Size = New System.Drawing.Size(6, 481)
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.TabIndex = 4
-            Me.ExpandableSplitterControlAlertGroups_LeftRight.TabStop = False
-            '
-            'PanelAlertGroups_LeftSection
-            '
-            Me.PanelAlertGroups_LeftSection.Controls.Add(Me.DataGridViewLeftSection_AvailableAlertGroups)
-            Me.PanelAlertGroups_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelAlertGroups_LeftSection.Location = New System.Drawing.Point(1, 1)
-            Me.PanelAlertGroups_LeftSection.Name = "PanelAlertGroups_LeftSection"
-            Me.PanelAlertGroups_LeftSection.Size = New System.Drawing.Size(306, 481)
-            Me.PanelAlertGroups_LeftSection.TabIndex = 0
-            '
-            'DataGridViewLeftSection_AvailableAlertGroups
-            '
-            Me.DataGridViewLeftSection_AvailableAlertGroups.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewLeftSection_AvailableAlertGroups.AllowDragAndDrop = False
-            Me.DataGridViewLeftSection_AvailableAlertGroups.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewLeftSection_AvailableAlertGroups.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewLeftSection_AvailableAlertGroups.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewLeftSection_AvailableAlertGroups.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewLeftSection_AvailableAlertGroups.AutoFilterLookupColumns = False
-            Me.DataGridViewLeftSection_AvailableAlertGroups.AutoloadRepositoryDatasource = True
-            Me.DataGridViewLeftSection_AvailableAlertGroups.AutoUpdateViewCaption = True
-            Me.DataGridViewLeftSection_AvailableAlertGroups.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
-            Me.DataGridViewLeftSection_AvailableAlertGroups.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewLeftSection_AvailableAlertGroups.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewLeftSection_AvailableAlertGroups.ItemDescription = ""
-            Me.DataGridViewLeftSection_AvailableAlertGroups.Location = New System.Drawing.Point(6, 6)
-            Me.DataGridViewLeftSection_AvailableAlertGroups.MultiSelect = True
-            Me.DataGridViewLeftSection_AvailableAlertGroups.Name = "DataGridViewLeftSection_AvailableAlertGroups"
-            Me.DataGridViewLeftSection_AvailableAlertGroups.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewLeftSection_AvailableAlertGroups.RunStandardValidation = True
-            Me.DataGridViewLeftSection_AvailableAlertGroups.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewLeftSection_AvailableAlertGroups.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewLeftSection_AvailableAlertGroups.Size = New System.Drawing.Size(294, 469)
-            Me.DataGridViewLeftSection_AvailableAlertGroups.TabIndex = 1
-            Me.DataGridViewLeftSection_AvailableAlertGroups.UseEmbeddedNavigator = False
-            Me.DataGridViewLeftSection_AvailableAlertGroups.ViewCaptionHeight = -1
-            '
-            'TabItemAlerts_AlertGroupsTab
-            '
-            Me.TabItemAlerts_AlertGroupsTab.AttachedControl = Me.TabControlPanelAlertGroupsTab_AlertGroups
-            Me.TabItemAlerts_AlertGroupsTab.Name = "TabItemAlerts_AlertGroupsTab"
-            Me.TabItemAlerts_AlertGroupsTab.Text = "Alert Groups"
-            '
-            'TabControlPanel_CalendarTime
-            '
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.CheckBoxForm_SSL)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.TextBoxCalendarTime_Port)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label3)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.TextBoxCalendarTime_Host)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label2)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.ComboBoxCalendarTime_Type)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label1)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.TextBoxCalendarTime_EmailPassword)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.TextBoxCalendarTime_EmailUserName)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.TextBoxCalendarTime_EmailAddress)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label13)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label14)
-            Me.TabControlPanel_CalendarTime.Controls.Add(Me.Label16)
-            Me.TabControlPanel_CalendarTime.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanel_CalendarTime.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanel_CalendarTime.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanel_CalendarTime.Name = "TabControlPanel_CalendarTime"
-            Me.TabControlPanel_CalendarTime.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanel_CalendarTime.Size = New System.Drawing.Size(724, 483)
-            Me.TabControlPanel_CalendarTime.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanel_CalendarTime.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanel_CalendarTime.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanel_CalendarTime.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanel_CalendarTime.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanel_CalendarTime.Style.GradientAngle = 90
-            Me.TabControlPanel_CalendarTime.TabIndex = 14
-            Me.TabControlPanel_CalendarTime.TabItem = Me.TabItemAlerts_CalendarTimeTab
-            '
-            'CheckBoxForm_SSL
-            '
-            Me.CheckBoxForm_SSL.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.CheckBoxForm_SSL.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxForm_SSL.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxForm_SSL.CheckValue = 0
-            Me.CheckBoxForm_SSL.CheckValueChecked = 1
-            Me.CheckBoxForm_SSL.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxForm_SSL.CheckValueUnchecked = 0
-            Me.CheckBoxForm_SSL.ChildControls = CType(resources.GetObject("CheckBoxForm_SSL.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxForm_SSL.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxForm_SSL.Location = New System.Drawing.Point(114, 161)
-            Me.CheckBoxForm_SSL.Name = "CheckBoxForm_SSL"
-            Me.CheckBoxForm_SSL.OldestSibling = Nothing
-            Me.CheckBoxForm_SSL.SecurityEnabled = True
-            Me.CheckBoxForm_SSL.SiblingControls = CType(resources.GetObject("CheckBoxForm_SSL.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxForm_SSL.Size = New System.Drawing.Size(602, 21)
-            Me.CheckBoxForm_SSL.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxForm_SSL.TabIndex = 28
-            Me.CheckBoxForm_SSL.TabOnEnter = True
-            Me.CheckBoxForm_SSL.Text = "Use SSL"
-            '
-            'TextBoxCalendarTime_Port
-            '
-            Me.TextBoxCalendarTime_Port.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxCalendarTime_Port.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxCalendarTime_Port.Border.Class = "TextBoxBorder"
-            Me.TextBoxCalendarTime_Port.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxCalendarTime_Port.CheckSpellingOnValidate = False
-            Me.TextBoxCalendarTime_Port.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxCalendarTime_Port.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxCalendarTime_Port.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxCalendarTime_Port.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxCalendarTime_Port.FocusHighlightEnabled = True
-            Me.TextBoxCalendarTime_Port.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxCalendarTime_Port.Location = New System.Drawing.Point(114, 134)
-            Me.TextBoxCalendarTime_Port.MaxFileSize = CType(0, Long)
-            Me.TextBoxCalendarTime_Port.Name = "TextBoxCalendarTime_Port"
-            Me.TextBoxCalendarTime_Port.SecurityEnabled = True
-            Me.TextBoxCalendarTime_Port.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxCalendarTime_Port.Size = New System.Drawing.Size(65, 21)
-            Me.TextBoxCalendarTime_Port.StartingFolderName = Nothing
-            Me.TextBoxCalendarTime_Port.TabIndex = 27
-            Me.TextBoxCalendarTime_Port.TabOnEnter = True
-            '
-            'Label3
-            '
-            Me.Label3.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.Label3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label3.Location = New System.Drawing.Point(7, 135)
-            Me.Label3.Name = "Label3"
-            Me.Label3.Size = New System.Drawing.Size(102, 20)
-            Me.Label3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label3.TabIndex = 26
-            Me.Label3.Text = "Port Number:"
-            '
-            'TextBoxCalendarTime_Host
-            '
-            Me.TextBoxCalendarTime_Host.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxCalendarTime_Host.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxCalendarTime_Host.Border.Class = "TextBoxBorder"
-            Me.TextBoxCalendarTime_Host.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxCalendarTime_Host.CheckSpellingOnValidate = False
-            Me.TextBoxCalendarTime_Host.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxCalendarTime_Host.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxCalendarTime_Host.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxCalendarTime_Host.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxCalendarTime_Host.FocusHighlightEnabled = True
-            Me.TextBoxCalendarTime_Host.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxCalendarTime_Host.Location = New System.Drawing.Point(114, 108)
-            Me.TextBoxCalendarTime_Host.MaxFileSize = CType(0, Long)
-            Me.TextBoxCalendarTime_Host.Name = "TextBoxCalendarTime_Host"
-            Me.TextBoxCalendarTime_Host.SecurityEnabled = True
-            Me.TextBoxCalendarTime_Host.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxCalendarTime_Host.Size = New System.Drawing.Size(602, 21)
-            Me.TextBoxCalendarTime_Host.StartingFolderName = Nothing
-            Me.TextBoxCalendarTime_Host.TabIndex = 25
-            Me.TextBoxCalendarTime_Host.TabOnEnter = True
-            '
-            'Label2
-            '
-            Me.Label2.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.Label2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label2.Location = New System.Drawing.Point(7, 109)
-            Me.Label2.Name = "Label2"
-            Me.Label2.Size = New System.Drawing.Size(102, 20)
-            Me.Label2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label2.TabIndex = 24
-            Me.Label2.Text = "Host:"
-            '
-            'ComboBoxCalendarTime_Type
-            '
-            Me.ComboBoxCalendarTime_Type.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxCalendarTime_Type.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.ComboBoxCalendarTime_Type.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-            Me.ComboBoxCalendarTime_Type.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxCalendarTime_Type.AutoFindItemInDataSource = False
-            Me.ComboBoxCalendarTime_Type.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxCalendarTime_Type.BookmarkingEnabled = False
-            Me.ComboBoxCalendarTime_Type.ClientCode = ""
-            Me.ComboBoxCalendarTime_Type.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.EnumObjects
-            Me.ComboBoxCalendarTime_Type.DisableMouseWheel = False
-            Me.ComboBoxCalendarTime_Type.DisplayMember = "Description"
-            Me.ComboBoxCalendarTime_Type.DisplayName = ""
-            Me.ComboBoxCalendarTime_Type.DivisionCode = ""
-            Me.ComboBoxCalendarTime_Type.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxCalendarTime_Type.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.ComboBoxCalendarTime_Type.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.ComboBoxCalendarTime_Type.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxCalendarTime_Type.FocusHighlightEnabled = True
-            Me.ComboBoxCalendarTime_Type.FormattingEnabled = True
-            Me.ComboBoxCalendarTime_Type.ItemHeight = 16
-            Me.ComboBoxCalendarTime_Type.Location = New System.Drawing.Point(114, 4)
-            Me.ComboBoxCalendarTime_Type.Name = "ComboBoxCalendarTime_Type"
-            Me.ComboBoxCalendarTime_Type.ReadOnly = False
-            Me.ComboBoxCalendarTime_Type.SecurityEnabled = True
-            Me.ComboBoxCalendarTime_Type.Size = New System.Drawing.Size(356, 22)
-            Me.ComboBoxCalendarTime_Type.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxCalendarTime_Type.TabIndex = 23
-            Me.ComboBoxCalendarTime_Type.TabOnEnter = True
-            Me.ComboBoxCalendarTime_Type.ValueMember = "Code"
-            Me.ComboBoxCalendarTime_Type.WatermarkText = "Select"
-            '
-            'Label1
-            '
-            Me.Label1.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.Label1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label1.Location = New System.Drawing.Point(6, 5)
-            Me.Label1.Name = "Label1"
-            Me.Label1.Size = New System.Drawing.Size(102, 20)
-            Me.Label1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label1.TabIndex = 21
-            Me.Label1.Text = "Calendar Type:"
-            '
-            'TextBoxCalendarTime_EmailPassword
-            '
-            Me.TextBoxCalendarTime_EmailPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxCalendarTime_EmailPassword.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxCalendarTime_EmailPassword.Border.Class = "TextBoxBorder"
-            Me.TextBoxCalendarTime_EmailPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxCalendarTime_EmailPassword.CheckSpellingOnValidate = False
-            Me.TextBoxCalendarTime_EmailPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxCalendarTime_EmailPassword.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxCalendarTime_EmailPassword.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxCalendarTime_EmailPassword.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxCalendarTime_EmailPassword.FocusHighlightEnabled = True
-            Me.TextBoxCalendarTime_EmailPassword.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxCalendarTime_EmailPassword.Location = New System.Drawing.Point(114, 83)
-            Me.TextBoxCalendarTime_EmailPassword.MaxFileSize = CType(0, Long)
-            Me.TextBoxCalendarTime_EmailPassword.Name = "TextBoxCalendarTime_EmailPassword"
-            Me.TextBoxCalendarTime_EmailPassword.SecurityEnabled = True
-            Me.TextBoxCalendarTime_EmailPassword.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxCalendarTime_EmailPassword.Size = New System.Drawing.Size(602, 21)
-            Me.TextBoxCalendarTime_EmailPassword.StartingFolderName = Nothing
-            Me.TextBoxCalendarTime_EmailPassword.TabIndex = 20
-            Me.TextBoxCalendarTime_EmailPassword.TabOnEnter = True
-            Me.TextBoxCalendarTime_EmailPassword.UseSystemPasswordChar = True
-            '
-            'TextBoxCalendarTime_EmailUserName
-            '
-            Me.TextBoxCalendarTime_EmailUserName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxCalendarTime_EmailUserName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxCalendarTime_EmailUserName.Border.Class = "TextBoxBorder"
-            Me.TextBoxCalendarTime_EmailUserName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxCalendarTime_EmailUserName.CheckSpellingOnValidate = False
-            Me.TextBoxCalendarTime_EmailUserName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxCalendarTime_EmailUserName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxCalendarTime_EmailUserName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxCalendarTime_EmailUserName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxCalendarTime_EmailUserName.FocusHighlightEnabled = True
-            Me.TextBoxCalendarTime_EmailUserName.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxCalendarTime_EmailUserName.Location = New System.Drawing.Point(114, 58)
-            Me.TextBoxCalendarTime_EmailUserName.MaxFileSize = CType(0, Long)
-            Me.TextBoxCalendarTime_EmailUserName.Name = "TextBoxCalendarTime_EmailUserName"
-            Me.TextBoxCalendarTime_EmailUserName.SecurityEnabled = True
-            Me.TextBoxCalendarTime_EmailUserName.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxCalendarTime_EmailUserName.Size = New System.Drawing.Size(602, 21)
-            Me.TextBoxCalendarTime_EmailUserName.StartingFolderName = Nothing
-            Me.TextBoxCalendarTime_EmailUserName.TabIndex = 18
-            Me.TextBoxCalendarTime_EmailUserName.TabOnEnter = True
-            '
-            'TextBoxCalendarTime_EmailAddress
-            '
-            Me.TextBoxCalendarTime_EmailAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxCalendarTime_EmailAddress.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxCalendarTime_EmailAddress.Border.Class = "TextBoxBorder"
-            Me.TextBoxCalendarTime_EmailAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxCalendarTime_EmailAddress.CheckSpellingOnValidate = False
-            Me.TextBoxCalendarTime_EmailAddress.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
-            Me.TextBoxCalendarTime_EmailAddress.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxCalendarTime_EmailAddress.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxCalendarTime_EmailAddress.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxCalendarTime_EmailAddress.FocusHighlightEnabled = True
-            Me.TextBoxCalendarTime_EmailAddress.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxCalendarTime_EmailAddress.Location = New System.Drawing.Point(114, 31)
-            Me.TextBoxCalendarTime_EmailAddress.MaxFileSize = CType(0, Long)
-            Me.TextBoxCalendarTime_EmailAddress.Name = "TextBoxCalendarTime_EmailAddress"
-            Me.TextBoxCalendarTime_EmailAddress.SecurityEnabled = True
-            Me.TextBoxCalendarTime_EmailAddress.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxCalendarTime_EmailAddress.Size = New System.Drawing.Size(602, 21)
-            Me.TextBoxCalendarTime_EmailAddress.StartingFolderName = Nothing
-            Me.TextBoxCalendarTime_EmailAddress.TabIndex = 16
-            Me.TextBoxCalendarTime_EmailAddress.TabOnEnter = True
-            '
-            'Label13
-            '
-            Me.Label13.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.Label13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label13.Location = New System.Drawing.Point(6, 83)
-            Me.Label13.Name = "Label13"
-            Me.Label13.Size = New System.Drawing.Size(102, 20)
-            Me.Label13.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label13.TabIndex = 19
-            Me.Label13.Text = "Email Password:"
-            '
-            'Label14
-            '
-            Me.Label14.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.Label14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label14.Location = New System.Drawing.Point(6, 57)
-            Me.Label14.Name = "Label14"
-            Me.Label14.Size = New System.Drawing.Size(102, 20)
-            Me.Label14.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label14.TabIndex = 17
-            Me.Label14.Text = "Email User Name:"
-            '
-            'Label16
-            '
-            Me.Label16.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.Label16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label16.Location = New System.Drawing.Point(6, 31)
-            Me.Label16.Name = "Label16"
-            Me.Label16.Size = New System.Drawing.Size(102, 20)
-            Me.Label16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label16.TabIndex = 15
-            Me.Label16.Text = "Email Address:"
-            '
-            'TabItemAlerts_CalendarTimeTab
-            '
-            Me.TabItemAlerts_CalendarTimeTab.AttachedControl = Me.TabControlPanel_CalendarTime
-            Me.TabItemAlerts_CalendarTimeTab.Name = "TabItemAlerts_CalendarTimeTab"
-            Me.TabItemAlerts_CalendarTimeTab.Text = "Calendar Time"
-            '
-            'TabControlPanelConceptShareTab_ConceptShare
-            '
-            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.ButtonConceptShare_RemoveUser)
-            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.CheckBoxConceptShare_ShowPassword)
-            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.CheckBoxConceptShare_IsActive)
-            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.ButtonConceptShare_UpdateUser)
-            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.ButtonConceptShare_CreateUser)
-            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.TextBoxConceptShare_Password)
-            Me.TabControlPanelConceptShareTab_ConceptShare.Controls.Add(Me.LabelConceptShare_Password)
-            Me.TabControlPanelConceptShareTab_ConceptShare.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelConceptShareTab_ConceptShare.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelConceptShareTab_ConceptShare.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelConceptShareTab_ConceptShare.Name = "TabControlPanelConceptShareTab_ConceptShare"
-            Me.TabControlPanelConceptShareTab_ConceptShare.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelConceptShareTab_ConceptShare.Size = New System.Drawing.Size(724, 483)
-            Me.TabControlPanelConceptShareTab_ConceptShare.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelConceptShareTab_ConceptShare.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelConceptShareTab_ConceptShare.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelConceptShareTab_ConceptShare.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelConceptShareTab_ConceptShare.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelConceptShareTab_ConceptShare.Style.GradientAngle = 90
-            Me.TabControlPanelConceptShareTab_ConceptShare.TabIndex = 0
-            Me.TabControlPanelConceptShareTab_ConceptShare.TabItem = Me.TabItemAlerts_ConceptShareTab
-            '
-            'ButtonConceptShare_RemoveUser
-            '
-            Me.ButtonConceptShare_RemoveUser.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonConceptShare_RemoveUser.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonConceptShare_RemoveUser.Location = New System.Drawing.Point(166, 4)
-            Me.ButtonConceptShare_RemoveUser.Name = "ButtonConceptShare_RemoveUser"
-            Me.ButtonConceptShare_RemoveUser.SecurityEnabled = True
-            Me.ButtonConceptShare_RemoveUser.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonConceptShare_RemoveUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonConceptShare_RemoveUser.TabIndex = 2
-            Me.ButtonConceptShare_RemoveUser.Text = "Remove User"
-            '
-            'CheckBoxConceptShare_ShowPassword
-            '
-            Me.CheckBoxConceptShare_ShowPassword.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.CheckBoxConceptShare_ShowPassword.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxConceptShare_ShowPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxConceptShare_ShowPassword.CheckValue = 0
-            Me.CheckBoxConceptShare_ShowPassword.CheckValueChecked = 1
-            Me.CheckBoxConceptShare_ShowPassword.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxConceptShare_ShowPassword.CheckValueUnchecked = 0
-            Me.CheckBoxConceptShare_ShowPassword.ChildControls = CType(resources.GetObject("CheckBoxConceptShare_ShowPassword.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxConceptShare_ShowPassword.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxConceptShare_ShowPassword.Location = New System.Drawing.Point(620, 30)
-            Me.CheckBoxConceptShare_ShowPassword.Name = "CheckBoxConceptShare_ShowPassword"
-            Me.CheckBoxConceptShare_ShowPassword.OldestSibling = Nothing
-            Me.CheckBoxConceptShare_ShowPassword.SecurityEnabled = True
-            Me.CheckBoxConceptShare_ShowPassword.SiblingControls = CType(resources.GetObject("CheckBoxConceptShare_ShowPassword.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxConceptShare_ShowPassword.Size = New System.Drawing.Size(100, 21)
-            Me.CheckBoxConceptShare_ShowPassword.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxConceptShare_ShowPassword.TabIndex = 5
-            Me.CheckBoxConceptShare_ShowPassword.TabOnEnter = True
-            Me.CheckBoxConceptShare_ShowPassword.Text = "Show Password"
-            '
-            'CheckBoxConceptShare_IsActive
-            '
-            Me.CheckBoxConceptShare_IsActive.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.CheckBoxConceptShare_IsActive.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxConceptShare_IsActive.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxConceptShare_IsActive.CheckValue = 0
-            Me.CheckBoxConceptShare_IsActive.CheckValueChecked = 1
-            Me.CheckBoxConceptShare_IsActive.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxConceptShare_IsActive.CheckValueUnchecked = 0
-            Me.CheckBoxConceptShare_IsActive.ChildControls = CType(resources.GetObject("CheckBoxConceptShare_IsActive.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxConceptShare_IsActive.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxConceptShare_IsActive.Location = New System.Drawing.Point(85, 57)
-            Me.CheckBoxConceptShare_IsActive.Name = "CheckBoxConceptShare_IsActive"
-            Me.CheckBoxConceptShare_IsActive.OldestSibling = Nothing
-            Me.CheckBoxConceptShare_IsActive.SecurityEnabled = True
-            Me.CheckBoxConceptShare_IsActive.SiblingControls = CType(resources.GetObject("CheckBoxConceptShare_IsActive.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxConceptShare_IsActive.Size = New System.Drawing.Size(635, 21)
-            Me.CheckBoxConceptShare_IsActive.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxConceptShare_IsActive.TabIndex = 6
-            Me.CheckBoxConceptShare_IsActive.TabOnEnter = True
-            Me.CheckBoxConceptShare_IsActive.Text = "Is Active"
-            '
-            'ButtonConceptShare_UpdateUser
-            '
-            Me.ButtonConceptShare_UpdateUser.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonConceptShare_UpdateUser.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonConceptShare_UpdateUser.Location = New System.Drawing.Point(85, 4)
-            Me.ButtonConceptShare_UpdateUser.Name = "ButtonConceptShare_UpdateUser"
-            Me.ButtonConceptShare_UpdateUser.SecurityEnabled = True
-            Me.ButtonConceptShare_UpdateUser.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonConceptShare_UpdateUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonConceptShare_UpdateUser.TabIndex = 1
-            Me.ButtonConceptShare_UpdateUser.Text = "Update User"
-            '
-            'ButtonConceptShare_CreateUser
-            '
-            Me.ButtonConceptShare_CreateUser.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonConceptShare_CreateUser.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonConceptShare_CreateUser.Location = New System.Drawing.Point(4, 4)
-            Me.ButtonConceptShare_CreateUser.Name = "ButtonConceptShare_CreateUser"
-            Me.ButtonConceptShare_CreateUser.SecurityEnabled = True
-            Me.ButtonConceptShare_CreateUser.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonConceptShare_CreateUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonConceptShare_CreateUser.TabIndex = 0
-            Me.ButtonConceptShare_CreateUser.Text = "Create User"
-            '
-            'TextBoxConceptShare_Password
-            '
-            Me.TextBoxConceptShare_Password.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxConceptShare_Password.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxConceptShare_Password.Border.Class = "TextBoxBorder"
-            Me.TextBoxConceptShare_Password.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxConceptShare_Password.CheckSpellingOnValidate = False
-            Me.TextBoxConceptShare_Password.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxConceptShare_Password.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxConceptShare_Password.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxConceptShare_Password.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxConceptShare_Password.FocusHighlightEnabled = True
-            Me.TextBoxConceptShare_Password.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxConceptShare_Password.Location = New System.Drawing.Point(85, 30)
-            Me.TextBoxConceptShare_Password.MaxFileSize = CType(0, Long)
-            Me.TextBoxConceptShare_Password.Name = "TextBoxConceptShare_Password"
-            Me.TextBoxConceptShare_Password.SecurityEnabled = True
-            Me.TextBoxConceptShare_Password.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxConceptShare_Password.Size = New System.Drawing.Size(529, 21)
-            Me.TextBoxConceptShare_Password.StartingFolderName = Nothing
-            Me.TextBoxConceptShare_Password.TabIndex = 4
-            Me.TextBoxConceptShare_Password.TabOnEnter = True
-            Me.TextBoxConceptShare_Password.UseSystemPasswordChar = True
-            '
-            'LabelConceptShare_Password
-            '
-            Me.LabelConceptShare_Password.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelConceptShare_Password.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelConceptShare_Password.Location = New System.Drawing.Point(4, 30)
-            Me.LabelConceptShare_Password.Name = "LabelConceptShare_Password"
-            Me.LabelConceptShare_Password.Size = New System.Drawing.Size(75, 21)
-            Me.LabelConceptShare_Password.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelConceptShare_Password.TabIndex = 3
-            Me.LabelConceptShare_Password.Text = "Password:"
-            '
-            'TabItemAlerts_ConceptShareTab
-            '
-            Me.TabItemAlerts_ConceptShareTab.AttachedControl = Me.TabControlPanelConceptShareTab_ConceptShare
-            Me.TabItemAlerts_ConceptShareTab.Name = "TabItemAlerts_ConceptShareTab"
-            Me.TabItemAlerts_ConceptShareTab.Text = "ConceptShare"
-            '
-            'TabControlPanel1
-            '
-            Me.TabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanel1.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanel1.Name = "TabControlPanel1"
-            Me.TabControlPanel1.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanel1.Size = New System.Drawing.Size(724, 483)
-            Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanel1.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanel1.Style.GradientAngle = 90
-            Me.TabControlPanel1.TabIndex = 10
-            '
-            'TabItemEmployeeDetails_AlertsTab
-            '
-            Me.TabItemEmployeeDetails_AlertsTab.AttachedControl = Me.TabControlPanelAlertsTab_Alerts
-            Me.TabItemEmployeeDetails_AlertsTab.Name = "TabItemEmployeeDetails_AlertsTab"
-            Me.TabItemEmployeeDetails_AlertsTab.Text = "Alerts && Settings"
+            Me.DataGridViewTimeTracking_WorkDays.AutoFilterLookupColumns = False
+            Me.DataGridViewTimeTracking_WorkDays.AutoloadRepositoryDatasource = True
+            Me.DataGridViewTimeTracking_WorkDays.AutoUpdateViewCaption = True
+            Me.DataGridViewTimeTracking_WorkDays.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewTimeTracking_WorkDays.DataSource = Nothing
+            Me.DataGridViewTimeTracking_WorkDays.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewTimeTracking_WorkDays.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewTimeTracking_WorkDays.ItemDescription = ""
+            Me.DataGridViewTimeTracking_WorkDays.Location = New System.Drawing.Point(6, 136)
+            Me.DataGridViewTimeTracking_WorkDays.MultiSelect = True
+            Me.DataGridViewTimeTracking_WorkDays.Name = "DataGridViewTimeTracking_WorkDays"
+            Me.DataGridViewTimeTracking_WorkDays.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewTimeTracking_WorkDays.RunStandardValidation = True
+            Me.DataGridViewTimeTracking_WorkDays.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewTimeTracking_WorkDays.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewTimeTracking_WorkDays.Size = New System.Drawing.Size(475, 203)
+            Me.DataGridViewTimeTracking_WorkDays.TabIndex = 16
+            Me.DataGridViewTimeTracking_WorkDays.UseEmbeddedNavigator = False
+            Me.DataGridViewTimeTracking_WorkDays.ViewCaptionHeight = -1
+            '
+            'LabelTimeTracking_Supervisor
+            '
+            Me.LabelTimeTracking_Supervisor.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelTimeTracking_Supervisor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelTimeTracking_Supervisor.Location = New System.Drawing.Point(6, 6)
+            Me.LabelTimeTracking_Supervisor.Name = "LabelTimeTracking_Supervisor"
+            Me.LabelTimeTracking_Supervisor.Size = New System.Drawing.Size(97, 20)
+            Me.LabelTimeTracking_Supervisor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelTimeTracking_Supervisor.TabIndex = 0
+            Me.LabelTimeTracking_Supervisor.Text = "Supervisor:"
+            '
+            'TabItemEmployeeDetails_TimeTrackingTab
+            '
+            Me.TabItemEmployeeDetails_TimeTrackingTab.AttachedControl = Me.TabControlPanelTimeTrackingTab_TimeTracking
+            Me.TabItemEmployeeDetails_TimeTrackingTab.Name = "TabItemEmployeeDetails_TimeTrackingTab"
+            Me.TabItemEmployeeDetails_TimeTrackingTab.Text = "Time Tracking"
             '
             'TabControlPanelPOsAndExpenseReportsTab_POsAndExpenseReports
             '
@@ -5434,6 +5491,7 @@
             Me.DataGridViewRightSection_EmployeeSecurityGroups.AutoloadRepositoryDatasource = True
             Me.DataGridViewRightSection_EmployeeSecurityGroups.AutoUpdateViewCaption = True
             Me.DataGridViewRightSection_EmployeeSecurityGroups.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.[Default]
+            Me.DataGridViewRightSection_EmployeeSecurityGroups.DataSource = Nothing
             Me.DataGridViewRightSection_EmployeeSecurityGroups.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewRightSection_EmployeeSecurityGroups.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewRightSection_EmployeeSecurityGroups.ItemDescription = ""
@@ -5510,6 +5568,7 @@
             Me.DataGridViewLeftSection_AvailableSecurityGroups.AutoloadRepositoryDatasource = True
             Me.DataGridViewLeftSection_AvailableSecurityGroups.AutoUpdateViewCaption = True
             Me.DataGridViewLeftSection_AvailableSecurityGroups.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.[Default]
+            Me.DataGridViewLeftSection_AvailableSecurityGroups.DataSource = Nothing
             Me.DataGridViewLeftSection_AvailableSecurityGroups.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewLeftSection_AvailableSecurityGroups.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewLeftSection_AvailableSecurityGroups.ItemDescription = ""
@@ -5790,16 +5849,20 @@
             Me.Size = New System.Drawing.Size(738, 550)
             CType(Me.TabControlControl_EmployeeDetails, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlControl_EmployeeDetails.ResumeLayout(False)
-            Me.TabControlPanelTimeTrackingTab_TimeTracking.ResumeLayout(False)
-            CType(Me.NumericInputTimeTracking_BillableHoursGoal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.SearchableComboBoxTimeTracking_Supervisor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.NumericInputTimeTracking_SeniorityPriority.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.NumericInputTimeTracking_DirectHoursGoal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.NumericInputTimeTracking_StandardAnnualHours.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.TabControlPanelAlertsTab_Alerts.ResumeLayout(False)
+            CType(Me.PanelAlerts_Alerts, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.PanelAlerts_Alerts.ResumeLayout(False)
+            CType(Me.TabControlAlerts_Alerts, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.TabControlAlerts_Alerts.ResumeLayout(False)
+            Me.TabControlPanelConceptShareTab_ConceptShare.ResumeLayout(False)
+            Me.TabControlPanelSettingsTab_Settings.ResumeLayout(False)
+            Me.TabControlPanelAdditionalEmails_AdditionalEmails.ResumeLayout(False)
+            Me.TabControlPanelAlertGroupsTab_AlertGroups.ResumeLayout(False)
+            CType(Me.PanelAlertGroups_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.PanelAlertGroups_RightSection.ResumeLayout(False)
+            CType(Me.PanelAlertGroups_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.PanelAlertGroups_LeftSection.ResumeLayout(False)
+            Me.TabControlPanel_CalendarTime.ResumeLayout(False)
             Me.TabControlPanelGeneralInformation_GeneralInformation.ResumeLayout(False)
             CType(Me.PanelGeneralInformation_GeneralInformation, System.ComponentModel.ISupportInitialize).EndInit()
             Me.PanelGeneralInformation_GeneralInformation.ResumeLayout(False)
@@ -5828,20 +5891,16 @@
             Me.PanelRoles_RightSection.ResumeLayout(False)
             CType(Me.PanelRoles_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
             Me.PanelRoles_LeftSection.ResumeLayout(False)
-            Me.TabControlPanelAlertsTab_Alerts.ResumeLayout(False)
-            CType(Me.PanelAlerts_Alerts, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelAlerts_Alerts.ResumeLayout(False)
-            CType(Me.TabControlAlerts_Alerts, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlAlerts_Alerts.ResumeLayout(False)
-            Me.TabControlPanelSettingsTab_Settings.ResumeLayout(False)
-            Me.TabControlPanelAdditionalEmails_AdditionalEmails.ResumeLayout(False)
-            Me.TabControlPanelAlertGroupsTab_AlertGroups.ResumeLayout(False)
-            CType(Me.PanelAlertGroups_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelAlertGroups_RightSection.ResumeLayout(False)
-            CType(Me.PanelAlertGroups_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelAlertGroups_LeftSection.ResumeLayout(False)
-            Me.TabControlPanel_CalendarTime.ResumeLayout(False)
-            Me.TabControlPanelConceptShareTab_ConceptShare.ResumeLayout(False)
+            Me.TabControlPanelTimeTrackingTab_TimeTracking.ResumeLayout(False)
+            CType(Me.NumericInputTimeTracking_BillableHoursGoal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.SearchableComboBoxTimeTracking_DefaultFunction.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.SearchableComboBoxTimeTracking_Supervisor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.NumericInputTimeTracking_SeniorityPriority.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.NumericInputTimeTracking_DirectHoursGoal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.NumericInputTimeTracking_MonthlyBillableHoursGoal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.NumericInputTimeTracking_StandardAnnualHours.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlPanelPOsAndExpenseReportsTab_POsAndExpenseReports.ResumeLayout(False)
             CType(Me.NumericInputPOsAndExpenseReports_POAmountLimit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.SearchableComboBoxPOsAndExpenseReports_CreditCardGLAccount.Properties, System.ComponentModel.ISupportInitialize).EndInit()

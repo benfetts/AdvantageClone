@@ -15,7 +15,12 @@
     border-radius: 6px;
     clear: both !important;
 }
-
+table.index-container-table {
+    width: 100%;
+    margin-left: -1px;
+    border: 1px solid #CCC;
+    background-color: white;
+}
 .views-toolbar {
     background-color: #E5E5E5;
     padding: 8px 0px 8px 0px;
@@ -278,6 +283,38 @@ table.emp-time-table tfoot tr td:last-child {
 
 .emp-time-table tbody tr {
     border-bottom: 1px solid #efefef;
+}
+
+table.emp-time-table {
+    position: relative;
+}
+
+table.emp-time-table thead tr {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+table.emp-time-table thead tr.day_header_row {
+    background-color: inherit;
+}
+
+/*if #approvalRow is visible move day_header_row down */
+table.emp-time-table thead tr#approvalRow + tr.day_header_row {
+    top: 44px;
+}
+
+table.emp-time-table tfoot tr.sticky-footer {
+    position: sticky;
+    bottom: -1px;
+    z-index: 2;
+    background-color: inherit;
+}
+
+#tableScrollWrapper {
+    max-height: 70vh;
+    overflow: auto;
+    padding-bottom: 1px;
 }
 
 .hamburger_cell {

@@ -1,6 +1,6 @@
 ﻿Namespace FTP
 
-    <HideModuleName()> _
+    <HideModuleName()>
     Public Module Methods
 
 #Region " Constants "
@@ -78,8 +78,8 @@
             ValidateSFTP = Validated
 
         End Function
-        Public Function DownloadFilesFromFTPSExplicit(ByVal FTPHost As String, ByVal FTPPort As Integer, _
-                                                      ByVal UserName As String, ByVal Password As String, _
+        Public Function DownloadFilesFromFTPSExplicit(ByVal FTPHost As String, ByVal FTPPort As Integer,
+                                                      ByVal UserName As String, ByVal Password As String,
                                                       ByVal FTPPath As String, ByVal LocalPath As String,
                                                       ByRef DownloadedFiles As Generic.List(Of String)) As Boolean
 
@@ -91,8 +91,8 @@
             DownloadFilesFromFTPSExplicit = Downloaded
 
         End Function
-        Public Function DownloadFilesFromFTPSImplicit(ByVal FTPHost As String, ByVal FTPPort As Integer, _
-                                                      ByVal UserName As String, ByVal Password As String, _
+        Public Function DownloadFilesFromFTPSImplicit(ByVal FTPHost As String, ByVal FTPPort As Integer,
+                                                      ByVal UserName As String, ByVal Password As String,
                                                       ByVal FTPPath As String, ByVal LocalPath As String,
                                                       ByRef DownloadedFiles As Generic.List(Of String)) As Boolean
 
@@ -293,11 +293,19 @@
 
                                     SFTP.Download(RebexItem.Path, LocalPath)
 
-                                    DownloadedFiles.Add(LocalPath & RebexItem.Name)
+                                    If DownloadedFiles.Contains(LocalPath & RebexItem.Name) = False Then
+
+                                        DownloadedFiles.Add(LocalPath & RebexItem.Name)
+
+                                    End If
 
                                 ElseIf ExcludeFiles IsNot Nothing AndAlso ExcludeFiles.Contains(LocalPath & RebexItem.Name) = False Then
 
-                                    DownloadedFiles.Add(LocalPath & RebexItem.Name)
+                                    If DownloadedFiles.Contains(LocalPath & RebexItem.Name) = False Then
+
+                                        DownloadedFiles.Add(LocalPath & RebexItem.Name)
+
+                                    End If
 
                                 End If
 

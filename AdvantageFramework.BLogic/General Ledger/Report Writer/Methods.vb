@@ -1,6 +1,6 @@
 ﻿Namespace GeneralLedger.ReportWriter
 
-    <HideModuleName()> _
+    <HideModuleName()>
     Public Module Methods
 
 #Region " Constants "
@@ -135,15 +135,15 @@
             IndentSpaces
             UnderlineAmount
             IsBold
-			UseCurrencyFormat
-			NumberOfDecimalPlaces
-			SuppressIfAllZeros
+            UseCurrencyFormat
+            NumberOfDecimalPlaces
+            SuppressIfAllZeros
             RollUp
             DataCalculation
             DataOption
-			DoubleUnderlineAmount
-			IsVisible
-		End Enum
+            DoubleUnderlineAmount
+            IsVisible
+        End Enum
 
         Public Enum DepartmentTeamPresetFields
             ID
@@ -291,6 +291,14 @@
             TrialBalance = 3
             <AdvantageFramework.EnumUtilities.Attributes.EnumObject("4", "Detail by Transaction")>
             DetailByTransaction = 4
+            '<AdvantageFramework.EnumUtilities.Attributes.EnumObject("5", "Transaction by Year and Period")>
+            'TransactionsByYearAndPeriod = 5
+            '<AdvantageFramework.EnumUtilities.Attributes.EnumObject("6", "Transaction by Year")>
+            'TransactionsByYear = 6
+            '<AdvantageFramework.EnumUtilities.Attributes.EnumObject("7", "Transaction by Period and Account")>
+            'TransactionsByPeriodAndAccount = 7
+            '<AdvantageFramework.EnumUtilities.Attributes.EnumObject("8", "Transaction by Period")>
+            'TransactionsByPeriod = 8
         End Enum
 
 #End Region
@@ -309,8 +317,8 @@
 
 #Region " Methods "
 
-        Public Function LoadStartingPostPeriodForReport(ByVal RowsDataTable As System.Data.DataTable, ByVal ColumnsDataTable As System.Data.DataTable, _
-                                                        ByVal ReportPostPeriod As AdvantageFramework.Database.Entities.PostPeriod, _
+        Public Function LoadStartingPostPeriodForReport(ByVal RowsDataTable As System.Data.DataTable, ByVal ColumnsDataTable As System.Data.DataTable,
+                                                        ByVal ReportPostPeriod As AdvantageFramework.Database.Entities.PostPeriod,
                                                         ByVal PostPeriods As Generic.List(Of AdvantageFramework.Database.Entities.PostPeriod)) As AdvantageFramework.Database.Entities.PostPeriod
 
             'objects
@@ -360,7 +368,7 @@
 
                                 End If
 
-                        End If
+                            End If
 
                         End If
 
@@ -377,11 +385,11 @@
             LoadStartingPostPeriodForReport = PostPeriod
 
         End Function
-        Public Sub LoadStartAndEndingPostPeriods(ByVal RowDataRow As System.Data.DataRow, ByVal ColumnDataRow As System.Data.DataRow, _
-                                                 ByVal ReportPostPeriod As AdvantageFramework.Database.Entities.PostPeriod, _
-                                                 ByVal DataOption As DataOptions, _
-                                                 ByVal PostPeriods As Generic.List(Of AdvantageFramework.Database.Entities.PostPeriod), _
-                                                 ByRef StartingPostPeriod As AdvantageFramework.Database.Entities.PostPeriod, _
+        Public Sub LoadStartAndEndingPostPeriods(ByVal RowDataRow As System.Data.DataRow, ByVal ColumnDataRow As System.Data.DataRow,
+                                                 ByVal ReportPostPeriod As AdvantageFramework.Database.Entities.PostPeriod,
+                                                 ByVal DataOption As DataOptions,
+                                                 ByVal PostPeriods As Generic.List(Of AdvantageFramework.Database.Entities.PostPeriod),
+                                                 ByRef StartingPostPeriod As AdvantageFramework.Database.Entities.PostPeriod,
                                                  ByRef EndingPostPeriod As AdvantageFramework.Database.Entities.PostPeriod)
 
             'objects
@@ -739,10 +747,10 @@
             NewGLReportTemplateRow.NumberOfDecimalPlaces = GLReportTemplateRow.NumberOfDecimalPlaces
             NewGLReportTemplateRow.RollUp = GLReportTemplateRow.RollUp
             NewGLReportTemplateRow.DataOption = GLReportTemplateRow.DataOption
-			NewGLReportTemplateRow.DataCalculation = GLReportTemplateRow.DataCalculation
-			NewGLReportTemplateRow.IsVisible = GLReportTemplateRow.IsVisible
+            NewGLReportTemplateRow.DataCalculation = GLReportTemplateRow.DataCalculation
+            NewGLReportTemplateRow.IsVisible = GLReportTemplateRow.IsVisible
 
-			If AdvantageFramework.Database.Procedures.GLReportTemplateRow.Insert(DbContext, NewGLReportTemplateRow) Then
+            If AdvantageFramework.Database.Procedures.GLReportTemplateRow.Insert(DbContext, NewGLReportTemplateRow) Then
 
                 For Each GLReportTemplateRowRelation In AdvantageFramework.Database.Procedures.GLReportTemplateRowRelation.LoadByGLReportTemplateRowID(DbContext, GLReportTemplateRow.ID).ToList
 
@@ -1240,11 +1248,11 @@
             DataColumn.AllowDBNull = False
             DataColumn.DefaultValue = ""
 
-			DataColumn = RowsDataTable.Columns.Add(RowFields.IsVisible.ToString, GetType(Boolean))
-			DataColumn.AllowDBNull = False
-			DataColumn.DefaultValue = True
+            DataColumn = RowsDataTable.Columns.Add(RowFields.IsVisible.ToString, GetType(Boolean))
+            DataColumn.AllowDBNull = False
+            DataColumn.DefaultValue = True
 
-			DataColumn = RowsDataTable.Columns.Add(RowFields.BalanceType.ToString, GetType(Integer))
+            DataColumn = RowsDataTable.Columns.Add(RowFields.BalanceType.ToString, GetType(Integer))
             DataColumn.AllowDBNull = True
             DataColumn.DefaultValue = CInt(BalanceTypes.Credit)
 
@@ -1291,15 +1299,15 @@
             DataColumn.AllowDBNull = False
             DataColumn.DefaultValue = False
 
-			DataColumn = RowsDataTable.Columns.Add(RowFields.UseCurrencyFormat.ToString, GetType(Boolean))
-			DataColumn.AllowDBNull = False
-			DataColumn.DefaultValue = False
+            DataColumn = RowsDataTable.Columns.Add(RowFields.UseCurrencyFormat.ToString, GetType(Boolean))
+            DataColumn.AllowDBNull = False
+            DataColumn.DefaultValue = False
 
-			DataColumn = RowsDataTable.Columns.Add(RowFields.NumberOfDecimalPlaces.ToString, GetType(Integer))
-			DataColumn.AllowDBNull = False
-			DataColumn.DefaultValue = 0
+            DataColumn = RowsDataTable.Columns.Add(RowFields.NumberOfDecimalPlaces.ToString, GetType(Integer))
+            DataColumn.AllowDBNull = False
+            DataColumn.DefaultValue = 0
 
-			DataColumn = RowsDataTable.Columns.Add(RowFields.SuppressIfAllZeros.ToString, GetType(Boolean))
+            DataColumn = RowsDataTable.Columns.Add(RowFields.SuppressIfAllZeros.ToString, GetType(Boolean))
             DataColumn.AllowDBNull = False
             DataColumn.DefaultValue = False
 
@@ -1577,15 +1585,15 @@
                 RowDataRow(RowFields.UnderlineAmount.ToString) = GLReportTemplateRow.UnderlineAmount
                 RowDataRow(RowFields.DoubleUnderlineAmount.ToString) = GLReportTemplateRow.DoubleUnderlineAmount
                 RowDataRow(RowFields.IsBold.ToString) = GLReportTemplateRow.IsBold
-				RowDataRow(RowFields.UseCurrencyFormat.ToString) = GLReportTemplateRow.UseCurrencyFormat
-				RowDataRow(RowFields.NumberOfDecimalPlaces.ToString) = GLReportTemplateRow.NumberOfDecimalPlaces
-				RowDataRow(RowFields.SuppressIfAllZeros.ToString) = GLReportTemplateRow.SuppressIfAllZeros
+                RowDataRow(RowFields.UseCurrencyFormat.ToString) = GLReportTemplateRow.UseCurrencyFormat
+                RowDataRow(RowFields.NumberOfDecimalPlaces.ToString) = GLReportTemplateRow.NumberOfDecimalPlaces
+                RowDataRow(RowFields.SuppressIfAllZeros.ToString) = GLReportTemplateRow.SuppressIfAllZeros
                 RowDataRow(RowFields.RollUp.ToString) = GLReportTemplateRow.RollUp
                 RowDataRow(RowFields.DataOption.ToString) = GLReportTemplateRow.DataOption
-				RowDataRow(RowFields.DataCalculation.ToString) = GLReportTemplateRow.DataCalculation
-				RowDataRow(RowFields.IsVisible.ToString) = GLReportTemplateRow.IsVisible
+                RowDataRow(RowFields.DataCalculation.ToString) = GLReportTemplateRow.DataCalculation
+                RowDataRow(RowFields.IsVisible.ToString) = GLReportTemplateRow.IsVisible
 
-				RowsDataTable.Rows.Add(RowDataRow)
+                RowsDataTable.Rows.Add(RowDataRow)
 
             Next
 

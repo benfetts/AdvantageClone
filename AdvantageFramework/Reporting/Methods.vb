@@ -176,6 +176,9 @@
             BroadcastInvoiceSummary = 163
             EmployeeTimeAnalysis = 164
             CheckRegisterWithInvoiceDetails = 165
+            DeferredSalesVsOpenAR = 166
+            BroadcastInvoiceDetail = 167
+            GLCrossOffice = 168
         End Enum
 
         Public Enum DynamicReports
@@ -309,6 +312,9 @@
             BroadcastInvoiceSummary = 153
             EmployeeTimeAnalysis = 154
             CheckRegisterWithInvoiceDetails = 155
+            DeferredSalesVsOpenAR = 156
+            BroadcastInvoiceDetail = 157
+            GLCrossOffice = 158
         End Enum
 
         Public Enum ReportTypes
@@ -506,6 +512,14 @@
             TrafficFlightSummaryReport = 192
             ProofingFeedbackSummary = 193
             PaymentManagerReport = 194
+            ProductionWIPSummaryByJobDeferredSalesCosIncluded = 195
+            ProductionWIPSummaryByJobHoursDeferredSalesCos = 196
+            AccountsReceivableAgedDetailbyClientNoGL = 197
+            AccountsPayableAgedDetailNoGL = 198
+            BroadcastInvoiceDetail = 199
+            BroadcastInvoiceSummary = 200
+            ProductionWIPAgedSummaryByJobWithAccrLiabPO = 201
+            ProductionWIPSummaryByJobEstHrsDefRecSls = 202
         End Enum
 
         Public Enum ClientPLReportTypes
@@ -1457,6 +1471,7 @@
             WorksheetMarketVendors
             MediaBroadcastWorksheetMarketBooks
             Session
+            OmitRatings
         End Enum
 
         Public Enum CashTransactionParameters
@@ -1713,6 +1728,8 @@
             AccountsReceivableAgedDetailbyProduct = 169
             <AdvantageFramework.EnumUtilities.Attributes.EnumObject("170", "604 - Accounts Receivable Aged with Disbursement Detail by Product")>
             AccountsReceivableAgedwithDisbursementDetail = 170
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("197", "605 - Accounts Receivable Aged Detail by Client (No GL)")>
+            AccountsReceivableAgedDetailbyClientNoGL = 197
         End Enum
 
         Public Enum UpdatedRateRequestReportParameters
@@ -1740,6 +1757,14 @@
             ProductionWIPAgedSummaryByJobWithEstimate = 180
             <AdvantageFramework.EnumUtilities.Attributes.EnumObject("181", "407 - Production WIP Aged Summary by Job - Vendor Only")>
             ProductionWIPAgedSummaryByJobVendorOnly = 181
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("195", "408 - Production WIP Summary by Job with Deferred Sales, Cost, and Income")>
+            ProductionWIPSummaryByJobDeferredSalesCosIncluded = 195
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("196", "409 - Production WIP Summary by Job with Hours and Deferred Sales/Cost")>
+            ProductionWIPSummaryByJobHoursDeferredSalesCos = 196
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("201", "410 - Production WIP Aged Summary by Job with Purchases, Accrued Liabliity, and Open PO")>
+            ProductionWIPAgedSummaryByJobWithAccrLiabPO = 201
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("202", "411 - Production WIP Summary by Job with AP, Time Billing, Income Only and Deferred Sales")>
+            ProductionWIPSummaryByJobEstHrsDefRecSls = 202
         End Enum
 
         Public Enum MonthEndAccruedLiabilityReportTypes
@@ -1764,6 +1789,8 @@
             AccountsPayableAgedSummary = 189
             <AdvantageFramework.EnumUtilities.Attributes.EnumObject("190", "505 - Accounts Payable Aged Detail")>
             AccountsPayableAgedDetail = 190
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("198", "506 - Accounts Payable Aged Detail (No GL)")>
+            AccountsPayableAgedDetailNoGL = 198
         End Enum
 
         Public Enum VendorSpendWithEEOCAndMinorityStatusSummaryParameters
@@ -1811,6 +1838,24 @@
             FromDate
             ToDate
         End Enum
+
+        Public Enum DeferredSalesVsOpenARInitialParameters
+            PeriodCutoff
+            IncludeMedia
+        End Enum
+
+        Public Enum BroadcastInvoiceReportTypes
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("199", "01 - Broadcast Invoice Detail")>
+            BroadcastInvoiceDetail = 199
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("200", "02 - Broadcast Invoice Summary")>
+            BroadcastInvoiceSummary = 200
+        End Enum
+
+        Public Enum GLCrossOfficeParameters
+            StartPeriod
+            EndPeriod
+        End Enum
+
 
 #End Region
 

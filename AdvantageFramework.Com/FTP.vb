@@ -73,20 +73,20 @@ Public Class FTP
 
                                 If Bank.PaymentManagerFTPPrivateKey IsNot Nothing Then
 
-                                    IsFTPValidationSuccessful = AdvantageFramework.FTP.SSHFTPValidation(Bank.PaymentManagerFTPAddress, Bank.PaymentManagerFTPPort, Bank.PaymentManagerFTPUsername,
+                                    IsFTPValidationSuccessful = AdvantageFramework.FTP.SSHFTPValidation(Bank.PaymentManagerFTPAddress, CInt(Bank.PaymentManagerFTPPort), Bank.PaymentManagerFTPUsername,
                                                                                                         Bank.PaymentManagerFTPPrivateKey, "", ErrorMessage)
 
                                 Else
 
-                                    IsFTPValidationSuccessful = AdvantageFramework.FTP.FTPValidation(Bank.PaymentManagerFTPSSL, Bank.PaymentManagerFTPAddress, Bank.PaymentManagerFTPPort,
-                                                                                                     Bank.PaymentManagerFTPUsername, Bank.PaymentManagerFTPPassword, Bank.PaymentManagerFTPSSLMode, ErrorMessage)
+                                    IsFTPValidationSuccessful = AdvantageFramework.FTP.FTPValidation(Bank.PaymentManagerFTPSSL, Bank.PaymentManagerFTPAddress, CInt(Bank.PaymentManagerFTPPort),
+                                                                                                     Bank.PaymentManagerFTPUsername, Bank.PaymentManagerFTPPassword, CType(Bank.PaymentManagerFTPSSLMode, Rebex.Net.SslMode), ErrorMessage)
 
                                 End If
 
                             Else
 
-                                IsFTPValidationSuccessful = AdvantageFramework.FTP.FTPValidation(Bank.PaymentManagerFTPSSL, Bank.PaymentManagerFTPAddress, Bank.PaymentManagerFTPPort,
-                                                                                                 Bank.PaymentManagerFTPUsername, Bank.PaymentManagerFTPPassword, Bank.PaymentManagerFTPSSLMode, ErrorMessage)
+                                IsFTPValidationSuccessful = AdvantageFramework.FTP.FTPValidation(Bank.PaymentManagerFTPSSL, Bank.PaymentManagerFTPAddress, CInt(Bank.PaymentManagerFTPPort),
+                                                                                                 Bank.PaymentManagerFTPUsername, Bank.PaymentManagerFTPPassword, CType(Bank.PaymentManagerFTPSSLMode, Rebex.Net.SslMode), ErrorMessage)
 
                             End If
 
@@ -98,20 +98,20 @@ Public Class FTP
 
                                     If Bank.PaymentManagerFTPPrivateKey IsNot Nothing Then
 
-                                        Exported = AdvantageFramework.FTP.UploadToSSHFTP(Bank.PaymentManagerFTPAddress, Bank.PaymentManagerFTPPort, Bank.PaymentManagerFTPUsername,
+                                        Exported = AdvantageFramework.FTP.UploadToSSHFTP(Bank.PaymentManagerFTPAddress, CInt(Bank.PaymentManagerFTPPort), Bank.PaymentManagerFTPUsername,
                                                                                          Bank.PaymentManagerFTPPrivateKey, "", Bank.PaymentManagerFTPFolder, FileName, ErrorMessage)
 
                                     Else
 
-                                        Exported = AdvantageFramework.FTP.UploadToFTP(Bank.PaymentManagerFTPSSL, Bank.PaymentManagerFTPAddress, Bank.PaymentManagerFTPPort, Bank.PaymentManagerFTPFolder,
-                                                                                      Bank.PaymentManagerFTPUsername, Bank.PaymentManagerFTPPassword, Bank.PaymentManagerFTPSSLMode, FileName, ErrorMessage)
+                                        Exported = AdvantageFramework.FTP.UploadToFTP(Bank.PaymentManagerFTPSSL, Bank.PaymentManagerFTPAddress, CInt(Bank.PaymentManagerFTPPort), Bank.PaymentManagerFTPFolder,
+                                                                                      Bank.PaymentManagerFTPUsername, Bank.PaymentManagerFTPPassword, CType(Bank.PaymentManagerFTPSSLMode, Rebex.Net.SslMode), FileName, ErrorMessage)
 
                                     End If
 
                                 Else
 
-                                    Exported = AdvantageFramework.FTP.UploadToFTP(Bank.PaymentManagerFTPSSL, Bank.PaymentManagerFTPAddress, Bank.PaymentManagerFTPPort, Bank.PaymentManagerFTPFolder,
-                                                                                  Bank.PaymentManagerFTPUsername, Bank.PaymentManagerFTPPassword, Bank.PaymentManagerFTPSSLMode, FileName, ErrorMessage)
+                                    Exported = AdvantageFramework.FTP.UploadToFTP(Bank.PaymentManagerFTPSSL, Bank.PaymentManagerFTPAddress, CInt(Bank.PaymentManagerFTPPort), Bank.PaymentManagerFTPFolder,
+                                                                                  Bank.PaymentManagerFTPUsername, Bank.PaymentManagerFTPPassword, CType(Bank.PaymentManagerFTPSSLMode, Rebex.Net.SslMode), FileName, ErrorMessage)
 
                                 End If
 

@@ -3,7 +3,7 @@
   <Runtime>
     <ConceptualModels>
       <Schema Namespace="AdvantageFramework.Nielsen.Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="NCCTVAIUELogRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVAIUELogRevision, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVAIUELogRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVAIUELogRevision, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -11,7 +11,7 @@
           <Property Name="OldNCCTVAIUELogID" Type="Int32" Nullable="false" />
           <Property Name="NewNCCTVAIUELogID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVAIUELog" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVAIUELog, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVAIUELog" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVAIUELog, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -20,7 +20,7 @@
           <Property Name="Month" Type="Int16" Nullable="false" />
           <Property Name="Validated" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVAIUE" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVAIUE, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVAIUE" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVAIUE, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -31,7 +31,7 @@
           <Property Name="SampleType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HHAIUE" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVCablenet" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVCablenet, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVCablenet" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVCablenet, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -41,7 +41,7 @@
           <Property Name="StationCode" Type="Int32" />
           <Property Name="ComscoreStationCode" Type="Int32" />
         </EntityType>
-        <EntityType Name="NCCTVCarriageUELogRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVCarriageUELogRevision, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVCarriageUELogRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVCarriageUELogRevision, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -49,7 +49,7 @@
           <Property Name="OldNCCTVCarriageUELogID" Type="Int32" Nullable="false" />
           <Property Name="NewNCCTVCarriageUELogID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVCarriageUELog" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVCarriageUELog, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVCarriageUELog" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVCarriageUELog, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -58,7 +58,7 @@
           <Property Name="Month" Type="Int16" Nullable="false" />
           <Property Name="Validated" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVCarriageUE" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVCarriageUE, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVCarriageUE" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVCarriageUE, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -68,7 +68,7 @@
           <Property Name="StationCode" Type="Int32" Nullable="false" />
           <Property Name="HHCarriageUE" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVFusionAudience" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVFusionAudience, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVFusionAudience" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVFusionAudience, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -96,7 +96,7 @@
           <Property Name="Females55to64" Type="Int32" Nullable="false" />
           <Property Name="Females65Plus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVFusionHutput" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVFusionHutput, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVFusionHutput" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVFusionHutput, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -123,7 +123,7 @@
           <Property Name="Females55to64" Type="Int32" Nullable="false" />
           <Property Name="Females65Plus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVFusionUniverseRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVFusionUniverseRevision, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVFusionUniverseRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVFusionUniverseRevision, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -131,7 +131,7 @@
           <Property Name="OldNCCTVFusionUniverseID" Type="Int64" Nullable="false" />
           <Property Name="NewNCCTVFusionUniverseID" Type="Int64" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVFusionUniverse" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVFusionUniverse, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVFusionUniverse" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVFusionUniverse, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -162,20 +162,20 @@
           <Property Name="Females65Plus" Type="Int32" Nullable="false" />
           <Property Name="Validated" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVLPMMarket" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVLPMMarket, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVLPMMarket" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVLPMMarket, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="NielsenMarketNumber" />
           </Key>
           <Property Name="NielsenMarketNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
         </EntityType>
-        <EntityType Name="NCCTVMVPD" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVMVPD, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVMVPD" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVMVPD, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MVPD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="NCCTVSyscode" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVSyscode, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NCCTVSyscode" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVSyscode, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -186,7 +186,7 @@
           <Property Name="SystemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SystemType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenMarket" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenMarket, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenMarket" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenMarket, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="Code" />
           </Key>
@@ -198,7 +198,7 @@
           <Property Name="NielsenBlackRadioCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="NielsenHispanicRadioCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="NielsenRadioAudience" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioAudience, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioAudience" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioAudience, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -302,7 +302,7 @@
           <Property Name="Females55to64TLH" Type="Int32" Nullable="false" />
           <Property Name="Females65PlusTLH" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioCountyAudience" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyAudience, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioCountyAudience" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyAudience, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -365,7 +365,7 @@
           <Property Name="Males18PlusCUMERating" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
           <Property Name="Females18PlusCUMERating" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioCountyCluster" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyCluster, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioCountyCluster" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyCluster, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -377,7 +377,7 @@
           <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClusterMeasurementType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioCountyIntab" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyIntab, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioCountyIntab" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyIntab, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -393,7 +393,7 @@
           <Property Name="Males18Plus" Type="Int32" Nullable="false" />
           <Property Name="Females18Plus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioCountyPeriod" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyPeriod, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioCountyPeriod" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyPeriod, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -411,7 +411,7 @@
           <Property Name="Copyright" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Validated" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioCountyStation" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyStation, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioCountyStation" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyStation, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -426,7 +426,7 @@
           <Property Name="OtherAffiliations" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Frequency" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioCountyUniverse" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyUniverse, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioCountyUniverse" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioCountyUniverse, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -442,7 +442,7 @@
           <Property Name="Males18Plus" Type="Int32" Nullable="false" />
           <Property Name="Females18Plus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioDaypart" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioDaypart, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioDaypart" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioDaypart, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -457,7 +457,7 @@
           <Property Name="DiaryAtWorkInCar" Type="Boolean" Nullable="false" />
           <Property Name="PPMinHomeOutofHome" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioDemographic" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioDemographic, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioDemographic" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioDemographic, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -467,14 +467,14 @@
           <Property Name="AgeSexCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="QualitativeCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioFormat" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioFormat, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioFormat" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioFormat, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="Code" />
           </Key>
           <Property Name="Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioIntab" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioIntab, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioIntab" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioIntab, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -505,7 +505,7 @@
           <Property Name="Males55to64" Type="Int32" Nullable="false" />
           <Property Name="Males65Plus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioMarket" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioMarket, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioMarket" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioMarket, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -514,7 +514,7 @@
           <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Source" Type="Self.RadioSource" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioPeriodRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioPeriodRevision, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioPeriodRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioPeriodRevision, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -522,7 +522,7 @@
           <Property Name="OldNielsenRadioPeriodID" Type="Int32" Nullable="false" />
           <Property Name="NewNielsenRadioPeriodID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioPeriod" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioPeriod, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioPeriod" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioPeriod, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -539,7 +539,7 @@
           <Property Name="Copyright" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Source" Type="Self.RadioSource" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioPur" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioPur, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioPur" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioPur, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -571,7 +571,7 @@
           <Property Name="Males55to64" Type="Int32" Nullable="false" />
           <Property Name="Males65Plus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioQualitative" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioQualitative, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioQualitative" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioQualitative, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -579,7 +579,7 @@
           <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioReportType" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioReportType, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioReportType" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioReportType, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="Code" />
           </Key>
@@ -587,7 +587,7 @@
           <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
-        <EntityType Name="NielsenRadioSegmentChild" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioSegmentChild, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioSegmentChild" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioSegmentChild, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -597,7 +597,7 @@
           <Property Name="StationComboType" Type="Int16" Nullable="false" />
           <Property Name="NielsenRadioStationComboID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioSegmentParent" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioSegmentParent, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioSegmentParent" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioSegmentParent, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -606,7 +606,7 @@
           <Property Name="GeoIndicator" Type="Int16" Nullable="false" />
           <Property Name="NielsenRadioQualitativeID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioStationHistory" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioStationHistory, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioStationHistory" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioStationHistory, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -622,7 +622,7 @@
           <Property Name="NielsenRadioFormatCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Source" Type="Self.RadioSource" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioStation" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioStation, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioStation" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioStation, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -638,7 +638,7 @@
           <Property Name="NielsenRadioFormatCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Source" Type="Self.RadioSource" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioUniverse" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioUniverse, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioUniverse" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioUniverse, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -669,7 +669,7 @@
           <Property Name="Males55to64" Type="Int32" Nullable="false" />
           <Property Name="Males65Plus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenRadioVStaging" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioVStaging, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenRadioVStaging" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenRadioVStaging, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -685,7 +685,7 @@
           <Property Name="NielsenRadioSegmentChildID" Type="Int32" />
           <Property Name="NielsenRadioDaypartID" Type="Int32" />
         </EntityType>
-        <EntityType Name="NielsenTVAudience" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVAudience, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVAudience" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVAudience, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -719,7 +719,7 @@
           <Property Name="Females65Plus" Type="Int32" Nullable="false" />
           <Property Name="WorkingWomen" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenTVBookRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVBookRevision, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVBookRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVBookRevision, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -727,7 +727,7 @@
           <Property Name="OldNielsenTVBookID" Type="Int32" Nullable="false" />
           <Property Name="NewNielsenTVBookID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenTVBook" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVBook, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVBook" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVBook, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -749,7 +749,7 @@
           <Property Name="Ethnicity" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DownloadFileID" Type="Int32" />
         </EntityType>
-        <EntityType Name="NielsenTVCumeBookRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVCumeBookRevision, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVCumeBookRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVCumeBookRevision, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -757,7 +757,7 @@
           <Property Name="OldNielsenTVCumeBookID" Type="Int32" Nullable="false" />
           <Property Name="NewNielsenTVCumeBookID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenTVCumeBook" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVCumeBook, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVCumeBook" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVCumeBook, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -774,7 +774,7 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" />
           <Property Name="Validated" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenTVCumeDaypartImpression" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVCumeDaypartImpression, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVCumeDaypartImpression" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVCumeDaypartImpression, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -808,7 +808,7 @@
           <Property Name="Females65Plus" Type="Int32" Nullable="false" />
           <Property Name="WorkingWomen" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenTVDaypart" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVDaypart, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVDaypart" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVDaypart, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -832,7 +832,7 @@
           <Property Name="Saturday" Type="Boolean" Nullable="false" />
           <Property Name="IsInactive" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenTVHutput" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVHutput, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVHutput" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVHutput, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -864,7 +864,7 @@
           <Property Name="Females65Plus" Type="Int32" Nullable="false" />
           <Property Name="WorkingWomen" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenTVIntab" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVIntab, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVIntab" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVIntab, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -896,7 +896,7 @@
           <Property Name="Females65Plus" Type="Int32" Nullable="false" />
           <Property Name="WorkingWomen" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenTVProgramBookRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVProgramBookRevision, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVProgramBookRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVProgramBookRevision, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -904,7 +904,7 @@
           <Property Name="OldNielsenTVProgramBookID" Type="Int32" Nullable="false" />
           <Property Name="NewNielsenTVProgramBookID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenTVProgramBook" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVProgramBook, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVProgramBook" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVProgramBook, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -918,7 +918,7 @@
           <Property Name="Ethnicity" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DownloadFileID" Type="Int32" />
         </EntityType>
-        <EntityType Name="NielsenTVProgram" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVProgram, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVProgram" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVProgram, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -932,7 +932,7 @@
           <Property Name="TrackageName" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NielsenTVProgramBook" Relationship="Self.NielsenTVProgram_NielsenTVProgramBook" FromRole="NielsenTVProgram_NielsenTVProgramBook_Source" ToRole="NielsenTVProgram_NielsenTVProgramBook_Target" />
         </EntityType>
-        <EntityType Name="NielsenTVStationHistory" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVStationHistory, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVStationHistory" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVStationHistory, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -942,7 +942,7 @@
           <Property Name="CallLetters" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ChangedOn" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="NielsenTVStation" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVStation, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVStation" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVStation, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -962,7 +962,7 @@
           <Property Name="ReportabilityStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HomeMarketNumber" Type="Int32" />
         </EntityType>
-        <EntityType Name="NielsenTVUniverse" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVUniverse, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NielsenTVUniverse" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NielsenTVUniverse, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -1001,11 +1001,11 @@
           <Property Name="Exclusion" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ethnicity" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EnumType Name="NCCTVGeo" IsFlags="false" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.Methods+NCCTVGeo, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f" UnderlyingType="Int16">
+        <EnumType Name="NCCTVGeo" IsFlags="false" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.Methods+NCCTVGeo, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f" UnderlyingType="Int16">
           <Member Name="DMA" Value="5" />
           <Member Name="CDMA" Value="13" />
         </EnumType>
-        <EnumType Name="RadioSource" IsFlags="false" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.Methods+RadioSource, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f" UnderlyingType="Int16">
+        <EnumType Name="RadioSource" IsFlags="false" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.Methods+RadioSource, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f" UnderlyingType="Int16">
           <Member Name="Nielsen" Value="0" />
           <Member Name="Eastlan" Value="1" />
           <Member Name="NielsenCounty" Value="2" />

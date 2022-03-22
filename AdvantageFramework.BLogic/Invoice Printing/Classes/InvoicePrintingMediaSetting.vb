@@ -1,4 +1,4 @@
-Namespace InvoicePrinting.Classes
+﻿Namespace InvoicePrinting.Classes
 
     <Serializable()>
     Public Class InvoicePrintingMediaSetting
@@ -351,6 +351,9 @@ Namespace InvoicePrinting.Classes
             ShowPageHeaderLogo
             ShowPageFooterLogo
             HideExchangeRateMessage
+            InternetGuaranteedImpressionsColumn
+            RadioStartDateColumn
+            TVStartDateColumn
         End Enum
 
 #End Region
@@ -3680,6 +3683,12 @@ Namespace InvoicePrinting.Classes
         Public Property ShowPageFooterLogo() As Boolean
         <System.Runtime.Serialization.DataMemberAttribute()>
         Public Property HideExchangeRateMessage() As Boolean
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property InternetGuaranteedImpressionsColumn() As Nullable(Of Short)
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property RadioStartDateColumn() As Nullable(Of Short)
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property TVStartDateColumn() As Nullable(Of Short)
 
 #End Region
 

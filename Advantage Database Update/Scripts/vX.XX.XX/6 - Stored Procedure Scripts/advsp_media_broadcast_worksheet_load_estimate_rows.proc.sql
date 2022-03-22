@@ -22,7 +22,8 @@ BEGIN
 		[VendorNielsenTVStationCode] = ISNULL(CASE WHEN MBW.RATINGS_SERVICE_ID = 1 THEN V.NIELSEN_TV_STATION_CODE
                                                    WHEN MBW.RATINGS_SERVICE_ID = 5 THEN V.NPR_STATION_ID
 												   ELSE V.COMSCORE_TV_STATION_ID END, 0),
-		[VendorIsCableSystem] = V.IS_CABLE_SYSTEM,
+		[VendorIsCableSystem] = V.IS_CABLE_SYSTEM,   
+		[VendorIsComboRadioStation] = V.IS_COMBO_RADIO_STATION,
 		[CableNetworkStationCode] = MBWMD.CABLE_NETWORK_STATION_CODE,
 		[CableNetworkStationDescription] = '',
 		[CableNetworkNielsenTVStationCode] = MBWMD.CABLE_NETWORK_NIELSEN_TV_STATION_CODE,

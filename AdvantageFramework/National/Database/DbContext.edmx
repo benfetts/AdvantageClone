@@ -3,7 +3,7 @@
   <Runtime>
     <ConceptualModels>
       <Schema Namespace="AdvantageFramework.National.Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="MarketBreak" customannotation:ClrType="AdvantageFramework.National.Database.Entities.MarketBreak, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="MarketBreak" customannotation:ClrType="AdvantageFramework.National.Database.Entities.MarketBreak, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -13,7 +13,7 @@
           <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsDeluxe" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="NationalAudienceCorrection" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalAudienceCorrection, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NationalAudienceCorrection" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalAudienceCorrection, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -134,7 +134,7 @@
           <Property Name="WorkingWomen50to54PUT" Type="Int32" Nullable="false" />
           <Property Name="WorkingWomen55PlusPUT" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NationalAudience" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalAudience, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NationalAudience" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalAudience, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -253,7 +253,7 @@
           <Property Name="WorkingWomen55PlusPUT" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NationalData" Relationship="Self.NationalAudience_NationalData" FromRole="NationalAudience_NationalData_Source" ToRole="NationalAudience_NationalData_Target" />
         </EntityType>
-        <EntityType Name="NationalData" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalData, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NationalData" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalData, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -270,7 +270,7 @@
           <Property Name="IsPBSNSS" Type="Boolean" Nullable="false" />
           <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="NationalHutputCorrection" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalHutputCorrection, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NationalHutputCorrection" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalHutputCorrection, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -320,7 +320,7 @@
           <Property Name="WorkingWomen50to54" Type="Int32" Nullable="false" />
           <Property Name="WorkingWomen55Plus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="NationalHutput" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalHutput, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NationalHutput" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalHutput, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -368,7 +368,7 @@
           <Property Name="WorkingWomen55Plus" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NationalData" Relationship="Self.NationalHutput_NationalData" FromRole="NationalHutput_NationalData_Source" ToRole="NationalHutput_NationalData_Target" />
         </EntityType>
-        <EntityType Name="NationalNetwork" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalNetwork, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NationalNetwork" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalNetwork, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -377,7 +377,7 @@
           <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="VenueCode" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="NationalUniverse" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalUniverse, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NationalUniverse" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalUniverse, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -425,7 +425,7 @@
           <Property Name="WorkingWomen55Plus" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MarketBreak" Relationship="Self.NationalUniverse_MarketBreak" FromRole="NationalUniverse_MarketBreak_Source" ToRole="NationalUniverse_MarketBreak_Target" />
         </EntityType>
-        <EntityType Name="NationalYear" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalYear, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="NationalYear" customannotation:ClrType="AdvantageFramework.National.Database.Entities.NationalYear, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -434,7 +434,7 @@
           <Property Name="StartDate" Type="DateTime" Nullable="false" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="ProgramType" customannotation:ClrType="AdvantageFramework.National.Database.Entities.ProgramType, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="ProgramType" customannotation:ClrType="AdvantageFramework.National.Database.Entities.ProgramType, AdvantageFramework, Version=6.70.8.2, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>

@@ -38,6 +38,9 @@
             max-height: 250px !important;
             overflow: auto !important;
         }
+        .editor-size {
+            height: ${editorHeight}px;
+        }
     </style>
     <ux-dialog>
         <ux-dialog-header>
@@ -352,9 +355,9 @@
                                                     <input type="text" class="e-textbox RequiredInput" value.bind="Alert.Subject" style="width: 100%" maxlength="254" readonly.bind="!allowEditSubject" />
                                                 </div>
                                             </div>
-                                            <div class="wv-form-group" css="height:${editorHeight}px;" style="font-family: 'Open Sans', Calibri, Tahoma, Verdana, Arial, sans-serif; overflow: hidden; border-right: 1px solid #CECECE !important; border-bottom: 1px solid #CECECE !important;">
-                                                <div id="subjectDiv">
-                                                    <textarea value.bind="Alert.EmailBody" style="height:460px;" ak-rich-editor="k-widget.two-way: descriptionEditor; k-tools.bind: defaultEditorTools;" k-on-change.delegate="descriptionChanged($event.detail)" k-on-ready.delegate="descriptionReady($event.detail)"></textarea>
+                                            <div class="wv-form-group editor-size" style="font-family: 'Open Sans', Calibri, Tahoma, Verdana, Arial, sans-serif; overflow: hidden; border-right: 1px solid #CECECE !important; border-bottom: 1px solid #CECECE !important;">
+                                                <div id="subjectDiv" style="height:100%;">
+                                                    <textarea  style="height:100%!important" value.bind="Alert.EmailBody" ak-rich-editor="k-widget.two-way: descriptionEditor; k-tools.bind: defaultEditorTools;" k-on-change.delegate="descriptionChanged($event.detail)" k-on-ready.delegate="descriptionReady($event.detail)"></textarea>
                                                 </div>
                                             </div>
                                         </div>

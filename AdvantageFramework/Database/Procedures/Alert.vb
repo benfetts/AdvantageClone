@@ -29,6 +29,15 @@
 
 #Region " Methods "
 
+        Public Function LoadConceptShareAlertsForJob(ByVal DbContext As AdvantageFramework.Database.DbContext,
+                                                ByVal JobNumber As Integer, ByVal JobComponentNumber As Short) As System.Data.Entity.Infrastructure.DbQuery(Of AdvantageFramework.Database.Entities.Alert)
+
+            LoadConceptShareAlertsForJob = From Alert In DbContext.GetQuery(Of Database.Entities.Alert)
+                                           Where Alert.JobNumber = JobNumber And Alert.JobComponentNumber = JobComponentNumber And
+                                                     (Alert.ConceptShareReviewID IsNot Nothing AndAlso Alert.ConceptShareReviewID > 0)
+                                           Select Alert
+
+        End Function
         Public Function LoadTaskWorkItem(ByVal DbContext As AdvantageFramework.Database.DbContext,
                                                          ByVal JobNumber As Integer, ByVal JobComponentNumber As Short, ByVal TaskSequenceNumber As Short) As AdvantageFramework.Database.Entities.Alert
 

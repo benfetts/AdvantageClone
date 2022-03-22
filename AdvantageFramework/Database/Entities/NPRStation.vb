@@ -16,6 +16,7 @@
             ID
             Name
             ETAMCrossReference
+            AriannaChannelID
         End Enum
 
 #End Region
@@ -42,6 +43,9 @@
         <Column("ETAM_XREF")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
         Public Property ETAMCrossReference() As Nullable(Of Integer)
+        <Column("ARIANNA_CHANNEL_ID")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property AriannaChannelID() As Nullable(Of Integer)
 
 #End Region
 

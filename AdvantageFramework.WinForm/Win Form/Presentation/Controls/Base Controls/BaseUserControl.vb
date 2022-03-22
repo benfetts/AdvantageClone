@@ -23,7 +23,21 @@
 
 #Region " Properties "
 
+        Public ReadOnly Property FormShown As Boolean
+            Get
 
+                If TypeOf Me.ParentForm Is AdvantageFramework.WinForm.Presentation.BaseForms.Interfaces.IBaseForm Then
+
+                    FormShown = CType(Me.ParentForm, AdvantageFramework.WinForm.Presentation.BaseForms.Interfaces.IBaseForm).FormShown
+
+                Else
+
+                    FormShown = False
+
+                End If
+
+            End Get
+        End Property
 
 #End Region
 

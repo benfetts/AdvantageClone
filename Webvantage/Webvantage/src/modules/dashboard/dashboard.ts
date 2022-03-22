@@ -1088,7 +1088,6 @@ export class Dashboard extends ModuleBase {
     changeAssignmentOrder(e) {
         let client = new HttpClient();
         let me = this;
-
         //console.log(e.newIndex);
         //console.log(e);
         //console.log(e.item[0].au["wv-card"].viewModel.alertid);
@@ -1096,58 +1095,73 @@ export class Dashboard extends ModuleBase {
         //console.log(e.item[0].au["wv-card"].viewModel.jobcomponentnumber);
         //console.log(e.item[0].au["wv-card"].viewModel.tasksequencenumber);
         //console.log(e.item[0].au["wv-card"].viewModel.alertcategorydescription);
-
         var category = e.item[0].au["wv-card"].viewModel.alertcategorydescription; 
         var alertid: number = e.item[0].au["wv-card"].viewModel.alertid
-        var jobNumber: number =  e.item[0].au["wv-card"].viewModel.jobnumber;
-        var jobComponentNumber: number = e.item[0].au["wv-card"].viewModel.jobcomponentnumber;
+        //var jobNumber: number =  e.item[0].au["wv-card"].viewModel.jobnumber;
+        //var jobComponentNumber: number = e.item[0].au["wv-card"].viewModel.jobcomponentnumber;
         var taskSequenceNumber: number = e.item[0].au["wv-card"].viewModel.tasksequencenumber;
-
         if (category == 'Task') {
-            var data = {
+            var taskData = {
                 AlertId: alertid,
-                NewPosition: e.newIndex,
-                JobNumber: jobNumber,
-                JobComponentNumber: jobComponentNumber,
-                TaskSequenceNumber: taskSequenceNumber
+                TaskSequenceNumber: taskSequenceNumber,
+                NewPosition: e.newIndex
             };
+            console.log("changeTaskOrder " + taskData);
+            client.post('Dashboard/UpdateTaskCardsOrder', taskData)
+                .then(data => {
+                    if (data && data.response && data.response != "") {
+                        console.log("changeTaskOrder data?", data);
+                    }
+                });
         } else {
-            var data = {
+            var assignmentData = {
                 AlertId: alertid,
-                NewPosition: e.newIndex,
-                JobNumber: 0,
-                JobComponentNumber: 0,
-                TaskSequenceNumber: 0
+                NewPosition: e.newIndex
             };
+            console.log("changeAssignmentOrder " + assignmentData);
+            client.post("Dashboard/UpdateAssignmentCardsOrder", assignmentData)
+                .then(data => {
+                    if (data && data.response && data.response != "") {
+                        console.log("changeAssignmentOrder data?", data);
+                    }
+                });
         }
-
-        //console.log("gb " + this.searchbookmark);
-        client.post('Dashboard/UpdateCardsOrder', data)
-            .then(data => {
-               
-            });
-
     }
     changeAlertOrder(e) {
         let client = new HttpClient();
         let me = this;
-
         //console.log(e.newIndex);
-        //console.log(e.item[0].au["wv-card"].viewModel.alertid);
-        
-        var alertid: number = e.item[0].au["wv-card"].viewModel.alertid
-        
-        var data = {
+        //console.log(e.item[0].au["wv-card"].viewModel.alertid);        
+        var alertid: number = e.item[0].au["wv-card"].viewModel.alertid;
+        var alertData = {
             AlertId: alertid,
             NewPosition: e.newIndex
-        };        
-
-        //console.log("gb " + this.searchbookmark);
-        client.post('Dashboard/UpdateCardsOrderAlerts', data)
+        };
+        console.log("changeAlertOrder " + alertData);
+        client.post("Dashboard/UpdateAlertCardsOrder", alertData)
+        .then(data => {
+            if (data && data.response && data.response != "") {
+                console.log("changeAlertOrder data?", data);
+            }
+        });
+    }
+    changeProofOrder(e) {
+        let client = new HttpClient();
+        let me = this;
+        //console.log(e.newIndex);
+        //console.log(e.item[0].au["wv-card"].viewModel.alertid);        
+        var alertid: number = e.item[0].au["wv-card"].viewModel.alertid;
+        var proofingData = {
+            AlertId: alertid,
+            NewPosition: e.newIndex
+        };
+        console.log("UpdateProofingCardsOrder " + proofingData);
+        client.post("Dashboard/UpdateProofingCardsOrder", proofingData)
             .then(data => {
-
-            });
-
+                if (data && data.response && data.response != "") {
+                    console.log("changeProofOrder data?", data);
+                }
+        });
     }
     searchOnEnter(event, dashId: number) {
         if (event.which == 13) {

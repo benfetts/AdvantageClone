@@ -1,4 +1,4 @@
-Namespace Database.Procedures.JobComponentTask
+﻿Namespace Database.Procedures.JobComponentTask
 
     <HideModuleName()> _
     Public Module Methods
@@ -113,25 +113,26 @@ Namespace Database.Procedures.JobComponentTask
 
                 Try
 
-                    SequenceNumber = (From Entity In Load(DbContext)
-                                      Where Entity.JobNumber = JobComponentTask.JobNumber AndAlso
-                                            Entity.JobComponentNumber = JobComponentTask.JobComponentNumber
+                    Dim ParmaList As List(Of System.Data.SqlClient.SqlParameter) = New List(Of SqlClient.SqlParameter)()
+                    ParmaList.Add(New SqlClient.SqlParameter("@JOB_NUMBER", JobComponentTask.JobNumber))
+                    ParmaList.Add(New SqlClient.SqlParameter("@JOB_COMPONENT_NBR", JobComponentTask.JobComponentNumber))
+
+                    SequenceNumber = (From Entity In DbContext.Database.SqlQuery(Of Database.Entities.JobComponentTask)("EXEC advsp_job_traffic_det_by_job_comp @JOB_NUMBER, @JOB_COMPONENT_NBR", ParmaList.ToArray()).ToList()'DbContext.GetQuery(Of Database.Entities.JobComponentTask)
                                       Select [SN] = Entity.SequenceNumber).Max + 1
+
+                    'SequenceNumber = (From Entity In LoadByJobNumberAndJobComponentNumber(DbContext, JobComponentTask.JobNumber, JobComponentTask.JobComponentNumber)
+                    '                  Select [SN] = Entity.SequenceNumber).Max + 1
 
                 Catch ex As Exception
                     SequenceNumber = 0
                 End Try
 
-                Try
+                If String.IsNullOrWhiteSpace(JobComponentTask.OriginalDueTime) = True AndAlso String.IsNullOrWhiteSpace(JobComponentTask.DueTime) = False Then
 
-                    If String.IsNullOrWhiteSpace(JobComponentTask.OriginalDueTime) = True AndAlso String.IsNullOrWhiteSpace(JobComponentTask.DueTime = False) Then
+                    JobComponentTask.OriginalDueTime = JobComponentTask.DueTime
 
-                        JobComponentTask.OriginalDueTime = JobComponentTask.DueTime
+                End If
 
-                    End If
-
-                Catch ex As Exception
-                End Try
 
                 JobComponentTask.SequenceNumber = SequenceNumber
 

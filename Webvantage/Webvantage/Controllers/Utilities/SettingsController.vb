@@ -967,9 +967,9 @@ Namespace Controllers.Utilities
 
             Using DataContext = New AdvantageFramework.Database.DataContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
-                ClientID = AdvantageFramework.Quickbooks.QB_CLIENT_ID
+                ClientID = AdvantageFramework.Quickbooks.GetClientID()
 
-                ClientSecret = AdvantageFramework.Quickbooks.QB_CLIENT_SECRET
+                ClientSecret = AdvantageFramework.Quickbooks.GetClientSecret()
 
                 Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, AdvantageFramework.Agency.Settings.QB_REFRESH_TOKEN.ToString)
 

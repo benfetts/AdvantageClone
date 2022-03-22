@@ -9741,18 +9741,18 @@
 
                                     ElseIf Not String.IsNullOrWhiteSpace(ImportAccountPayableMedia.ClientName) Then
 
-                                        If Clients.Where(Function(c) c.Name.ToUpper = ImportAccountPayableMedia.ClientName.Trim.ToUpper).Count() = 1 Then
+                                        If Clients.Where(Function(c) c.Name IsNot Nothing AndAlso c.Name.ToUpper = ImportAccountPayableMedia.ClientName.Trim.ToUpper).Count() = 1 Then
 
-                                            With Clients.Where(Function(c) c.Name.ToUpper = ImportAccountPayableMedia.ClientName.Trim.ToUpper).SingleOrDefault
+                                            With Clients.Where(Function(c) c.Name IsNot Nothing AndAlso c.Name.ToUpper = ImportAccountPayableMedia.ClientName.Trim.ToUpper).SingleOrDefault
 
                                                 ImportAccountPayableMedia.ClientCode = .Code
                                                 ImportAccountPayableMedia.ClientName = .Name
 
                                             End With
 
-                                        ElseIf Clients.Where(Function(c) c.Name.ToUpper.StartsWith(ImportAccountPayableMedia.ClientName.Trim.ToUpper)).Count = 1 Then
+                                        ElseIf Clients.Where(Function(c) c.Name IsNot Nothing AndAlso c.Name.ToUpper.StartsWith(ImportAccountPayableMedia.ClientName.Trim.ToUpper)).Count = 1 Then
 
-                                            With Clients.Where(Function(c) c.Name.ToUpper.StartsWith(ImportAccountPayableMedia.ClientName.Trim.ToUpper)).SingleOrDefault
+                                            With Clients.Where(Function(c) c.Name IsNot Nothing AndAlso c.Name.ToUpper.StartsWith(ImportAccountPayableMedia.ClientName.Trim.ToUpper)).SingleOrDefault
 
                                                 ImportAccountPayableMedia.ClientCode = .Code
                                                 ImportAccountPayableMedia.ClientName = .Name

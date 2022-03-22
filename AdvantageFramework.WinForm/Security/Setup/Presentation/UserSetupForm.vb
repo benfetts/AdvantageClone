@@ -1730,9 +1730,8 @@
                         Else
 
                             TabItemUserDetails_ModuleAccessTab.Visible = False
-                            TabItemUserDetails_ClientDivisionProductTab.Visible = False
 
-                            If TabItem Is TabItemUserDetails_ClientDivisionProductTab OrElse TabItem Is TabItemUserDetails_ModuleAccessTab Then
+                            If TabItem Is TabItemUserDetails_ModuleAccessTab Then
 
                                 TabItem = TabControlRightSection_UserDetails.SelectedTab
 

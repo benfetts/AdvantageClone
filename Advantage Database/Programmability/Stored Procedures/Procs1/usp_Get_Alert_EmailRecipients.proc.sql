@@ -1,4 +1,4 @@
-﻿IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[usp_Get_Alert_EmailRecipients]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[usp_Get_Alert_EmailRecipients]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
     DROP PROCEDURE [dbo].[usp_Get_Alert_EmailRecipients]
 GO
 CREATE PROCEDURE [dbo].[usp_Get_Alert_EmailRecipients] 
@@ -279,3 +279,4 @@ BEGIN
 
 END
 /*=========== QUERY ===========*/
+

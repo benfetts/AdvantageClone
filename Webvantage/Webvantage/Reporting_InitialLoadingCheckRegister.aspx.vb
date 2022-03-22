@@ -248,6 +248,12 @@
             RadComboBoxCurrentPeriodTo.Enabled = False
             FieldsetPostPeriodRange.Disabled = True
 
+            If _DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+
+                Me.Title = "Check Register with Invoice Details Criteria"
+
+            End If
+
         End If
 
     End Sub

@@ -33,7 +33,7 @@
                             </telerik:RadTab>
                             <telerik:RadTab Text="Template Detail">
                             </telerik:RadTab>
-                            <telerik:RadTab Text="Routed Assignment Settings">
+                            <telerik:RadTab Text="Assignment Settings">
                             </telerik:RadTab>
                         </Tabs>
                     </telerik:RadTabStrip>

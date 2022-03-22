@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="MediaTaxInformation" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>AdvantageFramework.InvoicePrinting.Classes.MediaTaxInformation, AdvantageFramework.BLogic, Version=6.70.08.01, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5</TypeInfo>
+   <TypeInfo>AdvantageFramework.InvoicePrinting.Classes.MediaTaxInformation, AdvantageFramework.BLogic, Version=6.70.08.02, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5</TypeInfo>
 </GenericObjectDataSource>

@@ -1219,6 +1219,14 @@
 
                     ModuleFormType = GetType(AdvantageFramework.Media.Exports.BroadcastBuyInvoiceExportForm)
 
+                Case AdvantageFramework.Security.Modules.Media_Reports_BroadcastInvoiceRPT.ToString
+
+                    ModuleFormType = GetType(AdvantageFramework.Reporting.Presentation.BroadcastInvoiceReportInitialLoadingDialog)
+
+                Case AdvantageFramework.Security.Modules.Media_ComscorePrecache.ToString
+
+                    ModuleFormType = GetType(AdvantageFramework.Media.Presentation.ComscorePrecacheForm)
+
                 Case Else
 
                     ModuleFormType = Nothing
@@ -2138,6 +2146,14 @@
                 Case AdvantageFramework.Security.Modules.Media_Exports_BroadcastBuyInvoice.ToString
 
                     AdvantageFramework.Media.Exports.BroadcastBuyInvoiceExportForm.ShowForm()
+
+                Case AdvantageFramework.Security.Modules.Media_Reports_BroadcastInvoiceRPT.ToString
+
+                    AdvantageFramework.Reporting.Presentation.BroadcastInvoiceReportInitialLoadingDialog.ShowFormDialog(ParameterDictionary)
+
+                Case AdvantageFramework.Security.Modules.Media_ComscorePrecache.ToString
+
+                    AdvantageFramework.Media.Presentation.ComscorePrecacheForm.ShowForm()
 
                 Case Else
 

@@ -36,6 +36,7 @@ VALUES(UPPER(@UserID), @START_DATE, @END_DATE)
 		[EmployeeLastName] varchar(30),
 		[EmployeeLastFirst] varchar(100),
 		[EmployeeTitle] varchar(50),
+		[EmployeeCurrentTitle] varchar(50),
 		[EmployeeAccountNumber] varchar(30),
 		[EmployeeCategory] varchar(50),
 		[IsEmployeeFreelance] varchar(3),
@@ -115,7 +116,8 @@ VALUES(UPPER(@UserID), @START_DATE, @END_DATE)
 		[ClientPO] varchar(40),
 		[ARInvoiceNumber] int,
 		[Terminated] varchar(1),
-		[TerminatedDate] smalldatetime
+		[TerminatedDate] smalldatetime,
+        [TimeAgainstCommission] decimal(19,2)
 	);	
 
 	INSERT INTO #DT
@@ -127,6 +129,7 @@ VALUES(UPPER(@UserID), @START_DATE, @END_DATE)
 		[EmployeeLastName] = EMP.EMP_LNAME,
 		[EmployeeLastFirst] = EMP.EMP_LNAME + ', ' + EMP.EMP_FNAME,
 		[EmployeeTitle] = ET.EMPLOYEE_TITLE,
+		[EmployeeCurrentTitle] = ETI.EMPLOYEE_TITLE,
 		[EmployeeAccountNumber] = EMP.EMP_ACCOUNT_NBR,
 		[EmployeeCategory] = ET.EMPLOYEE_CATEGORY,
 		[IsEmployeeFreelance] = CASE WHEN ISNULL(EMP.FREELANCE, 0) = 1 THEN 'Yes' ELSE 'No' END,
@@ -210,7 +213,8 @@ VALUES(UPPER(@UserID), @START_DATE, @END_DATE)
 		[ClientPO] = JC.JOB_CL_PO_NBR,
 		[ARInvoiceNumber] = ET.AR_INV_NBR,
 		[Terminated] = CASE WHEN EMP.EMP_TERM_DATE IS NULL THEN 'N' ELSE 'Y' END,
-		[TerminatedDate] = EMP.EMP_TERM_DATE
+		[TerminatedDate] = EMP.EMP_TERM_DATE,
+        [TimeAgainstCommission] = CASE WHEN ISNULL(ET.FEE_TIME, 0) IN (2,3) THEN SUM(ET.TOTAL_BILL) ELSE 0 END
 	FROM 
 		(SELECT 
 			ET.ET_ID,
@@ -306,7 +310,8 @@ VALUES(UPPER(@UserID), @START_DATE, @END_DATE)
 		[dbo].[JOB_LOG_UDV3] AS JUDV3 ON JUDV3.UDV_CODE = J.UDV3_CODE LEFT OUTER JOIN
 		[dbo].[JOB_LOG_UDV4] AS JUDV4 ON JUDV4.UDV_CODE = J.UDV4_CODE LEFT OUTER JOIN
 		[dbo].[JOB_LOG_UDV5] AS JUDV5 ON JUDV5.UDV_CODE = J.UDV5_CODE	LEFT OUTER JOIN
-		[dbo].[FUNCTIONS] AS CF ON CF.FNC_CODE = F.FNC_CONSOLIDATION		--PJH 05/20/2016 - Added
+		[dbo].[FUNCTIONS] AS CF ON CF.FNC_CODE = F.FNC_CONSOLIDATION LEFT OUTER JOIN
+        [dbo].[EMPLOYEE_TITLE] AS ETI ON ETI.EMPLOYEE_TITLE_ID = EMP.EMPLOYEE_TITLE_ID		--PJH 05/20/2016 - Added
 	
 	WHERE EMP_HOURS <> 0 AND
 		1 = CASE WHEN @DATE_TYPE = 0 THEN CASE WHEN ET.EMP_DATE >= @START_DATE AND ET.EMP_DATE <= CONVERT(DATETIME, @END_DATE +' 23:59:00', 101) THEN 1 ELSE 0 END
@@ -386,7 +391,8 @@ VALUES(UPPER(@UserID), @START_DATE, @END_DATE)
 		CF.FNC_DESCRIPTION,
 		EMP.SUPERVISOR_CODE,
 		JC.JOB_CL_PO_NBR,
-		EMP.EMP_TERM_DATE
+		EMP.EMP_TERM_DATE,
+        ETI.EMPLOYEE_TITLE
 
 
     UPDATE #DT

@@ -2687,7 +2687,7 @@
                                                             .StationCallSign = StationCallSign,
                                                             .StationName = StationName,
                                                             .StationNumber = StationNumber,
-                                                            .Quarterhour = Qtrhour,
+                                                            .QuarterHour = Qtrhour,
                                                             .AdjustedHour = AdjustedHour,
                                                             .AvgAud_01 = Group.Sum(Function(G) G.AvgAud_01),
                                                             .Universe_01 = Universe_01,
@@ -3735,8 +3735,8 @@
             GetLocalTimeViewsCache = TVWorksheetRatingAndShareDataList
 
         End Function
-        Private Sub CacheBookData(UseNewURL As Boolean, ComscoreClientID As String, ComscoreClientSecret As String, DbContext As AdvantageFramework.Database.DbContext, BookID As Integer, JSONOrdinalComscoreDemoNumbers As Dictionary(Of Integer, Integer),
-                                  LocalTimeViews As Services.ComScore.Classes.LocalTimeViews, MktNumber As Integer, DemoNumbersToCache As Generic.List(Of Integer), StationNumbers As IEnumerable(Of Integer))
+        Private Function CacheBookData(UseNewURL As Boolean, ComscoreClientID As String, ComscoreClientSecret As String, DbContext As AdvantageFramework.Database.DbContext, BookID As Integer, JSONOrdinalComscoreDemoNumbers As Dictionary(Of Integer, Integer),
+                                       LocalTimeViews As Services.ComScore.Classes.LocalTimeViews, MktNumber As Integer, DemoNumbersToCache As Generic.List(Of Integer), StationNumbers As IEnumerable(Of Integer)) As Boolean
 
             'objects
             Dim JSONString As String = Nothing
@@ -3756,6 +3756,8 @@
             Dim ComscoreCacheHeaders As Generic.List(Of AdvantageFramework.Database.Entities.ComscoreCacheHeader) = Nothing
             Dim ComscoreCacheDetails As Generic.List(Of AdvantageFramework.Database.Entities.ComscoreCacheDetail) = Nothing
             Dim DbTransaction As System.Data.Entity.DbContextTransaction = Nothing
+            Dim IsCached As Boolean = False
+            Dim ComscoreCacheHeader As AdvantageFramework.Database.Entities.ComscoreCacheHeader = Nothing
 
             LocalTimeViewCacheList = New Generic.List(Of Services.ComScore.Classes.LocalTimeViewCache)
 
@@ -3887,64 +3889,66 @@
 
             Loop
 
-            ComscoreCacheHeaders = New Generic.List(Of AdvantageFramework.Database.Entities.ComscoreCacheHeader)
+            If LocalTimeViewCacheList.Count > 0 Then
 
-            Try
+                ComscoreCacheHeaders = New Generic.List(Of AdvantageFramework.Database.Entities.ComscoreCacheHeader)
 
-                DbTransaction = DbContext.Database.BeginTransaction
+                Try
 
-                For Each KeyValuePair In JSONOrdinalComscoreDemoNumbers
+                    DbTransaction = DbContext.Database.BeginTransaction
 
-                    DemoNumber = KeyValuePair.Value
+                    For Each KeyValuePair In JSONOrdinalComscoreDemoNumbers
 
-                    ComscoreCacheHeaders = (From Entity In LocalTimeViewCacheList
-                                            Select Entity.MarketNumber, Entity.StationNumber).Distinct.ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheHeader With {.BookID = BookID,
-                                                                                                                  .MarketNumber = L.MarketNumber,
-                                                                                                                  .StationNumber = L.StationNumber,
-                                                                                                                  .DemoNumber = DemoNumber}).ToList
+                        DemoNumber = KeyValuePair.Value
 
-                    If ComscoreCacheHeaders.Count = 0 Then
+                        ComscoreCacheHeaders = (From Entity In LocalTimeViewCacheList
+                                                Select Entity.MarketNumber, Entity.StationNumber).Distinct.ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheHeader With {.BookID = BookID,
+                                                                                                                      .MarketNumber = L.MarketNumber,
+                                                                                                                      .StationNumber = L.StationNumber,
+                                                                                                                      .DemoNumber = DemoNumber}).ToList
 
-                        For Each StationNbr In StationNumbers
+                        If ComscoreCacheHeaders.Count = 0 Then
+
+                            For Each StationNbr In StationNumbers
+
+                                If (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
+                                    Where Entity.BookID = BookID AndAlso
+                                          Entity.MarketNumber = MktNumber AndAlso
+                                          Entity.StationNumber = StationNbr AndAlso
+                                          Entity.DemoNumber = DemoNumber
+                                    Select Entity).Any = False Then
+
+                                    ComscoreCacheHeader = New AdvantageFramework.Database.Entities.ComscoreCacheHeader
+                                    ComscoreCacheHeader.BookID = BookID
+                                    ComscoreCacheHeader.MarketNumber = MktNumber
+                                    ComscoreCacheHeader.StationNumber = StationNbr
+                                    ComscoreCacheHeader.DemoNumber = DemoNumber
+
+                                    AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader)
+
+                                End If
+
+                            Next
+
+                        End If
+
+                        For Each ComscoreCacheHeader In ComscoreCacheHeaders
 
                             If (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
                                 Where Entity.BookID = BookID AndAlso
-                                      Entity.MarketNumber = MktNumber AndAlso
-                                      Entity.StationNumber = StationNbr AndAlso
-                                      Entity.DemoNumber = DemoNumber
+                                      Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
+                                      Entity.StationNumber = ComscoreCacheHeader.StationNumber AndAlso
+                                      Entity.DemoNumber = ComscoreCacheHeader.DemoNumber
                                 Select Entity).Any = False Then
 
-                                Dim ComscoreCacheHeader As New AdvantageFramework.Database.Entities.ComscoreCacheHeader
-                                ComscoreCacheHeader.BookID = BookID
-                                ComscoreCacheHeader.MarketNumber = MktNumber
-                                ComscoreCacheHeader.StationNumber = StationNbr
-                                ComscoreCacheHeader.DemoNumber = DemoNumber
+                                If AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader) Then
 
-                                AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader)
+                                    If KeyValuePair.Key = 1 Then
 
-                            End If
-
-                        Next
-
-                    End If
-
-                    For Each ComscoreCacheHeader In ComscoreCacheHeaders
-
-                        If (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
-                            Where Entity.BookID = BookID AndAlso
-                                  Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
-                                  Entity.StationNumber = ComscoreCacheHeader.StationNumber AndAlso
-                                  Entity.DemoNumber = ComscoreCacheHeader.DemoNumber
-                            Select Entity).Any = False Then
-
-                            If AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader) Then
-
-                                If KeyValuePair.Key = 1 Then
-
-                                    ComscoreCacheDetails = (From Entity In LocalTimeViewCacheList
-                                                            Where Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
+                                        ComscoreCacheDetails = (From Entity In LocalTimeViewCacheList
+                                                                Where Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
                                                                   Entity.StationNumber = ComscoreCacheHeader.StationNumber
-                                                            Select Entity).ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheDetail With {
+                                                                Select Entity).ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheDetail With {
                                                                                     .ComscoreCacheHeaderID = ComscoreCacheHeader.ID,
                                                                                     .QuarterHour = L.QtrDateTime,
                                                                                     .SeriesName = L.SeriesName,
@@ -3955,12 +3959,12 @@
                                                                                     .MeetsDemoThreshold = L.MeetsDemoThreshold,
                                                                                     .MeetsHighQualityDemoThreshold = L.MeetsHighQualityDemoThreshold}).ToList
 
-                                Else
+                                    Else
 
-                                    ComscoreCacheDetails = (From Entity In LocalTimeViewCacheList
-                                                            Where Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
+                                        ComscoreCacheDetails = (From Entity In LocalTimeViewCacheList
+                                                                Where Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
                                                                   Entity.StationNumber = ComscoreCacheHeader.StationNumber
-                                                            Select Entity).ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheDetail With {
+                                                                Select Entity).ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheDetail With {
                                                                                     .ComscoreCacheHeaderID = ComscoreCacheHeader.ID,
                                                                                     .QuarterHour = L.QtrDateTime,
                                                                                     .SeriesName = L.SeriesName,
@@ -3971,26 +3975,99 @@
                                                                                     .MeetsDemoThreshold = L.MeetsDemoThreshold2,
                                                                                     .MeetsHighQualityDemoThreshold = L.MeetsHighQualityDemoThreshold2}).ToList
 
-                                End If
+                                    End If
 
-                                BulkInsertCacheList(DbContext, DbTransaction, ComscoreCacheDetails)
+                                    BulkInsertCacheList(DbContext, DbTransaction, ComscoreCacheDetails)
+
+                                End If
 
                             End If
 
-                        End If
+                        Next
 
                     Next
 
-                Next
+                    DbTransaction.Commit()
 
-                DbTransaction.Commit()
+                    IsCached = True
 
             Catch ex As Exception
-                DbTransaction.Rollback()
+            DbTransaction.Rollback()
 
             End Try
 
-        End Sub
+            Else
+
+            If Response IsNot Nothing AndAlso Response.Warnings IsNot Nothing AndAlso Response.Warnings.Any Then
+
+                If Response.Warnings.Any(Function(W) W.Code = 75) Then 'Some demographics requested are not supported for the markets requested. - generally means they do not subscribe to this market
+
+                    For Each StationNumber In StationNumbers
+
+                        For Each DemoNumber In DemoNumbersToCache
+
+                            ComscoreCacheHeader = New AdvantageFramework.Database.Entities.ComscoreCacheHeader
+                            ComscoreCacheHeader.BookID = BookID
+                            ComscoreCacheHeader.MarketNumber = MktNumber
+                            ComscoreCacheHeader.StationNumber = StationNumber
+                            ComscoreCacheHeader.DemoNumber = DemoNumber
+                            ComscoreCacheHeader.Warning = String.Join(",", Response.Warnings.Select(Function(W) W.Code & "|" & W.Message).ToArray)
+
+                            AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader)
+
+                        Next
+
+                    Next
+
+                ElseIf Response.Warnings.Any(Function(W) W.Code = 105) Then ' generally means that a particular station cannot be reported
+
+                    For Each StationNumber In StationNumbers
+
+                        For Each DemoNumber In DemoNumbersToCache
+
+                            ComscoreCacheHeader = New AdvantageFramework.Database.Entities.ComscoreCacheHeader
+                            ComscoreCacheHeader.BookID = BookID
+                            ComscoreCacheHeader.MarketNumber = MktNumber
+                            ComscoreCacheHeader.StationNumber = StationNumber
+                            ComscoreCacheHeader.DemoNumber = DemoNumber
+                            ComscoreCacheHeader.Warning = String.Join(",", Response.Warnings.Select(Function(W) W.Code & "|" & W.Message).ToArray)
+
+                            AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader)
+
+                        Next
+
+                    Next
+
+                    IsCached = True
+
+                ElseIf Response.Warnings.Any Then
+
+                    For Each StationNumber In StationNumbers
+
+                        For Each DemoNumber In DemoNumbersToCache
+
+                            ComscoreCacheHeader = New AdvantageFramework.Database.Entities.ComscoreCacheHeader
+                            ComscoreCacheHeader.BookID = BookID
+                            ComscoreCacheHeader.MarketNumber = MktNumber
+                            ComscoreCacheHeader.StationNumber = StationNumber
+                            ComscoreCacheHeader.DemoNumber = DemoNumber
+                            ComscoreCacheHeader.Warning = String.Join(",", Response.Warnings.Select(Function(W) W.Code & "|" & W.Message).ToArray)
+
+                            AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader)
+
+                        Next
+
+                    Next
+
+                End If
+
+            End If
+
+            End If
+
+            CacheBookData = IsCached
+
+            End Function
         Private Sub BulkInsertCacheList(DbContext As AdvantageFramework.Database.DbContext, DbContextTransaction As Entity.DbContextTransaction,
                                         ComscoreCacheDetails As Generic.List(Of AdvantageFramework.Database.Entities.ComscoreCacheDetail))
 
@@ -4118,8 +4195,8 @@
             LoadRatingsFromCache = TVWorksheetRatingAndShareDataList
 
         End Function
-        Public Sub CacheBooks(DbContext As AdvantageFramework.Database.DbContext, StationNumber As Integer, ComscoreDemoNumbers As IEnumerable(Of Integer), ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook),
-                              MarketNumber As Integer)
+        Public Function CacheBooks(DbContext As AdvantageFramework.Database.DbContext, StationNumber As Integer, ComscoreDemoNumbers As IEnumerable(Of Integer), ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook),
+                                   MarketNumber As Integer) As Boolean
 
             'objects
             Dim ComscoreClientID As String = Nothing
@@ -4138,6 +4215,8 @@
             Dim NewEndpointPath As String = Nothing
             Dim NewURLDate As Nullable(Of Date) = Nothing
             Dim UseNewURL As Boolean = False
+            Dim IsCached As Boolean = True
+            Dim [Continue] As Boolean = True
 
             LocalMarketNumber = DbContext.Database.SqlQuery(Of Short)(String.Format("exec advsp_comscore_get_new_market_number {0}", MarketNumber)).FirstOrDefault
 
@@ -4190,11 +4269,13 @@
 
                     LocalTimeViews.Request = GetLocalTimeViewsRequestCache(ComscoreShareBook.StartDateTime, EndDate, LocalMarketNumber, DemoNumbersToCache, StationNumbers, JSONOrdinalComscoreDemoNumbers, ComscoreAsClientID)
 
-                    CacheBookData(UseNewURL, ComscoreClientID, ComscoreClientSecret, DbContext, ComscoreShareBook.ID, JSONOrdinalComscoreDemoNumbers, LocalTimeViews, LocalMarketNumber, DemoNumbersToCache, StationNumbers)
+                    IsCached = CacheBookData(UseNewURL, ComscoreClientID, ComscoreClientSecret, DbContext, ComscoreShareBook.ID, JSONOrdinalComscoreDemoNumbers, LocalTimeViews, LocalMarketNumber, DemoNumbersToCache, StationNumbers)
+
+                    [Continue] = IsCached
 
                 End If
 
-                If ShareHPUTBook.HPUTBookID.HasValue AndAlso ShareHPUTBook.HPUTBookID.Value > 0 Then
+                If [Continue] AndAlso ShareHPUTBook.HPUTBookID.HasValue AndAlso ShareHPUTBook.HPUTBookID.Value > 0 Then
 
                     ComscoreHUTBook = AdvantageFramework.Database.Procedures.ComscoreTVBook.LoadByID(DbContext, ShareHPUTBook.HPUTBookID.Value)
 
@@ -4229,7 +4310,7 @@
 
                         LocalTimeViews.Request = GetLocalTimeViewsRequestCache(ComscoreHUTBook.StartDateTime, EndDate, LocalMarketNumber, DemoNumbersToCache, StationNumbers, JSONOrdinalComscoreDemoNumbers, ComscoreAsClientID)
 
-                        CacheBookData(UseNewURL, ComscoreClientID, ComscoreClientSecret, DbContext, ComscoreHUTBook.ID, JSONOrdinalComscoreDemoNumbers, LocalTimeViews, LocalMarketNumber, DemoNumbersToCache, StationNumbers)
+                        IsCached = CacheBookData(UseNewURL, ComscoreClientID, ComscoreClientSecret, DbContext, ComscoreHUTBook.ID, JSONOrdinalComscoreDemoNumbers, LocalTimeViews, LocalMarketNumber, DemoNumbersToCache, StationNumbers)
 
                     End If
 
@@ -4237,7 +4318,9 @@
 
             Next
 
-        End Sub
+            CacheBooks = IsCached
+
+        End Function
         Public Function GetMeasurementTrendDetailsCache(DbContext As AdvantageFramework.Database.DbContext, StationNumber As Integer, DemographicList As Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic), ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook),
                                                         MediaSpotTVResearchDaytimeTypes As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType), MarketNumber As Integer) As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MeasurementTrendDetail)
 
@@ -4387,141 +4470,141 @@
             LoadLeadInLeadOutFromCache = LeadInLeadOutDetailList
 
         End Function
-        Public Async Function CacheBooksAsync(Session As AdvantageFramework.Security.Session, StationNumber As Integer, ComscoreDemoNumbers As IEnumerable(Of Integer), ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook),
-                                              MarketNumber As Integer) As Task(Of Boolean)
+        'Public Async Function CacheBooksAsync(Session As AdvantageFramework.Security.Session, StationNumber As Integer, ComscoreDemoNumbers As IEnumerable(Of Integer), ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook),
+        '                                      MarketNumber As Integer) As Task(Of Boolean)
 
-            'objects
-            Dim ComscoreClientID As String = Nothing
-            Dim ComscoreClientSecret As String = Nothing
-            Dim LocalTimeViews As Services.ComScore.Classes.LocalTimeViews = Nothing
-            Dim StationNumbers As IEnumerable(Of Integer) = Nothing
-            Dim JSONOrdinalComscoreDemoNumbers As Dictionary(Of Integer, Integer) = Nothing
-            Dim ComscoreShareBook As AdvantageFramework.Database.Entities.ComscoreTVBook = Nothing
-            Dim ComscoreHUTBook As AdvantageFramework.Database.Entities.ComscoreTVBook = Nothing
-            Dim ComscoreAsClientID As String = Nothing
-            Dim EndDate As Date = Date.MinValue
-            Dim DemoNumbersCached As Generic.List(Of Integer) = Nothing
-            Dim DemoNumbersToCache As Generic.List(Of Integer) = Nothing
-            Dim Tasks As Generic.List(Of System.Threading.Tasks.Task) = Nothing
-            Dim LocalMarketNumber As Short = 0
-            Dim OldEndpointPath As String = Nothing
-            Dim NewEndpointPath As String = Nothing
-            Dim NewURLDate As Nullable(Of Date) = Nothing
-            Dim UseNewURL As Boolean = False
+        '    'objects
+        '    Dim ComscoreClientID As String = Nothing
+        '    Dim ComscoreClientSecret As String = Nothing
+        '    Dim LocalTimeViews As Services.ComScore.Classes.LocalTimeViews = Nothing
+        '    Dim StationNumbers As IEnumerable(Of Integer) = Nothing
+        '    Dim JSONOrdinalComscoreDemoNumbers As Dictionary(Of Integer, Integer) = Nothing
+        '    Dim ComscoreShareBook As AdvantageFramework.Database.Entities.ComscoreTVBook = Nothing
+        '    Dim ComscoreHUTBook As AdvantageFramework.Database.Entities.ComscoreTVBook = Nothing
+        '    Dim ComscoreAsClientID As String = Nothing
+        '    Dim EndDate As Date = Date.MinValue
+        '    Dim DemoNumbersCached As Generic.List(Of Integer) = Nothing
+        '    Dim DemoNumbersToCache As Generic.List(Of Integer) = Nothing
+        '    Dim Tasks As Generic.List(Of System.Threading.Tasks.Task) = Nothing
+        '    Dim LocalMarketNumber As Short = 0
+        '    Dim OldEndpointPath As String = Nothing
+        '    Dim NewEndpointPath As String = Nothing
+        '    Dim NewURLDate As Nullable(Of Date) = Nothing
+        '    Dim UseNewURL As Boolean = False
 
-            Tasks = New Generic.List(Of System.Threading.Tasks.Task)
+        '    Tasks = New Generic.List(Of System.Threading.Tasks.Task)
 
-            Using DataContext As New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+        '    Using DataContext As New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
 
-                AdvantageFramework.Services.ComScore.GetClientCredentials(DataContext, ComscoreClientID, ComscoreClientSecret, ComscoreAsClientID, OldEndpointPath, NewEndpointPath, NewURLDate)
+        '        AdvantageFramework.Services.ComScore.GetClientCredentials(DataContext, ComscoreClientID, ComscoreClientSecret, ComscoreAsClientID, OldEndpointPath, NewEndpointPath, NewURLDate)
 
-            End Using
+        '    End Using
 
-            Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+        '    Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-                LocalMarketNumber = DbContext.Database.SqlQuery(Of Short)(String.Format("exec advsp_comscore_get_new_market_number {0}", MarketNumber)).FirstOrDefault
+        '        LocalMarketNumber = DbContext.Database.SqlQuery(Of Short)(String.Format("exec advsp_comscore_get_new_market_number {0}", MarketNumber)).FirstOrDefault
 
-                StationNumbers = New Integer() {StationNumber}
+        '        StationNumbers = New Integer() {StationNumber}
 
-                JSONOrdinalComscoreDemoNumbers = New Dictionary(Of Integer, Integer)
+        '        JSONOrdinalComscoreDemoNumbers = New Dictionary(Of Integer, Integer)
 
-                LocalTimeViews = New Services.ComScore.Classes.LocalTimeViews
+        '        LocalTimeViews = New Services.ComScore.Classes.LocalTimeViews
 
-                For Each ShareHPUTBook In ShareHPUTBooks
+        '        For Each ShareHPUTBook In ShareHPUTBooks
 
-                    ComscoreHUTBook = Nothing
+        '            ComscoreHUTBook = Nothing
 
-                    DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.COMSCORE_CACHE_HEADER SET LAST_ACCESSED = getdate() WHERE COMSCORE_TV_BOOK_ID = {0} AND MARKET_NUMBER = {1} AND STATION_NUMBER = {2} AND DEMO_NUMBER IN ({3})", ShareHPUTBook.ShareBookID.Value, MarketNumber, StationNumber, String.Join(",", ComscoreDemoNumbers.ToArray)))
+        '            DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.COMSCORE_CACHE_HEADER SET LAST_ACCESSED = getdate() WHERE COMSCORE_TV_BOOK_ID = {0} AND MARKET_NUMBER = {1} AND STATION_NUMBER = {2} AND DEMO_NUMBER IN ({3})", ShareHPUTBook.ShareBookID.Value, MarketNumber, StationNumber, String.Join(",", ComscoreDemoNumbers.ToArray)))
 
-                    DemoNumbersCached = (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
-                                         Where Entity.BookID = ShareHPUTBook.ShareBookID.Value AndAlso
-                                               Entity.MarketNumber = LocalMarketNumber AndAlso
-                                               Entity.StationNumber = StationNumber AndAlso
-                                               ComscoreDemoNumbers.Contains(Entity.DemoNumber)
-                                         Select Entity.DemoNumber).ToList
+        '            DemoNumbersCached = (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
+        '                                 Where Entity.BookID = ShareHPUTBook.ShareBookID.Value AndAlso
+        '                                       Entity.MarketNumber = LocalMarketNumber AndAlso
+        '                                       Entity.StationNumber = StationNumber AndAlso
+        '                                       ComscoreDemoNumbers.Contains(Entity.DemoNumber)
+        '                                 Select Entity.DemoNumber).ToList
 
-                    DemoNumbersToCache = (From Demo In ComscoreDemoNumbers
-                                          Where DemoNumbersCached.Contains(Demo) = False
-                                          Select Demo).ToList
+        '            DemoNumbersToCache = (From Demo In ComscoreDemoNumbers
+        '                                  Where DemoNumbersCached.Contains(Demo) = False
+        '                                  Select Demo).ToList
 
-                    If DemoNumbersToCache.Count > 0 Then
+        '            If DemoNumbersToCache.Count > 0 Then
 
-                        ComscoreShareBook = AdvantageFramework.Database.Procedures.ComscoreTVBook.LoadByID(DbContext, ShareHPUTBook.ShareBookID.Value)
+        '                ComscoreShareBook = AdvantageFramework.Database.Procedures.ComscoreTVBook.LoadByID(DbContext, ShareHPUTBook.ShareBookID.Value)
 
-                        EndDate = ComscoreShareBook.EndDateTime.AddDays(-1)
+        '                EndDate = ComscoreShareBook.EndDateTime.AddDays(-1)
 
-                        If NewURLDate.HasValue AndAlso ComscoreShareBook.StartDateTime >= NewURLDate.Value Then
+        '                If NewURLDate.HasValue AndAlso ComscoreShareBook.StartDateTime >= NewURLDate.Value Then
 
-                            LocalTimeViews.EndpointPath = NewEndpointPath & "local_time_views"
-                            UseNewURL = True
+        '                    LocalTimeViews.EndpointPath = NewEndpointPath & "local_time_views"
+        '                    UseNewURL = True
 
-                        Else
+        '                Else
 
-                            LocalTimeViews.EndpointPath = OldEndpointPath & "local_time_views"
-                            UseNewURL = False
+        '                    LocalTimeViews.EndpointPath = OldEndpointPath & "local_time_views"
+        '                    UseNewURL = False
 
-                        End If
+        '                End If
 
-                        LocalTimeViews.Request = GetLocalTimeViewsRequestCache(ComscoreShareBook.StartDateTime, EndDate, LocalMarketNumber, DemoNumbersToCache, StationNumbers, JSONOrdinalComscoreDemoNumbers, ComscoreAsClientID)
+        '                LocalTimeViews.Request = GetLocalTimeViewsRequestCache(ComscoreShareBook.StartDateTime, EndDate, LocalMarketNumber, DemoNumbersToCache, StationNumbers, JSONOrdinalComscoreDemoNumbers, ComscoreAsClientID)
 
-                        Tasks.Add(Task.Run(Sub()
-                                               CacheBookData(UseNewURL, ComscoreClientID, ComscoreClientSecret, DbContext, ComscoreShareBook.ID, JSONOrdinalComscoreDemoNumbers, LocalTimeViews, LocalMarketNumber, DemoNumbersToCache, StationNumbers)
-                                           End Sub))
+        '                Tasks.Add(Task.Run(Sub()
+        '                                       CacheBookData(UseNewURL, ComscoreClientID, ComscoreClientSecret, DbContext, ComscoreShareBook.ID, JSONOrdinalComscoreDemoNumbers, LocalTimeViews, LocalMarketNumber, DemoNumbersToCache, StationNumbers)
+        '                                   End Sub))
 
-                    End If
+        '            End If
 
-                    If ShareHPUTBook.HPUTBookID.HasValue AndAlso ShareHPUTBook.HPUTBookID.Value > 0 Then
+        '            If ShareHPUTBook.HPUTBookID.HasValue AndAlso ShareHPUTBook.HPUTBookID.Value > 0 Then
 
-                        ComscoreHUTBook = AdvantageFramework.Database.Procedures.ComscoreTVBook.LoadByID(DbContext, ShareHPUTBook.HPUTBookID.Value)
+        '                ComscoreHUTBook = AdvantageFramework.Database.Procedures.ComscoreTVBook.LoadByID(DbContext, ShareHPUTBook.HPUTBookID.Value)
 
-                        EndDate = ComscoreHUTBook.EndDateTime.AddDays(-1)
+        '                EndDate = ComscoreHUTBook.EndDateTime.AddDays(-1)
 
-                        DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.COMSCORE_CACHE_HEADER SET LAST_ACCESSED = getdate() WHERE COMSCORE_TV_BOOK_ID = {0} AND MARKET_NUMBER = {1} AND STATION_NUMBER = {2} AND DEMO_NUMBER IN ({3})", ShareHPUTBook.HPUTBookID.Value, MarketNumber, StationNumber, String.Join(",", ComscoreDemoNumbers.ToArray)))
+        '                DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.COMSCORE_CACHE_HEADER SET LAST_ACCESSED = getdate() WHERE COMSCORE_TV_BOOK_ID = {0} AND MARKET_NUMBER = {1} AND STATION_NUMBER = {2} AND DEMO_NUMBER IN ({3})", ShareHPUTBook.HPUTBookID.Value, MarketNumber, StationNumber, String.Join(",", ComscoreDemoNumbers.ToArray)))
 
-                        DemoNumbersCached = (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
-                                             Where Entity.BookID = ShareHPUTBook.HPUTBookID.Value AndAlso
-                                                   Entity.MarketNumber = LocalMarketNumber AndAlso
-                                                   Entity.StationNumber = StationNumber AndAlso
-                                                   ComscoreDemoNumbers.Contains(Entity.DemoNumber)
-                                             Select Entity.DemoNumber).ToList
+        '                DemoNumbersCached = (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
+        '                                     Where Entity.BookID = ShareHPUTBook.HPUTBookID.Value AndAlso
+        '                                           Entity.MarketNumber = LocalMarketNumber AndAlso
+        '                                           Entity.StationNumber = StationNumber AndAlso
+        '                                           ComscoreDemoNumbers.Contains(Entity.DemoNumber)
+        '                                     Select Entity.DemoNumber).ToList
 
-                        DemoNumbersToCache = (From Demo In ComscoreDemoNumbers
-                                              Where DemoNumbersCached.Contains(Demo) = False
-                                              Select Demo).ToList
+        '                DemoNumbersToCache = (From Demo In ComscoreDemoNumbers
+        '                                      Where DemoNumbersCached.Contains(Demo) = False
+        '                                      Select Demo).ToList
 
-                        If DemoNumbersToCache.Count > 0 Then
+        '                If DemoNumbersToCache.Count > 0 Then
 
-                            If NewURLDate.HasValue AndAlso ComscoreHUTBook.StartDateTime >= NewURLDate.Value Then
+        '                    If NewURLDate.HasValue AndAlso ComscoreHUTBook.StartDateTime >= NewURLDate.Value Then
 
-                                LocalTimeViews.EndpointPath = NewEndpointPath & "local_time_views"
-                                UseNewURL = True
+        '                        LocalTimeViews.EndpointPath = NewEndpointPath & "local_time_views"
+        '                        UseNewURL = True
 
-                            Else
+        '                    Else
 
-                                LocalTimeViews.EndpointPath = OldEndpointPath & "local_time_views"
-                                UseNewURL = False
+        '                        LocalTimeViews.EndpointPath = OldEndpointPath & "local_time_views"
+        '                        UseNewURL = False
 
-                            End If
+        '                    End If
 
-                            LocalTimeViews.Request = GetLocalTimeViewsRequestCache(ComscoreHUTBook.StartDateTime, EndDate, LocalMarketNumber, DemoNumbersToCache, StationNumbers, JSONOrdinalComscoreDemoNumbers, ComscoreAsClientID)
+        '                    LocalTimeViews.Request = GetLocalTimeViewsRequestCache(ComscoreHUTBook.StartDateTime, EndDate, LocalMarketNumber, DemoNumbersToCache, StationNumbers, JSONOrdinalComscoreDemoNumbers, ComscoreAsClientID)
 
-                            Tasks.Add(Task.Run(Sub()
-                                                   CacheBookData(UseNewURL, ComscoreClientID, ComscoreClientSecret, DbContext, ComscoreHUTBook.ID, JSONOrdinalComscoreDemoNumbers, LocalTimeViews, LocalMarketNumber, DemoNumbersToCache, StationNumbers)
-                                               End Sub))
+        '                    Tasks.Add(Task.Run(Sub()
+        '                                           CacheBookData(UseNewURL, ComscoreClientID, ComscoreClientSecret, DbContext, ComscoreHUTBook.ID, JSONOrdinalComscoreDemoNumbers, LocalTimeViews, LocalMarketNumber, DemoNumbersToCache, StationNumbers)
+        '                                       End Sub))
 
-                        End If
+        '                End If
 
-                    End If
+        '            End If
 
-                Next
+        '        Next
 
-                Await Task.WhenAll(Tasks)
+        '        Await Task.WhenAll(Tasks)
 
-            End Using
+        '    End Using
 
-            Return True
+        '    Return True
 
-        End Function
+        'End Function
 
 #End Region
 

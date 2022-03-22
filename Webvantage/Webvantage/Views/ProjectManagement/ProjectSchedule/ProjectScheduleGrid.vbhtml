@@ -134,6 +134,10 @@ end functions
         box-shadow: inset 0 0 25px 0 #FFEB3B !important;
     }
 
+    .k-grid tbody tr {
+        height: 36px;
+    }
+
 </style>
 
 <div id="treelist" style="border: 1px solid #CCC;"></div>

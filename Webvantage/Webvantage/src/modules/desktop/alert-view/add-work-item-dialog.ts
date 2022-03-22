@@ -113,6 +113,8 @@ export class AddWorkItemDialog extends ModuleBase {
     service: AlertService;
 
     @bindable isRouted: boolean = true;
+    @bindable isExternalLink: boolean = false;
+    @bindable uploadingExternalLinkPrimary: string = "";
     @bindable showAllEmployees: boolean = false;
     @bindable autoApproveRule: string = "everyone";
     officeName: string;
@@ -187,32 +189,58 @@ export class AddWorkItemDialog extends ModuleBase {
     focusUploadFileButton: boolean = false;
 
     @bindable editorHeight: string = "460";
-    @bindable editorHeightProofing: string = "346";
-
-    setUploadToLink() {
+    @bindable editorHeightProofing: string = "460";
+    setUploadToExternalLink() {
         this.isUploadingFile = false;
+        this.isExternalLink = true;
 
         this.focusUploadFileButton = false;
+        //this.focusExternalLinkTitle = true;
         this.focusLinkTitle = true;
         this.focusLinkURL = false;
 
+        this.uploadingExternalLinkPrimary = "k-primary";
+        this.uploadingLinkPrimary = "";
+        this.uploadingFilePrimary = "";
+
+    }
+    setUploadToLink() {
+        this.isUploadingFile = false;
+        this.isExternalLink = false;
+
+        this.focusUploadFileButton = false;
+        //this.focusExternalLinkTitle = false;
+        this.focusLinkTitle = true;
+        this.focusLinkURL = false;
+
+        this.uploadingExternalLinkPrimary = "";
         this.uploadingLinkPrimary = "k-primary";
         this.uploadingFilePrimary = "";
+
     }
     setUploadToFile() {
         this.isUploadingFile = true;
+        this.isExternalLink = false;
 
         this.focusUploadFileButton = true;
+        //this.focusExternalLinkTitle = false;
         this.focusLinkTitle = false;
         this.focusLinkURL = false;
 
+        this.uploadingExternalLinkPrimary = "";
         this.uploadingLinkPrimary = "";
         this.uploadingFilePrimary = "k-primary";
     }
     uploadLink() {
         this.showProgress(true);
         if (this.urlLink && this.urlLink.trim() != "") {
-            this.links.push({ Title: this.urlTitle, Link: this.urlLink, UploadDocumentManager: this.uploadToDocumentManager });
+            console.log("EXTERNAL LINK", this.isExternalLink)
+            this.links.push({
+                Title: this.urlTitle,
+                Link: this.urlLink,
+                UploadDocumentManager: this.uploadToDocumentManager,
+                IsExternalLink: this.isExternalLink
+            });
             this.urlTitle = null;
             this.urlLink = null;
             this.focusLinkTitle = true;
@@ -246,7 +274,7 @@ export class AddWorkItemDialog extends ModuleBase {
     }
     constructor(controller: DialogController, service: AlertService, bindingEngine: BindingEngine, dialogService: DialogService, eventAggregator: EventAggregator) {
         super();
-        
+
         let me = this;
 
         this.controller = controller;
@@ -790,26 +818,26 @@ export class AddWorkItemDialog extends ModuleBase {
             let me = this;
             if (type == 0) {
                 //if (this.includeAlertGroup == true) {
-                    this.service.getCCRecipientsAvailable(type, this.Alert.ClientCode, this.Alert.JobNumber, this.Alert.JobComponentNumber, this.Alert.TaskSequenceNumber).then(response => {
-                        if (response && response.content) {
-                            window.setTimeout(() => {
-                                if (me.ccMultiSelect) {
-                                    me.ccMultiSelect.value(response.content);
-                                    var items = me.ccMultiSelect.value();
-                                    if (items && items.length > 0) {
-                                        for (var i = 0; i < items.length; i++) {
-                                            me.Alert.Recipients.push(items[i]);
-                                        }
+                this.service.getCCRecipientsAvailable(type, this.Alert.ClientCode, this.Alert.JobNumber, this.Alert.JobComponentNumber, this.Alert.TaskSequenceNumber).then(response => {
+                    if (response && response.content) {
+                        window.setTimeout(() => {
+                            if (me.ccMultiSelect) {
+                                me.ccMultiSelect.value(response.content);
+                                var items = me.ccMultiSelect.value();
+                                if (items && items.length > 0) {
+                                    for (var i = 0; i < items.length; i++) {
+                                        me.Alert.Recipients.push(items[i]);
                                     }
-                                } else {
-                                    //console.log("no multiselect?");
                                 }
-                                //console.log("ccMultiSelect", me.ccMultiSelect.value());
-                                //console.log("Recipients", me.Alert.Recipients);
-                            }, 10);
-                        }
-                    }).then(() => {
-                    });
+                            } else {
+                                //console.log("no multiselect?");
+                            }
+                            //console.log("ccMultiSelect", me.ccMultiSelect.value());
+                            //console.log("Recipients", me.Alert.Recipients);
+                        }, 10);
+                    }
+                }).then(() => {
+                });
                 //}
             }
             //if (type == 2) {
@@ -1141,7 +1169,6 @@ export class AddWorkItemDialog extends ModuleBase {
                         save = false;
                     }
                 }
-
                 if (save == true) {
                     var linksString = "";
                     if (me.links) {
@@ -1160,7 +1187,7 @@ export class AddWorkItemDialog extends ModuleBase {
                             if (me.attachmentUpload) {
                                 me.attachmentUpload.removeAllFiles();
                                 me.attachmentUpload.clearAllFiles();
-                            }                            
+                            }
                             me.links = [];
                             me.files = [];
                             me.fileNames = [];
@@ -1175,7 +1202,7 @@ export class AddWorkItemDialog extends ModuleBase {
                                     if (response.content.RefreshMe == true) {
                                         me.refreshAssignmentStuff();
                                     }
-                                } catch (e) {}
+                                } catch (e) { }
                             }
                             me.controller.ok();
                         } else if (response.content.message && response.content.message != "") {
@@ -1183,9 +1210,9 @@ export class AddWorkItemDialog extends ModuleBase {
                         }
                         me.createClick = false;
                     })
-                    .then(() => {
-                        me.showProgress(false);
-                    });
+                        .then(() => {
+                            me.showProgress(false);
+                        });
                 }
             }
         } else {
@@ -1321,7 +1348,7 @@ export class AddWorkItemDialog extends ModuleBase {
     }
     checkForBoard() {
         let me = this;
-        me.clearBoardInfo();       
+        me.clearBoardInfo();
         if (me.Alert.JobNumber && me.Alert.JobNumber > 0 && me.Alert.JobComponentNumber && me.Alert.JobComponentNumber > 0) {
             me.service.checkForBoard(me.Alert.JobNumber, me.Alert.JobComponentNumber).then(response => {
                 if (response && response.content) {
@@ -1514,17 +1541,17 @@ export class AddWorkItemDialog extends ModuleBase {
             if (response.content) {
                 //this.AutoClose = response.content.AutoClose;
                 //this.ShowChecklistsOnCards = response.content.ShowChecklistsOnCards;
-               // this.DetailsExpanded = response.content.DetailsExpanded;
+                // this.DetailsExpanded = response.content.DetailsExpanded;
                 this.uploadToDocumentManager = response.content.UploadDocumentManager;
-               // this.WidgetLayout = new Array<string>();
-               // Object.assign(this.WidgetLayout, response.content.WidgetLayout);
+                // this.WidgetLayout = new Array<string>();
+                // Object.assign(this.WidgetLayout, response.content.WidgetLayout);
                 //console.log(this.AutoClose)
                 //console.log(this.ShowChecklistsOnCards)
                 //console.log(this.DetailsExpanded)
                 //console.log(this.WidgetLayout)
             }
         }).then(() => {
-           // this.sortWidgets();
+            // this.sortWidgets();
         });
     }
 
@@ -2814,7 +2841,7 @@ export class AddWorkItemDialog extends ModuleBase {
     //}
     descriptionReady(e) {
         var editor: kendo.ui.Editor = e;
-        editor.wrapper.find("a,span, input").attr("tabindex", -1);        
+        editor.wrapper.find("a,span, input").attr("tabindex", -1);
     }
     boardDataBound(e) {
 
@@ -3351,7 +3378,10 @@ export class AddWorkItemDialog extends ModuleBase {
                 if (response.AllowProofHQ) {
                     me.allowProofHQ = response.AllowProofHQ;
                 }
-            }
+                if (me.isProof) {
+                    me.isRouted = response.DefaultRoutingForProofingAssignment
+                }
+            } 
         } catch (e) {
         }
         //console.log("initSettings!");
@@ -3701,7 +3731,7 @@ export class AddWorkItemDialog extends ModuleBase {
                 me.editorHeight = me.editorHeightProofing;
             }
         }, 0);
-       //board and sprint from sprint page
+        //board and sprint from sprint page
         if (params.BoardID && isNaN(params.BoardID) == false && params.BoardID > 0) {
             me.Alert.BoardID = params.BoardID;
             me.paramsBoardID = params.BoardID;

@@ -1,4 +1,6 @@
-﻿Imports Newtonsoft.Json
+﻿'Option Strict On
+
+Imports Newtonsoft.Json
 Imports System.Collections.Generic
 Imports System.Web.Mvc
 Imports Webvantage.ViewModels
@@ -201,7 +203,7 @@ Namespace Controllers.ProjectManagement
 
                 If JobNumber.GetValueOrDefault(0) > 0 AndAlso JobComponentNumber.GetValueOrDefault(0) > 0 Then
 
-                    With AdvantageFramework.Database.Procedures.JobComponentView.LoadByJobNumberAndJobComponentNumber(DbContext, JobNumber, JobComponentNumber)
+                    With AdvantageFramework.Database.Procedures.JobComponentView.LoadByJobNumberAndJobComponentNumber(DbContext, CInt(JobNumber), CInt(JobComponentNumber))
 
                         ClientCode = .ClientCode
                         ClientName = .ClientName
@@ -216,7 +218,7 @@ Namespace Controllers.ProjectManagement
 
                 ElseIf JobNumber.GetValueOrDefault(0) > 0 Then
 
-                    With AdvantageFramework.Database.Procedures.JobView.LoadByJobNumber(DbContext, JobNumber)
+                    With AdvantageFramework.Database.Procedures.JobView.LoadByJobNumber(DbContext, CInt(JobNumber))
 
                         ClientCode = .ClientCode
                         ClientName = .ClientName
@@ -442,11 +444,11 @@ Namespace Controllers.ProjectManagement
 
             If Components = "ALL" Then
 
-                ComponentArray = Session("TrafficScheduleMVJobs").Split("|")
+                ComponentArray = CStr(Session("TrafficScheduleMVJobs")).Split(CChar("|"))
 
             Else
 
-                ComponentArray = Components.Split("|")
+                ComponentArray = Components.Split(CChar("|"))
 
             End If
 
@@ -833,9 +835,9 @@ Namespace Controllers.ProjectManagement
 
                 Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
-                    Updated = AdvantageFramework.ProjectSchedule.LinkTasks(DbContext, JobNumber, JobComponentNumber, SequenceNumber, LinkToSequenceNumber, Linked, ErrorMessage)
+                    Updated = AdvantageFramework.ProjectSchedule.LinkTasks(DbContext, JobNumber, JobComponentNumber, CShort(SequenceNumber), CShort(LinkToSequenceNumber), Linked, ErrorMessage)
 
-                    ScheduleTask = AdvantageFramework.ProjectSchedule.GetScheduleTasks(DbContext, JobNumber, JobComponentNumber, "", Me.SecuritySession.UserCode, "", "", "", True, False, False, "", "", False, True, True, True, SequenceNumber).FirstOrDefault
+                    ScheduleTask = AdvantageFramework.ProjectSchedule.GetScheduleTasks(DbContext, JobNumber, JobComponentNumber, "", Me.SecuritySession.UserCode, "", "", "", True, False, False, "", "", False, True, True, True, CShort(SequenceNumber)).FirstOrDefault
 
                 End Using
 
@@ -896,7 +898,7 @@ Namespace Controllers.ProjectManagement
 
                         End If
 
-                        StringBuilder.AppendLine(String.Format("UPDATE [dbo].[JOB_TRAFFIC_DET] SET [GRID_ORDER] = {0}, [JOB_ORDER] = {1} WHERE [JOB_NUMBER] = {2} AND [JOB_COMPONENT_NBR] = {3} AND [SEQ_NBR] = {4}; ", Items.IndexOf(Item) + 1, If(Item.JobOrder.HasValue, Item.JobOrder, "NULL"), JobNumber, JobComponentNumber, Item.SequenceNumber))
+                        StringBuilder.AppendLine(String.Format("UPDATE [dbo].[JOB_TRAFFIC_DET] SET [GRID_ORDER] = {0}, [JOB_ORDER] = {1} WHERE [JOB_NUMBER] = {2} AND [JOB_COMPONENT_NBR] = {3} AND [SEQ_NBR] = {4}; ", Items.IndexOf(Item) + 1, If(Item.JobOrder.HasValue, CStr(Item.JobOrder), "NULL"), JobNumber, JobComponentNumber, Item.SequenceNumber))
 
                     Next
 
@@ -926,7 +928,7 @@ Namespace Controllers.ProjectManagement
 
                 If ScheduleTask.EmployeeCode.Contains(",") = True Then
 
-                    Emps = MiscFN.CleanStringForSplit(ScheduleTask.EmployeeCode, ",").Split(",")
+                    Emps = MiscFN.CleanStringForSplit(ScheduleTask.EmployeeCode, ",").Split(CChar(","))
                     EmpsList = Emps.ToList
 
                 Else
@@ -993,7 +995,7 @@ Namespace Controllers.ProjectManagement
             Dim AlertID As Integer = Nothing
             Dim EmployeeCodeString As String = Nothing
             Dim ESO As EmailSessionObject = Nothing
-            Dim ReturnObject As Object = Nothing
+            Dim ReturnObject As New With {.Task = Nothing, .TasksMadeActive = Nothing, .TrafficStatus = Nothing, .ErrorMessage = "", .ScheduleWasCompleted = Nothing, .ScheduleCompletedDate = Nothing}
             Dim Updated As Boolean = False
             Dim ClientContacts As String = ""
             Dim TaskList As Generic.List(Of AdvantageFramework.ProjectSchedule.Classes.ScheduleTask)
@@ -1009,7 +1011,6 @@ Namespace Controllers.ProjectManagement
             Try
 
                 If ScheduleTask IsNot Nothing Then
-                    ReturnObject = New With {.Task = Nothing, .TasksMadeActive = Nothing, .TrafficStatus = Nothing, .ErrorMessage = "", .ScheduleWasCompleted = Nothing, .ScheduleCompletedDate = Nothing}
 
                     Using DbContext = New AdvantageFramework.Database.DbContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
                         Dim Offset As Decimal = AdvantageFramework.Database.Procedures.Generic.LoadTimeZoneOffsetForEmployee(DbContext, Me.SecuritySession.User.EmployeeCode)
@@ -1142,8 +1143,8 @@ Namespace Controllers.ProjectManagement
 
                                 Else
 
-                                    AutoAlertTaskEmployees = Session(AutoAlertTaskEmployeesSessionKey)
-                                    CompleteScheduleOnLastTaskComplete = Session(CompleteScheduleOnLastTaskCompleteSessionKey)
+                                    AutoAlertTaskEmployees = CBool(Session(AutoAlertTaskEmployeesSessionKey))
+                                    CompleteScheduleOnLastTaskComplete = CBool(Session(CompleteScheduleOnLastTaskCompleteSessionKey))
 
                                 End If
 
@@ -1163,7 +1164,7 @@ Namespace Controllers.ProjectManagement
                                         With AdvantageFramework.Database.Procedures.Phase.LoadByPhaseID(DbContext, ScheduleTask.TrafficPhaseID.GetValueOrDefault(0))
 
                                             ScheduleTask.PhaseDescription = .Description
-                                            ScheduleTask.PhaseOrder = .OrderNumber
+                                            ScheduleTask.PhaseOrder = CInt(.OrderNumber)
 
                                         End With
 
@@ -1287,9 +1288,9 @@ Namespace Controllers.ProjectManagement
                                     End If
                                 End If
 
-                                If Not Decimal.Equals(DbScheduleTask.JobHours.GetValueOrDefault(0), ScheduleTask.JobHours.GetValueOrDefault(0)) Then
+                                If ScheduleTask.JobHours Is Nothing Or Not Decimal.Equals(DbScheduleTask.JobHours.GetValueOrDefault(0), ScheduleTask.JobHours.GetValueOrDefault(0)) Then
 
-                                    Message = LegacySchedule.UpdateTaskEmployeeHours(ScheduleTask.JobNumber, ScheduleTask.JobComponentNumber, ScheduleTask.SequenceNumber, ScheduleTask.JobHours)
+                                    Message = LegacySchedule.UpdateTaskEmployeeHours(ScheduleTask.JobNumber, ScheduleTask.JobComponentNumber, ScheduleTask.SequenceNumber, If(ScheduleTask.JobHours IsNot Nothing, CDec(ScheduleTask.JobHours), 0))
 
                                     If Not String.IsNullOrWhiteSpace(Message) Then
 
@@ -1308,8 +1309,6 @@ Namespace Controllers.ProjectManagement
                                     End If
 
                                 End If
-
-
 
                                 If ShowingClientContacts Then
 
@@ -1331,7 +1330,7 @@ Namespace Controllers.ProjectManagement
 
                                         If Job IsNot Nothing Then
 
-                                            ClientContacts = String.Join(",", (From Item In MiscFN.CleanStringForSplit(ScheduleTask.ClientContact, ",").Split(",")
+                                            ClientContacts = String.Join(",", (From Item In MiscFN.CleanStringForSplit(ScheduleTask.ClientContact, ",").Split(CChar(","))
                                                                                Let ContactID = LegacySchedule.WVGetContactCodeID(Item, Job.ClientCode, Job.DivisionCode, Job.ProductCode)
                                                                                Where ContactID <> 0 AndAlso
                                                                                     LegacySchedule.WVCheckContactCodeIDScheduleUser(ContactID) = 1 AndAlso
@@ -1571,7 +1570,7 @@ Namespace Controllers.ProjectManagement
 
                                                     EmployeeCodeString = AdvantageFramework.StringUtilities.CleanStringForSplit(SbEmps.ToString(), ",")
 
-                                                    ESO = New EmailSessionObject(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode, Me.SecuritySession, Session("WebvantageURL"), Session("ClientPortalURL"))
+                                                    ESO = New EmailSessionObject(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode, Me.SecuritySession, CStr(Session("WebvantageURL")), CStr(Session("ClientPortalURL")))
 
                                                     With ESO
 
@@ -1704,53 +1703,63 @@ Namespace Controllers.ProjectManagement
                                 ReturnObject.TasksMadeActive = TasksMadeActive
                                 ReturnObject.TrafficStatus = New With {.Code = NewCode, .Description = NewDesc}
 
-                                If IsUpdatingCompletedDate = True AndAlso IsUpdatingLastTask = True AndAlso CompleteScheduleOnLastTaskComplete = True Then
+                                'If IsUpdatingCompletedDate = True AndAlso IsUpdatingLastTask = True AndAlso CompleteScheduleOnLastTaskComplete = True Then
 
-                                    Dim TasksCheck As Boolean = False
+                                '    Dim TasksCheck As Boolean = False
 
-                                    If ScheduleTask.JobCompletedDate Is Nothing Then
+                                '    If ScheduleTask.JobCompletedDate Is Nothing Then
 
-                                        TasksCheck = True
+                                '        TasksCheck = True
 
-                                    End If
+                                '    End If
 
-                                    If TasksCheck = False Then
+                                '    If TasksCheck = False Then
 
-                                        TasksCheck = (From Entity In AdvantageFramework.Database.Procedures.JobComponentTask.LoadByJobNumberAndJobComponentNumber(DbContext, ScheduleTask.JobNumber, ScheduleTask.JobComponentNumber)
-                                                      Where Entity.CompletedDate Is Nothing).Count = 0
+                                '        TasksCheck = (From Entity In AdvantageFramework.Database.Procedures.JobComponentTask.LoadByJobNumberAndJobComponentNumber(DbContext, ScheduleTask.JobNumber, ScheduleTask.JobComponentNumber)
+                                '                      Where Entity.CompletedDate Is Nothing).Count = 0
 
-                                    End If
+                                '    End If
 
-                                    If TasksCheck = True Then
+                                '    If TasksCheck = True Then
 
-                                        Dim Schedule As AdvantageFramework.Database.Entities.JobTraffic = Nothing
+                                '        Dim Schedule As AdvantageFramework.Database.Entities.JobTraffic = Nothing
 
-                                        Schedule = AdvantageFramework.Database.Procedures.JobTraffic.LoadByJobNumberAndJobComponentNumber(DbContext, ScheduleTask.JobNumber, ScheduleTask.JobComponentNumber)
+                                '        Schedule = AdvantageFramework.Database.Procedures.JobTraffic.LoadByJobNumberAndJobComponentNumber(DbContext, ScheduleTask.JobNumber, ScheduleTask.JobComponentNumber)
 
-                                        If Schedule IsNot Nothing Then
+                                '        If Schedule IsNot Nothing Then
 
-                                            Schedule.CompletedDate = ScheduleTask.JobCompletedDate
+                                '            Schedule.CompletedDate = ScheduleTask.JobCompletedDate
 
-                                            If AdvantageFramework.Database.Procedures.JobTraffic.Update(DbContext, Schedule) = True Then
+                                '            If AdvantageFramework.Database.Procedures.JobTraffic.Update(DbContext, Schedule) = True Then
 
-                                                ReturnObject.ScheduleCompletedDate = Schedule.CompletedDate
-                                                ScheduleWasCompleted = True
+                                '                ReturnObject.ScheduleCompletedDate = Schedule.CompletedDate
+                                '                ScheduleWasCompleted = True
 
-                                            End If
+                                '            End If
 
-                                        End If
+                                '        End If
 
-                                    End If
+                                '    End If
 
-                                End If
+                                'End If
 
-                                ReturnObject.ScheduleWasCompleted = ScheduleWasCompleted
+                                'ReturnObject.ScheduleWasCompleted = ScheduleWasCompleted
 
                             End If
 
                         End If
 
-                        AdvantageFramework.ProjectSchedule.CheckToCompleteSchedule(DbContext, ScheduleTask.JobNumber, ScheduleTask.JobComponentNumber)
+                        ReturnObject.ScheduleCompletedDate = AdvantageFramework.ProjectSchedule.CheckToCompleteSchedule(DbContext, ScheduleTask.JobNumber, ScheduleTask.JobComponentNumber)
+
+                        If ReturnObject.ScheduleCompletedDate IsNot Nothing Then
+
+                            ReturnObject.ScheduleWasCompleted = True
+
+                        Else
+
+                            ReturnObject.ScheduleWasCompleted = False
+
+                        End If
 
                     End Using
 
@@ -1881,8 +1890,8 @@ Namespace Controllers.ProjectManagement
                                  New System.Data.SqlClient.SqlParameter("@JOB_COMPONENT_NBR", SqlDbType.SmallInt) With {.Value = JobComponentNumber},
                                  New System.Data.SqlClient.SqlParameter("@SEQ_NBR", SqlDbType.SmallInt) With {.Value = SequenceNumber},
                                  New System.Data.SqlClient.SqlParameter("@TYPE", SqlDbType.SmallInt) With {.Value = 0},
-                                 New System.Data.SqlClient.SqlParameter("@DUE_TIME", SqlDbType.VarChar, 10) With {.Value = If(DueTime.HasValue, DueTime, System.DBNull.Value)},
-                                 New System.Data.SqlClient.SqlParameter("@JOB_REVISED_DATE", SqlDbType.SmallDateTime) With {.Value = If(JobRevisedDate.HasValue, JobRevisedDate.Value.Date, System.DBNull.Value)}}
+                                 New System.Data.SqlClient.SqlParameter("@DUE_TIME", SqlDbType.VarChar, 10) With {.Value = IIf(DueTime.HasValue, DueTime, System.DBNull.Value)},
+                                 New System.Data.SqlClient.SqlParameter("@JOB_REVISED_DATE", SqlDbType.SmallDateTime) With {.Value = IIf(JobRevisedDate.HasValue, JobRevisedDate.Value.Date, System.DBNull.Value)}}
 
                 SqlHelper.ExecuteNonQuery(Me.SecuritySession.ConnectionString, CommandType.StoredProcedure, "usp_wv_JOB_TRAFFIC_DET_SAVE_REVISED_COLS", SqlParameters)
                 Saved = True
@@ -1912,7 +1921,7 @@ Namespace Controllers.ProjectManagement
             If Not String.IsNullOrWhiteSpace(MustIncludeEmployees) Then
 
                 MustIncludeEmployees = MustIncludeEmployees.Replace(" ", "")
-                EmployeeArray = MustIncludeEmployees.Split(",")
+                EmployeeArray = MustIncludeEmployees.Split(CChar(","))
 
                 MissingEmployees = EmployeeArray.Where(Function(e) EmployeeDictionary.ContainsKey(e) = False).ToArray
 
@@ -1957,7 +1966,7 @@ Namespace Controllers.ProjectManagement
                 Try
 
                     If AdvantageFramework.ProjectSchedule.Classes.Schedule.IsUsingATaskLevelFilter(PhaseFilter, RoleCode, TaskCode, EmployeeCode, CutOffDate,
-                                                                                      IncludeOnlyPendingTasks, ExcludeProjectedTasks, IncludeCompletedTasks) AndAlso Session("PS_Ignore_Filter") = "0" Then
+                                                                                      IncludeOnlyPendingTasks, ExcludeProjectedTasks, IncludeCompletedTasks) AndAlso Session("PS_Ignore_Filter") Is "0" Then
 
                         ScheduleTasks = AdvantageFramework.ProjectSchedule.GetScheduleTasks(DbContext, JobNumber, JobComponentNumber, SortString, Me.SecuritySession.UserCode, EmployeeCode, TaskCode, RoleCode, IncludeCompletedTasks, IncludeOnlyPendingTasks, ExcludeProjectedTasks, CutOffDate, PhaseFilter, False, ShowingClientContacts, ShowingEmployees, CalculateByPredecessor)
 
@@ -2119,12 +2128,12 @@ Namespace Controllers.ProjectManagement
             Return Json(AdvantageFramework.Web.JsonResponseFactory.Response(Deleted, Message))
 
         End Function
-        Private Function DeleteTask(DbContext As AdvantageFramework.Database.DbContext, JobNumber As Integer, JobComponentNumber As Short, SequenceNumber As Short, Optional ByRef ErrorMessage As String = "")
+        Private Function DeleteTask(DbContext As AdvantageFramework.Database.DbContext, JobNumber As Integer, JobComponentNumber As Short, SequenceNumber As Short, Optional ByRef ErrorMessage As String = "") As Boolean
 
             DeleteTask = DeleteTasks(DbContext, JobNumber, JobComponentNumber, {SequenceNumber}, ErrorMessage)
 
         End Function
-        Private Function DeleteTasks(DbContext As AdvantageFramework.Database.DbContext, JobNumber As Integer, JobComponentNumber As Short, SequenceNumbers As Short(), Optional ByRef ErrorMessage As String = "")
+        Private Function DeleteTasks(DbContext As AdvantageFramework.Database.DbContext, JobNumber As Integer, JobComponentNumber As Short, SequenceNumbers As Short(), Optional ByRef ErrorMessage As String = "") As Boolean
 
             'objects
             Dim Schedule As Webvantage.cSchedule = Nothing
@@ -2261,7 +2270,7 @@ Namespace Controllers.ProjectManagement
 
                 If JobTraffic IsNot Nothing Then
 
-                    AutoSave = If(JobTraffic.AutoUpdateStatus Is Nothing, 0, JobTraffic.AutoUpdateStatus)
+                    AutoSave = If(JobTraffic.AutoUpdateStatus Is Nothing, False, CBool(JobTraffic.AutoUpdateStatus))
 
                 End If
 
@@ -2277,7 +2286,7 @@ Namespace Controllers.ProjectManagement
         Public Function UpdateStatusCode(ByVal JobNumber As Integer, ByVal JobComponentNumber As Integer) As JsonResult
             Try
 
-                Dim s As cSchedule = New cSchedule(Session("ConnString"), CStr(Session("UserCode")))
+                Dim s As cSchedule = New cSchedule(CStr(Session("ConnString")), CStr(Session("UserCode")))
                 Dim dt As New DataTable
                 Dim Updated As Boolean = False
                 Dim NextStatusCode As String = ""
@@ -2318,7 +2327,7 @@ Namespace Controllers.ProjectManagement
         Public Function UpdateStatusCodeMV(JCS As String) As JsonResult
             Try
 
-                Dim s As cSchedule = New cSchedule(Session("ConnString"), CStr(Session("UserCode")))
+                Dim s As cSchedule = New cSchedule(CStr(Session("ConnString")), CStr(Session("UserCode")))
                 Dim dt As New DataTable
                 Dim Updated As Boolean = False
                 Dim NextStatusCode As String = ""
@@ -2328,16 +2337,16 @@ Namespace Controllers.ProjectManagement
 
                 If JCS <> "" Then
 
-                    Jobcomps = JCS.Split("|")
+                    Jobcomps = JCS.Split(CChar("|"))
 
                     If Jobcomps.Length > 0 Then
                         For k As Integer = 0 To Jobcomps.Length - 1
-                            Dim strJC() As String = Jobcomps(k).Split(",")
+                            Dim strJC() As String = Jobcomps(k).Split(CChar(","))
                             If strJC(0) <> "" AndAlso IsNumeric(strJC(0)) = True Then
-                                JobNumber = strJC(0)
+                                JobNumber = CInt(strJC(0))
                             End If
                             If strJC(0) <> "" AndAlso IsNumeric(strJC(1)) = True Then
-                                JobComponentNumber = strJC(1)
+                                JobComponentNumber = CInt(strJC(1))
                             End If
 
                             If JobNumber > 0 And JobComponentNumber > 0 Then
@@ -2404,15 +2413,15 @@ Namespace Controllers.ProjectManagement
 
                     If JobTraffic.ScheduleCalculation.GetValueOrDefault(0) = 0 Then
 
-                        Result = Schedule.CalculateDueDates(JobNumber, JobComponentNumber, 0)
+                        Result = CStr(Schedule.CalculateDueDates(JobNumber, JobComponentNumber, 0))
 
                     Else
 
-                        Result = Schedule.CalculateDueDatesPred(JobNumber, JobComponentNumber, 1)
+                        Result = CStr(Schedule.CalculateDueDatesPred(JobNumber, JobComponentNumber, 1))
 
                     End If
 
-                    Select Case Result
+                    Select Case CInt(Result)
 
                         Case -1
 
@@ -2424,7 +2433,7 @@ Namespace Controllers.ProjectManagement
 
                     End Select
 
-                    If Result <> -1 AndAlso Result <> -2 Then
+                    If CInt(Result) <> -1 AndAlso CInt(Result) <> -2 Then
 
                         Calculated = True
 
@@ -2434,7 +2443,7 @@ Namespace Controllers.ProjectManagement
 
                         If AdvantageFramework.Database.Procedures.JobTrafficPredecessors.LoadByJobNumberAndJobComponentNumberPredecessors(DbContext, JobNumber, JobComponentNumber).Any Then
 
-                            Result = Schedule.CalculateJobPreds(JobNumber, JobComponentNumber, 0, Session("EmpCode"))
+                            Result = CStr(Schedule.CalculateJobPreds(JobNumber, JobComponentNumber, 0, CStr(Session("EmpCode"))))
 
                         End If
 
@@ -2484,20 +2493,20 @@ Namespace Controllers.ProjectManagement
             Dim ResponseData As Object = Nothing
             Dim Jobcomps() As String
             Dim JobNumber As Integer = 0
-            Dim JobComponentNumber As Integer = 0
+            Dim JobComponentNumber As Short = 0
 
             If JCS <> "" Then
 
-                Jobcomps = JCS.Split("|")
+                Jobcomps = JCS.Split(CChar("|"))
 
                 If Jobcomps.Length > 0 Then
                     For k As Integer = 0 To Jobcomps.Length - 1
-                        Dim strJC() As String = Jobcomps(k).Split(",")
+                        Dim strJC() As String = Jobcomps(k).Split(CChar(","))
                         If strJC(0) <> "" AndAlso IsNumeric(strJC(0)) = True Then
-                            JobNumber = strJC(0)
+                            JobNumber = CInt(strJC(0))
                         End If
                         If strJC(0) <> "" AndAlso IsNumeric(strJC(1)) = True Then
-                            JobComponentNumber = strJC(1)
+                            JobComponentNumber = CShort(strJC(1))
                         End If
 
                         If JobNumber > 0 And JobComponentNumber > 0 Then
@@ -2512,15 +2521,15 @@ Namespace Controllers.ProjectManagement
 
                                     If JobTraffic.ScheduleCalculation.GetValueOrDefault(0) = 0 Then
 
-                                        Result = Schedule.CalculateDueDates(JobNumber, JobComponentNumber, 0)
+                                        Result = CStr(Schedule.CalculateDueDates(JobNumber, JobComponentNumber, 0))
 
                                     Else
 
-                                        Result = Schedule.CalculateDueDatesPred(JobNumber, JobComponentNumber, 1)
+                                        Result = CStr(Schedule.CalculateDueDatesPred(JobNumber, JobComponentNumber, 1))
 
                                     End If
 
-                                    Select Case Result
+                                    Select Case CInt(Result)
 
                                         Case -1
 
@@ -2532,7 +2541,7 @@ Namespace Controllers.ProjectManagement
 
                                     End Select
 
-                                    If Result <> -1 AndAlso Result <> -2 Then
+                                    If CInt(Result) <> -1 AndAlso CInt(Result) <> -2 Then
 
                                         Calculated = True
 
@@ -2542,7 +2551,7 @@ Namespace Controllers.ProjectManagement
 
                                         If AdvantageFramework.Database.Procedures.JobTrafficPredecessors.LoadByJobNumberAndJobComponentNumberPredecessors(DbContext, JobNumber, JobComponentNumber).Any Then
 
-                                            Result = Schedule.CalculateJobPreds(JobNumber, JobComponentNumber, 0, Session("EmpCode"))
+                                            Result = CStr(Schedule.CalculateJobPreds(JobNumber, JobComponentNumber, 0, CStr(Session("EmpCode"))))
 
                                         End If
 
@@ -2645,20 +2654,20 @@ Namespace Controllers.ProjectManagement
             Dim ReturnObject As Object = Nothing
             Dim Jobcomps() As String
             Dim JobNumber As Integer = 0
-            Dim JobComponentNumber As Integer = 0
+            Dim JobComponentNumber As Short = 0
 
             If JCS <> "" Then
 
-                Jobcomps = JCS.Split("|")
+                Jobcomps = JCS.Split(CChar("|"))
 
                 If Jobcomps.Length > 0 Then
                     For k As Integer = 0 To Jobcomps.Length - 1
-                        Dim strJC() As String = Jobcomps(k).Split(",")
+                        Dim strJC() As String = Jobcomps(k).Split(CChar(","))
                         If strJC(0) <> "" AndAlso IsNumeric(strJC(0)) = True Then
-                            JobNumber = strJC(0)
+                            JobNumber = CInt(strJC(0))
                         End If
                         If strJC(0) <> "" AndAlso IsNumeric(strJC(1)) = True Then
-                            JobComponentNumber = strJC(1)
+                            JobComponentNumber = CShort(strJC(1))
                         End If
 
                         If JobNumber > 0 And JobComponentNumber > 0 Then
@@ -2685,7 +2694,7 @@ Namespace Controllers.ProjectManagement
 
                                     Try
 
-                                        AdvantageFramework.ProjectSchedule.CheckToCompleteSchedule(DbContext, JobNumber, JobComponentNumber)
+                                        AdvantageFramework.ProjectSchedule.CheckToCompleteSchedule(DbContext, JobNumber, CShort(JobComponentNumber))
 
                                         Try
 
@@ -2829,16 +2838,16 @@ Namespace Controllers.ProjectManagement
 
             If JCS <> "" Then
 
-                Jobcomps = JCS.Split("|")
+                Jobcomps = JCS.Split(CChar("|"))
 
                 If Jobcomps.Length > 0 Then
                     For k As Integer = 0 To Jobcomps.Length - 1
-                        Dim strJC() As String = Jobcomps(k).Split(",")
+                        Dim strJC() As String = Jobcomps(k).Split(CChar(","))
                         If strJC(0) <> "" AndAlso IsNumeric(strJC(0)) = True Then
-                            JobNumber = strJC(0)
+                            JobNumber = CInt(strJC(0))
                         End If
                         If strJC(0) <> "" AndAlso IsNumeric(strJC(1)) = True Then
-                            JobComponentNumber = strJC(1)
+                            JobComponentNumber = CInt(strJC(1))
                         End If
 
                         If JobNumber > 0 AndAlso JobComponentNumber > 0 Then
@@ -3002,22 +3011,22 @@ Namespace Controllers.ProjectManagement
 
                 Case "DisablePaging"
 
-                    AppVars.setAppVar(SettingCode, CBool(SettingValue), "Boolean")
+                    AppVars.setAppVar(SettingCode, SettingValue, "Boolean")
                     ErrorMessage = AppVars.SaveAllAppVars()
 
                 Case "SCHEDULE_CALC"
 
-                    AppVars.setAppVar(SettingCode, CInt(SettingValue), "Integer")
+                    AppVars.setAppVar(SettingCode, SettingValue, "Integer")
                     ErrorMessage = AppVars.SaveAllAppVars()
 
                 Case "LockedColumns"
 
-                    AppVars.setAppVar(SettingCode, CInt(SettingValue), "Integer")
+                    AppVars.setAppVar(SettingCode, SettingValue, "Integer")
                     ErrorMessage = AppVars.SaveAllAppVars()
 
                 Case "CopyEmployees"
 
-                    AppVars.setAppVar(SettingCode, CBool(SettingValue), "Boolean")
+                    AppVars.setAppVar(SettingCode, SettingValue, "Boolean")
                     ErrorMessage = AppVars.SaveAllAppVars()
 
                 Case "GANTT_VIEW"
@@ -3448,7 +3457,7 @@ Namespace Controllers.ProjectManagement
 
             Try
                 GanttTaskRepo = New Repositories.GanttTaskRepository(Me.SecuritySession)
-                Results = GanttTaskRepo.All(JobNumber, JobComponentNumber)
+                Results = GanttTaskRepo.All(JobNumber, JobComponentNumber).ToList()
             Catch ex As Exception
                 Results = New List(Of Gantt.GanttTask)
                 Me.LogError(ex)
@@ -3463,7 +3472,7 @@ Namespace Controllers.ProjectManagement
 
             Try
                 GanttTaskRepo = New Repositories.GanttTaskRepository(Me.SecuritySession)
-                Results = GanttTaskRepo.All(JobNumber, JobComponentNumber, CBool(ShowPhases))
+                Results = GanttTaskRepo.All(JobNumber, JobComponentNumber, ShowPhases).ToList()
             Catch ex As Exception
                 Results = New List(Of Gantt.GanttTask)
                 Me.LogError(ex)
@@ -3590,7 +3599,7 @@ Namespace Controllers.ProjectManagement
                 CurrentRecalculationRequest = JsonConvert.DeserializeObject(Of Gantt.RecalculationRequest)(RecalculationRequest)
                 ScheduleRepo = New Repositories.ScheduleRepository(Me.SecuritySession)
 
-                DataTableGridColumnsToDisplay = FrameworkScheduleObject.GetScheduleColumns(Session("EmpCode"), False, False, False)
+                DataTableGridColumnsToDisplay = FrameworkScheduleObject.GetScheduleColumns(CStr(Session("EmpCode")), False, False, False)
 
                 'IsPredecessor = ScheduleRepo.GetFollowingJobs(CurrentRecalculationRequest.JobNumber, CurrentRecalculationRequest.JobComponentNumber).Any()
 
@@ -3638,11 +3647,11 @@ Namespace Controllers.ProjectManagement
 
                     If (String.IsNullOrEmpty(CurrentRecalculationRequest.ErrorMessage)) Then
 
-                        If DataTableHeader.Rows(0)("SCHEDULE_CALC") = 1 Then
+                        If DataTableHeader.Rows(0)("SCHEDULE_CALC") Is "1" Then
 
                             IsPredecessor = 1
 
-                        ElseIf DataTableHeader.Rows(0)("SCHEDULE_CALC") = 0 Then
+                        ElseIf DataTableHeader.Rows(0)("SCHEDULE_CALC") Is "0" Then
 
                             IsPredecessor = 0
 
@@ -3650,7 +3659,7 @@ Namespace Controllers.ProjectManagement
 
                             For Each DataRow In DataTableGridColumnsToDisplay.Rows.OfType(Of System.Data.DataRow)()
 
-                                If DataRow("ColumnName") = "colPREDECESSORS_TEXT" AndAlso DataRow("ShowOnGrid") = "True" Then
+                                If DataRow("ColumnName") Is "colPREDECESSORS_TEXT" AndAlso DataRow("ShowOnGrid") Is "True" Then
 
                                     IsPredecessor = 1
 
@@ -3688,7 +3697,7 @@ Namespace Controllers.ProjectManagement
 
                                 If JobPred.Count > 0 Then
 
-                                    ReturnCode = FrameworkScheduleObject.CalculateJobPreds(CurrentRecalculationRequest.JobNumber, CurrentRecalculationRequest.JobComponentNumber, 0, Session("EmpCode"))
+                                    ReturnCode = FrameworkScheduleObject.CalculateJobPreds(CurrentRecalculationRequest.JobNumber, CurrentRecalculationRequest.JobComponentNumber, 0, CStr(Session("EmpCode")))
 
                                 End If
 
@@ -3700,29 +3709,29 @@ Namespace Controllers.ProjectManagement
 
                 Else
 
-                    Dim TrafficScheduleJobs() As String = Session("TrafficScheduleMVJobs").ToString.Split("|")
+                    Dim TrafficScheduleJobs() As String = Session("TrafficScheduleMVJobs").ToString.Split(CChar("|"))
                     For TrafficScheduleJobIndex As Integer = 0 To TrafficScheduleJobs.Length - 1
 
-                        Dim TrafficScheduleJobDetailItems() As String = TrafficScheduleJobs(TrafficScheduleJobIndex).Split(",")
+                        Dim TrafficScheduleJobDetailItems() As String = TrafficScheduleJobs(TrafficScheduleJobIndex).Split(CChar(","))
                         If TrafficScheduleJobDetailItems(0) <> "" Then
-                            DataTableHeader = FrameworkScheduleObject.GetScheduleHeader(TrafficScheduleJobDetailItems(0), TrafficScheduleJobDetailItems(1), Session("UserCode").ToString(), False).Tables(0)
+                            DataTableHeader = FrameworkScheduleObject.GetScheduleHeader(CInt(TrafficScheduleJobDetailItems(0)), CInt(TrafficScheduleJobDetailItems(1)), Session("UserCode").ToString(), False).Tables(0)
 
-                            If DataTableHeader.Rows(0)("SCHEDULE_CALC") = 1 Then
+                            If DataTableHeader.Rows(0)("SCHEDULE_CALC") Is "1" Then
                                 IsPredecessor = 1
-                            ElseIf DataTableHeader.Rows(0)("SCHEDULE_CALC") = 0 Then
+                            ElseIf DataTableHeader.Rows(0)("SCHEDULE_CALC") Is "0" Then
                                 IsPredecessor = 0
                             Else
                                 For Each DataRow In DataTableGridColumnsToDisplay.Rows.OfType(Of System.Data.DataRow)()
-                                    If DataRow("ColumnName") = "colPREDECESSORS_TEXT" AndAlso DataRow("ShowOnGrid") = "True" Then
+                                    If DataRow("ColumnName") Is "colPREDECESSORS_TEXT" AndAlso DataRow("ShowOnGrid") Is "True" Then
                                         IsPredecessor = 1
                                     End If
                                 Next
                             End If
 
                             If IsPredecessor = 1 Then
-                                ReturnCode = FrameworkScheduleObject.CalculateDueDatesPred(TrafficScheduleJobDetailItems(0), TrafficScheduleJobDetailItems(1), 1)
+                                ReturnCode = FrameworkScheduleObject.CalculateDueDatesPred(CInt(TrafficScheduleJobDetailItems(0)), CInt(TrafficScheduleJobDetailItems(1)), 1)
                             Else
-                                ReturnCode = FrameworkScheduleObject.CalculateDueDates(TrafficScheduleJobDetailItems(0), TrafficScheduleJobDetailItems(1), 0)
+                                ReturnCode = FrameworkScheduleObject.CalculateDueDates(CInt(TrafficScheduleJobDetailItems(0)), CInt(TrafficScheduleJobDetailItems(1)), 0)
                             End If
 
                             Select Case ReturnCode
@@ -3737,9 +3746,9 @@ Namespace Controllers.ProjectManagement
                             End If
 
                             Using DbContext = New AdvantageFramework.Database.DbContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
-                                JobPred = AdvantageFramework.Database.Procedures.JobTrafficPredecessors.LoadByJobNumberAndJobComponentNumberPredecessors(DbContext, TrafficScheduleJobDetailItems(0), TrafficScheduleJobDetailItems(1)).ToList
+                                JobPred = AdvantageFramework.Database.Procedures.JobTrafficPredecessors.LoadByJobNumberAndJobComponentNumberPredecessors(DbContext, CInt(TrafficScheduleJobDetailItems(0)), CInt(TrafficScheduleJobDetailItems(1))).ToList
                                 If JobPred.Count > 0 Then
-                                    ReturnCode = FrameworkScheduleObject.CalculateJobPreds(TrafficScheduleJobDetailItems(0), TrafficScheduleJobDetailItems(1), 0, Session("EmpCode"))
+                                    ReturnCode = FrameworkScheduleObject.CalculateJobPreds(CInt(TrafficScheduleJobDetailItems(0)), CInt(TrafficScheduleJobDetailItems(1)), 0, CStr(Session("EmpCode")))
                                 End If
                             End Using
                         End If
@@ -3780,7 +3789,7 @@ Namespace Controllers.ProjectManagement
 
                 If IsNumeric(GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.JobComp)) Then
 
-                    Schedule.JobComponentNumber = CType(GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.JobComp), Integer)
+                    Schedule.JobComponentNumber = CType(GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.JobComp), Short)
 
                 End If
 
@@ -3790,7 +3799,7 @@ Namespace Controllers.ProjectManagement
 
             Try
 
-                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.P) = Nothing Then
+                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.P) Is Nothing Then
 
                     Schedule.PhaseFilter = GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.P).ToString()
 
@@ -3802,7 +3811,7 @@ Namespace Controllers.ProjectManagement
 
             Try
 
-                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Role) = Nothing Then
+                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Role) Is Nothing Then
 
                     Schedule.RoleCode = GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Role).ToString()
 
@@ -3814,7 +3823,7 @@ Namespace Controllers.ProjectManagement
 
             Try
 
-                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Task) = Nothing Then
+                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Task) Is Nothing Then
 
                     Schedule.TaskCode = GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Task).ToString()
 
@@ -3826,7 +3835,7 @@ Namespace Controllers.ProjectManagement
 
             Try
 
-                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Emp) = Nothing Then
+                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Emp) Is Nothing Then
 
                     Schedule.EmployeeCode = GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Emp).ToString()
 
@@ -3838,7 +3847,7 @@ Namespace Controllers.ProjectManagement
 
             Try
 
-                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Cut) = Nothing Then
+                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Cut) Is Nothing Then
 
                     Schedule.CutOffDate = GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Cut).ToString()
 
@@ -3850,7 +3859,7 @@ Namespace Controllers.ProjectManagement
 
             Try
 
-                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Pend) = Nothing Then
+                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Pend) Is Nothing Then
 
                     Schedule.IncludeOnlyPendingTasks = CType(GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Pend).ToString(), Boolean)
 
@@ -3862,7 +3871,7 @@ Namespace Controllers.ProjectManagement
 
             Try
 
-                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Proj) = Nothing Then
+                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Proj) Is Nothing Then
 
                     Schedule.ExcludeProjectedTasks = CType(GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Proj).ToString(), Boolean)
 
@@ -3874,7 +3883,7 @@ Namespace Controllers.ProjectManagement
 
             Try
 
-                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Comp) = Nothing Then
+                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Comp) Is Nothing Then
 
                     Schedule.UserSettings.IncludeCompletedTasks = CType(GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.Comp).ToString(), Boolean)
 
@@ -3886,9 +3895,9 @@ Namespace Controllers.ProjectManagement
 
             Try
 
-                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.seq) = Nothing Then
+                If Not GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.seq) Is Nothing Then
 
-                    Schedule.SequenceNumber = CType(GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.seq), Integer)
+                    Schedule.SequenceNumber = CType(GetQueryStringVariable(AdvantageFramework.ProjectSchedule.Classes.Schedule.QueryStringVars.seq), Short)
 
                 End If
 
@@ -3898,7 +3907,7 @@ Namespace Controllers.ProjectManagement
 
             Try
 
-                If Me.Session("PS_Ignore_Filter") = Nothing Then
+                If Me.Session("PS_Ignore_Filter") Is Nothing Then
 
                     Me.Session("PS_Ignore_Filter") = "0"
 
@@ -3918,7 +3927,7 @@ Namespace Controllers.ProjectManagement
 
                 If .JobComponentNumber > 0 Then
 
-                    Schedule.JobComponentNumber = .JobComponentNumber
+                    Schedule.JobComponentNumber = CShort(.JobComponentNumber)
 
                 End If
 
@@ -3974,7 +3983,7 @@ Namespace Controllers.ProjectManagement
 
                 If .TaskSequenceNumber > 0 Then
 
-                    Schedule.SequenceNumber = .TaskSequenceNumber
+                    Schedule.SequenceNumber = CShort(.TaskSequenceNumber)
 
                 End If
 
@@ -4128,7 +4137,7 @@ Namespace Controllers.ProjectManagement
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
-                Count = AdvantageFramework.Database.Procedures.JobComponentTask.LoadByJobNumberAndJobComponentNumber(DbContext, JobNumber, JobComponentNumber).Count()
+                Count = AdvantageFramework.Database.Procedures.JobComponentTask.LoadByJobNumberAndJobComponentNumber(DbContext, JobNumber, CShort(JobComponentNumber)).Count()
 
             End Using
 
@@ -5006,7 +5015,7 @@ Namespace Controllers.ProjectManagement
                                      Optional ByVal dateCutoff As Date? = Nothing
                                      ) As JsonResult
             Dim b As New AdvantageFramework.Web.Presentation.Bookmarks.Bookmark
-            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(Session("ConnString"), Session("UserCode"))
+            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(CStr(Session("ConnString")), CStr(Session("UserCode")))
             Dim qs As New AdvantageFramework.Web.QueryString()
 
             With qs
@@ -5015,12 +5024,12 @@ Namespace Controllers.ProjectManagement
                 .DivisionCode = Division
                 .ProductCode = Product
                 .SalesClassCode = SalesClass
-                .CampaignIdentifier = Campaign
+                .CampaignIdentifier = CInt(Campaign)
                 If JobNumber IsNot Nothing Then
-                    .JobNumber = JobNumber
+                    .JobNumber = CInt(JobNumber)
                 End If
                 If ComponentNumber IsNot Nothing Then
-                    .JobComponentNumber = ComponentNumber
+                    .JobComponentNumber = CInt(ComponentNumber)
                 End If
                 .AccountExecutiveCode = AccountExecutive
                 .Add("jt", JobType)
@@ -5040,7 +5049,7 @@ Namespace Controllers.ProjectManagement
             With b
 
                 .BookmarkType = AdvantageFramework.Web.Presentation.Bookmarks.BookmarkType.ProjectManagement_ProjectSchedule
-                .UserCode = Session("UserCode")
+                .UserCode = CStr(Session("UserCode"))
                 .Name = "Project Schedule Search"
                 .PageURL = "modules/project-management/project-schedule/project-schedule-search" & qs.ToString()
 
@@ -5078,7 +5087,7 @@ Namespace Controllers.ProjectManagement
                                          ByVal CutOffDate As Date?
                                          ) As JsonResult
             Dim b As New AdvantageFramework.Web.Presentation.Bookmarks.Bookmark
-            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(Session("ConnString"), Session("UserCode"))
+            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(CStr(Session("ConnString")), CStr(Session("UserCode")))
             Dim qs As New AdvantageFramework.Web.QueryString()
 
             With qs
@@ -5087,12 +5096,12 @@ Namespace Controllers.ProjectManagement
                 .Add("DivisionCode", Division)
                 .Add("ProductCode", Product)
                 .Add("SalesClassCode", SalesClass)
-                .Add("CampaignID", Campaign)
+                .Add("CampaignID", CStr(Campaign))
                 If JobNumber IsNot Nothing Then
-                    .Add("JobNumber", JobNumber)
+                    .Add("JobNumber", CStr(JobNumber))
                 End If
                 If ComponentNumber IsNot Nothing Then
-                    .Add("JobComponentNbr", ComponentNumber)
+                    .Add("JobComponentNbr", CStr(ComponentNumber))
                 End If
                 .Add("AccountExecutiveCode", AccountExecutive)
                 .Add("JobTypeCode", JobTypeCode)
@@ -5102,12 +5111,12 @@ Namespace Controllers.ProjectManagement
                 .Add("EmployeeCode", EmployeeCode)
                 .Add("TaskCode", TaskCode)
                 .Add("RoleCode", RoleCode)
-                .Add("ExcludeCompletedSchedules", ExcludeCompletedSchedules)
-                .Add("OnlyPendingTasks", OnlyPendingTasks)
-                .Add("ExcludeProjectedTasks", ExcludeProjectedTasks)
-                .Add("IncludeCompletedTasks", IncludeCompletedTasks)
-                .Add("OnlyScheduleTemplates", OnlyScheduleTemplates)
-                .Add("CutoffDate", CutOffDate)
+                .Add("ExcludeCompletedSchedules", CStr(ExcludeCompletedSchedules))
+                .Add("OnlyPendingTasks", CStr(OnlyPendingTasks))
+                .Add("ExcludeProjectedTasks", CStr(ExcludeProjectedTasks))
+                .Add("IncludeCompletedTasks", CStr(IncludeCompletedTasks))
+                .Add("OnlyScheduleTemplates", CStr(OnlyScheduleTemplates))
+                .Add("CutoffDate", CStr(CutOffDate))
                 .Add("isbookmark", "1")
                 .Build()
             End With
@@ -5115,7 +5124,7 @@ Namespace Controllers.ProjectManagement
             With b
 
                 .BookmarkType = AdvantageFramework.Web.Presentation.Bookmarks.BookmarkType.ProjectManagement_ProjectSchedule
-                .UserCode = Session("UserCode")
+                .UserCode = CStr(Session("UserCode"))
                 .Name = "Project Schedule Multi Edit"
                 .PageURL = "ProjectManagement_ProjectSchedule_EditView" & qs.ToString()
 
@@ -5131,15 +5140,15 @@ Namespace Controllers.ProjectManagement
         <HttpPost>
         Public Function BookMarkPagePS(ByVal JobNumber? As Integer, ByVal JobComponentNumber? As Integer) As JsonResult
             Dim b As New AdvantageFramework.Web.Presentation.Bookmarks.Bookmark
-            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(Session("ConnString"), Session("UserCode"))
+            Dim BmMethods As New AdvantageFramework.Web.Presentation.Bookmarks.Methods(CStr(Session("ConnString")), CStr(Session("UserCode")))
             Dim qs As New AdvantageFramework.Web.QueryString()
 
             With qs
                 If JobNumber IsNot Nothing Then
-                    .JobNumber = JobNumber
+                    .JobNumber = CInt(JobNumber)
                 End If
                 If JobComponentNumber IsNot Nothing Then
-                    .JobComponentNumber = JobComponentNumber
+                    .JobComponentNumber = CInt(JobComponentNumber)
                 End If
                 .Add("isbookmark", "1")
                 .Add("contaid", "15")
@@ -5149,9 +5158,9 @@ Namespace Controllers.ProjectManagement
             With b
 
                 .BookmarkType = AdvantageFramework.Web.Presentation.Bookmarks.BookmarkType.ProjectManagement_ProjectSchedule
-                .UserCode = Session("UserCode")
-                .Name = JobNumber.ToString().PadLeft(6, "0") & "-" & JobComponentNumber.ToString().PadLeft(2, "0") & " - Schedule"
-                .Description = JobNumber.ToString().PadLeft(6, "0") & "-" & JobComponentNumber.ToString().PadLeft(2, "0") & " - Schedule"
+                .UserCode = CStr(Session("UserCode"))
+                .Name = JobNumber.ToString().PadLeft(6, CChar("0")) & "-" & JobComponentNumber.ToString().PadLeft(2, CChar("0")) & " - Schedule"
+                .Description = JobNumber.ToString().PadLeft(6, CChar("0")) & "-" & JobComponentNumber.ToString().PadLeft(2, CChar("0")) & " - Schedule"
                 .PageURL = "Content.aspx" & qs.ToString()
 
             End With
@@ -5210,7 +5219,7 @@ Namespace Controllers.ProjectManagement
                             Dim outputStream As New System.IO.MemoryStream
                             Dim strfiles As String
 
-                            Dim oAppVars As New cAppVars(cAppVars.Application.SCHEDULE_PRINT, Session("UserCode"))
+                            Dim oAppVars As New cAppVars(cAppVars.Application.SCHEDULE_PRINT, CStr(Session("UserCode")))
                             oAppVars.getAllAppVars()
                             Dim s As String = ""
                             s = oAppVars.getAppVar("Location")
@@ -5221,7 +5230,7 @@ Namespace Controllers.ProjectManagement
                                     Session("PSLogoLocation") = ""
                                     Session("PSLogoLocationID") = "None"
                                 Else
-                                    ar = s.ToString.Split("|")
+                                    ar = s.ToString.Split(CChar("|"))
                                     Session("PSLogoLocation") = ar(1)
                                     Session("PSLogoLocationID") = ar(0)
                                 End If
@@ -5251,12 +5260,12 @@ Namespace Controllers.ProjectManagement
 
                             Dim zip As New Ionic.Zip.ZipFile
 
-                            Dim jc() As String = JobComps.Split(",")
+                            Dim jc() As String = JobComps.Split(CChar(","))
                             For i As Integer = 0 To jc.Length - 1
                                 Dim jobc As String
                                 jobc = jc(i)
                                 If jobc <> "" Then
-                                    Dim jobcomp() As String = jobc.Split("/")
+                                    Dim jobcomp() As String = jobc.Split(CChar("/"))
 
                                     filename = Me.OutputReportFile(jobcomp(0), jobcomp(1))
                                     Dim f As New IO.FileInfo(StrFilePrefix & filename)
@@ -5283,7 +5292,7 @@ Namespace Controllers.ProjectManagement
 
                             zip.Save(Response.OutputStream)
 
-                            Dim str() As String = strfiles.Split("|")
+                            Dim str() As String = strfiles.Split(CChar("|"))
                             For x As Integer = 0 To str.Length - 1
                                 If str(x) <> "" Then
                                     Try
@@ -5339,7 +5348,7 @@ Namespace Controllers.ProjectManagement
         Private Function OutputReportFile(ByVal job As String, ByVal comp As String) As String
             Dim StrFileName As String = ""
             'Dim StrImagePath As String = Request.PhysicalApplicationPath & "\Images\logo_print.gif"
-            Dim r As cReports = New cReports(Session("ConnString"))
+            Dim r As cReports = New cReports(CStr(Session("ConnString")))
             Dim StrFilePrefix As String = Request.PhysicalApplicationPath.Trim & "TEMP\"
             Dim StrFileDate As String = "__" & Now.Year.ToString() & Now.Month.ToString() & Now.Day.ToString() & Now.Hour.ToString() & Now.Minute.ToString
             Dim StrFileType As String = ".PDF"
@@ -5419,7 +5428,7 @@ Namespace Controllers.ProjectManagement
                     arParams.Add(New SqlParameter("@TRAFFIC_PHASE_ID", PhaseCode))
 
                     Dim DateCutofParamater As SqlParameter = New SqlParameter("@CUT_OFF_DATE", DbType.Date)
-                    DateCutofParamater.Value = If(DateCutoff Is Nothing, DBNull.Value, DateCutoff)
+                    DateCutofParamater.Value = IIf(DateCutoff Is Nothing, DBNull.Value, DateCutoff)
                     arParams.Add(DateCutofParamater)
 
                     arParams.Add(New SqlParameter("@Skip", Skip))
@@ -5438,11 +5447,11 @@ Namespace Controllers.ProjectManagement
                     Try
                         Schedules = DbContext.Database.SqlQuery(Of AdvantageFramework.ViewModels.ProjectManagement.ProjectSchedule.ProjectScheduleSearchDTO)(Command, arParams.ToArray).ToList
                     Catch ex As Exception
-
+                        Debug.WriteLine(ex.Message)
                     End Try
 
                     If Not IsDBNull(outParam.Value) Then
-                        totalRows = outParam.Value
+                        totalRows = CInt(outParam.Value)
                     End If
 
 
@@ -5461,10 +5470,10 @@ Namespace Controllers.ProjectManagement
             Dim UserPermission As AdvantageFramework.Security.Database.Views.UserPermission
             Dim HasAccess As Boolean = False
 
-            Dim _Session = New AdvantageFramework.Security.Session(AdvantageFramework.Security.Application.Webvantage, Session("ConnString"), Session("UserCode"), CInt(Session("AdvantageUserLicenseInUseID")), Session("ConnString"))
+            Dim _Session = New AdvantageFramework.Security.Session(AdvantageFramework.Security.Application.Webvantage, CStr(Session("ConnString")), CStr(Session("UserCode")), CInt(Session("AdvantageUserLicenseInUseID")), CStr(Session("ConnString")))
 
 
-            Using DbContext = New AdvantageFramework.Security.Database.DbContext(Session("ConnString"), Session("UserCode"))
+            Using DbContext = New AdvantageFramework.Security.Database.DbContext(CStr(Session("ConnString")), CStr(Session("UserCode")))
 
                 UserPermission = AdvantageFramework.Security.Database.Procedures.UserPermissionView.LoadByApplicationAndModuleAndUser(DbContext,
                                                                                                                      AdvantageFramework.Security.Application.Webvantage,
@@ -5804,7 +5813,7 @@ Namespace Controllers.ProjectManagement
                     arParams.Add(param)
                 End If
                 arParams.Add(New SqlParameter("@GRID_ORDER", task.GridOrder))
-                arParams.Add(New SqlParameter("@TASK_DESCRIPTION", If(task.TaskDescription Is Nothing, DBNull.Value, task.TaskDescription)))
+                arParams.Add(New SqlParameter("@TASK_DESCRIPTION", IIf(task.TaskDescription Is Nothing, DBNull.Value, task.TaskDescription)))
                 arParams.Add(New SqlParameter("@JOB_DAYS", task.JobDays))
 
                 DbContext.Database.ExecuteSqlCommand("UPDATE JOB_TRAFFIC_DET SET TASK_START_DATE = @TASK_START_DATE, JOB_REVISED_DATE = @JOB_DUE_DATE, PARENT_TASK_SEQ = @PARENT_TASK_SEQ, GRID_ORDER = @GRID_ORDER, TASK_DESCRIPTION = @TASK_DESCRIPTION, JOB_DAYS = @JOB_DAYS  where JOB_NUMBER = @JOB_NUMBER AND JOB_COMPONENT_NBR = @JOB_COMPONENT_NBR AND SEQ_NBR = @SEQ_NBR", arParams.ToArray)
@@ -5992,11 +6001,11 @@ Namespace Controllers.ProjectManagement
 
                 aParam.Add(New SqlParameter("@JobNumber", JobNumber))
                 aParam.Add(New SqlParameter("@JobComponentNumber", JobComponentNumber))
-                aParam.Add(New SqlParameter("@Assignment1Code", If(String.IsNullOrEmpty(Assignment1Code), DBNull.Value, Assignment1Code)))
-                aParam.Add(New SqlParameter("@Assignment2Code", If(String.IsNullOrEmpty(Assignment2Code), DBNull.Value, Assignment2Code)))
-                aParam.Add(New SqlParameter("@Assignment3Code", If(String.IsNullOrEmpty(Assignment3Code), DBNull.Value, Assignment3Code)))
-                aParam.Add(New SqlParameter("@Assignment4Code", If(String.IsNullOrEmpty(Assignment4Code), DBNull.Value, Assignment4Code)))
-                aParam.Add(New SqlParameter("@Assignment5Code", If(String.IsNullOrEmpty(Assignment5Code), DBNull.Value, Assignment5Code)))
+                aParam.Add(New SqlParameter("@Assignment1Code", IIf(String.IsNullOrEmpty(Assignment1Code), DBNull.Value, Assignment1Code)))
+                aParam.Add(New SqlParameter("@Assignment2Code", IIf(String.IsNullOrEmpty(Assignment2Code), DBNull.Value, Assignment2Code)))
+                aParam.Add(New SqlParameter("@Assignment3Code", IIf(String.IsNullOrEmpty(Assignment3Code), DBNull.Value, Assignment3Code)))
+                aParam.Add(New SqlParameter("@Assignment4Code", IIf(String.IsNullOrEmpty(Assignment4Code), DBNull.Value, Assignment4Code)))
+                aParam.Add(New SqlParameter("@Assignment5Code", IIf(String.IsNullOrEmpty(Assignment5Code), DBNull.Value, Assignment5Code)))
                 aParam.Add(New SqlParameter("@TrafficComments", TrafficComments))
 
                 DbContext.Database.ExecuteSqlCommand("UPDATE JOB_TRAFFIC SET ASSIGN_1 = @Assignment1Code,ASSIGN_2 = @Assignment2Code,
@@ -6016,10 +6025,10 @@ Namespace Controllers.ProjectManagement
                 aParam.Add(New SqlParameter("@JobNumber", JobNumber))
                 aParam.Add(New SqlParameter("@JobComponentNumber", JobComponentNumber))
                 aParam.Add(New SqlParameter("@PercentComplete", PercentComplete))
-                aParam.Add(New SqlParameter("@StatusCode", If(String.IsNullOrEmpty(StatusCode), DBNull.Value, StatusCode)))
-                aParam.Add(New SqlParameter("@DueDate", If(IsNothing(DueDate), DBNull.Value, DueDate)))
-                aParam.Add(New SqlParameter("@StartDate", If(IsNothing(StartDate), DBNull.Value, StartDate)))
-                aParam.Add(New SqlParameter("@CompletedDate", If(IsNothing(CompletedDate), DBNull.Value, CompletedDate)))
+                aParam.Add(New SqlParameter("@StatusCode", IIf(String.IsNullOrEmpty(StatusCode), DBNull.Value, StatusCode)))
+                aParam.Add(New SqlParameter("@DueDate", IIf(IsNothing(DueDate), DBNull.Value, DueDate)))
+                aParam.Add(New SqlParameter("@StartDate", IIf(IsNothing(StartDate), DBNull.Value, StartDate)))
+                aParam.Add(New SqlParameter("@CompletedDate", IIf(IsNothing(CompletedDate), DBNull.Value, CompletedDate)))
                 'aParam.Add(New SqlParameter("@TrafficComments", TrafficComments))
                 aParam.Add(New SqlParameter("@Template", Template))
 
@@ -6047,9 +6056,9 @@ Namespace Controllers.ProjectManagement
                 Dim aParam As List(Of SqlParameter) = New List(Of SqlParameter)
                 aParam.Add(New SqlParameter("@JobNumber", JobNumber))
                 aParam.Add(New SqlParameter("@JobComponentNumber", JobComponentNumber))
-                aParam.Add(New SqlParameter("@DateShipped", If(IsNothing(DateShipped), DBNull.Value, DateShipped)))
+                aParam.Add(New SqlParameter("@DateShipped", IIf(IsNothing(DateShipped), DBNull.Value, DateShipped)))
                 aParam.Add(New SqlParameter("@ReceivedBy", ReceivedBy))
-                aParam.Add(New SqlParameter("@DateDelivered", If(IsNothing(DateDelivered), DBNull.Value, DateDelivered)))
+                aParam.Add(New SqlParameter("@DateDelivered", IIf(IsNothing(DateDelivered), DBNull.Value, DateDelivered)))
                 aParam.Add(New SqlParameter("@Reference", Reference))
 
                 DbContext.Database.ExecuteSqlCommand("UPDATE JOB_TRAFFIC SET DATE_DELIVERED=@DateDelivered, DATE_SHIPPED=@DateShipped,RECEIVED_BY=@ReceivedBy,REFERENCE=@Reference where JOB_NUMBER = @JobNumber AND JOB_COMPONENT_NBR = @JobComponentNumber", aParam.ToArray)
@@ -6189,7 +6198,7 @@ Namespace Controllers.ProjectManagement
                 Phases = (From Item In AdvantageFramework.Database.Procedures.Phase.LoadAllActive(DbContext)
                           Order By Item.Description
                           Select New CodeName With {
-                              .Code = Item.ID,
+                              .Code = CStr(Item.ID),
                               .Name = Item.Description
                               }
                           ).ToList
@@ -6340,7 +6349,7 @@ Namespace Controllers.ProjectManagement
         End Function
 
         <HttpGet>
-        Function GetHeaderLock()
+        Function GetHeaderLock() As Object
 
             Dim HeaderLock As Boolean = True
 
@@ -6364,7 +6373,7 @@ Namespace Controllers.ProjectManagement
 
             Else
 
-                HeaderLock = Session(LockDateSessionKey)
+                HeaderLock = CBool(Session(LockDateSessionKey))
 
             End If
 

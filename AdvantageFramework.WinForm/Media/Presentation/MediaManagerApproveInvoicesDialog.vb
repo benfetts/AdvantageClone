@@ -36,6 +36,7 @@
         Private _OrderLineSumActImps As Decimal = 0
         Private _OrderUpdated As Boolean = False
         Private _IsRadio As Boolean = False
+        Private _InvoiceDetailMatchingTabLoaded As Boolean = False
 
 #End Region
 
@@ -456,7 +457,7 @@
             SqlParameterOrderNumbers.Value = String.Join(",", OrderNumbers.ToArray)
             SqlParameterShowWeekOf.Value = ButtonItemInvoiceDetail_ShowWeeks.Checked
 
-            BroadcastOrderDetailVerifications = DbContext.Database.SqlQuery(Of AdvantageFramework.Database.Classes.BroadcastOrderDetailVerification)("EXEC advsp_broadcast_order_dtl_verification @OrderNumberLineNumbers, @MatchAdditionalParameters, @OrderYearMonths, @OrderNumbers, @ShowWeekOf",
+            BroadcastOrderDetailVerifications = DbContext.Database.SqlQuery(Of AdvantageFramework.Database.Classes.BroadcastOrderDetailVerification)("SELECT * FROM dbo.advtf_broadcast_order_dtl_verification (@OrderNumberLineNumbers, @MatchAdditionalParameters, @OrderYearMonths, @OrderNumbers, @ShowWeekOf)",
                                                                                 SqlParameterOrderNumberLineNumbers, SqlParameterMatchAdditionalParameters, SqlParameterOrderYearMonths, SqlParameterOrderNumbers, SqlParameterShowWeekOf).ToList
 
             LoadDetailVerifications = BroadcastOrderDetailVerifications
@@ -594,6 +595,8 @@
                 End Using
 
                 Me.CloseWaitForm()
+
+                _InvoiceDetailMatchingTabLoaded = True
 
             End If
 
@@ -2592,6 +2595,78 @@
         '    RefineVarianceSpots = Refined
 
         'End Function
+        Private Sub SaveMediaManagerApproveInvoiceSettings()
+
+            'objects
+            Dim UserSetting As AdvantageFramework.Security.Database.Entities.UserSetting = Nothing
+
+            If _InvoiceDetailMatchingTabLoaded Then
+
+                Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                    UserSetting = AdvantageFramework.Security.Database.Procedures.UserSetting.LoadByUserIDAndSettingCode(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.MediaManagerApproveInvoiceShowAll.ToString)
+
+                    If UserSetting IsNot Nothing Then
+
+                        UserSetting.StringValue = ButtonItemInvoiceDetail_ShowAll.Checked.ToString
+
+                        AdvantageFramework.Security.Database.Procedures.UserSetting.Update(SecurityDbContext, UserSetting)
+
+                    ElseIf UserSetting Is Nothing Then
+
+                        AdvantageFramework.Security.Database.Procedures.UserSetting.Insert(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.MediaManagerApproveInvoiceShowAll.ToString, ButtonItemInvoiceDetail_ShowAll.Checked.ToString, Nothing, Nothing, UserSetting)
+
+                    End If
+
+                    UserSetting = AdvantageFramework.Security.Database.Procedures.UserSetting.LoadByUserIDAndSettingCode(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.MediaManagerApproveInvoiceShowWeeks.ToString)
+
+                    If UserSetting IsNot Nothing Then
+
+                        UserSetting.StringValue = ButtonItemInvoiceDetail_ShowWeeks.Checked.ToString
+
+                        AdvantageFramework.Security.Database.Procedures.UserSetting.Update(SecurityDbContext, UserSetting)
+
+                    ElseIf UserSetting Is Nothing Then
+
+                        AdvantageFramework.Security.Database.Procedures.UserSetting.Insert(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.MediaManagerApproveInvoiceShowWeeks.ToString, ButtonItemInvoiceDetail_ShowWeeks.Checked.ToString, Nothing, Nothing, UserSetting)
+
+                    End If
+
+                End Using
+
+            End If
+
+        End Sub
+        Private Sub GetMediaManagerApproveInvoiceSettings()
+
+            'objects
+            Dim UserSetting As AdvantageFramework.Security.Database.Entities.UserSetting = Nothing
+
+            Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                UserSetting = AdvantageFramework.Security.Database.Procedures.UserSetting.LoadByUserIDAndSettingCode(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.MediaManagerApproveInvoiceShowAll.ToString)
+
+                If UserSetting IsNot Nothing Then
+
+                    ButtonItemInvoiceDetail_ShowAll.Checked = CBool(UserSetting.StringValue)
+
+                End If
+
+                UserSetting = AdvantageFramework.Security.Database.Procedures.UserSetting.LoadByUserIDAndSettingCode(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.MediaManagerApproveInvoiceShowWeeks.ToString)
+
+                If UserSetting IsNot Nothing Then
+
+                    ButtonItemInvoiceDetail_ShowWeeks.Checked = CBool(UserSetting.StringValue)
+
+                Else
+
+                    ButtonItemInvoiceDetail_ShowWeeks.Checked = True
+
+                End If
+
+            End Using
+
+        End Sub
 
 #Region "  Show Form Methods "
 
@@ -2623,6 +2698,8 @@
         Private Sub MediaManagerApproveInvoicesDialog_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 
             SaveMediaManagerApproveInvoiceView()
+
+            SaveMediaManagerApproveInvoiceSettings()
 
         End Sub
         Private Sub MediaManagerApproveInvoicesDialog_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -2730,10 +2807,10 @@
 
             _ModifiedOrderLines = New List(Of String)
 
+            GetMediaManagerApproveInvoiceSettings()
+
         End Sub
         Private Sub MediaManagerApproveInvoicesDialog_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-
-            ButtonItemInvoiceDetail_ShowWeeks.Checked = True
 
             LoadGrid()
 
@@ -3349,9 +3426,13 @@
         End Sub
         Private Sub ButtonItemInvoiceDetail_ShowAll_CheckedChanged(sender As Object, e As EventArgs) Handles ButtonItemInvoiceDetail_ShowAll.CheckedChanged
 
-            SetInvoiceDetailsGridCaption()
+            If Me.FormAction = WinForm.Presentation.Methods.FormActions.None Then
 
-            RefreshInvoiceDetailMatchingInvoiceDetails()
+                SetInvoiceDetailsGridCaption()
+
+                RefreshInvoiceDetailMatchingInvoiceDetails()
+
+            End If
 
         End Sub
         Private Sub DataGridViewInvoiceDetailMatching_InvoiceDetails_CustomSummaryCalculateEvent(sender As Object, e As DevExpress.Data.CustomSummaryEventArgs) Handles DataGridViewInvoiceDetailMatching_InvoiceDetails.CustomSummaryCalculateEvent
@@ -3603,9 +3684,13 @@
         End Sub
         Private Sub ButtonItemInvoiceDetail_ShowWeeks_CheckedChanged(sender As Object, e As EventArgs) Handles ButtonItemInvoiceDetail_ShowWeeks.CheckedChanged
 
-            LoadSpotVerificationTab()
+            If Me.FormAction = WinForm.Presentation.Methods.FormActions.None Then
 
-            ToggleColumnVisibility()
+                LoadSpotVerificationTab()
+
+                ToggleColumnVisibility()
+
+            End If
 
         End Sub
         Private Sub DataGridViewInvoices_Orders_LeavingRowEvent(e As DevExpress.XtraGrid.Views.Base.RowAllowEventArgs) Handles DataGridViewInvoices_Orders.LeavingRowEvent

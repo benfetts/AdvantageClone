@@ -13,9 +13,6 @@ CREATE PROCEDURE [dbo].[usp_wv_get_super_appr_expense_hdr]
 AS
 /*=========== QUERY ===========*/
 BEGIN
-	DECLARE
-	@SHOW_OPEN BIT = 1
-	;
 	SELECT 
 		A.EMPLOYEE,
 		A.INV_NBR, 
@@ -41,10 +38,7 @@ BEGIN
 				EH.EXP_DESC, 
 				EH.[STATUS], 
 				EH.SUBMITTED_FLAG, 
-				APPROVED_FLAG =	CASE	
-									WHEN EH.SUBMITTED_FLAG = 2 THEN EH.SUBMITTED_FLAG
-									ELSE EH.APPROVED_FLAG
-								END, 
+				EH.APPROVED_FLAG, 
 				APPR_NOTES =	CASE
 									WHEN DATALENGTH(EH.APPR_NOTES) = 0 THEN NULL
 									ELSE EH.APPR_NOTES
@@ -60,45 +54,46 @@ BEGIN
 				INNER JOIN EMPLOYEE E WITH(NOLOCK) ON EH.EMP_CODE = E.EMP_CODE 
 				LEFT OUTER JOIN EXPENSE_DETAIL ED WITH(NOLOCK) ON EH.INV_NBR = ED.INV_NBR AND ED.LINE_NBR > 0
 			WHERE
-				SUBMITTED_FLAG = 1 
-				AND (APPROVED_BY = @superCode OR APPROVED_BY IS NULL OR DATALENGTH(APPROVED_BY) = 0)
-				AND (SUBMITTED_TO IS NULL OR SUBMITTED_TO = @superCode OR DATALENGTH(SUBMITTED_TO) = 0)
+				EH.SUBMITTED_FLAG = 1 
+				AND ISNULL(E.EXP_APPR_REQ, 0) = 1
+				AND
+				1 =	CASE
+						WHEN EH.SUBMITTED_TO IS NOT NULL AND EH.SUBMITTED_TO = @superCode THEN 1
+						WHEN EH.SUBMITTED_TO IS NULL THEN	CASE
+																WHEN E.EXP_RPT_APPROVER IS NULL AND E.SUPERVISOR_CODE = @superCode THEN 1
+																WHEN E.EXP_RPT_APPROVER IS NOT NULL AND E.EXP_RPT_APPROVER = @superCode THEN 1
+																ELSE 0
+															END 
+						ELSE 0
+					END
+				AND (APPROVED_BY = @superCode OR APPROVED_BY IS NULL OR APPROVED_BY = '')
+				AND (SUBMITTED_TO IS NULL OR SUBMITTED_TO = @superCode OR SUBMITTED_TO = '')
 				AND
 				1 = CASE
-						WHEN @start_date IS NULL AND @end_date IS NULL THEN 1
-						WHEN @start_date IS NULL AND @end_date IS NOT NULL AND EH.INV_DATE <= @end_date THEN 1
-						WHEN @start_date IS NOT NULL AND @end_date IS NULL AND EH.INV_DATE >= @start_date THEN 1
 						WHEN @start_date IS NOT NULL AND @end_date IS NOT NULL AND EH.INV_DATE BETWEEN @start_date AND @end_date THEN 1
+						WHEN @start_date IS NOT NULL AND @end_date IS NULL AND EH.INV_DATE >= @start_date THEN 1
+						WHEN @start_date IS NULL AND @end_date IS NOT NULL AND EH.INV_DATE <= @end_date THEN 1
+						WHEN @start_date IS NULL AND @end_date IS NULL THEN 1
 						ELSE 0
 					END
 				AND
 				1 = CASE
-						WHEN @emp_code IS NULL OR RTRIM(LTRIM(@emp_code)) = '' OR DATALENGTH(@emp_code) = 0 THEN 1
-						WHEN @emp_code IS NOT NULL AND EH.EMP_CODE = @emp_code AND DATALENGTH(@emp_code) > 0 THEN 1
+						WHEN @emp_code IS NULL OR RTRIM(LTRIM(@emp_code)) = '' THEN 1
+						WHEN @emp_code IS NOT NULL AND EH.EMP_CODE = @emp_code THEN 1
 						ELSE 0
 					END
-				AND	(
-						(@SHOW_OPEN = 1 AND ISNULL(EH.[STATUS],0) = 0)
-						OR	(
-								@PENDING = 1 AND	(
-														(EH.[STATUS] = 1 AND EH.SUBMITTED_FLAG = 0) 
-														OR (EH.[STATUS] = 1 AND EH.SUBMITTED_FLAG = 1 AND EH.APPROVED_FLAG = 0) 
-														OR (EH.[STATUS] = 4)
-													)
-							)
-						OR	(
-								@APPROVED = 1 AND	(
-														(EH.[STATUS] = 2) 
-														OR (EH.[STATUS] = 1 AND EH.SUBMITTED_FLAG = 1 AND EH.APPROVED_FLAG = 2)
-													)
-							)
-						OR	(
-								@DENIED = 1 AND		(
-														(EH.[STATUS] = 5) 
-														OR (EH.[STATUS] = 1 AND EH.SUBMITTED_FLAG = 1 AND EH.APPROVED_FLAG = 1)
-													)
-							)
-					)
+				AND 
+				1 = CASE
+						WHEN @PENDING = 0 AND @DENIED = 0 AND @APPROVED = 0 THEN 0
+						WHEN @PENDING = 1 AND @DENIED = 1 AND @APPROVED = 1 THEN 1
+						WHEN @PENDING = 0 AND @DENIED = 0 AND @APPROVED = 1 AND EH.APPROVED_FLAG = 2 THEN 1
+						WHEN @PENDING = 0 AND @DENIED = 1 AND @APPROVED = 0 AND EH.APPROVED_FLAG = 1 THEN 1
+						WHEN @PENDING = 0 AND @DENIED = 1 AND @APPROVED = 1 AND EH.APPROVED_FLAG IN (1, 2) THEN 1
+						WHEN @PENDING = 1 AND @DENIED = 0 AND @APPROVED = 0 AND EH.APPROVED_FLAG = 0 THEN 1
+						WHEN @PENDING = 1 AND @DENIED = 0 AND @APPROVED = 1 AND EH.APPROVED_FLAG IN (0, 2) THEN 1
+						WHEN @PENDING = 1 AND @DENIED = 1 AND @APPROVED = 0 AND EH.APPROVED_FLAG IN (0, 1) THEN 1
+						ELSE 0
+					END
 			GROUP BY 
 				E.EMP_FNAME,
 				E.EMP_MI,
@@ -137,4 +132,3 @@ BEGIN
 	;
 END
 /*=========== QUERY ===========*/
-GO

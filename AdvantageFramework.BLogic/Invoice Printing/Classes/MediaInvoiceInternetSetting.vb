@@ -43,6 +43,7 @@
             InternetBillAmountColumn
             InternetPriorBillAmountColumn
             InternetBilledToDateAmountColumn
+            InternetGuaranteedImpressionsColumn
             InternetShowCommissionSeparately
             InternetShowRebateSeparately
             InternetShowTaxSeparately
@@ -420,6 +421,9 @@
                 _InternetBilledToDateAmountColumn = value
             End Set
         End Property
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        System.ComponentModel.Category("Columns")>
+        Public Property InternetGuaranteedImpressionsColumn() As Short
         <System.Runtime.Serialization.DataMemberAttribute()>
         Public Property InternetShowCommissionSeparately As Boolean
             Get
@@ -629,6 +633,7 @@
             Me.InternetJobDescriptionColumn = MediaInvoiceDefault.InternetJobDescriptionColumn.GetValueOrDefault(0)
             Me.InternetComponentDescriptionColumn = MediaInvoiceDefault.InternetComponentDescriptionColumn.GetValueOrDefault(0)
             Me.InternetExtraChargesColumn = MediaInvoiceDefault.InternetExtraChargesColumn.GetValueOrDefault(0)
+            Me.InternetGuaranteedImpressionsColumn = MediaInvoiceDefault.InternetGuaranteedImpressionsColumn
 
             Me.InternetShowCommissionSeparately = Convert.ToBoolean(MediaInvoiceDefault.InternetShowCommissionSeparately.GetValueOrDefault(0))
             Me.InternetShowRebateSeparately = Convert.ToBoolean(MediaInvoiceDefault.InternetShowRebateSeparately.GetValueOrDefault(0))
@@ -686,6 +691,7 @@
             Me.InternetJobDescriptionColumn = InvoicePrintingMediaSetting.InternetJobDescriptionColumn.GetValueOrDefault(0)
             Me.InternetComponentDescriptionColumn = InvoicePrintingMediaSetting.InternetComponentDescriptionColumn.GetValueOrDefault(0)
             Me.InternetExtraChargesColumn = InvoicePrintingMediaSetting.InternetExtraChargesColumn.GetValueOrDefault(0)
+            Me.InternetGuaranteedImpressionsColumn = InvoicePrintingMediaSetting.InternetGuaranteedImpressionsColumn.GetValueOrDefault(0)
 
             Me.InternetShowCommissionSeparately = InvoicePrintingMediaSetting.InternetShowCommissionSeparately.GetValueOrDefault(False)
             Me.InternetShowRebateSeparately = InvoicePrintingMediaSetting.InternetShowRebateSeparately.GetValueOrDefault(False)
@@ -792,6 +798,7 @@
             MediaInvoiceDefault.InternetJobDescriptionColumn = Me.InternetJobDescriptionColumn
             MediaInvoiceDefault.InternetComponentDescriptionColumn = Me.InternetComponentDescriptionColumn
             MediaInvoiceDefault.InternetExtraChargesColumn = Me.InternetExtraChargesColumn
+            MediaInvoiceDefault.InternetGuaranteedImpressionsColumn = Me.InternetGuaranteedImpressionsColumn
 
             MediaInvoiceDefault.InternetShowCommissionSeparately = Convert.ToInt16(Me.InternetShowCommissionSeparately)
             MediaInvoiceDefault.InternetShowRebateSeparately = Convert.ToInt16(Me.InternetShowRebateSeparately)
@@ -847,6 +854,7 @@
             InvoicePrintingMediaSetting.InternetJobDescriptionColumn = Me.InternetJobDescriptionColumn
             InvoicePrintingMediaSetting.InternetComponentDescriptionColumn = Me.InternetComponentDescriptionColumn
             InvoicePrintingMediaSetting.InternetExtraChargesColumn = Me.InternetExtraChargesColumn
+            InvoicePrintingMediaSetting.InternetGuaranteedImpressionsColumn = Me.InternetGuaranteedImpressionsColumn
 
             InvoicePrintingMediaSetting.InternetShowCommissionSeparately = Me.InternetShowCommissionSeparately
             InvoicePrintingMediaSetting.InternetShowRebateSeparately = Me.InternetShowRebateSeparately

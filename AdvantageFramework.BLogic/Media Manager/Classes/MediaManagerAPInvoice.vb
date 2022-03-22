@@ -39,7 +39,6 @@
 
         Private _MediaType As String = Nothing
         Private _OrderNumber As Integer = Nothing
-        Private _LineNumber As Short = Nothing
         Private _OrderDescription As String = Nothing
         Private _VendorCode As String = Nothing
         Private _VendorName As String = Nothing
@@ -83,14 +82,7 @@
         End Property
         <System.Runtime.Serialization.DataMemberAttribute(),
         AdvantageFramework.BaseClasses.Attributes.Entity()>
-        Public Property LineNumber() As Short
-            Get
-                LineNumber = _LineNumber
-            End Get
-            Set(value As Short)
-                _LineNumber = value
-            End Set
-        End Property
+        Public Property LineNumber() As Nullable(Of Short)
         <System.Runtime.Serialization.DataMemberAttribute(),
         AdvantageFramework.BaseClasses.Attributes.Entity()>
         Public Property OrderDescription() As String

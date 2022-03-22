@@ -912,6 +912,12 @@
     <Compile Include="Maintenance\Accounting\Presentation\AvalaraTaxSetupForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Maintenance\Accounting\Presentation\VendorComboRadioStationDialog.Designer.vb">
+      <DependentUpon>VendorComboRadioStationDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Maintenance\Accounting\Presentation\VendorComboRadioStationDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Maintenance\Accounting\Presentation\QuickbooksSetupForm.Designer.vb">
       <DependentUpon>QuickbooksSetupForm.vb</DependentUpon>
     </Compile>
@@ -1044,6 +1050,12 @@
     <Compile Include="Media\Exports\BroadcastBuyInvoiceExportForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Media\Presentation\ComscorePrecacheForm.Designer.vb">
+      <DependentUpon>ComscorePrecacheForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media\Presentation\ComscorePrecacheForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Media\Presentation\MediaBroadcastWorksheetETAMExportDialog.Designer.vb">
       <DependentUpon>MediaBroadcastWorksheetETAMExportDialog.vb</DependentUpon>
     </Compile>
@@ -1086,16 +1098,34 @@
     <Compile Include="Reporting\Presentation\BillingApprovalInitialLoadingDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reporting\Presentation\BroadcastInvoiceReportInitialLoadingDialog.Designer.vb">
+      <DependentUpon>BroadcastInvoiceReportInitialLoadingDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\Presentation\BroadcastInvoiceReportInitialLoadingDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reporting\Presentation\BroadcastInvoiceSummaryInitialLoadingDialog.Designer.vb">
       <DependentUpon>BroadcastInvoiceSummaryInitialLoadingDialog.vb</DependentUpon>
     </Compile>
     <Compile Include="Reporting\Presentation\BroadcastInvoiceSummaryInitialLoadingDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reporting\Presentation\GLCrossOfficeInitialLoadingDialog.Designer.vb">
+      <DependentUpon>GLCrossOfficeInitialLoadingDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\Presentation\GLCrossOfficeInitialLoadingDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reporting\Presentation\EmployeeTimeAnalysisInitialLoadingDialog.Designer.vb">
       <DependentUpon>EmployeeTimeAnalysisInitialLoadingDialog.vb</DependentUpon>
     </Compile>
     <Compile Include="Reporting\Presentation\EmployeeTimeAnalysisInitialLoadingDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporting\Presentation\DeferredSalesVsOpenARInitialLoadingDialog.Designer.vb">
+      <DependentUpon>DeferredSalesVsOpenARInitialLoadingDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\Presentation\DeferredSalesVsOpenARInitialLoadingDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Security\Setup\Presentation\CDPSecurityGroupSetupForm.Designer.vb">
@@ -4693,6 +4723,12 @@
     <Compile Include="Win Form\Presentation\AboutDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Win Form\Presentation\Controls\BroadcastInvoiceControl.Designer.vb">
+      <DependentUpon>BroadcastInvoiceControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Win Form\Presentation\Controls\BroadcastInvoiceControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Win Form\Presentation\Controls\JobDetailFeesOOPControl.Designer.vb">
       <DependentUpon>JobDetailFeesOOPControl.vb</DependentUpon>
     </Compile>
@@ -5798,6 +5834,9 @@
     <EmbeddedResource Include="Maintenance\Accounting\Presentation\AvalaraTaxSetupForm.resx">
       <DependentUpon>AvalaraTaxSetupForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Maintenance\Accounting\Presentation\VendorComboRadioStationDialog.resx">
+      <DependentUpon>VendorComboRadioStationDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Maintenance\Accounting\Presentation\QuickbooksSetupForm.resx">
       <DependentUpon>QuickbooksSetupForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -5864,6 +5903,9 @@
     <EmbeddedResource Include="Media\Exports\BroadcastBuyInvoiceExportForm.resx">
       <DependentUpon>BroadcastBuyInvoiceExportForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Media\Presentation\ComscorePrecacheForm.resx">
+      <DependentUpon>ComscorePrecacheForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Media\Presentation\MediaBroadcastWorksheetETAMExportDialog.resx">
       <DependentUpon>MediaBroadcastWorksheetETAMExportDialog.vb</DependentUpon>
     </EmbeddedResource>
@@ -5885,11 +5927,20 @@
     <EmbeddedResource Include="Reporting\Presentation\BillingApprovalInitialLoadingDialog.resx">
       <DependentUpon>BillingApprovalInitialLoadingDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\Presentation\BroadcastInvoiceReportInitialLoadingDialog.resx">
+      <DependentUpon>BroadcastInvoiceReportInitialLoadingDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporting\Presentation\BroadcastInvoiceSummaryInitialLoadingDialog.resx">
       <DependentUpon>BroadcastInvoiceSummaryInitialLoadingDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\Presentation\GLCrossOfficeInitialLoadingDialog.resx">
+      <DependentUpon>GLCrossOfficeInitialLoadingDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporting\Presentation\EmployeeTimeAnalysisInitialLoadingDialog.resx">
       <DependentUpon>EmployeeTimeAnalysisInitialLoadingDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\Presentation\DeferredSalesVsOpenARInitialLoadingDialog.resx">
+      <DependentUpon>DeferredSalesVsOpenARInitialLoadingDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Security\Setup\Presentation\CDPSecurityGroupSetupForm.resx">
       <DependentUpon>CDPSecurityGroupSetupForm.vb</DependentUpon>
@@ -7654,6 +7705,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Win Form\Presentation\AboutDialog.resx">
       <DependentUpon>AboutDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Win Form\Presentation\Controls\BroadcastInvoiceControl.resx">
+      <DependentUpon>BroadcastInvoiceControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Win Form\Presentation\Controls\JobDetailFeesOOPControl.resx">
       <DependentUpon>JobDetailFeesOOPControl.vb</DependentUpon>

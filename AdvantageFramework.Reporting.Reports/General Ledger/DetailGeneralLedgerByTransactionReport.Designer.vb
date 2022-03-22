@@ -24,6 +24,8 @@
             Me.components = New System.ComponentModel.Container()
             Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+            Dim XrSummary3 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+            Dim XrSummary4 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
             Me.label13 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label14 = New DevExpress.XtraReports.UI.XRLabel()
@@ -66,6 +68,10 @@
             Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
             Me.Line26 = New DevExpress.XtraReports.UI.XRLine()
             Me.ReversingYN = New DevExpress.XtraReports.UI.CalculatedField()
+            Me.GroupFooter2 = New DevExpress.XtraReports.UI.GroupFooterBand()
+            Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
             CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
             '
@@ -513,9 +519,57 @@
             Me.ReversingYN.FieldType = DevExpress.XtraReports.UI.FieldType.[String]
             Me.ReversingYN.Name = "ReversingYN"
             '
+            'GroupFooter2
+            '
+            Me.GroupFooter2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel3, Me.XrLabel1, Me.XrLabel2})
+            Me.GroupFooter2.HeightF = 40.04157!
+            Me.GroupFooter2.Level = 1
+            Me.GroupFooter2.Name = "GroupFooter2"
+            '
+            'XrLabel1
+            '
+            Me.XrLabel1.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CreditAmount")})
+            Me.XrLabel1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(501.0417!, 7.041582!)
+            Me.XrLabel1.Multiline = True
+            Me.XrLabel1.Name = "XrLabel1"
+            Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+            Me.XrLabel1.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
+            Me.XrLabel1.StylePriority.UseFont = False
+            XrSummary3.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.XrLabel1.Summary = XrSummary3
+            Me.XrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+            Me.XrLabel1.TextFormatString = "{0:N2}"
+            '
+            'XrLabel2
+            '
+            Me.XrLabel2.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "DebitAmount")})
+            Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(401.0417!, 7.041582!)
+            Me.XrLabel2.Multiline = True
+            Me.XrLabel2.Name = "XrLabel2"
+            Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+            Me.XrLabel2.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
+            Me.XrLabel2.StylePriority.UseFont = False
+            XrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.XrLabel2.Summary = XrSummary4
+            Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+            Me.XrLabel2.TextFormatString = "{0:N2}"
+            '
+            'XrLabel3
+            '
+            Me.XrLabel3.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(0!, 7.041582!)
+            Me.XrLabel3.Multiline = True
+            Me.XrLabel3.Name = "XrLabel3"
+            Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+            Me.XrLabel3.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
+            Me.XrLabel3.StylePriority.UseFont = False
+            Me.XrLabel3.Text = "Report Total:"
+            '
             'DetailGeneralLedgerByTransactionReport
             '
-            Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.ReportHeader, Me.PageHeader, Me.GroupHeader1, Me.GroupFooter1, Me.PageFooter})
+            Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.ReportHeader, Me.PageHeader, Me.GroupHeader1, Me.GroupFooter1, Me.PageFooter, Me.GroupFooter2})
             Me.CalculatedFields.AddRange(New DevExpress.XtraReports.UI.CalculatedField() {Me.ReversingYN})
             Me.DataSource = Me.BindingSource1
             Me.DisplayName = "Detail GL Transaction Report"
@@ -571,6 +625,10 @@
         Private WithEvents Line26 As DevExpress.XtraReports.UI.XRLine
         Friend WithEvents XrLine2 As DevExpress.XtraReports.UI.XRLine
         Friend WithEvents ReversingYN As DevExpress.XtraReports.UI.CalculatedField
+        Friend WithEvents GroupFooter2 As DevExpress.XtraReports.UI.GroupFooterBand
+        Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
+        Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
+        Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
     End Class
 
 End Namespace

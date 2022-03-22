@@ -145,8 +145,14 @@
                 End If
 
                 RecurringJournalEntryViewModel.RepositoryClients = AdvantageFramework.Database.Procedures.Client.LoadAllActive(DbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.GeneralLedger.JournalEntry.Client(Entity)).ToList
-                RecurringJournalEntryViewModel.RepositoryGeneralLedgerAccounts = AdvantageFramework.Database.Procedures.GeneralLedgerAccount.LoadAllActive(DbContext).Include("GeneralLedgerOfficeCrossReference").Include("GeneralLedgerOfficeCrossReference.Office").ToList.
+                RecurringJournalEntryViewModel.RepositoryGeneralLedgerAccounts = AdvantageFramework.Database.Procedures.GeneralLedgerAccount.LoadWithOfficeLimits(DbContext, Session).ToList.Where(Function(GeneralLedgerAccount) GeneralLedgerAccount.Active = "A").Select(Function(Entity) New AdvantageFramework.DTO.GeneralLedger.JournalEntry.GeneralLedgerAccount(Entity)).ToList
+
+                If RecurringJournalEntryViewModel.RepositoryGeneralLedgerAccounts Is Nothing OrElse RecurringJournalEntryViewModel.RepositoryGeneralLedgerAccounts.Count = 0 Then
+
+                    RecurringJournalEntryViewModel.RepositoryGeneralLedgerAccounts = AdvantageFramework.Database.Procedures.GeneralLedgerAccount.LoadAllActive(DbContext).Include("GeneralLedgerOfficeCrossReference").Include("GeneralLedgerOfficeCrossReference.Office").ToList.
                                                                                                                                              Select(Function(Entity) New AdvantageFramework.DTO.GeneralLedger.JournalEntry.GeneralLedgerAccount(Entity)).ToList
+
+                End If
 
             End Using
 

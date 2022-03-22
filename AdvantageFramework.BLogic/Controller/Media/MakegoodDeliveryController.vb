@@ -983,7 +983,7 @@
             Dim MadegoodNumber As Integer = 0
             Dim MediaBroadcastWorksheetMarketDetailDate As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetMarketDetailDate = Nothing
 
-            MediaBroadcastWorksheetMarketDetailIDs = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetails")
+            MediaBroadcastWorksheetMarketDetailIDs = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetail")
                                                       Where Entity.OrderNumber = OrderNumber AndAlso
                                                             Entity.MediaBroadcastWorksheetMarketDetail.RevisionNumber = MakegoodDeliveryViewModel.MaxRevisionNumber AndAlso
                                                             Entity.OrderLineNumber IsNot Nothing AndAlso
@@ -997,7 +997,7 @@
                     RatingsServiceID = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT TOP 1 COALESCE(MBW.RATINGS_SERVICE_ID, -1) FROM [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL] MBWMD " &
                             "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE] MBWMDD ON MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID = MBWMDD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID " &
                             "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET] MBWM ON MBWM.MEDIA_BROADCAST_WORKSHEET_MARKET_ID = MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_ID " &
-                            "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET] MBW ON MBWM.MEDIA_BROADCAST_WORKSHEET_ID = MBW.MEDIA_BROADCAST_WORKSHEET_ID WHERE SHAREBOOK_NIELSEN_TV_BOOK_ID IS NOT NULL AND ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
+                            "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET] MBW ON MBWM.MEDIA_BROADCAST_WORKSHEET_ID = MBW.MEDIA_BROADCAST_WORKSHEET_ID WHERE ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
 
                     Dayparts = AdvantageFramework.Database.Procedures.Daypart.LoadActiveByDaypartTypeID(DbContext, AdvantageFramework.Database.Entities.DayPartTypeID.Local_TV).ToList
 
@@ -1024,7 +1024,7 @@
                     RatingsServiceID = DbContext.Database.SqlQuery(Of Integer)(String.Format("Select Top 1 COALESCE(CAST(MBWM.EXTERNAL_RADIO_SOURCE As int), -1) From [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL] MBWMD " &
                             "INNER Join [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE] MBWMDD ON MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID = MBWMDD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID " &
                             "INNER Join [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET] MBWM ON MBWM.MEDIA_BROADCAST_WORKSHEET_MARKET_ID = MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_ID  " &
-                            "WHERE NIELSEN_RADIO_PERIOD_ID1 IS NOT NULL AND ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
+                            "WHERE ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
 
                     Dayparts = AdvantageFramework.Database.Procedures.Daypart.LoadActiveByDaypartTypeID(DbContext, AdvantageFramework.Database.Entities.DayPartTypeID.Local_Radio).ToList
 
@@ -2271,7 +2271,7 @@
 
             NonairingLineNumbers = New Generic.List(Of String)
 
-            MediaBroadcastWorksheetMarketDetailIDs = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetails")
+            MediaBroadcastWorksheetMarketDetailIDs = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetail")
                                                       Where Entity.OrderNumber = OrderNumber AndAlso
                                                             Entity.MediaBroadcastWorksheetMarketDetail.RevisionNumber = MakegoodDeliveryViewModel.MaxRevisionNumber AndAlso
                                                             Entity.OrderLineNumber IsNot Nothing AndAlso
@@ -2285,7 +2285,7 @@
                     RatingsServiceID = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT TOP 1 COALESCE(MBW.RATINGS_SERVICE_ID, -1) FROM [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL] MBWMD " &
                             "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE] MBWMDD ON MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID = MBWMDD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID " &
                             "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET] MBWM ON MBWM.MEDIA_BROADCAST_WORKSHEET_MARKET_ID = MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_ID " &
-                            "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET] MBW ON MBWM.MEDIA_BROADCAST_WORKSHEET_ID = MBW.MEDIA_BROADCAST_WORKSHEET_ID WHERE SHAREBOOK_NIELSEN_TV_BOOK_ID IS NOT NULL AND ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
+                            "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET] MBW ON MBWM.MEDIA_BROADCAST_WORKSHEET_ID = MBW.MEDIA_BROADCAST_WORKSHEET_ID WHERE ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
 
                     Dayparts = AdvantageFramework.Database.Procedures.Daypart.LoadActiveByDaypartTypeID(DbContext, AdvantageFramework.Database.Entities.DayPartTypeID.Local_TV).ToList
 
@@ -2312,7 +2312,7 @@
                     RatingsServiceID = DbContext.Database.SqlQuery(Of Integer)(String.Format("Select Top 1 COALESCE(CAST(MBWM.EXTERNAL_RADIO_SOURCE As int), -1) From [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL] MBWMD " &
                             "INNER Join [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE] MBWMDD ON MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID = MBWMDD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID " &
                             "INNER Join [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET] MBWM ON MBWM.MEDIA_BROADCAST_WORKSHEET_MARKET_ID = MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_ID  " &
-                            "WHERE NIELSEN_RADIO_PERIOD_ID1 IS NOT NULL AND ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
+                            "WHERE ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
 
                     Dayparts = AdvantageFramework.Database.Procedures.Daypart.LoadActiveByDaypartTypeID(DbContext, AdvantageFramework.Database.Entities.DayPartTypeID.Local_Radio).ToList
 
@@ -3009,6 +3009,7 @@
             Dim TotalNonAiringDataRow As System.Data.DataRow = Nothing
             Dim MediaBroadcastWorksheetMarketDetailDateMakegoods As Generic.List(Of AdvantageFramework.Database.Entities.MediaBroadcastWorksheetMarketDetailDate) = Nothing
             Dim TotalGross As Decimal = 0
+            'Dim MarketVendor As MarketVendor = Nothing
 
             MediaBroadcastWorksheetMarketDetailIDs = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetails")
                                                       Where Entity.OrderNumber = OrderNumber AndAlso
@@ -3018,6 +3019,22 @@
                                                             Entity.MediaBroadcastWorksheetMarketDetail.LineNumber = ReviewLineNumber
                                                       Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToList
 
+            'when reviewing a line number, this MarketVendor object will only ever be one instance
+            'MarketVendor = (From Entity In (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetail")
+            '                                Where Entity.OrderNumber = OrderNumber AndAlso
+            '                                      Entity.MediaBroadcastWorksheetMarketDetail.RevisionNumber = MakegoodDeliveryViewModel.MaxRevisionNumber AndAlso
+            '                                      MakegoodDeliveryViewModel.LineNumbers.Contains(Entity.OrderLineNumber) AndAlso
+            '                                      Entity.MediaBroadcastWorksheetMarketDetail.LineNumber = ReviewLineNumber
+            '                                Select Entity.MediaBroadcastWorksheetMarketDetail.VendorCode, Entity.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarketID).Distinct.ToList
+            '                Select New MarketVendor(Entity.VendorCode, Entity.MediaBroadcastWorksheetMarketID)).SingleOrDefault
+
+            'MediaBroadcastWorksheetMarketDetailIDs = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetail")
+            '                                          Where Entity.MediaBroadcastWorksheetMarketDetail.RevisionNumber = MakegoodDeliveryViewModel.MaxRevisionNumber AndAlso
+            '                                                Entity.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarketID = MarketVendor.MediaBroadcastWorksheetMarketID AndAlso
+            '                                                Entity.MediaBroadcastWorksheetMarketDetail.VendorCode = MarketVendor.VendorCode AndAlso
+            '                                                Entity.MediaBroadcastWorksheetMarketDetail.LineNumber = ReviewLineNumber
+            '                                          Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToList
+
             If MediaBroadcastWorksheetMarketDetailIDs IsNot Nothing AndAlso MediaBroadcastWorksheetMarketDetailIDs.Count > 0 Then
 
                 If MakegoodDeliveryViewModel.MediaType = "T" Then
@@ -3025,7 +3042,7 @@
                     RatingsServiceID = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT TOP 1 COALESCE(MBW.RATINGS_SERVICE_ID, -1) FROM [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL] MBWMD " &
                             "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE] MBWMDD ON MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID = MBWMDD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID " &
                             "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET] MBWM ON MBWM.MEDIA_BROADCAST_WORKSHEET_MARKET_ID = MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_ID " &
-                            "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET] MBW ON MBWM.MEDIA_BROADCAST_WORKSHEET_ID = MBW.MEDIA_BROADCAST_WORKSHEET_ID WHERE SHAREBOOK_NIELSEN_TV_BOOK_ID IS NOT NULL AND ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
+                            "INNER JOIN [dbo].[MEDIA_BROADCAST_WORKSHEET] MBW ON MBWM.MEDIA_BROADCAST_WORKSHEET_ID = MBW.MEDIA_BROADCAST_WORKSHEET_ID WHERE ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
 
                     Dayparts = AdvantageFramework.Database.Procedures.Daypart.LoadActiveByDaypartTypeID(DbContext, AdvantageFramework.Database.Entities.DayPartTypeID.Local_TV).ToList
 
@@ -3052,7 +3069,7 @@
                     RatingsServiceID = DbContext.Database.SqlQuery(Of Integer)(String.Format("Select Top 1 COALESCE(CAST(MBWM.EXTERNAL_RADIO_SOURCE As int), -1) From [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL] MBWMD " &
                             "INNER Join [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE] MBWMDD ON MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID = MBWMDD.MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID " &
                             "INNER Join [dbo].[MEDIA_BROADCAST_WORKSHEET_MARKET] MBWM ON MBWM.MEDIA_BROADCAST_WORKSHEET_MARKET_ID = MBWMD.MEDIA_BROADCAST_WORKSHEET_MARKET_ID  " &
-                            "WHERE NIELSEN_RADIO_PERIOD_ID1 IS NOT NULL AND ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
+                            "WHERE ORDER_NBR = {0}", OrderNumber)).FirstOrDefault
 
                     Dayparts = AdvantageFramework.Database.Procedures.Daypart.LoadActiveByDaypartTypeID(DbContext, AdvantageFramework.Database.Entities.DayPartTypeID.Local_Radio).ToList
 
@@ -3720,12 +3737,29 @@
             Dim MediaBroadcastWorksheetMarketStagingDetailIDs As IEnumerable(Of Integer) = Nothing
             Dim AllMediaBroadcastWorksheetMarketDetailDateMakegoods As Generic.List(Of AdvantageFramework.Database.Entities.MediaBroadcastWorksheetMarketDetailDate) = Nothing
             Dim AllMediaBroadcastWorksheetMarketStagingDetailDateMakegoods As Generic.List(Of AdvantageFramework.Database.Entities.MediaBroadcastWorksheetMarketStagingDetailDate) = Nothing
+            'Dim LineNumbers As IEnumerable(Of Integer) = Nothing
+            'Dim OrderVendorCode As String = Nothing
+            'Dim AllMediaBroadcastWorksheetMarketDetailIDs As IEnumerable(Of Integer) = Nothing
 
             DataTable = DataTableToClone.Clone
 
             DataTable.BeginLoadData()
 
             MediaBroadcastWorksheetMarketStagingDetailIDs = MediaBroadcastWorksheetMarketStagingDetails.Select(Function(SD) SD.ID).Distinct.ToArray
+
+            'LineNumbers = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetail")
+            '               Where MediaBroadcastWorksheetMarketDetailIDs.Contains(Entity.MediaBroadcastWorksheetMarketDetailID)
+            '               Select Entity.MediaBroadcastWorksheetMarketDetail.LineNumber).Distinct.ToArray
+
+            'OrderVendorCode = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetail")
+            '                   Where MediaBroadcastWorksheetMarketDetailIDs.Contains(Entity.MediaBroadcastWorksheetMarketDetailID)
+            '                   Select Entity.MediaBroadcastWorksheetMarketDetail.VendorCode).Distinct.SingleOrDefault
+
+            'AllMediaBroadcastWorksheetMarketDetailIDs = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetail")
+            '                                             Where LineNumbers.Contains(Entity.MediaBroadcastWorksheetMarketDetail.LineNumber) AndAlso
+            '                                                   Entity.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarketID = MakegoodDeliveryViewModel.MediaBroadcastWorksheetMarketID AndAlso
+            '                                                   Entity.MediaBroadcastWorksheetMarketDetail.VendorCode = OrderVendorCode
+            '                                             Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToArray
 
             AllMediaBroadcastWorksheetMarketDetailDateMakegoods = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext)
                                                                    Where MediaBroadcastWorksheetMarketDetailIDs.Contains(Entity.MediaBroadcastWorksheetMarketDetailID)

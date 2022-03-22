@@ -389,10 +389,13 @@ Public Class Reporting_UserDefinedReports
 
                                         Me.OpenWindow("Employee Time Forecast", String.Format("Reporting_InitialLoadingEmployeeTimeForecast.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 575, False, True)
 
-                                    ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.CheckRegister _
-                                            Or DynamicReport = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+                                    ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.CheckRegister Then
 
                                         Me.OpenWindow("Check Register Criteria", String.Format("Reporting_InitialLoadingCheckRegister.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 575, True, True)
+
+                                    ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+
+                                        Me.OpenWindow("Check Register with Invoice Detail Criteria", String.Format("Reporting_InitialLoadingCheckRegister.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 575, True, True)
 
                                     ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.EmployeeInOutBoard Then
 
@@ -462,6 +465,10 @@ Public Class Reporting_UserDefinedReports
 
                                         Me.OpenWindow("Month End Report Criteria", String.Format("Reporting_InitialLoadingMonthEndMediaWIP.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 875, True, True)
 
+                                    ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.MonthEndProductionWIP Then
+
+                                        Me.OpenWindow("Month End Report Criteria", String.Format("Reporting_InitialLoadingMonthEndProductionWIP.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 875, True, True)
+
                                     ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.EmployeeHoursAllocation Then
 
                                         Me.OpenWindow("Employee Hours Allocation Criteria", String.Format("Reporting_InitialLoadingEmployeeHoursAllocation.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 875, True, True)
@@ -494,6 +501,14 @@ Public Class Reporting_UserDefinedReports
                                     ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.EmployeeTimeAnalysis Then
 
                                         Me.OpenWindow("Employee Time Analysis Criteria", String.Format("Reporting_InitialLoadingEmployeeTimeAnalysis.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 875, True, True)
+
+                                    ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+                                        Me.OpenWindow("Deferred Sales Vs Open AR Criteria", String.Format("Reporting_InitialLoadingDeferredSalesVsOpenAR.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 875, True, True)
+
+                                    ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.GLCrossOffice Then
+
+                                        Me.OpenWindow("GL Cross Office Criteria", String.Format("Reporting_InitialLoadingGLCrossOffice.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 875, True, True)
 
                                     Else
 
@@ -815,10 +830,13 @@ Public Class Reporting_UserDefinedReports
 
                             Me.OpenWindow("Employee Time Forecast", String.Format("Reporting_InitialLoadingEmployeeTimeForecast.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
 
-                        ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CheckRegister _
-                            Or DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+                        ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CheckRegister Then
 
                             Me.OpenWindow("Check Register Criteria", String.Format("Reporting_InitialLoadingCheckRegister.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
+
+                        ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+
+                            Me.OpenWindow("Check Register with Invoice Detail Criteria", String.Format("Reporting_InitialLoadingCheckRegister.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
 
                         ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.EmployeeInOutBoard Then
 
@@ -888,6 +906,10 @@ Public Class Reporting_UserDefinedReports
 
                             Me.OpenWindow("Month End Report Criteria", String.Format("Reporting_InitialLoadingMonthEndMediaWIP.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 875, False, True)
 
+                        ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.MonthEndProductionWIP Then
+
+                            Me.OpenWindow("Month End Report Criteria", String.Format("Reporting_InitialLoadingMonthEndProductionWIP.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 875, False, True)
+
                         ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.EmployeeHoursAllocation Then
 
                             Me.OpenWindow("Employee Hours Allocation Criteria", String.Format("Reporting_InitialLoadingEmployeeHoursAllocation.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 875, False, True)
@@ -920,6 +942,14 @@ Public Class Reporting_UserDefinedReports
                         ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.EmployeeTimeAnalysis Then
 
                             Me.OpenWindow("Employee Time Analysis Criteria", String.Format("Reporting_InitialLoadingEmployeeTimeAnalysis.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 875, False, True)
+
+                        ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+                            Me.OpenWindow("Deferred Sales Vs Open AR Criteria", String.Format("Reporting_InitialLoadingDeferredSalesVsOpenAR.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 875, False, True)
+
+                        ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.GLCrossOffice Then
+
+                            Me.OpenWindow("GL Cross Office Criteria", String.Format("Reporting_InitialLoadingGLCrossOffice.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 875, False, True)
 
                         Else
 

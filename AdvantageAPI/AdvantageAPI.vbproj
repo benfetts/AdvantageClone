@@ -144,6 +144,8 @@
     <Compile Include="Classes\Employee\DirectIndirectTimeAPIResponse.vb" />
     <Compile Include="Classes\Employee\DirectTimeAPIReport.vb" />
     <Compile Include="Classes\Employee\DirectTimeAPIResponse.vb" />
+    <Compile Include="Classes\Employee\EmployeeUtilizationAPIReport.vb" />
+    <Compile Include="Classes\Employee\EmployeeUtilizationAPIResponse.vb" />
     <Compile Include="Classes\Employee\EmptyObject.vb" />
     <Compile Include="Classes\General\ARStmtProductContact.vb" />
     <Compile Include="APIDbContext\Entities\Bank.vb" />
@@ -173,6 +175,8 @@
     <Compile Include="Classes\General\TrialBalanceAPIReport.vb" />
     <Compile Include="Classes\General\TrialBalanceAPIResponse.vb" />
     <Compile Include="Classes\Job\CampaignWithDates.vb" />
+    <Compile Include="Classes\Job\JobDetailItemAPIReport.vb" />
+    <Compile Include="Classes\Job\JobDetailItemAPIResponse.vb" />
     <Compile Include="Classes\Job\PurchaseOrder.vb" />
     <Compile Include="Classes\Job\PurchaseOrderResponse.vb" />
     <Compile Include="Classes\General\BasicIDNames.vb" />

@@ -23,6 +23,7 @@
             GRPGoal
             AddedValue
             AdditionalGuidelines
+            SecondaryTargetAudiences
         End Enum
 
 #End Region
@@ -35,7 +36,7 @@
 
 #Region " Properties "
 
-        Public Property DateRequested As Date
+        Public Property DateRequested As Nullable(Of Date)
         Public Property DateAvailsDue As String
         Public Property MarketDescription As String
         Public Property RatingsSource As String
@@ -54,17 +55,18 @@
 
         Public Sub New()
 
-            Me.DateAvailsDue = ""
-            Me.MarketDescription = ""
-            Me.RatingsSource = ""
-            Me.TargetAudience = ""
-            Me.Daypart = ""
-            Me.FlightDates = ""
-            Me.CPPGoal = ""
-            Me.GRPGoal = ""
-            Me.AddedValue = ""
-            Me.AdditionalGuidelines = ""
-            Me.SecondaryTargetAudiences = ""
+            Me.DateRequested = Nothing
+            Me.DateAvailsDue = Nothing
+            Me.MarketDescription = Nothing
+            Me.RatingsSource = Nothing
+            Me.TargetAudience = Nothing
+            Me.Daypart = Nothing
+            Me.FlightDates = Nothing
+            Me.CPPGoal = Nothing
+            Me.GRPGoal = Nothing
+            Me.AddedValue = Nothing
+            Me.AdditionalGuidelines = Nothing
+            Me.SecondaryTargetAudiences = Nothing
 
         End Sub
 

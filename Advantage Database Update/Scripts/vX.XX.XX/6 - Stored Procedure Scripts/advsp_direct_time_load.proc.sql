@@ -77,6 +77,7 @@ BEGIN
 		[EmployeeLastName] varchar(30),
 		[EmployeeLastFirst] varchar(100),
 		[EmployeeTitle] varchar(50),
+		[EmployeeCurrentTitle] varchar(50),
 		[EmployeeAccountNumber] varchar(30),
 		[IsEmployeeFreelance] varchar(3),
 		[IsActiveFreelance] varchar(3),
@@ -156,7 +157,8 @@ BEGIN
 		[ClientPO] varchar(40),
 		[ARInvoiceNumber] int,
 		[Terminated] varchar(1),
-		[TerminatedDate] smalldatetime
+		[TerminatedDate] smalldatetime,
+        [TimeAgainstCommission] decimal(19,2)
 	);	
 	INSERT INTO #DT
     SELECT  
@@ -167,6 +169,7 @@ BEGIN
 		[EmployeeLastName] = EMP.EMP_LNAME,
 		[EmployeeLastFirst] = EMP.EMP_LNAME + ', ' + EMP.EMP_FNAME,
 		[EmployeeTitle] = ET.EMPLOYEE_TITLE,
+		[EmployeeCurrentTitle] = ETI.EMPLOYEE_TITLE,
 		[EmployeeAccountNumber] = EMP.EMP_ACCOUNT_NBR,
 		[IsEmployeeFreelance] = CASE WHEN ISNULL(EMP.FREELANCE, 0) = 1 THEN 'Yes' ELSE 'No' END,
 		[IsActiveFreelance] = CASE WHEN ISNULL(EMP.FREELANCE, 0) = 1 THEN CASE WHEN EMP.IS_ACTIVE_FREELANCE = 1 THEN 'Yes' ELSE 'No' END ELSE 'No' END,
@@ -251,7 +254,8 @@ BEGIN
 		[ClientPO] = JC.JOB_CL_PO_NBR,
 		[ARInvoiceNumber] = ET.AR_INV_NBR,
 		[Terminated] = CASE WHEN EMP.EMP_TERM_DATE IS NULL THEN 'N' ELSE 'Y' END,
-		[TerminatedDate] = EMP.EMP_TERM_DATE
+		[TerminatedDate] = EMP.EMP_TERM_DATE,
+        [TimeAgainstCommission] = CASE WHEN ISNULL(ET.FEE_TIME, 0) IN (2,3) THEN SUM(ET.TOTAL_BILL) ELSE 0 END
 	FROM 
 		(SELECT 
 			ET.ET_ID,
@@ -361,7 +365,8 @@ BEGIN
 		[dbo].[JOB_LOG_UDV5] AS JUDV5 ON JUDV5.UDV_CODE = J.UDV5_CODE LEFT OUTER JOIN
 		#EMP_WORK_DAYS AS EWD ON EWD.EMP_CODE = ET.EMP_CODE AND
 								 EWD.WORKDAY = ET.EMP_DATE LEFT OUTER JOIN
-		[dbo].[FUNCTIONS] AS FC ON F.FNC_CONSOLIDATION = FC.FNC_CODE
+		[dbo].[FUNCTIONS] AS FC ON F.FNC_CONSOLIDATION = FC.FNC_CODE LEFT OUTER JOIN
+        [dbo].[EMPLOYEE_TITLE] AS ETI ON ETI.EMPLOYEE_TITLE_ID = EMP.EMPLOYEE_TITLE_ID
 	WHERE 
 		(J.CL_CODE IN (SELECT * FROM dbo.udf_split_list(@CLIENT_LIST, ',')) OR @CLIENT_LIST IS NULL) AND
 		1 = CASE WHEN @DIVISION_LIST IS NULL THEN 1 WHEN (J.CL_CODE + '|' + J.DIV_CODE) IN (SELECT * FROM dbo.udf_split_list(@DIVISION_LIST, ',')) THEN 1 ELSE 0 END AND
@@ -445,7 +450,8 @@ BEGIN
 		FC.FNC_DESCRIPTION,
 		EMP.SUPERVISOR_CODE,
 		JC.JOB_CL_PO_NBR,
-		EMP.EMP_TERM_DATE
+		EMP.EMP_TERM_DATE,
+        ETI.EMPLOYEE_TITLE
 
 
 	UPDATE #DT

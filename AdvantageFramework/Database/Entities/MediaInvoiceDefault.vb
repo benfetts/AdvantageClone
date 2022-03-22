@@ -340,8 +340,11 @@
 			InternetCustomInvoiceID
 			OutdoorCustomInvoiceID
 			RadioCustomInvoiceID
-			TVCustomInvoiceID
-		End Enum
+            TVCustomInvoiceID
+            InternetGuaranteedImpressionsColumn
+            RadioStartDateColumn
+            TVStartDateColumn
+        End Enum
 
 #End Region
 
@@ -1432,6 +1435,15 @@
         <Required>
         <Column("HIDE_EXCHANGE_RATE_MESSAGE")>
         Public Property HideExchangeRateMessage As Boolean
+        <Required>
+        <Column("I_GUARANTEED_IMPRESSIONS_COLUMN")>
+        Public Property InternetGuaranteedImpressionsColumn As Short
+        <Required>
+        <Column("R_START_DATE_COLUMN")>
+        Public Property RadioStartDateColumn As Short
+        <Required>
+        <Column("T_START_DATE_COLUMN")>
+        Public Property TVStartDateColumn As Short
 
 #End Region
 

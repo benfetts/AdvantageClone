@@ -138,7 +138,7 @@ export class Webvantage extends ModuleBase {
         if (frame) {
             $(frame).data("myAMI", app);
 
-            app.DocumentTitle = frame.contentDocument.title;
+            app.DocumentTitle = frame.contentDocument.title ? frame.contentDocument.title : '';
 
             me.frame.ownerDocument['GetRadWindow'] = function () {
 

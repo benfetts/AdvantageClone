@@ -573,6 +573,13 @@
 
 #Region " Properties "
 
+        Public Overridable Property ComscorePrecacheMarkets() As System.Data.Entity.DbSet(Of Database.Entities.ComscorePrecacheMarket)
+        Public Overridable Property ComscorePrecacheMarketStations() As System.Data.Entity.DbSet(Of Database.Entities.ComscorePrecacheMarketStation)
+        Public Overridable Property ComscorePrecacheMarketBooks() As System.Data.Entity.DbSet(Of Database.Entities.ComscorePrecacheMarketBook)
+        Public Overridable Property ComscorePrecacheMarketDemographics() As System.Data.Entity.DbSet(Of Database.Entities.ComscorePrecacheMarketDemographic)
+
+        Public Overridable Property VendorComboRadioStations() As System.Data.Entity.DbSet(Of Database.Entities.VendorComboRadioStation)
+
         Public Overridable Property MediaSpotTVPuertoRicoResearchs() As System.Data.Entity.DbSet(Of Database.Entities.MediaSpotTVPuertoRicoResearch)
         Public Overridable Property MediaSpotTVPuertoRicoResearchDayTimes() As System.Data.Entity.DbSet(Of Database.Entities.MediaSpotTVPuertoRicoResearchDayTime)
         Public Overridable Property MediaSpotTVPuertoRicoResearchDemos() As System.Data.Entity.DbSet(Of Database.Entities.MediaSpotTVPuertoRicoResearchDemo)

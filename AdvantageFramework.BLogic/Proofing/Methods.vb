@@ -802,75 +802,75 @@
 
             Dim ConceptShareIsActive As Boolean = False
 
-            Try
+            ''Try
 
-                ConceptShareIsActive = DbContext.Database.SqlQuery(Of Boolean)("SELECT CAST(ISNULL(AGY_SETTINGS_VALUE, 0) AS BIT) FROM AGY_SETTINGS WITH(NOLOCK) WHERE AGY_SETTINGS_CODE = 'CS_ENABLED';").SingleOrDefault
+            ''    ConceptShareIsActive = DbContext.Database.SqlQuery(Of Boolean)("SELECT CAST(ISNULL(AGY_SETTINGS_VALUE, 0) AS BIT) FROM AGY_SETTINGS WITH(NOLOCK) WHERE AGY_SETTINGS_CODE = 'CS_ENABLED';").SingleOrDefault
 
-            Catch ex As Exception
-                ConceptShareIsActive = False
-            End Try
-            If ConceptShareIsActive = True Then
+            ''Catch ex As Exception
+            ''    ConceptShareIsActive = False
+            ''End Try
+            ''If ConceptShareIsActive = True Then
 
-                ConceptShareIsActive = False
+            ''    ConceptShareIsActive = False
 
-                Try
+            ''    Try
 
-                    Using DataContext = New AdvantageFramework.Database.DataContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
+            ''        Using DataContext = New AdvantageFramework.Database.DataContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
 
-                        Dim ConceptShareAccountUser As AdvantageFramework.ConceptShareAPI.AccountUser = Nothing
-                        Dim ConceptShareUser As AdvantageFramework.ConceptShareAPI.User = Nothing
+            ''            Dim ConceptShareAccountUser As AdvantageFramework.ConceptShareAPI.AccountUser = Nothing
+            ''            Dim ConceptShareUser As AdvantageFramework.ConceptShareAPI.User = Nothing
 
-                        If IsClientPortal = False Then
+            ''            If IsClientPortal = False Then
 
-                            Dim Employee As AdvantageFramework.Database.Views.Employee
+            ''                Dim Employee As AdvantageFramework.Database.Views.Employee
 
-                            Employee = Nothing
-                            Employee = AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, SecuritySession.User.EmployeeCode)
+            ''                Employee = Nothing
+            ''                Employee = AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, SecuritySession.User.EmployeeCode)
 
-                            If Employee IsNot Nothing AndAlso Employee.ConceptShareUserID IsNot Nothing AndAlso Employee.ConceptShareUserID > 0 Then
+            ''                If Employee IsNot Nothing AndAlso Employee.ConceptShareUserID IsNot Nothing AndAlso Employee.ConceptShareUserID > 0 Then
 
-                                ConceptShareAccountUser = AdvantageFramework.ConceptShare.LoadUser(DataContext, Employee, ConceptShareUser)
+            ''                    ConceptShareAccountUser = AdvantageFramework.ConceptShare.LoadUser(DataContext, Employee, ConceptShareUser)
 
-                                If ConceptShareAccountUser IsNot Nothing AndAlso ConceptShareAccountUser.IsActive = True Then
+            ''                    If ConceptShareAccountUser IsNot Nothing AndAlso ConceptShareAccountUser.IsActive = True Then
 
-                                    ConceptShareIsActive = True
+            ''                        ConceptShareIsActive = True
 
-                                End If
+            ''                    End If
 
-                            End If
+            ''                End If
 
-                        Else
+            ''            Else
 
-                            Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
+            ''                Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
 
-                                Dim ClientPortalUser As AdvantageFramework.Security.Classes.ClientPortalUser
+            ''                    Dim ClientPortalUser As AdvantageFramework.Security.Classes.ClientPortalUser
 
-                                ClientPortalUser = Nothing
-                                ClientPortalUser = New AdvantageFramework.Security.Classes.ClientPortalUser(AdvantageFramework.Security.Database.Procedures.ClientPortalUser.LoadByClientContactID(SecurityDbContext, SecuritySession.ClientPortalUser.ClientContactID))
+            ''                    ClientPortalUser = Nothing
+            ''                    ClientPortalUser = New AdvantageFramework.Security.Classes.ClientPortalUser(AdvantageFramework.Security.Database.Procedures.ClientPortalUser.LoadByClientContactID(SecurityDbContext, SecuritySession.ClientPortalUser.ClientContactID))
 
-                                If ClientPortalUser IsNot Nothing AndAlso ClientPortalUser.ConceptShareUserID IsNot Nothing AndAlso ClientPortalUser.ConceptShareUserID > 0 Then
+            ''                    If ClientPortalUser IsNot Nothing AndAlso ClientPortalUser.ConceptShareUserID IsNot Nothing AndAlso ClientPortalUser.ConceptShareUserID > 0 Then
 
-                                    ConceptShareAccountUser = AdvantageFramework.ConceptShare.LoadUser(DataContext, SecurityDbContext, ClientPortalUser, ConceptShareUser)
+            ''                        ConceptShareAccountUser = AdvantageFramework.ConceptShare.LoadUser(DataContext, SecurityDbContext, ClientPortalUser, ConceptShareUser)
 
-                                    If ConceptShareAccountUser IsNot Nothing AndAlso ConceptShareAccountUser.IsActive = True Then
+            ''                        If ConceptShareAccountUser IsNot Nothing AndAlso ConceptShareAccountUser.IsActive = True Then
 
-                                        ConceptShareIsActive = True
+            ''                            ConceptShareIsActive = True
 
-                                    End If
+            ''                        End If
 
-                                End If
+            ''                    End If
 
-                            End Using
+            ''                End Using
 
-                        End If
+            ''            End If
 
-                    End Using
+            ''        End Using
 
-                Catch ex As Exception
-                    ConceptShareIsActive = False
-                End Try
+            ''    Catch ex As Exception
+            ''        ConceptShareIsActive = False
+            ''    End Try
 
-            End If
+            ''End If
 
             Return ConceptShareIsActive
 

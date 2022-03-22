@@ -7,7 +7,7 @@ End Code
 </script>
 <link href="~/CSS/timesheet.mvc.min.css" rel="stylesheet" />
 <div style="display: block !important; margin: 0 auto !important; min-width: 1020px;">
-    <div id="TopToolBar" class="wv-bar k-toolbar k-widget k-toolbar-resizable" 
+    <div id="TopToolBar" class="wv-bar k-toolbar k-widget k-toolbar-resizable"
          style="width: 100%; background-color: #E5E5E5; padding: 5px 0px 8px 0px; border-bottom: 1px solid #CCC;
          box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);margin: 5px auto; overflow: hidden; height: 52px; ">
         <div style="height:50px; width: 100%;">
@@ -83,69 +83,71 @@ End Code
             </div>
         </div>
     </div>
-    <div class="main-container">
-        <div id="container-table" style="width: auto; margin-left: auto; margin-right: auto; margin-top: 10px; min-width: 1025px;">
-            <table style="width: 100%; margin-left: 1px;">
-                <tr>
-                    <td id="employee-selector" name="employee-selector" style="padding-left: 10px; display:none; height: 40px;">
-                        <div class="wv-employee-box" >
-                            <div class="image-container">
-                                <img id="employeeImage" src='@Url.Action("EmployeePicture", "Utilities")/@Model.EmployeeCode' />
-                            </div>
-                            <div class="name">
-                                <span id="employeeName" class="name-span" title="@Model.FullName">@Model.FullName</span>
-                            </div>
-                            <div class="button" title="Click to change employee">
-                                <span id="selectEmployee" class="wvi wvi-magnifying-glass" style="display:none;"></span>
-                            </div>
+    <table class="index-container-table">
+        <tr>
+            <td>
+                <div id="employee-selector" name="employee-selector" style="padding-left: 10px; display:none; height: 40px; margin-top: 8px;">
+                    <div class="wv-employee-box">
+                        <div class="image-container">
+                            <img id="employeeImage" src='@Url.Action("EmployeePicture", "Utilities")/@Model.EmployeeCode' />
                         </div>
-                    </td>
-                    <td id="dayViewNavRow" style="text-align: center; padding: 0;">
-                        <div id="dayViewNav" style="border: 1px solid #ddd; border-radius: 4px; width: 775px; display: none;">
-                            <table class="day-view-nav-table" style="width: 100%; text-align: center;">
-                                <tr class="day-view-nav-row">
-                                    <td id="day-0-cell" class="day-view-day-cell" style="width: 12%;">
-                                        <div id="day-0-text"></div>
-                                        <div id="day-0-hours"></div>
-                                    </td>
-                                    <td id="day-1-cell" class="day-view-day-cell" style="width: 12%;">
-                                        <div id="day-1-text"></div>
-                                        <div id="day-1-hours"></div>
-                                    </td>
-                                    <td id="day-2-cell" class="day-view-day-cell" style="width: 12%;">
-                                        <div id="day-2-text"></div>
-                                        <div id="day-2-hours"></div>
-                                    </td>
-                                    <td id="day-3-cell" class="day-view-day-cell" style="width: 12%;">
-                                        <div id="day-3-text"></div>
-                                        <div id="day-3-hours"></div>
-                                    </td>
-                                    <td id="day-4-cell" class="day-view-day-cell" style="width: 12%;">
-                                        <div id="day-4-text"></div>
-                                        <div id="day-4-hours"></div>
-                                    </td>
-                                    <td id="day-5-cell" class="day-view-day-cell" style="width: 12%;">
-                                        <div id="day-5-text"></div>
-                                        <div id="day-5-hours"></div>
-                                    </td>
-                                    <td id="day-6-cell" class="day-view-day-cell" style="width: 12%;">
-                                        <div id="day-6-text"></div>
-                                        <div id="day-6-hours"></div>
-                                    </td>
-                                    <td class="day-view-day-cell" style="font-weight: bold;" onclick="backToWeekView()">
-                                        Total: <span id="day-nav-total-hours"></span>
-                                    </td>
-                                </tr>
-                            </table>
+                        <div class="name">
+                            <span id="employeeName" class="name-span" title="@Model.FullName">@Model.FullName</span>
                         </div>
-                    </td>
-                </tr>
-            </table>
-            <div id="timesheet-control" style="margin-top: 15px;">
-                @Html.Partial("_Timesheet", Model)
-            </div>
-        </div>
-    </div>
+                        <div class="button" title="Click to change employee">
+                            <span id="selectEmployee" class="wvi wvi-magnifying-glass" style="display:none;"></span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td id="dayViewNavRow" style="text-align: center !important; padding: 8px 0px 0px 8px;">
+                <div id="dayViewNav" style="border: 1px solid #ddd; border-radius: 4px; width: 775px; display: none; text-align: center;">
+                    <table class="day-view-nav-table" style="width: 100%; text-align: center;">
+                        <tr class="day-view-nav-row">
+                            <td id="day-0-cell" class="day-view-day-cell" style="width: 12%;">
+                                <div id="day-0-text"></div>
+                                <div id="day-0-hours"></div>
+                            </td>
+                            <td id="day-1-cell" class="day-view-day-cell" style="width: 12%;">
+                                <div id="day-1-text"></div>
+                                <div id="day-1-hours"></div>
+                            </td>
+                            <td id="day-2-cell" class="day-view-day-cell" style="width: 12%;">
+                                <div id="day-2-text"></div>
+                                <div id="day-2-hours"></div>
+                            </td>
+                            <td id="day-3-cell" class="day-view-day-cell" style="width: 12%;">
+                                <div id="day-3-text"></div>
+                                <div id="day-3-hours"></div>
+                            </td>
+                            <td id="day-4-cell" class="day-view-day-cell" style="width: 12%;">
+                                <div id="day-4-text"></div>
+                                <div id="day-4-hours"></div>
+                            </td>
+                            <td id="day-5-cell" class="day-view-day-cell" style="width: 12%;">
+                                <div id="day-5-text"></div>
+                                <div id="day-5-hours"></div>
+                            </td>
+                            <td id="day-6-cell" class="day-view-day-cell" style="width: 12%;">
+                                <div id="day-6-text"></div>
+                                <div id="day-6-hours"></div>
+                            </td>
+                            <td class="day-view-day-cell" style="font-weight: bold;" onclick="backToWeekView()">
+                                Total: <span id="day-nav-total-hours"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="timesheet-control" style="margin-top: 15px; margin-bottom: 34px;">
+                    @Html.Partial("_Timesheet", Model)
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
 <div id="approvalCommentDialog"></div>
 <!--    Scripts      -->

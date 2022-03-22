@@ -135,7 +135,6 @@
                     End If
                 End Get
             End Property
-
             Public Property AlertTypeID() As Integer
             Public Property AlertTypeDescription() As String
             Public ReadOnly Property AlertType As String
@@ -147,7 +146,6 @@
                     End If
                 End Get
             End Property
-
             Public Property AlertCategoryID As Integer
             Public Property AlertCategoryDescription As String
             Public ReadOnly Property Indicator As String
@@ -159,8 +157,6 @@
                     End If
                 End Get
             End Property
-
-
             Public Property ClientName As String
             Public Property IsAlertAssignment As String
             Public Property TaskSequenceNumber As Nullable(Of Short)
@@ -175,7 +171,6 @@
             Public Property TempCompleteString As String
             Public Property EstimateNumber As Integer?
             Public Property EstimateComponentNumber As Nullable(Of Short)
-
             Public ReadOnly Property IsRead As Boolean
                 Get
                     Try
@@ -201,7 +196,7 @@
             Public Property TaskStatus As String
             Public Property TaskStatusDescription As String
             Public Property IsAutoRoute As Boolean? = False
-
+            Public Property CardSequenceNumber As Integer? = 0
             Public Sub New()
 
                 Me.Data = New List(Of String)

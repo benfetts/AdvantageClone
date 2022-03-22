@@ -27,6 +27,7 @@
         Protected _MediaBroadcastWorksheetMarketDetailID As Integer = 0
         Protected _MediaBroadcastWorksheetMarketDetailsViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel = Nothing
         Private WithEvents _ToolTipController As DevExpress.Utils.ToolTipController = Nothing
+        Private _EmptyEditor As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit = Nothing
 
 #End Region
 
@@ -458,7 +459,7 @@
 
                 BandedDataGridViewPanel_StagingMakegoods.CurrentView.Columns(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalGross.ToString).Visible = True
                 BandedDataGridViewPanel_StagingMakegoods.CurrentView.Columns(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalGross.ToString).DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-                BandedDataGridViewPanel_StagingMakegoods.CurrentView.Columns(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalGross.ToString).DisplayFormat.FormatString = "n0"
+                BandedDataGridViewPanel_StagingMakegoods.CurrentView.Columns(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalGross.ToString).DisplayFormat.FormatString = "n2"
                 BandedDataGridViewPanel_StagingMakegoods.CurrentView.Columns(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalGross.ToString).OptionsColumn.ShowInCustomizationForm = False
                 BandedDataGridViewPanel_StagingMakegoods.CurrentView.Columns(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalGross.ToString).OptionsColumn.AllowMove = False
 
@@ -684,6 +685,12 @@
 
             _Controller = New Controller.Media.MakegoodDeliveryController(Me.Session)
 
+            _EmptyEditor = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+            _EmptyEditor.Buttons.Clear()
+            _EmptyEditor.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+
+            BandedDataGridViewPanel_StagingMakegoods.CurrentView.GridControl.RepositoryItems.Add(_EmptyEditor)
+
         End Sub
         Private Sub MediaBroadcastWorksheetMakegoodDialog_Shown(sender As Object, e As EventArgs) Handles Me.Shown
 
@@ -726,24 +733,26 @@
             Dim Comment As String = String.Empty
             Dim Refresh As Boolean = False
 
-            AdvantageFramework.WinForm.Presentation.TextBoxInputDialog.ShowFormDialog("Makegood Accepted", "Enter Comment:", Comment, Comment, AdvantageFramework.Database.Entities.AlertComment.Properties.Comment, IsRequiredOverride:=False)
+            If AdvantageFramework.WinForm.Presentation.TextBoxInputDialog.ShowFormDialog("Makegood Accepted", "Enter Comment:", Comment, Comment, AdvantageFramework.Database.Entities.AlertComment.Properties.Comment, IsRequiredOverride:=False) = Windows.Forms.DialogResult.OK Then
 
-            _MediaBroadcastWorksheetMarketDetailsViewModel.AcceptMakegoodComment = Comment
+                _MediaBroadcastWorksheetMarketDetailsViewModel.AcceptMakegoodComment = Comment
 
-            If _Controller.AcceptMakegoodsFromStaging(_ViewModel, ErrorMessage, _MediaBroadcastWorksheetMarketDetailsViewModel, Refresh) Then
+                If _Controller.AcceptMakegoodsFromStaging(_ViewModel, ErrorMessage, _MediaBroadcastWorksheetMarketDetailsViewModel, Refresh) Then
 
-                Me.DialogResult = Windows.Forms.DialogResult.OK
-                Me.Close()
+                    Me.DialogResult = Windows.Forms.DialogResult.OK
+                    Me.Close()
 
-            ElseIf Refresh Then
+                ElseIf Refresh Then
 
-                AdvantageFramework.WinForm.MessageBox.Show("Vendor has since submitted additional makegoods, window will be refreshed.")
+                    AdvantageFramework.WinForm.MessageBox.Show("Vendor has since submitted additional makegoods, window will be refreshed.")
 
-                LoadViewModel()
+                    LoadViewModel()
 
-            Else
+                Else
 
-                AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+                    AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+                End If
 
             End If
 
@@ -899,6 +908,15 @@
 
             End If
 
+            If e.RowHandle >= 0 AndAlso BandedDataGridViewPanel_StagingMakegoods.CurrentView.GetRowCellValue(e.RowHandle, AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Line.ToString).ToString.StartsWith("Total") AndAlso
+                (e.Column.FieldName = AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Bookend.ToString OrElse
+                 e.Column.FieldName = AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.AddedValue.ToString OrElse
+                 e.Column.FieldName = AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.IsOriginal.ToString) Then
+
+                e.RepositoryItem = _EmptyEditor
+
+            End If
+
         End Sub
         Private Sub BandedDataGridViewPanel_StagingMakegoods_PopupMenuShowingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles BandedDataGridViewPanel_StagingMakegoods.PopupMenuShowingEvent
 
@@ -982,6 +1000,15 @@
             LoadGrid()
 
             ShowRates(ButtonItemView_Rates.Checked)
+
+        End Sub
+        Private Sub BandedDataGridViewPanel_StagingMakegoods_HideCustomizationFormEvent(sender As Object, e As EventArgs) Handles BandedDataGridViewPanel_StagingMakegoods.HideCustomizationFormEvent
+
+            If ButtonItemGridOptions_ChooseColumns.Checked Then
+
+                ButtonItemGridOptions_ChooseColumns.Checked = False
+
+            End If
 
         End Sub
 

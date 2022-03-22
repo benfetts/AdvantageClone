@@ -28,6 +28,10 @@
 
         Public Property ContactTypeIDs As Generic.List(Of String)
 
+        Public Property IsAgencyASP As Boolean
+
+        Public Property AgencyImportPath As String
+
 #End Region
 
 #Region " Methods "

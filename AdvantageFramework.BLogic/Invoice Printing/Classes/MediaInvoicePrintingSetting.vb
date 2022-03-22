@@ -45,6 +45,7 @@
 		Private Const ExtraChargesColumnHeader As String = "Charges & Discounts (included)"
         Private Const LineNumberColumnHeader As String = "Line"
         Private Const CloseDateColumnHeader As String = "Close" & vbNewLine & "Date"
+        Private Const GuaranteedImpressionsColumnHeader As String = "Guar Imps"
 
 #End Region
 
@@ -188,6 +189,8 @@
             CloseDateColumn
             ShowPageHeaderLogo
             ShowPageFooterLogo
+            GuaranteedImpressionsColumn
+            StartDateColumn
         End Enum
 
 #End Region
@@ -1436,6 +1439,10 @@
         Public Property ShowPageHeaderLogo() As Boolean
         <System.Runtime.Serialization.DataMemberAttribute()>
         Public Property ShowPageFooterLogo() As Boolean
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property GuaranteedImpressionsColumn() As Short
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property StartDateColumn() As Short
 
 #End Region
 
@@ -1593,10 +1600,11 @@
 				Me.LineNumberColumn = InvoicePrintingMediaSetting.MagazineLineNumberColumn
 				Me.ShowZeroFunctionAmounts = InvoicePrintingMediaSetting.MagazineShowZeroLineAmounts
 				Me.CloseDateColumn = InvoicePrintingMediaSetting.MagazineCloseDateColumn
+                Me.GuaranteedImpressionsColumn = 0
+                Me.StartDateColumn = 0
+                'SetColumnHeader(InvoicePrintingMediaSetting.MagazineOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
 
-				'SetColumnHeader(InvoicePrintingMediaSetting.MagazineOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
-
-				If Me.ShowLineDetail = 1 Then
+                If Me.ShowLineDetail = 1 Then
 
                     SetColumnHeader(InvoicePrintingMediaSetting.MagazineLineNumberColumn.GetValueOrDefault(1), LineNumberColumnHeader, TextAlignment.Center, False, HeaderType.Default)
                     'SetColumnHeader(InvoicePrintingMediaSetting.MagazineVendorNameColumn.GetValueOrDefault(1), VendorNameColumnHeader, TextAlignment.Near, False, HeaderType.Default)
@@ -1702,11 +1710,13 @@
 				Me.SortLinesBy = InvoicePrintingMediaSetting.NewspaperSortLinesBy
 				Me.LineNumberColumn = InvoicePrintingMediaSetting.NewspaperLineNumberColumn
 				Me.ShowZeroFunctionAmounts = InvoicePrintingMediaSetting.NewspaperShowZeroLineAmounts
-				Me.CloseDateColumn = InvoicePrintingMediaSetting.NewspaperCloseDateColumn
+                Me.CloseDateColumn = InvoicePrintingMediaSetting.NewspaperCloseDateColumn
+                Me.GuaranteedImpressionsColumn = 0
+                Me.StartDateColumn = 0
 
-				'SetColumnHeader(InvoicePrintingMediaSetting.NewspaperOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
+                'SetColumnHeader(InvoicePrintingMediaSetting.NewspaperOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
 
-				If Me.ShowLineDetail = 1 Then
+                If Me.ShowLineDetail = 1 Then
 
                     SetColumnHeader(InvoicePrintingMediaSetting.NewspaperLineNumberColumn.GetValueOrDefault(1), LineNumberColumnHeader, TextAlignment.Center, False, HeaderType.Default)
                     'SetColumnHeader(InvoicePrintingMediaSetting.NewspaperVendorNameColumn.GetValueOrDefault(1), VendorNameColumnHeader, TextAlignment.Near, False, HeaderType.Default)
@@ -1814,11 +1824,13 @@
 				Me.SortLinesBy = InvoicePrintingMediaSetting.InternetSortLinesBy
 				Me.LineNumberColumn = InvoicePrintingMediaSetting.InternetLineNumberColumn
 				Me.ShowZeroFunctionAmounts = InvoicePrintingMediaSetting.InternetShowZeroLineAmounts
-				Me.CloseDateColumn = InvoicePrintingMediaSetting.InternetCloseDateColumn
+                Me.CloseDateColumn = InvoicePrintingMediaSetting.InternetCloseDateColumn
+                Me.GuaranteedImpressionsColumn = InvoicePrintingMediaSetting.InternetGuaranteedImpressionsColumn.GetValueOrDefault(0)
+                Me.StartDateColumn = 0
 
-				' SetColumnHeader(InvoicePrintingMediaSetting.InternetOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
+                ' SetColumnHeader(InvoicePrintingMediaSetting.InternetOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
 
-				If Me.ShowLineDetail = 1 Then
+                If Me.ShowLineDetail = 1 Then
 
                     SetColumnHeader(InvoicePrintingMediaSetting.InternetLineNumberColumn.GetValueOrDefault(1), LineNumberColumnHeader, TextAlignment.Center, False, HeaderType.Default)
                     'SetColumnHeader(InvoicePrintingMediaSetting.InternetVendorNameColumn.GetValueOrDefault(1), VendorNameColumnHeader, TextAlignment.Near, False, HeaderType.Default)
@@ -1852,9 +1864,9 @@
 				SetColumnHeader(InvoicePrintingMediaSetting.InternetJobDescriptionColumn.GetValueOrDefault(0), JobDescriptionColumnHeader, TextAlignment.Center, False, HeaderType.Default)
 				SetColumnHeader(InvoicePrintingMediaSetting.InternetComponentDescriptionColumn.GetValueOrDefault(0), ComponentDescriptionColumnHeader, TextAlignment.Center, False, HeaderType.Default)
 				SetColumnHeader(InvoicePrintingMediaSetting.InternetCloseDateColumn.GetValueOrDefault(0), CloseDateColumnHeader, TextAlignment.Center, False, HeaderType.Default)
-				'SetColumnHeader(InvoicePrintingMediaSetting.InternetExtraChargesColumn.GetValueOrDefault(0), ExtraChargesColumnHeader, TextAlignment.Center, False, HeaderType.Default)
+                SetColumnHeader(InvoicePrintingMediaSetting.InternetGuaranteedImpressionsColumn.GetValueOrDefault(0), GuaranteedImpressionsColumnHeader, TextAlignment.Far, False, HeaderType.Default)
 
-			ElseIf MediaType = "O" Then
+            ElseIf MediaType = "O" Then
 
 				Me.InvoiceTitle = InvoicePrintingMediaSetting.OutdoorInvoiceTitle
 				Me.UseInvoiceCategoryDescription = InvoicePrintingMediaSetting.OutdoorUseInvoiceCategoryDescription.GetValueOrDefault(False)
@@ -1924,11 +1936,13 @@
 				Me.SortLinesBy = InvoicePrintingMediaSetting.OutdoorSortLinesBy
 				Me.LineNumberColumn = InvoicePrintingMediaSetting.OutdoorLineNumberColumn
 				Me.ShowZeroFunctionAmounts = InvoicePrintingMediaSetting.OutdoorShowZeroLineAmounts
-				Me.CloseDateColumn = InvoicePrintingMediaSetting.OutdoorCloseDateColumn
+                Me.CloseDateColumn = InvoicePrintingMediaSetting.OutdoorCloseDateColumn
+                Me.GuaranteedImpressionsColumn = 0
+                Me.StartDateColumn = 0
 
-				'SetColumnHeader(InvoicePrintingMediaSetting.OutdoorOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
+                'SetColumnHeader(InvoicePrintingMediaSetting.OutdoorOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
 
-				If Me.ShowLineDetail = 1 Then
+                If Me.ShowLineDetail = 1 Then
 
                     SetColumnHeader(InvoicePrintingMediaSetting.OutdoorLineNumberColumn.GetValueOrDefault(1), LineNumberColumnHeader, TextAlignment.Center, False, HeaderType.Default)
                     'SetColumnHeader(InvoicePrintingMediaSetting.OutdoorVendorNameColumn.GetValueOrDefault(1), VendorNameColumnHeader, TextAlignment.Near, False, HeaderType.Default)
@@ -2037,10 +2051,12 @@
 				Me.LineNumberColumn = InvoicePrintingMediaSetting.RadioLineNumberColumn
 				Me.ShowZeroFunctionAmounts = InvoicePrintingMediaSetting.RadioShowZeroLineAmounts
 				Me.CloseDateColumn = InvoicePrintingMediaSetting.RadioCloseDateColumn
+                Me.GuaranteedImpressionsColumn = 0
+                Me.StartDateColumn = InvoicePrintingMediaSetting.RadioStartDateColumn.GetValueOrDefault(0)
 
-				'SetColumnHeader(InvoicePrintingMediaSetting.RadioOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
+                'SetColumnHeader(InvoicePrintingMediaSetting.RadioOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
 
-				If Me.ShowLineDetail = 1 Then
+                If Me.ShowLineDetail = 1 Then
 
                     SetColumnHeader(InvoicePrintingMediaSetting.RadioLineNumberColumn.GetValueOrDefault(1), LineNumberColumnHeader, TextAlignment.Center, False, HeaderType.Default)
                     'SetColumnHeader(InvoicePrintingMediaSetting.RadioVendorNameColumn.GetValueOrDefault(1), VendorNameColumnHeader, TextAlignment.Near, False, HeaderType.Default)
@@ -2074,9 +2090,9 @@
 				SetColumnHeader(InvoicePrintingMediaSetting.RadioOrderDetailCommentColumn.GetValueOrDefault(0), OrderDetailCommentColumnHeader, TextAlignment.Center, False, HeaderType.Default)
 				SetColumnHeader(InvoicePrintingMediaSetting.RadioOrderHouseDetailCommentColumn.GetValueOrDefault(0), OrderHouseDetailCommentColumnHeader, TextAlignment.Center, False, HeaderType.Default)
 				SetColumnHeader(InvoicePrintingMediaSetting.RadioCloseDateColumn.GetValueOrDefault(0), CloseDateColumnHeader, TextAlignment.Center, False, HeaderType.Default)
-				'SetColumnHeader(InvoicePrintingMediaSetting.RadioExtraChargesColumn.GetValueOrDefault(0), ExtraChargesColumnHeader, TextAlignment.Center, False, HeaderType.Default)
+                SetColumnHeader(InvoicePrintingMediaSetting.RadioStartDateColumn.GetValueOrDefault(0), StartDateColumnHeader, TextAlignment.Center, False, HeaderType.Default)
 
-			ElseIf MediaType = "T" Then
+            ElseIf MediaType = "T" Then
 
 				Me.InvoiceTitle = InvoicePrintingMediaSetting.TVInvoiceTitle
 				Me.UseInvoiceCategoryDescription = InvoicePrintingMediaSetting.TVUseInvoiceCategoryDescription.GetValueOrDefault(False)
@@ -2147,10 +2163,12 @@
 				Me.LineNumberColumn = InvoicePrintingMediaSetting.TVLineNumberColumn
 				Me.ShowZeroFunctionAmounts = InvoicePrintingMediaSetting.TVShowZeroLineAmounts
 				Me.CloseDateColumn = InvoicePrintingMediaSetting.TVCloseDateColumn
+                Me.GuaranteedImpressionsColumn = 0
+                Me.StartDateColumn = InvoicePrintingMediaSetting.TVStartDateColumn.GetValueOrDefault(0)
 
-				'SetColumnHeader(InvoicePrintingMediaSetting.TVOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
+                'SetColumnHeader(InvoicePrintingMediaSetting.TVOrderNumberColumn.GetValueOrDefault(1), OrderNumberColumnHeader, TextAlignment.Near, False, HeaderType.Default)
 
-				If Me.ShowLineDetail = 1 Then
+                If Me.ShowLineDetail = 1 Then
 
                     SetColumnHeader(InvoicePrintingMediaSetting.TVLineNumberColumn.GetValueOrDefault(1), LineNumberColumnHeader, TextAlignment.Center, False, HeaderType.Default)
                     'SetColumnHeader(InvoicePrintingMediaSetting.TVVendorNameColumn.GetValueOrDefault(1), VendorNameColumnHeader, TextAlignment.Near, False, HeaderType.Default)
@@ -2184,9 +2202,9 @@
 				SetColumnHeader(InvoicePrintingMediaSetting.TVOrderDetailCommentColumn.GetValueOrDefault(0), OrderDetailCommentColumnHeader, TextAlignment.Center, False, HeaderType.Default)
 				SetColumnHeader(InvoicePrintingMediaSetting.TVOrderHouseDetailCommentColumn.GetValueOrDefault(0), OrderHouseDetailCommentColumnHeader, TextAlignment.Center, False, HeaderType.Default)
 				SetColumnHeader(InvoicePrintingMediaSetting.TVCloseDateColumn.GetValueOrDefault(0), CloseDateColumnHeader, TextAlignment.Center, False, HeaderType.Default)
-				'SetColumnHeader(InvoicePrintingMediaSetting.TVExtraChargesColumn.GetValueOrDefault(0), ExtraChargesColumnHeader, TextAlignment.Center, False, HeaderType.Default)
+                SetColumnHeader(InvoicePrintingMediaSetting.TVStartDateColumn.GetValueOrDefault(0), StartDateColumnHeader, TextAlignment.Center, False, HeaderType.Default)
 
-			End If
+            End If
 
 			Me.PageHeaderComment = InvoicePrintingMediaSetting.PageHeaderComment
 			Me.PageFooterComment = InvoicePrintingMediaSetting.PageFooterComment

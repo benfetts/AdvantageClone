@@ -25,14 +25,11 @@
             Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
             Me.XrRichText1 = New DevExpress.XtraReports.UI.XRRichText()
             Me.Page2 = New DevExpress.XtraReports.UI.SubBand()
-            Me.LabelPage2_PublicClassesLayout = New DevExpress.XtraReports.UI.XRLabel()
-            Me.PictureBoxPage2_PublicClassLayout = New DevExpress.XtraReports.UI.XRPictureBox()
             Me.LabelPage2_Instances = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelPage2_RESTAddress = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelPage2_SOAPAddress = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelPage2_SOAP = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelPage2_REST = New DevExpress.XtraReports.UI.XRLabel()
-            Me.Page3 = New DevExpress.XtraReports.UI.SubBand()
             Me.LabelPage3_ServiceClassLayout = New DevExpress.XtraReports.UI.XRLabel()
             Me.TablePage3_Methods = New DevExpress.XtraReports.UI.XRTable()
             Me.TableRowMethodsTable_HeaderRow = New DevExpress.XtraReports.UI.XRTableRow()
@@ -70,16 +67,14 @@
             'Detail
             '
             Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrRichText1})
-            Me.Detail.Dpi = 100.0!
             Me.Detail.HeightF = 88.33334!
             Me.Detail.Name = "Detail"
             Me.Detail.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
-            Me.Detail.SubBands.AddRange(New DevExpress.XtraReports.UI.SubBand() {Me.Page2, Me.Page3, Me.Page4})
+            Me.Detail.SubBands.AddRange(New DevExpress.XtraReports.UI.SubBand() {Me.Page2, Me.Page4})
             Me.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
             '
             'XrRichText1
             '
-            Me.XrRichText1.Dpi = 100.0!
             Me.XrRichText1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.XrRichText1.LocationFloat = New DevExpress.Utils.PointFloat(9.99999!, 4.999987!)
             Me.XrRichText1.Name = "XrRichText1"
@@ -89,38 +84,13 @@
             '
             'Page2
             '
-            Me.Page2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelPage2_PublicClassesLayout, Me.PictureBoxPage2_PublicClassLayout, Me.LabelPage2_Instances, Me.LabelPage2_RESTAddress, Me.LabelPage2_SOAPAddress, Me.LabelPage2_SOAP, Me.LabelPage2_REST})
-            Me.Page2.Dpi = 100.0!
+            Me.Page2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.TablePage3_Methods, Me.LabelPage3_ServiceClassLayout, Me.LabelPage2_Instances, Me.LabelPage2_RESTAddress, Me.LabelPage2_SOAPAddress, Me.LabelPage2_SOAP, Me.LabelPage2_REST})
             Me.Page2.HeightF = 336.7915!
             Me.Page2.Name = "Page2"
             Me.Page2.PageBreak = DevExpress.XtraReports.UI.PageBreak.BeforeBand
             '
-            'LabelPage2_PublicClassesLayout
-            '
-            Me.LabelPage2_PublicClassesLayout.Dpi = 100.0!
-            Me.LabelPage2_PublicClassesLayout.Font = New System.Drawing.Font("Cambria", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelPage2_PublicClassesLayout.ForeColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(95, Byte), Integer), CType(CType(145, Byte), Integer))
-            Me.LabelPage2_PublicClassesLayout.LocationFloat = New DevExpress.Utils.PointFloat(0.00007947286!, 164.4999!)
-            Me.LabelPage2_PublicClassesLayout.Name = "LabelPage2_PublicClassesLayout"
-            Me.LabelPage2_PublicClassesLayout.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-            Me.LabelPage2_PublicClassesLayout.SizeF = New System.Drawing.SizeF(699.9999!, 42.0!)
-            Me.LabelPage2_PublicClassesLayout.StylePriority.UseFont = False
-            Me.LabelPage2_PublicClassesLayout.StylePriority.UseForeColor = False
-            Me.LabelPage2_PublicClassesLayout.StylePriority.UseTextAlignment = False
-            Me.LabelPage2_PublicClassesLayout.Text = "2. PUBLIC CLASSES LAYOUT"
-            Me.LabelPage2_PublicClassesLayout.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomLeft
-            '
-            'PictureBoxPage2_PublicClassLayout
-            '
-            Me.PictureBoxPage2_PublicClassLayout.Dpi = 100.0!
-            Me.PictureBoxPage2_PublicClassLayout.Image = CType(resources.GetObject("PictureBoxPage2_PublicClassLayout.Image"), System.Drawing.Image)
-            Me.PictureBoxPage2_PublicClassLayout.LocationFloat = New DevExpress.Utils.PointFloat(0.00006357829!, 206.4999!)
-            Me.PictureBoxPage2_PublicClassLayout.Name = "PictureBoxPage2_PublicClassLayout"
-            Me.PictureBoxPage2_PublicClassLayout.SizeF = New System.Drawing.SizeF(699.9999!, 130.2917!)
-            '
             'LabelPage2_Instances
             '
-            Me.LabelPage2_Instances.Dpi = 100.0!
             Me.LabelPage2_Instances.Font = New System.Drawing.Font("Cambria", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.LabelPage2_Instances.ForeColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(95, Byte), Integer), CType(CType(145, Byte), Integer))
             Me.LabelPage2_Instances.LocationFloat = New DevExpress.Utils.PointFloat(0.00007947286!, 0!)
@@ -135,7 +105,6 @@
             '
             'LabelPage2_RESTAddress
             '
-            Me.LabelPage2_RESTAddress.Dpi = 100.0!
             Me.LabelPage2_RESTAddress.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.LabelPage2_RESTAddress.LocationFloat = New DevExpress.Utils.PointFloat(0.00009536743!, 135.0!)
             Me.LabelPage2_RESTAddress.Name = "LabelPage2_RESTAddress"
@@ -148,7 +117,6 @@
             '
             'LabelPage2_SOAPAddress
             '
-            Me.LabelPage2_SOAPAddress.Dpi = 100.0!
             Me.LabelPage2_SOAPAddress.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.LabelPage2_SOAPAddress.LocationFloat = New DevExpress.Utils.PointFloat(0.00007947286!, 76.99998!)
             Me.LabelPage2_SOAPAddress.Name = "LabelPage2_SOAPAddress"
@@ -161,7 +129,6 @@
             '
             'LabelPage2_SOAP
             '
-            Me.LabelPage2_SOAP.Dpi = 100.0!
             Me.LabelPage2_SOAP.Font = New System.Drawing.Font("Cambria", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.LabelPage2_SOAP.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(189, Byte), Integer))
             Me.LabelPage2_SOAP.LocationFloat = New DevExpress.Utils.PointFloat(0.00009536743!, 42.00001!)
@@ -176,7 +143,6 @@
             '
             'LabelPage2_REST
             '
-            Me.LabelPage2_REST.Dpi = 100.0!
             Me.LabelPage2_REST.Font = New System.Drawing.Font("Cambria", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.LabelPage2_REST.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(189, Byte), Integer))
             Me.LabelPage2_REST.LocationFloat = New DevExpress.Utils.PointFloat(0.00007947286!, 100.0!)
@@ -189,27 +155,18 @@
             Me.LabelPage2_REST.Text = "REST"
             Me.LabelPage2_REST.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomLeft
             '
-            'Page3
-            '
-            Me.Page3.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelPage3_ServiceClassLayout, Me.TablePage3_Methods})
-            Me.Page3.Dpi = 100.0!
-            Me.Page3.HeightF = 131.9999!
-            Me.Page3.Name = "Page3"
-            Me.Page3.PageBreak = DevExpress.XtraReports.UI.PageBreak.BeforeBand
-            '
             'LabelPage3_ServiceClassLayout
             '
-            Me.LabelPage3_ServiceClassLayout.Dpi = 100.0!
             Me.LabelPage3_ServiceClassLayout.Font = New System.Drawing.Font("Cambria", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.LabelPage3_ServiceClassLayout.ForeColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(95, Byte), Integer), CType(CType(145, Byte), Integer))
-            Me.LabelPage3_ServiceClassLayout.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+            Me.LabelPage3_ServiceClassLayout.LocationFloat = New DevExpress.Utils.PointFloat(0.0001017253!, 158.0!)
             Me.LabelPage3_ServiceClassLayout.Name = "LabelPage3_ServiceClassLayout"
             Me.LabelPage3_ServiceClassLayout.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.LabelPage3_ServiceClassLayout.SizeF = New System.Drawing.SizeF(700.0!, 42.0!)
             Me.LabelPage3_ServiceClassLayout.StylePriority.UseFont = False
             Me.LabelPage3_ServiceClassLayout.StylePriority.UseForeColor = False
             Me.LabelPage3_ServiceClassLayout.StylePriority.UseTextAlignment = False
-            Me.LabelPage3_ServiceClassLayout.Text = "3. SERVICE CLASS LAYOUT"
+            Me.LabelPage3_ServiceClassLayout.Text = "2. SERVICE CLASS LAYOUT"
             Me.LabelPage3_ServiceClassLayout.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomLeft
             '
             'TablePage3_Methods
@@ -220,10 +177,9 @@
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
             Me.TablePage3_Methods.BorderWidth = 2.0!
-            Me.TablePage3_Methods.Dpi = 100.0!
             Me.TablePage3_Methods.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.TablePage3_Methods.ForeColor = System.Drawing.Color.White
-            Me.TablePage3_Methods.LocationFloat = New DevExpress.Utils.PointFloat(0!, 41.99994!)
+            Me.TablePage3_Methods.LocationFloat = New DevExpress.Utils.PointFloat(0.0001271566!, 200.0!)
             Me.TablePage3_Methods.Name = "TablePage3_Methods"
             Me.TablePage3_Methods.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.TableRowMethodsTable_HeaderRow, Me.TableRowMethodsTable_TempRow1, Me.TableRowMethodsTable_TempRow2})
             Me.TablePage3_Methods.SizeF = New System.Drawing.SizeF(700.0!, 90.0!)
@@ -239,27 +195,23 @@
             'TableRowMethodsTable_HeaderRow
             '
             Me.TableRowMethodsTable_HeaderRow.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.TableCellHeaderRow_Methods, Me.TableCellHeaderRow_Parameters, Me.TableCellHeaderRow_Return})
-            Me.TableRowMethodsTable_HeaderRow.Dpi = 100.0!
             Me.TableRowMethodsTable_HeaderRow.Name = "TableRowMethodsTable_HeaderRow"
             Me.TableRowMethodsTable_HeaderRow.Weight = 1.5999996948242188R
             '
             'TableCellHeaderRow_Methods
             '
-            Me.TableCellHeaderRow_Methods.Dpi = 100.0!
             Me.TableCellHeaderRow_Methods.Name = "TableCellHeaderRow_Methods"
             Me.TableCellHeaderRow_Methods.Text = "Method"
             Me.TableCellHeaderRow_Methods.Weight = 0.93269226074218747R
             '
             'TableCellHeaderRow_Parameters
             '
-            Me.TableCellHeaderRow_Parameters.Dpi = 100.0!
             Me.TableCellHeaderRow_Parameters.Name = "TableCellHeaderRow_Parameters"
             Me.TableCellHeaderRow_Parameters.Text = "Parameters"
             Me.TableCellHeaderRow_Parameters.Weight = 1.1875R
             '
             'TableCellHeaderRow_Return
             '
-            Me.TableCellHeaderRow_Return.Dpi = 100.0!
             Me.TableCellHeaderRow_Return.Name = "TableCellHeaderRow_Return"
             Me.TableCellHeaderRow_Return.Text = "Return"
             Me.TableCellHeaderRow_Return.Weight = 0.87980773925781253R
@@ -267,28 +219,24 @@
             'TableRowMethodsTable_TempRow1
             '
             Me.TableRowMethodsTable_TempRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.TableCellTempRow1_MethodsCell, Me.TableCellTempRow1_ParametersCell, Me.TableCellTempRow1_Return})
-            Me.TableRowMethodsTable_TempRow1.Dpi = 100.0!
             Me.TableRowMethodsTable_TempRow1.Name = "TableRowMethodsTable_TempRow1"
             Me.TableRowMethodsTable_TempRow1.StyleName = "OddStyle"
             Me.TableRowMethodsTable_TempRow1.Weight = 1.0R
             '
             'TableCellTempRow1_MethodsCell
             '
-            Me.TableCellTempRow1_MethodsCell.Dpi = 100.0!
             Me.TableCellTempRow1_MethodsCell.Name = "TableCellTempRow1_MethodsCell"
             Me.TableCellTempRow1_MethodsCell.Text = "Method" & Global.Microsoft.VisualBasic.ChrW(9)
             Me.TableCellTempRow1_MethodsCell.Weight = 0.93269226074218747R
             '
             'TableCellTempRow1_ParametersCell
             '
-            Me.TableCellTempRow1_ParametersCell.Dpi = 100.0!
             Me.TableCellTempRow1_ParametersCell.Name = "TableCellTempRow1_ParametersCell"
             Me.TableCellTempRow1_ParametersCell.Text = "Parameters"
             Me.TableCellTempRow1_ParametersCell.Weight = 1.1875R
             '
             'TableCellTempRow1_Return
             '
-            Me.TableCellTempRow1_Return.Dpi = 100.0!
             Me.TableCellTempRow1_Return.Name = "TableCellTempRow1_Return"
             Me.TableCellTempRow1_Return.Text = "Return"
             Me.TableCellTempRow1_Return.Weight = 0.87980773925781253R
@@ -296,28 +244,24 @@
             'TableRowMethodsTable_TempRow2
             '
             Me.TableRowMethodsTable_TempRow2.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.TableCellTempRow2_Methods, Me.TableCellTempRow2_Parameters, Me.TableCellTempRow2_Return})
-            Me.TableRowMethodsTable_TempRow2.Dpi = 100.0!
             Me.TableRowMethodsTable_TempRow2.Name = "TableRowMethodsTable_TempRow2"
             Me.TableRowMethodsTable_TempRow2.StyleName = "EvenStyle"
             Me.TableRowMethodsTable_TempRow2.Weight = 1.0R
             '
             'TableCellTempRow2_Methods
             '
-            Me.TableCellTempRow2_Methods.Dpi = 100.0!
             Me.TableCellTempRow2_Methods.Name = "TableCellTempRow2_Methods"
             Me.TableCellTempRow2_Methods.Text = "Method"
             Me.TableCellTempRow2_Methods.Weight = 0.93269226074218747R
             '
             'TableCellTempRow2_Parameters
             '
-            Me.TableCellTempRow2_Parameters.Dpi = 100.0!
             Me.TableCellTempRow2_Parameters.Name = "TableCellTempRow2_Parameters"
             Me.TableCellTempRow2_Parameters.Text = "Parameters"
             Me.TableCellTempRow2_Parameters.Weight = 1.1875R
             '
             'TableCellTempRow2_Return
             '
-            Me.TableCellTempRow2_Return.Dpi = 100.0!
             Me.TableCellTempRow2_Return.Name = "TableCellTempRow2_Return"
             Me.TableCellTempRow2_Return.Text = "Return"
             Me.TableCellTempRow2_Return.Weight = 0.87980773925781253R
@@ -325,7 +269,6 @@
             'Page4
             '
             Me.Page4.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.TablePage4_Method, Me.LabelPage4_AdditionalRestInfo})
-            Me.Page4.Dpi = 100.0!
             Me.Page4.HeightF = 131.9999!
             Me.Page4.Name = "Page4"
             Me.Page4.PageBreak = DevExpress.XtraReports.UI.PageBreak.BeforeBand
@@ -337,7 +280,6 @@
             Me.TablePage4_Method.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-            Me.TablePage4_Method.Dpi = 100.0!
             Me.TablePage4_Method.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.TablePage4_Method.ForeColor = System.Drawing.Color.White
             Me.TablePage4_Method.LocationFloat = New DevExpress.Utils.PointFloat(0!, 41.99994!)
@@ -355,13 +297,11 @@
             'TableRowMethod_HeaderRow
             '
             Me.TableRowMethod_HeaderRow.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell1})
-            Me.TableRowMethod_HeaderRow.Dpi = 100.0!
             Me.TableRowMethod_HeaderRow.Name = "TableRowMethod_HeaderRow"
             Me.TableRowMethod_HeaderRow.Weight = 1.6R
             '
             'XrTableCell1
             '
-            Me.XrTableCell1.Dpi = 100.0!
             Me.XrTableCell1.Name = "XrTableCell1"
             Me.XrTableCell1.Text = "Method"
             Me.XrTableCell1.Weight = 3.0R
@@ -369,14 +309,12 @@
             'TableRowMethod_TempRow1
             '
             Me.TableRowMethod_TempRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.TableCellTempRow1_Method})
-            Me.TableRowMethod_TempRow1.Dpi = 100.0!
             Me.TableRowMethod_TempRow1.Name = "TableRowMethod_TempRow1"
             Me.TableRowMethod_TempRow1.StyleName = "OddStyle"
             Me.TableRowMethod_TempRow1.Weight = 1.0R
             '
             'TableCellTempRow1_Method
             '
-            Me.TableCellTempRow1_Method.Dpi = 100.0!
             Me.TableCellTempRow1_Method.Name = "TableCellTempRow1_Method"
             Me.TableCellTempRow1_Method.Text = "Method" & Global.Microsoft.VisualBasic.ChrW(9)
             Me.TableCellTempRow1_Method.Weight = 3.0R
@@ -384,21 +322,18 @@
             'TableRowMethod_TempRow2
             '
             Me.TableRowMethod_TempRow2.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.TableCellTempRow2_Method})
-            Me.TableRowMethod_TempRow2.Dpi = 100.0!
             Me.TableRowMethod_TempRow2.Name = "TableRowMethod_TempRow2"
             Me.TableRowMethod_TempRow2.StyleName = "EvenStyle"
             Me.TableRowMethod_TempRow2.Weight = 1.0R
             '
             'TableCellTempRow2_Method
             '
-            Me.TableCellTempRow2_Method.Dpi = 100.0!
             Me.TableCellTempRow2_Method.Name = "TableCellTempRow2_Method"
             Me.TableCellTempRow2_Method.Text = "Method"
             Me.TableCellTempRow2_Method.Weight = 3.0R
             '
             'LabelPage4_AdditionalRestInfo
             '
-            Me.LabelPage4_AdditionalRestInfo.Dpi = 100.0!
             Me.LabelPage4_AdditionalRestInfo.Font = New System.Drawing.Font("Cambria", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.LabelPage4_AdditionalRestInfo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(95, Byte), Integer), CType(CType(145, Byte), Integer))
             Me.LabelPage4_AdditionalRestInfo.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
@@ -408,12 +343,11 @@
             Me.LabelPage4_AdditionalRestInfo.StylePriority.UseFont = False
             Me.LabelPage4_AdditionalRestInfo.StylePriority.UseForeColor = False
             Me.LabelPage4_AdditionalRestInfo.StylePriority.UseTextAlignment = False
-            Me.LabelPage4_AdditionalRestInfo.Text = "4. ADDITIONAL REST INFORMATION"
+            Me.LabelPage4_AdditionalRestInfo.Text = "3. ADDITIONAL REST INFORMATION"
             Me.LabelPage4_AdditionalRestInfo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomLeft
             '
             'TopMargin
             '
-            Me.TopMargin.Dpi = 100.0!
             Me.TopMargin.HeightF = 75.0!
             Me.TopMargin.Name = "TopMargin"
             Me.TopMargin.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
@@ -421,7 +355,6 @@
             '
             'BottomMargin
             '
-            Me.BottomMargin.Dpi = 100.0!
             Me.BottomMargin.HeightF = 75.0!
             Me.BottomMargin.Name = "BottomMargin"
             Me.BottomMargin.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
@@ -430,7 +363,6 @@
             'ReportHeader
             '
             Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelReportHeader_Title})
-            Me.ReportHeader.Dpi = 100.0!
             Me.ReportHeader.HeightF = 50.08335!
             Me.ReportHeader.Name = "ReportHeader"
             '
@@ -438,7 +370,6 @@
             '
             Me.LabelReportHeader_Title.BorderColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(189, Byte), Integer))
             Me.LabelReportHeader_Title.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
-            Me.LabelReportHeader_Title.Dpi = 100.0!
             Me.LabelReportHeader_Title.Font = New System.Drawing.Font("Cambria", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.LabelReportHeader_Title.ForeColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(93, Byte), Integer))
             Me.LabelReportHeader_Title.LocationFloat = New DevExpress.Utils.PointFloat(0.00001589457!, 0!)
@@ -476,7 +407,7 @@
             Me.Margins = New System.Drawing.Printing.Margins(75, 75, 75, 75)
             Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
             Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.OddStyle, Me.EvenStyle})
-            Me.Version = "16.2"
+            Me.Version = "20.1"
             CType(Me.XrRichText1, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.TablePage3_Methods, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.TablePage4_Method, System.ComponentModel.ISupportInitialize).EndInit()
@@ -494,15 +425,12 @@
         Friend WithEvents LabelPage2_SOAPAddress As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents LabelPage2_RESTAddress As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents LabelPage2_REST As DevExpress.XtraReports.UI.XRLabel
-        Friend WithEvents LabelPage2_PublicClassesLayout As DevExpress.XtraReports.UI.XRLabel
-        Friend WithEvents PictureBoxPage2_PublicClassLayout As DevExpress.XtraReports.UI.XRPictureBox
         Friend WithEvents TablePage3_Methods As DevExpress.XtraReports.UI.XRTable
         Friend WithEvents TableRowMethodsTable_HeaderRow As DevExpress.XtraReports.UI.XRTableRow
         Friend WithEvents TableCellHeaderRow_Methods As DevExpress.XtraReports.UI.XRTableCell
         Friend WithEvents TableCellHeaderRow_Parameters As DevExpress.XtraReports.UI.XRTableCell
         Friend WithEvents TableCellHeaderRow_Return As DevExpress.XtraReports.UI.XRTableCell
         Friend WithEvents LabelPage3_ServiceClassLayout As DevExpress.XtraReports.UI.XRLabel
-        Friend WithEvents Page3 As DevExpress.XtraReports.UI.SubBand
         Friend WithEvents Page2 As DevExpress.XtraReports.UI.SubBand
         Friend WithEvents OddStyle As DevExpress.XtraReports.UI.XRControlStyle
         Friend WithEvents EvenStyle As DevExpress.XtraReports.UI.XRControlStyle

@@ -401,7 +401,7 @@
 
             End If
 
-            If AccountsPayableRightSection_AP.Visible Then
+            If AccountsPayableRightSection_AP.Visible AndAlso AccountsPayableRightSection_AP.HasAccessToDocuments Then
 
                 RibbonBarOptions_View.Left = Left + 2
                 Left = Left + RibbonBarOptions_View.Width + 2

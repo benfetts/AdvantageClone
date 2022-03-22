@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="VendorRepresentative" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>AdvantageFramework.Database.Entities.VendorRepresentative, AdvantageFramework, Version=6.70.08.01, Culture=neutral, PublicKeyToken=47cecc3c04664171</TypeInfo>
+   <TypeInfo>AdvantageFramework.Database.Entities.VendorRepresentative, AdvantageFramework, Version=6.70.08.02, Culture=neutral, PublicKeyToken=47cecc3c04664171</TypeInfo>
 </GenericObjectDataSource>

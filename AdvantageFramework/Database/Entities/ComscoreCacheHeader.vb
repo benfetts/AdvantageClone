@@ -18,6 +18,7 @@
             MarketNumber
             StationNumber
             DemoNumber
+            Warning
         End Enum
 
 #End Region
@@ -52,6 +53,9 @@
         <Column("DEMO_NUMBER")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property DemoNumber() As Integer
+        <Column("WARNING", TypeName:="varchar(MAX)")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property Warning() As String
 
 #End Region
 

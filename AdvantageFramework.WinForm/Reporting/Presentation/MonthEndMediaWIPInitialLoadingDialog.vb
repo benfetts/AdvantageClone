@@ -276,7 +276,8 @@
                        CInt(ComboBoxTopSection_Report.SelectedValue) = AdvantageFramework.Reporting.MonthEndReportTypesAccountsPayable.AccountsPayableDisbDetailByInvoiceNumber OrElse
                        CInt(ComboBoxTopSection_Report.SelectedValue) = AdvantageFramework.Reporting.MonthEndReportTypesAccountsPayable.AccountsPayableDisbDetailByInvoiceDate OrElse
                        CInt(ComboBoxTopSection_Report.SelectedValue) = AdvantageFramework.Reporting.MonthEndReportTypesAccountsPayable.AccountsPayableAgedSummary OrElse
-                       CInt(ComboBoxTopSection_Report.SelectedValue) = AdvantageFramework.Reporting.MonthEndReportTypesAccountsPayable.AccountsPayableAgedDetail Then
+                       CInt(ComboBoxTopSection_Report.SelectedValue) = AdvantageFramework.Reporting.MonthEndReportTypesAccountsPayable.AccountsPayableAgedDetail OrElse
+                       CInt(ComboBoxTopSection_Report.SelectedValue) = AdvantageFramework.Reporting.MonthEndReportTypesAccountsPayable.AccountsPayableAgedDetailNoGL Then
 
                     _ParameterDictionary(AdvantageFramework.Reporting.MonthEndAccountsPayableParameters.EndPeriod.ToString) = ComboBoxForm_EndPostPeriod.SelectedValue
 

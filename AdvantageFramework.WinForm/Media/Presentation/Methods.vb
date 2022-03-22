@@ -107,6 +107,7 @@
             Dim UseAverageCalcuation As Boolean = False
             Dim LastRowFieldIndex As Integer = -1
             Dim LastColumnFieldIndex As Integer = -1
+            Dim RowQuantityColumns As Hashtable = Nothing
 
             If MediaPlanEstimate IsNot Nothing Then
 
@@ -145,9 +146,13 @@
 
                             Next
 
+                            RowQuantityColumns = New Hashtable
+
                             For Each PivotDrillDownDataRow In PivotDrillDownDataSource.OfType(Of DevExpress.XtraPivotGrid.PivotDrillDownDataRow)
 
-                                QuantityColumn = AdvantageFramework.MediaPlanning.GetQuantityColumn(MediaPlanEstimate, PivotDrillDownDataRow(AdvantageFramework.MediaPlanning.DataColumns.RowIndex.ToString),
+                                If RowQuantityColumns.ContainsKey(PivotDrillDownDataRow(AdvantageFramework.MediaPlanning.DataColumns.RowIndex.ToString)) = False Then
+
+                                    QuantityColumn = AdvantageFramework.MediaPlanning.GetQuantityColumn(MediaPlanEstimate, PivotDrillDownDataRow(AdvantageFramework.MediaPlanning.DataColumns.RowIndex.ToString),
                                                                                                         PivotDrillDownDataRow(AdvantageFramework.MediaPlanning.DataColumns.Demo1.ToString),
                                                                                                         PivotDrillDownDataRow(AdvantageFramework.MediaPlanning.DataColumns.Demo2.ToString),
                                                                                                         PivotDrillDownDataRow(AdvantageFramework.MediaPlanning.DataColumns.Units.ToString),
@@ -156,6 +161,14 @@
                                                                                                         PivotDrillDownDataRow(AdvantageFramework.MediaPlanning.DataColumns.Columns.ToString),
                                                                                                         PivotDrillDownDataRow(AdvantageFramework.MediaPlanning.DataColumns.InchesLines.ToString),
                                                                                                         DataColumns)
+
+                                    RowQuantityColumns(PivotDrillDownDataRow(AdvantageFramework.MediaPlanning.DataColumns.RowIndex.ToString)) = QuantityColumn
+
+                                Else
+
+                                    QuantityColumn = RowQuantityColumns(PivotDrillDownDataRow(AdvantageFramework.MediaPlanning.DataColumns.RowIndex.ToString))
+
+                                End If
 
                                 If QuantityColumn <> AdvantageFramework.MediaPlanning.DataColumns.ID Then
 
@@ -1509,11 +1522,19 @@
 
                             If MediaPlanDetailLevelLine.Expanded Then
 
-                                PivotGridField.ExpandValue(MediaPlanDetailLevelLine.Description)
+                                If PivotGridControl.IsObjectCollapsed(PivotGridField, MediaPlanDetailLevelLine.RowIndex) Then
+
+                                    PivotGridField.ExpandValue(MediaPlanDetailLevelLine.Description)
+
+                                End If
 
                             Else
 
-                                PivotGridField.CollapseValue(MediaPlanDetailLevelLine.Description)
+                                If PivotGridControl.IsObjectCollapsed(PivotGridField, MediaPlanDetailLevelLine.RowIndex) = False Then
+
+                                    PivotGridField.CollapseValue(MediaPlanDetailLevelLine.Description)
+
+                                End If
 
                             End If
 
@@ -6611,6 +6632,16 @@
             End If
 
             CheckMappings = Checked
+
+        End Function
+        Public Function CreateMediaRFPFileName(VendorName As String, UserCode As String, WorksheetMarketID As Integer) As String
+
+            'objects
+            Dim FileName As String = ""
+
+            FileName = VendorName & "_" & WorksheetMarketID.ToString & "_" & UserCode
+
+            CreateMediaRFPFileName = FileName
 
         End Function
 

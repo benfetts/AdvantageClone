@@ -42,7 +42,7 @@
 
             _ViewModel = _Controller.Setup_Load()
 
-            Me.ButtonItemReports_ETAMExport.Visible = _ViewModel.IsNielsenPuertoRicoSetup
+            Me.ButtonItemReports_PuertoRicoExport.Visible = _ViewModel.IsNielsenPuertoRicoSetup
 
         End Sub
         Private Sub LoadGrid()
@@ -251,9 +251,9 @@
             ButtonItemReports_PostBuy.Enabled = (_ViewModel.HasASelectedWorksheet AndAlso _ViewModel.IsCanadianWorksheet = False)
 
             ButtonItemReports_BroadcastSchedule.Enabled = (_ViewModel.HasASelectedWorksheet)
-            ButtonItemReports_Other.Enabled = (_ViewModel.HasASelectedWorksheet AndAlso _ViewModel.IsCanadianWorksheet = False) 'AndAlso _ViewModel.SelectedWorksheet.MediaType = DTO.Media.MediaBroadcastWorksheet.Methods.MediaTypes.SpotTV
+            ButtonItemReports_Other.Enabled = _ViewModel.HasASelectedWorksheet 'AndAlso _ViewModel.SelectedWorksheet.MediaType = DTO.Media.MediaBroadcastWorksheet.Methods.MediaTypes.SpotTV
 
-            ButtonItemReports_ETAMExport.Enabled = (_ViewModel.HasASelectedWorksheet AndAlso _ViewModel.SelectedWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico)
+            ButtonItemReports_PuertoRicoExport.Enabled = (_ViewModel.HasASelectedWorksheet AndAlso _ViewModel.SelectedWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico)
 
         End Sub
         Private Sub FormatGrid_WorksheetMarkets()
@@ -885,7 +885,7 @@
             ButtonItemReports_PostBuy.Image = AdvantageFramework.My.Resources.ReportImage
             ButtonItemReports_BroadcastSchedule.Image = AdvantageFramework.My.Resources.ReportImage
             ButtonItemReports_Other.Image = AdvantageFramework.My.Resources.ReportImage
-            ButtonItemReports_ETAMExport.Image = AdvantageFramework.My.Resources.ReportImage
+            ButtonItemReports_PuertoRicoExport.Image = AdvantageFramework.My.Resources.ReportImage
 
             ButtonItemDashboard_Edit.Image = AdvantageFramework.My.Resources.EditImage
 
@@ -1864,9 +1864,31 @@
             End If
 
         End Sub
-        Private Sub ButtonItemReports_ETAMExport_Click(sender As Object, e As EventArgs) Handles ButtonItemReports_ETAMExport.Click
+        Private Sub ButtonItemPuertoRicoExport_eTamActualRF_Click(sender As Object, e As EventArgs) Handles ButtonItemPuertoRicoExport_eTamActualRF.Click
 
             AdvantageFramework.Media.Presentation.MediaBroadcastWorksheetETAMExportDialog.ShowFormDialog(_ViewModel.SelectedWorksheet.ID)
+
+        End Sub
+        Private Sub ButtonItemPuertoRicoExport_AriannaEstimateRF_Click(sender As Object, e As EventArgs) Handles ButtonItemPuertoRicoExport_AriannaEstimateRF.Click
+
+            Dim FolderName As String = Nothing
+            Dim OutputFilename As String = Nothing
+
+            FolderName = _Controller.AriannaExport_GexExportFolder()
+
+            If AdvantageFramework.WinForm.Presentation.BrowseForFolder(FolderName, FolderName) Then
+
+                If _Controller.AriannaExport_Export(_ViewModel.SelectedWorksheetMarket.ID, FolderName, OutputFilename) Then
+
+                    AdvantageFramework.WinForm.MessageBox.Show("File exported to: " & OutputFilename)
+
+                Else
+
+                    AdvantageFramework.WinForm.MessageBox.Show("File failed to export.")
+
+                End If
+
+            End If
 
         End Sub
 

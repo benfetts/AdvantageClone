@@ -199,64 +199,69 @@ Public Class ConceptShareSession
 
     Public Function CreateConceptShareConnection() As AdvantageFramework.ConceptShare.Classes.ConceptShareConnection
 
-        Using DataContext = New AdvantageFramework.Database.DataContext(Me._Session.ConnectionString, Me._Session.UserCode)
+        Return Nothing
 
-            If MiscFN.IsClientPortal = False Then
+        ''Using DataContext = New AdvantageFramework.Database.DataContext(Me._Session.ConnectionString, Me._Session.UserCode)
 
-                Using DbContext = New AdvantageFramework.Database.DbContext(Me._Session.ConnectionString, Me._Session.UserCode)
+        ''    If MiscFN.IsClientPortal = False Then
 
-                    Dim Employee As AdvantageFramework.Database.Views.Employee
+        ''        Using DbContext = New AdvantageFramework.Database.DbContext(Me._Session.ConnectionString, Me._Session.UserCode)
 
-                    Employee = Nothing
-                    Employee = AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, HttpContext.Current.Session("EmpCode"))
+        ''            Dim Employee As AdvantageFramework.Database.Views.Employee
 
-                    CreateConceptShareConnection = New AdvantageFramework.ConceptShare.Classes.ConceptShareConnection(DataContext, Employee)
+        ''            Employee = Nothing
+        ''            Employee = AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, HttpContext.Current.Session("EmpCode"))
 
-                End Using
+        ''            CreateConceptShareConnection = New AdvantageFramework.ConceptShare.Classes.ConceptShareConnection(DataContext, Employee)
 
-            Else
+        ''        End Using
 
-                Using DbContext = New AdvantageFramework.Security.Database.DbContext(Me._Session.ConnectionString, Me._Session.UserCode)
+        ''    Else
 
-                    Dim ClientPortalUser As AdvantageFramework.Security.Classes.ClientPortalUser
+        ''        Using DbContext = New AdvantageFramework.Security.Database.DbContext(Me._Session.ConnectionString, Me._Session.UserCode)
 
-                    ClientPortalUser = Nothing
-                    ClientPortalUser = New AdvantageFramework.Security.Classes.ClientPortalUser(AdvantageFramework.Security.Database.Procedures.ClientPortalUser.LoadByClientContactID(DbContext, HttpContext.Current.Session("UserID")))
+        ''            Dim ClientPortalUser As AdvantageFramework.Security.Classes.ClientPortalUser
 
-                    CreateConceptShareConnection = New AdvantageFramework.ConceptShare.Classes.ConceptShareConnection(DataContext, DbContext, ClientPortalUser)
+        ''            ClientPortalUser = Nothing
+        ''            ClientPortalUser = New AdvantageFramework.Security.Classes.ClientPortalUser(AdvantageFramework.Security.Database.Procedures.ClientPortalUser.LoadByClientContactID(DbContext, HttpContext.Current.Session("UserID")))
 
-                End Using
+        ''            CreateConceptShareConnection = New AdvantageFramework.ConceptShare.Classes.ConceptShareConnection(DataContext, DbContext, ClientPortalUser)
 
-            End If
+        ''        End Using
 
-        End Using
+        ''    End If
+
+        ''End Using
 
     End Function
     Public Function CreateClientPortalConceptShareConnection() As AdvantageFramework.ConceptShare.Classes.ConceptShareConnection
 
-        Using DataContext = New AdvantageFramework.Database.DataContext(Me._Session.ConnectionString, Me._Session.UserCode)
+        Return Nothing
+        ''Using DataContext = New AdvantageFramework.Database.DataContext(Me._Session.ConnectionString, Me._Session.UserCode)
 
-            Using DbContext = New AdvantageFramework.Security.Database.DbContext(Me._Session.ConnectionString, Me._Session.UserCode)
+        ''    Using DbContext = New AdvantageFramework.Security.Database.DbContext(Me._Session.ConnectionString, Me._Session.UserCode)
 
-                Dim ClientPortalUser As AdvantageFramework.Security.Classes.ClientPortalUser
+        ''        Dim ClientPortalUser As AdvantageFramework.Security.Classes.ClientPortalUser
 
-                ClientPortalUser = Nothing
-                ClientPortalUser = New AdvantageFramework.Security.Classes.ClientPortalUser(AdvantageFramework.Security.Database.Procedures.ClientPortalUser.LoadByClientContactID(DbContext, HttpContext.Current.Session("UserID")))
+        ''        ClientPortalUser = Nothing
+        ''        ClientPortalUser = New AdvantageFramework.Security.Classes.ClientPortalUser(AdvantageFramework.Security.Database.Procedures.ClientPortalUser.LoadByClientContactID(DbContext, HttpContext.Current.Session("UserID")))
 
-                CreateClientPortalConceptShareConnection = New AdvantageFramework.ConceptShare.Classes.ConceptShareConnection(DataContext, DbContext, ClientPortalUser)
+        ''        CreateClientPortalConceptShareConnection = New AdvantageFramework.ConceptShare.Classes.ConceptShareConnection(DataContext, DbContext, ClientPortalUser)
 
-            End Using
+        ''    End Using
 
-        End Using
+        ''End Using
 
     End Function
     Public Function CreateAdminConceptShareConnection() As AdvantageFramework.ConceptShare.Classes.ConceptShareConnection
 
-        Using DataContext = New AdvantageFramework.Database.DataContext(Me._Session.ConnectionString, Me._Session.UserCode)
+        Return Nothing
 
-            CreateAdminConceptShareConnection = New AdvantageFramework.ConceptShare.Classes.ConceptShareConnection(DataContext)
+        ''Using DataContext = New AdvantageFramework.Database.DataContext(Me._Session.ConnectionString, Me._Session.UserCode)
 
-        End Using
+        ''    CreateAdminConceptShareConnection = New AdvantageFramework.ConceptShare.Classes.ConceptShareConnection(DataContext)
+
+        ''End Using
 
     End Function
 

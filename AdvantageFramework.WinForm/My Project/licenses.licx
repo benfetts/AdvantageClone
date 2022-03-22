@@ -1,3 +1,5 @@
-DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v20.1, Version=20.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraVerticalGrid.VGridControl, DevExpress.XtraVerticalGrid.v20.1, Version=20.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.DashboardWin.DashboardDesigner, DevExpress.Dashboard.v20.1.Win, Version=20.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraBars.Ribbon.RibbonControl, DevExpress.XtraBars.v20.1, Version=20.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraEditors.PictureEdit, DevExpress.XtraEditors.v20.1, Version=20.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraEditors.Repository.RepositoryItemDateEdit, DevExpress.XtraEditors.v20.1, Version=20.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a

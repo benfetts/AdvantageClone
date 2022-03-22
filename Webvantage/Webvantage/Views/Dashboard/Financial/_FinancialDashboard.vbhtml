@@ -323,7 +323,8 @@
             StartDate: '',
             EndDate: '',
             Page: '',
-            InitialLoadFlag: false
+            InitialLoadFlag: false,
+            OfficeCode: ''
         }
 
         function createGridDataSource() {

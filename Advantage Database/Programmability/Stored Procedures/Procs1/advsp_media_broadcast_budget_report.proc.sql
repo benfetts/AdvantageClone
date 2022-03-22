@@ -170,12 +170,12 @@ BEGIN
 			WHEN (HLT.USE_PRIMARY_DEMO = 1) THEN 
 					CASE
 						WHEN (PLANDATA.GoalGRP = 0) THEN 0.000
-						ELSE (TT.PrimaryGRP * 100.000)/PLANDATA.GoalGRP
+						ELSE TT.PrimaryGRP/PLANDATA.GoalGRP
 					END
 			ELSE 
 				CASE
 					WHEN (PLANDATA.GoalGRP = 0) THEN 0.000
-					ELSE (TT.SecondaryGRP * 100.000)/PLANDATA.GoalGRP
+					ELSE TT.SecondaryGRP/PLANDATA.GoalGRP
 				END
 		 END BudgetIndex
 
@@ -598,5 +598,5 @@ BEGIN
 	DROP TABLE #GrossData
 	DROP TABLE #TotalsTable
 
-END
+END 
 GO

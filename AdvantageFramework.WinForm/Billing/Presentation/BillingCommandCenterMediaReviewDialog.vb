@@ -567,40 +567,42 @@
         Private Sub ButtonItemActions_Export_Click(sender As Object, e As EventArgs) Handles ButtonItemActions_Export.Click
 
             'objects
-            Dim MediaSummaryList As Generic.List(Of AdvantageFramework.BillingCommandCenter.Classes.MediaSummary) = Nothing
-            Dim LayoutLoaded As Boolean = False
+            'Dim MediaSummaryList As Generic.List(Of AdvantageFramework.BillingCommandCenter.Classes.MediaSummary) = Nothing
+            'Dim LayoutLoaded As Boolean = False
 
-            MediaSummaryList = DataGridViewForm_MediaSummary.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.BillingCommandCenter.Classes.MediaSummary)().ToList
+            'MediaSummaryList = DataGridViewForm_MediaSummary.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.BillingCommandCenter.Classes.MediaSummary)().ToList
 
-            SaveGridLayout()
+            'SaveGridLayout()
 
-            LayoutLoaded = AdvantageFramework.WinForm.Presentation.Controls.LoadDataGridViewLayout(Session, DataGridViewForm_Export, Database.Entities.GridAdvantageType.BillingCommandCenterMediaReview)
+            'LayoutLoaded = AdvantageFramework.WinForm.Presentation.Controls.LoadDataGridViewLayout(Session, DataGridViewForm_Export, Database.Entities.GridAdvantageType.BillingCommandCenterMediaReview)
 
-            Try
+            'Try
 
-                DataGridViewForm_Export.DataSource = MediaSummaryList
+            '    DataGridViewForm_Export.DataSource = MediaSummaryList
 
-            Catch ex As Exception
+            'Catch ex As Exception
 
-            End Try
+            'End Try
 
-            If LayoutLoaded Then
+            'If LayoutLoaded Then
 
-                AdvantageFramework.WinForm.Presentation.Controls.SortGridViewBySortedColumns(DataGridViewForm_Export)
+            '    AdvantageFramework.WinForm.Presentation.Controls.SortGridViewBySortedColumns(DataGridViewForm_Export)
 
-            End If
+            'End If
 
-            AddFixedLeftColumns(DataGridViewForm_Export)
+            'AddFixedLeftColumns(DataGridViewForm_Export)
 
-            'https://www.devexpress.com/Support/Center/Question/Details/Q383062
-            DataGridViewForm_Export.CurrentView.ClearDocument()
-            DevExpress.Utils.Paint.XPaint.ForceGDIPlusPaint()
-            DataGridViewForm_Export.CurrentView.OptionsView.ColumnAutoWidth = False
-            DataGridViewForm_Export.CurrentView.BestFitColumns()
-            DataGridViewForm_Export.CurrentView.OptionsPrint.AutoWidth = False
-            DevExpress.Utils.Paint.XPaint.ForceAPIPaint()
+            ''https://www.devexpress.com/Support/Center/Question/Details/Q383062
+            'DataGridViewForm_Export.CurrentView.ClearDocument()
+            'DevExpress.Utils.Paint.XPaint.ForceGDIPlusPaint()
+            'DataGridViewForm_Export.CurrentView.OptionsView.ColumnAutoWidth = False
+            'DataGridViewForm_Export.CurrentView.BestFitColumns()
+            'DataGridViewForm_Export.CurrentView.OptionsPrint.AutoWidth = False
+            'DevExpress.Utils.Paint.XPaint.ForceAPIPaint()
 
-            DataGridViewForm_Export.Print(DefaultLookAndFeel.LookAndFeel, "Media Review", UseLandscape:=True)
+            'DataGridViewForm_Export.Print(DefaultLookAndFeel.LookAndFeel, "Media Review", UseLandscape:=True)
+
+            DataGridViewForm_MediaSummary.Print(DefaultLookAndFeel.LookAndFeel, "Media Review", UseLandscape:=True)
 
         End Sub
         Private Sub ButtonItemActions_BillingSelection_Click(sender As Object, e As EventArgs) Handles ButtonItemActions_BillingSelection.Click

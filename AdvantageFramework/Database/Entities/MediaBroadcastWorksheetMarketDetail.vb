@@ -337,12 +337,12 @@
         <Required>
         <Column("BOOK_PRIMARY_AQH_RATING")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
-        <AdvantageFramework.BaseClasses.Attributes.DecimalPrecisionAttribute(10, 1)>
+        <AdvantageFramework.BaseClasses.Attributes.DecimalPrecisionAttribute(10, 2)>
         Public Property BookPrimaryAQHRating() As Decimal
         <Required>
         <Column("PRIMARY_AQH_RATING")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
-        <AdvantageFramework.BaseClasses.Attributes.DecimalPrecisionAttribute(10, 1)>
+        <AdvantageFramework.BaseClasses.Attributes.DecimalPrecisionAttribute(10, 2)>
         Public Property PrimaryAQHRating() As Decimal
         <Required>
         <Column("BOOK_PRIMARY_AQH")>
@@ -434,12 +434,12 @@
         <Required>
         <Column("BOOK_SECONDARY_AQH_RATING")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
-        <AdvantageFramework.BaseClasses.Attributes.DecimalPrecisionAttribute(10, 1)>
+        <AdvantageFramework.BaseClasses.Attributes.DecimalPrecisionAttribute(10, 2)>
         Public Property BookSecondaryAQHRating() As Decimal
         <Required>
         <Column("SECONDARY_AQH_RATING")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
-        <AdvantageFramework.BaseClasses.Attributes.DecimalPrecisionAttribute(10, 1)>
+        <AdvantageFramework.BaseClasses.Attributes.DecimalPrecisionAttribute(10, 2)>
         Public Property SecondaryAQHRating() As Decimal
         <Required>
         <Column("BOOK_SECONDARY_AQH")>

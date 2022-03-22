@@ -314,22 +314,22 @@ End Class
 
         Dim IsActive As Boolean = False
 
-        'Check code set by DashboardController.vb
-        If HttpContext.Current.Session(AdvantageFramework.Proofing.ConceptShareSessionKey) IsNot Nothing Then
+        ''''Check code set by DashboardController.vb
+        ''If HttpContext.Current.Session(AdvantageFramework.Proofing.ConceptShareSessionKey) IsNot Nothing Then
 
-            IsActive = CType(HttpContext.Current.Session(AdvantageFramework.Proofing.ConceptShareSessionKey), Boolean)
+        ''    IsActive = CType(HttpContext.Current.Session(AdvantageFramework.Proofing.ConceptShareSessionKey), Boolean)
 
-        Else
+        ''Else
 
-            Using DbContext = New AdvantageFramework.Database.DbContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
+        ''    Using DbContext = New AdvantageFramework.Database.DbContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
 
-                IsActive = AdvantageFramework.Proofing.IsConceptShareActive(SecuritySession, DbContext, MiscFN.IsClientPortal)
+        ''        IsActive = AdvantageFramework.Proofing.IsConceptShareActive(SecuritySession, DbContext, MiscFN.IsClientPortal)
 
-            End Using
+        ''    End Using
 
-            HttpContext.Current.Session(AdvantageFramework.Proofing.ConceptShareSessionKey) = IsActive
+        ''    HttpContext.Current.Session(AdvantageFramework.Proofing.ConceptShareSessionKey) = IsActive
 
-        End If
+        ''End If
 
         Return IsActive
 

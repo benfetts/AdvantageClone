@@ -4499,12 +4499,12 @@ Public Class LookUp
                 strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_TxtDivisionCode').value = '" & Me.DivCode & "';"
                 strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_TxtProductCode').value = '" & Me.PrdCode & "';"
                 strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_TxtCampaign').value = '" & Me.CmpCode & "';"
-                strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_TxtCampaignDescription').value = '" & Me.CampaignDescription & "';"
+                strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_TxtCampaignDescription').value = '" & Me.CampaignDescription.ToString.Replace("'", "\'") & "';"
                 strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_HiddenFieldCampaignID').value = '" & Me.CampaignId & "';"
             ElseIf Request.QueryString("form") = "estcampaignsearch" Then
                 If Request.QueryString("type") = "estcampaignedit" Then
                     strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_TxtCampaignCode').value = '" & Me.CmpCode & "';"
-                    strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_TxtCampaignDescription').value = '" & Me.CampaignDescription & "';"
+                    strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_TxtCampaignDescription').value = '" & Me.CampaignDescription.ToString.Replace("'", "\'") & "';"
                     strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_HiddenfieldCampaignID').value = '" & Me.CampaignId & "';"
                 Else
                     strScript &= "CallingWindowContent.document.getElementById('ctl00_ContentPlaceHolderMain_txtClient').value = '" & Me.ClCode & "';"

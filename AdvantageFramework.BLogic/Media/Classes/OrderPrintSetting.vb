@@ -93,6 +93,8 @@
             MediaTitleOverride
             IncludeClientAddress
             IncludeImpressions
+            ShowTotalNetForGrossOrder
+            NewspaperIncludeCirculationQTY
         End Enum
 
 #End Region
@@ -186,6 +188,8 @@
         Public Property MediaTitleOverride As String
         Public Property IncludeClientAddress As Boolean
         Public Property IncludeImpressions As Boolean
+        Public Property ShowTotalNetForGrossOrder As Boolean
+        Public Property NewspaperIncludeCirculationQTY As Boolean
 
 #End Region
 
@@ -401,6 +405,8 @@
             Me.MediaTitleOverride = MediaOrderPrintSetting.MediaTitleOverride
             Me.IncludeClientAddress = MediaOrderPrintSetting.IncludeClientAddress
             Me.IncludeImpressions = CBool(MediaOrderPrintSetting.IncludeImpressions.GetValueOrDefault(0))
+            Me.ShowTotalNetForGrossOrder = MediaOrderPrintSetting.ShowTotalNetForGrossOrder
+            Me.NewspaperIncludeCirculationQTY = MediaOrderPrintSetting.NewspaperIncludeCirculationQTY
 
             _MediaOrderPrintSetting = MediaOrderPrintSetting
 
@@ -522,6 +528,8 @@
             MediaOrderPrintSetting.MediaTitleOverride = Me.MediaTitleOverride
             MediaOrderPrintSetting.IncludeClientAddress = Me.IncludeClientAddress
             MediaOrderPrintSetting.IncludeImpressions = If(Me.IncludeImpressions, 1, 0)
+            MediaOrderPrintSetting.ShowTotalNetForGrossOrder = Me.ShowTotalNetForGrossOrder
+            MediaOrderPrintSetting.NewspaperIncludeCirculationQTY = Me.NewspaperIncludeCirculationQTY
 
         End Sub
 

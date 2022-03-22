@@ -61,8 +61,9 @@
             RadioLineNumberColumn
             RadioShowZeroLineAmounts
 			RadioCloseDateColumn
-			RadioCustomInvoiceID
-		End Enum
+            RadioCustomInvoiceID
+            RadioStartDateColumn
+        End Enum
 
 #End Region
 
@@ -422,17 +423,20 @@
 				_RadioPriorBillAmountColumn = value
 			End Set
 		End Property
-		<System.Runtime.Serialization.DataMemberAttribute(),
-		System.ComponentModel.Category("Columns")>
-		Public Property RadioBilledToDateAmountColumn As Short
-			Get
-				RadioBilledToDateAmountColumn = _RadioBilledToDateAmountColumn
-			End Get
-			Set(ByVal value As Short)
-				_RadioBilledToDateAmountColumn = value
-			End Set
-		End Property
-		<System.Runtime.Serialization.DataMemberAttribute()>
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        System.ComponentModel.Category("Columns")>
+        Public Property RadioBilledToDateAmountColumn As Short
+            Get
+                RadioBilledToDateAmountColumn = _RadioBilledToDateAmountColumn
+            End Get
+            Set(ByVal value As Short)
+                _RadioBilledToDateAmountColumn = value
+            End Set
+        End Property
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        System.ComponentModel.Category("Columns")>
+        Public Property RadioStartDateColumn As Short
+        <System.Runtime.Serialization.DataMemberAttribute()>
 		Public Property RadioShowCommissionSeparately As Boolean
 			Get
 				RadioShowCommissionSeparately = _RadioShowCommissionSeparately
@@ -641,9 +645,10 @@
 			Me.RadioComponentDescriptionColumn = MediaInvoiceDefault.RadioComponentDescriptionColumn.GetValueOrDefault(0)
 			Me.RadioOrderDetailCommentColumn = MediaInvoiceDefault.RadioOrderDetailCommentColumn.GetValueOrDefault(0)
 			Me.RadioOrderHouseDetailCommentColumn = MediaInvoiceDefault.RadioOrderHouseDetailCommentColumn.GetValueOrDefault(0)
-			Me.RadioExtraChargesColumn = MediaInvoiceDefault.RadioExtraChargesColumn.GetValueOrDefault(0)
+            Me.RadioExtraChargesColumn = MediaInvoiceDefault.RadioExtraChargesColumn.GetValueOrDefault(0)
+            Me.RadioStartDateColumn = MediaInvoiceDefault.RadioStartDateColumn
 
-			Me.RadioShowCommissionSeparately = Convert.ToBoolean(MediaInvoiceDefault.RadioShowCommissionSeparately.GetValueOrDefault(0))
+            Me.RadioShowCommissionSeparately = Convert.ToBoolean(MediaInvoiceDefault.RadioShowCommissionSeparately.GetValueOrDefault(0))
 			Me.RadioShowRebateSeparately = Convert.ToBoolean(MediaInvoiceDefault.RadioShowRebateSeparately.GetValueOrDefault(0))
 			Me.RadioShowTaxSeparately = Convert.ToBoolean(MediaInvoiceDefault.RadioShowTaxSeparately.GetValueOrDefault(0))
 			Me.RadioShowBillingHistory = Convert.ToBoolean(MediaInvoiceDefault.RadioShowBillingHistory.GetValueOrDefault(0))
@@ -700,8 +705,9 @@
 			Me.RadioOrderDetailCommentColumn = InvoicePrintingMediaSetting.RadioOrderDetailCommentColumn.GetValueOrDefault(0)
 			Me.RadioOrderHouseDetailCommentColumn = InvoicePrintingMediaSetting.RadioOrderHouseDetailCommentColumn.GetValueOrDefault(0)
 			Me.RadioExtraChargesColumn = InvoicePrintingMediaSetting.RadioExtraChargesColumn.GetValueOrDefault(0)
+            Me.RadioStartDateColumn = InvoicePrintingMediaSetting.RadioStartDateColumn.GetValueOrDefault(0)
 
-			Me.RadioShowCommissionSeparately = InvoicePrintingMediaSetting.RadioShowCommissionSeparately.GetValueOrDefault(False)
+            Me.RadioShowCommissionSeparately = InvoicePrintingMediaSetting.RadioShowCommissionSeparately.GetValueOrDefault(False)
 			Me.RadioShowRebateSeparately = InvoicePrintingMediaSetting.RadioShowRebateSeparately.GetValueOrDefault(False)
 			Me.RadioShowTaxSeparately = InvoicePrintingMediaSetting.RadioShowTaxSeparately.GetValueOrDefault(False)
 			Me.RadioShowBillingHistory = InvoicePrintingMediaSetting.RadioShowBillingHistory.GetValueOrDefault(False)
@@ -806,9 +812,10 @@
 			InvoicePrintingMediaSetting.RadioComponentDescriptionColumn = Me.RadioComponentDescriptionColumn
 			InvoicePrintingMediaSetting.RadioOrderDetailCommentColumn = Me.RadioOrderDetailCommentColumn
 			InvoicePrintingMediaSetting.RadioOrderHouseDetailCommentColumn = Me.RadioOrderHouseDetailCommentColumn
-			InvoicePrintingMediaSetting.RadioExtraChargesColumn = Me.RadioExtraChargesColumn
+            InvoicePrintingMediaSetting.RadioExtraChargesColumn = Me.RadioExtraChargesColumn
+            InvoicePrintingMediaSetting.RadioStartDateColumn = Me.RadioStartDateColumn
 
-			InvoicePrintingMediaSetting.RadioShowCommissionSeparately = Me.RadioShowCommissionSeparately
+            InvoicePrintingMediaSetting.RadioShowCommissionSeparately = Me.RadioShowCommissionSeparately
 			InvoicePrintingMediaSetting.RadioShowRebateSeparately = Me.RadioShowRebateSeparately
 			InvoicePrintingMediaSetting.RadioShowTaxSeparately = Me.RadioShowTaxSeparately
 			InvoicePrintingMediaSetting.RadioShowBillingHistory = Me.RadioShowBillingHistory
@@ -862,9 +869,10 @@
 			MediaInvoiceDefault.RadioComponentDescriptionColumn = Me.RadioComponentDescriptionColumn
 			MediaInvoiceDefault.RadioOrderDetailCommentColumn = Me.RadioOrderDetailCommentColumn
 			MediaInvoiceDefault.RadioOrderHouseDetailCommentColumn = Me.RadioOrderHouseDetailCommentColumn
-			MediaInvoiceDefault.RadioExtraChargesColumn = Me.RadioExtraChargesColumn
+            MediaInvoiceDefault.RadioExtraChargesColumn = Me.RadioExtraChargesColumn
+            MediaInvoiceDefault.RadioStartDateColumn = Me.RadioStartDateColumn
 
-			MediaInvoiceDefault.RadioShowCommissionSeparately = Convert.ToInt16(Me.RadioShowCommissionSeparately)
+            MediaInvoiceDefault.RadioShowCommissionSeparately = Convert.ToInt16(Me.RadioShowCommissionSeparately)
 			MediaInvoiceDefault.RadioShowRebateSeparately = Convert.ToInt16(Me.RadioShowRebateSeparately)
 			MediaInvoiceDefault.RadioShowTaxSeparately = Convert.ToInt16(Me.RadioShowTaxSeparately)
 			MediaInvoiceDefault.RadioShowBillingHistory = Convert.ToInt16(Me.RadioShowBillingHistory)

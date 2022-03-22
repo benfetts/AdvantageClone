@@ -157,6 +157,13 @@
             };
             $.data(wrapper[0], 'wrapper', wrapperData);
         };
+        function OnEndCallback() {
+            setTimeout(function () {
+                if (ReportDashboard) {
+                    ReportDashboard.LoadDashboard("DRWDashboardID");
+                }
+            }, 0);
+        }
         function resizeDashboard() {
             var wrapper = $('#dashboardWrap');
             var wrapperData = wrapper.data('wrapper');
@@ -180,7 +187,7 @@
         });
         $(document).ready(function () {
 
-            console.log('document ready');
+            //console.log('document ready');
 
             ////cinPanel.Show();
 
@@ -317,7 +324,7 @@
                         <dx:ASPxGridView ID="ASPxGridViewDynamicReport" runat="server" Width="100%" Settings-ShowHorizontalScrollBar="True" ClientInstanceName="ReportGrid"
                             Settings-ShowTitlePanel="False" Settings-ShowVerticalScrollBar="False" Settings-EnableFilterControlPopupMenuScrolling="True"
                             Settings-ShowGroupFooter="VisibleIfExpanded" EnableCallbackCompression="false" SettingsPager-PageSize="25" EnableRowsCache="true">
-                            <ClientSideEvents ContextMenu="function(s, e) {if(e.objectType == 'header') 
+                            <ClientSideEvents EndCallback="OnEndCallback" ContextMenu="function(s, e) {if(e.objectType == 'header') 
                                                                         headerMenu.ShowAtPos(ASPxClientUtils.GetEventX(e.htmlEvent), ASPxClientUtils.GetEventY(e.htmlEvent));}" />
                             <SettingsBehavior ColumnResizeMode="Control" AutoExpandAllGroups="True" />
                             <SettingsDetail ExportMode="All" />

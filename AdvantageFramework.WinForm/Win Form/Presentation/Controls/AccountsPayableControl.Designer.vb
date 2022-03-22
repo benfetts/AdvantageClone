@@ -107,42 +107,43 @@
             Me.TextBoxControl_InvoiceNumber = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             Me.LabelControl_VendorTaxableAmount = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.TabControlControl_APDetails = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelRadioTab_Radio = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DataGridViewRadio_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.TabItemAPDetails_RadioTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelRadioDetailsTab_RadioDetails = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DataGridViewRadioDetails_BroadcastDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.TabItemAPDetails_RadioDetailsTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelMagazineTab_Magazine = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DataGridViewMagazine_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.TabItemAPDetails_MagazineTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelTVTab_TV = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DataGridViewTV_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.TabItemAPDetails_TVTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelTVDetailsTab_TVDetails = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabItemAPDetails_TVDetailsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelDocumentsTab_Documents = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelDocumentsPanel_DragDropInstruction = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.DocumentManagerControlDocuments_APDocuments = New AdvantageFramework.WinForm.Presentation.Controls.DocumentManagerControl()
+            Me.TabItemAPDetails_DocumentsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelProductionTab_Production = New DevComponents.DotNetBar.TabControlPanel()
             Me.DataGridViewProduction_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
             Me.TabItemAPDetails_ProductionTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelTVDetailsTab_TVDetails = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DataGridViewTVDetails_BroadcastDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.TabItemAPDetails_TVDetailsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelTVTab_TV = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DataGridViewTV_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.TabItemAPDetails_TVTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DocumentManagerControlExpenseReceipts_Receipts = New AdvantageFramework.WinForm.Presentation.Controls.DocumentManagerControl()
+            Me.TabItemAPDetails_ExpenseReceiptsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelRadioDetailsTab_RadioDetails = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DataGridViewRadioDetails_BroadcastDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.TabItemAPDetails_RadioDetailsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelRadioTab_Radio = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DataGridViewRadio_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.TabItemAPDetails_RadioTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelMagazineTab_Magazine = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DataGridViewMagazine_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.TabItemAPDetails_MagazineTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelInternetTab_Internet = New DevComponents.DotNetBar.TabControlPanel()
             Me.DataGridViewInternet_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
             Me.TabItemAPDetails_InternetTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelNonClientTab_NonClient = New DevComponents.DotNetBar.TabControlPanel()
             Me.DataGridViewNonClient_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
             Me.TabItemAPDetails_NonClientTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelDocumentsTab_Documents = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DocumentManagerControlDocuments_APDocuments = New AdvantageFramework.WinForm.Presentation.Controls.DocumentManagerControl()
-            Me.TabItemAPDetails_DocumentsTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DocumentManagerControlExpenseReceipts_Receipts = New AdvantageFramework.WinForm.Presentation.Controls.DocumentManagerControl()
-            Me.TabItemAPDetails_ExpenseReceiptsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelOutOfHomeTab_OutOfHome = New DevComponents.DotNetBar.TabControlPanel()
             Me.DataGridViewOutOfHome_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
             Me.TabItemAPDetails_OutOfHomeTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelNewspaperTab_Newspaper = New DevComponents.DotNetBar.TabControlPanel()
             Me.DataGridViewNewspaper_DistributionDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
             Me.TabItemAPDetails_NewspaperTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.DataGridViewTVDetails_BroadcastDetails = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
             Me.ExpandablePanelControl_HeaderInfo.SuspendLayout()
             CType(Me.PictureUpdateCurrency_Image.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.SearchableComboBoxControl_CurrencyCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,16 +179,16 @@
             CType(Me.SearchableComboBoxViewControl_InvoiceNumber, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.TabControlControl_APDetails, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlControl_APDetails.SuspendLayout()
-            Me.TabControlPanelRadioTab_Radio.SuspendLayout()
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.SuspendLayout()
-            Me.TabControlPanelMagazineTab_Magazine.SuspendLayout()
-            Me.TabControlPanelTVTab_TV.SuspendLayout()
-            Me.TabControlPanelTVDetailsTab_TVDetails.SuspendLayout()
+            Me.TabControlPanelDocumentsTab_Documents.SuspendLayout()
             Me.TabControlPanelProductionTab_Production.SuspendLayout()
+            Me.TabControlPanelTVDetailsTab_TVDetails.SuspendLayout()
+            Me.TabControlPanelTVTab_TV.SuspendLayout()
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.SuspendLayout()
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.SuspendLayout()
+            Me.TabControlPanelRadioTab_Radio.SuspendLayout()
+            Me.TabControlPanelMagazineTab_Magazine.SuspendLayout()
             Me.TabControlPanelInternetTab_Internet.SuspendLayout()
             Me.TabControlPanelNonClientTab_NonClient.SuspendLayout()
-            Me.TabControlPanelDocumentsTab_Documents.SuspendLayout()
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.SuspendLayout()
             Me.TabControlPanelOutOfHomeTab_OutOfHome.SuspendLayout()
             Me.TabControlPanelNewspaperTab_Newspaper.SuspendLayout()
             Me.SuspendLayout()
@@ -284,7 +285,6 @@
             Me.PictureUpdateCurrency_Image.Location = New System.Drawing.Point(379, 210)
             Me.PictureUpdateCurrency_Image.Name = "PictureUpdateCurrency_Image"
             Me.PictureUpdateCurrency_Image.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze
-            Me.PictureUpdateCurrency_Image.Properties.ZoomAccelerationFactor = 1.0R
             Me.PictureUpdateCurrency_Image.Size = New System.Drawing.Size(20, 20)
             Me.PictureUpdateCurrency_Image.TabIndex = 104
             Me.PictureUpdateCurrency_Image.ToolTip = "Click the image to sign-up for free at:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "https://currencylayer.com/" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
@@ -308,9 +308,9 @@
             Me.SearchableComboBoxControl_CurrencyCode.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
             Me.SearchableComboBoxControl_CurrencyCode.Properties.DisplayMember = "Description"
             Me.SearchableComboBoxControl_CurrencyCode.Properties.NullText = "Select Currency Code"
+            Me.SearchableComboBoxControl_CurrencyCode.Properties.PopupView = Me.GridView2
             Me.SearchableComboBoxControl_CurrencyCode.Properties.ShowClearButton = False
             Me.SearchableComboBoxControl_CurrencyCode.Properties.ValueMember = "Code"
-            Me.SearchableComboBoxControl_CurrencyCode.Properties.View = Me.GridView2
             Me.SearchableComboBoxControl_CurrencyCode.SecurityEnabled = True
             Me.SearchableComboBoxControl_CurrencyCode.SelectedValue = ""
             Me.SearchableComboBoxControl_CurrencyCode.Size = New System.Drawing.Size(50, 20)
@@ -376,6 +376,8 @@
             Me.GridView2.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Panel
             Me.GridView2.RestoredLayoutNonVisibleGridColumnList = Nothing
             Me.GridView2.RunStandardValidation = True
+            Me.GridView2.SkipAddingControlsOnModifyColumn = False
+            Me.GridView2.SkipSettingFontOnModifyColumn = False
             '
             'NumericInputControl_ExchangeAmount
             '
@@ -574,9 +576,9 @@
             Me.SearchableComboBoxControl_VendorTaxCode.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
             Me.SearchableComboBoxControl_VendorTaxCode.Properties.DisplayMember = "CodeAndDescription"
             Me.SearchableComboBoxControl_VendorTaxCode.Properties.NullText = "Select Vendor Service Tax"
+            Me.SearchableComboBoxControl_VendorTaxCode.Properties.PopupView = Me.GridView1
             Me.SearchableComboBoxControl_VendorTaxCode.Properties.ShowClearButton = False
             Me.SearchableComboBoxControl_VendorTaxCode.Properties.ValueMember = "ID"
-            Me.SearchableComboBoxControl_VendorTaxCode.Properties.View = Me.GridView1
             Me.SearchableComboBoxControl_VendorTaxCode.SecurityEnabled = True
             Me.SearchableComboBoxControl_VendorTaxCode.SelectedValue = Nothing
             Me.SearchableComboBoxControl_VendorTaxCode.Size = New System.Drawing.Size(129, 20)
@@ -596,6 +598,8 @@
             Me.GridView1.OptionsView.ShowGroupPanel = False
             Me.GridView1.RestoredLayoutNonVisibleGridColumnList = Nothing
             Me.GridView1.RunStandardValidation = True
+            Me.GridView1.SkipAddingControlsOnModifyColumn = False
+            Me.GridView1.SkipSettingFontOnModifyColumn = False
             '
             'LabelControl_Tax
             '
@@ -765,9 +769,9 @@
             Me.SearchableComboBoxControl_Vendor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
             Me.SearchableComboBoxControl_Vendor.Properties.DisplayMember = "Name"
             Me.SearchableComboBoxControl_Vendor.Properties.NullText = "Select Vendor"
+            Me.SearchableComboBoxControl_Vendor.Properties.PopupView = Me.SearchableComboBoxViewControl_Vendor
             Me.SearchableComboBoxControl_Vendor.Properties.ShowClearButton = False
             Me.SearchableComboBoxControl_Vendor.Properties.ValueMember = "Code"
-            Me.SearchableComboBoxControl_Vendor.Properties.View = Me.SearchableComboBoxViewControl_Vendor
             Me.SearchableComboBoxControl_Vendor.SecurityEnabled = True
             Me.SearchableComboBoxControl_Vendor.SelectedValue = Nothing
             Me.SearchableComboBoxControl_Vendor.Size = New System.Drawing.Size(262, 20)
@@ -832,6 +836,8 @@
             Me.SearchableComboBoxViewControl_Vendor.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Panel
             Me.SearchableComboBoxViewControl_Vendor.RestoredLayoutNonVisibleGridColumnList = Nothing
             Me.SearchableComboBoxViewControl_Vendor.RunStandardValidation = True
+            Me.SearchableComboBoxViewControl_Vendor.SkipAddingControlsOnModifyColumn = False
+            Me.SearchableComboBoxViewControl_Vendor.SkipSettingFontOnModifyColumn = False
             '
             'TabControlControl_InvoiceDetails
             '
@@ -1968,9 +1974,9 @@
             Me.SearchableComboBoxControl_InvoiceNumber.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
             Me.SearchableComboBoxControl_InvoiceNumber.Properties.DisplayMember = "InvoiceNumber"
             Me.SearchableComboBoxControl_InvoiceNumber.Properties.NullText = "Select Invoice"
+            Me.SearchableComboBoxControl_InvoiceNumber.Properties.PopupView = Me.SearchableComboBoxViewControl_InvoiceNumber
             Me.SearchableComboBoxControl_InvoiceNumber.Properties.ShowClearButton = False
             Me.SearchableComboBoxControl_InvoiceNumber.Properties.ValueMember = "InvoiceNumber"
-            Me.SearchableComboBoxControl_InvoiceNumber.Properties.View = Me.SearchableComboBoxViewControl_InvoiceNumber
             Me.SearchableComboBoxControl_InvoiceNumber.SecurityEnabled = True
             Me.SearchableComboBoxControl_InvoiceNumber.SelectedValue = "12345678901234567890"
             Me.SearchableComboBoxControl_InvoiceNumber.Size = New System.Drawing.Size(352, 20)
@@ -2035,6 +2041,8 @@
             Me.SearchableComboBoxViewControl_InvoiceNumber.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Panel
             Me.SearchableComboBoxViewControl_InvoiceNumber.RestoredLayoutNonVisibleGridColumnList = Nothing
             Me.SearchableComboBoxViewControl_InvoiceNumber.RunStandardValidation = True
+            Me.SearchableComboBoxViewControl_InvoiceNumber.SkipAddingControlsOnModifyColumn = False
+            Me.SearchableComboBoxViewControl_InvoiceNumber.SkipSettingFontOnModifyColumn = False
             '
             'TextBoxControl_InvoiceNumber
             '
@@ -2082,16 +2090,16 @@
             Me.TabControlControl_APDetails.CanReorderTabs = False
             Me.TabControlControl_APDetails.ColorScheme.TabBackground = System.Drawing.Color.White
             Me.TabControlControl_APDetails.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelDocumentsTab_Documents)
+            Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelProductionTab_Production)
             Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelTVDetailsTab_TVDetails)
             Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelTVTab_TV)
             Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts)
             Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelRadioDetailsTab_RadioDetails)
-            Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelProductionTab_Production)
             Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelRadioTab_Radio)
             Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelMagazineTab_Magazine)
             Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelInternetTab_Internet)
             Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelNonClientTab_NonClient)
-            Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelDocumentsTab_Documents)
             Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelOutOfHomeTab_OutOfHome)
             Me.TabControlControl_APDetails.Controls.Add(Me.TabControlPanelNewspaperTab_Newspaper)
             Me.TabControlControl_APDetails.Dock = System.Windows.Forms.DockStyle.Fill
@@ -2118,170 +2126,167 @@
             Me.TabControlControl_APDetails.Tabs.Add(Me.TabItemAPDetails_ExpenseReceiptsTab)
             Me.TabControlControl_APDetails.TabStop = False
             '
-            'TabControlPanelRadioTab_Radio
+            'TabControlPanelDocumentsTab_Documents
             '
-            Me.TabControlPanelRadioTab_Radio.Controls.Add(Me.DataGridViewRadio_DistributionDetails)
-            Me.TabControlPanelRadioTab_Radio.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelRadioTab_Radio.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelRadioTab_Radio.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelRadioTab_Radio.Name = "TabControlPanelRadioTab_Radio"
-            Me.TabControlPanelRadioTab_Radio.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelRadioTab_Radio.Size = New System.Drawing.Size(992, 235)
-            Me.TabControlPanelRadioTab_Radio.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelRadioTab_Radio.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelRadioTab_Radio.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelRadioTab_Radio.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelRadioTab_Radio.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelDocumentsTab_Documents.Controls.Add(Me.LabelDocumentsPanel_DragDropInstruction)
+            Me.TabControlPanelDocumentsTab_Documents.Controls.Add(Me.DocumentManagerControlDocuments_APDocuments)
+            Me.TabControlPanelDocumentsTab_Documents.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelDocumentsTab_Documents.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelDocumentsTab_Documents.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelDocumentsTab_Documents.Name = "TabControlPanelDocumentsTab_Documents"
+            Me.TabControlPanelDocumentsTab_Documents.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelDocumentsTab_Documents.Size = New System.Drawing.Size(992, 235)
+            Me.TabControlPanelDocumentsTab_Documents.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelDocumentsTab_Documents.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelDocumentsTab_Documents.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelDocumentsTab_Documents.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelDocumentsTab_Documents.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelRadioTab_Radio.Style.GradientAngle = 90
-            Me.TabControlPanelRadioTab_Radio.TabIndex = 7
-            Me.TabControlPanelRadioTab_Radio.TabItem = Me.TabItemAPDetails_RadioTab
+            Me.TabControlPanelDocumentsTab_Documents.Style.GradientAngle = 90
+            Me.TabControlPanelDocumentsTab_Documents.TabIndex = 11
+            Me.TabControlPanelDocumentsTab_Documents.TabItem = Me.TabItemAPDetails_DocumentsTab
             '
-            'DataGridViewRadio_DistributionDetails
+            'LabelDocumentsPanel_DragDropInstruction
             '
-            Me.DataGridViewRadio_DistributionDetails.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewRadio_DistributionDetails.AllowDragAndDrop = False
-            Me.DataGridViewRadio_DistributionDetails.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewRadio_DistributionDetails.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewRadio_DistributionDetails.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewRadio_DistributionDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.LabelDocumentsPanel_DragDropInstruction.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDocumentsPanel_DragDropInstruction.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDocumentsPanel_DragDropInstruction.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelDocumentsPanel_DragDropInstruction.Location = New System.Drawing.Point(4, 4)
+            Me.LabelDocumentsPanel_DragDropInstruction.Name = "LabelDocumentsPanel_DragDropInstruction"
+            Me.LabelDocumentsPanel_DragDropInstruction.Size = New System.Drawing.Size(981, 20)
+            Me.LabelDocumentsPanel_DragDropInstruction.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDocumentsPanel_DragDropInstruction.TabIndex = 15
+            Me.LabelDocumentsPanel_DragDropInstruction.Text = "Drag and drop documents to the grid or use the Upload button"
+            '
+            'DocumentManagerControlDocuments_APDocuments
+            '
+            Me.DocumentManagerControlDocuments_APDocuments.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewRadio_DistributionDetails.AutoFilterLookupColumns = False
-            Me.DataGridViewRadio_DistributionDetails.AutoloadRepositoryDatasource = True
-            Me.DataGridViewRadio_DistributionDetails.AutoUpdateViewCaption = True
-            Me.DataGridViewRadio_DistributionDetails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewRadio_DistributionDetails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewRadio_DistributionDetails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewRadio_DistributionDetails.ItemDescription = ""
-            Me.DataGridViewRadio_DistributionDetails.Location = New System.Drawing.Point(3, 4)
-            Me.DataGridViewRadio_DistributionDetails.Margin = New System.Windows.Forms.Padding(4)
-            Me.DataGridViewRadio_DistributionDetails.MultiSelect = True
-            Me.DataGridViewRadio_DistributionDetails.Name = "DataGridViewRadio_DistributionDetails"
-            Me.DataGridViewRadio_DistributionDetails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
-            Me.DataGridViewRadio_DistributionDetails.RunStandardValidation = True
-            Me.DataGridViewRadio_DistributionDetails.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewRadio_DistributionDetails.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewRadio_DistributionDetails.Size = New System.Drawing.Size(986, 227)
-            Me.DataGridViewRadio_DistributionDetails.TabIndex = 1
-            Me.DataGridViewRadio_DistributionDetails.UseEmbeddedNavigator = False
-            Me.DataGridViewRadio_DistributionDetails.ViewCaptionHeight = -1
+            Me.DocumentManagerControlDocuments_APDocuments.Location = New System.Drawing.Point(3, 31)
+            Me.DocumentManagerControlDocuments_APDocuments.Margin = New System.Windows.Forms.Padding(4)
+            Me.DocumentManagerControlDocuments_APDocuments.Name = "DocumentManagerControlDocuments_APDocuments"
+            Me.DocumentManagerControlDocuments_APDocuments.Size = New System.Drawing.Size(986, 200)
+            Me.DocumentManagerControlDocuments_APDocuments.TabIndex = 1
             '
-            'TabItemAPDetails_RadioTab
+            'TabItemAPDetails_DocumentsTab
             '
-            Me.TabItemAPDetails_RadioTab.AttachedControl = Me.TabControlPanelRadioTab_Radio
-            Me.TabItemAPDetails_RadioTab.Name = "TabItemAPDetails_RadioTab"
-            Me.TabItemAPDetails_RadioTab.Text = "Radio"
+            Me.TabItemAPDetails_DocumentsTab.AttachedControl = Me.TabControlPanelDocumentsTab_Documents
+            Me.TabItemAPDetails_DocumentsTab.Name = "TabItemAPDetails_DocumentsTab"
+            Me.TabItemAPDetails_DocumentsTab.Text = "Documents"
             '
-            'TabControlPanelRadioDetailsTab_RadioDetails
+            'TabControlPanelProductionTab_Production
             '
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Controls.Add(Me.DataGridViewRadioDetails_BroadcastDetails)
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Name = "TabControlPanelRadioDetailsTab_RadioDetails"
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Size = New System.Drawing.Size(992, 235)
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelProductionTab_Production.Controls.Add(Me.DataGridViewProduction_DistributionDetails)
+            Me.TabControlPanelProductionTab_Production.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelProductionTab_Production.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelProductionTab_Production.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelProductionTab_Production.Name = "TabControlPanelProductionTab_Production"
+            Me.TabControlPanelProductionTab_Production.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelProductionTab_Production.Size = New System.Drawing.Size(992, 235)
+            Me.TabControlPanelProductionTab_Production.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelProductionTab_Production.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelProductionTab_Production.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelProductionTab_Production.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelProductionTab_Production.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.GradientAngle = 90
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.TabIndex = 35
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.TabItem = Me.TabItemAPDetails_RadioDetailsTab
+            Me.TabControlPanelProductionTab_Production.Style.GradientAngle = 90
+            Me.TabControlPanelProductionTab_Production.TabIndex = 3
+            Me.TabControlPanelProductionTab_Production.TabItem = Me.TabItemAPDetails_ProductionTab
             '
-            'DataGridViewRadioDetails_BroadcastDetails
+            'DataGridViewProduction_DistributionDetails
             '
-            Me.DataGridViewRadioDetails_BroadcastDetails.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewRadioDetails_BroadcastDetails.AllowDragAndDrop = False
-            Me.DataGridViewRadioDetails_BroadcastDetails.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewRadioDetails_BroadcastDetails.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewRadioDetails_BroadcastDetails.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewRadioDetails_BroadcastDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.DataGridViewProduction_DistributionDetails.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewProduction_DistributionDetails.AllowDragAndDrop = False
+            Me.DataGridViewProduction_DistributionDetails.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewProduction_DistributionDetails.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewProduction_DistributionDetails.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewProduction_DistributionDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewRadioDetails_BroadcastDetails.AutoFilterLookupColumns = False
-            Me.DataGridViewRadioDetails_BroadcastDetails.AutoloadRepositoryDatasource = True
-            Me.DataGridViewRadioDetails_BroadcastDetails.AutoUpdateViewCaption = True
-            Me.DataGridViewRadioDetails_BroadcastDetails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewRadioDetails_BroadcastDetails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewRadioDetails_BroadcastDetails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewRadioDetails_BroadcastDetails.ItemDescription = "Item(s)"
-            Me.DataGridViewRadioDetails_BroadcastDetails.Location = New System.Drawing.Point(3, 4)
-            Me.DataGridViewRadioDetails_BroadcastDetails.MultiSelect = True
-            Me.DataGridViewRadioDetails_BroadcastDetails.Name = "DataGridViewRadioDetails_BroadcastDetails"
-            Me.DataGridViewRadioDetails_BroadcastDetails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
-            Me.DataGridViewRadioDetails_BroadcastDetails.RunStandardValidation = True
-            Me.DataGridViewRadioDetails_BroadcastDetails.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewRadioDetails_BroadcastDetails.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewRadioDetails_BroadcastDetails.Size = New System.Drawing.Size(986, 227)
-            Me.DataGridViewRadioDetails_BroadcastDetails.TabIndex = 0
-            Me.DataGridViewRadioDetails_BroadcastDetails.UseEmbeddedNavigator = False
-            Me.DataGridViewRadioDetails_BroadcastDetails.ViewCaptionHeight = -1
+            Me.DataGridViewProduction_DistributionDetails.AutoFilterLookupColumns = True
+            Me.DataGridViewProduction_DistributionDetails.AutoloadRepositoryDatasource = True
+            Me.DataGridViewProduction_DistributionDetails.AutoUpdateViewCaption = True
+            Me.DataGridViewProduction_DistributionDetails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewProduction_DistributionDetails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewProduction_DistributionDetails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewProduction_DistributionDetails.ItemDescription = ""
+            Me.DataGridViewProduction_DistributionDetails.Location = New System.Drawing.Point(3, 4)
+            Me.DataGridViewProduction_DistributionDetails.Margin = New System.Windows.Forms.Padding(4)
+            Me.DataGridViewProduction_DistributionDetails.MultiSelect = True
+            Me.DataGridViewProduction_DistributionDetails.Name = "DataGridViewProduction_DistributionDetails"
+            Me.DataGridViewProduction_DistributionDetails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
+            Me.DataGridViewProduction_DistributionDetails.RunStandardValidation = True
+            Me.DataGridViewProduction_DistributionDetails.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewProduction_DistributionDetails.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewProduction_DistributionDetails.Size = New System.Drawing.Size(986, 227)
+            Me.DataGridViewProduction_DistributionDetails.TabIndex = 0
+            Me.DataGridViewProduction_DistributionDetails.UseEmbeddedNavigator = False
+            Me.DataGridViewProduction_DistributionDetails.ViewCaptionHeight = -1
             '
-            'TabItemAPDetails_RadioDetailsTab
+            'TabItemAPDetails_ProductionTab
             '
-            Me.TabItemAPDetails_RadioDetailsTab.AttachedControl = Me.TabControlPanelRadioDetailsTab_RadioDetails
-            Me.TabItemAPDetails_RadioDetailsTab.Name = "TabItemAPDetails_RadioDetailsTab"
-            Me.TabItemAPDetails_RadioDetailsTab.Text = "Radio Details"
+            Me.TabItemAPDetails_ProductionTab.AttachedControl = Me.TabControlPanelProductionTab_Production
+            Me.TabItemAPDetails_ProductionTab.Name = "TabItemAPDetails_ProductionTab"
+            Me.TabItemAPDetails_ProductionTab.Text = "Production"
             '
-            'TabControlPanelMagazineTab_Magazine
+            'TabControlPanelTVDetailsTab_TVDetails
             '
-            Me.TabControlPanelMagazineTab_Magazine.Controls.Add(Me.DataGridViewMagazine_DistributionDetails)
-            Me.TabControlPanelMagazineTab_Magazine.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelMagazineTab_Magazine.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelMagazineTab_Magazine.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelMagazineTab_Magazine.Name = "TabControlPanelMagazineTab_Magazine"
-            Me.TabControlPanelMagazineTab_Magazine.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelMagazineTab_Magazine.Size = New System.Drawing.Size(992, 235)
-            Me.TabControlPanelMagazineTab_Magazine.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelMagazineTab_Magazine.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelMagazineTab_Magazine.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelMagazineTab_Magazine.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelMagazineTab_Magazine.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelTVDetailsTab_TVDetails.Controls.Add(Me.DataGridViewTVDetails_BroadcastDetails)
+            Me.TabControlPanelTVDetailsTab_TVDetails.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelTVDetailsTab_TVDetails.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelTVDetailsTab_TVDetails.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelTVDetailsTab_TVDetails.Name = "TabControlPanelTVDetailsTab_TVDetails"
+            Me.TabControlPanelTVDetailsTab_TVDetails.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelTVDetailsTab_TVDetails.Size = New System.Drawing.Size(992, 235)
+            Me.TabControlPanelTVDetailsTab_TVDetails.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelTVDetailsTab_TVDetails.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelTVDetailsTab_TVDetails.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelTVDetailsTab_TVDetails.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelTVDetailsTab_TVDetails.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelMagazineTab_Magazine.Style.GradientAngle = 90
-            Me.TabControlPanelMagazineTab_Magazine.TabIndex = 5
-            Me.TabControlPanelMagazineTab_Magazine.TabItem = Me.TabItemAPDetails_MagazineTab
+            Me.TabControlPanelTVDetailsTab_TVDetails.Style.GradientAngle = 90
+            Me.TabControlPanelTVDetailsTab_TVDetails.TabIndex = 39
+            Me.TabControlPanelTVDetailsTab_TVDetails.TabItem = Me.TabItemAPDetails_TVDetailsTab
             '
-            'DataGridViewMagazine_DistributionDetails
+            'DataGridViewTVDetails_BroadcastDetails
             '
-            Me.DataGridViewMagazine_DistributionDetails.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewMagazine_DistributionDetails.AllowDragAndDrop = False
-            Me.DataGridViewMagazine_DistributionDetails.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewMagazine_DistributionDetails.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewMagazine_DistributionDetails.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewMagazine_DistributionDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.DataGridViewTVDetails_BroadcastDetails.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewTVDetails_BroadcastDetails.AllowDragAndDrop = False
+            Me.DataGridViewTVDetails_BroadcastDetails.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewTVDetails_BroadcastDetails.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewTVDetails_BroadcastDetails.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewTVDetails_BroadcastDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewMagazine_DistributionDetails.AutoFilterLookupColumns = False
-            Me.DataGridViewMagazine_DistributionDetails.AutoloadRepositoryDatasource = True
-            Me.DataGridViewMagazine_DistributionDetails.AutoUpdateViewCaption = True
-            Me.DataGridViewMagazine_DistributionDetails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewMagazine_DistributionDetails.DataSource = Nothing
-            Me.DataGridViewMagazine_DistributionDetails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewMagazine_DistributionDetails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewMagazine_DistributionDetails.ItemDescription = ""
-            Me.DataGridViewMagazine_DistributionDetails.Location = New System.Drawing.Point(3, 4)
-            Me.DataGridViewMagazine_DistributionDetails.Margin = New System.Windows.Forms.Padding(4)
-            Me.DataGridViewMagazine_DistributionDetails.MultiSelect = True
-            Me.DataGridViewMagazine_DistributionDetails.Name = "DataGridViewMagazine_DistributionDetails"
-            Me.DataGridViewMagazine_DistributionDetails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
-            Me.DataGridViewMagazine_DistributionDetails.RunStandardValidation = True
-            Me.DataGridViewMagazine_DistributionDetails.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewMagazine_DistributionDetails.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewMagazine_DistributionDetails.Size = New System.Drawing.Size(986, 227)
-            Me.DataGridViewMagazine_DistributionDetails.TabIndex = 0
-            Me.DataGridViewMagazine_DistributionDetails.UseEmbeddedNavigator = False
-            Me.DataGridViewMagazine_DistributionDetails.ViewCaptionHeight = -1
+            Me.DataGridViewTVDetails_BroadcastDetails.AutoFilterLookupColumns = False
+            Me.DataGridViewTVDetails_BroadcastDetails.AutoloadRepositoryDatasource = True
+            Me.DataGridViewTVDetails_BroadcastDetails.AutoUpdateViewCaption = True
+            Me.DataGridViewTVDetails_BroadcastDetails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewTVDetails_BroadcastDetails.DataSource = Nothing
+            Me.DataGridViewTVDetails_BroadcastDetails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewTVDetails_BroadcastDetails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewTVDetails_BroadcastDetails.ItemDescription = "Item(s)"
+            Me.DataGridViewTVDetails_BroadcastDetails.Location = New System.Drawing.Point(3, 4)
+            Me.DataGridViewTVDetails_BroadcastDetails.MultiSelect = True
+            Me.DataGridViewTVDetails_BroadcastDetails.Name = "DataGridViewTVDetails_BroadcastDetails"
+            Me.DataGridViewTVDetails_BroadcastDetails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
+            Me.DataGridViewTVDetails_BroadcastDetails.RunStandardValidation = True
+            Me.DataGridViewTVDetails_BroadcastDetails.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewTVDetails_BroadcastDetails.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewTVDetails_BroadcastDetails.Size = New System.Drawing.Size(986, 227)
+            Me.DataGridViewTVDetails_BroadcastDetails.TabIndex = 1
+            Me.DataGridViewTVDetails_BroadcastDetails.UseEmbeddedNavigator = False
+            Me.DataGridViewTVDetails_BroadcastDetails.ViewCaptionHeight = -1
             '
-            'TabItemAPDetails_MagazineTab
+            'TabItemAPDetails_TVDetailsTab
             '
-            Me.TabItemAPDetails_MagazineTab.AttachedControl = Me.TabControlPanelMagazineTab_Magazine
-            Me.TabItemAPDetails_MagazineTab.Name = "TabItemAPDetails_MagazineTab"
-            Me.TabItemAPDetails_MagazineTab.Text = "Magazine"
+            Me.TabItemAPDetails_TVDetailsTab.AttachedControl = Me.TabControlPanelTVDetailsTab_TVDetails
+            Me.TabItemAPDetails_TVDetailsTab.Name = "TabItemAPDetails_TVDetailsTab"
+            Me.TabItemAPDetails_TVDetailsTab.Text = "TV Details"
             '
             'TabControlPanelTVTab_TV
             '
@@ -2338,85 +2343,206 @@
             Me.TabItemAPDetails_TVTab.Name = "TabItemAPDetails_TVTab"
             Me.TabItemAPDetails_TVTab.Text = "TV"
             '
-            'TabControlPanelTVDetailsTab_TVDetails
+            'TabControlPanelExpenseReceiptsTab_ExpenseReceipts
             '
-            Me.TabControlPanelTVDetailsTab_TVDetails.Controls.Add(Me.DataGridViewTVDetails_BroadcastDetails)
-            Me.TabControlPanelTVDetailsTab_TVDetails.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelTVDetailsTab_TVDetails.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelTVDetailsTab_TVDetails.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelTVDetailsTab_TVDetails.Name = "TabControlPanelTVDetailsTab_TVDetails"
-            Me.TabControlPanelTVDetailsTab_TVDetails.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelTVDetailsTab_TVDetails.Size = New System.Drawing.Size(992, 235)
-            Me.TabControlPanelTVDetailsTab_TVDetails.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelTVDetailsTab_TVDetails.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelTVDetailsTab_TVDetails.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelTVDetailsTab_TVDetails.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelTVDetailsTab_TVDetails.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Controls.Add(Me.DocumentManagerControlExpenseReceipts_Receipts)
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Name = "TabControlPanelExpenseReceiptsTab_ExpenseReceipts"
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Size = New System.Drawing.Size(992, 235)
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelTVDetailsTab_TVDetails.Style.GradientAngle = 90
-            Me.TabControlPanelTVDetailsTab_TVDetails.TabIndex = 39
-            Me.TabControlPanelTVDetailsTab_TVDetails.TabItem = Me.TabItemAPDetails_TVDetailsTab
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.GradientAngle = 90
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.TabIndex = 12
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.TabItem = Me.TabItemAPDetails_ExpenseReceiptsTab
             '
-            'TabItemAPDetails_TVDetailsTab
+            'DocumentManagerControlExpenseReceipts_Receipts
             '
-            Me.TabItemAPDetails_TVDetailsTab.AttachedControl = Me.TabControlPanelTVDetailsTab_TVDetails
-            Me.TabItemAPDetails_TVDetailsTab.Name = "TabItemAPDetails_TVDetailsTab"
-            Me.TabItemAPDetails_TVDetailsTab.Text = "TV Details"
-            '
-            'TabControlPanelProductionTab_Production
-            '
-            Me.TabControlPanelProductionTab_Production.Controls.Add(Me.DataGridViewProduction_DistributionDetails)
-            Me.TabControlPanelProductionTab_Production.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelProductionTab_Production.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelProductionTab_Production.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelProductionTab_Production.Name = "TabControlPanelProductionTab_Production"
-            Me.TabControlPanelProductionTab_Production.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelProductionTab_Production.Size = New System.Drawing.Size(992, 235)
-            Me.TabControlPanelProductionTab_Production.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelProductionTab_Production.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelProductionTab_Production.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelProductionTab_Production.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelProductionTab_Production.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelProductionTab_Production.Style.GradientAngle = 90
-            Me.TabControlPanelProductionTab_Production.TabIndex = 3
-            Me.TabControlPanelProductionTab_Production.TabItem = Me.TabItemAPDetails_ProductionTab
-            '
-            'DataGridViewProduction_DistributionDetails
-            '
-            Me.DataGridViewProduction_DistributionDetails.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewProduction_DistributionDetails.AllowDragAndDrop = False
-            Me.DataGridViewProduction_DistributionDetails.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewProduction_DistributionDetails.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewProduction_DistributionDetails.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewProduction_DistributionDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.DocumentManagerControlExpenseReceipts_Receipts.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewProduction_DistributionDetails.AutoFilterLookupColumns = True
-            Me.DataGridViewProduction_DistributionDetails.AutoloadRepositoryDatasource = True
-            Me.DataGridViewProduction_DistributionDetails.AutoUpdateViewCaption = True
-            Me.DataGridViewProduction_DistributionDetails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewProduction_DistributionDetails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewProduction_DistributionDetails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewProduction_DistributionDetails.ItemDescription = ""
-            Me.DataGridViewProduction_DistributionDetails.Location = New System.Drawing.Point(3, 4)
-            Me.DataGridViewProduction_DistributionDetails.Margin = New System.Windows.Forms.Padding(4)
-            Me.DataGridViewProduction_DistributionDetails.MultiSelect = True
-            Me.DataGridViewProduction_DistributionDetails.Name = "DataGridViewProduction_DistributionDetails"
-            Me.DataGridViewProduction_DistributionDetails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
-            Me.DataGridViewProduction_DistributionDetails.RunStandardValidation = True
-            Me.DataGridViewProduction_DistributionDetails.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewProduction_DistributionDetails.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewProduction_DistributionDetails.Size = New System.Drawing.Size(986, 227)
-            Me.DataGridViewProduction_DistributionDetails.TabIndex = 0
-            Me.DataGridViewProduction_DistributionDetails.UseEmbeddedNavigator = False
-            Me.DataGridViewProduction_DistributionDetails.ViewCaptionHeight = -1
+            Me.DocumentManagerControlExpenseReceipts_Receipts.Location = New System.Drawing.Point(3, 4)
+            Me.DocumentManagerControlExpenseReceipts_Receipts.Margin = New System.Windows.Forms.Padding(4)
+            Me.DocumentManagerControlExpenseReceipts_Receipts.Name = "DocumentManagerControlExpenseReceipts_Receipts"
+            Me.DocumentManagerControlExpenseReceipts_Receipts.Size = New System.Drawing.Size(986, 227)
+            Me.DocumentManagerControlExpenseReceipts_Receipts.TabIndex = 2
             '
-            'TabItemAPDetails_ProductionTab
+            'TabItemAPDetails_ExpenseReceiptsTab
             '
-            Me.TabItemAPDetails_ProductionTab.AttachedControl = Me.TabControlPanelProductionTab_Production
-            Me.TabItemAPDetails_ProductionTab.Name = "TabItemAPDetails_ProductionTab"
-            Me.TabItemAPDetails_ProductionTab.Text = "Production"
+            Me.TabItemAPDetails_ExpenseReceiptsTab.AttachedControl = Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts
+            Me.TabItemAPDetails_ExpenseReceiptsTab.Name = "TabItemAPDetails_ExpenseReceiptsTab"
+            Me.TabItemAPDetails_ExpenseReceiptsTab.Text = "Expense Receipts"
+            '
+            'TabControlPanelRadioDetailsTab_RadioDetails
+            '
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Controls.Add(Me.DataGridViewRadioDetails_BroadcastDetails)
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Name = "TabControlPanelRadioDetailsTab_RadioDetails"
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Size = New System.Drawing.Size(992, 235)
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.Style.GradientAngle = 90
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.TabIndex = 35
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.TabItem = Me.TabItemAPDetails_RadioDetailsTab
+            '
+            'DataGridViewRadioDetails_BroadcastDetails
+            '
+            Me.DataGridViewRadioDetails_BroadcastDetails.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewRadioDetails_BroadcastDetails.AllowDragAndDrop = False
+            Me.DataGridViewRadioDetails_BroadcastDetails.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewRadioDetails_BroadcastDetails.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewRadioDetails_BroadcastDetails.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewRadioDetails_BroadcastDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewRadioDetails_BroadcastDetails.AutoFilterLookupColumns = False
+            Me.DataGridViewRadioDetails_BroadcastDetails.AutoloadRepositoryDatasource = True
+            Me.DataGridViewRadioDetails_BroadcastDetails.AutoUpdateViewCaption = True
+            Me.DataGridViewRadioDetails_BroadcastDetails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewRadioDetails_BroadcastDetails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewRadioDetails_BroadcastDetails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewRadioDetails_BroadcastDetails.ItemDescription = "Item(s)"
+            Me.DataGridViewRadioDetails_BroadcastDetails.Location = New System.Drawing.Point(3, 4)
+            Me.DataGridViewRadioDetails_BroadcastDetails.MultiSelect = True
+            Me.DataGridViewRadioDetails_BroadcastDetails.Name = "DataGridViewRadioDetails_BroadcastDetails"
+            Me.DataGridViewRadioDetails_BroadcastDetails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
+            Me.DataGridViewRadioDetails_BroadcastDetails.RunStandardValidation = True
+            Me.DataGridViewRadioDetails_BroadcastDetails.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewRadioDetails_BroadcastDetails.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewRadioDetails_BroadcastDetails.Size = New System.Drawing.Size(986, 227)
+            Me.DataGridViewRadioDetails_BroadcastDetails.TabIndex = 0
+            Me.DataGridViewRadioDetails_BroadcastDetails.UseEmbeddedNavigator = False
+            Me.DataGridViewRadioDetails_BroadcastDetails.ViewCaptionHeight = -1
+            '
+            'TabItemAPDetails_RadioDetailsTab
+            '
+            Me.TabItemAPDetails_RadioDetailsTab.AttachedControl = Me.TabControlPanelRadioDetailsTab_RadioDetails
+            Me.TabItemAPDetails_RadioDetailsTab.Name = "TabItemAPDetails_RadioDetailsTab"
+            Me.TabItemAPDetails_RadioDetailsTab.Text = "Radio Details"
+            '
+            'TabControlPanelRadioTab_Radio
+            '
+            Me.TabControlPanelRadioTab_Radio.Controls.Add(Me.DataGridViewRadio_DistributionDetails)
+            Me.TabControlPanelRadioTab_Radio.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelRadioTab_Radio.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelRadioTab_Radio.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelRadioTab_Radio.Name = "TabControlPanelRadioTab_Radio"
+            Me.TabControlPanelRadioTab_Radio.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelRadioTab_Radio.Size = New System.Drawing.Size(992, 235)
+            Me.TabControlPanelRadioTab_Radio.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelRadioTab_Radio.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelRadioTab_Radio.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelRadioTab_Radio.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelRadioTab_Radio.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelRadioTab_Radio.Style.GradientAngle = 90
+            Me.TabControlPanelRadioTab_Radio.TabIndex = 7
+            Me.TabControlPanelRadioTab_Radio.TabItem = Me.TabItemAPDetails_RadioTab
+            '
+            'DataGridViewRadio_DistributionDetails
+            '
+            Me.DataGridViewRadio_DistributionDetails.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewRadio_DistributionDetails.AllowDragAndDrop = False
+            Me.DataGridViewRadio_DistributionDetails.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewRadio_DistributionDetails.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewRadio_DistributionDetails.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewRadio_DistributionDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewRadio_DistributionDetails.AutoFilterLookupColumns = False
+            Me.DataGridViewRadio_DistributionDetails.AutoloadRepositoryDatasource = True
+            Me.DataGridViewRadio_DistributionDetails.AutoUpdateViewCaption = True
+            Me.DataGridViewRadio_DistributionDetails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewRadio_DistributionDetails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewRadio_DistributionDetails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewRadio_DistributionDetails.ItemDescription = ""
+            Me.DataGridViewRadio_DistributionDetails.Location = New System.Drawing.Point(3, 4)
+            Me.DataGridViewRadio_DistributionDetails.Margin = New System.Windows.Forms.Padding(4)
+            Me.DataGridViewRadio_DistributionDetails.MultiSelect = True
+            Me.DataGridViewRadio_DistributionDetails.Name = "DataGridViewRadio_DistributionDetails"
+            Me.DataGridViewRadio_DistributionDetails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
+            Me.DataGridViewRadio_DistributionDetails.RunStandardValidation = True
+            Me.DataGridViewRadio_DistributionDetails.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewRadio_DistributionDetails.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewRadio_DistributionDetails.Size = New System.Drawing.Size(986, 227)
+            Me.DataGridViewRadio_DistributionDetails.TabIndex = 1
+            Me.DataGridViewRadio_DistributionDetails.UseEmbeddedNavigator = False
+            Me.DataGridViewRadio_DistributionDetails.ViewCaptionHeight = -1
+            '
+            'TabItemAPDetails_RadioTab
+            '
+            Me.TabItemAPDetails_RadioTab.AttachedControl = Me.TabControlPanelRadioTab_Radio
+            Me.TabItemAPDetails_RadioTab.Name = "TabItemAPDetails_RadioTab"
+            Me.TabItemAPDetails_RadioTab.Text = "Radio"
+            '
+            'TabControlPanelMagazineTab_Magazine
+            '
+            Me.TabControlPanelMagazineTab_Magazine.Controls.Add(Me.DataGridViewMagazine_DistributionDetails)
+            Me.TabControlPanelMagazineTab_Magazine.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelMagazineTab_Magazine.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelMagazineTab_Magazine.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelMagazineTab_Magazine.Name = "TabControlPanelMagazineTab_Magazine"
+            Me.TabControlPanelMagazineTab_Magazine.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelMagazineTab_Magazine.Size = New System.Drawing.Size(992, 235)
+            Me.TabControlPanelMagazineTab_Magazine.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelMagazineTab_Magazine.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelMagazineTab_Magazine.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelMagazineTab_Magazine.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelMagazineTab_Magazine.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelMagazineTab_Magazine.Style.GradientAngle = 90
+            Me.TabControlPanelMagazineTab_Magazine.TabIndex = 5
+            Me.TabControlPanelMagazineTab_Magazine.TabItem = Me.TabItemAPDetails_MagazineTab
+            '
+            'DataGridViewMagazine_DistributionDetails
+            '
+            Me.DataGridViewMagazine_DistributionDetails.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewMagazine_DistributionDetails.AllowDragAndDrop = False
+            Me.DataGridViewMagazine_DistributionDetails.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewMagazine_DistributionDetails.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewMagazine_DistributionDetails.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewMagazine_DistributionDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewMagazine_DistributionDetails.AutoFilterLookupColumns = False
+            Me.DataGridViewMagazine_DistributionDetails.AutoloadRepositoryDatasource = True
+            Me.DataGridViewMagazine_DistributionDetails.AutoUpdateViewCaption = True
+            Me.DataGridViewMagazine_DistributionDetails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewMagazine_DistributionDetails.DataSource = Nothing
+            Me.DataGridViewMagazine_DistributionDetails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewMagazine_DistributionDetails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewMagazine_DistributionDetails.ItemDescription = ""
+            Me.DataGridViewMagazine_DistributionDetails.Location = New System.Drawing.Point(3, 4)
+            Me.DataGridViewMagazine_DistributionDetails.Margin = New System.Windows.Forms.Padding(4)
+            Me.DataGridViewMagazine_DistributionDetails.MultiSelect = True
+            Me.DataGridViewMagazine_DistributionDetails.Name = "DataGridViewMagazine_DistributionDetails"
+            Me.DataGridViewMagazine_DistributionDetails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
+            Me.DataGridViewMagazine_DistributionDetails.RunStandardValidation = True
+            Me.DataGridViewMagazine_DistributionDetails.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewMagazine_DistributionDetails.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewMagazine_DistributionDetails.Size = New System.Drawing.Size(986, 227)
+            Me.DataGridViewMagazine_DistributionDetails.TabIndex = 0
+            Me.DataGridViewMagazine_DistributionDetails.UseEmbeddedNavigator = False
+            Me.DataGridViewMagazine_DistributionDetails.ViewCaptionHeight = -1
+            '
+            'TabItemAPDetails_MagazineTab
+            '
+            Me.TabItemAPDetails_MagazineTab.AttachedControl = Me.TabControlPanelMagazineTab_Magazine
+            Me.TabItemAPDetails_MagazineTab.Name = "TabItemAPDetails_MagazineTab"
+            Me.TabItemAPDetails_MagazineTab.Text = "Magazine"
             '
             'TabControlPanelInternetTab_Internet
             '
@@ -2529,78 +2655,6 @@
             Me.TabItemAPDetails_NonClientTab.Name = "TabItemAPDetails_NonClientTab"
             Me.TabItemAPDetails_NonClientTab.Text = "Non-Client"
             '
-            'TabControlPanelDocumentsTab_Documents
-            '
-            Me.TabControlPanelDocumentsTab_Documents.Controls.Add(Me.DocumentManagerControlDocuments_APDocuments)
-            Me.TabControlPanelDocumentsTab_Documents.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelDocumentsTab_Documents.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelDocumentsTab_Documents.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelDocumentsTab_Documents.Name = "TabControlPanelDocumentsTab_Documents"
-            Me.TabControlPanelDocumentsTab_Documents.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelDocumentsTab_Documents.Size = New System.Drawing.Size(992, 235)
-            Me.TabControlPanelDocumentsTab_Documents.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelDocumentsTab_Documents.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelDocumentsTab_Documents.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelDocumentsTab_Documents.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelDocumentsTab_Documents.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelDocumentsTab_Documents.Style.GradientAngle = 90
-            Me.TabControlPanelDocumentsTab_Documents.TabIndex = 11
-            Me.TabControlPanelDocumentsTab_Documents.TabItem = Me.TabItemAPDetails_DocumentsTab
-            '
-            'DocumentManagerControlDocuments_APDocuments
-            '
-            Me.DocumentManagerControlDocuments_APDocuments.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DocumentManagerControlDocuments_APDocuments.Location = New System.Drawing.Point(3, 4)
-            Me.DocumentManagerControlDocuments_APDocuments.Margin = New System.Windows.Forms.Padding(4)
-            Me.DocumentManagerControlDocuments_APDocuments.Name = "DocumentManagerControlDocuments_APDocuments"
-            Me.DocumentManagerControlDocuments_APDocuments.Size = New System.Drawing.Size(986, 227)
-            Me.DocumentManagerControlDocuments_APDocuments.TabIndex = 1
-            '
-            'TabItemAPDetails_DocumentsTab
-            '
-            Me.TabItemAPDetails_DocumentsTab.AttachedControl = Me.TabControlPanelDocumentsTab_Documents
-            Me.TabItemAPDetails_DocumentsTab.Name = "TabItemAPDetails_DocumentsTab"
-            Me.TabItemAPDetails_DocumentsTab.Text = "Documents"
-            '
-            'TabControlPanelExpenseReceiptsTab_ExpenseReceipts
-            '
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Controls.Add(Me.DocumentManagerControlExpenseReceipts_Receipts)
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Name = "TabControlPanelExpenseReceiptsTab_ExpenseReceipts"
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Size = New System.Drawing.Size(992, 235)
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.Style.GradientAngle = 90
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.TabIndex = 12
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.TabItem = Me.TabItemAPDetails_ExpenseReceiptsTab
-            '
-            'DocumentManagerControlExpenseReceipts_Receipts
-            '
-            Me.DocumentManagerControlExpenseReceipts_Receipts.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DocumentManagerControlExpenseReceipts_Receipts.Location = New System.Drawing.Point(3, 4)
-            Me.DocumentManagerControlExpenseReceipts_Receipts.Margin = New System.Windows.Forms.Padding(4)
-            Me.DocumentManagerControlExpenseReceipts_Receipts.Name = "DocumentManagerControlExpenseReceipts_Receipts"
-            Me.DocumentManagerControlExpenseReceipts_Receipts.Size = New System.Drawing.Size(986, 227)
-            Me.DocumentManagerControlExpenseReceipts_Receipts.TabIndex = 2
-            '
-            'TabItemAPDetails_ExpenseReceiptsTab
-            '
-            Me.TabItemAPDetails_ExpenseReceiptsTab.AttachedControl = Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts
-            Me.TabItemAPDetails_ExpenseReceiptsTab.Name = "TabItemAPDetails_ExpenseReceiptsTab"
-            Me.TabItemAPDetails_ExpenseReceiptsTab.Text = "Expense Receipts"
-            '
             'TabControlPanelOutOfHomeTab_OutOfHome
             '
             Me.TabControlPanelOutOfHomeTab_OutOfHome.Controls.Add(Me.DataGridViewOutOfHome_DistributionDetails)
@@ -2711,36 +2765,6 @@
             Me.TabItemAPDetails_NewspaperTab.Name = "TabItemAPDetails_NewspaperTab"
             Me.TabItemAPDetails_NewspaperTab.Text = "Newspaper"
             '
-            'DataGridViewTVDetails_BroadcastDetails
-            '
-            Me.DataGridViewTVDetails_BroadcastDetails.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewTVDetails_BroadcastDetails.AllowDragAndDrop = False
-            Me.DataGridViewTVDetails_BroadcastDetails.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewTVDetails_BroadcastDetails.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewTVDetails_BroadcastDetails.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewTVDetails_BroadcastDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewTVDetails_BroadcastDetails.AutoFilterLookupColumns = False
-            Me.DataGridViewTVDetails_BroadcastDetails.AutoloadRepositoryDatasource = True
-            Me.DataGridViewTVDetails_BroadcastDetails.AutoUpdateViewCaption = True
-            Me.DataGridViewTVDetails_BroadcastDetails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewTVDetails_BroadcastDetails.DataSource = Nothing
-            Me.DataGridViewTVDetails_BroadcastDetails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewTVDetails_BroadcastDetails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewTVDetails_BroadcastDetails.ItemDescription = "Item(s)"
-            Me.DataGridViewTVDetails_BroadcastDetails.Location = New System.Drawing.Point(3, 4)
-            Me.DataGridViewTVDetails_BroadcastDetails.MultiSelect = True
-            Me.DataGridViewTVDetails_BroadcastDetails.Name = "DataGridViewTVDetails_BroadcastDetails"
-            Me.DataGridViewTVDetails_BroadcastDetails.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
-            Me.DataGridViewTVDetails_BroadcastDetails.RunStandardValidation = True
-            Me.DataGridViewTVDetails_BroadcastDetails.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewTVDetails_BroadcastDetails.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewTVDetails_BroadcastDetails.Size = New System.Drawing.Size(986, 227)
-            Me.DataGridViewTVDetails_BroadcastDetails.TabIndex = 1
-            Me.DataGridViewTVDetails_BroadcastDetails.UseEmbeddedNavigator = False
-            Me.DataGridViewTVDetails_BroadcastDetails.ViewCaptionHeight = -1
-            '
             'AccountsPayableControl
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2785,16 +2809,16 @@
             CType(Me.SearchableComboBoxViewControl_InvoiceNumber, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.TabControlControl_APDetails, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlControl_APDetails.ResumeLayout(False)
-            Me.TabControlPanelRadioTab_Radio.ResumeLayout(False)
-            Me.TabControlPanelRadioDetailsTab_RadioDetails.ResumeLayout(False)
-            Me.TabControlPanelMagazineTab_Magazine.ResumeLayout(False)
-            Me.TabControlPanelTVTab_TV.ResumeLayout(False)
-            Me.TabControlPanelTVDetailsTab_TVDetails.ResumeLayout(False)
+            Me.TabControlPanelDocumentsTab_Documents.ResumeLayout(False)
             Me.TabControlPanelProductionTab_Production.ResumeLayout(False)
+            Me.TabControlPanelTVDetailsTab_TVDetails.ResumeLayout(False)
+            Me.TabControlPanelTVTab_TV.ResumeLayout(False)
+            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.ResumeLayout(False)
+            Me.TabControlPanelRadioDetailsTab_RadioDetails.ResumeLayout(False)
+            Me.TabControlPanelRadioTab_Radio.ResumeLayout(False)
+            Me.TabControlPanelMagazineTab_Magazine.ResumeLayout(False)
             Me.TabControlPanelInternetTab_Internet.ResumeLayout(False)
             Me.TabControlPanelNonClientTab_NonClient.ResumeLayout(False)
-            Me.TabControlPanelDocumentsTab_Documents.ResumeLayout(False)
-            Me.TabControlPanelExpenseReceiptsTab_ExpenseReceipts.ResumeLayout(False)
             Me.TabControlPanelOutOfHomeTab_OutOfHome.ResumeLayout(False)
             Me.TabControlPanelNewspaperTab_Newspaper.ResumeLayout(False)
             Me.ResumeLayout(False)
@@ -2918,6 +2942,7 @@
         Friend WithEvents TabItemAPDetails_TVDetailsTab As DevComponents.DotNetBar.TabItem
         Friend WithEvents DataGridViewRadioDetails_BroadcastDetails As DataGridView
         Friend WithEvents DataGridViewTVDetails_BroadcastDetails As DataGridView
+        Friend WithEvents LabelDocumentsPanel_DragDropInstruction As Label
     End Class
 
 End Namespace

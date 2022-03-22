@@ -56,6 +56,9 @@
 
             Me.SearchableComboBoxForm_FindBuyer.SelectedValue = _FindBuyerEmployeeCode
 
+            SearchableComboBoxForm_FindBuyer.ActiveFilterString = "[IsInactive] = False"
+            SearchableComboBoxForm_ReplaceBuyer.ActiveFilterString = "[IsInactive] = False"
+
         End Sub
         Private Sub SaveViewModel()
 

@@ -1,4 +1,4 @@
-Namespace Reporting.Database.Classes
+﻿Namespace Reporting.Database.Classes
 
     <Serializable()>
     Public Class DirectIndirectTimeReport
@@ -18,6 +18,8 @@ Namespace Reporting.Database.Classes
             EmployeeFirstName
             EmployeeLastName
             EmployeeLastFirst
+            EmployeeTitle
+            EmployeeCurrentTitle
             EmployeeAccountNumber
             IsEmployeeFreelance
             IsActiveFreelance
@@ -92,6 +94,8 @@ Namespace Reporting.Database.Classes
         Private _EmployeeFirstName As String = Nothing
         Private _EmployeeLastName As String = Nothing
         Private _EmployeeLastFirst As String = Nothing
+        Private _EmployeeTitle As String = Nothing
+        Private _EmployeeCurrentTitle As String = Nothing
         Private _EmployeeAccountNumber As String = Nothing
         Private _IsEmployeeFreelance As String = Nothing
         Private _IsActiveFreelance As String = Nothing
@@ -220,6 +224,24 @@ Namespace Reporting.Database.Classes
             End Get
             Set(value As String)
                 _EmployeeLastFirst = value
+            End Set
+        End Property
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property EmployeeTitle() As String
+            Get
+                EmployeeTitle = _EmployeeTitle
+            End Get
+            Set(value As String)
+                _EmployeeTitle = value
+            End Set
+        End Property
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property EmployeeCurrentTitle() As String
+            Get
+                EmployeeCurrentTitle = _EmployeeCurrentTitle
+            End Get
+            Set(ByVal value As String)
+                _EmployeeCurrentTitle = value
             End Set
         End Property
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>

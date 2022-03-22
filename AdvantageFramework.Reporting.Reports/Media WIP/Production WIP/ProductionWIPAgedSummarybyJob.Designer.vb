@@ -61,11 +61,6 @@
             Dim XrSummary33 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary34 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary35 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
-            Dim XrSummary36 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
-            Dim XrSummary37 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
-            Dim XrSummary38 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
-            Dim XrSummary39 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
-            Dim XrSummary40 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
             Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
             Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
@@ -77,7 +72,6 @@
             Me.label72 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label68 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label45 = New DevExpress.XtraReports.UI.XRLabel()
-            Me.label46 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label47 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label48 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label49 = New DevExpress.XtraReports.UI.XRLabel()
@@ -97,13 +91,11 @@
             Me.label16 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label18 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label14 = New DevExpress.XtraReports.UI.XRLabel()
-            Me.label29 = New DevExpress.XtraReports.UI.XRLabel()
             Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
             Me.label10 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label9 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label22 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label21 = New DevExpress.XtraReports.UI.XRLabel()
-            Me.label53 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label54 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label55 = New DevExpress.XtraReports.UI.XRLabel()
             Me.line2 = New DevExpress.XtraReports.UI.XRLine()
@@ -128,7 +120,6 @@
             Me.label73 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label74 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label51 = New DevExpress.XtraReports.UI.XRLabel()
-            Me.label56 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label57 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label58 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label59 = New DevExpress.XtraReports.UI.XRLabel()
@@ -142,7 +133,6 @@
             Me.label62 = New DevExpress.XtraReports.UI.XRLabel()
             Me.line5 = New DevExpress.XtraReports.UI.XRLine()
             Me.label37 = New DevExpress.XtraReports.UI.XRLabel()
-            Me.label38 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label41 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label42 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label43 = New DevExpress.XtraReports.UI.XRLabel()
@@ -156,7 +146,6 @@
             Me.label66 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label67 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label28 = New DevExpress.XtraReports.UI.XRLabel()
-            Me.label30 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label32 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label33 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label34 = New DevExpress.XtraReports.UI.XRLabel()
@@ -227,7 +216,7 @@
             '
             'OfficeFooter
             '
-            Me.OfficeFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label71, Me.label72, Me.label68, Me.label45, Me.label46, Me.label47, Me.label48, Me.label49, Me.label50, Me.label31})
+            Me.OfficeFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label71, Me.label72, Me.label68, Me.label45, Me.label47, Me.label48, Me.label49, Me.label50, Me.label31})
             Me.OfficeFooter.HeightF = 20.0!
             Me.OfficeFooter.Level = 3
             Me.OfficeFooter.Name = "OfficeFooter"
@@ -235,9 +224,9 @@
             '
             'label71
             '
-            Me.label71.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SixtyDays")})
+            Me.label71.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "NinetyDays")})
             Me.label71.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label71.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 0!)
+            Me.label71.LocationFloat = New DevExpress.Utils.PointFloat(625.0001!, 0!)
             Me.label71.Multiline = True
             Me.label71.Name = "label71"
             Me.label71.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -252,9 +241,9 @@
             '
             'label72
             '
-            Me.label72.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "NinetyDays")})
+            Me.label72.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "OneHundredTwentyDays")})
             Me.label72.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label72.LocationFloat = New DevExpress.Utils.PointFloat(625.0001!, 0!)
+            Me.label72.LocationFloat = New DevExpress.Utils.PointFloat(700.0001!, 0!)
             Me.label72.Multiline = True
             Me.label72.Name = "label72"
             Me.label72.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -296,70 +285,53 @@
             Me.label45.TextFormatString = "{0:n2}"
             Me.label45.WordWrap = False
             '
-            'label46
-            '
-            Me.label46.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Over120Days")})
-            Me.label46.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label46.LocationFloat = New DevExpress.Utils.PointFloat(775.0!, 0!)
-            Me.label46.Multiline = True
-            Me.label46.Name = "label46"
-            Me.label46.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-            Me.label46.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
-            Me.label46.StylePriority.UseFont = False
-            Me.label46.StylePriority.UseTextAlignment = False
-            XrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label46.Summary = XrSummary4
-            Me.label46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-            Me.label46.TextFormatString = "{0:n2}"
-            Me.label46.WordWrap = False
-            '
             'label47
             '
-            Me.label47.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Current")})
+            Me.label47.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ThirtyDays")})
             Me.label47.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label47.LocationFloat = New DevExpress.Utils.PointFloat(400.0001!, 0!)
+            Me.label47.LocationFloat = New DevExpress.Utils.PointFloat(475.0001!, 0!)
             Me.label47.Multiline = True
             Me.label47.Name = "label47"
             Me.label47.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label47.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label47.StylePriority.UseFont = False
             Me.label47.StylePriority.UseTextAlignment = False
-            XrSummary5.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label47.Summary = XrSummary5
+            XrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label47.Summary = XrSummary4
             Me.label47.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label47.TextFormatString = "{0:n2}"
             Me.label47.WordWrap = False
             '
             'label48
             '
-            Me.label48.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ThirtyDays")})
+            Me.label48.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SixtyDays")})
             Me.label48.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label48.LocationFloat = New DevExpress.Utils.PointFloat(475.0001!, 0!)
+            Me.label48.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 0!)
             Me.label48.Multiline = True
             Me.label48.Name = "label48"
             Me.label48.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label48.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label48.StylePriority.UseFont = False
             Me.label48.StylePriority.UseTextAlignment = False
-            XrSummary6.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label48.Summary = XrSummary6
+            XrSummary5.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label48.Summary = XrSummary5
             Me.label48.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label48.TextFormatString = "{0:n2}"
             Me.label48.WordWrap = False
             '
             'label49
             '
-            Me.label49.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "OneHundredTwentyDays")})
+            Me.label49.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Over120Days")})
             Me.label49.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label49.LocationFloat = New DevExpress.Utils.PointFloat(700.0!, 0!)
+            Me.label49.LocationFloat = New DevExpress.Utils.PointFloat(775.0!, 0!)
             Me.label49.Multiline = True
             Me.label49.Name = "label49"
             Me.label49.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label49.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label49.StylePriority.UseFont = False
             Me.label49.StylePriority.UseTextAlignment = False
-            XrSummary7.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label49.Summary = XrSummary7
+            XrSummary6.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label49.Summary = XrSummary6
             Me.label49.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label49.TextFormatString = "{0:n2}"
             Me.label49.WordWrap = False
@@ -375,8 +347,8 @@
             Me.label50.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label50.StylePriority.UseFont = False
             Me.label50.StylePriority.UseTextAlignment = False
-            XrSummary8.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label50.Summary = XrSummary8
+            XrSummary7.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label50.Summary = XrSummary7
             Me.label50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label50.TextFormatString = "{0:n2}"
             Me.label50.WordWrap = False
@@ -401,40 +373,40 @@
             '
             'JobCompFooter
             '
-            Me.JobCompFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label20, Me.label15, Me.label19, Me.label27, Me.label26, Me.label25, Me.label24, Me.label23, Me.label17, Me.label16, Me.label18, Me.label14, Me.label29})
+            Me.JobCompFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label20, Me.label15, Me.label19, Me.label27, Me.label26, Me.label25, Me.label24, Me.label23, Me.label17, Me.label16, Me.label18, Me.label14})
             Me.JobCompFooter.HeightF = 20.0!
             Me.JobCompFooter.Name = "JobCompFooter"
             '
             'label20
             '
-            Me.label20.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "NinetyDays")})
+            Me.label20.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "OneHundredTwentyDays")})
             Me.label20.Font = New System.Drawing.Font("Arial", 8.25!)
-            Me.label20.LocationFloat = New DevExpress.Utils.PointFloat(625.0001!, 0!)
+            Me.label20.LocationFloat = New DevExpress.Utils.PointFloat(700.0001!, 0!)
             Me.label20.Multiline = True
             Me.label20.Name = "label20"
             Me.label20.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label20.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label20.StylePriority.UseFont = False
             Me.label20.StylePriority.UseTextAlignment = False
-            XrSummary9.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label20.Summary = XrSummary9
+            XrSummary8.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label20.Summary = XrSummary8
             Me.label20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label20.TextFormatString = "{0:n2}"
             Me.label20.WordWrap = False
             '
             'label15
             '
-            Me.label15.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SixtyDays")})
+            Me.label15.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "NinetyDays")})
             Me.label15.Font = New System.Drawing.Font("Arial", 8.25!)
-            Me.label15.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 0!)
+            Me.label15.LocationFloat = New DevExpress.Utils.PointFloat(625.0001!, 0!)
             Me.label15.Multiline = True
             Me.label15.Name = "label15"
             Me.label15.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label15.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label15.StylePriority.UseFont = False
             Me.label15.StylePriority.UseTextAlignment = False
-            XrSummary10.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label15.Summary = XrSummary10
+            XrSummary9.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label15.Summary = XrSummary9
             Me.label15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label15.TextFormatString = "{0:n2}"
             Me.label15.WordWrap = False
@@ -465,8 +437,8 @@
             Me.label27.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label27.StylePriority.UseFont = False
             Me.label27.StylePriority.UseTextAlignment = False
-            XrSummary11.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label27.Summary = XrSummary11
+            XrSummary10.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label27.Summary = XrSummary10
             Me.label27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label27.TextFormatString = "{0:n2}"
             Me.label27.WordWrap = False
@@ -482,59 +454,59 @@
             Me.label26.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label26.StylePriority.UseFont = False
             Me.label26.StylePriority.UseTextAlignment = False
-            XrSummary12.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label26.Summary = XrSummary12
+            XrSummary11.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label26.Summary = XrSummary11
             Me.label26.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label26.TextFormatString = "{0:n2}"
             Me.label26.WordWrap = False
             '
             'label25
             '
-            Me.label25.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "OneHundredTwentyDays")})
+            Me.label25.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Over120Days")})
             Me.label25.Font = New System.Drawing.Font("Arial", 8.25!)
-            Me.label25.LocationFloat = New DevExpress.Utils.PointFloat(700.0001!, 0!)
+            Me.label25.LocationFloat = New DevExpress.Utils.PointFloat(775.0001!, 0!)
             Me.label25.Multiline = True
             Me.label25.Name = "label25"
             Me.label25.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label25.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label25.StylePriority.UseFont = False
             Me.label25.StylePriority.UseTextAlignment = False
-            XrSummary13.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label25.Summary = XrSummary13
+            XrSummary12.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label25.Summary = XrSummary12
             Me.label25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label25.TextFormatString = "{0:n2}"
             Me.label25.WordWrap = False
             '
             'label24
             '
-            Me.label24.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ThirtyDays")})
+            Me.label24.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SixtyDays")})
             Me.label24.Font = New System.Drawing.Font("Arial", 8.25!)
-            Me.label24.LocationFloat = New DevExpress.Utils.PointFloat(475.0001!, 0!)
+            Me.label24.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 0!)
             Me.label24.Multiline = True
             Me.label24.Name = "label24"
             Me.label24.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label24.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label24.StylePriority.UseFont = False
             Me.label24.StylePriority.UseTextAlignment = False
-            XrSummary14.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label24.Summary = XrSummary14
+            XrSummary13.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label24.Summary = XrSummary13
             Me.label24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label24.TextFormatString = "{0:n2}"
             Me.label24.WordWrap = False
             '
             'label23
             '
-            Me.label23.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Current")})
+            Me.label23.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ThirtyDays")})
             Me.label23.Font = New System.Drawing.Font("Arial", 8.25!)
-            Me.label23.LocationFloat = New DevExpress.Utils.PointFloat(400.0001!, 0!)
+            Me.label23.LocationFloat = New DevExpress.Utils.PointFloat(475.0001!, 0!)
             Me.label23.Multiline = True
             Me.label23.Name = "label23"
             Me.label23.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label23.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label23.StylePriority.UseFont = False
             Me.label23.StylePriority.UseTextAlignment = False
-            XrSummary15.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label23.Summary = XrSummary15
+            XrSummary14.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label23.Summary = XrSummary14
             Me.label23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label23.TextFormatString = "{0:n2}"
             Me.label23.WordWrap = False
@@ -592,53 +564,36 @@
             Me.label14.TextFormatString = "{0:000000}"
             Me.label14.WordWrap = False
             '
-            'label29
-            '
-            Me.label29.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Over120Days")})
-            Me.label29.Font = New System.Drawing.Font("Arial", 8.25!)
-            Me.label29.LocationFloat = New DevExpress.Utils.PointFloat(775.0001!, 0!)
-            Me.label29.Multiline = True
-            Me.label29.Name = "label29"
-            Me.label29.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-            Me.label29.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
-            Me.label29.StylePriority.UseFont = False
-            Me.label29.StylePriority.UseTextAlignment = False
-            XrSummary16.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label29.Summary = XrSummary16
-            Me.label29.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-            Me.label29.TextFormatString = "{0:n2}"
-            Me.label29.WordWrap = False
-            '
             'PageHeader
             '
-            Me.PageHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label10, Me.label9, Me.label22, Me.label21, Me.label53, Me.label54, Me.label55, Me.line2, Me.label13, Me.label12, Me.label11, Me.label8, Me.label6, Me.label7, Me.label2, Me.label1, Me.label40, Me.label39, Me.line1})
+            Me.PageHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label10, Me.label9, Me.label22, Me.label21, Me.label54, Me.label55, Me.line2, Me.label13, Me.label12, Me.label11, Me.label8, Me.label6, Me.label7, Me.label2, Me.label1, Me.label40, Me.label39, Me.line1})
             Me.PageHeader.HeightF = 118.0!
             Me.PageHeader.Name = "PageHeader"
             '
             'label10
             '
             Me.label10.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label10.LocationFloat = New DevExpress.Utils.PointFloat(625.0001!, 70.82672!)
+            Me.label10.LocationFloat = New DevExpress.Utils.PointFloat(700.0!, 70.82672!)
             Me.label10.Multiline = True
             Me.label10.Name = "label10"
             Me.label10.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label10.SizeF = New System.Drawing.SizeF(75.0!, 40.0033!)
             Me.label10.StylePriority.UseFont = False
             Me.label10.StylePriority.UseTextAlignment = False
-            Me.label10.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "90-Days"
+            Me.label10.Text = "Over 90-Days"
             Me.label10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
             '
             'label9
             '
             Me.label9.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label9.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 70.82672!)
+            Me.label9.LocationFloat = New DevExpress.Utils.PointFloat(625.0!, 70.82672!)
             Me.label9.Multiline = True
             Me.label9.Name = "label9"
             Me.label9.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label9.SizeF = New System.Drawing.SizeF(75.0!, 40.0033!)
             Me.label9.StylePriority.UseFont = False
             Me.label9.StylePriority.UseTextAlignment = False
-            Me.label9.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "60-Days"
+            Me.label9.Text = "Over 60-Days"
             Me.label9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
             '
             'label22
@@ -666,19 +621,6 @@
             Me.label21.StylePriority.UseTextAlignment = False
             Me.label21.Text = "Job" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Opened"
             Me.label21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-            '
-            'label53
-            '
-            Me.label53.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label53.LocationFloat = New DevExpress.Utils.PointFloat(775.0001!, 70.83002!)
-            Me.label53.Multiline = True
-            Me.label53.Name = "label53"
-            Me.label53.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-            Me.label53.SizeF = New System.Drawing.SizeF(75.0!, 40.00333!)
-            Me.label53.StylePriority.UseFont = False
-            Me.label53.StylePriority.UseTextAlignment = False
-            Me.label53.Text = "Over" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "120-Days"
-            Me.label53.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
             '
             'label54
             '
@@ -721,33 +663,33 @@
             'label13
             '
             Me.label13.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label13.LocationFloat = New DevExpress.Utils.PointFloat(700.0001!, 70.82999!)
+            Me.label13.LocationFloat = New DevExpress.Utils.PointFloat(775.0!, 70.82999!)
             Me.label13.Multiline = True
             Me.label13.Name = "label13"
             Me.label13.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label13.SizeF = New System.Drawing.SizeF(75.0!, 40.00333!)
             Me.label13.StylePriority.UseFont = False
             Me.label13.StylePriority.UseTextAlignment = False
-            Me.label13.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "120-Days"
+            Me.label13.Text = "Over " & Global.Microsoft.VisualBasic.ChrW(10) & "120-Days"
             Me.label13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
             '
             'label12
             '
             Me.label12.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label12.LocationFloat = New DevExpress.Utils.PointFloat(475.0001!, 70.83002!)
+            Me.label12.LocationFloat = New DevExpress.Utils.PointFloat(550.0!, 70.83002!)
             Me.label12.Multiline = True
             Me.label12.Name = "label12"
             Me.label12.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label12.SizeF = New System.Drawing.SizeF(75.0!, 40.0033!)
             Me.label12.StylePriority.UseFont = False
             Me.label12.StylePriority.UseTextAlignment = False
-            Me.label12.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "30-Days"
+            Me.label12.Text = "Over " & Global.Microsoft.VisualBasic.ChrW(10) & "30-Days"
             Me.label12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
             '
             'label11
             '
             Me.label11.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label11.LocationFloat = New DevExpress.Utils.PointFloat(400.0001!, 70.83002!)
+            Me.label11.LocationFloat = New DevExpress.Utils.PointFloat(475.0!, 70.83002!)
             Me.label11.Multiline = True
             Me.label11.Name = "label11"
             Me.label11.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -914,40 +856,40 @@
             '
             'ReportFooter
             '
-            Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label73, Me.label74, Me.label51, Me.label56, Me.label57, Me.label58, Me.label59, Me.label60, Me.label35})
+            Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label73, Me.label74, Me.label51, Me.label57, Me.label58, Me.label59, Me.label60, Me.label35})
             Me.ReportFooter.HeightF = 50.20835!
             Me.ReportFooter.Name = "ReportFooter"
             '
             'label73
             '
-            Me.label73.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SixtyDays")})
+            Me.label73.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "NinetyDays")})
             Me.label73.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label73.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 27.08333!)
+            Me.label73.LocationFloat = New DevExpress.Utils.PointFloat(625.0!, 27.08333!)
             Me.label73.Multiline = True
             Me.label73.Name = "label73"
             Me.label73.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label73.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label73.StylePriority.UseFont = False
             Me.label73.StylePriority.UseTextAlignment = False
-            XrSummary17.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-            Me.label73.Summary = XrSummary17
+            XrSummary15.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.label73.Summary = XrSummary15
             Me.label73.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label73.TextFormatString = "{0:n2}"
             Me.label73.WordWrap = False
             '
             'label74
             '
-            Me.label74.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "NinetyDays")})
+            Me.label74.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "OneHundredTwentyDays")})
             Me.label74.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label74.LocationFloat = New DevExpress.Utils.PointFloat(625.0001!, 27.08333!)
+            Me.label74.LocationFloat = New DevExpress.Utils.PointFloat(700.0!, 27.08333!)
             Me.label74.Multiline = True
             Me.label74.Name = "label74"
             Me.label74.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label74.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label74.StylePriority.UseFont = False
             Me.label74.StylePriority.UseTextAlignment = False
-            XrSummary18.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-            Me.label74.Summary = XrSummary18
+            XrSummary16.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.label74.Summary = XrSummary16
             Me.label74.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label74.TextFormatString = "{0:n2}"
             Me.label74.WordWrap = False
@@ -963,76 +905,59 @@
             Me.label51.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label51.StylePriority.UseFont = False
             Me.label51.StylePriority.UseTextAlignment = False
-            XrSummary19.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-            Me.label51.Summary = XrSummary19
+            XrSummary17.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.label51.Summary = XrSummary17
             Me.label51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label51.TextFormatString = "{0:n2}"
             Me.label51.WordWrap = False
             '
-            'label56
-            '
-            Me.label56.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Over120Days")})
-            Me.label56.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label56.LocationFloat = New DevExpress.Utils.PointFloat(775.0001!, 27.08333!)
-            Me.label56.Multiline = True
-            Me.label56.Name = "label56"
-            Me.label56.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-            Me.label56.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
-            Me.label56.StylePriority.UseFont = False
-            Me.label56.StylePriority.UseTextAlignment = False
-            XrSummary20.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-            Me.label56.Summary = XrSummary20
-            Me.label56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-            Me.label56.TextFormatString = "{0:n2}"
-            Me.label56.WordWrap = False
-            '
             'label57
             '
-            Me.label57.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Current")})
+            Me.label57.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ThirtyDays")})
             Me.label57.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label57.LocationFloat = New DevExpress.Utils.PointFloat(400.0001!, 27.08333!)
+            Me.label57.LocationFloat = New DevExpress.Utils.PointFloat(475.0!, 27.08333!)
             Me.label57.Multiline = True
             Me.label57.Name = "label57"
             Me.label57.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label57.SizeF = New System.Drawing.SizeF(74.70819!, 20.0!)
             Me.label57.StylePriority.UseFont = False
             Me.label57.StylePriority.UseTextAlignment = False
-            XrSummary21.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-            Me.label57.Summary = XrSummary21
+            XrSummary18.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.label57.Summary = XrSummary18
             Me.label57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label57.TextFormatString = "{0:n2}"
             Me.label57.WordWrap = False
             '
             'label58
             '
-            Me.label58.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ThirtyDays")})
+            Me.label58.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SixtyDays")})
             Me.label58.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label58.LocationFloat = New DevExpress.Utils.PointFloat(474.7083!, 27.08333!)
+            Me.label58.LocationFloat = New DevExpress.Utils.PointFloat(549.7082!, 27.08333!)
             Me.label58.Multiline = True
             Me.label58.Name = "label58"
             Me.label58.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label58.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label58.StylePriority.UseFont = False
             Me.label58.StylePriority.UseTextAlignment = False
-            XrSummary22.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-            Me.label58.Summary = XrSummary22
+            XrSummary19.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.label58.Summary = XrSummary19
             Me.label58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label58.TextFormatString = "{0:n2}"
             Me.label58.WordWrap = False
             '
             'label59
             '
-            Me.label59.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "OneHundredTwentyDays")})
+            Me.label59.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Over120Days")})
             Me.label59.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label59.LocationFloat = New DevExpress.Utils.PointFloat(700.0001!, 27.08333!)
+            Me.label59.LocationFloat = New DevExpress.Utils.PointFloat(775.0!, 27.08333!)
             Me.label59.Multiline = True
             Me.label59.Name = "label59"
             Me.label59.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label59.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label59.StylePriority.UseFont = False
             Me.label59.StylePriority.UseTextAlignment = False
-            XrSummary23.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-            Me.label59.Summary = XrSummary23
+            XrSummary20.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.label59.Summary = XrSummary20
             Me.label59.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label59.TextFormatString = "{0:n2}"
             Me.label59.WordWrap = False
@@ -1048,8 +973,8 @@
             Me.label60.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label60.StylePriority.UseFont = False
             Me.label60.StylePriority.UseTextAlignment = False
-            XrSummary24.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-            Me.label60.Summary = XrSummary24
+            XrSummary21.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.label60.Summary = XrSummary21
             Me.label60.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label60.TextFormatString = "{0:n2}"
             Me.label60.WordWrap = False
@@ -1074,41 +999,41 @@
             '
             'ClientFooter
             '
-            Me.ClientFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label69, Me.label70, Me.label61, Me.label62, Me.line5, Me.label37, Me.label38, Me.label41, Me.label42, Me.label43, Me.label44})
+            Me.ClientFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label69, Me.label70, Me.label61, Me.label62, Me.line5, Me.label37, Me.label41, Me.label42, Me.label43, Me.label44})
             Me.ClientFooter.HeightF = 35.41667!
             Me.ClientFooter.Level = 2
             Me.ClientFooter.Name = "ClientFooter"
             '
             'label69
             '
-            Me.label69.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SixtyDays")})
+            Me.label69.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "NinetyDays")})
             Me.label69.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label69.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 0!)
+            Me.label69.LocationFloat = New DevExpress.Utils.PointFloat(625.0002!, 0!)
             Me.label69.Multiline = True
             Me.label69.Name = "label69"
             Me.label69.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label69.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label69.StylePriority.UseFont = False
             Me.label69.StylePriority.UseTextAlignment = False
-            XrSummary25.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label69.Summary = XrSummary25
+            XrSummary22.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label69.Summary = XrSummary22
             Me.label69.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label69.TextFormatString = "{0:n2}"
             Me.label69.WordWrap = False
             '
             'label70
             '
-            Me.label70.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "NinetyDays")})
+            Me.label70.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "OneHundredTwentyDays")})
             Me.label70.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label70.LocationFloat = New DevExpress.Utils.PointFloat(625.0001!, 0!)
+            Me.label70.LocationFloat = New DevExpress.Utils.PointFloat(700.0002!, 0!)
             Me.label70.Multiline = True
             Me.label70.Name = "label70"
             Me.label70.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label70.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label70.StylePriority.UseFont = False
             Me.label70.StylePriority.UseTextAlignment = False
-            XrSummary26.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label70.Summary = XrSummary26
+            XrSummary23.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label70.Summary = XrSummary23
             Me.label70.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label70.TextFormatString = "{0:n2}"
             Me.label70.WordWrap = False
@@ -1160,76 +1085,59 @@
             Me.label37.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label37.StylePriority.UseFont = False
             Me.label37.StylePriority.UseTextAlignment = False
-            XrSummary27.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label37.Summary = XrSummary27
+            XrSummary24.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label37.Summary = XrSummary24
             Me.label37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label37.TextFormatString = "{0:n2}"
             Me.label37.WordWrap = False
             '
-            'label38
-            '
-            Me.label38.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Over120Days")})
-            Me.label38.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label38.LocationFloat = New DevExpress.Utils.PointFloat(775.0!, 0!)
-            Me.label38.Multiline = True
-            Me.label38.Name = "label38"
-            Me.label38.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-            Me.label38.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
-            Me.label38.StylePriority.UseFont = False
-            Me.label38.StylePriority.UseTextAlignment = False
-            XrSummary28.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label38.Summary = XrSummary28
-            Me.label38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-            Me.label38.TextFormatString = "{0:n2}"
-            Me.label38.WordWrap = False
-            '
             'label41
             '
-            Me.label41.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Current")})
+            Me.label41.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ThirtyDays")})
             Me.label41.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label41.LocationFloat = New DevExpress.Utils.PointFloat(400.0001!, 0!)
+            Me.label41.LocationFloat = New DevExpress.Utils.PointFloat(475.0002!, 0!)
             Me.label41.Multiline = True
             Me.label41.Name = "label41"
             Me.label41.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label41.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label41.StylePriority.UseFont = False
             Me.label41.StylePriority.UseTextAlignment = False
-            XrSummary29.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label41.Summary = XrSummary29
+            XrSummary25.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label41.Summary = XrSummary25
             Me.label41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label41.TextFormatString = "{0:n2}"
             Me.label41.WordWrap = False
             '
             'label42
             '
-            Me.label42.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ThirtyDays")})
+            Me.label42.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SixtyDays")})
             Me.label42.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label42.LocationFloat = New DevExpress.Utils.PointFloat(475.0001!, 0!)
+            Me.label42.LocationFloat = New DevExpress.Utils.PointFloat(550.0002!, 0!)
             Me.label42.Multiline = True
             Me.label42.Name = "label42"
             Me.label42.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label42.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label42.StylePriority.UseFont = False
             Me.label42.StylePriority.UseTextAlignment = False
-            XrSummary30.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label42.Summary = XrSummary30
+            XrSummary26.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label42.Summary = XrSummary26
             Me.label42.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label42.TextFormatString = "{0:n2}"
             Me.label42.WordWrap = False
             '
             'label43
             '
-            Me.label43.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "OneHundredTwentyDays")})
+            Me.label43.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Over120Days")})
             Me.label43.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label43.LocationFloat = New DevExpress.Utils.PointFloat(700.0!, 0!)
+            Me.label43.LocationFloat = New DevExpress.Utils.PointFloat(775.0001!, 0!)
             Me.label43.Multiline = True
             Me.label43.Name = "label43"
             Me.label43.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label43.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label43.StylePriority.UseFont = False
             Me.label43.StylePriority.UseTextAlignment = False
-            XrSummary31.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label43.Summary = XrSummary31
+            XrSummary27.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label43.Summary = XrSummary27
             Me.label43.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label43.TextFormatString = "{0:n2}"
             Me.label43.WordWrap = False
@@ -1245,8 +1153,8 @@
             Me.label44.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label44.StylePriority.UseFont = False
             Me.label44.StylePriority.UseTextAlignment = False
-            XrSummary32.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label44.Summary = XrSummary32
+            XrSummary28.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label44.Summary = XrSummary28
             Me.label44.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label44.TextFormatString = "{0:n2}"
             Me.label44.WordWrap = False
@@ -1284,41 +1192,41 @@
             '
             'ProductFooter
             '
-            Me.ProductFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label64, Me.label65, Me.label66, Me.label67, Me.label28, Me.label30, Me.label32, Me.label33, Me.label34, Me.label36})
+            Me.ProductFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label64, Me.label65, Me.label66, Me.label67, Me.label28, Me.label32, Me.label33, Me.label34, Me.label36})
             Me.ProductFooter.HeightF = 32.29167!
             Me.ProductFooter.Level = 1
             Me.ProductFooter.Name = "ProductFooter"
             '
             'label64
             '
-            Me.label64.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "NinetyDays")})
+            Me.label64.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "OneHundredTwentyDays")})
             Me.label64.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label64.LocationFloat = New DevExpress.Utils.PointFloat(625.0001!, 4.000028!)
+            Me.label64.LocationFloat = New DevExpress.Utils.PointFloat(700.0001!, 4.000092!)
             Me.label64.Multiline = True
             Me.label64.Name = "label64"
             Me.label64.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label64.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label64.StylePriority.UseFont = False
             Me.label64.StylePriority.UseTextAlignment = False
-            XrSummary33.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label64.Summary = XrSummary33
+            XrSummary29.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label64.Summary = XrSummary29
             Me.label64.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label64.TextFormatString = "{0:n2}"
             Me.label64.WordWrap = False
             '
             'label65
             '
-            Me.label65.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SixtyDays")})
+            Me.label65.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "NinetyDays")})
             Me.label65.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label65.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 4.000028!)
+            Me.label65.LocationFloat = New DevExpress.Utils.PointFloat(625.0001!, 4.000092!)
             Me.label65.Multiline = True
             Me.label65.Name = "label65"
             Me.label65.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label65.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label65.StylePriority.UseFont = False
             Me.label65.StylePriority.UseTextAlignment = False
-            XrSummary34.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label65.Summary = XrSummary34
+            XrSummary30.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label65.Summary = XrSummary30
             Me.label65.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label65.TextFormatString = "{0:n2}"
             Me.label65.WordWrap = False
@@ -1357,76 +1265,59 @@
             Me.label28.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label28.StylePriority.UseFont = False
             Me.label28.StylePriority.UseTextAlignment = False
-            XrSummary35.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label28.Summary = XrSummary35
+            XrSummary31.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label28.Summary = XrSummary31
             Me.label28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label28.TextFormatString = "{0:n2}"
             Me.label28.WordWrap = False
             '
-            'label30
-            '
-            Me.label30.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Over120Days")})
-            Me.label30.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label30.LocationFloat = New DevExpress.Utils.PointFloat(775.0001!, 4.0!)
-            Me.label30.Multiline = True
-            Me.label30.Name = "label30"
-            Me.label30.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-            Me.label30.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
-            Me.label30.StylePriority.UseFont = False
-            Me.label30.StylePriority.UseTextAlignment = False
-            XrSummary36.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label30.Summary = XrSummary36
-            Me.label30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-            Me.label30.TextFormatString = "{0:n2}"
-            Me.label30.WordWrap = False
-            '
             'label32
             '
-            Me.label32.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Current")})
+            Me.label32.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ThirtyDays")})
             Me.label32.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label32.LocationFloat = New DevExpress.Utils.PointFloat(400.2919!, 4.000028!)
+            Me.label32.LocationFloat = New DevExpress.Utils.PointFloat(475.2919!, 4.000092!)
             Me.label32.Multiline = True
             Me.label32.Name = "label32"
             Me.label32.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label32.SizeF = New System.Drawing.SizeF(74.70819!, 20.0!)
             Me.label32.StylePriority.UseFont = False
             Me.label32.StylePriority.UseTextAlignment = False
-            XrSummary37.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label32.Summary = XrSummary37
+            XrSummary32.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label32.Summary = XrSummary32
             Me.label32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label32.TextFormatString = "{0:n2}"
             Me.label32.WordWrap = False
             '
             'label33
             '
-            Me.label33.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ThirtyDays")})
+            Me.label33.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SixtyDays")})
             Me.label33.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label33.LocationFloat = New DevExpress.Utils.PointFloat(475.0001!, 4.000028!)
+            Me.label33.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 4.000092!)
             Me.label33.Multiline = True
             Me.label33.Name = "label33"
             Me.label33.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label33.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label33.StylePriority.UseFont = False
             Me.label33.StylePriority.UseTextAlignment = False
-            XrSummary38.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label33.Summary = XrSummary38
+            XrSummary33.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label33.Summary = XrSummary33
             Me.label33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label33.TextFormatString = "{0:n2}"
             Me.label33.WordWrap = False
             '
             'label34
             '
-            Me.label34.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "OneHundredTwentyDays")})
+            Me.label34.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Over120Days")})
             Me.label34.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.label34.LocationFloat = New DevExpress.Utils.PointFloat(700.0001!, 4.0!)
+            Me.label34.LocationFloat = New DevExpress.Utils.PointFloat(775.0001!, 4.000028!)
             Me.label34.Multiline = True
             Me.label34.Name = "label34"
             Me.label34.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.label34.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label34.StylePriority.UseFont = False
             Me.label34.StylePriority.UseTextAlignment = False
-            XrSummary39.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label34.Summary = XrSummary39
+            XrSummary34.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label34.Summary = XrSummary34
             Me.label34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label34.TextFormatString = "{0:n2}"
             Me.label34.WordWrap = False
@@ -1442,8 +1333,8 @@
             Me.label36.SizeF = New System.Drawing.SizeF(75.0!, 20.0!)
             Me.label36.StylePriority.UseFont = False
             Me.label36.StylePriority.UseTextAlignment = False
-            XrSummary40.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.label36.Summary = XrSummary40
+            XrSummary35.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.label36.Summary = XrSummary35
             Me.label36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label36.TextFormatString = "{0:n2}"
             Me.label36.WordWrap = False
@@ -1525,7 +1416,6 @@
         Friend WithEvents label72 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label68 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label45 As DevExpress.XtraReports.UI.XRLabel
-        Friend WithEvents label46 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label47 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label48 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label49 As DevExpress.XtraReports.UI.XRLabel
@@ -1545,13 +1435,11 @@
         Friend WithEvents label16 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label18 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label14 As DevExpress.XtraReports.UI.XRLabel
-        Friend WithEvents label29 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents PageHeader As DevExpress.XtraReports.UI.PageHeaderBand
         Friend WithEvents label10 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label9 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label22 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label21 As DevExpress.XtraReports.UI.XRLabel
-        Friend WithEvents label53 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label54 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label55 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents line2 As DevExpress.XtraReports.UI.XRLine
@@ -1576,7 +1464,6 @@
         Friend WithEvents label73 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label74 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label51 As DevExpress.XtraReports.UI.XRLabel
-        Friend WithEvents label56 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label57 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label58 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label59 As DevExpress.XtraReports.UI.XRLabel
@@ -1590,7 +1477,6 @@
         Friend WithEvents label62 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents line5 As DevExpress.XtraReports.UI.XRLine
         Friend WithEvents label37 As DevExpress.XtraReports.UI.XRLabel
-        Friend WithEvents label38 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label41 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label42 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label43 As DevExpress.XtraReports.UI.XRLabel
@@ -1604,7 +1490,6 @@
         Friend WithEvents label66 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label67 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label28 As DevExpress.XtraReports.UI.XRLabel
-        Friend WithEvents label30 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label32 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label33 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents label34 As DevExpress.XtraReports.UI.XRLabel

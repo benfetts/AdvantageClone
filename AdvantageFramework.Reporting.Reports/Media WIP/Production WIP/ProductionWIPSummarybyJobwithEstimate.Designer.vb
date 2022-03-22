@@ -1370,6 +1370,7 @@ Namespace MediaWIP.ProductionWIP
             Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.BindingSource})
             Me.DataSource = Me.BindingSource
             Me.DisplayName = "401 Production WIP Summary by Job with Estimate"
+            Me.FilterString = "[JobCompPurchaseOrderOnlyFlag] = 0b"
             Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.FormattingRuleSheet.AddRange(New DevExpress.XtraReports.UI.FormattingRule() {Me.DetailFilter})
             Me.Landscape = True

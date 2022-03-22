@@ -236,6 +236,10 @@
     <Compile Include="Com Utilities\Methods.vb" />
     <Compile Include="Controller\Account\PasswordController.vb" />
     <Compile Include="Controller\BaseController.vb" />
+    <Compile Include="Database\Entities\ComscorePrecacheMarket.vb" />
+    <Compile Include="Database\Entities\ComscorePrecacheMarketBook.vb" />
+    <Compile Include="Database\Entities\ComscorePrecacheMarketDemographic.vb" />
+    <Compile Include="Database\Entities\ComscorePrecacheMarketStation.vb" />
     <Compile Include="Database\Entities\MediaPlanDocument.vb" />
     <Compile Include="Database\Entities\MediaSpotTVPuertoRicoResearch.vb" />
     <Compile Include="Database\Entities\MediaSpotTVPuertoRicoResearchDayTime.vb" />
@@ -275,6 +279,7 @@
     <Compile Include="Database\Entities\MediaPlanEstimateTemplateTactic.vb" />
     <Compile Include="Database\Entities\MediaPlanEstimateTemplateData.vb" />
     <Compile Include="Database\Entities\MediaPlanEstimateTemplateVendor.vb" />
+    <Compile Include="Database\Entities\VendorComboRadioStation.vb" />
     <Compile Include="Database\Procedures\AlertRecipientExternalDismissed.vb" />
     <Compile Include="Database\Procedures\EmployeeAdditionalEmail.vb" />
     <Compile Include="Database\Procedures\ExpenseReportDocumentUnassigned.vb" />
@@ -285,9 +290,13 @@
     <Compile Include="Email\Classes\Alert.vb" />
     <Compile Include="Email\Classes\SMTPSettings.vb" />
     <Compile Include="Google Services\TokenService.vb" />
+    <Compile Include="Reporting\Database\Classes\BroadcastInvoiceDetailSubReport.vb" />
+    <Compile Include="Reporting\Database\Classes\BroadcastInvoiceDetail.vb" />
     <Compile Include="Reporting\Database\Classes\BroadcastInvoiceSummary.vb" />
     <Compile Include="Reporting\Database\Classes\BillingApprovalReport.vb" />
     <Compile Include="Reporting\Database\Classes\CheckRegisterWithInvoiceDetails.vb" />
+    <Compile Include="Reporting\Database\Classes\DeferredSalesVsOpenAR.vb" />
+    <Compile Include="Reporting\Database\Classes\GLCrossOffice.vb" />
     <Compile Include="Reporting\Database\Classes\TrafficFlightSummaryReport.vb" />
     <Compile Include="Reporting\Database\Classes\EmployeeTimeAnalysisReport.vb" />
     <Compile Include="Reporting\Database\Classes\MediaBroadcastWorksheetPostBuyDRWReport.vb" />

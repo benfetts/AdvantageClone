@@ -85,8 +85,8 @@
             float: left;
             overflow: hidden;
             width: 125px;
-/*            height: 125px;
-*/            margin: 2px;
+            /*height: 125px;*/ 
+            margin: 2px;
             padding: 2px;
             display: table;
         }
@@ -166,6 +166,13 @@
             font-family: 'Open Sans', Calibri, Tahoma, Verdana, Arial, sans-serif !important;
             font-size: 13px !important;
         }
+        p {
+            margin: 0em;
+        }
+
+        .editor-size{
+            height: ${editorHeight}px;
+        }
     </style>
     <div id="alert_toolbar" style="margin: 5px auto; max-width:98%; ">
         <ak-toolbar k-widget.bind="toolBar" k-on-ready.delegate="toolbarReady($event.detail)">
@@ -217,7 +224,7 @@
             </ak-toolbar-item>
         </ak-toolbar>
     </div>
-    <div id="main_content" class="t-aqua-body alert-container priority-${Alert.PriorityLevel}" style="float: initial; clear:both !important; display: block;">
+    <div id="main_content" class="t-aqua-body alert-container priority-${Alert.PriorityLevel}" style="float: initial; clear:both !important; display: flex;">
         <div class="col-md-6 col-lg-7" style="padding: 8px;">
             <div class="wv-widget">
                 <header>
@@ -486,16 +493,16 @@
                                                         font-family: 'Open Sans', Calibri, Tahoma, Verdana, Arial, sans-serif !important;
                                                     }
                                                 </style>
-                                                <textarea if.bind="CanUpdate" value.bind="Alert.TaskFunctionComment" class="k-textbox" style="width: 100%; height: 67px; min-height: 67px; resize: none !important;"></textarea>
+                                                <textarea if.bind="CanUpdate"  value.bind="Alert.TaskFunctionComment" class="k-textbox" style="width: 100%; height: 67px; min-height: 67px; resize: none !important;"></textarea>
                                                 <span if.bind="!CanUpdate" innerhtml.bind="Alert.TaskFunctionComment"></span>
                                             </div>
                                         </div>
-                                        <div class="wv-form-group" css="height:${editorHeight}px;" style="font-family: 'Open Sans', Calibri, Tahoma, Verdana, Arial, sans-serif; overflow: hidden; border-right: 1px solid #CECECE !important; border-bottom: 1px solid #CECECE !important;">
+                                        <div class="wv-form-group editor-size" style=" font-family: 'Open Sans', Calibri, Tahoma, Verdana, Arial, sans-serif; overflow: hidden; border-right: 1px solid #CECECE !important; border-bottom: 1px solid #CECECE !important;">
                                             <!--<div if.bind="Alert.AlertTypeID !== 3 && Alert.AlertTypeID !== 8" id="subjectMentionContainer" style="position:absolute;">
                                                 <mention-item view-model.ref="mentionItemSubject" mention-comment-div="subjectDiv" comment-editor.bind="descriptionEditor" vertical-offset="${Alert.AlertCategoryID === 71 ? 175 : 108}" horizontal-offset="13" mention-container="subjectMentionContainer"></mention-item>
                                             </div>-->
-                                            <div if.bind="Alert.AlertTypeID !== 3 && Alert.AlertTypeID !== 8" id="subjectDiv">
-                                                <textarea value.bind="Alert.EmailBody" style="height:460px;" ak-rich-editor="k-widget.two-way: descriptionEditor; k-tools.bind: defaultEditorTools;" k-on-change.delegate="descriptionChanged($event.detail)" k-on-ready.delegate="descriptionReady($event.detail)">
+                                            <div if.bind="Alert.AlertTypeID !== 3 && Alert.AlertTypeID !== 8" id="subjectDiv" style="height:100%!important">
+                                                <textarea style="height:100%!important" value.bind="Alert.EmailBody" ak-rich-editor="k-widget.two-way: descriptionEditor; k-tools.bind: defaultEditorTools;" k-on-change.delegate="descriptionChanged($event.detail)" k-on-ready.delegate="descriptionReady($event.detail)">
                                                 </textarea>
                                                 <span if.bind="!CanUpdate" innerhtml.bind="Alert.EmailBody"></span>
                                             </div>
@@ -606,12 +613,20 @@
                                         Upload File
                                     </button>
                                     <button class="k-button ${uploadingLinkPrimary}"
-                                            title="Upload link"
-                                            click.delegate="setUploadToLink()" 
-                                            if.bind="isProof == false">
+                                            title="Upload link to a web URL"
+                                            click.delegate="setUploadToLink()">
                                         Upload Link
                                     </button>
-                                    <button class="k-button" style="" ref="existingDocumentButton" click.delegate="linkExistingDocumentClick()">
+                                    <button class="k-button ${uploadingExternalLinkPrimary}"
+                                            title="Upload link to a specific asset on your network"
+                                            click.delegate="setUploadToExternalLink()">
+                                        Upload External Link
+                                    </button>
+                                    <button class="k-button"
+                                            style=""
+                                            ref="existingDocumentButton"
+                                            title="Associate an existing repository document to this alert/assignment"
+                                            click.delegate="linkExistingDocumentClick()">
                                         Link Existing Document
                                     </button>
                                 </div>
@@ -745,11 +760,11 @@
             </div>
             <div id="comments-wrap" style="margin-bottom: 5px; background: white;">
                 <wv-collapse-panel title="Comments" icon="glyphicon glyphicon-comment">
-                    <comment-view view-model.ref="commentView" 
-                                  alert-id.bind="Alert.ID" 
-                                  is-proof.bind="isProof" 
-                                  hide-system-comments.bind="HideSystemComments" 
-                                  comment-added-callback.call="commentAdded()" 
+                    <comment-view view-model.ref="commentView"
+                                  alert-id.bind="Alert.ID"
+                                  is-proof.bind="isProof"
+                                  hide-system-comments.bind="HideSystemComments"
+                                  comment-added-callback.call="commentAdded()"
                                   css-class="sm-down-border-left-x md-up-border-top-x"></comment-view>
                 </wv-collapse-panel>
             </div>
@@ -842,10 +857,10 @@
                                     </div>
                                     <label>Comment:</label>
                                     <div id="sendAssignmentCommentDiv" class="wv-simple-editor wv-simple-editor-l">
-                                        <textarea ak-rich-editor="k-widget.two-way: sendAssignmentComment; 
-                                                                  k-tools.bind: []; 
-                                                                  k-resizable.bind: false;" 
-                                                  k-on-keydown.delegate="mentionItemSendAssignment.commentKeyDownEvent($event.detail)" 
+                                        <textarea ak-rich-editor="k-widget.two-way: sendAssignmentComment;
+                                                                  k-tools.bind: [];
+                                                                  k-resizable.bind: false;"
+                                                  k-on-keydown.delegate="mentionItemSendAssignment.commentKeyDownEvent($event.detail)"
                                                   style="height: 100px; width:99% !important;"></textarea>
                                     </div>
                                 </div>
@@ -920,33 +935,38 @@
                             <div class="wv-form-group">
                                 <label>Assign To: </label>
                                 <div>
-                                    <wv-multiselect k-widget.bind="assignToNotRoutedAndTasksMultiSelect"
-                                                    value.two-way="Alert.Assignees"
-                                                    enabled.bind="!Alert.IsCompleted"
-                                                    data-bound.delegate="assignToNotRoutedAndTasksMultiSelectDataBound($event.detail)"
-                                                    deselect.delegate="assignToNotRoutedAndTasksMultiSelectDeselect($event.detail)"
-                                                    select.delegate="assignToNotRoutedAndTasksMultiSelectSelect($event.detail)"
-                                                    change.delegate="assignToNotRoutedAndTasksMultiSelectChange($event.detail)"
-                                                    text-field="Name"
-                                                    value-field="Code"
-                                                    clear-button.bind="false"
-                                                    data-source.bind="assignToNotRoutedAndTasksDataSource">
+                                    <ak-multiselect k-widget.bind="assignToNotRoutedAndTasksMultiSelect"
+                                                    k-data-source.bind="assignToNotRoutedAndTasksDataSource"
+                                                    k-on-data-bound.delegate="assignToNotRoutedAndTasksMultiSelectDataBound($event.detail)"
+                                                    k-on-deselect.delegate="assignToNotRoutedAndTasksMultiSelectDeselect($event.detail)"
+                                                    k-on-select.delegate="assignToNotRoutedAndTasksMultiSelectSelect($event.detail)"
+                                                    k-on-open.delegate="assignToNotRoutedAndTasksMultiSelectOnOpen($event.detail)"
+                                                    k-on-close.delegate="assignToNotRoutedAndTasksMultiSelectOnClose($event.detail)"
+                                                    k-on-change.delegate="assignToNotRoutedAndTasksMultiSelectChange($event.detail)"
+                                                    k-value.two-way="Alert.Assignees"
+                                                    k-filter="contains"
+                                                    k-enable.bind="!Alert.IsCompleted"
+                                                    k-placeholder=""
+                                                    k-data-text-field="Name"
+                                                    k-data-value-field="Code"
+                                                    k-clear-button.bind="false"
+                                                    k-auto-bind.bind="true">
                                         <ak-template for="tagTemplate">
                                             <div if.bind="IsProof == false">
-                                                <span if.bind="IsTempComplete" class="wv-assignee-complete glyphicon glyphicon-ok "></span>&nbsp;${Name}
+                                                <span if.bind="IsTempComplete" class="wv-assignee-complete glyphicon glyphicon-ok "></span>${Name}
                                             </div>
-                                            <div if.bind="IsProof == true">
+                                            <div else>
                                                 <div class="tag-container">
                                                     <div if.bind="ProofingStatusID > 0" class="approval-container" style="display: inline-block;" title="${FullName} | ${StatusTitle}, ${StatusDateText}">
-                                                        <span class="proofing-status-icon ${StatusColor}">${StatusText}</span><span>${FullName}</span>
+                                                        <span class="proofing-status-icon ${StatusColor}">${StatusText}</span><span>${Name}</span>
                                                     </div>
-                                                    <div if.bind="ProofingStatusID == null ||ProofingStatusID == 0" class="approval-container" style="display: inline-block;" title="${FullName}">
-                                                        <span if.bind="CanDelete == false" class="delete-placeholder"></span><span>${FullName}</span>
+                                                    <div if.bind="ProofingStatusID == null || ProofingStatusID == undefined || ProofingStatusID == 0" class="approval-container" style="display: inline-block;" title="${FullName}">
+                                                        <span if.bind="CanDelete == false" class="delete-placeholder"></span><span>${Name}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </ak-template>
-                                    </wv-multiselect>
+                                    </ak-multiselect>
                                 </div>
                             </div>
                         </div>
@@ -965,8 +985,7 @@
                                               class="wvi wvi-pencil"
                                               style="cursor: pointer !important; padding: 0px 4px 0px 6px;"></span>
                                     </td>
-                                    <td>
-                                    </td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td style="padding-right: 6px;">
@@ -1136,7 +1155,7 @@
             </div>
             <div style="display: none !important;">
                 <span style="font-size: x-small; font-style: italic;">
-                    Add external reviewers with this format:<br/>
+                    Add external reviewers with this format:<br />
                     <strong>Name:email</strong><br />
                     John Doe:jdoe@domain.com<br />
                     (Person's name, colon, person's email)<br />

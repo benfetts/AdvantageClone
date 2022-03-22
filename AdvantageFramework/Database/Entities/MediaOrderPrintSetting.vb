@@ -90,6 +90,8 @@
             MediaTitleOverride
             IncludeClientAddress
             IncludeImpressions
+            ShowTotalNetForGrossOrder
+            NewspaperIncludeCirculationQTY
         End Enum
 
 #End Region
@@ -355,6 +357,12 @@
 
         <System.ComponentModel.DataAnnotations.Schema.Column("IMPRESS_FLAG")>
         Public Property IncludeImpressions As Nullable(Of Short)
+
+        <System.ComponentModel.DataAnnotations.Schema.Column("SHOW_TOTALNET_ON_GROSS_ORDER")>
+        Public Property ShowTotalNetForGrossOrder As Boolean
+
+        <System.ComponentModel.DataAnnotations.Schema.Column("NP_INCLUDE_CIRC_QTY")>
+        Public Property NewspaperIncludeCirculationQTY As Boolean
 
 #End Region
 

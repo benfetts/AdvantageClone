@@ -22,7 +22,6 @@
         <System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
             Me.components = New System.ComponentModel.Container()
-            Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
             Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
@@ -33,7 +32,6 @@
             Me.LabelGroupFooterChargeDescription_ChargeDescription = New DevExpress.XtraReports.UI.XRLabel()
             Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
             Me.ChargeDesc = New DevExpress.XtraReports.UI.CalculatedField()
-            Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
             '
@@ -73,7 +71,7 @@
             '
             'GroupFooterChargeDescription
             '
-            Me.GroupFooterChargeDescription.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel2, Me.LabelGroupFooterChargeDescription_ChargeDescription, Me.XrLabel1})
+            Me.GroupFooterChargeDescription.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelGroupFooterChargeDescription_ChargeDescription, Me.XrLabel1})
             Me.GroupFooterChargeDescription.HeightF = 19.0!
             Me.GroupFooterChargeDescription.Name = "GroupFooterChargeDescription"
             '
@@ -81,7 +79,7 @@
             '
             Me.LabelGroupFooterChargeDescription_ChargeDescription.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ChargeDesc")})
             Me.LabelGroupFooterChargeDescription_ChargeDescription.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-            Me.LabelGroupFooterChargeDescription_ChargeDescription.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+            Me.LabelGroupFooterChargeDescription_ChargeDescription.LocationFloat = New DevExpress.Utils.PointFloat(376.04!, 0!)
             Me.LabelGroupFooterChargeDescription_ChargeDescription.Name = "LabelGroupFooterChargeDescription_ChargeDescription"
             Me.LabelGroupFooterChargeDescription_ChargeDescription.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.LabelGroupFooterChargeDescription_ChargeDescription.SizeF = New System.Drawing.SizeF(253.0417!, 19.0!)
@@ -93,15 +91,15 @@
             '
             Me.XrLabel1.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Amount")})
             Me.XrLabel1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-            Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(263.4585!, 0!)
+            Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(639.5!, 0!)
             Me.XrLabel1.Name = "XrLabel1"
             Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
             Me.XrLabel1.SizeF = New System.Drawing.SizeF(97.99988!, 19.0!)
             Me.XrLabel1.StylePriority.UseFont = False
             Me.XrLabel1.StylePriority.UseTextAlignment = False
-            XrSummary2.FormatString = "{0:n2}"
-            XrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.XrLabel1.Summary = XrSummary2
+            XrSummary1.FormatString = "{0:n2}"
+            XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+            Me.XrLabel1.Summary = XrSummary1
             Me.XrLabel1.Text = "XrLabel1"
             Me.XrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             '
@@ -110,22 +108,6 @@
             Me.ChargeDesc.Expression = "[ChargeDescription] + ':'"
             Me.ChargeDesc.Name = "ChargeDesc"
             '
-            'XrLabel2
-            '
-            Me.XrLabel2.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Amount")})
-            Me.XrLabel2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-            Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(381.2965!, 0!)
-            Me.XrLabel2.Name = "XrLabel2"
-            Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-            Me.XrLabel2.SizeF = New System.Drawing.SizeF(97.99988!, 19.0!)
-            Me.XrLabel2.StylePriority.UseFont = False
-            Me.XrLabel2.StylePriority.UseTextAlignment = False
-            XrSummary1.FormatString = "{0:n2}"
-            XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-            Me.XrLabel2.Summary = XrSummary1
-            Me.XrLabel2.Text = "XrLabel1"
-            Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-            '
             'NewspaperChargesSubReport
             '
             Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.GroupHeaderChargeDescription, Me.GroupFooterChargeDescription})
@@ -133,7 +115,7 @@
             Me.DataSource = Me.BindingSource
             Me.Font = New System.Drawing.Font("Arial", 9.0!)
             Me.Margins = New System.Drawing.Printing.Margins(0, 0, 0, 0)
-            Me.PageWidth = 495
+            Me.PageWidth = 750
             Me.PaperKind = System.Drawing.Printing.PaperKind.Custom
             Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
             Me.Version = "20.1"
@@ -150,7 +132,6 @@
         Friend WithEvents LabelGroupFooterChargeDescription_ChargeDescription As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents ChargeDesc As DevExpress.XtraReports.UI.CalculatedField
-        Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
 
     End Class
 

@@ -30,14 +30,25 @@
             AccountExecutive
             Status
             StatusCode
+            SalesClass
+            SalesClassDescription
             JobCompOpenDate
             JobCompFirstUseDate
+            JobStartDate
+            JobDueDate
             JobCompCloseDate
+            LabelFromUDFTable1
+            LabelFromUDFTable2
+            LabelFromUDFTable3
+            LabelFromUDFTable4
+            LabelFromUDFTable5
             VendorCode
             VendorName
             APInvoiceNumber
             EstimateNetAmount
             EstimateAmount
+            EstimateHours
+            EstimateHoursAmount
             APTotal
             APDebit
             APCredit
@@ -50,7 +61,10 @@
             IncomeOnlyUnbilled
             DeferredSales
             DefSaleRecognized
+            DeferredCost
+            DeferredCostRecognized
             AdvanceAccruedLiab
+            OpenPurchaseOrderAmount
             PostPeriod
             AgingPeriod
             Current
@@ -65,6 +79,10 @@
             JobCompAPWIPBalanceFlag
             JobCompAgingWIPFlag
             JobCompAPAgingWIPFlag
+            JobCompTotalWIPNoAdvCostFlag
+            JobCompAgingWIPALPOFlag
+            JobCompTotalAdvFlag
+            JobCompPurchaseOrderOnlyFlag
         End Enum
 
 #End Region
@@ -114,10 +132,19 @@
         Public Property AccountExecutive As String
         Public Property Status As String
         Public Property StatusCode As String
+        Public Property SalesClass As String
+        Public Property SalesClassDescription As String
 
         Public Property JobCompOpenDate As Nullable(Of Date)
         Public Property JobCompFirstUseDate As Nullable(Of Date)
+        Public Property JobStartDate As Nullable(Of Date)
+        Public Property JobDueDate As Nullable(Of Date)
         Public Property JobCompCloseDate As Nullable(Of Date)
+        Public Property LabelFromUDFTable1 As String
+        Public Property LabelFromUDFTable2 As String
+        Public Property LabelFromUDFTable3 As String
+        Public Property LabelFromUDFTable4 As String
+        Public Property LabelFromUDFTable5 As String
 
         <MaxLength(6)>
         Public Property VendorCode As String
@@ -128,6 +155,8 @@
 
         Public Property EstimateNetAmount As Nullable(Of Decimal)
         Public Property EstimateAmount As Nullable(Of Decimal)
+        Public Property EstimateHours As Nullable(Of Decimal)
+        Public Property EstimateHoursAmount As Nullable(Of Decimal)
         Public Property APTotal As Nullable(Of Decimal)
         Public Property APDebit As Nullable(Of Decimal)
         Public Property APCredit As Nullable(Of Decimal)
@@ -142,25 +171,28 @@
         Public Property IncomeOnlyUnbilled As Nullable(Of Decimal)
         Public Property DeferredSales As Nullable(Of Decimal)
         Public Property DefSaleRecognized As Nullable(Of Decimal)
+        Public Property DeferredCost As Nullable(Of Decimal)
+        Public Property DeferredCostRecognized As Nullable(Of Decimal)
         Public Property AdvanceAccruedLiab As Nullable(Of Decimal)
+        Public Property OpenPurchaseOrderAmount As Nullable(Of Decimal)
 
         Public Property PostPeriod As String
         Public Property AgingPeriod As String
 
         <System.Runtime.Serialization.DataMemberAttribute(),
-        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Current")>
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Current", ShowColumnInGrid:=False)>
         Public Property Current As Nullable(Of Decimal)
         <System.Runtime.Serialization.DataMemberAttribute(),
-        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="30 Days")>
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Current")>
         Public Property ThirtyDays As Nullable(Of Decimal)
         <System.Runtime.Serialization.DataMemberAttribute(),
-        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="60 Days")>
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Over 30 Days")>
         Public Property SixtyDays As Nullable(Of Decimal)
         <System.Runtime.Serialization.DataMemberAttribute(),
-        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="90 Days")>
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Over 60 Days")>
         Public Property NinetyDays As Nullable(Of Decimal)
         <System.Runtime.Serialization.DataMemberAttribute(),
-        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="120 Days")>
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Over 90 Days")>
         Public Property OneHundredTwentyDays As Nullable(Of Decimal)
         <System.Runtime.Serialization.DataMemberAttribute(),
         AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Over 120 Days")>
@@ -170,11 +202,30 @@
 
         Public Property WIPCode As String
         Public Property APVoucherWIPBalanceFlag As Nullable(Of Byte)
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Job Comp AP WIP Balance Flag", ShowColumnInGrid:=False)>
         Public Property JobCompAPWIPBalanceFlag As Nullable(Of Byte)
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, ShowColumnInGrid:=False)>
         Public Property JobCompAgingWIPFlag As Nullable(Of Byte)
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, ShowColumnInGrid:=False)>
         Public Property JobCompAPAgingWIPFlag As Nullable(Of Byte)
 
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Job Comp Total WIP No Adv Cost Flag", ShowColumnInGrid:=False)>
+        Public Property JobCompTotalWIPNoAdvCostFlag As Nullable(Of Byte)
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Job Comp Total WIP AL PO Flag", ShowColumnInGrid:=False)>
+        Public Property JobCompAgingWIPALPOFlag As Nullable(Of Byte)
 
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Job Comp Total Adv Flag", ShowColumnInGrid:=False)>
+        Public Property JobCompTotalAdvFlag As Nullable(Of Byte)
+
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, CustomColumnCaption:="Job Comp PO Only Flag", ShowColumnInGrid:=False)>
+        Public Property JobCompPurchaseOrderOnlyFlag As Nullable(Of Byte)
 
 #End Region
 

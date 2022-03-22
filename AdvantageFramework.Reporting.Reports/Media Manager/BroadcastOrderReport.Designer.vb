@@ -221,6 +221,7 @@
             Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
             Me.CableStationProgramming = New DevExpress.XtraReports.UI.CalculatedField()
             Me.GroupFooter1 = New DevExpress.XtraReports.UI.GroupFooterBand()
+            Me.GroupFooterLabelTotalNetWhenGross = New DevExpress.XtraReports.UI.XRLabel()
             Me.GroupFooterSubreport_MonthYearSubReport = New DevExpress.XtraReports.UI.XRSubreport()
             Me.GroupFooter2 = New DevExpress.XtraReports.UI.GroupFooterBand()
             Me.RichTextGroupFooterOrderNumber_OrderHeaderCommentTop = New DevExpress.XtraReports.UI.XRRichText()
@@ -2303,12 +2304,12 @@
             Me.GroupFooterLabelTotalNet.Borders = DevExpress.XtraPrinting.BorderSide.None
             Me.GroupFooterLabelTotalNet.BorderWidth = 1.0!
             Me.GroupFooterLabelTotalNet.CanGrow = False
-            Me.GroupFooterLabelTotalNet.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
+            Me.GroupFooterLabelTotalNet.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold)
             Me.GroupFooterLabelTotalNet.ForeColor = System.Drawing.Color.Black
-            Me.GroupFooterLabelTotalNet.LocationFloat = New DevExpress.Utils.PointFloat(0.6249745!, 40.00003!)
+            Me.GroupFooterLabelTotalNet.LocationFloat = New DevExpress.Utils.PointFloat(0.6249745!, 38.00004!)
             Me.GroupFooterLabelTotalNet.Name = "GroupFooterLabelTotalNet"
             Me.GroupFooterLabelTotalNet.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
-            Me.GroupFooterLabelTotalNet.SizeF = New System.Drawing.SizeF(71.87517!, 19.0!)
+            Me.GroupFooterLabelTotalNet.SizeF = New System.Drawing.SizeF(71.87517!, 17.0!)
             Me.GroupFooterLabelTotalNet.StylePriority.UseFont = False
             Me.GroupFooterLabelTotalNet.StylePriority.UseTextAlignment = False
             Me.GroupFooterLabelTotalNet.Text = "Total Net"
@@ -2321,12 +2322,12 @@
             Me.GroupFooterLabelSpots.Borders = DevExpress.XtraPrinting.BorderSide.None
             Me.GroupFooterLabelSpots.BorderWidth = 1.0!
             Me.GroupFooterLabelSpots.CanGrow = False
-            Me.GroupFooterLabelSpots.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
+            Me.GroupFooterLabelSpots.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold)
             Me.GroupFooterLabelSpots.ForeColor = System.Drawing.Color.Black
             Me.GroupFooterLabelSpots.LocationFloat = New DevExpress.Utils.PointFloat(0.6249745!, 21.00004!)
             Me.GroupFooterLabelSpots.Name = "GroupFooterLabelSpots"
             Me.GroupFooterLabelSpots.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
-            Me.GroupFooterLabelSpots.SizeF = New System.Drawing.SizeF(71.87517!, 19.0!)
+            Me.GroupFooterLabelSpots.SizeF = New System.Drawing.SizeF(71.87517!, 17.0!)
             Me.GroupFooterLabelSpots.StylePriority.UseFont = False
             Me.GroupFooterLabelSpots.StylePriority.UseTextAlignment = False
             Me.GroupFooterLabelSpots.Text = "Spots"
@@ -2347,11 +2348,29 @@
             '
             'GroupFooter1
             '
-            Me.GroupFooter1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.GroupFooterSubreport_MonthYearSubReport, Me.GroupFooterLabelTotalNet, Me.GroupFooterLabelSpots})
-            Me.GroupFooter1.HeightF = 60.00007!
+            Me.GroupFooter1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.GroupFooterLabelTotalNetWhenGross, Me.GroupFooterSubreport_MonthYearSubReport, Me.GroupFooterLabelTotalNet, Me.GroupFooterLabelSpots})
+            Me.GroupFooter1.HeightF = 78.00002!
             Me.GroupFooter1.KeepTogether = True
             Me.GroupFooter1.Level = 2
             Me.GroupFooter1.Name = "GroupFooter1"
+            '
+            'GroupFooterLabelTotalNetWhenGross
+            '
+            Me.GroupFooterLabelTotalNetWhenGross.BackColor = System.Drawing.Color.Transparent
+            Me.GroupFooterLabelTotalNetWhenGross.BorderColor = System.Drawing.Color.Black
+            Me.GroupFooterLabelTotalNetWhenGross.Borders = DevExpress.XtraPrinting.BorderSide.None
+            Me.GroupFooterLabelTotalNetWhenGross.BorderWidth = 1.0!
+            Me.GroupFooterLabelTotalNetWhenGross.CanGrow = False
+            Me.GroupFooterLabelTotalNetWhenGross.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold)
+            Me.GroupFooterLabelTotalNetWhenGross.ForeColor = System.Drawing.Color.Black
+            Me.GroupFooterLabelTotalNetWhenGross.LocationFloat = New DevExpress.Utils.PointFloat(0.6251017!, 55.00004!)
+            Me.GroupFooterLabelTotalNetWhenGross.Name = "GroupFooterLabelTotalNetWhenGross"
+            Me.GroupFooterLabelTotalNetWhenGross.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+            Me.GroupFooterLabelTotalNetWhenGross.SizeF = New System.Drawing.SizeF(71.87517!, 17.0!)
+            Me.GroupFooterLabelTotalNetWhenGross.StylePriority.UseFont = False
+            Me.GroupFooterLabelTotalNetWhenGross.StylePriority.UseTextAlignment = False
+            Me.GroupFooterLabelTotalNetWhenGross.Text = "Total Net"
+            Me.GroupFooterLabelTotalNetWhenGross.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
             '
             'GroupFooterSubreport_MonthYearSubReport
             '
@@ -2359,7 +2378,7 @@
             Me.GroupFooterSubreport_MonthYearSubReport.LocationFloat = New DevExpress.Utils.PointFloat(74.50014!, 0!)
             Me.GroupFooterSubreport_MonthYearSubReport.Name = "GroupFooterSubreport_MonthYearSubReport"
             Me.GroupFooterSubreport_MonthYearSubReport.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.BroadcastMonthYearSubReport()
-            Me.GroupFooterSubreport_MonthYearSubReport.SizeF = New System.Drawing.SizeF(920.4998!, 60.00007!)
+            Me.GroupFooterSubreport_MonthYearSubReport.SizeF = New System.Drawing.SizeF(920.4998!, 78.00001!)
             '
             'GroupFooter2
             '
@@ -3248,6 +3267,7 @@
         Friend WithEvents XrTableRow3 As DevExpress.XtraReports.UI.XRTableRow
         Friend WithEvents TableCellClient_CityStateZip As DevExpress.XtraReports.UI.XRTableCell
         Friend WithEvents TableCellClient_CityStateZipValue As DevExpress.XtraReports.UI.XRTableCell
+        Private WithEvents GroupFooterLabelTotalNetWhenGross As DevExpress.XtraReports.UI.XRLabel
     End Class
 
 End Namespace

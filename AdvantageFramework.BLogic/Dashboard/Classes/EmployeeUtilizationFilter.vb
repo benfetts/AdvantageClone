@@ -23,6 +23,7 @@
             StartDate
             EndDate
             Page
+            OfficeCode
 
         End Enum
 
@@ -67,6 +68,7 @@
         Public Property StartDate As Date
         Public Property EndDate As Date
         Public Property Page As String = String.Empty
+        Public Property OfficeCode As String = String.Empty
 
 
 

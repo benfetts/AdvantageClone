@@ -420,7 +420,7 @@
 
                 End Using
 
-                ClientID = AdvantageFramework.Quickbooks.QB_CLIENT_ID
+                ClientID = AdvantageFramework.Quickbooks.GetClientID()
 
                 DiscoveryData = AdvantageFramework.Quickbooks.GetDiscoveryData()
 

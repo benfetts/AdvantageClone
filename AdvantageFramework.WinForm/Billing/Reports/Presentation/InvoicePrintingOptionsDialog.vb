@@ -1470,7 +1470,7 @@
                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetAdNumberColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetURLColumn.ToString OrElse
                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetInternetTypeColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetJobComponentNumberColumn.ToString OrElse
                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetJobDescriptionColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetComponentDescriptionColumn.ToString OrElse
-                                        Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetCloseDateColumn.ToString Then
+                                        Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetCloseDateColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetGuaranteedImpressionsColumn.ToString Then
 
                                     RepositoryItem = AdvantageFramework.WinForm.Presentation.Controls.CreateSubItemGridLookupEdit(Me.Session, AdvantageFramework.WinForm.Presentation.Controls.SubItemGridLookUpEditControl.Type.EnumDataTable,
                                                                                                                                   Row.Properties.FieldName, EntityAttribute, PropertyDescriptor,
@@ -1676,7 +1676,8 @@
                                          Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetJobDescriptionColumn.ToString OrElse
                                          Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetComponentDescriptionColumn.ToString OrElse
                                          Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetExtraChargesColumn.ToString OrElse
-                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetShowBillingHistory.ToString Then
+                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetShowBillingHistory.ToString OrElse
+                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetGuaranteedImpressionsColumn.ToString Then
 
                                     If TypeOf Row Is DevExpress.XtraVerticalGrid.Rows.EditorRow Then
 
@@ -2118,7 +2119,8 @@
                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioNumberOfSpotsColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioRemarksColumn.ToString OrElse
                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioJobComponentNumberColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioJobDescriptionColumn.ToString OrElse
                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioComponentDescriptionColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioOrderDetailCommentColumn.ToString OrElse
-                                        Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioOrderHouseDetailCommentColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioCloseDateColumn.ToString Then
+                                        Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioOrderHouseDetailCommentColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioCloseDateColumn.ToString OrElse
+                                        Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioStartDateColumn.ToString Then
 
                                     RepositoryItem = AdvantageFramework.WinForm.Presentation.Controls.CreateSubItemGridLookupEdit(Me.Session, AdvantageFramework.WinForm.Presentation.Controls.SubItemGridLookUpEditControl.Type.EnumDataTable,
                                                                                                                                   Row.Properties.FieldName, EntityAttribute, PropertyDescriptor,
@@ -2421,7 +2423,8 @@
                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVNumberOfSpotsColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVRemarksColumn.ToString OrElse
                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVJobComponentNumberColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVJobDescriptionColumn.ToString OrElse
                                         Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVComponentDescriptionColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVOrderDetailCommentColumn.ToString OrElse
-                                        Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVOrderHouseDetailCommentColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVCloseDateColumn.ToString Then
+                                        Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVOrderHouseDetailCommentColumn.ToString OrElse Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVCloseDateColumn.ToString OrElse
+                                        Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVStartDateColumn.ToString Then
 
                                     RepositoryItem = AdvantageFramework.WinForm.Presentation.Controls.CreateSubItemGridLookupEdit(Me.Session, AdvantageFramework.WinForm.Presentation.Controls.SubItemGridLookUpEditControl.Type.EnumDataTable,
                                                                                                                                   Row.Properties.FieldName, EntityAttribute, PropertyDescriptor,
@@ -5309,6 +5312,9 @@
                         CType(VerticalGridInternet_Settings.Rows.GetRowByFieldName(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetShowBillingHistory.ToString, True), DevExpress.XtraVerticalGrid.Rows.EditorRow).Enabled = False
                         CType(VerticalGridInternet_Settings.Rows.GetRowByFieldName(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetShowBillingHistory.ToString, True), DevExpress.XtraVerticalGrid.Rows.EditorRow).Properties.Value = False
 
+                        CType(VerticalGridInternet_Settings.Rows.GetRowByFieldName(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetGuaranteedImpressionsColumn.ToString, True), DevExpress.XtraVerticalGrid.Rows.EditorRow).Enabled = False
+                        CType(VerticalGridInternet_Settings.Rows.GetRowByFieldName(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetGuaranteedImpressionsColumn.ToString, True), DevExpress.XtraVerticalGrid.Rows.EditorRow).Properties.Value = 0
+
                     Else
 
                         CType(VerticalGridInternet_Settings.Rows.GetRowByFieldName(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetClientPOLocation.ToString, True), DevExpress.XtraVerticalGrid.Rows.EditorRow).Enabled = True
@@ -5340,6 +5346,7 @@
                         CType(VerticalGridInternet_Settings.Rows.GetRowByFieldName(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetComponentDescriptionColumn.ToString, True), DevExpress.XtraVerticalGrid.Rows.EditorRow).Enabled = True
                         CType(VerticalGridInternet_Settings.Rows.GetRowByFieldName(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetExtraChargesColumn.ToString, True), DevExpress.XtraVerticalGrid.Rows.EditorRow).Enabled = True
                         CType(VerticalGridInternet_Settings.Rows.GetRowByFieldName(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetShowBillingHistory.ToString, True), DevExpress.XtraVerticalGrid.Rows.EditorRow).Enabled = True
+                        CType(VerticalGridInternet_Settings.Rows.GetRowByFieldName(AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetGuaranteedImpressionsColumn.ToString, True), DevExpress.XtraVerticalGrid.Rows.EditorRow).Enabled = True
 
                     End If
 
@@ -5359,7 +5366,8 @@
                         e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetAdNumberColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetURLColumn.ToString OrElse
                         e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetCreativeSizeColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetJobComponentNumberColumn.ToString OrElse
                         e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetJobDescriptionColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetComponentDescriptionColumn.ToString OrElse
-                        e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetLineNumberColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetCloseDateColumn.ToString Then
+                        e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetLineNumberColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetCloseDateColumn.ToString OrElse
+                        e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceInternetSetting.Properties.InternetGuaranteedImpressionsColumn.ToString Then
 
                     CheckAllValues(VerticalGridInternet_Settings, _InternetColumnPropertyDescriptions, e.Row.Properties.FieldName, e.Value)
 
@@ -5683,7 +5691,8 @@
                         e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioProgramColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioJobComponentNumberColumn.ToString OrElse
                         e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioJobDescriptionColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioComponentDescriptionColumn.ToString OrElse
                         e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioOrderDetailCommentColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioOrderHouseDetailCommentColumn.ToString OrElse
-                        e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioLineNumberColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioCloseDateColumn.ToString Then
+                        e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioLineNumberColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioCloseDateColumn.ToString OrElse
+                        e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceRadioSetting.Properties.RadioStartDateColumn.ToString Then
 
                     CheckAllValues(VerticalGridRadio_Settings, _RadioColumnPropertyDescriptions, e.Row.Properties.FieldName, e.Value)
 
@@ -5845,7 +5854,8 @@
                         e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVProgramColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVJobComponentNumberColumn.ToString OrElse
                         e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVJobDescriptionColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVComponentDescriptionColumn.ToString OrElse
                         e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVOrderDetailCommentColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVOrderHouseDetailCommentColumn.ToString OrElse
-                        e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVLineNumberColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVCloseDateColumn.ToString Then
+                        e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVLineNumberColumn.ToString OrElse e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVCloseDateColumn.ToString OrElse
+                        e.Row.Properties.FieldName = AdvantageFramework.InvoicePrinting.Classes.MediaInvoiceTVSetting.Properties.TVStartDateColumn.ToString Then
 
                     CheckAllValues(VerticalGridTV_Settings, _TVColumnPropertyDescriptions, e.Row.Properties.FieldName, e.Value)
 

@@ -500,7 +500,7 @@
 
                                 If RadioButtonTime_RecalculateFromHierarchy.Checked Then
 
-                                    _EmployeeTimeItem.BillableRate = _BillingRate.BILLING_RATE.GetValueOrDefault(0)
+                                    _EmployeeTimeItem.BillableRate = FormatNumber(_BillingRate.BILLING_RATE.GetValueOrDefault(0), 2)
                                     _EmployeeTimeItem.EmployeeRateFrom = LabelTransferTo_RateFrom.Text
 
                                 End If

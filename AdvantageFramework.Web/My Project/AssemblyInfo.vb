@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Advantage Framework Web")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Advantage Software")> 
+<Assembly: AssemblyTitle("Advantage Framework Web")>
+<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyCompany("Advantage Software")>
 <Assembly: AssemblyProduct("Advantage")>
 <Assembly: AssemblyCopyright("Copyright © Advantage Software 2016")>
-<Assembly: AssemblyTrademark("We work they way you work.")> 
+<Assembly: AssemblyTrademark("We work they way you work.")>
 
 <Assembly: ComVisible(False)>
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("6.70.08.01")>
-<Assembly: AssemblyFileVersion("6.70.08.01")>
+<Assembly: AssemblyVersion("6.70.08.02")>
+<Assembly: AssemblyFileVersion("6.70.08.02")>

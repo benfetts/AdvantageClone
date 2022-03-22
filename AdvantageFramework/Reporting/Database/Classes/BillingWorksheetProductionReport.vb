@@ -72,6 +72,7 @@
             UnbilledHours
             UnbilledQuantity
             UnbilledNetAmount
+            UnbilledMarkupPercentCalc
             UnbilledMarkupAmount
             UnbilledAmount
             UnbilledResaleTax
@@ -858,6 +859,16 @@
             Set(value As Nullable(Of Decimal))
                 _UnbilledNetAmount = value
             End Set
+        End Property
+        <AdvantageFramework.BaseClasses.Attributes.Entity(DisplayFormat:="n3", CustomColumnCaption:="Unbilled Markup Percent")>
+        Public ReadOnly Property UnbilledMarkupPercentCalc() As Decimal
+            Get
+                If Me.UnbilledNetAmount.GetValueOrDefault(0) = 0 Then
+                    UnbilledMarkupPercentCalc = 0
+                Else
+                    UnbilledMarkupPercentCalc = Me.UnbilledMarkupAmount.GetValueOrDefault(0) * 100 / Me.UnbilledNetAmount.GetValueOrDefault(0)
+                End If
+            End Get
         End Property
         <AdvantageFramework.BaseClasses.Attributes.Entity(DisplayFormat:="n2")>
         Public Property UnbilledMarkupAmount() As Nullable(Of Decimal)

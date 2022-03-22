@@ -900,10 +900,13 @@ Public Class Reporting_DynamicReportEdit
 
             Me.OpenWindow("Employee Time Forecast", String.Format("Reporting_InitialLoadingEmployeeTimeForecast.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, False, True)
 
-        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegister _
-            Or Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegister Then
 
             Me.OpenWindow("Check Register Criteria", String.Format("Reporting_InitialLoadingCheckRegister.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, False, True)
+
+        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+
+            Me.OpenWindow("Check Register with Invoice Detail Criteria", String.Format("Reporting_InitialLoadingCheckRegister.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, False, True)
 
         ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.EmployeeInOutBoard Then
 
@@ -969,6 +972,10 @@ Public Class Reporting_DynamicReportEdit
 
             Me.OpenWindow("Month End Report Criteria", String.Format("Reporting_InitialLoadingMonthEndMediaWIP.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, False, True)
 
+        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.MonthEndProductionWIP Then
+
+            Me.OpenWindow("Month End Report Criteria", String.Format("Reporting_InitialLoadingMonthEndProductionWIP.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, False, True)
+
         ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.EmployeeHoursAllocation Then
 
             Me.OpenWindow("Employee Hours Allocation Criteria", String.Format("Reporting_InitialLoadingEmployeeHoursAllocation.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, False, True)
@@ -1001,6 +1008,14 @@ Public Class Reporting_DynamicReportEdit
         ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.EmployeeTimeAnalysis Then
 
             Me.OpenWindow("Employee Time Analysis Criteria", String.Format("Reporting_InitialLoadingEmployeeTimeAnalysis.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, False, True)
+
+        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+            Me.OpenWindow("Deferred Sales Vs Open AR Criteria", String.Format("Reporting_InitialLoadingDeferredSalesVsOpenAR.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, False, True)
+
+        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.GLCrossOffice Then
+
+            Me.OpenWindow("GL Cross Office Criteria", String.Format("Reporting_InitialLoadingGLCrossOffice.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, False, True)
 
         Else
 
@@ -2207,6 +2222,21 @@ Public Class Reporting_DynamicReportEdit
             If My.Computer.FileSystem.FileExists(HttpContext.Current.Server.MapPath("~\") & "TEMP\Dashboard" & _DynamicReportTemplateID & ".xml") Then
 
                 e.DashboardXml = System.Xml.Linq.XDocument.Load(HttpContext.Current.Server.MapPath("~\") & "TEMP\Dashboard" & _DynamicReportTemplateID & ".xml")
+
+                Dim dashboard As New DevExpress.DashboardCommon.Dashboard()
+                dashboard.LoadFromXDocument(e.DashboardXml)
+
+                Dim objectDataSource = dashboard.DataSources.FirstOrDefault(Function(d) d.ComponentName = "dashboardObjectDataSource1")
+
+                If objectDataSource IsNot Nothing Then
+
+                    Dim Filter As String = String.Empty
+                    Filter = ASPxGridViewDynamicReport.FilterExpression
+                    objectDataSource.Filter = Filter
+
+                    e.DashboardXml = dashboard.SaveToXDocument()
+
+                End If
 
             End If
 

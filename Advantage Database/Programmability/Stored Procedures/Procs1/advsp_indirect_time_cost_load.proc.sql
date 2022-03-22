@@ -39,6 +39,7 @@ AS
 		[EmployeeLastName] varchar(30),
 		[EmployeeLastFirst] varchar(100),
 		[EmployeeTitle] varchar(50),
+		[EmployeeCurrentTitle] varchar(50),
 		[EmployeeAccountNumber] varchar(30),
 		[EmployeeCategory] varchar(50),
 		[IsEmployeeFreelance] varchar(3),
@@ -114,6 +115,7 @@ AS
 		[EmployeeLastName] = DIT.EmployeeLastName,
 		[EmployeeLastFirst] = DIT.EmployeeLastFirst,
 		[EmployeeTitle] = DIT.EmployeeTitle,
+		[EmployeeCurrentTitle] = DIT.EmployeeCurrentTitle,
 		[EmployeeAccountNumber] = DIT.EmployeeAccountNumber,
 		[EmployeeCategory] = DIT.EmployeeCategory,
 		[IsEmployeeFreelance] = DIT.IsEmployeeFreelance,
@@ -186,6 +188,7 @@ AS
 			[EmployeeLastName] = EMP.EMP_LNAME,
 			[EmployeeLastFirst] = EMP.EMP_LNAME + ', ' + EMP.EMP_FNAME,
 			[EmployeeTitle] = ET.EMPLOYEE_TITLE,
+		    [EmployeeCurrentTitle] = ETI.EMPLOYEE_TITLE,
 			[EmployeeAccountNumber] = EMP.EMP_ACCOUNT_NBR,
 			[EmployeeCategory] = ET.EMPLOYEE_CATEGORY, 
 			[IsEmployeeFreelance] = CASE WHEN ISNULL(EMP.FREELANCE, 0) = 1 THEN 'Yes' ELSE 'No' END,
@@ -335,7 +338,8 @@ AS
 			--[dbo].[EMPLOYEE_TITLE] AS ETITLE ON EMP.EMPLOYEE_TITLE_ID = ETITLE.EMPLOYEE_TITLE_ID LEFT OUTER JOIN
 			--[dbo].[EMPLOYEE_CATEGORY] AS EMPC ON EMPC.EMPLOYEE_CATEGORY_ID = ETITLE.EMPLOYEE_CATEGORY_ID LEFT OUTER JOIN
 			[dbo].[FUNCTIONS] AS FC ON F.FNC_CONSOLIDATION = FC.FNC_CODE LEFT OUTER JOIN
-			[dbo].[JOB_TYPE] AS JT ON JC.JT_CODE = JT.JT_CODE
+			[dbo].[JOB_TYPE] AS JT ON JC.JT_CODE = JT.JT_CODE LEFT OUTER JOIN
+            [dbo].[EMPLOYEE_TITLE] AS ETI ON ETI.EMPLOYEE_TITLE_ID = EMP.EMPLOYEE_TITLE_ID
 		WHERE EMP_HOURS <> 0 AND
 			1 = CASE WHEN @DATE_TYPE = 0 THEN CASE WHEN ET.EMP_DATE >= @START_DATE AND ET.EMP_DATE <= CONVERT(DATETIME, @END_DATE +' 23:59:00', 101) THEN 1 ELSE 0 END
 				 WHEN @DATE_TYPE = 1 THEN CASE WHEN ET.DATE_ENTERED >= @START_DATE AND ET.DATE_ENTERED <= CONVERT(DATETIME, @END_DATE +' 23:59:00', 101) THEN 1 ELSE 0 END
@@ -398,7 +402,8 @@ AS
 			F.FNC_CONSOLIDATION,
 			FC.FNC_DESCRIPTION,
 			EMP.SUPERVISOR_CODE,
-			EMP.EMP_TERM_DATE
+			EMP.EMP_TERM_DATE,
+            ETI.EMPLOYEE_TITLE
 
 		UNION
 
@@ -409,6 +414,7 @@ AS
 			[EmployeeLastName] = EMP.EMP_LNAME,
 			[EmployeeLastFirst] = EMP.EMP_LNAME + ', ' + EMP.EMP_FNAME,
 			[EmployeeTitle] = ETITLE.EMPLOYEE_TITLE,
+            [EmployeeCurrentTitle] = ETITLE.EMPLOYEE_TITLE,
 			[EmployeeAccountNumber] = EMP.EMP_ACCOUNT_NBR,
 			[EmployeeCategory] = EMPC.EMPLOYEE_CATEGORY, 
 			[IsEmployeeFreelance] = CASE WHEN ISNULL(EMP.FREELANCE, 0) = 1 THEN 'Yes' ELSE 'No' END,

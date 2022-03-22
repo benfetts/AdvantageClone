@@ -389,9 +389,9 @@
         Dim AccessTokenEndpointDecoded As System.Collections.Generic.Dictionary(Of String, String) = Nothing
         Dim Exchanged As Boolean = False
 
-        ClientID = AdvantageFramework.Quickbooks.QB_CLIENT_ID
+        ClientID = AdvantageFramework.Quickbooks.GetClientID()
 
-        ClientSecret = AdvantageFramework.Quickbooks.QB_CLIENT_SECRET
+        ClientSecret = AdvantageFramework.Quickbooks.GetClientSecret()
 
         cred = String.Format("{0}:{1}", ClientID, ClientSecret)
         enc = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(cred))

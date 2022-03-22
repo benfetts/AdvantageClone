@@ -229,7 +229,25 @@
     <Content Include="Scripts\vX.XX.XX\1 - Pre Database Update Scripts\Clean up old external reviewer tables.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\1 - Pre Database Update Scripts\DROP FUNCTION advfn_invoice_printing_xchge_disocunt_amt.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\2 - Table Scripts\ALERT_NOTIFY_EMPS_ASSIGNMENT.table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\2 - Table Scripts\COMSCORE_PRECACHE_MARKET.table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\2 - Table Scripts\COMSCORE_PRECACHE_MARKET_BOOK.table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\2 - Table Scripts\COMSCORE_PRECACHE_MARKET_DEMOGRAPHIC.table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\2 - Table Scripts\COMSCORE_PRECACHE_MARKET_STATION.table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\2 - Table Scripts\VENDOR_COMBO_RADIO_STATION.table.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\2 - Table Scripts\ACCESS_EMAIL.table.sql">
@@ -289,10 +307,40 @@
     <Content Include="Scripts\vX.XX.XX\2 - Table Scripts\Run Second\ALERT_RCPT_X_REVIEWER_DISMISSED.table.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column ARIANNA_CHANNEL_ID to NPR_STATION.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column ETAM_XREF to NPR_STATION.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column NP_INCLUDE_CIRC_QTY to MEDIA_PRINT_DEF.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column SHOW_TOTALNET_ON_GROSS_ORDER to MEDIA_PRINT_DEF.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column WARNING to COMSCORE_CACHE_HEADER.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Columns to VENDOR for 1099 alternative name.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column PRINT_REMOVE_LINES_WITHOUT_SPOTS to MEDIA_BROADCAST_WORKSHEET_PRINT_OPTIONS.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column ATTACHMENT_PATH to ACCESS_EMAIL.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column IS_COMBO_RADIO_STATION to VENDOR.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column R_START_DATE_COLUMN to MEDIA_INV_DEF.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column I_GUARANTEED_IMPRESSIONS_COLUMN to MEDIA_INV_DEF.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column T_START_DATE_COLUMN to MEDIA_INV_DEF.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column BILLABLE_HOURS_GOAL to EMPLOYEE_CLOAK.sql">
@@ -302,9 +350,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column COUNTRY_ID to MEDIA_PLAN.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column ETAM_XREF to NPR_STATION.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column IS_PUERTO_RICO to MARKET.sql">
@@ -358,7 +403,13 @@
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Columns to PO_PRINT_DEF.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column PERCENT on CLIENT_DISCOUNT.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column RATE on MEDIA_BROADCAST_WORKSHEET_MARKET_STAGING_DETAIL_DATE.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Columns AQH_RATING on MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Columns CPP on MEDIA_BROADCAST_WORKSHEET_MARKET_STAGING_DETAIL.sql">
@@ -397,6 +448,12 @@
     <Content Include="Scripts\vX.XX.XX\4 - Function Scripts\advfn_bcc_is_job_closeable.function.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\4 - Function Scripts\advfn_invoice_printing_xchge_disocunt_amt.function.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\4 - Function Scripts\advfn_invoice_printing_xchge_rate_amt.function.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\4 - Function Scripts\advfn_makegood_get_order_status.function.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -419,6 +476,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\4 - Function Scripts\advtf_ar_address_table_prod.function.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\4 - Function Scripts\advtf_broadcast_order_dtl_verification.function.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\4 - Function Scripts\advtf_media_broadcast_schedule_header.function.sql">
@@ -488,6 +548,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_move_orphans_to_sprint.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_sprint_check_jobs.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_sprint_check_task_employees.proc.sql">
@@ -577,6 +640,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bcc_billing_worksheet_production.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bcc_get_media_available.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bcc_get_production_summary.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -616,6 +682,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_broadcast_audit_export_invoice.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_broadcast_invoice_detail_report.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_broadcast_invoice_summary_report.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -626,6 +695,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_calculate_schedule.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_card_user_sort_alerts.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_cash_management_production.proc.sql">
@@ -640,7 +712,25 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_check_register_with_invoice_details.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_cache_results.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_precache_books.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_precache_demographics.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_precache_stations.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_stations.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_employee_timesheet_approval_report.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_def_sales_ar.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_direct_time_cost_load.proc.sql">
@@ -652,6 +742,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_employee_time_analysis.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_employee_time_forecast_do.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_employee_time_util_dashboard.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -661,7 +754,13 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_get_spot_matching_adjacency_settings.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_gl_cross_office.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_gl_detail_by_account_dataset_load.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_gl_detail_dataset_load.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_gl_processing_load_unposted_journal_entry.proc.sql">
@@ -679,6 +778,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_indirect_time_load.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_backup_detail.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_comboinvoicedetails.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -688,10 +790,16 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_estimatepriorcurrentttdinvoicedetails.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_functiondetails.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_mediainvoicedetail.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_standardinvoicedetails.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_media_settings.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_component_get_api.proc.sql">
@@ -712,7 +820,22 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_purchase_order_load.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_summary_report.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_traffic_det_by_job_comp.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_journal_entry_report_load.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_budget_report.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_loadreachfreq_details.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_loadreachfreq_details_other.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_etam_export_get_station_ordernumbers.proc.sql">
@@ -734,6 +857,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_approve_invoice_orders.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_broadcast_invoices.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_broadcast_order.proc.sql">
@@ -842,6 +968,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_traffic_schedule_FindAndReplace_Dates.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_update_billing_cmd_center_media.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_utilities_get_job_info.proc.sql">
@@ -1084,7 +1213,16 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetAllJobs_PS_Index.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetEmpCodesBySup.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetTasks.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_DocumentManager_GetCurrentAdNumberDocument.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_DocumentManager_GetCurrentExpenseDocument.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_EmployeeUtilizationGetColumnSettings.proc.sql">
@@ -1129,6 +1267,15 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_get_Financial_data.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_get_super_appr_expense_hdr.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Gross_Income_CPL.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Gross_Income_CPL_Detail.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Job_Jacket_Search.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1157,6 +1304,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_Calculate_Pred.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_GetScheduleHeader_V3.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_GetTasks_V2.proc.sql">
@@ -1202,6 +1352,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Add_row_to_EXPORT_SYSTEMS %28WTB%29.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Disable Conceptshare.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Insert COMSCORE_TV_BOOKS 2022.sql">
@@ -1288,7 +1441,7 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ALERT_GET_COMMENTS.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Update MBWMD set CABLE_NETWORK_NIELSEN_TV_STATION_CODE for Comscore.sql">
+    <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Update NPR_STATION set ARIANNA_CHANNEL_ID.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Update NPR_STATION set ETAM_XREF.sql">

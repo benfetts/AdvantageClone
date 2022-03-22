@@ -7,6 +7,7 @@ import { MentionItem } from './mention-item';
 export class AlertCommentDialog {
 
     @bindable saveLabel: string = 'Save'
+    @bindable okLabel: string = 'OK'
     @bindable showUpload: boolean = false;
 
     controller: DialogController;
@@ -60,7 +61,7 @@ export class AlertCommentDialog {
                 var editor = $(this).data('kendoEditor');
                 editor.exec('undo', null);
             },
-            template: '<a tabindex="-1" role="button" class="k-tool" unselectable="on" title="Undo" aria-pressed="false" ><span unselectable="on" class="k-tool-icon k-icon k-i-undo" tabindex= "-1" ></span><span class="k-tool-text" tabindex="-1">Undo Changes</span></a>'
+            template: '<a tabindex="-1" role="button" class="k-button k-tool" unselectable="on" title="Undo" aria-pressed="false" ><span unselectable="on" class="k-tool-icon k-icon k-i-undo" tabindex= "-1" ></span><span class="k-tool-text" tabindex="-1">Undo Changes</span></a>'
         },
         {
             name: 'customredo',
@@ -69,7 +70,7 @@ export class AlertCommentDialog {
                 var editor = $(this).data('kendoEditor');
                 editor.exec('redo', null);
             },
-            template: '<a tabindex="-1" role="button" class="k-tool" unselectable="on" title="Redo" aria-pressed="false" ><span unselectable="on" class="k-tool-icon k-icon k-i-redo" tabindex= "-1" ></span><span class="k-tool-text" tabindex="-1">Redo Changes</span></a>'
+            template: '<a tabindex="-1" role="button" class="k-button k-tool" unselectable="on" title="Redo" aria-pressed="false" ><span unselectable="on" class="k-tool-icon k-icon k-i-redo" tabindex= "-1" ></span><span class="k-tool-text" tabindex="-1">Redo Changes</span></a>'
         },
         {
             name: 'createLink'
@@ -110,6 +111,9 @@ export class AlertCommentDialog {
         this.Comment = model.Comment;
         if (model.SaveLabel) {
             this.saveLabel = model.SaveLabel;
+        }
+        if (model.OkLabel) {
+            this.okLabel = model.OkLabel;
         }
     }
     attached() {

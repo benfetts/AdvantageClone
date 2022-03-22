@@ -558,8 +558,11 @@
     <Compile Include="Classes\Finance And Accounting\Check Writing\HSBC Export CA\Strd.vb" />
     <Compile Include="Classes\Finance And Accounting\Check Writing\HSBC Export CA\SvcLvl.vb" />
     <Compile Include="Classes\Finance And Accounting\Check Writing\StringWriterWithEncoding.vb" />
+    <Compile Include="Classes\Media\Media Broadcast Worksheet\RadioDemoDataInfo.vb" />
     <Compile Include="Alert System\Classes\CommentDocument.vb" />
     <Compile Include="Controller\Finance And Accounting\PaymentManagerController.vb" />
+    <Compile Include="Controller\Maintenance\Accounting\VendorComboRadioStationController.vb" />
+    <Compile Include="Controller\Media\ComscorePrecacheController.vb" />
     <Compile Include="Controller\Media\Exports\BroadcastBuyInvoiceExportController.vb" />
     <Compile Include="Controller\Project Management\ProofingController.vb" />
     <Compile Include="Dashboard\Classes\EmployeeUtilization.vb" />
@@ -594,6 +597,12 @@
     <Compile Include="Dashboard\Methods.vb" />
     <Compile Include="DTO\BroadcastCalendar.vb" />
     <Compile Include="DTO\Finance And Accounting\PaymentManagerReport.vb" />
+    <Compile Include="DTO\Maintenance\Accounting\Vendor\VendorComboRadioStation.vb" />
+    <Compile Include="DTO\Media\ComscorePrecache\Book.vb" />
+    <Compile Include="DTO\Media\ComscorePrecache\Cache.vb" />
+    <Compile Include="DTO\Media\ComscorePrecache\Demographic.vb" />
+    <Compile Include="DTO\Media\ComscorePrecache\Market.vb" />
+    <Compile Include="DTO\Media\ComscorePrecache\Station.vb" />
     <Compile Include="DTO\Media\PlanEstimateGRPBudgetAllocateSpotLengthPercent.vb" />
     <Compile Include="DTO\Media\Invoice.vb" />
     <Compile Include="DTO\Media\Buy.vb" />
@@ -1439,6 +1448,7 @@
     <Compile Include="View Models\Lookup\BaseLookupDisplayViewModel.vb" />
     <Compile Include="View Models\Lookup\LookupViewModel.vb" />
     <Compile Include="View Models\Lookup\LookupDisplayViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Accounting\VendorComboRadioStationViewModel.vb" />
     <Compile Include="View Models\Maintenance\Accounting\SalesClassSetupViewModel.vb" />
     <Compile Include="View Models\Maintenance\Accounting\ClientDiscountViewModel.vb" />
     <Compile Include="View Models\Maintenance\Accounting\ClientDiscountSetupViewModel.vb" />
@@ -1451,6 +1461,7 @@
     <Compile Include="View Models\Maintenance\Media\MediaPlanTemplateViewModel.vb" />
     <Compile Include="View Models\Maintenance\Media\MediaPlanEstimateTemplateDataEntryViewModel.vb" />
     <Compile Include="View Models\Maintenance\Media\PlanEstimateTemplateViewModel.vb" />
+    <Compile Include="View Models\Media\ComscorePrecacheViewModel.vb" />
     <Compile Include="View Models\Media\Exports\BroadcastBuyInvoiceExportViewModel.vb" />
     <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketBuyerViewModel.vb" />
     <Compile Include="View Models\Media\MediaBroadcastWorksheetETAMExportViewModel.vb" />

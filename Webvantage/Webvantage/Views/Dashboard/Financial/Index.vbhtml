@@ -120,8 +120,8 @@ End Code
     }
 
     .main-toolbar-container {
-        width: calc(100vw - 40px);
-        min-width: calc(100vw - 40px);
+        width: 100%;
+        min-width: 100%;
         background-color: #E5E5E5;
         padding: 10px 10px 10px 10px;
         border-bottom: 1px solid #CCC;
@@ -137,7 +137,7 @@ End Code
     }
 </style>
 <div>
-    <div id="TopToolBar" class="wv-bar k-toolbar k-widget k-toolbar-resizable" style="width:calc(100vw - 40px);background-color: #E5E5E5;padding: 10px 10px 10px 10px;border-bottom: 1px solid #CCC;box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);margin: 5px 14px 5px 1px; overflow:auto;">
+    <div id="TopToolBar" class="wv-bar k-toolbar k-widget k-toolbar-resizable" style="width:100%;background-color: #E5E5E5;padding: 10px 10px 10px 10px;border-bottom: 1px solid #CCC;box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);margin: 5px 14px 5px 1px; overflow:auto;">
         <ul Class="list-inline" style="margin-bottom: 0; padding-left: 8px;">
             <li id="Year1" style="padding:3px">
                 <Button id="Year1Button" class="k-toggle-button k-button k-group-start wv-icon-button" data-group="toggleYear" onclick="onYear1Click(@ViewBag.Year1)" style="width: 50px !important;" title="@ViewBag.Year1"><span style="font-size: 12px;">@ViewBag.Year1</span></Button>
@@ -196,8 +196,8 @@ End Code
         </div>
     </div>
 
-    <div id="FilterWrap" style="display:none">
-
+    <div id="FilterWrap">
+        @Html.Partial("_FinancialFilter", Model)
     </div>
     <div id="FinancialWrap">
         @Html.Partial("_FinancialDashboard", Model)

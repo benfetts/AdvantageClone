@@ -10,9 +10,11 @@ SELECT
 	IsOrder = CAST(1 as bit),
     IsProduction = CAST(0 as bit),
     JobNumber = NULL,
-    JobComponentNumber = NULL
+    JobComponentNumber = NULL,
+	QuickBooksClientID = cx.SOURCE_CL_CODE
 FROM dbo.AP_INTERNET ap
 	LEFT OUTER JOIN dbo.INTERNET_HEADER h ON ap.ORDER_NBR = h.ORDER_NBR 
+	LEFT OUTER JOIN dbo.CLIENT_XREF cx ON cx.CL_CODE = h.CL_CODE AND cx.RECORD_SOURCE_ID = (SELECT RECORD_SOURCE_ID FROM dbo.RECORD_SOURCE WHERE [NAME] = 'QuickBooks')
 WHERE AP_ID = @AP_ID
 AND COALESCE(MODIFY_DELETE, 0) = 0
 
@@ -26,9 +28,11 @@ SELECT
 	IsOrder = CAST(1 as bit),
     IsProduction = CAST(0 as bit),
     JobNumber = NULL,
-    JobComponentNumber = NULL
+    JobComponentNumber = NULL,
+	QuickBooksClientID = cx.SOURCE_CL_CODE 
 FROM dbo.AP_MAGAZINE ap
 	LEFT OUTER JOIN dbo.MAGAZINE_HEADER h ON ap.ORDER_NBR = h.ORDER_NBR 
+	LEFT OUTER JOIN dbo.CLIENT_XREF cx ON cx.CL_CODE = h.CL_CODE AND cx.RECORD_SOURCE_ID = (SELECT RECORD_SOURCE_ID FROM dbo.RECORD_SOURCE WHERE [NAME] = 'QuickBooks')
 WHERE AP_ID = @AP_ID
 AND COALESCE(MODIFY_DELETE, 0) = 0
 
@@ -42,9 +46,11 @@ SELECT
 	IsOrder = CAST(1 as bit),
     IsProduction = CAST(0 as bit),
     JobNumber = NULL,
-    JobComponentNumber = NULL
+    JobComponentNumber = NULL,
+	QuickBooksClientID = cx.SOURCE_CL_CODE 
 FROM dbo.AP_NEWSPAPER ap
 	LEFT OUTER JOIN dbo.NEWSPAPER_HEADER h ON ap.ORDER_NBR = h.ORDER_NBR 
+	LEFT OUTER JOIN dbo.CLIENT_XREF cx ON cx.CL_CODE = h.CL_CODE AND cx.RECORD_SOURCE_ID = (SELECT RECORD_SOURCE_ID FROM dbo.RECORD_SOURCE WHERE [NAME] = 'QuickBooks')
 WHERE AP_ID = @AP_ID
 AND COALESCE(MODIFY_DELETE, 0) = 0
 
@@ -58,9 +64,11 @@ SELECT
 	IsOrder = CAST(1 as bit),
     IsProduction = CAST(0 as bit),
     JobNumber = NULL,
-    JobComponentNumber = NULL
+    JobComponentNumber = NULL,
+	QuickBooksClientID = cx.SOURCE_CL_CODE 
 FROM dbo.AP_OUTDOOR ap
 	LEFT OUTER JOIN dbo.OUTDOOR_HEADER h ON ap.ORDER_NBR = h.ORDER_NBR 
+	LEFT OUTER JOIN dbo.CLIENT_XREF cx ON cx.CL_CODE = h.CL_CODE AND cx.RECORD_SOURCE_ID = (SELECT RECORD_SOURCE_ID FROM dbo.RECORD_SOURCE WHERE [NAME] = 'QuickBooks')
 WHERE AP_ID = @AP_ID
 AND COALESCE(MODIFY_DELETE, 0) = 0
 
@@ -74,9 +82,11 @@ SELECT
 	IsOrder = CAST(1 as bit),
     IsProduction = CAST(0 as bit),
     JobNumber = NULL,
-    JobComponentNumber = NULL
+    JobComponentNumber = NULL,
+	QuickBooksClientID = cx.SOURCE_CL_CODE 
 FROM dbo.AP_RADIO ap
 	LEFT OUTER JOIN dbo.RADIO_HDR h ON ap.ORDER_NBR = h.ORDER_NBR 
+	LEFT OUTER JOIN dbo.CLIENT_XREF cx ON cx.CL_CODE = h.CL_CODE AND cx.RECORD_SOURCE_ID = (SELECT RECORD_SOURCE_ID FROM dbo.RECORD_SOURCE WHERE [NAME] = 'QuickBooks')
 WHERE AP_ID = @AP_ID
 AND COALESCE(MODIFY_DELETE, 0) = 0
 
@@ -90,9 +100,11 @@ SELECT
 	IsOrder = CAST(1 as bit),
     IsProduction = CAST(0 as bit),
     JobNumber = NULL,
-    JobComponentNumber = NULL
+    JobComponentNumber = NULL,
+	QuickBooksClientID = cx.SOURCE_CL_CODE 
 FROM dbo.AP_TV ap
 	LEFT OUTER JOIN dbo.TV_HDR h ON ap.ORDER_NBR = h.ORDER_NBR 
+	LEFT OUTER JOIN dbo.CLIENT_XREF cx ON cx.CL_CODE = h.CL_CODE AND cx.RECORD_SOURCE_ID = (SELECT RECORD_SOURCE_ID FROM dbo.RECORD_SOURCE WHERE [NAME] = 'QuickBooks')
 WHERE AP_ID = @AP_ID
 AND COALESCE(MODIFY_DELETE, 0) = 0
 
@@ -106,7 +118,8 @@ SELECT
 	IsOrder = CAST(0 as bit),
     IsProduction = CAST(0 as bit),
     JobNumber = NULL,
-    JobComponentNumber = NULL
+    JobComponentNumber = NULL,
+	QuickBooksClientID = NULL
 FROM AP_GL_DIST ap
 WHERE AP_ID = @AP_ID
 AND COALESCE(MODIFY_DELETE, 0) = 0
@@ -121,9 +134,11 @@ SELECT
 	IsOrder = CAST(0 as bit),
     IsProduction = CAST(1 as bit),
     JobNumber = ap.JOB_NUMBER,
-    JobComponentNumber = ap.JOB_COMPONENT_NBR
+    JobComponentNumber = ap.JOB_COMPONENT_NBR,
+	QuickBooksClientID = cx.SOURCE_CL_CODE 
 FROM AP_PRODUCTION ap
     LEFT OUTER JOIN dbo.JOB_LOG jl ON ap.JOB_NUMBER = jl.JOB_NUMBER
+	LEFT OUTER JOIN dbo.CLIENT_XREF cx ON cx.CL_CODE = jl.CL_CODE AND cx.RECORD_SOURCE_ID = (SELECT RECORD_SOURCE_ID FROM dbo.RECORD_SOURCE WHERE [NAME] = 'QuickBooks')
 WHERE AP_ID = @AP_ID
 AND COALESCE(MODIFY_DELETE, 0) = 0
 

@@ -37,7 +37,9 @@ BEGIN
 		InvoiceDate date,
 		[Status] varchar(25) COLLATE SQL_Latin1_General_CP1_CI_AS,
 		InvoiceGross decimal(15,2),
-		InvoiceNet decimal(15,2)
+		InvoiceNet decimal(15,2),
+        YearMonth varchar(7),
+        WorksheetName varchar(100)
 	)
 			
 	IF @IncludeTV = 1 BEGIN
@@ -85,7 +87,9 @@ BEGIN
 				 WHEN ISNULL(APMA.[STATUS], -1) = 3 THEN 'Approved With Changes'
 				 ELSE '' END,
 			APTV.EXT_NET_AMT + APTV.COMM_AMT,
-			APTV.EXT_NET_AMT
+			APTV.EXT_NET_AMT,
+            CASE WHEN TVD.END_DATE IS NOT NULL THEN CAST(YEAR(TVD.END_DATE) as varchar) + '|' + CAST(MONTH(TVD.END_DATE) AS varchar(2)) ELSE '' END,
+            WorksheetName = MBW.[NAME]
 		FROM
 			dbo.TV_HDR TV 
 			INNER JOIN (SELECT 
@@ -182,7 +186,9 @@ BEGIN
 				 WHEN ISNULL(APMA.[STATUS], -1) = 3 THEN 'Approved With Changes'
 				 ELSE '' END,
 			APR.EXT_NET_AMT + APR.COMM_AMT,
-			APR.EXT_NET_AMT
+			APR.EXT_NET_AMT,
+            CASE WHEN RD.END_DATE IS NOT NULL THEN CAST(YEAR(RD.END_DATE) as varchar) + '|' + CAST(MONTH(RD.END_DATE) AS varchar(2)) ELSE '' END,
+            WorksheetName = MBW.[NAME]
 		FROM
 			dbo.RADIO_HDR R 
 			INNER JOIN (SELECT 
@@ -272,14 +278,38 @@ BEGIN
 		ProductName,
 		InvoiceNumber,
 		Calendar,
-		ScheduleGross,
-		ScheduleNet,
+		ScheduleGross = SUM(ScheduleGross),
+		ScheduleNet = SUM(ScheduleNet),
 		InvoiceDate,
 		[Status],
-		InvoiceGross,
-		InvoiceNet 
+		InvoiceGross = SUM(InvoiceGross),
+		InvoiceNet = SUM(InvoiceNet),
+        YearMonth,
+        WorksheetName
 	FROM 
 		#InvoiceSummary
+    GROUP BY 
+        Market,
+		Media,
+		VendorCode,
+		VendorName,
+		OrderNumber,
+        OrderLineNumber,
+		FlightStart,
+		FlightEnd,
+		MonthOfService,
+		ClientCode,
+		ClientName,
+		DivisionCode,
+		DivisionName,
+		ProductCode,
+		ProductName,
+		InvoiceNumber,
+		Calendar,
+		InvoiceDate,
+		[Status],
+        YearMonth,
+        WorksheetName
 	ORDER BY
 		Market,
 		Media,

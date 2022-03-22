@@ -11,6 +11,7 @@
         Public Event VendorContractManagerRowCountChanged()
         Public Event VendorContractManagerSelectionChanged()
         Public Event MarketChangedEvent()
+        Public Event ComboStationChangedEvent()
 
 #Region " Constants "
 
@@ -225,6 +226,13 @@
         Public ReadOnly Property IsQuickbooksEnabled As Boolean
             Get
                 IsQuickbooksEnabled = _IsQuickbooksEnabled
+            End Get
+        End Property
+        Public ReadOnly Property ShowManageComboRadioStations As Boolean
+            Get
+                ShowManageComboRadioStations = (TabControlControl_VendorDetails.SelectedTab Is TabItemVendorDetails_MediaDefaultsTab AndAlso
+                                                TabControlMediaDefaults_MediaDefaultsTab.SelectedTab Is TabItemMediaDefaults_GeneralDefaultInformationTab AndAlso
+                                                ComboBoxMain_DefaultCategory.GetSelectedValue = "R" AndAlso CheckBoxGeneralDefaultInformation_ComboStation.Checked)
             End Get
         End Property
 
@@ -1207,6 +1215,7 @@
                 SearchableComboBoxGeneralDefaultInformation_TaxCode.SelectedValue = Vendor.DefaultSalesTax
                 TextBoxGeneralDefaultInformation_VendorCodeCrossReference.Text = Vendor.VendorCodeCrossReference
                 TextBoxGeneralDefaultInformation_CallLetters.Text = Vendor.CallLetters
+                CheckBoxGeneralDefaultInformation_ComboStation.Checked = Vendor.IsComboRadioStation
 
                 If String.IsNullOrWhiteSpace(Vendor.Band) Then
 
@@ -1805,6 +1814,7 @@
                 Vendor.IsNielsenSubsciber = CheckBoxIsNielsenSubscriber.Checked
                 Vendor.IsComscoreSubsciber = CheckBoxIsComscoreSubscriber.Checked
                 Vendor.NPRStationID = If(SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Visible, SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.GetSelectedValue, Nothing)
+                Vendor.IsComboRadioStation = CheckBoxGeneralDefaultInformation_ComboStation.Checked
 
                 If RadioButtonControlUnits_Daily.Checked Then
 
@@ -2410,6 +2420,7 @@
                         ComboBoxGeneralDefaultInformation_CanadianVendorType.Visible = False
                         LabelGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
                         SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
+                        CheckBoxGeneralDefaultInformation_ComboStation.Visible = False
 
                     Case Database.Entities.VendorCategory.OutOfHome
 
@@ -2444,6 +2455,7 @@
                         ComboBoxGeneralDefaultInformation_CanadianVendorType.Visible = False
                         LabelGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
                         SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
+                        CheckBoxGeneralDefaultInformation_ComboStation.Visible = False
 
                     Case Database.Entities.VendorCategory.Newspaper
 
@@ -2478,6 +2490,7 @@
                         ComboBoxGeneralDefaultInformation_CanadianVendorType.Visible = False
                         LabelGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
                         SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
+                        CheckBoxGeneralDefaultInformation_ComboStation.Visible = False
 
                     Case Database.Entities.VendorCategory.Television, Database.Entities.VendorCategory.Radio
 
@@ -2498,21 +2511,21 @@
 
                         If VendorCategory = Database.Entities.Methods.VendorCategory.Radio Then
 
-                            SearchableComboBoxGeneralDefaultInformation_RadioStation.Visible = True
+                            LabelGeneralDefaultInformation_Station.Visible = (CheckBoxGeneralDefaultInformation_ComboStation.Checked = False)
+                            SearchableComboBoxGeneralDefaultInformation_RadioStation.Visible = (CheckBoxGeneralDefaultInformation_ComboStation.Checked = False)
                             SearchableComboBoxGeneralDefaultInformation_TVStation.Visible = False
-                            CheckBoxGeneralDefaultInformation_IsCableSystem.Visible = False
-                            LabelGeneralDefaultInformation_IsCableSystem.Visible = False
                             LabelGeneralDefaultInformation_CableSyscode.Visible = False
                             SearchableComboBoxGeneralDefaultInformation_CableSyscode.Visible = False
-                            LabelGeneralDefaultInformation_EastlanStation.Visible = True
-                            SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Visible = True
+                            LabelGeneralDefaultInformation_EastlanStation.Visible = (CheckBoxGeneralDefaultInformation_ComboStation.Checked = False)
+                            SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Visible = (CheckBoxGeneralDefaultInformation_ComboStation.Checked = False)
                             LabelGeneralDefaultInformation_ComscoreStation.Visible = False
                             SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Visible = False
-                            LabelRatingsSubscriber.Visible = True
-                            CheckBoxIsNielsenSubscriber.Visible = True
+                            LabelRatingsSubscriber.Visible = True '(CheckBoxGeneralDefaultInformation_ComboStation.Checked = False)
+                            CheckBoxIsNielsenSubscriber.Visible = True '(CheckBoxGeneralDefaultInformation_ComboStation.Checked = False)
                             CheckBoxIsComscoreSubscriber.Visible = False
                             LabelGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
                             SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
+                            CheckBoxGeneralDefaultInformation_ComboStation.Visible = True
 
                         ElseIf VendorCategory = Database.Entities.Methods.VendorCategory.Television Then
 
@@ -2533,6 +2546,7 @@
                                 CheckBoxIsComscoreSubscriber.Visible = True
                                 LabelGeneralDefaultInformation_PuertoRicoTVStation.Visible = _IsSelectedMarketPuertoRican
                                 SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Visible = _IsSelectedMarketPuertoRican
+                                CheckBoxGeneralDefaultInformation_ComboStation.Visible = False
 
                             Else
 
@@ -2540,58 +2554,59 @@
 
                             End If
 
+                            LabelGeneralDefaultInformation_Station.Visible = True
+
                         End If
 
-                        LabelGeneralDefaultInformation_Station.Visible = True
+            Case Else
 
-                    Case Else
-
-                        LabelGeneralDefaultInformation_Market.Visible = True
-                        SearchableComboBoxGeneralDefaultInformation_Market.Visible = True
-                        LabelGeneralDefaultInformation_OveragePercent.Visible = False
-                        NumericInputGeneralDefaultInformation_OveragePercent.Visible = False
-                        LabelGeneralDefaultInformation_ColumnWidth.Visible = False
-                        NumericInputGeneralDefaultInformation_ColumnWidth.Visible = False
-                        RadioButtonControlUnits_MontlyOrBroadcastMonth.Text = ""
-                        RadioButtonControlUnits_MontlyOrBroadcastMonth.Tag = Nothing
-                        RadioButtonControlUnits_WeeklyOrCalendarMonth.Text = ""
-                        RadioButtonControlUnits_WeeklyOrCalendarMonth.Tag = Nothing
-                        RadioButtonControlUnits_Daily.Visible = False
-                        RadioButtonControlUnits_Daily.Tag = Nothing
-                        CheckBoxGeneralDefaultInformation_IsCableSystem.Visible = False
-                        LabelGeneralDefaultInformation_IsCableSystem.Visible = False
-                        LabelGeneralDefaultInformation_CableSyscode.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_CableSyscode.Visible = False
-                        LabelGeneralDefaultInformation_Station.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_RadioStation.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_TVStation.Visible = False
-                        LabelGeneralDefaultInformation_EastlanStation.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Visible = False
-                        LabelGeneralDefaultInformation_ComscoreStation.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Visible = False
-                        LabelGeneralDefaultInformation_CanadianVendorType.Visible = False
-                        ComboBoxGeneralDefaultInformation_CanadianVendorType.Visible = False
+            LabelGeneralDefaultInformation_Market.Visible = True
+            SearchableComboBoxGeneralDefaultInformation_Market.Visible = True
+            LabelGeneralDefaultInformation_OveragePercent.Visible = False
+            NumericInputGeneralDefaultInformation_OveragePercent.Visible = False
+            LabelGeneralDefaultInformation_ColumnWidth.Visible = False
+            NumericInputGeneralDefaultInformation_ColumnWidth.Visible = False
+            RadioButtonControlUnits_MontlyOrBroadcastMonth.Text = ""
+            RadioButtonControlUnits_MontlyOrBroadcastMonth.Tag = Nothing
+            RadioButtonControlUnits_WeeklyOrCalendarMonth.Text = ""
+            RadioButtonControlUnits_WeeklyOrCalendarMonth.Tag = Nothing
+            RadioButtonControlUnits_Daily.Visible = False
+            RadioButtonControlUnits_Daily.Tag = Nothing
+            CheckBoxGeneralDefaultInformation_IsCableSystem.Visible = False
+            LabelGeneralDefaultInformation_IsCableSystem.Visible = False
+            LabelGeneralDefaultInformation_CableSyscode.Visible = False
+            SearchableComboBoxGeneralDefaultInformation_CableSyscode.Visible = False
+            LabelGeneralDefaultInformation_Station.Visible = False
+            SearchableComboBoxGeneralDefaultInformation_RadioStation.Visible = False
+            SearchableComboBoxGeneralDefaultInformation_TVStation.Visible = False
+            LabelGeneralDefaultInformation_EastlanStation.Visible = False
+            SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Visible = False
+            LabelGeneralDefaultInformation_ComscoreStation.Visible = False
+            SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Visible = False
+            LabelGeneralDefaultInformation_CanadianVendorType.Visible = False
+            ComboBoxGeneralDefaultInformation_CanadianVendorType.Visible = False
                         LabelGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
                         SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
+                        CheckBoxGeneralDefaultInformation_ComboStation.Visible = False
 
                 End Select
 
-                If VendorCategory = Database.Entities.VendorCategory.NonMedia OrElse VendorCategory = Database.Entities.VendorCategory.NonClient Then
+            If VendorCategory = Database.Entities.VendorCategory.NonMedia OrElse VendorCategory = Database.Entities.VendorCategory.NonClient Then
 
-                    RadioButtonControlRates_Gross.Checked = False
-                    RadioButtonControlRates_Net.Checked = True
+                RadioButtonControlRates_Gross.Checked = False
+                RadioButtonControlRates_Net.Checked = True
 
-                ElseIf VendorCategory = Database.Entities.VendorCategory.Internet OrElse VendorCategory = Database.Entities.VendorCategory.Newspaper Then
+            ElseIf VendorCategory = Database.Entities.VendorCategory.Internet OrElse VendorCategory = Database.Entities.VendorCategory.Newspaper Then
 
-                    RadioButtonControlRates_Gross.Checked = False
-                    RadioButtonControlRates_Net.Checked = True
+                RadioButtonControlRates_Gross.Checked = False
+                RadioButtonControlRates_Net.Checked = True
 
-                Else
+            Else
 
-                    RadioButtonControlRates_Gross.Checked = True
-                    RadioButtonControlRates_Net.Checked = False
+                RadioButtonControlRates_Gross.Checked = True
+                RadioButtonControlRates_Net.Checked = False
 
-                End If
+            End If
 
             End If
 
@@ -2960,6 +2975,7 @@
 
             LabelGeneralDefaultInformation_IsCableSystem.Visible = False
             CheckBoxGeneralDefaultInformation_IsCableSystem.Visible = False
+            CheckBoxGeneralDefaultInformation_ComboStation.Visible = False
 
         End Sub
 
@@ -3286,6 +3302,18 @@
                         Saved = AdvantageFramework.Database.Procedures.Vendor.Update(DbContext, Vendor)
 
                         If Saved Then
+
+                            If Vendor.IsComboRadioStation = False Then
+
+                                Try
+
+                                    DbContext.Database.ExecuteSqlCommand(String.Format("DELETE FROM dbo.VENDOR_COMBO_RADIO_STATION WHERE VN_CODE = '{0}'", Vendor.Code))
+
+                                Catch ex As Exception
+
+                                End Try
+
+                            End If
 
                             UpdateQuickBooksCrossReference(DbContext, Vendor.Code)
 
@@ -3962,6 +3990,11 @@
                 AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
 
             End If
+
+        End Sub
+        Public Sub ManageComboRadioStations()
+
+            AdvantageFramework.Maintenance.Accounting.Presentation.VendorComboRadioStationDialog.ShowFormDialog(_VendorCode)
 
         End Sub
 
@@ -4794,71 +4827,45 @@
 
                         LoadGeneralDefaultInformationSettings()
 
-                        LabelGeneralDefaultInformation_IsCableSystem.Visible = False
-                        CheckBoxGeneralDefaultInformation_IsCableSystem.Visible = False
-                        LabelGeneralDefaultInformation_CableSyscode.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_CableSyscode.Visible = False
-                        LabelGeneralDefaultInformation_Station.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_RadioStation.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_TVStation.Visible = False
-                        LabelGeneralDefaultInformation_EastlanStation.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Visible = False
-                        LabelGeneralDefaultInformation_ComscoreStation.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Visible = False
-                        LabelRatingsSubscriber.Visible = False
-                        CheckBoxIsNielsenSubscriber.Visible = False
-                        CheckBoxIsComscoreSubscriber.Visible = False
-                        LabelGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
-
-                        If ComboBoxMain_DefaultCategory.GetSelectedValue = "T" Then
-
-                            LabelGeneralDefaultInformation_CanadianVendorType.Visible = True
-                            ComboBoxGeneralDefaultInformation_CanadianVendorType.Visible = True
-
-                        Else
-
-                            LabelGeneralDefaultInformation_CanadianVendorType.Visible = False
-                            ComboBoxGeneralDefaultInformation_CanadianVendorType.Visible = False
-
-                            If ComboBoxGeneralDefaultInformation_CanadianVendorType.SelectedValue <> 0 Then
-
-                                ComboBoxGeneralDefaultInformation_CanadianVendorType.SelectedValue = 0
-
-                            End If
-
-                        End If
-
                     ElseIf ComboBoxMain_DefaultCategory.GetSelectedValue = "T" AndAlso
                             AdvantageFramework.Database.Procedures.Market.IsMarketPuertoRican(DbContext, SearchableComboBoxGeneralDefaultInformation_Market.GetSelectedValue) Then
 
                         _IsSelectedMarketPuertoRican = True
 
-                        LoadGeneralDefaultInformationSettings()
+                                LoadGeneralDefaultInformationSettings()
 
-                        ShowHidePuertoRicoTVControls()
+                                ShowHidePuertoRicoTVControls()
 
-                    Else
+                            ElseIf ComboBoxMain_DefaultCategory.GetSelectedValue = "T" AndAlso
+                                    AdvantageFramework.Database.Procedures.Market.IsMarketPuertoRican(DbContext, SearchableComboBoxGeneralDefaultInformation_Market.GetSelectedValue) Then
 
-                        LoadGeneralDefaultInformationSettings()
+                                _IsSelectedMarketPuertoRican = True
 
-                        _IsSelectedMarketCanadadian = False
+                                LoadGeneralDefaultInformationSettings()
 
-                        LabelGeneralDefaultInformation_CanadianVendorType.Visible = False
-                        ComboBoxGeneralDefaultInformation_CanadianVendorType.Visible = False
+                                ShowHidePuertoRicoTVControls()
 
-                        If ComboBoxGeneralDefaultInformation_CanadianVendorType.SelectedValue <> 0 Then
+                            Else
 
-                            ComboBoxGeneralDefaultInformation_CanadianVendorType.SelectedValue = 0
+                                LoadGeneralDefaultInformationSettings()
 
-                        End If
+                                _IsSelectedMarketCanadadian = False
 
-                        _IsSelectedMarketPuertoRican = False
+                                LabelGeneralDefaultInformation_CanadianVendorType.Visible = False
+                                ComboBoxGeneralDefaultInformation_CanadianVendorType.Visible = False
 
-                        LabelGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
-                        SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
+                                If ComboBoxGeneralDefaultInformation_CanadianVendorType.SelectedValue <> 0 Then
 
-                    End If
+                                    ComboBoxGeneralDefaultInformation_CanadianVendorType.SelectedValue = 0
+
+                                End If
+
+                                _IsSelectedMarketPuertoRican = False
+
+                                LabelGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
+                                SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Visible = False
+
+                            End If
 
                 End Using
 
@@ -5162,6 +5169,23 @@
         '    End If
 
         'End Sub
+        Private Sub CheckBoxGeneralDefaultInformation_ComboStation_CheckedChangedEx(sender As Object, e As DevComponents.DotNetBar.Controls.CheckBoxXChangeEventArgs) Handles CheckBoxGeneralDefaultInformation_ComboStation.CheckedChangedEx
+
+            If e.EventSource <> DevComponents.DotNetBar.eEventSource.Code Then
+
+                If CheckBoxGeneralDefaultInformation_ComboStation.Checked = False Then
+
+                    AdvantageFramework.Navigation.ShowMessageBox("This will remove all combo stations from the vendor.")
+
+                End If
+
+            End If
+
+            LoadGeneralDefaultInformationSettings()
+
+            RaiseEvent ComboStationChangedEvent()
+
+        End Sub
 
 #End Region
 

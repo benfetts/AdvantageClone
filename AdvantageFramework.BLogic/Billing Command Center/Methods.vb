@@ -3121,6 +3121,10 @@
 
                     AccountPayableProductionTransferTo.ExtendedNonResaleTax = AccountPayableProductionItem.ExtendedNonResaleTax
 
+                ElseIf AccountPayableProduction.ExtendedNonResaleTax.HasValue = False Then
+
+                    AccountPayableProduction.ExtendedNonResaleTax = 0
+
                 End If
 
                 If AccountPayableProductionTransferTo.IsNonBillable.GetValueOrDefault(0) = 1 Then
@@ -3277,6 +3281,7 @@
             Dim BillingRateLevel As AdvantageFramework.Database.Entities.BillingRateLevel = Nothing
             Dim Job As AdvantageFramework.Database.Entities.Job = Nothing
             Dim JobComponent As AdvantageFramework.Database.Entities.JobComponent = Nothing
+            Dim EmployeeTimeCommentNew As AdvantageFramework.Database.Entities.EmployeeTimeComment = Nothing
 
             EmployeeTimeDetail = (From Entity In AdvantageFramework.Database.Procedures.EmployeeTimeDetail.LoadByEmployeeTimeID(DbContext, EmployeeTimeItem.EmployeeTimeID)
                                   Where Entity.EmployeeTimeDetailID = EmployeeTimeItem.EmployeeTimeDetailID AndAlso Entity.SequenceNumber = EmployeeTimeItem.SequenceNumber).SingleOrDefault
@@ -3295,7 +3300,7 @@
 
             End If
 
-            EmployeeTimeDetailReversal = EmployeeTimeDetail.DuplicateEntity
+            EmployeeTimeDetailReversal = DirectCast(EmployeeTimeDetail.DuplicateEntity, AdvantageFramework.Database.Entities.EmployeeTimeDetail)
             EmployeeTimeDetailReversal.Hours = -1 * EmployeeTimeDetail.Hours
             EmployeeTimeDetailReversal.UserCode = DbContext.UserCode
             EmployeeTimeDetailReversal.AdjusterComments = Nothing
@@ -3313,14 +3318,20 @@
 
             ReverseEmployeeTime(DbContext, EmployeeTimeDetailReversal)
 
+            'EmployeeTimeComment = (From ETC In AdvantageFramework.Database.Procedures.EmployeeTimeComment.LoadByEmployeeTimeID(DbContext, EmployeeTimeDetail.EmployeeTimeID)
+            '                       Where ETC.EmployeeTimeDetailID = EmployeeTimeDetail.EmployeeTimeDetailID AndAlso
+            '                             ETC.EmployeeTimeSource = "D"
+            '                       Select ETC).FirstOrDefault
+
             EmployeeTimeComment = (From ETC In AdvantageFramework.Database.Procedures.EmployeeTimeComment.LoadByEmployeeTimeID(DbContext, EmployeeTimeDetail.EmployeeTimeID)
                                    Where ETC.EmployeeTimeDetailID = EmployeeTimeDetail.EmployeeTimeDetailID AndAlso
+                                         ETC.SequenceNumber = EmployeeTimeDetail.SequenceNumber AndAlso
                                          ETC.EmployeeTimeSource = "D"
-                                   Select ETC).FirstOrDefault
+                                   Select ETC).SingleOrDefault
 
             If TransferToHours.HasValue AndAlso EmployeeTimeDetail.Hours <> TransferToHours.Value Then
 
-                EmployeeTimeDetailNew = EmployeeTimeDetail.DuplicateEntity
+                EmployeeTimeDetailNew = DirectCast(EmployeeTimeDetail.DuplicateEntity, AdvantageFramework.Database.Entities.EmployeeTimeDetail)
                 EmployeeTimeDetailNew.Hours = EmployeeTimeDetail.Hours - TransferToHours.Value
                 EmployeeTimeDetailNew.UserCode = DbContext.UserCode
                 EmployeeTimeDetailNew.AdjusterComments = Nothing
@@ -3335,11 +3346,29 @@
 
                 End If
 
+                If EmployeeTimeComment IsNot Nothing Then
+
+                    EmployeeTimeCommentNew = New AdvantageFramework.Database.Entities.EmployeeTimeComment
+
+                    EmployeeTimeCommentNew.EmployeeTimeID = EmployeeTimeDetailNew.EmployeeTimeID
+                    EmployeeTimeCommentNew.EmployeeTimeDetailID = EmployeeTimeDetailNew.EmployeeTimeDetailID
+                    EmployeeTimeCommentNew.SequenceNumber = EmployeeTimeDetailNew.SequenceNumber
+                    EmployeeTimeCommentNew.EmployeeTimeSource = "D"
+                    EmployeeTimeCommentNew.EmployeeComments = EmployeeTimeComment.EmployeeComments
+
+                    If AdvantageFramework.Database.Procedures.EmployeeTimeComment.Insert(DbContext, EmployeeTimeCommentNew) = False Then
+
+                        Throw New Exception("Failed to insert into employee time detail comment table.")
+
+                    End If
+
+                End If
+
             End If
 
             EmployeeTimeDetailTransferTo = New AdvantageFramework.Database.Entities.EmployeeTimeDetail
 
-            EmployeeTimeDetailTransferTo.IsAdvancedBill = If(JobComponent.IsAdvanceBilling.GetValueOrDefault(0) = 0, 0, 2)
+            EmployeeTimeDetailTransferTo.IsAdvancedBill = CShort(If(JobComponent.IsAdvanceBilling.GetValueOrDefault(0) = 0, 0, 2))
             EmployeeTimeDetailTransferTo.EmployeeTimeID = EmployeeTimeDetail.EmployeeTimeID
             EmployeeTimeDetailTransferTo.EmployeeTimeDetailID = 0
             EmployeeTimeDetailTransferTo.JobNumber = TransferToJobNumber
@@ -3353,7 +3382,7 @@
 
             EmployeeTimeDetailTransferTo.FunctionCode = TransferToFunctionCode
             EmployeeTimeDetailTransferTo.CostRate = EmployeeTimeDetail.CostRate
-            EmployeeTimeDetailTransferTo.Hours = If(TransferToHours.HasValue, TransferToHours, EmployeeTimeDetail.Hours)
+            EmployeeTimeDetailTransferTo.Hours = CDec(If(TransferToHours.HasValue, TransferToHours.Value, EmployeeTimeDetail.Hours))
             EmployeeTimeDetailTransferTo.UserCode = EmployeeTimeDetail.UserCode
             EmployeeTimeDetailTransferTo.EnteredDate = EmployeeTimeDetail.EnteredDate
             EmployeeTimeDetailTransferTo.DepartmentTeamCode = EmployeeTimeDetail.DepartmentTeamCode
@@ -3421,7 +3450,7 @@
                     If BillingRate IsNot Nothing Then
 
                         EmployeeTimeDetailTransferTo.FeeTimeType = BillingRate.FEE_TIME_FLAG.GetValueOrDefault(0)
-                        EmployeeTimeDetailTransferTo.BillableRate = FormatNumber(BillingRate.BILLING_RATE.GetValueOrDefault(0), 2)
+                        EmployeeTimeDetailTransferTo.BillableRate = CDec(FormatNumber(BillingRate.BILLING_RATE.GetValueOrDefault(0), 2))
 
                         If BillingRate.RATE_LEVEL = 9999 Then
 
@@ -3555,7 +3584,7 @@
 
             If EmployeeTimeComment IsNot Nothing Then
 
-                InsertUpdateEmployeeTimeComment(DbContext, EmployeeTimeDetailTransferTo.EmployeeTimeID, EmployeeTimeDetailTransferTo.EmployeeTimeDetailID, EmployeeTimeComment.EmployeeComments)
+                InsertUpdateEmployeeTimeComment(DbContext, EmployeeTimeDetailTransferTo.EmployeeTimeID, EmployeeTimeDetailTransferTo.EmployeeTimeDetailID, EmployeeTimeComment.EmployeeComments, EmployeeTimeDetailTransferTo.SequenceNumber)
 
             End If
 
@@ -3567,14 +3596,15 @@
 
         End Sub
         Private Sub InsertUpdateEmployeeTimeComment(ByVal DbContext As AdvantageFramework.Database.DbContext, ByVal EmployeeTimeID As Integer, ByVal EmployeeTimeDetailID As Short,
-                                                    ByVal EmployeeComments As String)
+                                                    ByVal EmployeeComments As String, SequenceNumber As Short)
 
             Dim EmployeeTimeCommentNew As AdvantageFramework.Database.Entities.EmployeeTimeComment = Nothing
 
             EmployeeTimeCommentNew = (From ETC In AdvantageFramework.Database.Procedures.EmployeeTimeComment.LoadByEmployeeTimeID(DbContext, EmployeeTimeID)
                                       Where ETC.EmployeeTimeDetailID = EmployeeTimeDetailID AndAlso
-                                         ETC.EmployeeTimeSource = "D"
-                                      Select ETC).FirstOrDefault
+                                            ETC.SequenceNumber = SequenceNumber AndAlso
+                                            ETC.EmployeeTimeSource = "D"
+                                      Select ETC).SingleOrDefault
 
             If EmployeeTimeCommentNew IsNot Nothing Then
 
@@ -3592,7 +3622,7 @@
 
                 EmployeeTimeCommentNew.EmployeeTimeID = EmployeeTimeID
                 EmployeeTimeCommentNew.EmployeeTimeDetailID = EmployeeTimeDetailID
-                EmployeeTimeCommentNew.SequenceNumber = EmployeeTimeDetailID
+                EmployeeTimeCommentNew.SequenceNumber = SequenceNumber
                 EmployeeTimeCommentNew.EmployeeTimeSource = "D"
                 EmployeeTimeCommentNew.EmployeeComments = EmployeeComments
 

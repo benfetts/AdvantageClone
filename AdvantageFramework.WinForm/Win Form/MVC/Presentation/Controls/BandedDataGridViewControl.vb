@@ -2202,6 +2202,75 @@
         End Sub
         Private Sub BandedGridViewGridControl_MainView_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles BandedGridViewGridControl_MainView.MouseDown
 
+            Dim BandedGridView As BandedGridView = Nothing
+            Dim BandedGridHitInfo As DevExpress.XtraGrid.Views.BandedGrid.ViewInfo.BandedGridHitInfo = Nothing
+            Dim OwnerBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand = Nothing
+
+            BandedGridView = TryCast(sender, BandedGridView)
+            BandedGridHitInfo = BandedGridView.CalcHitInfo(e.Location)
+
+            If BandedGridHitInfo.HitTest = DevExpress.XtraGrid.Views.BandedGrid.ViewInfo.BandedGridHitTest.ColumnEdge Then
+
+                OwnerBand = BandedGridHitInfo.Column.OwnerBand
+
+                If OwnerBand.Columns.VisibleColumnCount - 1 = BandedGridHitInfo.Column.ColVIndex Then
+
+                    For Each GridBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand In BandedGridView.Bands
+
+                        If GridBand.Equals(OwnerBand) = False Then
+
+                            GridBand.OptionsBand.FixedWidth = True
+
+                        Else
+
+                            GridBand.OptionsBand.FixedWidth = False
+
+                        End If
+
+                    Next
+
+                    For Each BandedGridColumn As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn In OwnerBand.Columns
+
+                        If BandedGridColumn.Equals(BandedGridHitInfo.Column) = False Then
+
+                            BandedGridColumn.OptionsColumn.FixedWidth = True
+
+                        Else
+
+                            BandedGridColumn.OptionsColumn.FixedWidth = False
+
+                        End If
+
+                    Next
+
+                Else
+
+                    For Each GridBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand In BandedGridView.Bands
+
+                        GridBand.OptionsBand.FixedWidth = False
+
+                    Next
+
+                    For Each BandedGridColumn As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn In OwnerBand.Columns
+
+                        BandedGridColumn.OptionsColumn.FixedWidth = False
+
+                    Next
+
+                End If
+
+            ElseIf BandedGridHitInfo.HitTest = DevExpress.XtraGrid.Views.BandedGrid.ViewInfo.BandedGridHitTest.BandEdge Then
+
+                OwnerBand = BandedGridHitInfo.Band
+
+                For Each BandedGridColumn As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn In OwnerBand.Columns
+
+                    BandedGridColumn.OptionsColumn.FixedWidth = False
+
+                Next
+
+            End If
+
             RaiseEvent MouseDownEvent(sender, e)
 
         End Sub

@@ -250,31 +250,31 @@ Public Class MVCControllerBase
 
         Dim ConceptShareIsActive As Boolean = False
 
-        If Session(AdvantageFramework.Proofing.ConceptShareSessionKey) Is Nothing Then
+        ''If Session(AdvantageFramework.Proofing.ConceptShareSessionKey) Is Nothing Then
 
-            If SecuritySession IsNot Nothing Then
+        ''    If SecuritySession IsNot Nothing Then
 
-                Using DbContext = New AdvantageFramework.Database.DbContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
+        ''        Using DbContext = New AdvantageFramework.Database.DbContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
 
-                    Try
+        ''            Try
 
-                        ConceptShareIsActive = AdvantageFramework.Proofing.IsConceptShareActive(SecuritySession, DbContext, MiscFN.IsClientPortal)
+        ''                ConceptShareIsActive = AdvantageFramework.Proofing.IsConceptShareActive(SecuritySession, DbContext, MiscFN.IsClientPortal)
 
-                    Catch ex As Exception
-                        ConceptShareIsActive = False
-                    End Try
+        ''            Catch ex As Exception
+        ''                ConceptShareIsActive = False
+        ''            End Try
 
-                End Using
+        ''        End Using
 
-            End If
+        ''    End If
 
-            Session(AdvantageFramework.Proofing.ConceptShareSessionKey) = ConceptShareIsActive
+        ''    Session(AdvantageFramework.Proofing.ConceptShareSessionKey) = ConceptShareIsActive
 
-        Else
+        ''Else
 
-            ConceptShareIsActive = CType(Session(AdvantageFramework.Proofing.ConceptShareSessionKey), Boolean)
+        ''    ConceptShareIsActive = CType(Session(AdvantageFramework.Proofing.ConceptShareSessionKey), Boolean)
 
-        End If
+        ''End If
 
         Return ConceptShareIsActive
 

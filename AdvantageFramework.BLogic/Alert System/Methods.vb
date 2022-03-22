@@ -2876,26 +2876,27 @@ Namespace AlertSystem
         End Function
         Public Function RemoveAssigneeFromTemplate(ByVal DbContext As AdvantageFramework.Database.DbContext,
                                                    ByVal AlertID As Integer,
-                                                   ByVal AlertTemplateID As Integer,
-                                                   ByVal AlertStateID As Integer,
+                                                   ByVal AlertTemplateID As Integer?,
+                                                   ByVal AlertStateID As Integer?,
                                                    ByVal EmployeeCode As String,
                                                    ByRef ErrorMessage As String) As Boolean
 
-            Dim Added As Boolean = True
+            Dim Removed As Boolean = True
 
             Try
 
-                'DbContext.Database.ExecuteSqlCommand(String.Format("EXEC [dbo].[advsp_alert_assignment_template_delete_employee_from_state] {0}, {1}, {2}, '{3}', NULL;",
-                '                                                    AlertID, AlertTemplateID, AlertStateID, EmployeeCode))
+                If AlertTemplateID IsNot Nothing AndAlso AlertStateID IsNot Nothing AndAlso AlertTemplateID > 0 AndAlso AlertStateID > 0 Then
 
-                DeleteAssigneeFromTemplate(DbContext, DbContext.UserCode, AlertID, AlertTemplateID, AlertStateID, EmployeeCode, 0, ErrorMessage)
+                    DeleteAssigneeFromTemplate(DbContext, DbContext.UserCode, AlertID, AlertTemplateID, AlertStateID, EmployeeCode, 0, ErrorMessage)
+
+                End If
 
             Catch ex As Exception
                 ErrorMessage = AdvantageFramework.StringUtilities.FullErrorToString(ex)
-                Added = False
+                Removed = False
             End Try
 
-            Return Added
+            Return Removed
 
         End Function
         Public Function CheckForRemovedAssignees(ByVal DbContext As AdvantageFramework.Database.DbContext,
@@ -2909,6 +2910,7 @@ Namespace AlertSystem
 
                 Dim CurrentAssignees As Generic.List(Of String) = Nothing
                 Dim Assignee As AdvantageFramework.Database.Entities.AlertRecipient = Nothing
+                Dim IsRouted As Boolean = False
 
                 CurrentAssignees = GetCurrentAssignees(DbContext, Alert.ID)
 
@@ -2917,10 +2919,13 @@ Namespace AlertSystem
                     For Each EmployeeCode As String In CurrentAssignees
 
                         Assignee = Nothing
+                        IsRouted = False
 
                         If AssigneesEmpCodes.Contains(EmployeeCode) = False Then
 
                             If Alert.AlertAssignmentTemplateID Is Nothing AndAlso Alert.AlertStateID Is Nothing Then
+
+                                IsRouted = False
 
                                 If DeleteAssignee(DbContext, Alert.ID, EmployeeCode) Then
 
@@ -2930,6 +2935,8 @@ Namespace AlertSystem
                                 End If
 
                             Else
+
+                                IsRouted = True
 
                                 Assignee = AdvantageFramework.Database.Procedures.AlertRecipient.LoadAssigneeByAlertIDEmployeeCodeTemplateState(DbContext, Alert, EmployeeCode)
 
@@ -2950,7 +2957,16 @@ Namespace AlertSystem
 
                             End If
 
-                            RemoveAssigneeFromTemplate(DbContext, Alert.ID, Alert.AlertAssignmentTemplateID, Alert.AlertStateID, EmployeeCode, ErrorMessage)
+                            If IsRouted = True Then
+
+                                RemoveAssigneeFromTemplate(DbContext, Alert.ID,
+                                                           Alert.AlertAssignmentTemplateID,
+                                                           Alert.AlertStateID,
+                                                           EmployeeCode,
+                                                           ErrorMessage)
+
+                            End If
+
                             UpdateCustodyEnd(DbContext, Alert.ID, Alert.AlertAssignmentTemplateID, Alert.AlertStateID, EmployeeCode, CustodyEndDate)
 
                         End If

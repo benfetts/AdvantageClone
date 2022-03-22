@@ -1511,22 +1511,22 @@
 
                 End If
 
-                DataGridViewSpotRadio_Books.DataSource = Nothing
+                DataGridViewSpotRadio_Books.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotRadio.NielsenRadioBook))
                 DataGridViewSpotRadio_Books.DataSource = _ViewModel.NielsenRadioBookList
 
-                DataGridViewSpotRadio_AvailableStations.DataSource = Nothing
+                DataGridViewSpotRadio_AvailableStations.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotRadio.Station))
                 DataGridViewSpotRadio_AvailableStations.DataSource = _ViewModel.AvailableStationList
 
-                DataGridViewSpotRadio_SelectedStations.DataSource = Nothing
+                DataGridViewSpotRadio_SelectedStations.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotRadio.Station))
                 DataGridViewSpotRadio_SelectedStations.DataSource = _ViewModel.SelectedStationList
 
-                DataGridViewSpotRadio_Dayparts.DataSource = Nothing
+                DataGridViewSpotRadio_Dayparts.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.NielsenDaypart))
                 DataGridViewSpotRadio_Dayparts.DataSource = _ViewModel.NielsenDaypartList
 
-                DataGridViewSpotRadio_AvailableMetrics.DataSource = Nothing
+                DataGridViewSpotRadio_AvailableMetrics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.Metric))
                 DataGridViewSpotRadio_AvailableMetrics.DataSource = _ViewModel.AvailableMetricList
 
-                DataGridViewSpotRadio_SelectedMetrics.DataSource = Nothing
+                DataGridViewSpotRadio_SelectedMetrics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.Metric))
                 DataGridViewSpotRadio_SelectedMetrics.DataSource = _ViewModel.SelectedMetricList
 
                 If _ViewModel.SpotRadioReportDataTable IsNot Nothing AndAlso _ViewModel.ProcessEnabled AndAlso _ViewModel.SelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotRadioResearchReportType.Ranker Then
@@ -1598,7 +1598,7 @@
 
                 End If
 
-                DataGridViewSpotTV_AvailableStations.DataSource = Nothing
+                DataGridViewSpotTV_AvailableStations.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Station))
                 DataGridViewSpotTV_AvailableStations.DataSource = _ViewModel.SpotTVAvailableNielsenStationList
 
                 If DataGridViewSpotTV_AvailableStations.CurrentView.Columns(AdvantageFramework.DTO.Media.SpotTV.Station.Properties.StationCode.ToString) IsNot Nothing Then
@@ -1607,7 +1607,7 @@
 
                 End If
 
-                DataGridViewSpotTV_SelectedStations.DataSource = Nothing
+                DataGridViewSpotTV_SelectedStations.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Station))
                 DataGridViewSpotTV_SelectedStations.DataSource = _ViewModel.SpotTVSelectedNielsenStationList
 
                 If DataGridViewSpotTV_SelectedStations.CurrentView.Columns(AdvantageFramework.DTO.Media.SpotTV.Station.Properties.StationCode.ToString) IsNot Nothing Then
@@ -1616,19 +1616,19 @@
 
                 End If
 
-                DataGridViewSpotTV_DayTimes.DataSource = Nothing
+                DataGridViewSpotTV_DayTimes.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.DaysAndTime))
                 DataGridViewSpotTV_DayTimes.DataSource = _ViewModel.SpotTVDayTimeList
 
-                DataGridViewSpotTV_AvailableDemographics.DataSource = Nothing
+                DataGridViewSpotTV_AvailableDemographics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic))
                 DataGridViewSpotTV_AvailableDemographics.DataSource = _ViewModel.SpotTVAvailableDemographicList
 
-                DataGridViewSpotTV_SelectedDemographics.DataSource = Nothing
+                DataGridViewSpotTV_SelectedDemographics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic))
                 DataGridViewSpotTV_SelectedDemographics.DataSource = _ViewModel.SpotTVSelectedDemographicList
 
-                DataGridViewSpotTV_AvailableMetrics.DataSource = Nothing
+                DataGridViewSpotTV_AvailableMetrics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.Metric))
                 DataGridViewSpotTV_AvailableMetrics.DataSource = _ViewModel.SpotTVAvailableMetricList
 
-                DataGridViewSpotTV_SelectedMetrics.DataSource = Nothing
+                DataGridViewSpotTV_SelectedMetrics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.Metric))
                 DataGridViewSpotTV_SelectedMetrics.DataSource = _ViewModel.SpotTVSelectedMetricList
 
                 ShowOrHideDemographicsColumns(DataGridViewSpotTV_AvailableDemographics)
@@ -5931,10 +5931,10 @@
 
             If RefreshStations Then
 
-                DataGridViewSpotRadioCounty_AvailableStations.DataSource = Nothing
+                DataGridViewSpotRadioCounty_AvailableStations.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotRadioCounty.Station))
                 DataGridViewSpotRadioCounty_AvailableStations.DataSource = _ViewModel.SpotRadioCountyAvailableStationList
 
-                DataGridViewSpotRadioCounty_SelectedStations.DataSource = Nothing
+                DataGridViewSpotRadioCounty_SelectedStations.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotRadioCounty.Station))
                 DataGridViewSpotRadioCounty_SelectedStations.DataSource = _ViewModel.SpotRadioCountySelectedStationList
 
             End If
@@ -5950,13 +5950,13 @@
 
                 End If
 
-                DataGridViewSpotRadioCounty_Years.DataSource = Nothing
+                DataGridViewSpotRadioCounty_Years.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotRadioCounty.Year))
                 DataGridViewSpotRadioCounty_Years.DataSource = _ViewModel.SpotRadioCountyYearList
 
-                DataGridViewSpotRadioCounty_AvailableMetrics.DataSource = Nothing
+                DataGridViewSpotRadioCounty_AvailableMetrics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.Metric))
                 DataGridViewSpotRadioCounty_AvailableMetrics.DataSource = _ViewModel.SpotRadioCountyAvailableMetricList
 
-                DataGridViewSpotRadioCounty_SelectedMetrics.DataSource = Nothing
+                DataGridViewSpotRadioCounty_SelectedMetrics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.Metric))
                 DataGridViewSpotRadioCounty_SelectedMetrics.DataSource = _ViewModel.SpotRadioCountySelectedMetricList
 
                 If _ViewModel.SpotRadioCountyReportDataTable IsNot Nothing AndAlso _ViewModel.SpotRadioCountyProcessEnabled AndAlso _ViewModel.SpotRadioCountySelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotRadioCountyResearchReportType.Ranker Then
@@ -6979,22 +6979,22 @@
 
             If RefreshData Then
 
-                DataGridViewNational_DemographicsAvailable.DataSource = Nothing
+                DataGridViewNational_DemographicsAvailable.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.National.Demographic))
                 DataGridViewNational_DemographicsAvailable.DataSource = _ViewModel.NationalDemographicAvailableList
 
-                DataGridViewNational_DemographicsSelected.DataSource = Nothing
+                DataGridViewNational_DemographicsSelected.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.National.Demographic))
                 DataGridViewNational_DemographicsSelected.DataSource = _ViewModel.NationalDemographicSelectedList
 
-                DataGridViewNational_NetworksAvailable.DataSource = Nothing
+                DataGridViewNational_NetworksAvailable.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.National.Network))
                 DataGridViewNational_NetworksAvailable.DataSource = _ViewModel.NationalNetworkAvailableList
 
-                DataGridViewNational_NetworksSelected.DataSource = Nothing
+                DataGridViewNational_NetworksSelected.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.National.Network))
                 DataGridViewNational_NetworksSelected.DataSource = _ViewModel.NationalNetworkSelectedList
 
-                DataGridViewNational_MetricsAvailable.DataSource = Nothing
+                DataGridViewNational_MetricsAvailable.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.Metric))
                 DataGridViewNational_MetricsAvailable.DataSource = _ViewModel.NationalMetricAvailableList
 
-                DataGridViewNational_MetricsSelected.DataSource = Nothing
+                DataGridViewNational_MetricsSelected.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.Metric))
                 DataGridViewNational_MetricsSelected.DataSource = _ViewModel.NationalMetricSelectedList
 
                 If _ViewModel.NationalReportDataTable IsNot Nothing AndAlso _ViewModel.NationalProcessEnabled AndAlso (_ViewModel.NationalSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.NationalResearchReportType.ProgramRanker OrElse
@@ -8169,25 +8169,25 @@
 
                 End If
 
-                DataGridViewSpotTVPuertoRico_AvailableStations.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_AvailableStations.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station))
                 DataGridViewSpotTVPuertoRico_AvailableStations.DataSource = _ViewModel.SpotTVPuertoRicoAvailableStationList
 
-                DataGridViewSpotTVPuertoRico_SelectedStations.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_SelectedStations.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station))
                 DataGridViewSpotTVPuertoRico_SelectedStations.DataSource = _ViewModel.SpotTVPuertoRicoSelectedStationList
 
-                DataGridViewSpotTVPuertoRico_DayTimes.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_DayTimes.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.DaysAndTime))
                 DataGridViewSpotTVPuertoRico_DayTimes.DataSource = _ViewModel.SpotTVPuertoRicoDayTimeList
 
-                DataGridViewSpotTVPuertoRico_AvailableDemographics.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_AvailableDemographics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic))
                 DataGridViewSpotTVPuertoRico_AvailableDemographics.DataSource = _ViewModel.SpotTVPuertoRicoAvailableDemographicList
 
-                DataGridViewSpotTVPuertoRico_SelectedDemographics.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_SelectedDemographics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic))
                 DataGridViewSpotTVPuertoRico_SelectedDemographics.DataSource = _ViewModel.SpotTVPuertoRicoSelectedDemographicList
 
-                DataGridViewSpotTVPuertoRico_AvailableMetrics.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_AvailableMetrics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.Metric))
                 DataGridViewSpotTVPuertoRico_AvailableMetrics.DataSource = _ViewModel.SpotTVPuertoRicoAvailableMetricList
 
-                DataGridViewSpotTVPuertoRico_SelectedMetrics.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_SelectedMetrics.ClearDatasource(New Generic.List(Of AdvantageFramework.DTO.Media.Metric))
                 DataGridViewSpotTVPuertoRico_SelectedMetrics.DataSource = _ViewModel.SpotTVPuertoRicoSelectedMetricList
 
                 ShowOrHideDemographicsColumns(DataGridViewSpotTVPuertoRico_AvailableDemographics)

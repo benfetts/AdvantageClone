@@ -170,226 +170,226 @@ Else
             </div>
 
             @(Html.EJ().TreeGrid("TreeGridContainer").CssClass("e-table").
-                                                                ToolbarSettings(Sub(tool)
-                                                                                    tool.ShowToolbar(Not Model.IsOriginalOrderMode AndAlso Not Model.VendorEditLocked)
-                                                                                    tool.CustomToolbarItems(Sub(ctb)
-                                                                                                                ctb.TemplateID("#addMakegoodButtonTemplate").TooltipText("Add Makegood").Add()
-                                                                                                                ctb.TemplateID("#addReplacementButtonTemplate").TooltipText("Add Replacement").Add()
-                                                                                                                ctb.TemplateID("#updateMakegoodButtonTemplate").TooltipText("Update Makegood").Add()
-                                                                                                                ctb.TemplateID("#cancelButtonTemplate").TooltipText("Cancel").Add()
-                                                                                                                ctb.TemplateID("#deleteButtonTemplate").TooltipText("Delete Makegood").Add()
-                                                                                                                ctb.TemplateID("#viewButtonTemplate").TooltipText("View Makegood Details").Add()
-                                                                                                            End Sub)
-                                                                                End Sub) _
-                                                .IdMapping("ID") _
-                                                .ParentIdMapping("ParentID") _
-                                                .HasChildMapping(True) _
-                                                .AllowTextWrap(True) _
-                                                .ShowGridCellTooltip(True) _
-                                                .HeaderTextOverflow(TreeGridHeaderTextOverflow.Wrap) _
-                                                .Datasource(Model.MakegoodDataTable) _
-                                                .SelectionMode(TreeGridSelectionMode.Row) _
-                                                .ShowTotalSummary(True) _
-                                                .SizeSettings(Sub(ss)
-                                                                  ss.Height("550px")
-                                                              End Sub) _
-                                                .EditSettings(Sub(edit)
-                                                                  edit.AllowAdding(True)
-                                                                  edit.AllowEditing(True)
-                                                                  edit.EditMode(TreeGridEditMode.RowEditing)
-                                                              End Sub) _
-                                                .Columns(Sub(co)
+                ToolbarSettings(Sub(tool)
+                                    tool.ShowToolbar(Not Model.IsOriginalOrderMode AndAlso Not Model.VendorEditLocked)
+                                    tool.CustomToolbarItems(Sub(ctb)
+                                                                ctb.TemplateID("#addMakegoodButtonTemplate").TooltipText("Add Makegood").Add()
+                                                                ctb.TemplateID("#addReplacementButtonTemplate").TooltipText("Add Replacement").Add()
+                                                                ctb.TemplateID("#updateMakegoodButtonTemplate").TooltipText("Update Makegood").Add()
+                                                                ctb.TemplateID("#cancelButtonTemplate").TooltipText("Cancel").Add()
+                                                                ctb.TemplateID("#deleteButtonTemplate").TooltipText("Delete Makegood").Add()
+                                                                ctb.TemplateID("#viewButtonTemplate").TooltipText("View Makegood Details").Add()
+                                                            End Sub)
+                                End Sub) _
+                .IdMapping("ID") _
+                .ParentIdMapping("ParentID") _
+                .HasChildMapping(True) _
+                .AllowTextWrap(False) _
+                .ShowGridCellTooltip(True) _
+                .HeaderTextOverflow(TreeGridHeaderTextOverflow.Wrap) _
+                .Datasource(Model.MakegoodDataTable) _
+                .SelectionMode(TreeGridSelectionMode.Row) _
+                .ShowTotalSummary(True) _
+                .SizeSettings(Sub(ss)
+                                  ss.Height("550px")
+                              End Sub) _
+                .EditSettings(Sub(edit)
+                                  edit.AllowAdding(True)
+                                  edit.AllowEditing(True)
+                                  edit.EditMode(TreeGridEditMode.RowEditing)
+                              End Sub) _
+                .Columns(Sub(co)
 
-                                                             Dim Dayparts As IEnumerable = Nothing
-                                                             Dim CableNetworks As IEnumerable = Nothing
-                                                             Dim EditorPropertiesZeroDecimals As New Syncfusion.JavaScript.Models.EditorProperties
-                                                             Dim EditorPropertiesOneDecimal As New Syncfusion.JavaScript.Models.EditorProperties
-                                                             Dim EditorPropertiesTwoDecimals As New Syncfusion.JavaScript.Models.EditorProperties
+                             Dim Dayparts As IEnumerable = Nothing
+                             Dim CableNetworks As IEnumerable = Nothing
+                             Dim EditorPropertiesZeroDecimals As New Syncfusion.JavaScript.Models.EditorProperties
+                             Dim EditorPropertiesOneDecimal As New Syncfusion.JavaScript.Models.EditorProperties
+                             Dim EditorPropertiesTwoDecimals As New Syncfusion.JavaScript.Models.EditorProperties
 
-                                                             EditorPropertiesZeroDecimals.ShowSpinButton = False
-                                                             EditorPropertiesOneDecimal.ShowSpinButton = False
-                                                             EditorPropertiesTwoDecimals.ShowSpinButton = False
+                             EditorPropertiesZeroDecimals.ShowSpinButton = False
+                             EditorPropertiesOneDecimal.ShowSpinButton = False
+                             EditorPropertiesTwoDecimals.ShowSpinButton = False
 
-                                                             EditorPropertiesZeroDecimals.DecimalPlaces = 0
-                                                             EditorPropertiesOneDecimal.DecimalPlaces = 1
-                                                             EditorPropertiesTwoDecimals.DecimalPlaces = 2
+                             EditorPropertiesZeroDecimals.DecimalPlaces = 0
+                             EditorPropertiesOneDecimal.DecimalPlaces = 1
+                             EditorPropertiesTwoDecimals.DecimalPlaces = 2
 
-                                                             Dayparts = DirectCast(ViewBag.Dayparts, IEnumerable(Of Object))
+                             Dayparts = DirectCast(ViewBag.Dayparts, IEnumerable(Of Object))
 
-                                                             CableNetworks = DirectCast(ViewBag.CableNetworks, IEnumerable(Of Object))
+                             CableNetworks = DirectCast(ViewBag.CableNetworks, IEnumerable(Of Object))
 
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Line.ToString).AllowEditing(False).HeaderText("Line").Width(110).IsFrozen(True).Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Line.ToString).AllowEditing(False).HeaderText("Line").Width(140).IsFrozen(True).Add()
 
-                                                             If Not Model.IsOriginalOrderMode AndAlso Not Model.VendorEditLocked Then
+                             If Not Model.IsOriginalOrderMode AndAlso Not Model.VendorEditLocked Then
 
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.IsSubmitted.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Center).AllowEditing(False).EditType(TreeGridEditingType.Boolean).HeaderTooltip("Submitted to Buyer").HeaderText("Submitted").Width(100).IsFrozen(True).Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.IsSubmitted.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Center).AllowEditing(False).EditType(TreeGridEditingType.Boolean).HeaderTooltip("Submitted to Buyer").HeaderText("Submitted").Width(95).IsFrozen(True).Add()
 
-                                                             End If
+                             End If
 
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.IsOriginal.ToString).Visible(False).IsFrozen(True).Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.IsOriginal.ToString).Visible(False).IsFrozen(True).Add()
 
-                                                             If Model.MediaType = "T" AndAlso Model.VendorIsCableSystem Then
+                             If Model.MediaType = "T" AndAlso Model.VendorIsCableSystem Then
 
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.CableNetwork.ToString).HeaderText("Cable Network").EditTemplate(Sub(et)
-                                                                                                                                                                                                                                et.Create("CreateCableNetwork").Read("ReadCableNetwork").Write("WriteCableNetwork")
-                                                                                                                                                                                                                            End Sub).DropDownData(CableNetworks).IsFrozen(True).Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.CableNetwork.ToString).HeaderText("Cable Network").EditTemplate(Sub(et)
+                                                                                                                                                                                                et.Create("CreateCableNetwork").Read("ReadCableNetwork").Write("WriteCableNetwork")
+                                                                                                                                                                                            End Sub).DropDownData(CableNetworks).IsFrozen(True).Add()
 
-                                                             End If
+                             End If
 
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Days.ToString).HeaderText("Days").Width(110).IsFrozen(True).Add()
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.StartTime.ToString).HeaderText("Start").Width(100).IsFrozen(True).Add()
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.EndTime.ToString).HeaderText("End").Width(100).IsFrozen(True).Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Days.ToString).HeaderText("Days").Width(110).IsFrozen(True).Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.StartTime.ToString).HeaderText("Start").Width(100).IsFrozen(True).Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.EndTime.ToString).HeaderText("End").Width(100).IsFrozen(True).Add()
 
-                                                             If Model.MediaType = "T" Then
+                             If Model.MediaType = "T" Then
 
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Program.ToString).Width(180).IsFrozen(True).Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Program.ToString).Width(180).IsFrozen(True).Add()
 
-                                                             End If
+                             End If
 
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.DayPartDescription.ToString).HeaderText("Daypart").EditTemplate(Sub(et)
-                                                                                                                                                                                                                            et.Create("CreateDaypart").Read("ReadDaypart").Write("WriteDaypart")
-                                                                                                                                                                                                                        End Sub).DropDownData(Dayparts).IsFrozen(True).Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.DayPartDescription.ToString).HeaderText("Daypart").EditTemplate(Sub(et)
+                                                                                                                                                                                            et.Create("CreateDaypart").Read("ReadDaypart").Write("WriteDaypart")
+                                                                                                                                                                                        End Sub).DropDownData(Dayparts).IsFrozen(True).Add()
 
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Length.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).EditType(TreeGridEditingType.Numeric).NumericEditOptions(EditorPropertiesZeroDecimals).Width(70).ValidationRules(Sub(v)
-                                                                                                                                                                                                                                                                                                                                               v.AddRule("required", True)
-                                                                                                                                                                                                                                                                                                                                               v.AddRule("validateLength", True)
-                                                                                                                                                                                                                                                                                                                                           End Sub).IsFrozen(True).Add()
-                                                             If Model.MediaType = "T" Then
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Length.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).EditType(TreeGridEditingType.Numeric).NumericEditOptions(EditorPropertiesZeroDecimals).Width(70).ValidationRules(Sub(v)
+                                                                                                                                                                                                                                                                                                               v.AddRule("required", True)
+                                                                                                                                                                                                                                                                                                               v.AddRule("validateLength", True)
+                                                                                                                                                                                                                                                                                                           End Sub).IsFrozen(True).Add()
+                             If Model.MediaType = "T" Then
 
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Bookend.ToString).EditType(TreeGridEditingType.Boolean).HeaderText("BE").HeaderTooltip("Bookend - spot counts must be even").Width(40).Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Bookend.ToString).EditType(TreeGridEditingType.Boolean).HeaderText("BE").HeaderTooltip("Bookend - spot counts must be even").Width(40).Add()
 
-                                                             End If
+                             End If
 
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.AddedValue.ToString).EditType(TreeGridEditingType.Boolean).HeaderText("AV").HeaderTooltip("Added Value").Width(40).Add()
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Comments.ToString).EditType(TreeGridEditingType.String).HeaderText("Comments").Add()
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.DefaultRate.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).EditType(TreeGridEditingType.Numeric).NumericEditOptions(EditorPropertiesTwoDecimals).HeaderText("Default Rate").Width(90).Format("{0:N2}").Tooltip("cellTooltipTemplateDefaultRate").Add()
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.RateDiffersFlag.ToString).Visible(False).Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.AddedValue.ToString).EditType(TreeGridEditingType.Boolean).HeaderText("AV").HeaderTooltip("Added Value").Width(40).Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Comments.ToString).EditType(TreeGridEditingType.String).HeaderText("Comments").Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.DefaultRate.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).EditType(TreeGridEditingType.Numeric).NumericEditOptions(EditorPropertiesTwoDecimals).HeaderText("Default Rate").Width(90).Format("{0:N2}").Tooltip("cellTooltipTemplateDefaultRate").Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.RateDiffersFlag.ToString).Visible(False).Add()
 
-                                                             For SpotColumnCounter As Integer = 0 To Model.SpotCount - 1
+                             For SpotColumnCounter As Integer = 0 To Model.SpotCount - 1
 
-                                                                 Dim SpotDate As Date
-                                                                 Dim DateString = Model.MakegoodDataTable.Columns("Spot" & SpotColumnCounter).Caption
+                                 Dim SpotDate As Date
+                                 Dim DateString = Model.MakegoodDataTable.Columns("Spot" & SpotColumnCounter).Caption
 
-                                                                 SpotDate = DateSerial(Mid(DateString, 1, 4), Mid(DateString, 5, 2), Mid(DateString, 7, 2))
+                                 SpotDate = DateSerial(Mid(DateString, 1, 4), Mid(DateString, 5, 2), Mid(DateString, 7, 2))
 
-                                                                 If Model.MakegoodDataTable.Columns("Spot" & SpotColumnCounter).ReadOnly Then
+                                 If Model.MakegoodDataTable.Columns("Spot" & SpotColumnCounter).ReadOnly Then
 
-                                                                     co.Field("Spot" & SpotColumnCounter).EditType(TreeGridEditingType.Numeric).TextAlign(Syncfusion.JavaScript.TextAlign.Right).NumericEditOptions(EditorPropertiesZeroDecimals).HeaderText("<span style='color:red'>" & SpotDate.ToString("M/d") & "</span>").HeaderTooltip(SpotDate.ToString("M/d")).AllowEditing(False).Width(62).Add()
-                                                                     co.Field("Rate" & SpotColumnCounter).EditType(TreeGridEditingType.Numeric).NumericEditOptions(EditorPropertiesZeroDecimals).HeaderText("Rate" & vbCrLf & SpotDate.ToString("M/d")).Width(0).AllowEditing(False).Visible(False).Add() 'keep Width(0) so it will never show!
+                                     co.Field("Spot" & SpotColumnCounter).EditType(TreeGridEditingType.Numeric).TextAlign(Syncfusion.JavaScript.TextAlign.Right).NumericEditOptions(EditorPropertiesZeroDecimals).HeaderText("<span style='color:red'>" & SpotDate.ToString("M/d") & "</span>").HeaderTooltip(SpotDate.ToString("M/d")).AllowEditing(False).Width(62).Add()
+                                     co.Field("Rate" & SpotColumnCounter).EditType(TreeGridEditingType.Numeric).NumericEditOptions(EditorPropertiesZeroDecimals).HeaderText("Rate" & vbCrLf & SpotDate.ToString("M/d")).Width(0).AllowEditing(False).Visible(False).Add() 'keep Width(0) so it will never show!
 
-                                                 Else
+                                 Else
 
-                                                                     co.Field("Spot" & SpotColumnCounter).EditType(TreeGridEditingType.Numeric).TextAlign(Syncfusion.JavaScript.TextAlign.Right).NumericEditOptions(EditorPropertiesZeroDecimals).HeaderText(SpotDate.ToString("M/d")).ValidationRules(Sub(v)
-                                                                                                                                                                                                                                                                                                           v.AddRule("validateSpot", True)
-                                                                                                                                                                                                                                                                                                       End Sub).Width(62).Tooltip("cellTooltipTemplate").Add()
+                                     co.Field("Spot" & SpotColumnCounter).EditType(TreeGridEditingType.Numeric).TextAlign(Syncfusion.JavaScript.TextAlign.Right).NumericEditOptions(EditorPropertiesZeroDecimals).HeaderText(SpotDate.ToString("M/d")).ValidationRules(Sub(v)
+                                                                                                                                                                                                                                                                           v.AddRule("validateSpot", True)
+                                                                                                                                                                                                                                                                       End Sub).Width(62).Tooltip("cellTooltipTemplate").Add()
 
-                                                                     co.Field("Rate" & SpotColumnCounter).EditType(TreeGridEditingType.Numeric).TextAlign(Syncfusion.JavaScript.TextAlign.Right).NumericEditOptions(EditorPropertiesTwoDecimals).HeaderText("Rate" & vbCrLf & SpotDate.ToString("M/d")).Width(125).Visible(False).Format("{0:N2}").Add()
+                                     co.Field("Rate" & SpotColumnCounter).EditType(TreeGridEditingType.Numeric).TextAlign(Syncfusion.JavaScript.TextAlign.Right).NumericEditOptions(EditorPropertiesTwoDecimals).HeaderText("Rate" & vbCrLf & SpotDate.ToString("M/d")).Width(125).Visible(False).Format("{0:N2}").Add()
 
-                                                                 End If
+                                 End If
 
-                                                             Next
+                             Next
 
-                                                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalSpots.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("Total Spots").Width(90).AllowEditing(False).Format("{0:N0}").Add()
+                             co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalSpots.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("Total Spots").Width(90).AllowEditing(False).Format("{0:N0}").Add()
 
-                                                             If Model.NetGross = 0 Then
+                             If Model.NetGross = 0 Then
 
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalGross.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("Total Net").AllowEditing(False).Format("{0:N2}").Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalGross.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("Total Net").AllowEditing(False).Format("{0:N2}").Add()
 
-                                                             Else
+                             Else
 
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalGross.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("Total Gross").AllowEditing(False).Format("{0:N2}").Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.TotalGross.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("Total Gross").AllowEditing(False).Format("{0:N2}").Add()
 
-                                                             End If
+                             End If
 
-                                                             If Not String.IsNullOrWhiteSpace(Model.PrimaryDemographic) AndAlso Not Model.SuppressRatings Then
+                             If Not String.IsNullOrWhiteSpace(Model.PrimaryDemographic) AndAlso Not Model.SuppressRatings Then
 
-                                                                 If Model.MediaType = "T" Then
+                                 If Model.MediaType = "T" Then
 
-                                                                     co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryRating.ToString).EditType(TreeGridEditingType.Numeric).NumericEditOptions(EditorPropertiesTwoDecimals).Width(100).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("Rating").Format("{0:N2}").Add()
+                                     co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryRating.ToString).EditType(TreeGridEditingType.Numeric).NumericEditOptions(EditorPropertiesTwoDecimals).Width(100).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("Rating").Format("{0:N2}").Add()
 
-                                                                 Else
+                                 Else
 
-                                                                     co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryRating.ToString).EditType(TreeGridEditingType.Numeric).NumericEditOptions(EditorPropertiesOneDecimal).Width(100).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("AQH Rtg").Format("{0:N1}").Add()
+                                     co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryRating.ToString).EditType(TreeGridEditingType.Numeric).NumericEditOptions(EditorPropertiesOneDecimal).Width(100).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("AQH Rtg").Format("{0:N1}").Add()
 
-                                                                 End If
+                                 End If
 
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryGRP.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).Width(100).HeaderText("GRP").AllowEditing(False).Format("{0:N2}").Add()
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryCPP.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).Width(100).HeaderText("CPP").AllowEditing(False).Format("{0:N2}").Add()
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryImpressions.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).Width(100).HeaderText(If(Model.MediaType = "T", "Imps (000)", "AQH (00)")).EditType(TreeGridEditingType.Numeric).NumericEditOptions(If(Model.MediaType = "T", EditorPropertiesOneDecimal, EditorPropertiesZeroDecimals)).Format(If(Model.MediaType = "T", "{0:N1}", "{0:N0}")).Add()
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryGIMP.ToString).Width(120).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText(If(Model.MediaType = "T", "GIMP (000)", "GIMP (00)")).AllowEditing(False).Format(If(Model.MediaType = "T", "{0:N1}", "{0:N0}")).Add()
-                                                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryCPM.ToString).Width(100).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("CPM").AllowEditing(False).Format("{0:N2}").Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryGRP.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).Width(100).HeaderText("GRP").AllowEditing(False).Format("{0:N2}").Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryCPP.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).Width(100).HeaderText("CPP").AllowEditing(False).Format("{0:N2}").Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryImpressions.ToString).TextAlign(Syncfusion.JavaScript.TextAlign.Right).Width(100).HeaderText(If(Model.MediaType = "T", "Imps (000)", "AQH (00)")).EditType(TreeGridEditingType.Numeric).NumericEditOptions(If(Model.MediaType = "T", EditorPropertiesOneDecimal, EditorPropertiesZeroDecimals)).Format(If(Model.MediaType = "T", "{0:N1}", "{0:N0}")).Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryGIMP.ToString).Width(120).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText(If(Model.MediaType = "T", "GIMP (000)", "GIMP (00)")).AllowEditing(False).Format(If(Model.MediaType = "T", "{0:N1}", "{0:N0}")).Add()
+                                 co.Field(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryCPM.ToString).Width(100).TextAlign(Syncfusion.JavaScript.TextAlign.Right).HeaderText("CPM").AllowEditing(False).Format("{0:N2}").Add()
 
-                                                             End If
-                                                         End Sub) _
-                                                .ShowStackedHeader(True) _
-                                                .StackedHeaderRows(Sub(row)
-                                                                       row.StackedHeaderColumns(Sub(shc)
-                                                                                                    shc.HeaderText("").Column(Sub(col)
-                                                                                                                                  If Model.MediaType = "T" AndAlso Model.VendorIsCableSystem Then
-                                                                                                                                      col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.CableNetwork.ToString)
-                                                                                                                                  End If
-                                                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Days.ToString)
-                                                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.StartTime.ToString)
-                                                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.EndTime.ToString)
-                                                                                                                                  If Model.MediaType = "T" Then
-                                                                                                                                      col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Program.ToString)
-                                                                                                                                  End If
-                                                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.DayPartDescription.ToString)
-                                                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Length.ToString)
-                                                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Comments.ToString)
-                                                                                                                              End Sub).Add()
+                             End If
+                         End Sub) _
+                .ShowStackedHeader(True) _
+                .StackedHeaderRows(Sub(row)
+                                       row.StackedHeaderColumns(Sub(shc)
+                                                                    shc.HeaderText("").Column(Sub(col)
+                                                                                                  If Model.MediaType = "T" AndAlso Model.VendorIsCableSystem Then
+                                                                                                      col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.CableNetwork.ToString)
+                                                                                                  End If
+                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Days.ToString)
+                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.StartTime.ToString)
+                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.EndTime.ToString)
+                                                                                                  If Model.MediaType = "T" Then
+                                                                                                      col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Program.ToString)
+                                                                                                  End If
+                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.DayPartDescription.ToString)
+                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Length.ToString)
+                                                                                                  col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.Comments.ToString)
+                                                                                              End Sub).Add()
 
-                                                                                                    Dim HeaderText As String = String.Empty
-                                                                                                    Dim YearMonth As String = String.Empty
-                                                                                                    For Each YearMonth In Model.YearMonths
-                                                                                                        HeaderText = MonthName(YearMonth.Substring(4, 2), True) & " " & YearMonth.Substring(0, 4)
-                                                                                                        shc.HeaderText(HeaderText).Column(Sub(col)
-                                                                                                                                              For Each spot In Model.SpotDates
-                                                                                                                                                  If Model.GetSpotYearMonth(spot.Value) = YearMonth Then
-                                                                                                                                                      col.Add(spot.Key)
-                                                                                                                                                      If Not Model.MakegoodDataTable.Columns(spot.Key).ReadOnly Then
-                                                                                                                                                          col.Add(spot.Key.Replace("Spot", "Rate"))
-                                                                                                                                                      End If
-                                                                                                                                                  End If
-                                                                                                                                              Next
-                                                                                                                                          End Sub).Add()
-                                                                                                    Next
-                                                                                                    If Not String.IsNullOrWhiteSpace(Model.PrimaryDemographic) AndAlso Not Model.SuppressRatings Then
-                                                                                                        shc.HeaderText(Model.PrimaryDemographic).Column(Sub(col)
-                                                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryRating.ToString)
-                                                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryGRP.ToString)
-                                                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryCPP.ToString)
-                                                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryImpressions.ToString)
-                                                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryGIMP.ToString)
-                                                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryCPM.ToString)
-                                                                                                                                                        End Sub).Add()
-                                                                                                    End If
-                                                                                                End Sub).Add()
-                                                                   End Sub) _
-                                                .SummaryRows(Sub(SR)
-                                                                 If Model.IsOriginalOrderMode Then
-                                                                     SR.Title("Total").SummaryColumns(Sub(SC)
-                                                                                                          For SpotColumnCounter As Integer = 0 To Model.SpotCount - 1
-                                                                                                              SC.SummaryType(TreeGridSummaryType.Sum).DataMember("Spot" & SpotColumnCounter).DisplayColumn("Spot" & SpotColumnCounter).Add()
-                                                                                                          Next
-                                                                                                          SC.SummaryType(TreeGridSummaryType.Sum).DataMember("TotalSpots").DisplayColumn("TotalSpots").Add()
-                                                                                                          SC.SummaryType(TreeGridSummaryType.Sum).DataMember("TotalGross").DisplayColumn("TotalGross").Format("{0:N2}").Add()
-                                                                                                          SC.SummaryType(TreeGridSummaryType.Sum).DataMember("PrimaryGRP").DisplayColumn("PrimaryGRP").Format("{0:N2}").Add()
-                                                                                                          SC.SummaryType(TreeGridSummaryType.Sum).DataMember("PrimaryGIMP").DisplayColumn("PrimaryGIMP").Format(If(Model.MediaType = "T", "{0:N1}", "{0:N0}")).Add()
-                                                                                                          SC.SummaryType(TreeGridSummaryType.Custom).CustomSummaryValue("calcCPP").DisplayColumn("PrimaryCPP").Format("{0:N2}").Add()
-                                                                                                          SC.SummaryType(TreeGridSummaryType.Custom).CustomSummaryValue("calcCPM").DisplayColumn("PrimaryCPM").Format("{0:N2}").Add()
-                                                                                                      End Sub).Add()
-                                                                 End If
-                                                             End Sub) _
-                                                .ClientSideEvents(Sub(eve)
-                                                                      eve.EndEdit("endEdit")
-                                                                      eve.BeginEdit("beginEdit")
-                                                                      eve.RowDataBound("rowDataBound")
-                                                                      eve.RowSelected("rowSelected")
-                                                                      eve.QueryCellInfo("queryCellInfo")
-                                                                      eve.ToolbarClick("toolbarClick")
-                                                                      eve.Create("create")
-                                                                  End Sub)
+                                                                    Dim HeaderText As String = String.Empty
+                                                                    Dim YearMonth As String = String.Empty
+                                                                    For Each YearMonth In Model.YearMonths
+                                                                        HeaderText = MonthName(YearMonth.Substring(4, 2), True) & " " & YearMonth.Substring(0, 4)
+                                                                        shc.HeaderText(HeaderText).Column(Sub(col)
+                                                                                                              For Each spot In Model.SpotDates
+                                                                                                                  If Model.GetSpotYearMonth(spot.Value) = YearMonth Then
+                                                                                                                      col.Add(spot.Key)
+                                                                                                                      If Not Model.MakegoodDataTable.Columns(spot.Key).ReadOnly Then
+                                                                                                                          col.Add(spot.Key.Replace("Spot", "Rate"))
+                                                                                                                      End If
+                                                                                                                  End If
+                                                                                                              Next
+                                                                                                          End Sub).Add()
+                                                                    Next
+                                                                    If Not String.IsNullOrWhiteSpace(Model.PrimaryDemographic) AndAlso Not Model.SuppressRatings Then
+                                                                        shc.HeaderText(Model.PrimaryDemographic).Column(Sub(col)
+                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryRating.ToString)
+                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryGRP.ToString)
+                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryCPP.ToString)
+                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryImpressions.ToString)
+                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryGIMP.ToString)
+                                                                                                                            col.Add(AdvantageFramework.Controller.Media.MakegoodDeliveryController.StagingDataColumns.PrimaryCPM.ToString)
+                                                                                                                        End Sub).Add()
+                                                                    End If
+                                                                End Sub).Add()
+                                   End Sub) _
+                .SummaryRows(Sub(SR)
+                                 If Model.IsOriginalOrderMode Then
+                                     SR.Title("Total").SummaryColumns(Sub(SC)
+                                                                          For SpotColumnCounter As Integer = 0 To Model.SpotCount - 1
+                                                                              SC.SummaryType(TreeGridSummaryType.Sum).DataMember("Spot" & SpotColumnCounter).DisplayColumn("Spot" & SpotColumnCounter).Add()
+                                                                          Next
+                                                                          SC.SummaryType(TreeGridSummaryType.Sum).DataMember("TotalSpots").DisplayColumn("TotalSpots").Add()
+                                                                          SC.SummaryType(TreeGridSummaryType.Sum).DataMember("TotalGross").DisplayColumn("TotalGross").Format("{0:N2}").Add()
+                                                                          SC.SummaryType(TreeGridSummaryType.Sum).DataMember("PrimaryGRP").DisplayColumn("PrimaryGRP").Format("{0:N2}").Add()
+                                                                          SC.SummaryType(TreeGridSummaryType.Sum).DataMember("PrimaryGIMP").DisplayColumn("PrimaryGIMP").Format(If(Model.MediaType = "T", "{0:N1}", "{0:N0}")).Add()
+                                                                          SC.SummaryType(TreeGridSummaryType.Custom).CustomSummaryValue("calcCPP").DisplayColumn("PrimaryCPP").Format("{0:N2}").Add()
+                                                                          SC.SummaryType(TreeGridSummaryType.Custom).CustomSummaryValue("calcCPM").DisplayColumn("PrimaryCPM").Format("{0:N2}").Add()
+                                                                      End Sub).Add()
+                                 End If
+                             End Sub) _
+                .ClientSideEvents(Sub(eve)
+                                      eve.EndEdit("endEdit")
+                                      eve.BeginEdit("beginEdit")
+                                      eve.RowDataBound("rowDataBound")
+                                      eve.RowSelected("rowSelected")
+                                      eve.QueryCellInfo("queryCellInfo")
+                                      eve.ToolbarClick("toolbarClick")
+                                      eve.Create("create")
+                                  End Sub)
             )@(Html.EJ().ScriptManager())
             @<br />
             @<div id="InformationModal" class="modal fade">

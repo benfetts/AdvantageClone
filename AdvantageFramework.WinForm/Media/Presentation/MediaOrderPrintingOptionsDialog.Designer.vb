@@ -113,13 +113,15 @@
             Me.rowPrimaryCPM = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowIncludeFlighting = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowIncludeLineMarket = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowIncludeImpressions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowBroadcastShowTotalNetForGrossOrder = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowNewspaperIncludeCirculationQTY = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.categoryQuantityRate = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
             Me.rowGuaranteed = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowProjected = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowActual = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowCostPer = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowInternetQtyOverrideText = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeImpressions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             CType(Me.PanelForm_Form, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.PanelForm_Form.SuspendLayout()
             Me.RibbonControlForm_MainRibbon.SuspendLayout()
@@ -334,7 +336,7 @@
             Me.VerticalGridMediaOrder_Settings.Appearance.RowHeaderPanel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
             Me.VerticalGridMediaOrder_Settings.Appearance.RowHeaderPanel.Options.UseFont = True
             Me.VerticalGridMediaOrder_Settings.Cursor = System.Windows.Forms.Cursors.Default
-            Me.VerticalGridMediaOrder_Settings.CustomizationFormBounds = New System.Drawing.Rectangle(1384, 433, 216, 265)
+            Me.VerticalGridMediaOrder_Settings.CustomizationFormBounds = New System.Drawing.Rectangle(1320, 433, 216, 265)
             Me.VerticalGridMediaOrder_Settings.DataSource = Me.OrderPrintSettingBindingSource
             Me.VerticalGridMediaOrder_Settings.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView
             Me.VerticalGridMediaOrder_Settings.Location = New System.Drawing.Point(12, 33)
@@ -574,7 +576,7 @@
             '
             'categoryOptionalDetailInformation
             '
-            Me.categoryOptionalDetailInformation.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowBroadcastShowEmptyWeeks, Me.rowShowLineNumbers, Me.rowProgramming, Me.rowStartTime, Me.rowEndTime, Me.rowLength, Me.rowRemarks, Me.rowProductionSize, Me.rowType, Me.rowHeadline, Me.rowIssue, Me.rowURL, Me.rowLocation, Me.rowCopyArea, Me.rowPlacement1, Me.rowPlacement2, Me.rowTargetAudience, Me.rowEdition, Me.rowSection, Me.rowMaterial, Me.rowAdNumber, Me.rowJobNumber, Me.rowMaterialDueDate, Me.rowSpaceCloseDate, Me.rowInstructions, Me.rowMiscInfo, Me.rowOrderCopy, Me.rowMaterialNotes, Me.rowPositionInfo, Me.rowCloseInfo, Me.rowRateInfo, Me.rowDays, Me.rowDaypart, Me.rowAddedValue, Me.rowBookends, Me.rowPrimaryRating, Me.rowPrimaryCPP, Me.rowPrintDayDate, Me.rowPrimaryImpressions, Me.rowPrimaryAQH, Me.rowPrimaryCPM, Me.rowIncludeFlighting, Me.rowIncludeLineMarket, Me.rowIncludeImpressions})
+            Me.categoryOptionalDetailInformation.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowBroadcastShowEmptyWeeks, Me.rowShowLineNumbers, Me.rowProgramming, Me.rowStartTime, Me.rowEndTime, Me.rowLength, Me.rowRemarks, Me.rowProductionSize, Me.rowType, Me.rowHeadline, Me.rowIssue, Me.rowURL, Me.rowLocation, Me.rowCopyArea, Me.rowPlacement1, Me.rowPlacement2, Me.rowTargetAudience, Me.rowEdition, Me.rowSection, Me.rowMaterial, Me.rowAdNumber, Me.rowJobNumber, Me.rowMaterialDueDate, Me.rowSpaceCloseDate, Me.rowInstructions, Me.rowMiscInfo, Me.rowOrderCopy, Me.rowMaterialNotes, Me.rowPositionInfo, Me.rowCloseInfo, Me.rowRateInfo, Me.rowDays, Me.rowDaypart, Me.rowAddedValue, Me.rowBookends, Me.rowPrimaryRating, Me.rowPrimaryCPP, Me.rowPrintDayDate, Me.rowPrimaryImpressions, Me.rowPrimaryAQH, Me.rowPrimaryCPM, Me.rowIncludeFlighting, Me.rowIncludeLineMarket, Me.rowIncludeImpressions, Me.rowBroadcastShowTotalNetForGrossOrder, Me.rowNewspaperIncludeCirculationQTY})
             Me.categoryOptionalDetailInformation.Name = "categoryOptionalDetailInformation"
             Me.categoryOptionalDetailInformation.Properties.Caption = "Optional Detail Information"
             '
@@ -836,6 +838,25 @@
             Me.rowIncludeLineMarket.Properties.Caption = "Include Line Market"
             Me.rowIncludeLineMarket.Properties.FieldName = "IncludeLineMarket"
             '
+            'rowIncludeImpressions
+            '
+            Me.rowIncludeImpressions.Name = "rowIncludeImpressions"
+            Me.rowIncludeImpressions.Properties.Caption = "Include Impressions"
+            Me.rowIncludeImpressions.Properties.FieldName = "IncludeImpressions"
+            '
+            'rowBroadcastShowTotalNetForGrossOrder
+            '
+            Me.rowBroadcastShowTotalNetForGrossOrder.Name = "rowBroadcastShowTotalNetForGrossOrder"
+            Me.rowBroadcastShowTotalNetForGrossOrder.Properties.Caption = "Show Total Net for Gross Order"
+            Me.rowBroadcastShowTotalNetForGrossOrder.Properties.FieldName = "ShowTotalNetForGrossOrder"
+            '
+            'rowNewspaperIncludeCirculationQTY
+            '
+            Me.rowNewspaperIncludeCirculationQTY.Name = "rowNewspaperIncludeCirculationQTY"
+            Me.rowNewspaperIncludeCirculationQTY.Properties.Caption = "Include Circulation/QTY"
+            Me.rowNewspaperIncludeCirculationQTY.Properties.FieldName = "NewspaperIncludeCirculationQTY"
+            Me.rowNewspaperIncludeCirculationQTY.Properties.ToolTip = "(when Cost Type is N/A and Rate is Standard)"
+            '
             'categoryQuantityRate
             '
             Me.categoryQuantityRate.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowGuaranteed, Me.rowProjected, Me.rowActual, Me.rowCostPer, Me.rowInternetQtyOverrideText})
@@ -871,12 +892,6 @@
             Me.rowInternetQtyOverrideText.Name = "rowInternetQtyOverrideText"
             Me.rowInternetQtyOverrideText.Properties.Caption = "Internet Qty Override Text"
             Me.rowInternetQtyOverrideText.Properties.FieldName = "InternetQtyOverrideText"
-            '
-            'rowIncludeImpressions
-            '
-            Me.rowIncludeImpressions.Name = "rowIncludeImpressions"
-            Me.rowIncludeImpressions.Properties.Caption = "Include Impressions"
-            Me.rowIncludeImpressions.Properties.FieldName = "IncludeImpressions"
             '
             'MediaOrderPrintingOptionsDialog
             '
@@ -996,6 +1011,8 @@
         Friend WithEvents rowMediaTitleOverride As DevExpress.XtraVerticalGrid.Rows.EditorRow
         Friend WithEvents rowIncludeClientAddress As DevExpress.XtraVerticalGrid.Rows.EditorRow
         Friend WithEvents rowIncludeImpressions As DevExpress.XtraVerticalGrid.Rows.EditorRow
+        Friend WithEvents rowBroadcastShowTotalNetForGrossOrder As DevExpress.XtraVerticalGrid.Rows.EditorRow
+        Friend WithEvents rowNewspaperIncludeCirculationQTY As DevExpress.XtraVerticalGrid.Rows.EditorRow
     End Class
 
 End Namespace

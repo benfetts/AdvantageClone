@@ -62,7 +62,7 @@
                     <td class="SubHeaderStyle" style="text-align: right;">
                         <asp:Label ID="LabelJobComponent" runat="server" Text=""></asp:Label>
                     </td>
-                    <td class="SubHeaderStyle">
+                    <td class="SubHeaderStyle" style="padding-left: 6px;">
                         <asp:Label ID="LabelFuncCat" runat="server" Text=""></asp:Label>
                     </td>
                     <td class="SubHeaderStyle">
@@ -114,7 +114,7 @@
                 <td style="text-align: right;">
                     <%# IIf(Eval("JobComponentNbr") = 0, "", Eval("JobComponentNbr").ToString().PadLeft(3, "0"))%>
                 </td>
-                <td  >
+                <td  style="padding-left: 6px;">
                     <%# Eval("FuncCat") %>
                 </td>
                 <td  >

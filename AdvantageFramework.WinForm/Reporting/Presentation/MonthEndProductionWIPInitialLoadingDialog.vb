@@ -148,6 +148,11 @@
 
             Else
 
+                LabelForm_AgingDate.Visible = True
+                LabelForm_AgingOption.Visible = True
+                DateTimePickerAgingDate.Visible = True
+                RadioButtonForm_Invoice.Visible = True
+                RadioButtonForm_InvoiceDueDate.Visible = True
 
             End If
 
@@ -194,9 +199,9 @@
         Private Sub ButtonForm_OK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonForm_OK.Click
 
             'objects
-            'Dim ClientCodeList As Generic.List(Of String) = Nothing
-            'Dim DivisionCodeList As Generic.List(Of String) = Nothing
-            'Dim ProductCodeList As Generic.List(Of String) = Nothing
+            Dim ClientCodeList As Generic.List(Of String) = Nothing
+            Dim DivisionCodeList As Generic.List(Of String) = Nothing
+            Dim ProductCodeList As Generic.List(Of String) = Nothing
             Dim SelectedCodesList As Generic.List(Of String) = Nothing
 
             Dim ErrorMessage As String = Nothing
@@ -283,45 +288,45 @@
 
 
 
-                'If CDPChooserControlSelectClients_SelectClients.RadioButtonControl_AllClients.Checked Then
+                If CDPChooserControlSelectClients_SelectClients.RadioButtonControl_AllClients.Checked Then
 
-                '    ClientCodeList = Nothing
-                '    DivisionCodeList = Nothing
-                '    ProductCodeList = Nothing
+                    ClientCodeList = Nothing
+                    DivisionCodeList = Nothing
+                    ProductCodeList = Nothing
 
-                'Else
+                Else
 
-                '    If CDPChooserControlSelectClients_SelectClients.RadioButtonControl_ChooseClients.Checked Then
+                    If CDPChooserControlSelectClients_SelectClients.RadioButtonControl_ChooseClients.Checked Then
 
-                '        SelectedCodesList = CDPChooserControlSelectClients_SelectClients.ClientCodeList
+                        SelectedCodesList = CDPChooserControlSelectClients_SelectClients.ClientCodeList
 
-                '        ClientCodeList = SelectedCodesList
-                '        DivisionCodeList = Nothing
-                '        ProductCodeList = Nothing
+                        ClientCodeList = SelectedCodesList
+                        DivisionCodeList = Nothing
+                        ProductCodeList = Nothing
 
-                '    ElseIf CDPChooserControlSelectClients_SelectClients.RadioButtonControl_ChooseClientDivisions.Checked Then
+                    ElseIf CDPChooserControlSelectClients_SelectClients.RadioButtonControl_ChooseClientDivisions.Checked Then
 
-                '        SelectedCodesList = CDPChooserControlSelectClients_SelectClients.DivisionCodeList
+                        SelectedCodesList = CDPChooserControlSelectClients_SelectClients.DivisionCodeList
 
-                '        ClientCodeList = Nothing
-                '        DivisionCodeList = SelectedCodesList
-                '        ProductCodeList = Nothing
+                        ClientCodeList = Nothing
+                        DivisionCodeList = SelectedCodesList
+                        ProductCodeList = Nothing
 
-                '    ElseIf CDPChooserControlSelectClients_SelectClients.RadioButtonControl_ChooseClientDivisionProducts.Checked Then
+                    ElseIf CDPChooserControlSelectClients_SelectClients.RadioButtonControl_ChooseClientDivisionProducts.Checked Then
 
-                '        SelectedCodesList = CDPChooserControlSelectClients_SelectClients.ProductCodeList
+                        SelectedCodesList = CDPChooserControlSelectClients_SelectClients.ProductCodeList
 
-                '        ClientCodeList = Nothing
-                '        DivisionCodeList = Nothing
-                '        ProductCodeList = SelectedCodesList
+                        ClientCodeList = Nothing
+                        DivisionCodeList = Nothing
+                        ProductCodeList = SelectedCodesList
 
-                '    End If
+                    End If
 
-                'End If
+                End If
 
-                '_ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedClients.ToString) = ClientCodeList
-                '_ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedDivisions.ToString) = DivisionCodeList
-                '_ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedProducts.ToString) = ProductCodeList
+                _ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedClients.ToString) = ClientCodeList
+                _ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedDivisions.ToString) = DivisionCodeList
+                _ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.SelectedProducts.ToString) = ProductCodeList
 
                 If RadioButtonSelectOffices_AllOffices.Checked Then
 

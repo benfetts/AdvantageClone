@@ -45,6 +45,7 @@
             VendorNCCTVSyscodeID
             VendorNielsenTVStationCode
             VendorIsCableSystem
+            VendorIsComboRadioStation
             CableNetworkStationCode
             CableNetworkNielsenTVStationCode
             Daypart
@@ -1055,7 +1056,16 @@
             SqlParameterNielsenMarketNumber.Value = NielsenMarketNumber
 
             SqlParameterBookIDs = New System.Data.SqlClient.SqlParameter("@BookIDs", SqlDbType.VarChar)
-            SqlParameterBookIDs.Value = Join(BookIDs, ",")
+
+            If BookIDs.Count = 0 Then
+
+                SqlParameterBookIDs.Value = System.DBNull.Value
+
+            Else
+
+                SqlParameterBookIDs.Value = Join(BookIDs, ",")
+
+            End If
 
             SqlParameterHPUTBookIDs = New System.Data.SqlClient.SqlParameter("@HPUTBookIDs", SqlDbType.VarChar)
 
@@ -1679,6 +1689,34 @@
             CalculateImpressionsFromOverrideRating = Impressions
 
         End Function
+        Private Function CalculateRatingFromOverrideImpressions(Impressions As Long, Universe As Long) As Decimal
+
+            'objects
+            Dim Rating As Decimal = 0
+
+            If Universe <> 0 Then
+
+                Rating = Impressions / Universe
+
+            End If
+
+            CalculateRatingFromOverrideImpressions = Decimal.Round(Rating * 100, 2)
+
+        End Function
+        Private Function CalculateAQHRatingFromOverrideAQH(AQH As Long, Universe As Long) As Decimal
+
+            'objects
+            Dim AQHRating As Decimal = 0
+
+            If Universe <> 0 Then
+
+                AQHRating = AQH / Universe
+
+            End If
+
+            CalculateAQHRatingFromOverrideAQH = Decimal.Round(AQHRating * 100, 2)
+
+        End Function
         Public Function CalculateAQHFromOverrideAQHRating(AQHRating As Decimal, Universe As Long) As Long
 
             'objects
@@ -1826,6 +1864,12 @@
 
             End If
 
+            If Frequency < 1 AndAlso Frequency > 0 Then
+
+                Frequency = 1
+
+            End If
+
             CalculateTVFrequency = Frequency
 
         End Function
@@ -1841,6 +1885,12 @@
             Else
 
                 Frequency = GRP / (Reach * 100)
+
+            End If
+
+            If Frequency < 1 AndAlso Frequency > 0 Then
+
+                Frequency = 1
 
             End If
 
@@ -4773,7 +4823,7 @@
                 If MediaBroadcastWorksheetMarketDetail.Vendor.IsCableSystem Then
 
                     If String.IsNullOrWhiteSpace(MediaBroadcastWorksheetMarketDetail.CableNetworkStationCode) = False AndAlso
-                            MediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) > 0 Then
+                            MediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) <> 0 Then
 
                         StationCode = MediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode
 
@@ -4995,7 +5045,7 @@
                 If FirstMediaBroadcastWorksheetMarketDetail.Vendor.IsCableSystem Then
 
                     If String.IsNullOrWhiteSpace(FirstMediaBroadcastWorksheetMarketDetail.CableNetworkStationCode) = False AndAlso
-                            FirstMediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) > 0 Then
+                            FirstMediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) <> 0 Then
 
                         StationCode = FirstMediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode
 
@@ -5232,7 +5282,7 @@
                 If FirstMediaBroadcastWorksheetMarketDetail.Vendor.IsCableSystem Then
 
                     If String.IsNullOrWhiteSpace(FirstMediaBroadcastWorksheetMarketDetail.CableNetworkStationCode) = False AndAlso
-                            FirstMediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) > 0 Then
+                            FirstMediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) <> 0 Then
 
                         StationCode = FirstMediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode
 
@@ -5458,7 +5508,7 @@
                 If MediaBroadcastWorksheetMarketDetail.Vendor.IsCableSystem Then
 
                     If String.IsNullOrWhiteSpace(MediaBroadcastWorksheetMarketDetail.CableNetworkStationCode) = False AndAlso
-                            MediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) > 0 Then
+                            MediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode.GetValueOrDefault(0) <> 0 Then
 
                         StationCode = MediaBroadcastWorksheetMarketDetail.CableNetworkNielsenTVStationCode
 
@@ -5664,30 +5714,108 @@
             Dim MediaDemographic As AdvantageFramework.Database.Entities.MediaDemographic = Nothing
             Dim StationCode As String = String.Empty
             Dim TotalSpots As Integer = 0
-            Dim FirstMediaBroadcastWorksheetMarketDetail As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetMarketDetail = Nothing
+            Dim MediaBroadcastWorksheetMarketDetail As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetMarketDetail = Nothing
             Dim RadioWorksheetRatingData As AdvantageFramework.Classes.Media.Nielsen.RadioWorksheetRatingData = Nothing
             Dim MBWMDRadioWorksheetRatingDatas As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.RadioWorksheetRatingData) = Nothing
+            Dim IsAgencyASP As Boolean = False
+            Dim NielsenRadioStationComboIDs() As String = Nothing
+            Dim NielsenRadioStationComboID As Integer = 0
+            Dim VendorRadioStationComboIDs As Generic.List(Of Integer) = Nothing
+            Dim RadioDemoDataInfos As Generic.List(Of AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo) = Nothing
+            Dim RadioDemoDataInfo As AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo = Nothing
+            Dim ComboReach As Double = 0
+            Dim ComboReachValues As Generic.List(Of Double) = Nothing
+            Dim RadioStationComboReachValues As Generic.List(Of Double) = Nothing
+            Dim ComboReachOuterCounter As Integer = 0
+            Dim ComboReachCounter As Integer = 0
+            Dim AQHComboValues As Generic.List(Of Double) = Nothing
+            Dim AQHRatingComboValues As Generic.List(Of Double) = Nothing
 
-            Try
+            RadioDemoDataInfos = New Generic.List(Of AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo)
 
-                FirstMediaBroadcastWorksheetMarketDetail = MediaBroadcastWorksheetMarketDetails.FirstOrDefault
+            For Each MediaBroadcastWorksheetMarketDetail In MediaBroadcastWorksheetMarketDetails
 
-            Catch ex As Exception
-                FirstMediaBroadcastWorksheetMarketDetail = Nothing
-            End Try
+                VendorRadioStationComboIDs = Nothing
 
-            If FirstMediaBroadcastWorksheetMarketDetail IsNot Nothing AndAlso FirstMediaBroadcastWorksheetMarketDetail.Vendor IsNot Nothing Then
+                Try
 
-                If FirstMediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.HasValue AndAlso FirstMediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.Value > 0 Then
+                    RadioDemoDataInfo = RadioDemoDataInfos.SingleOrDefault(Function(Entity) Entity.VendorCode = MediaBroadcastWorksheetMarketDetail.VendorCode)
 
-                    StationCode = FirstMediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.Value
+                Catch ex As Exception
+                    RadioDemoDataInfo = Nothing
+                End Try
+
+                If MediaBroadcastWorksheetMarketDetail.Vendor.IsComboRadioStation Then
+
+                    If MediaBroadcastWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen Then
+
+                        VendorRadioStationComboIDs = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT ISNULL(VCRS.NIELSEN_RADIO_STATION_COMBO_ID, 0) FROM dbo.VENDOR_COMBO_RADIO_STATION VCRS WHERE VCRS.VN_CODE = '{0}'", MediaBroadcastWorksheetMarketDetail.VendorCode)).Where(Function(ComboID) ComboID <> 0).ToList
+
+                    ElseIf MediaBroadcastWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan Then
+
+                        VendorRadioStationComboIDs = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT ISNULL(V.EASTLAN_RADIO_STATION_COMBO_ID, 0) FROM dbo.VENDOR_COMBO_RADIO_STATION VCRS INNER JOIN dbo.VENDOR V ON V.VN_CODE = VCRS.VN_COMBO_RADIO_STATION_CODE WHERE VCRS.VN_CODE = '{0}'", MediaBroadcastWorksheetMarketDetail.VendorCode)).Where(Function(ComboID) ComboID <> 0).ToList
+
+                    End If
+
+                    If VendorRadioStationComboIDs IsNot Nothing AndAlso VendorRadioStationComboIDs.Count > 0 Then
+
+                        RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(MediaBroadcastWorksheetMarketDetail.VendorCode, True, VendorRadioStationComboIDs, MediaBroadcastWorksheetMarketDetail.ID)
+
+                    Else
+
+                        RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(MediaBroadcastWorksheetMarketDetail.VendorCode, True, MediaBroadcastWorksheetMarketDetail.ID)
+
+                    End If
+
+                    RadioDemoDataInfos.Add(RadioDemoDataInfo)
+
+                Else
+
+                    NielsenRadioStationComboID = 0
+
+                    If MediaBroadcastWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen AndAlso
+                            MediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.HasValue AndAlso
+                            MediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.Value > 0 Then
+
+                        NielsenRadioStationComboID = MediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.Value
+
+                    ElseIf MediaBroadcastWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan AndAlso
+                            MediaBroadcastWorksheetMarketDetail.Vendor.EastlanRadioStationComboID.HasValue AndAlso
+                            MediaBroadcastWorksheetMarketDetail.Vendor.EastlanRadioStationComboID.Value > 0 Then
+
+                        NielsenRadioStationComboID = MediaBroadcastWorksheetMarketDetail.Vendor.EastlanRadioStationComboID.Value
+
+                    End If
+
+                    If RadioDemoDataInfo Is Nothing Then
+
+                        If NielsenRadioStationComboID > 0 Then
+
+                            RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(MediaBroadcastWorksheetMarketDetail.VendorCode, False, New Generic.List(Of Integer)({NielsenRadioStationComboID}), MediaBroadcastWorksheetMarketDetail.ID)
+
+                        Else
+
+                            RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(MediaBroadcastWorksheetMarketDetail.VendorCode, False, MediaBroadcastWorksheetMarketDetail.ID)
+
+                        End If
+
+                        RadioDemoDataInfos.Add(RadioDemoDataInfo)
+
+                    Else
+
+                        RadioDemoDataInfo.RowIndexes.Add(MediaBroadcastWorksheetMarketDetail.ID)
+
+                    End If
 
                 End If
 
-            End If
+            Next
 
-            If String.IsNullOrWhiteSpace(StationCode) = False AndAlso
-                    MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID1.HasValue Then
+            RadioDemoDataInfos = RadioDemoDataInfos.Where(Function(Entity) Entity.RadioStationComboIDs.Count > 0).ToList
+
+            If RadioDemoDataInfos.Count > 0 AndAlso MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID1.HasValue Then
+
+                IsAgencyASP = AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext)
 
                 BookIDs = New Generic.List(Of String)
 
@@ -5734,114 +5862,227 @@
                                         Select New AdvantageFramework.Classes.Media.Nielsen.MediaDemoDetailType With {.MediaDemographicID = MediaDemographicDetail.MediaDemographicID,
                                                                                                                       .NielsenDemographicID = MediaDemographicDetail.NielsenDemographicID}).ToList
 
-                StationCodes = New String() {StationCode}
+                For Each RadioDemoDataInfo In RadioDemoDataInfos
 
-                MediaSpotTVResearchDaytimeTypes = New Generic.List(Of Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+                    NielsenRadioStationComboIDs = RadioDemoDataInfo.RadioStationComboIDs.Select(Function(RadioStationComboID) RadioStationComboID.ToString).ToArray
 
-                For Each MediaBroadcastWorksheetMarketDetail In MediaBroadcastWorksheetMarketDetails
+                    MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
 
-                    MediaSpotTVResearchDaytimeTypes.Add(New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(MediaBroadcastWorksheetMarketDetail))
+                    For Each RowIndex In RadioDemoDataInfo.RowIndexes
 
-                Next
+                        Try
 
-                Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Me.Session.NielsenConnectionString, Me.Session.UserCode)
+                            MediaBroadcastWorksheetMarketDetail = MediaBroadcastWorksheetMarketDetails.SingleOrDefault(Function(Entity) Entity.ID = RowIndex)
 
-                    RadioWorksheetRatingDatas = GetNielsenRadioRatingData(DbContext, NielsenDbContext, NielsenMarketNumber, BookIDs.ToArray,
-                                                                          MediaBroadcastWorksheetMarket.MediaBroadcastWorksheetMarketRadioGeographyID,
-                                                                          New String() {StationCode}, New String() {MediaDemographicID}, MediaSpotTVResearchDaytimeTypes,
-                                                                          MediaDemoTypes, MediaDemoDetailTypes,
-                                                                          AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext))
+                        Catch ex As Exception
+                            MediaBroadcastWorksheetMarketDetail = Nothing
+                        End Try
 
-                End Using
+                        MediaSpotTVResearchDaytimeTypes.Add(New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(MediaBroadcastWorksheetMarketDetail))
 
-                For Each MediaBroadcastWorksheetMarketDetail In MediaBroadcastWorksheetMarketDetails
+                    Next
 
-                    Try
+                    Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Me.Session.NielsenConnectionString, Me.Session.UserCode)
 
-                        MBWMDRadioWorksheetRatingDatas = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetail.ID).ToList
+                        RadioWorksheetRatingDatas = GetNielsenRadioRatingData(DbContext, NielsenDbContext, NielsenMarketNumber, BookIDs.ToArray,
+                                                                              MediaBroadcastWorksheetMarket.MediaBroadcastWorksheetMarketRadioGeographyID.GetValueOrDefault(0),
+                                                                              NielsenRadioStationComboIDs, New String() {MediaDemographicID}, MediaSpotTVResearchDaytimeTypes,
+                                                                              MediaDemoTypes, MediaDemoDetailTypes, IsAgencyASP)
 
-                    Catch ex As Exception
-                        MBWMDRadioWorksheetRatingDatas = Nothing
-                    End Try
+                    End Using
 
-                    If MBWMDRadioWorksheetRatingDatas IsNot Nothing AndAlso MBWMDRadioWorksheetRatingDatas.Count > 0 Then
+                    For Each MediaBroadcastWorksheetMarketDetail In MediaBroadcastWorksheetMarketDetails
 
-                        If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+                        Try
 
-                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
+                            MBWMDRadioWorksheetRatingDatas = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetail.ID).ToList
+
+                        Catch ex As Exception
+                            MBWMDRadioWorksheetRatingDatas = Nothing
+                        End Try
+
+                        TotalSpots = MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarketDetailDates.Select(Function(Entity) Entity.Spots).Sum
+
+                        If MBWMDRadioWorksheetRatingDatas IsNot Nothing AndAlso MBWMDRadioWorksheetRatingDatas.Count > 0 Then
+
+                            If MediaBroadcastWorksheetMarketDetail.Vendor.IsComboRadioStation Then
+
+                                MediaBroadcastWorksheetMarketDetail.PrimaryUniverse = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.Population)
+
+                                AQHComboValues = New Generic.List(Of Double)
+                                AQHRatingComboValues = New Generic.List(Of Double)
+
+                                For Each RadioStationComboID In RadioDemoDataInfo.RadioStationComboIDs
+
+                                    AQHComboValues.Add(MBWMDRadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetail.ID AndAlso Entity.NielsenRadioStationComboID = RadioStationComboID).Average(Function(Entity) Entity.AQH))
+                                    AQHRatingComboValues.Add(MBWMDRadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetail.ID AndAlso Entity.NielsenRadioStationComboID = RadioStationComboID).Average(Function(Entity) CDbl((Entity.AQH * 100) / MediaBroadcastWorksheetMarketDetail.PrimaryUniverse)))
+
+                                Next
+
+                                If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH <> MediaBroadcastWorksheetMarketDetail.PrimaryAQH Then
+
+                                    MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = AQHComboValues.Sum(Function(AQH) AQH) 'MBWMDRadioWorksheetRatingDatas.Sum(Function(Entity) Entity.AQH)
+
+                                Else
+
+                                    MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = AQHComboValues.Sum(Function(AQH) AQH) ' MBWMDRadioWorksheetRatingDatas.Sum(Function(Entity) Entity.AQH)
+                                    MediaBroadcastWorksheetMarketDetail.PrimaryAQH = MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH 'AQHComboValues.Sum(Function(AQH) AQH) 'MBWMDRadioWorksheetRatingDatas.Sum(Function(Entity) Entity.AQH)
+
+                                End If
+
+                                If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+
+                                    MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = AQHRatingComboValues.Sum(Function(AQHRating) Math.Round(AQHRating, 1, MidpointRounding.AwayFromZero)) ' MBWMDRadioWorksheetRatingDatas.Sum(Function(Entity) (Entity.AQH * 100) / MediaBroadcastWorksheetMarketDetail.PrimaryUniverse)
+
+                                Else
+
+                                    MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = AQHRatingComboValues.Sum(Function(AQHRating) Math.Round(AQHRating, 1, MidpointRounding.AwayFromZero)) 'MBWMDRadioWorksheetRatingDatas.Sum(Function(Entity) (Entity.AQH * 100) / MediaBroadcastWorksheetMarketDetail.PrimaryUniverse)
+                                    MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating
+
+                                End If
+
+                                MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = 0 'ComboReach * 100
+                                MediaBroadcastWorksheetMarketDetail.PrimaryCume = 0 'ComboReach * MediaBroadcastWorksheetMarketDetail.PrimaryUniverse
+
+                                'MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.CumeRating)
+                                'MediaBroadcastWorksheetMarketDetail.PrimaryCume = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.CUME)
+                                'MediaBroadcastWorksheetMarketDetail.PrimaryUniverse = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.Population)
+
+                                MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
+                                MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
+                                MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating, 1, MidpointRounding.AwayFromZero)
+
+                                If MediaBroadcastWorksheetMarketDetail.PrimaryCume > MediaBroadcastWorksheetMarketDetail.PrimaryUniverse Then
+
+                                    MediaBroadcastWorksheetMarketDetail.PrimaryCume = MediaBroadcastWorksheetMarketDetail.PrimaryUniverse
+
+                                End If
+
+                                ComboReachValues = New Generic.List(Of Double)
+
+                                For Each RadioStationComboID In RadioWorksheetRatingDatas.Select(Function(Entity) Entity.NielsenRadioStationComboID).Distinct.ToList
+
+                                    RadioStationComboReachValues = New Generic.List(Of Double)
+
+                                    For Each RadioWorksheetRatingData In RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioStationComboID = RadioStationComboID).ToList
+
+                                        RadioStationComboReachValues.Add(CalculateRadioReach(RadioWorksheetRatingData.AQH, RadioWorksheetRatingData.CUME,
+                                                                                             TotalSpots, RadioWorksheetRatingData.Population,
+                                                                                             RadioWorksheetRatingData.AQHRating, RadioWorksheetRatingData.AQHRating))
+
+                                    Next
+
+                                    ComboReachValues.Add(Math.Round(RadioStationComboReachValues.Average(Function(ReachValue) ReachValue), 3, MidpointRounding.AwayFromZero))
+
+                                Next
+
+                                ComboReach = ComboReachValues.Sum(Function(ComboReachValue) ComboReachValue)
+
+                                For ComboReachOuterCounter = 0 To ComboReachValues.Count - 1
+
+                                    ComboReachCounter = ComboReachOuterCounter + 1
+
+                                    While ComboReachCounter <> ComboReachValues.Count
+
+                                        'Console.WriteLine(" - (" & ComboReachValues(ComboReachOuterCounter) & " * " & ComboReachValues(ComboReachCounter) & ")")
+
+                                        ComboReach -= (ComboReachValues(ComboReachOuterCounter) * ComboReachValues(ComboReachCounter))
+                                        ComboReachCounter += 1
+
+                                    End While
+
+                                Next
+
+                                MediaBroadcastWorksheetMarketDetail.PrimaryReach = Math.Round(ComboReach, 3, MidpointRounding.AwayFromZero)
+
+                            Else
+
+                                If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+
+                                    MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
+
+                                Else
+
+                                    MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
+                                    MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
+
+                                End If
+
+                                If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+
+                                    MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
+
+                                Else
+
+                                    MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
+                                    MediaBroadcastWorksheetMarketDetail.PrimaryAQH = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
+
+                                End If
+
+                                MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.CumeRating)
+                                MediaBroadcastWorksheetMarketDetail.PrimaryCume = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.CUME)
+                                MediaBroadcastWorksheetMarketDetail.PrimaryUniverse = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.Population)
+
+                                MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
+                                MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
+                                MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating, 1, MidpointRounding.AwayFromZero)
+
+                                If MediaBroadcastWorksheetMarketDetail.PrimaryCume > MediaBroadcastWorksheetMarketDetail.PrimaryUniverse Then
+
+                                    MediaBroadcastWorksheetMarketDetail.PrimaryCume = MediaBroadcastWorksheetMarketDetail.PrimaryUniverse
+
+                                End If
+
+                            End If
 
                         Else
 
-                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
-                            MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
+                            If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+
+                                MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = 0
+
+                            Else
+
+                                MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = 0
+                                MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = 0
+
+                            End If
+
+                            If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+
+                                MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = 0
+
+                            Else
+
+                                MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = 0
+                                MediaBroadcastWorksheetMarketDetail.PrimaryAQH = 0
+
+                            End If
+
+                            MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = 0
+                            MediaBroadcastWorksheetMarketDetail.PrimaryCume = 0
+                            MediaBroadcastWorksheetMarketDetail.PrimaryUniverse = 0
 
                         End If
 
-                        If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+                        'TotalSpots = MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarketDetailDates.Select(Function(Entity) Entity.Spots).Sum
 
-                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
+                        MediaBroadcastWorksheetMarketDetail.PrimaryGRP = TotalSpots * MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating
+                        MediaBroadcastWorksheetMarketDetail.PrimaryCPP = If(MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = 0, 0, MediaBroadcastWorksheetMarketDetail.DefaultRate / MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating)
 
-                        Else
+                        If MediaBroadcastWorksheetMarketDetail.Vendor.IsComboRadioStation = False Then
 
-                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
-                            MediaBroadcastWorksheetMarketDetail.PrimaryAQH = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
-
-                        End If
-
-                        MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.CumeRating)
-                        MediaBroadcastWorksheetMarketDetail.PrimaryCume = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.CUME)
-                        MediaBroadcastWorksheetMarketDetail.PrimaryUniverse = MBWMDRadioWorksheetRatingDatas.Average(Function(Entity) Entity.Population)
-
-                        MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
-                        MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
-                        MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating, 1, MidpointRounding.AwayFromZero)
-
-                        If MediaBroadcastWorksheetMarketDetail.PrimaryCume > MediaBroadcastWorksheetMarketDetail.PrimaryUniverse Then
-
-                            MediaBroadcastWorksheetMarketDetail.PrimaryCume = MediaBroadcastWorksheetMarketDetail.PrimaryUniverse
+                            MediaBroadcastWorksheetMarketDetail.PrimaryReach = CalculateRadioReach(MediaBroadcastWorksheetMarketDetail.PrimaryAQH, MediaBroadcastWorksheetMarketDetail.PrimaryCume,
+                                                                                                   TotalSpots, MediaBroadcastWorksheetMarketDetail.PrimaryUniverse, MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating,
+                                                                                                   MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating)
 
                         End If
 
-                    Else
+                        MediaBroadcastWorksheetMarketDetail.PrimaryFrequency = CalculateRadioFrequency(MediaBroadcastWorksheetMarketDetail.PrimaryGRP, MediaBroadcastWorksheetMarketDetail.PrimaryReach)
 
-                        If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+                        MediaBroadcastWorksheetMarketDetail.PrimaryGrossImpressions = MediaBroadcastWorksheetMarketDetail.PrimaryAQH * TotalSpots
 
-                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = 0
-
-                        Else
-
-                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = 0
-                            MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = 0
-
-                        End If
-
-                        If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
-
-                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = 0
-
-                        Else
-
-                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = 0
-                            MediaBroadcastWorksheetMarketDetail.PrimaryAQH = 0
-
-                        End If
-
-                        MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = 0
-                        MediaBroadcastWorksheetMarketDetail.PrimaryCume = 0
-                        MediaBroadcastWorksheetMarketDetail.PrimaryUniverse = 0
-
-                    End If
-
-                    TotalSpots = MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarketDetailDates.Select(Function(Entity) Entity.Spots).Sum
-
-                    MediaBroadcastWorksheetMarketDetail.PrimaryGRP = TotalSpots * MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating
-                    MediaBroadcastWorksheetMarketDetail.PrimaryCPP = If(MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = 0, 0, MediaBroadcastWorksheetMarketDetail.DefaultRate / MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating)
-
-                    MediaBroadcastWorksheetMarketDetail.PrimaryReach = CalculateRadioReach(MediaBroadcastWorksheetMarketDetail.PrimaryAQH, MediaBroadcastWorksheetMarketDetail.PrimaryCume,
-                                                                                           TotalSpots, MediaBroadcastWorksheetMarketDetail.PrimaryUniverse, MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating, MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating)
-                    MediaBroadcastWorksheetMarketDetail.PrimaryFrequency = CalculateRadioFrequency(MediaBroadcastWorksheetMarketDetail.PrimaryGRP, MediaBroadcastWorksheetMarketDetail.PrimaryReach)
-
-                    MediaBroadcastWorksheetMarketDetail.PrimaryGrossImpressions = MediaBroadcastWorksheetMarketDetail.PrimaryAQH * TotalSpots
+                    Next
 
                 Next
 
@@ -5862,19 +6103,78 @@
             Dim MediaDemographic As AdvantageFramework.Database.Entities.MediaDemographic = Nothing
             Dim StationCode As String = String.Empty
             Dim TotalSpots As Integer = 0
+            Dim IsAgencyASP As Boolean = False
+            Dim NielsenRadioStationComboIDs() As String = Nothing
+            Dim NielsenRadioStationComboID As Integer = 0
+            Dim VendorRadioStationComboIDs As Generic.List(Of Integer) = Nothing
+            Dim RadioDemoDataInfo As AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo = Nothing
+            Dim ComboReach As Double = 0
+            Dim ComboReachValues As Generic.List(Of Double) = Nothing
+            Dim RadioStationComboReachValues As Generic.List(Of Double) = Nothing
+            Dim ComboReachOuterCounter As Integer = 0
+            Dim ComboReachCounter As Integer = 0
+            Dim Universe As Long = 0
+            Dim AQHComboValues As Generic.List(Of Double) = Nothing
+            Dim AQHRatingComboValues As Generic.List(Of Double) = Nothing
+            Dim MediaBroadcastWorksheetMarketDetailID As Integer = 0
 
-            If MediaBroadcastWorksheetMarketDetail.Vendor IsNot Nothing Then
+            MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetail.ID
 
-                If MediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.HasValue AndAlso MediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.Value > 0 Then
+            If MediaBroadcastWorksheetMarketDetail.Vendor.IsComboRadioStation Then
 
-                    StationCode = MediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.Value
+                If MediaBroadcastWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen Then
+
+                    VendorRadioStationComboIDs = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT ISNULL(VCRS.NIELSEN_RADIO_STATION_COMBO_ID, 0) FROM dbo.VENDOR_COMBO_RADIO_STATION VCRS WHERE VCRS.VN_CODE = '{0}'", MediaBroadcastWorksheetMarketDetail.VendorCode)).Where(Function(ComboID) ComboID <> 0).ToList
+
+                ElseIf MediaBroadcastWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan Then
+
+                    VendorRadioStationComboIDs = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT ISNULL(V.EASTLAN_RADIO_STATION_COMBO_ID, 0) FROM dbo.VENDOR_COMBO_RADIO_STATION VCRS INNER JOIN dbo.VENDOR V ON V.VN_CODE = VCRS.VN_COMBO_RADIO_STATION_CODE WHERE VCRS.VN_CODE = '{0}'", MediaBroadcastWorksheetMarketDetail.VendorCode)).Where(Function(ComboID) ComboID <> 0).ToList
+
+                End If
+
+                If VendorRadioStationComboIDs IsNot Nothing AndAlso VendorRadioStationComboIDs.Count > 0 Then
+
+                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(MediaBroadcastWorksheetMarketDetail.VendorCode, True, VendorRadioStationComboIDs, MediaBroadcastWorksheetMarketDetail.ID)
+
+                Else
+
+                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(MediaBroadcastWorksheetMarketDetail.VendorCode, True, MediaBroadcastWorksheetMarketDetail.ID)
+
+                End If
+
+            Else
+
+                NielsenRadioStationComboID = 0
+
+                If MediaBroadcastWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen AndAlso
+                        MediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.HasValue AndAlso
+                        MediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.Value > 0 Then
+
+                    NielsenRadioStationComboID = MediaBroadcastWorksheetMarketDetail.Vendor.NielsenRadioStationComboID.Value
+
+                ElseIf MediaBroadcastWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan AndAlso
+                        MediaBroadcastWorksheetMarketDetail.Vendor.EastlanRadioStationComboID.HasValue AndAlso
+                        MediaBroadcastWorksheetMarketDetail.Vendor.EastlanRadioStationComboID.Value > 0 Then
+
+                    NielsenRadioStationComboID = MediaBroadcastWorksheetMarketDetail.Vendor.EastlanRadioStationComboID.Value
+
+                End If
+
+                If NielsenRadioStationComboID > 0 Then
+
+                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(MediaBroadcastWorksheetMarketDetail.VendorCode, False, New Generic.List(Of Integer)({NielsenRadioStationComboID}), MediaBroadcastWorksheetMarketDetail.ID)
+
+                Else
+
+                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(MediaBroadcastWorksheetMarketDetail.VendorCode, False, MediaBroadcastWorksheetMarketDetail.ID)
 
                 End If
 
             End If
 
-            If String.IsNullOrWhiteSpace(StationCode) = False AndAlso
-                    MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID1.HasValue Then
+            If RadioDemoDataInfo.RadioStationComboIDs.Count > 0 AndAlso MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID1.HasValue Then
+
+                IsAgencyASP = AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext)
 
                 BookIDs = New Generic.List(Of String)
 
@@ -5921,55 +6221,150 @@
                                         Select New AdvantageFramework.Classes.Media.Nielsen.MediaDemoDetailType With {.MediaDemographicID = MediaDemographicDetail.MediaDemographicID,
                                                                                                                       .NielsenDemographicID = MediaDemographicDetail.NielsenDemographicID}).ToList
 
-                StationCodes = New String() {StationCode}
+                NielsenRadioStationComboIDs = RadioDemoDataInfo.RadioStationComboIDs.Select(Function(RadioStationComboID) RadioStationComboID.ToString).ToArray
 
-                MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType) From {New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(MediaBroadcastWorksheetMarketDetail)}
+                MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+
+                MediaSpotTVResearchDaytimeTypes.Add(New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(MediaBroadcastWorksheetMarketDetail))
 
                 Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Me.Session.NielsenConnectionString, Me.Session.UserCode)
 
                     RadioWorksheetRatingDatas = GetNielsenRadioRatingData(DbContext, NielsenDbContext, NielsenMarketNumber, BookIDs.ToArray,
                                                                           MediaBroadcastWorksheetMarket.MediaBroadcastWorksheetMarketRadioGeographyID,
-                                                                          New String() {StationCode}, New String() {MediaDemographicID}, MediaSpotTVResearchDaytimeTypes,
-                                                                          MediaDemoTypes, MediaDemoDetailTypes,
-                                                                          AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext))
+                                                                          NielsenRadioStationComboIDs, New String() {MediaDemographicID}, MediaSpotTVResearchDaytimeTypes,
+                                                                          MediaDemoTypes, MediaDemoDetailTypes, IsAgencyASP)
 
                 End Using
 
+                TotalSpots = MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarketDetailDates.Select(Function(Entity) Entity.Spots).Sum
+
                 If RadioWorksheetRatingDatas IsNot Nothing AndAlso RadioWorksheetRatingDatas.Count > 0 Then
 
-                    If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+                    If MediaBroadcastWorksheetMarketDetail.Vendor.IsComboRadioStation Then
 
-                        MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
+                        Universe = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.Population)
+
+                        MediaBroadcastWorksheetMarketDetail.PrimaryUniverse = Universe
+
+                        AQHComboValues = New Generic.List(Of Double)
+                        AQHRatingComboValues = New Generic.List(Of Double)
+
+                        For Each RadioStationComboID In RadioDemoDataInfo.RadioStationComboIDs
+
+                            AQHComboValues.Add(RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID AndAlso Entity.NielsenRadioStationComboID = RadioStationComboID).Average(Function(Entity) Entity.AQH))
+                            AQHRatingComboValues.Add(RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID AndAlso Entity.NielsenRadioStationComboID = RadioStationComboID).Average(Function(Entity) CDbl((Entity.AQH * 100) / Universe)))
+
+                        Next
+
+                        If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH <> MediaBroadcastWorksheetMarketDetail.PrimaryAQH Then
+
+                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = AQHComboValues.Sum(Function(AQH) AQH) 'RadioWorksheetRatingDatas.Sum(Function(Entity) Entity.AQH)
+
+                        Else
+
+                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = AQHComboValues.Sum(Function(AQH) AQH) ' RadioWorksheetRatingDatas.Sum(Function(Entity) Entity.AQH)
+                            MediaBroadcastWorksheetMarketDetail.PrimaryAQH = MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH 'AQHComboValues.Sum(Function(AQH) AQH) 'RadioWorksheetRatingDatas.Sum(Function(Entity) Entity.AQH)
+
+                        End If
+
+                        If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+
+                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = AQHRatingComboValues.Sum(Function(AQHRating) Math.Round(AQHRating, 1, MidpointRounding.AwayFromZero)) 'RadioWorksheetRatingDatas.Sum(Function(Entity) (Entity.AQH * 100) / Universe)
+
+                        Else
+
+                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = AQHRatingComboValues.Sum(Function(AQHRating) Math.Round(AQHRating, 1, MidpointRounding.AwayFromZero)) 'RadioWorksheetRatingDatas.Sum(Function(Entity) (Entity.AQH * 100) / Universe)
+                            MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating
+
+                        End If
+
+                        MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = 0 'ComboReach * 100
+                        MediaBroadcastWorksheetMarketDetail.PrimaryCume = 0 'ComboReach * MediaBroadcastWorksheetMarketDetail.PrimaryUniverse
+
+                        MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
+                        MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
+                        MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating, 1, MidpointRounding.AwayFromZero)
+
+                        If MediaBroadcastWorksheetMarketDetail.PrimaryCume > MediaBroadcastWorksheetMarketDetail.PrimaryUniverse Then
+
+                            MediaBroadcastWorksheetMarketDetail.PrimaryCume = MediaBroadcastWorksheetMarketDetail.PrimaryUniverse
+
+                        End If
+
+                        ComboReachValues = New Generic.List(Of Double)
+
+                        For Each RadioStationComboID In RadioWorksheetRatingDatas.Select(Function(Entity) Entity.NielsenRadioStationComboID).Distinct.ToList
+
+                            RadioStationComboReachValues = New Generic.List(Of Double)
+
+                            For Each RadioWorksheetRatingData In RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioStationComboID = RadioStationComboID).ToList
+
+                                RadioStationComboReachValues.Add(CalculateRadioReach(RadioWorksheetRatingData.AQH, RadioWorksheetRatingData.CUME,
+                                                                                     TotalSpots, RadioWorksheetRatingData.Population,
+                                                                                     RadioWorksheetRatingData.AQHRating, RadioWorksheetRatingData.AQHRating))
+
+                            Next
+
+                            ComboReachValues.Add(Math.Round(RadioStationComboReachValues.Average(Function(ReachValue) ReachValue), 3, MidpointRounding.AwayFromZero))
+
+                        Next
+
+                        ComboReach = ComboReachValues.Sum(Function(ComboReachValue) ComboReachValue)
+
+                        For ComboReachOuterCounter = 0 To ComboReachValues.Count - 1
+
+                            ComboReachCounter = ComboReachOuterCounter + 1
+
+                            While ComboReachCounter <> ComboReachValues.Count
+
+                                'Console.WriteLine(" - (" & ComboReachValues(ComboReachOuterCounter) & " * " & ComboReachValues(ComboReachCounter) & ")")
+
+                                ComboReach -= (ComboReachValues(ComboReachOuterCounter) * ComboReachValues(ComboReachCounter))
+                                ComboReachCounter += 1
+
+                            End While
+
+                        Next
+
+                        MediaBroadcastWorksheetMarketDetail.PrimaryReach = Math.Round(ComboReach, 3, MidpointRounding.AwayFromZero)
 
                     Else
 
-                        MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
-                        MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
+                        If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
 
-                    End If
+                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
 
-                    If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
+                        Else
 
-                        MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
+                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
+                            MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQHRating)
 
-                    Else
+                        End If
 
-                        MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
-                        MediaBroadcastWorksheetMarketDetail.PrimaryAQH = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
+                        If MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH <> MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating Then
 
-                    End If
+                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
 
-                    MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.CumeRating)
-                    MediaBroadcastWorksheetMarketDetail.PrimaryCume = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.CUME)
-                    MediaBroadcastWorksheetMarketDetail.PrimaryUniverse = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.Population)
+                        Else
 
-                    MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
-                    MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
-                    MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating, 1, MidpointRounding.AwayFromZero)
+                            MediaBroadcastWorksheetMarketDetail.BookPrimaryAQH = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
+                            MediaBroadcastWorksheetMarketDetail.PrimaryAQH = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.AQH)
 
-                    If MediaBroadcastWorksheetMarketDetail.PrimaryCume > MediaBroadcastWorksheetMarketDetail.PrimaryUniverse Then
+                        End If
 
-                        MediaBroadcastWorksheetMarketDetail.PrimaryCume = MediaBroadcastWorksheetMarketDetail.PrimaryUniverse
+                        MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.CumeRating)
+                        MediaBroadcastWorksheetMarketDetail.PrimaryCume = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.CUME)
+                        MediaBroadcastWorksheetMarketDetail.PrimaryUniverse = RadioWorksheetRatingDatas.Average(Function(Entity) Entity.Population)
+
+                        MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
+                        MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating, 1, MidpointRounding.AwayFromZero)
+                        MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating = Math.Round(MediaBroadcastWorksheetMarketDetail.PrimaryCumeRating, 1, MidpointRounding.AwayFromZero)
+
+                        If MediaBroadcastWorksheetMarketDetail.PrimaryCume > MediaBroadcastWorksheetMarketDetail.PrimaryUniverse Then
+
+                            MediaBroadcastWorksheetMarketDetail.PrimaryCume = MediaBroadcastWorksheetMarketDetail.PrimaryUniverse
+
+                        End If
 
                     End If
 
@@ -6003,13 +6398,19 @@
 
                 End If
 
-                TotalSpots = MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarketDetailDates.Select(Function(Entity) Entity.Spots).Sum
+                'TotalSpots = MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarketDetailDates.Select(Function(Entity) Entity.Spots).Sum
 
                 MediaBroadcastWorksheetMarketDetail.PrimaryGRP = TotalSpots * MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating
                 MediaBroadcastWorksheetMarketDetail.PrimaryCPP = If(MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating = 0, 0, MediaBroadcastWorksheetMarketDetail.DefaultRate / MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating)
 
-                MediaBroadcastWorksheetMarketDetail.PrimaryReach = CalculateRadioReach(MediaBroadcastWorksheetMarketDetail.PrimaryAQH, MediaBroadcastWorksheetMarketDetail.PrimaryCume,
-                                                                                       TotalSpots, MediaBroadcastWorksheetMarketDetail.PrimaryUniverse, MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating, MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating)
+                If MediaBroadcastWorksheetMarketDetail.Vendor.IsComboRadioStation = False Then
+
+                    MediaBroadcastWorksheetMarketDetail.PrimaryReach = CalculateRadioReach(MediaBroadcastWorksheetMarketDetail.PrimaryAQH, MediaBroadcastWorksheetMarketDetail.PrimaryCume,
+                                                                                           TotalSpots, MediaBroadcastWorksheetMarketDetail.PrimaryUniverse, MediaBroadcastWorksheetMarketDetail.PrimaryAQHRating,
+                                                                                           MediaBroadcastWorksheetMarketDetail.BookPrimaryAQHRating)
+
+                End If
+
                 MediaBroadcastWorksheetMarketDetail.PrimaryFrequency = CalculateRadioFrequency(MediaBroadcastWorksheetMarketDetail.PrimaryGRP, MediaBroadcastWorksheetMarketDetail.PrimaryReach)
 
                 MediaBroadcastWorksheetMarketDetail.PrimaryGrossImpressions = MediaBroadcastWorksheetMarketDetail.PrimaryAQH * TotalSpots
@@ -12789,6 +13190,7 @@
 
                     DataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString) = VendorDataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString)
                     DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) = VendorDataRow(MarketDetailsColumns.VendorIsCableSystem.ToString)
+                    DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) = False
                     DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) = 0
                     DataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString) = VendorDataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString)
 
@@ -12796,6 +13198,7 @@
 
                     DataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString) = 0
                     DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) = False
+                    DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) = VendorDataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString)
                     DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) = VendorDataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString)
                     DataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString) = 0
 
@@ -12835,6 +13238,7 @@
                             End If
 
                             DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) = Vendor.IsCableSystem
+                            DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) = False
                             DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) = 0
                             DataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString) = If(Vendor.IsCableSystem, Vendor.NCCTVSyscodeID.GetValueOrDefault(0), 0)
 
@@ -12842,6 +13246,7 @@
 
                             DataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString) = 0
                             DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) = False
+                            DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) = Vendor.IsComboRadioStation
 
                             If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen Then
 
@@ -13569,6 +13974,15 @@
 
             End If
 
+            If DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) Then
+
+                MarketDetails_LoadPrimaryRatingAndShareData(MediaBroadcastWorksheetMarketDetailsViewModel, New Generic.List(Of Integer)({MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.IndexOf(DataRow)}))
+                MarketDetails_LoadSecondaryRatingAndShareData(MediaBroadcastWorksheetMarketDetailsViewModel, New Generic.List(Of Integer)({MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.IndexOf(DataRow)}))
+
+                MarketDetails_RefreshColumnTotalsDataTable(MediaBroadcastWorksheetMarketDetailsViewModel, RowIndex)
+
+            End If
+
             MarketDetails_UserEntryChanged(MediaBroadcastWorksheetMarketDetailsViewModel)
 
         End Sub
@@ -13988,7 +14402,11 @@
                     DataRow(MarketDetailsColumns.SecondaryRating.ToString) = MarketDetails_CalculateProrateSecondaryRating(MediaBroadcastWorksheetMarketDetailsViewModel, DataRow(MarketDetailsColumns.BookSecondaryRating.ToString), DataRow(MarketDetailsColumns.BookPrimaryRating.ToString), DataRow(MarketDetailsColumns.PrimaryRating.ToString))
                     DataRow(MarketDetailsColumns.SecondaryShare.ToString) = MarketDetails_CalculateProrateSecondaryShare(MediaBroadcastWorksheetMarketDetailsViewModel, DataRow(MarketDetailsColumns.BookSecondaryShare.ToString), DataRow(MarketDetailsColumns.BookPrimaryShare.ToString), DataRow(MarketDetailsColumns.PrimaryShare.ToString))
 
+                    DataRow(MarketDetailsColumns.SecondaryImpressions.ToString) = CalculateImpressionsFromOverrideRating(DataRow(MarketDetailsColumns.SecondaryRating.ToString), DataRow(MarketDetailsColumns.SecondaryUniverse.ToString))
+
                 End If
+
+                DataRow(MarketDetailsColumns.PrimaryImpressions.ToString) = CalculateImpressionsFromOverrideRating(DataRow(MarketDetailsColumns.PrimaryRating.ToString), DataRow(MarketDetailsColumns.PrimaryUniverse.ToString))
 
             End If
 
@@ -14053,6 +14471,8 @@
             If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID.GetValueOrDefault(0) > 0 Then
 
                 DataRow(MarketDetailsColumns.SecondaryRating.ToString) = CalculateRating(DataRow(MarketDetailsColumns.SecondaryShare.ToString), DataRow(MarketDetailsColumns.SecondaryHPUT.ToString))
+
+                DataRow(MarketDetailsColumns.SecondaryImpressions.ToString) = CalculateImpressionsFromOverrideRating(DataRow(MarketDetailsColumns.SecondaryRating.ToString), DataRow(MarketDetailsColumns.SecondaryUniverse.ToString))
 
             End If
 
@@ -14126,7 +14546,46 @@
         Public Sub MarketDetails_PrimaryImpressionsChanged(ByRef MediaBroadcastWorksheetMarketDetailsViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel,
                                                            RowIndex As Integer)
 
+            'objects
+            Dim DataRow As System.Data.DataRow = Nothing
+            Dim CalculateProrateSecondary As Boolean = False
+
             MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.BeginLoadData()
+
+            If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID.GetValueOrDefault(0) > 0 Then
+
+                DataRow = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows(RowIndex)
+
+                DataRow(MarketDetailsColumns.PrimaryRating.ToString) = CalculateRatingFromOverrideImpressions(DataRow(MarketDetailsColumns.PrimaryImpressions.ToString), DataRow(MarketDetailsColumns.PrimaryUniverse.ToString))
+
+                If DataRow(MarketDetailsColumns.PrimaryRating.ToString) <> DataRow(MarketDetailsColumns.BookPrimaryRating.ToString) AndAlso
+                        MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.ProrateSecondaryDemosToPrimary AndAlso
+                        MediaBroadcastWorksheetMarketDetailsViewModel.HasASelectedWorksheetSecondaryDemo Then
+
+                    CalculateProrateSecondary = True
+
+                End If
+
+                If DataRow(MarketDetailsColumns.PrimaryRating.ToString) <> DataRow(MarketDetailsColumns.BookPrimaryRating.ToString) Then
+
+                    DataRow(MarketDetailsColumns.PrimaryShare.ToString) = CalculateShare(DataRow(MarketDetailsColumns.PrimaryRating.ToString), DataRow(MarketDetailsColumns.PrimaryHPUT.ToString))
+
+                Else
+
+                    DataRow(MarketDetailsColumns.PrimaryShare.ToString) = DataRow(MarketDetailsColumns.BookPrimaryShare.ToString)
+
+                End If
+
+                If CalculateProrateSecondary Then
+
+                    DataRow(MarketDetailsColumns.SecondaryRating.ToString) = MarketDetails_CalculateProrateSecondaryRating(MediaBroadcastWorksheetMarketDetailsViewModel, DataRow(MarketDetailsColumns.BookSecondaryRating.ToString), DataRow(MarketDetailsColumns.BookPrimaryRating.ToString), DataRow(MarketDetailsColumns.PrimaryRating.ToString))
+                    DataRow(MarketDetailsColumns.SecondaryShare.ToString) = MarketDetails_CalculateProrateSecondaryShare(MediaBroadcastWorksheetMarketDetailsViewModel, DataRow(MarketDetailsColumns.BookSecondaryShare.ToString), DataRow(MarketDetailsColumns.BookPrimaryShare.ToString), DataRow(MarketDetailsColumns.PrimaryShare.ToString))
+
+                    DataRow(MarketDetailsColumns.SecondaryImpressions.ToString) = CalculateImpressionsFromOverrideRating(DataRow(MarketDetailsColumns.SecondaryRating.ToString), DataRow(MarketDetailsColumns.SecondaryUniverse.ToString))
+
+                End If
+
+            End If
 
             MarketDetails_RefreshColumnTotalsDataTable(MediaBroadcastWorksheetMarketDetailsViewModel, RowIndex)
 
@@ -14149,7 +14608,28 @@
         Public Sub MarketDetails_SecondaryImpressionsChanged(ByRef MediaBroadcastWorksheetMarketDetailsViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel,
                                                              RowIndex As Integer)
 
+            'objects
+            Dim DataRow As System.Data.DataRow = Nothing
+
             MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.BeginLoadData()
+
+            If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID.GetValueOrDefault(0) > 0 Then
+
+                DataRow = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows(RowIndex)
+
+                DataRow(MarketDetailsColumns.SecondaryRating.ToString) = CalculateRatingFromOverrideImpressions(DataRow(MarketDetailsColumns.SecondaryImpressions.ToString), DataRow(MarketDetailsColumns.SecondaryUniverse.ToString))
+
+                If DataRow(MarketDetailsColumns.SecondaryRating.ToString) <> DataRow(MarketDetailsColumns.BookSecondaryRating.ToString) Then
+
+                    DataRow(MarketDetailsColumns.SecondaryShare.ToString) = CalculateShare(DataRow(MarketDetailsColumns.SecondaryRating.ToString), DataRow(MarketDetailsColumns.SecondaryHPUT.ToString))
+
+                Else
+
+                    DataRow(MarketDetailsColumns.SecondaryShare.ToString) = DataRow(MarketDetailsColumns.BookSecondaryShare.ToString)
+
+                End If
+
+            End If
 
             MarketDetails_RefreshColumnTotalsDataTable(MediaBroadcastWorksheetMarketDetailsViewModel, RowIndex)
             MarketDetails_RefreshAllRowTotalsDataTable(MediaBroadcastWorksheetMarketDetailsViewModel, False)
@@ -14163,7 +14643,18 @@
         Public Sub MarketDetails_PrimaryAQHChanged(ByRef MediaBroadcastWorksheetMarketDetailsViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel,
                                                    RowIndex As Integer)
 
+            'objects
+            Dim DataRow As System.Data.DataRow = Nothing
+
             MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.BeginLoadData()
+
+            If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.NeilsenRadioPeriodID1.GetValueOrDefault(0) > 0 Then
+
+                DataRow = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows(RowIndex)
+
+                DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString) = CalculateAQHRatingFromOverrideAQH(DataRow(MarketDetailsColumns.PrimaryAQH.ToString), DataRow(MarketDetailsColumns.PrimaryUniverse.ToString))
+
+            End If
 
             MarketDetails_RefreshColumnTotalsDataTable(MediaBroadcastWorksheetMarketDetailsViewModel, RowIndex)
 
@@ -14186,7 +14677,18 @@
         Public Sub MarketDetails_SecondaryAQHChanged(ByRef MediaBroadcastWorksheetMarketDetailsViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel,
                                                      RowIndex As Integer)
 
+            'objects
+            Dim DataRow As System.Data.DataRow = Nothing
+
             MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.BeginLoadData()
+
+            If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.NeilsenRadioPeriodID1.GetValueOrDefault(0) > 0 Then
+
+                DataRow = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows(RowIndex)
+
+                DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString) = CalculateAQHRatingFromOverrideAQH(DataRow(MarketDetailsColumns.SecondaryAQH.ToString), DataRow(MarketDetailsColumns.SecondaryUniverse.ToString))
+
+            End If
 
             MarketDetails_RefreshColumnTotalsDataTable(MediaBroadcastWorksheetMarketDetailsViewModel, RowIndex)
             MarketDetails_RefreshAllRowTotalsDataTable(MediaBroadcastWorksheetMarketDetailsViewModel, False)
@@ -15658,7 +16160,7 @@
                                                                                    Entity.RevisionNumber <= RevisionNumber).SelectMany(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailDates).Where(Function(Entity) Entity.Date >= WorksheetMarketOrderData.WorksheetMarketOrderDate.StartDate AndAlso
                                                                                                                                                                                                                                 Entity.Date <= WorksheetMarketOrderData.WorksheetMarketOrderDate.EndDate AndAlso
                                                                                                                                                                                                                                 Entity.LinkID.HasValue AndAlso Entity.OrderNumber.HasValue).Any OrElse
-                            WorksheetMarketOrderData.WorksheetMarketOrderDate.WorksheetMarketOrderDateDatas.SelectMany(Function(WMODD) WMODD.MediaBroadcastWorksheetMarketDetailDates).Where(Function(Entity) Entity.IsHiatus = False AndAlso Entity.Spots <> 0).Any Then
+                            WorksheetMarketOrderData.WorksheetMarketOrderDate.WorksheetMarketOrderDateDatas.SelectMany(Function(WMODD) WMODD.MediaBroadcastWorksheetMarketDetailDates).Where(Function(Entity) Entity.IsHiatus = False AndAlso (Entity.Spots <> 0 OrElse Entity.MakegoodSpots <> 0)).Any Then
 
                         For Each DateRate In MediaBroadcastWorksheetMarketDetails.Where(Function(Entity) Entity.VendorCode = WorksheetMarketOrderData.MediaBroadcastWorksheetMarketDetail.VendorCode AndAlso
                                                                                                          Entity.LineNumber = WorksheetMarketOrderData.MediaBroadcastWorksheetMarketDetail.LineNumber AndAlso
@@ -15968,15 +16470,21 @@
 
                                         If CurrentRevisionMediaBroadcastWorksheetMarketDetailDates.Count = 0 Then
 
-                                            ImportOrder.MediaPlanDetailLevelLineDataIDs = AdvantageFramework.StringUtilities.CreateCommaDelimitedString(OrderLineMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) (Entity.IsHiatus = False AndAlso Entity.Spots <> 0) OrElse Entity.OrderNumber.HasValue).Select(Function(Entity) Entity.ID).Distinct.ToList)
+                                            ImportOrder.MediaPlanDetailLevelLineDataIDs = AdvantageFramework.StringUtilities.CreateCommaDelimitedString(OrderLineMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) (Entity.IsHiatus = False AndAlso (Entity.Spots <> 0 OrElse Entity.MakegoodSpots <> 0)) OrElse Entity.OrderNumber.HasValue).Select(Function(Entity) Entity.ID).Distinct.ToList)
 
                                         Else
 
-                                            If CurrentRevisionMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) (Entity.IsHiatus = False AndAlso Entity.Spots <> 0) OrElse Entity.OrderNumber.HasValue).Any Then
+                                            If CurrentRevisionMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) (Entity.IsHiatus = False AndAlso (Entity.Spots <> 0 OrElse Entity.MakegoodSpots <> 0)) OrElse Entity.OrderNumber.HasValue).Any Then
 
-                                                ImportOrder.MediaPlanDetailLevelLineDataIDs = AdvantageFramework.StringUtilities.CreateCommaDelimitedString(CurrentRevisionMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) (Entity.IsHiatus = False AndAlso Entity.Spots <> 0) OrElse Entity.OrderNumber.HasValue).Select(Function(Entity) Entity.ID).Distinct.ToList)
+                                                ImportOrder.MediaPlanDetailLevelLineDataIDs = AdvantageFramework.StringUtilities.CreateCommaDelimitedString(CurrentRevisionMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) (Entity.IsHiatus = False AndAlso (Entity.Spots <> 0 OrElse Entity.MakegoodSpots <> 0)) OrElse Entity.OrderNumber.HasValue).Select(Function(Entity) Entity.ID).Distinct.ToList)
 
-                                            ElseIf OrderLineMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetail.RevisionNumber < RevisionNumber AndAlso ((Entity.IsHiatus = False AndAlso Entity.Spots <> 0) OrElse Entity.OrderNumber.HasValue)).Any Then
+                                                If CurrentRevisionMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) Entity.IsHiatus = False AndAlso Entity.MakegoodSpots <> 0).Any Then
+
+                                                    ImportOrder.IsMakegood = True
+
+                                                End If
+
+                                            ElseIf OrderLineMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetail.RevisionNumber < RevisionNumber AndAlso ((Entity.IsHiatus = False AndAlso (Entity.Spots <> 0 OrElse Entity.MakegoodSpots <> 0)) OrElse Entity.OrderNumber.HasValue)).Any Then
 
                                                 ImportOrder.MediaPlanDetailLevelLineDataIDs = AdvantageFramework.StringUtilities.CreateCommaDelimitedString(CurrentRevisionMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) (Entity.IsHiatus = False) OrElse Entity.OrderNumber.HasValue).Select(Function(Entity) Entity.ID).Distinct.ToList)
 
@@ -15986,7 +16494,7 @@
 
                                     Else
 
-                                        ImportOrder.MediaPlanDetailLevelLineDataIDs = AdvantageFramework.StringUtilities.CreateCommaDelimitedString(CurrentRevisionMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) (Entity.IsHiatus = False AndAlso Entity.Spots <> 0) AndAlso (Entity.OrderNumber.GetValueOrDefault(0) = 0 AndAlso Entity.OrderLineNumber.GetValueOrDefault(0) = 0)).Select(Function(Entity) Entity.ID).Distinct.ToList)
+                                        ImportOrder.MediaPlanDetailLevelLineDataIDs = AdvantageFramework.StringUtilities.CreateCommaDelimitedString(CurrentRevisionMediaBroadcastWorksheetMarketDetailDates.Where(Function(Entity) (Entity.IsHiatus = False AndAlso (Entity.Spots <> 0 OrElse Entity.MakegoodSpots <> 0)) AndAlso (Entity.OrderNumber.GetValueOrDefault(0) = 0 AndAlso Entity.OrderLineNumber.GetValueOrDefault(0) = 0)).Select(Function(Entity) Entity.ID).Distinct.ToList)
 
                                         If String.IsNullOrWhiteSpace(ImportOrder.MediaPlanDetailLevelLineDataIDs) Then
 
@@ -16217,10 +16725,10 @@
                                     If ImportOrder.IsRevision = False OrElse (ImportOrder.IsRevision = True AndAlso
                                                                               CurrentRevisionMediaBroadcastWorksheetMarketDetailDates.Any(Function(Entity) Entity.MediaBroadcastWorksheetOrderStatusID = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.OrderStatuses.OrderedModified OrElse
                                                                                                                                                            (Entity.MediaBroadcastWorksheetOrderStatusID = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.OrderStatuses.Unordered AndAlso
-                                                                                                                                                            Entity.IsHiatus = False AndAlso Entity.Spots <> 0))) Then
+                                                                                                                                                            Entity.IsHiatus = False AndAlso (Entity.Spots <> 0 OrElse Entity.MakegoodSpots <> 0)))) Then
 
                                         If ImportOrder.IsRevision OrElse ImportOrder.TotalSpots.GetValueOrDefault(0) <> 0 OrElse
-                                                ImportOrder.MediaNetAmount.GetValueOrDefault(0) <> 0 OrElse ImportOrder.AddAmount.GetValueOrDefault(0) <> 0 Then
+                                                ImportOrder.MediaNetAmount.GetValueOrDefault(0) <> 0 OrElse ImportOrder.AddAmount.GetValueOrDefault(0) <> 0 OrElse ImportOrder.IsMakegood Then
 
                                             If ImportOrder.IsRevision AndAlso ImportOrder.TotalSpots.HasValue = False Then
 
@@ -16928,13 +17436,21 @@
 
                             BookRating = CDec(If(IsPrimaryDemo, DataRowView(MarketDetailsColumns.BookPrimaryAQHRating.ToString), DataRowView(MarketDetailsColumns.BookSecondaryAQHRating.ToString)))
 
-                            If Cume < AQH Then
+                            If DataRowView(MarketDetailsColumns.VendorIsComboRadioStation.ToString) Then
 
-                                AllReachValuesList.Add(CalculateCumlessReach(CDec(If(IsPrimaryDemo, DataRowView(MarketDetailsColumns.PrimaryAQHRating.ToString), DataRowView(MarketDetailsColumns.SecondaryAQHRating.ToString))), TotalSpots))
+                                AllReachValuesList.Add(If(IsPrimaryDemo, DataRowView(MarketDetailsColumns.PrimaryReach.ToString), DataRowView(MarketDetailsColumns.SecondaryReach.ToString)))
 
                             Else
 
-                                AllReachValuesList.Add(CalculateRadioReach(AQH, Cume, RowSpots, Universe, CDec(If(IsPrimaryDemo, DataRowView(MarketDetailsColumns.PrimaryAQHRating.ToString), DataRowView(MarketDetailsColumns.SecondaryAQHRating.ToString))), BookRating))
+                                If Cume < AQH Then
+
+                                    AllReachValuesList.Add(CalculateCumlessReach(CDec(If(IsPrimaryDemo, DataRowView(MarketDetailsColumns.PrimaryAQHRating.ToString), DataRowView(MarketDetailsColumns.SecondaryAQHRating.ToString))), TotalSpots))
+
+                                Else
+
+                                    AllReachValuesList.Add(CalculateRadioReach(AQH, Cume, RowSpots, Universe, CDec(If(IsPrimaryDemo, DataRowView(MarketDetailsColumns.PrimaryAQHRating.ToString), DataRowView(MarketDetailsColumns.SecondaryAQHRating.ToString))), BookRating))
+
+                                End If
 
                             End If
 
@@ -18039,19 +18555,37 @@
             Dim MediaBroadcastWorksheetMarketID As Integer = 0
             Dim MediaBroadcastWorksheetID As Integer = 0
             Dim MediaBroadcastWorksheetMarketDetailIDs As Generic.List(Of Integer) = Nothing
+            Dim DataRow As System.Data.DataRow = Nothing
+            Dim VendorCodes As Generic.List(Of String) = Nothing
             'Dim MediaManagerSearchSetting As AdvantageFramework.Database.Entities.MediaManagerSearchSetting = Nothing
 
             OrderNumbers = New Generic.List(Of Integer)
             OrderNumberLineNumbers = New Generic.List(Of String)
             MediaBroadcastWorksheetMarketDetailIDs = New Generic.List(Of Integer)
+            VendorCodes = New Generic.List(Of String)
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
 
                 DbContext.Database.Connection.Open()
 
+                For Each RowIndex In RowIndexes
+
+                    DataRow = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.Item(RowIndex)
+
+                    If VendorCodes.Contains(CStr(DataRow(MarketDetailsColumns.VendorCode.ToString))) = False Then
+
+                        VendorCodes.Add(CStr(DataRow(MarketDetailsColumns.VendorCode.ToString)))
+
+                    End If
+
+                Next
+
                 For Each DataRow In MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.OfType(Of System.Data.DataRow).ToList
 
-                    If RowIndexes.Contains(MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.IndexOf(DataRow)) AndAlso
+                    'If RowIndexes.Contains(MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.IndexOf(DataRow)) AndAlso
+                    '        MarketDetails_DataRowHaveOrders(MediaBroadcastWorksheetMarketDetailsViewModel, DataRow) Then
+
+                    If VendorCodes.Contains(DataRow(MarketDetailsColumns.VendorCode.ToString)) AndAlso
                             MarketDetails_DataRowHaveOrders(MediaBroadcastWorksheetMarketDetailsViewModel, DataRow) Then
 
                         MediaBroadcastWorksheetMarketDetailID = CInt(DataRow(MarketDetailsColumns.WorksheetMarketDetailID.ToString))
@@ -18897,6 +19431,7 @@
                     DataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString) = If(String.IsNullOrWhiteSpace(WorksheetMarketDetail.VendorCode), 0, WorksheetMarketDetail.VendorNCCTVSyscodeID.GetValueOrDefault(0))
                     DataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString) = If(String.IsNullOrWhiteSpace(WorksheetMarketDetail.VendorCode), 0, WorksheetMarketDetail.VendorNielsenTVStationCode.GetValueOrDefault(0))
                     DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) = If(String.IsNullOrWhiteSpace(WorksheetMarketDetail.VendorCode), False, WorksheetMarketDetail.VendorIsCableSystem)
+                    DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) = If(String.IsNullOrWhiteSpace(WorksheetMarketDetail.VendorCode), False, WorksheetMarketDetail.VendorIsComboRadioStation)
                     DataRow(MarketDetailsColumns.CableNetworkStationCode.ToString) = WorksheetMarketDetail.CableNetworkStationCode
                     DataRow(MarketDetailsColumns.CableNetworkNielsenTVStationCode.ToString) = If(WorksheetMarketDetail.CableNetworkNielsenTVStationCode.HasValue, WorksheetMarketDetail.CableNetworkNielsenTVStationCode.Value, Nothing)
                     DataRow(MarketDetailsColumns.BookProgram.ToString) = WorksheetMarketDetail.BookProgram
@@ -19992,6 +20527,12 @@
             DataColumn.DataType = GetType(Boolean)
             DataColumn.DefaultValue = False
             '=============
+            DataColumn = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns.Add(MarketDetailsColumns.VendorIsComboRadioStation.ToString)
+
+            DataColumn.AllowDBNull = False
+            DataColumn.DataType = GetType(Boolean)
+            DataColumn.DefaultValue = False
+            '=============
             DataColumn = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns.Add(MarketDetailsColumns.CableNetworkStationCode.ToString)
 
             DataColumn.Caption = "Cable Network"
@@ -20914,33 +21455,41 @@
 
                 DataRow(MarketDetailsColumns.PrimaryGRP.ToString) = TotalSpots * DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString)
 
-                If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.NeilsenRadioPeriodID1.GetValueOrDefault(0) > 0 AndAlso
-                       DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) > 0 Then
+                If DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) Then
 
-                    If DataRow(MarketDetailsColumns.PrimaryCume.ToString) < DataRow(MarketDetailsColumns.PrimaryAQH.ToString) Then
-
-                        DataRow(MarketDetailsColumns.PrimaryReach.ToString) = CalculateCumlessReach(DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString), TotalSpots)
-
-                    Else
-
-                        DataRow(MarketDetailsColumns.PrimaryReach.ToString) = CalculateRadioReach(DataRow(MarketDetailsColumns.PrimaryAQH.ToString), DataRow(MarketDetailsColumns.PrimaryCume.ToString),
-                                                                                                  TotalSpots, DataRow(MarketDetailsColumns.PrimaryUniverse.ToString), DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString), DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString))
-
-                    End If
+                    DataRow(MarketDetailsColumns.PrimaryFrequency.ToString) = CalculateRadioFrequency(DataRow(MarketDetailsColumns.PrimaryGRP.ToString), DataRow(MarketDetailsColumns.PrimaryReach.ToString))
 
                 Else
 
-                    DataRow(MarketDetailsColumns.PrimaryReach.ToString) = 0
+                    If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.NeilsenRadioPeriodID1.GetValueOrDefault(0) > 0 AndAlso
+                            DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) > 0 Then
+
+                        If DataRow(MarketDetailsColumns.PrimaryCume.ToString) < DataRow(MarketDetailsColumns.PrimaryAQH.ToString) Then
+
+                            DataRow(MarketDetailsColumns.PrimaryReach.ToString) = CalculateCumlessReach(DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString), TotalSpots)
+
+                        Else
+
+                            DataRow(MarketDetailsColumns.PrimaryReach.ToString) = CalculateRadioReach(DataRow(MarketDetailsColumns.PrimaryAQH.ToString), DataRow(MarketDetailsColumns.PrimaryCume.ToString),
+                                                                                                      TotalSpots, DataRow(MarketDetailsColumns.PrimaryUniverse.ToString), DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString), DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString))
+
+                        End If
+
+                    Else
+
+                        DataRow(MarketDetailsColumns.PrimaryReach.ToString) = 0
+
+                    End If
+
+                    If DataRow(MarketDetailsColumns.PrimaryReach.ToString) = 0 Then
+
+                        DataRow(MarketDetailsColumns.PrimaryReach.ToString) = CalculateCumlessReach(DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString), TotalSpots)
+
+                    End If
+
+                    DataRow(MarketDetailsColumns.PrimaryFrequency.ToString) = CalculateRadioFrequency(DataRow(MarketDetailsColumns.PrimaryGRP.ToString), DataRow(MarketDetailsColumns.PrimaryReach.ToString))
 
                 End If
-
-                If DataRow(MarketDetailsColumns.PrimaryReach.ToString) = 0 Then
-
-                    DataRow(MarketDetailsColumns.PrimaryReach.ToString) = CalculateCumlessReach(DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString), TotalSpots)
-
-                End If
-
-                DataRow(MarketDetailsColumns.PrimaryFrequency.ToString) = CalculateRadioFrequency(DataRow(MarketDetailsColumns.PrimaryGRP.ToString), DataRow(MarketDetailsColumns.PrimaryReach.ToString))
 
                 DataRow(MarketDetailsColumns.PrimaryGrossImpressions.ToString) = CInt(DataRow(MarketDetailsColumns.PrimaryAQH.ToString)) * TotalSpots
 
@@ -21049,33 +21598,41 @@
 
                 DataRow(MarketDetailsColumns.SecondaryGRP.ToString) = TotalSpots * DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString)
 
-                If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.NeilsenRadioPeriodID1.GetValueOrDefault(0) > 0 AndAlso
-                        DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) > 0 Then
+                If DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) Then
 
-                    If DataRow(MarketDetailsColumns.SecondaryCume.ToString) < DataRow(MarketDetailsColumns.SecondaryAQH.ToString) Then
-
-                        DataRow(MarketDetailsColumns.SecondaryReach.ToString) = CalculateCumlessReach(DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString), TotalSpots)
-
-                    Else
-
-                        DataRow(MarketDetailsColumns.SecondaryReach.ToString) = CalculateRadioReach(DataRow(MarketDetailsColumns.SecondaryAQH.ToString), DataRow(MarketDetailsColumns.SecondaryCume.ToString),
-                                                                                                    TotalSpots, DataRow(MarketDetailsColumns.SecondaryUniverse.ToString), DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString), DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString))
-
-                    End If
+                    DataRow(MarketDetailsColumns.SecondaryFrequency.ToString) = CalculateRadioFrequency(DataRow(MarketDetailsColumns.SecondaryGRP.ToString), DataRow(MarketDetailsColumns.SecondaryReach.ToString))
 
                 Else
 
-                    DataRow(MarketDetailsColumns.SecondaryReach.ToString) = 0
+                    If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.NeilsenRadioPeriodID1.GetValueOrDefault(0) > 0 AndAlso
+                            DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) > 0 Then
+
+                        If DataRow(MarketDetailsColumns.SecondaryCume.ToString) < DataRow(MarketDetailsColumns.SecondaryAQH.ToString) Then
+
+                            DataRow(MarketDetailsColumns.SecondaryReach.ToString) = CalculateCumlessReach(DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString), TotalSpots)
+
+                        Else
+
+                            DataRow(MarketDetailsColumns.SecondaryReach.ToString) = CalculateRadioReach(DataRow(MarketDetailsColumns.SecondaryAQH.ToString), DataRow(MarketDetailsColumns.SecondaryCume.ToString),
+                                                                                                        TotalSpots, DataRow(MarketDetailsColumns.SecondaryUniverse.ToString), DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString), DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString))
+
+                        End If
+
+                    Else
+
+                        DataRow(MarketDetailsColumns.SecondaryReach.ToString) = 0
+
+                    End If
+
+                    If DataRow(MarketDetailsColumns.SecondaryReach.ToString) = 0 Then
+
+                        DataRow(MarketDetailsColumns.SecondaryReach.ToString) = CalculateCumlessReach(DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString), TotalSpots)
+
+                    End If
+
+                    DataRow(MarketDetailsColumns.SecondaryFrequency.ToString) = CalculateRadioFrequency(DataRow(MarketDetailsColumns.SecondaryGRP.ToString), DataRow(MarketDetailsColumns.SecondaryReach.ToString))
 
                 End If
-
-                If DataRow(MarketDetailsColumns.SecondaryReach.ToString) = 0 Then
-
-                    DataRow(MarketDetailsColumns.SecondaryReach.ToString) = CalculateCumlessReach(DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString), TotalSpots)
-
-                End If
-
-                DataRow(MarketDetailsColumns.SecondaryFrequency.ToString) = CalculateRadioFrequency(DataRow(MarketDetailsColumns.SecondaryGRP.ToString), DataRow(MarketDetailsColumns.SecondaryReach.ToString))
 
                 DataRow(MarketDetailsColumns.SecondaryGrossImpressions.ToString) = CInt(DataRow(MarketDetailsColumns.SecondaryAQH.ToString)) * TotalSpots
 
@@ -25052,10 +25609,21 @@
             Dim NielsenTVWorksheetRatingAndShareDataList As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.NielsenTVWorksheetRatingAndShareData) = Nothing
             Dim MediaDemographic As AdvantageFramework.Database.Entities.MediaDemographic = Nothing
             Dim NielsenRadioStationComboID As Integer = 0
+            Dim NielsenRadioStationComboIDs() As String = Nothing
             Dim RadioWorksheetRatingDatas As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.RadioWorksheetRatingData) = Nothing
             Dim RowIndexesToRun As Generic.Dictionary(Of String, Generic.List(Of Integer)) = Nothing
             Dim VendorNCCTVSyscodeID As Integer = 0
             Dim IsAgencyASP As Boolean = False
+            Dim VendorRadioStationComboIDs As Generic.List(Of Integer) = Nothing
+            Dim RadioDemoDataInfos As Generic.List(Of AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo) = Nothing
+            Dim RadioDemoDataInfo As AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo = Nothing
+            Dim ComboReach As Double = 0
+            Dim ComboReachValues As Generic.List(Of Double) = Nothing
+            Dim RadioStationComboReachValues As Generic.List(Of Double) = Nothing
+            Dim ComboReachOuterCounter As Integer = 0
+            Dim ComboReachCounter As Integer = 0
+            Dim AQHComboValues As Generic.List(Of Double) = Nothing
+            Dim AQHRatingComboValues As Generic.List(Of Double) = Nothing
 
             If MediaBroadcastWorksheetMarketDetailsViewModel.IsNielsenSetup AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket IsNot Nothing AndAlso
                     MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.PrimaryMediaDemographicID.HasValue Then
@@ -25141,7 +25709,7 @@
 
                                         End If
 
-                                        If NielsenTVStationCode > 0 Then
+                                        If NielsenTVStationCode <> 0 Then
 
                                             If RowIndexesToRun.ContainsKey(NielsenTVStationCode.ToString & "-" & VendorNCCTVSyscodeID.ToString) = False Then
 
@@ -25431,7 +25999,7 @@
 
                                         End If
 
-                                        If NielsenTVStationCode > 0 Then
+                                        If NielsenTVStationCode <> 0 Then
 
                                             If RowIndexesToRun.ContainsKey(NielsenTVStationCode.ToString) = False Then
 
@@ -25756,7 +26324,7 @@
                                                         Select New AdvantageFramework.Classes.Media.Nielsen.MediaDemoDetailType With {.MediaDemographicID = MediaDemographicDetail.MediaDemographicID,
                                                                                                                                       .NielsenDemographicID = MediaDemographicDetail.NielsenDemographicID}).ToList
 
-                                RowIndexesToRun = New Generic.Dictionary(Of String, Generic.List(Of Integer))
+                                RadioDemoDataInfos = New Generic.List(Of AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo)
 
                                 For Each RowIndex In RowIndexes
 
@@ -25768,17 +26336,71 @@
                                     If DaysAndTime IsNot Nothing AndAlso String.IsNullOrWhiteSpace(DaysAndTime.Days) = False AndAlso String.IsNullOrWhiteSpace(DaysAndTime.StartTime) = False AndAlso
                                             String.IsNullOrWhiteSpace(DaysAndTime.EndTime) = False Then
 
-                                        NielsenRadioStationComboID = DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString)
+                                        Try
 
-                                        If NielsenRadioStationComboID > 0 Then
+                                            RadioDemoDataInfo = RadioDemoDataInfos.SingleOrDefault(Function(Entity) Entity.VendorCode = DataRow(MarketDetailsColumns.VendorCode.ToString))
 
-                                            If RowIndexesToRun.ContainsKey(NielsenRadioStationComboID.ToString) = False Then
+                                        Catch ex As Exception
+                                            RadioDemoDataInfo = Nothing
+                                        End Try
 
-                                                RowIndexesToRun(NielsenRadioStationComboID.ToString) = New Generic.List(Of Integer)
+                                        If DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) Then
+
+                                            VendorRadioStationComboIDs = Nothing
+
+                                            If RadioDemoDataInfo Is Nothing Then
+
+                                                If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen Then
+
+                                                    VendorRadioStationComboIDs = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT ISNULL(VCRS.NIELSEN_RADIO_STATION_COMBO_ID, 0) FROM dbo.VENDOR_COMBO_RADIO_STATION VCRS WHERE VCRS.VN_CODE = '{0}'", DataRow(MarketDetailsColumns.VendorCode.ToString))).Where(Function(ComboID) ComboID <> 0).ToList
+
+                                                ElseIf MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan Then
+
+                                                    VendorRadioStationComboIDs = Nothing
+
+                                                End If
+
+                                                If VendorRadioStationComboIDs IsNot Nothing AndAlso VendorRadioStationComboIDs.Count > 0 Then
+
+                                                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(DataRow(MarketDetailsColumns.VendorCode.ToString), True, VendorRadioStationComboIDs, RowIndex)
+
+                                                Else
+
+                                                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(DataRow(MarketDetailsColumns.VendorCode.ToString), True, RowIndex)
+
+                                                End If
+
+                                                RadioDemoDataInfos.Add(RadioDemoDataInfo)
+
+                                            Else
+
+                                                RadioDemoDataInfo.RowIndexes.Add(RowIndex)
 
                                             End If
 
-                                            CType(RowIndexesToRun(NielsenRadioStationComboID.ToString), Generic.List(Of Integer)).Add(RowIndex)
+                                        Else
+
+                                            NielsenRadioStationComboID = DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString)
+
+                                            If RadioDemoDataInfo Is Nothing Then
+
+                                                If NielsenRadioStationComboID > 0 Then
+
+                                                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(DataRow(MarketDetailsColumns.VendorCode.ToString), False, New Generic.List(Of Integer)({NielsenRadioStationComboID}), RowIndex)
+
+                                                Else
+
+                                                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(DataRow(MarketDetailsColumns.VendorCode.ToString), False, RowIndex)
+
+                                                End If
+
+                                                RadioDemoDataInfos.Add(RadioDemoDataInfo)
+
+                                            Else
+
+                                                RadioDemoDataInfo.RowIndexes.Add(RowIndex)
+
+                                            End If
 
                                         End If
 
@@ -25786,14 +26408,17 @@
 
                                 Next
 
-                                If RowIndexesToRun.Count > 0 Then
+                                RadioDemoDataInfos = RadioDemoDataInfos.Where(Function(Entity) Entity.RadioStationComboIDs.Count > 0).ToList
 
-                                    For Each StationRowIndexes In RowIndexesToRun
+                                If RadioDemoDataInfos.Count > 0 Then
 
-                                        NielsenRadioStationComboID = StationRowIndexes.Key
+                                    For Each RadioDemoDataInfo In RadioDemoDataInfos
+
+                                        NielsenRadioStationComboIDs = RadioDemoDataInfo.RadioStationComboIDs.Select(Function(RadioStationComboID) RadioStationComboID.ToString).ToArray
+
                                         MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
 
-                                        For Each RowIndex In StationRowIndexes.Value
+                                        For Each RowIndex In RadioDemoDataInfo.RowIndexes
 
                                             DataRow = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows(RowIndex)
                                             DaysAndTime = DataRow(MarketDetailsColumns.DaysAndTime.ToString)
@@ -25809,7 +26434,7 @@
 
                                         RadioWorksheetRatingDatas = GetNielsenRadioRatingData(DbContext, NielsenDbContext, NielsenMarketNumber, BookIDs.ToArray,
                                                                                               MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MediaBroadcastWorksheetMarketRadioGeographyID,
-                                                                                              New String() {NielsenRadioStationComboID}, New String() {MediaDemographicID}, MediaSpotTVResearchDaytimeTypes,
+                                                                                              NielsenRadioStationComboIDs, New String() {MediaDemographicID}, MediaSpotTVResearchDaytimeTypes,
                                                                                               MediaDemoTypes, MediaDemoDetailTypes, IsAgencyASP)
 
                                         If RadioWorksheetRatingDatas IsNot Nothing AndAlso RadioWorksheetRatingDatas.Count > 0 Then
@@ -25820,40 +26445,129 @@
 
                                                 If DataRow IsNot Nothing Then
 
+                                                    If RadioDemoDataInfo.IsComboRadioStation Then
 
-                                                    If DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) <> DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString) Then
+                                                        DataRow(MarketDetailsColumns.PrimaryUniverse.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.Population)
 
-                                                        DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
+                                                        AQHComboValues = New Generic.List(Of Double)
+                                                        AQHRatingComboValues = New Generic.List(Of Double)
+
+                                                        For Each RadioStationComboID In RadioDemoDataInfo.RadioStationComboIDs
+
+                                                            AQHComboValues.Add(RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID AndAlso Entity.NielsenRadioStationComboID = RadioStationComboID).Average(Function(Entity) Entity.AQH))
+                                                            AQHRatingComboValues.Add(RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID AndAlso Entity.NielsenRadioStationComboID = RadioStationComboID).Average(Function(Entity) CDbl((Entity.AQH * 100) / DataRow(MarketDetailsColumns.PrimaryUniverse.ToString))))
+
+                                                        Next
+
+                                                        If DataRow(MarketDetailsColumns.BookPrimaryAQH.ToString) <> DataRow(MarketDetailsColumns.PrimaryAQH.ToString) Then
+
+                                                            DataRow(MarketDetailsColumns.BookPrimaryAQH.ToString) = AQHComboValues.Sum(Function(AQH) AQH)
+
+                                                        Else
+
+                                                            DataRow(MarketDetailsColumns.BookPrimaryAQH.ToString) = AQHComboValues.Sum(Function(AQH) AQH)
+                                                            DataRow(MarketDetailsColumns.PrimaryAQH.ToString) = DataRow(MarketDetailsColumns.BookPrimaryAQH.ToString)
+
+                                                        End If
+
+                                                        If DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) <> DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString) Then
+
+                                                            DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) = AQHRatingComboValues.Sum(Function(AQHRating) Math.Round(AQHRating, 1, MidpointRounding.AwayFromZero))
+
+                                                        Else
+
+                                                            DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) = AQHRatingComboValues.Sum(Function(AQHRating) Math.Round(AQHRating, 1, MidpointRounding.AwayFromZero))
+                                                            DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString) = DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString)
+
+                                                        End If
+
+                                                        DataRow(MarketDetailsColumns.PrimaryCumeRating.ToString) = 0 'ComboReach * 100
+                                                        DataRow(MarketDetailsColumns.PrimaryCume.ToString) = 0 'ComboReach * DataRow(MarketDetailsColumns.PrimaryUniverse.ToString)
+
+                                                        DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                                        DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                                        DataRow(MarketDetailsColumns.PrimaryCumeRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.PrimaryCumeRating.ToString), 1, MidpointRounding.AwayFromZero)
+
+                                                        If DataRow(MarketDetailsColumns.PrimaryCume.ToString) > DataRow(MarketDetailsColumns.PrimaryUniverse.ToString) Then
+
+                                                            DataRow(MarketDetailsColumns.PrimaryCume.ToString) = DataRow(MarketDetailsColumns.PrimaryUniverse.ToString)
+
+                                                        End If
+
+                                                        ComboReachValues = New Generic.List(Of Double)
+
+                                                        For Each RadioStationComboID In RadioWorksheetRatingDatas.Select(Function(Entity) Entity.NielsenRadioStationComboID).Distinct.ToList
+
+                                                            RadioStationComboReachValues = New Generic.List(Of Double)
+
+                                                            For Each RadioWorksheetRatingData In RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioStationComboID = RadioStationComboID).ToList
+
+                                                                RadioStationComboReachValues.Add(CalculateRadioReach(RadioWorksheetRatingData.AQH, RadioWorksheetRatingData.CUME,
+                                                                                                                     DataRow(MarketDetailsColumns.TotalSpots.ToString), RadioWorksheetRatingData.Population,
+                                                                                                                     RadioWorksheetRatingData.AQHRating, RadioWorksheetRatingData.AQHRating))
+
+                                                            Next
+
+                                                            ComboReachValues.Add(Math.Round(RadioStationComboReachValues.Average(Function(ReachValue) ReachValue), 3, MidpointRounding.AwayFromZero))
+
+                                                        Next
+
+                                                        ComboReach = ComboReachValues.Sum(Function(ComboReachValue) ComboReachValue)
+
+                                                        For ComboReachOuterCounter = 0 To ComboReachValues.Count - 1
+
+                                                            ComboReachCounter = ComboReachOuterCounter + 1
+
+                                                            While ComboReachCounter <> ComboReachValues.Count
+
+                                                                'Console.WriteLine(" - (" & ComboReachValues(ComboReachOuterCounter) & " * " & ComboReachValues(ComboReachCounter) & ")")
+
+                                                                ComboReach -= (ComboReachValues(ComboReachOuterCounter) * ComboReachValues(ComboReachCounter))
+                                                                ComboReachCounter += 1
+
+                                                            End While
+
+                                                        Next
+
+                                                        DataRow(MarketDetailsColumns.PrimaryReach.ToString) = Math.Round(ComboReach, 3, MidpointRounding.AwayFromZero)
 
                                                     Else
 
-                                                        DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
-                                                        DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
+                                                        If DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) <> DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString) Then
 
-                                                    End If
+                                                            DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
 
-                                                    If DataRow(MarketDetailsColumns.BookPrimaryAQH.ToString) <> DataRow(MarketDetailsColumns.PrimaryAQH.ToString) Then
+                                                        Else
 
-                                                        DataRow(MarketDetailsColumns.BookPrimaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
+                                                            DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
+                                                            DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
 
-                                                    Else
+                                                        End If
 
-                                                        DataRow(MarketDetailsColumns.BookPrimaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
-                                                        DataRow(MarketDetailsColumns.PrimaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
+                                                        If DataRow(MarketDetailsColumns.BookPrimaryAQH.ToString) <> DataRow(MarketDetailsColumns.PrimaryAQH.ToString) Then
 
-                                                    End If
+                                                            DataRow(MarketDetailsColumns.BookPrimaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
 
-                                                    DataRow(MarketDetailsColumns.PrimaryCumeRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.CumeRating)
-                                                    DataRow(MarketDetailsColumns.PrimaryCume.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.CUME)
-                                                    DataRow(MarketDetailsColumns.PrimaryUniverse.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.Population)
+                                                        Else
 
-                                                    DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
-                                                    DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
-                                                    DataRow(MarketDetailsColumns.PrimaryCumeRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.PrimaryCumeRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                                            DataRow(MarketDetailsColumns.BookPrimaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
+                                                            DataRow(MarketDetailsColumns.PrimaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
 
-                                                    If DataRow(MarketDetailsColumns.PrimaryCume.ToString) > DataRow(MarketDetailsColumns.PrimaryUniverse.ToString) Then
+                                                        End If
 
-                                                        DataRow(MarketDetailsColumns.PrimaryCume.ToString) = DataRow(MarketDetailsColumns.PrimaryUniverse.ToString)
+                                                        DataRow(MarketDetailsColumns.PrimaryCumeRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.CumeRating)
+                                                        DataRow(MarketDetailsColumns.PrimaryCume.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.CUME)
+                                                        DataRow(MarketDetailsColumns.PrimaryUniverse.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.Population)
+
+                                                        DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.BookPrimaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                                        DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.PrimaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                                        DataRow(MarketDetailsColumns.PrimaryCumeRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.PrimaryCumeRating.ToString), 1, MidpointRounding.AwayFromZero)
+
+                                                        If DataRow(MarketDetailsColumns.PrimaryCume.ToString) > DataRow(MarketDetailsColumns.PrimaryUniverse.ToString) Then
+
+                                                            DataRow(MarketDetailsColumns.PrimaryCume.ToString) = DataRow(MarketDetailsColumns.PrimaryUniverse.ToString)
+
+                                                        End If
 
                                                     End If
 
@@ -25863,7 +26577,7 @@
 
                                         Else
 
-                                            For Each RowIndex In StationRowIndexes.Value
+                                            For Each RowIndex In RadioDemoDataInfo.RowIndexes
 
                                                 DataRow = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows(RowIndex)
 
@@ -25965,10 +26679,21 @@
             Dim TVWorksheetRatingAndShareDataList As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.TVWorksheetRatingAndShareData) = Nothing
             Dim MediaDemographic As AdvantageFramework.Database.Entities.MediaDemographic = Nothing
             Dim NielsenRadioStationComboID As Integer = 0
+            Dim NielsenRadioStationComboIDs() As String = Nothing
             Dim RadioWorksheetRatingDatas As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.RadioWorksheetRatingData) = Nothing
             Dim RowIndexesToRun As Generic.Dictionary(Of String, Generic.List(Of Integer)) = Nothing
             Dim VendorNCCTVSyscodeID As Integer = 0
             Dim IsAgencyASP As Boolean = False
+            Dim VendorRadioStationComboIDs As Generic.List(Of Integer) = Nothing
+            Dim RadioDemoDataInfos As Generic.List(Of AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo) = Nothing
+            Dim RadioDemoDataInfo As AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo = Nothing
+            Dim ComboReach As Double = 0
+            Dim ComboReachValues As Generic.List(Of Double) = Nothing
+            Dim RadioStationComboReachValues As Generic.List(Of Double) = Nothing
+            Dim ComboReachOuterCounter As Integer = 0
+            Dim ComboReachCounter As Integer = 0
+            Dim AQHComboValues As Generic.List(Of Double) = Nothing
+            Dim AQHRatingComboValues As Generic.List(Of Double) = Nothing
 
             If MediaBroadcastWorksheetMarketDetailsViewModel.IsNielsenSetup AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket IsNot Nothing AndAlso
                     MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketSecondaryDemo IsNot Nothing Then
@@ -26054,7 +26779,7 @@
 
                                         End If
 
-                                        If NielsenTVStationCode > 0 Then
+                                        If NielsenTVStationCode <> 0 Then
 
                                             If RowIndexesToRun.ContainsKey(NielsenTVStationCode.ToString & "-" & VendorNCCTVSyscodeID.ToString) = False Then
 
@@ -26344,7 +27069,7 @@
 
                                         End If
 
-                                        If NielsenTVStationCode > 0 Then
+                                        If NielsenTVStationCode <> 0 Then
 
                                             If RowIndexesToRun.ContainsKey(NielsenTVStationCode.ToString) = False Then
 
@@ -26632,7 +27357,7 @@
                                                         Select New AdvantageFramework.Classes.Media.Nielsen.MediaDemoDetailType With {.MediaDemographicID = MediaDemographicDetail.MediaDemographicID,
                                                                                                                                       .NielsenDemographicID = MediaDemographicDetail.NielsenDemographicID}).ToList
 
-                                RowIndexesToRun = New Generic.Dictionary(Of String, Generic.List(Of Integer))
+                                RadioDemoDataInfos = New Generic.List(Of AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo)
 
                                 For Each RowIndex In RowIndexes
 
@@ -26644,17 +27369,71 @@
                                     If DaysAndTime IsNot Nothing AndAlso String.IsNullOrWhiteSpace(DaysAndTime.Days) = False AndAlso String.IsNullOrWhiteSpace(DaysAndTime.StartTime) = False AndAlso
                                             String.IsNullOrWhiteSpace(DaysAndTime.EndTime) = False Then
 
-                                        NielsenRadioStationComboID = DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString)
+                                        Try
 
-                                        If NielsenRadioStationComboID > 0 Then
+                                            RadioDemoDataInfo = RadioDemoDataInfos.SingleOrDefault(Function(Entity) Entity.VendorCode = DataRow(MarketDetailsColumns.VendorCode.ToString))
 
-                                            If RowIndexesToRun.ContainsKey(NielsenRadioStationComboID.ToString) = False Then
+                                        Catch ex As Exception
+                                            RadioDemoDataInfo = Nothing
+                                        End Try
 
-                                                RowIndexesToRun(NielsenRadioStationComboID.ToString) = New Generic.List(Of Integer)
+                                        If DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) Then
+
+                                            VendorRadioStationComboIDs = Nothing
+
+                                            If RadioDemoDataInfo Is Nothing Then
+
+                                                If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen Then
+
+                                                    VendorRadioStationComboIDs = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT ISNULL(VCRS.NIELSEN_RADIO_STATION_COMBO_ID, 0) FROM dbo.VENDOR_COMBO_RADIO_STATION VCRS WHERE VCRS.VN_CODE = '{0}'", DataRow(MarketDetailsColumns.VendorCode.ToString))).Where(Function(ComboID) ComboID <> 0).ToList
+
+                                                ElseIf MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan Then
+
+                                                    VendorRadioStationComboIDs = Nothing
+
+                                                End If
+
+                                                If VendorRadioStationComboIDs IsNot Nothing AndAlso VendorRadioStationComboIDs.Count > 0 Then
+
+                                                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(DataRow(MarketDetailsColumns.VendorCode.ToString), True, VendorRadioStationComboIDs, RowIndex)
+
+                                                Else
+
+                                                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(DataRow(MarketDetailsColumns.VendorCode.ToString), True, RowIndex)
+
+                                                End If
+
+                                                RadioDemoDataInfos.Add(RadioDemoDataInfo)
+
+                                            Else
+
+                                                RadioDemoDataInfo.RowIndexes.Add(RowIndex)
 
                                             End If
 
-                                            CType(RowIndexesToRun(NielsenRadioStationComboID.ToString), Generic.List(Of Integer)).Add(RowIndex)
+                                        Else
+
+                                            NielsenRadioStationComboID = DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString)
+
+                                            If RadioDemoDataInfo Is Nothing Then
+
+                                                If NielsenRadioStationComboID > 0 Then
+
+                                                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(DataRow(MarketDetailsColumns.VendorCode.ToString), False, New Generic.List(Of Integer)({NielsenRadioStationComboID}), RowIndex)
+
+                                                Else
+
+                                                    RadioDemoDataInfo = New AdvantageFramework.Classes.Media.MediaBroadcastWorksheet.RadioDemoDataInfo(DataRow(MarketDetailsColumns.VendorCode.ToString), False, RowIndex)
+
+                                                End If
+
+                                                RadioDemoDataInfos.Add(RadioDemoDataInfo)
+
+                                            Else
+
+                                                RadioDemoDataInfo.RowIndexes.Add(RowIndex)
+
+                                            End If
 
                                         End If
 
@@ -26662,14 +27441,17 @@
 
                                 Next
 
-                                If RowIndexesToRun.Count > 0 Then
+                                RadioDemoDataInfos = RadioDemoDataInfos.Where(Function(Entity) Entity.RadioStationComboIDs.Count > 0).ToList
 
-                                    For Each StationRowIndexes In RowIndexesToRun
+                                If RadioDemoDataInfos.Count > 0 Then
 
-                                        NielsenRadioStationComboID = StationRowIndexes.Key
+                                    For Each RadioDemoDataInfo In RadioDemoDataInfos
+
+                                        NielsenRadioStationComboIDs = RadioDemoDataInfo.RadioStationComboIDs.Select(Function(RadioStationComboID) RadioStationComboID.ToString).ToArray
+
                                         MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
 
-                                        For Each RowIndex In StationRowIndexes.Value
+                                        For Each RowIndex In RadioDemoDataInfo.RowIndexes
 
                                             DataRow = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows(RowIndex)
                                             DaysAndTime = DataRow(MarketDetailsColumns.DaysAndTime.ToString)
@@ -26685,7 +27467,7 @@
 
                                         RadioWorksheetRatingDatas = GetNielsenRadioRatingData(DbContext, NielsenDbContext, NielsenMarketNumber, BookIDs.ToArray,
                                                                                               MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MediaBroadcastWorksheetMarketRadioGeographyID,
-                                                                                              New String() {NielsenRadioStationComboID}, New String() {MediaDemographicID}, MediaSpotTVResearchDaytimeTypes,
+                                                                                              NielsenRadioStationComboIDs, New String() {MediaDemographicID}, MediaSpotTVResearchDaytimeTypes,
                                                                                               MediaDemoTypes, MediaDemoDetailTypes, IsAgencyASP)
 
                                         If RadioWorksheetRatingDatas IsNot Nothing AndAlso RadioWorksheetRatingDatas.Count > 0 Then
@@ -26696,40 +27478,129 @@
 
                                                 If DataRow IsNot Nothing Then
 
+                                                    If RadioDemoDataInfo.IsComboRadioStation Then
 
-                                                    If DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) <> DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString) Then
+                                                        DataRow(MarketDetailsColumns.SecondaryUniverse.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.Population)
 
-                                                        DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
+                                                        AQHComboValues = New Generic.List(Of Double)
+                                                        AQHRatingComboValues = New Generic.List(Of Double)
+
+                                                        For Each RadioStationComboID In RadioDemoDataInfo.RadioStationComboIDs
+
+                                                            AQHComboValues.Add(RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID AndAlso Entity.NielsenRadioStationComboID = RadioStationComboID).Average(Function(Entity) Entity.AQH))
+                                                            AQHRatingComboValues.Add(RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID AndAlso Entity.NielsenRadioStationComboID = RadioStationComboID).Average(Function(Entity) CDbl((Entity.AQH * 100) / DataRow(MarketDetailsColumns.SecondaryUniverse.ToString))))
+
+                                                        Next
+
+                                                        If DataRow(MarketDetailsColumns.BookSecondaryAQH.ToString) <> DataRow(MarketDetailsColumns.SecondaryAQH.ToString) Then
+
+                                                            DataRow(MarketDetailsColumns.BookSecondaryAQH.ToString) = AQHComboValues.Sum(Function(AQH) AQH)
+
+                                                        Else
+
+                                                            DataRow(MarketDetailsColumns.BookSecondaryAQH.ToString) = AQHComboValues.Sum(Function(AQH) AQH)
+                                                            DataRow(MarketDetailsColumns.SecondaryAQH.ToString) = DataRow(MarketDetailsColumns.BookSecondaryAQH.ToString)
+
+                                                        End If
+
+                                                        If DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) <> DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString) Then
+
+                                                            DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) = AQHRatingComboValues.Sum(Function(AQHRating) Math.Round(AQHRating, 1, MidpointRounding.AwayFromZero))
+
+                                                        Else
+
+                                                            DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) = AQHRatingComboValues.Sum(Function(AQHRating) Math.Round(AQHRating, 1, MidpointRounding.AwayFromZero))
+                                                            DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString) = DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString)
+
+                                                        End If
+
+                                                        DataRow(MarketDetailsColumns.SecondaryCumeRating.ToString) = 0 'ComboReach * 100
+                                                        DataRow(MarketDetailsColumns.SecondaryCume.ToString) = 0 'ComboReach * DataRow(MarketDetailsColumns.SecondaryUniverse.ToString)
+
+                                                        DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                                        DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                                        DataRow(MarketDetailsColumns.SecondaryCumeRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.SecondaryCumeRating.ToString), 1, MidpointRounding.AwayFromZero)
+
+                                                        If DataRow(MarketDetailsColumns.SecondaryCume.ToString) > DataRow(MarketDetailsColumns.SecondaryUniverse.ToString) Then
+
+                                                            DataRow(MarketDetailsColumns.SecondaryCume.ToString) = DataRow(MarketDetailsColumns.SecondaryUniverse.ToString)
+
+                                                        End If
+
+                                                        ComboReachValues = New Generic.List(Of Double)
+
+                                                        For Each RadioStationComboID In RadioWorksheetRatingDatas.Select(Function(Entity) Entity.NielsenRadioStationComboID).Distinct.ToList
+
+                                                            RadioStationComboReachValues = New Generic.List(Of Double)
+
+                                                            For Each RadioWorksheetRatingData In RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioStationComboID = RadioStationComboID).ToList
+
+                                                                RadioStationComboReachValues.Add(CalculateRadioReach(RadioWorksheetRatingData.AQH, RadioWorksheetRatingData.CUME,
+                                                                                                                     DataRow(MarketDetailsColumns.TotalSpots.ToString), RadioWorksheetRatingData.Population,
+                                                                                                                     RadioWorksheetRatingData.AQHRating, RadioWorksheetRatingData.AQHRating))
+
+                                                            Next
+
+                                                            ComboReachValues.Add(Math.Round(RadioStationComboReachValues.Average(Function(ReachValue) ReachValue), 3, MidpointRounding.AwayFromZero))
+
+                                                        Next
+
+                                                        ComboReach = ComboReachValues.Sum(Function(ComboReachValue) ComboReachValue)
+
+                                                        For ComboReachOuterCounter = 0 To ComboReachValues.Count - 1
+
+                                                            ComboReachCounter = ComboReachOuterCounter + 1
+
+                                                            While ComboReachCounter <> ComboReachValues.Count
+
+                                                                'Console.WriteLine(" - (" & ComboReachValues(ComboReachOuterCounter) & " * " & ComboReachValues(ComboReachCounter) & ")")
+
+                                                                ComboReach -= (ComboReachValues(ComboReachOuterCounter) * ComboReachValues(ComboReachCounter))
+                                                                ComboReachCounter += 1
+
+                                                            End While
+
+                                                        Next
+
+                                                        DataRow(MarketDetailsColumns.SecondaryReach.ToString) = Math.Round(ComboReach, 3, MidpointRounding.AwayFromZero)
 
                                                     Else
 
-                                                        DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
-                                                        DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
+                                                        If DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) <> DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString) Then
 
-                                                    End If
+                                                            DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
 
-                                                    If DataRow(MarketDetailsColumns.BookSecondaryAQH.ToString) <> DataRow(MarketDetailsColumns.SecondaryAQH.ToString) Then
+                                                        Else
 
-                                                        DataRow(MarketDetailsColumns.BookSecondaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
+                                                            DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
+                                                            DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQHRating)
 
-                                                    Else
+                                                        End If
 
-                                                        DataRow(MarketDetailsColumns.BookSecondaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
-                                                        DataRow(MarketDetailsColumns.SecondaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
+                                                        If DataRow(MarketDetailsColumns.BookSecondaryAQH.ToString) <> DataRow(MarketDetailsColumns.SecondaryAQH.ToString) Then
 
-                                                    End If
+                                                            DataRow(MarketDetailsColumns.BookSecondaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
 
-                                                    DataRow(MarketDetailsColumns.SecondaryCumeRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.CumeRating)
-                                                    DataRow(MarketDetailsColumns.SecondaryCume.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.CUME)
-                                                    DataRow(MarketDetailsColumns.SecondaryUniverse.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.Population)
+                                                        Else
 
-                                                    DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
-                                                    DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
-                                                    DataRow(MarketDetailsColumns.SecondaryCumeRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.SecondaryCumeRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                                            DataRow(MarketDetailsColumns.BookSecondaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
+                                                            DataRow(MarketDetailsColumns.SecondaryAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.AQH)
 
-                                                    If DataRow(MarketDetailsColumns.SecondaryCume.ToString) > DataRow(MarketDetailsColumns.SecondaryUniverse.ToString) Then
+                                                        End If
 
-                                                        DataRow(MarketDetailsColumns.SecondaryCume.ToString) = DataRow(MarketDetailsColumns.SecondaryUniverse.ToString)
+                                                        DataRow(MarketDetailsColumns.SecondaryCumeRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.CumeRating)
+                                                        DataRow(MarketDetailsColumns.SecondaryCume.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.CUME)
+                                                        DataRow(MarketDetailsColumns.SecondaryUniverse.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).Average(Function(Entity) Entity.Population)
+
+                                                        DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.BookSecondaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                                        DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.SecondaryAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                                        DataRow(MarketDetailsColumns.SecondaryCumeRating.ToString) = Math.Round(DataRow(MarketDetailsColumns.SecondaryCumeRating.ToString), 1, MidpointRounding.AwayFromZero)
+
+                                                        If DataRow(MarketDetailsColumns.SecondaryCume.ToString) > DataRow(MarketDetailsColumns.SecondaryUniverse.ToString) Then
+
+                                                            DataRow(MarketDetailsColumns.SecondaryCume.ToString) = DataRow(MarketDetailsColumns.SecondaryUniverse.ToString)
+
+                                                        End If
 
                                                     End If
 
@@ -26739,7 +27610,7 @@
 
                                         Else
 
-                                            For Each RowIndex In StationRowIndexes.Value
+                                            For Each RowIndex In RadioDemoDataInfo.RowIndexes
 
                                                 DataRow = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows(RowIndex)
 
@@ -27245,6 +28116,8 @@
             Dim DaysAndTime As AdvantageFramework.DTO.DaysAndTime = Nothing
             Dim ProjectionLineID As Integer = 0
             Dim NielsenRadioStationComboID As Integer = 0
+            Dim NielsenRadioStationComboIDs() As String = Nothing
+            Dim VendorRadioStationComboIDs As Generic.List(Of Integer) = Nothing
             Dim RadioWorksheetRatingDatas As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.RadioWorksheetRatingData) = Nothing
             Dim VendorNCCTVSyscodeID As Integer = 0
             Dim ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook) = Nothing
@@ -27324,7 +28197,7 @@
 
                     End If
 
-                    If MediaDemographicID > 0 AndAlso NielsenTVStationCode > 0 AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketNielsenTVBooks.Count > 0 AndAlso
+                    If MediaDemographicID > 0 AndAlso NielsenTVStationCode <> 0 AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketNielsenTVBooks.Count > 0 AndAlso
                             DaysAndTime IsNot Nothing AndAlso String.IsNullOrWhiteSpace(DaysAndTime.Days) = False AndAlso String.IsNullOrWhiteSpace(DaysAndTime.StartTime) = False AndAlso
                             String.IsNullOrWhiteSpace(DaysAndTime.EndTime) = False Then
 
@@ -27504,7 +28377,7 @@
 
                     End If
 
-                    If MediaDemographicID > 0 AndAlso NielsenTVStationCode > 0 AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketNielsenTVBooks.Count > 0 AndAlso
+                    If MediaDemographicID > 0 AndAlso NielsenTVStationCode <> 0 AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketNielsenTVBooks.Count > 0 AndAlso
                             DaysAndTime IsNot Nothing AndAlso String.IsNullOrWhiteSpace(DaysAndTime.Days) = False AndAlso String.IsNullOrWhiteSpace(DaysAndTime.StartTime) = False AndAlso
                             String.IsNullOrWhiteSpace(DaysAndTime.EndTime) = False Then
 
@@ -27710,7 +28583,35 @@
 
                     End If
 
-                    NielsenRadioStationComboID = DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString)
+                    Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                        If DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) Then
+
+                            If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen Then
+
+                                VendorRadioStationComboIDs = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT ISNULL(VCRS.NIELSEN_RADIO_STATION_COMBO_ID, 0) FROM dbo.VENDOR_COMBO_RADIO_STATION VCRS WHERE VCRS.VN_CODE = '{0}'", DataRow(MarketDetailsColumns.VendorCode.ToString))).Where(Function(ComboID) ComboID <> 0).ToList
+
+                            ElseIf MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan Then
+
+                                VendorRadioStationComboIDs = Nothing
+
+                            Else
+
+                                VendorRadioStationComboIDs = New Generic.List(Of Integer)
+
+                            End If
+
+                        Else
+
+                            VendorRadioStationComboIDs = New Generic.List(Of Integer)
+
+                            VendorRadioStationComboIDs.Add(DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString))
+
+                        End If
+
+                    End Using
+
+                    VendorRadioStationComboIDs = VendorRadioStationComboIDs.Where(Function(ComboID) ComboID > 0).ToList
 
                     DaysAndTime = DataRow(MarketDetailsColumns.DaysAndTime.ToString)
 
@@ -27750,7 +28651,7 @@
 
                     End If
 
-                    If MediaDemographicID > 0 AndAlso NielsenRadioStationComboID > 0 AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketNielsenRadioPeriods.Count > 0 AndAlso
+                    If MediaDemographicID > 0 AndAlso VendorRadioStationComboIDs.Count > 0 AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketNielsenRadioPeriods.Count > 0 AndAlso
                             DaysAndTime IsNot Nothing AndAlso String.IsNullOrWhiteSpace(DaysAndTime.Days) = False AndAlso String.IsNullOrWhiteSpace(DaysAndTime.StartTime) = False AndAlso
                             String.IsNullOrWhiteSpace(DaysAndTime.EndTime) = False Then
 
@@ -27766,7 +28667,7 @@
                                 If MediaDemographic IsNot Nothing Then
 
                                     MediaDemoTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaDemoType) From {New AdvantageFramework.Classes.Media.Nielsen.MediaDemoType With {.ID = MediaDemographic.ID,
-                                                                                                                                                                                                    .Description = MediaDemographic.Description}}
+                                                                                                                                                                                                        .Description = MediaDemographic.Description}}
 
                                 Else
 
@@ -27776,9 +28677,9 @@
 
                                 MediaDemoDetailTypes = (From MediaDemographicDetail In AdvantageFramework.Database.Procedures.MediaDemographicDetail.Load(DbContext).Where(Function(Entity) Entity.MediaDemographicID = MediaDemographicID).ToList
                                                         Select New AdvantageFramework.Classes.Media.Nielsen.MediaDemoDetailType With {.MediaDemographicID = MediaDemographicDetail.MediaDemographicID,
-                                                                                                                                  .NielsenDemographicID = MediaDemographicDetail.NielsenDemographicID}).ToList
+                                                                                                                                      .NielsenDemographicID = MediaDemographicDetail.NielsenDemographicID}).ToList
 
-                                StationCodes = New String() {NielsenRadioStationComboID}
+                                NielsenRadioStationComboIDs = VendorRadioStationComboIDs.Select(Function(RadioStationComboID) RadioStationComboID.ToString).ToArray
 
                                 WorksheetMarketDetail = New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarketDetail
                                 WorksheetMarketDetail.ID = 1
@@ -27791,7 +28692,7 @@
 
                                 RadioWorksheetRatingDatas = GetNielsenRadioRatingData(DbContext, NielsenDbContext, NielsenMarketNumber, BookIDs.ToArray,
                                                                                       MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MediaBroadcastWorksheetMarketRadioGeographyID,
-                                                                                      StationCodes, New String() {MediaDemographicID}, MediaSpotTVResearchDaytimeTypes,
+                                                                                      NielsenRadioStationComboIDs, New String() {MediaDemographicID}, MediaSpotTVResearchDaytimeTypes,
                                                                                       MediaDemoTypes, MediaDemoDetailTypes, AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext))
 
                             End Using
@@ -27805,26 +28706,54 @@
 
                             If MeasurementTrendsDataRow IsNot Nothing Then
 
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.AQHRating)
+                                If DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) Then
 
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString) = Math.Round(MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                    Universe = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.Population)
 
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.AQHRating.ToString) = MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString)
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.AQH)
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.AQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.AQH)
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Sum(Function(Entity) (Entity.AQH * 100) / Universe)
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString) = Math.Round(MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
 
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.CumeRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.CumeRating)
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.CumeRating.ToString) = Math.Round(MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.CumeRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.AQHRating.ToString) = MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString)
 
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Cume.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.CUME)
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Sum(Function(Entity) Entity.AQH)
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.AQH.ToString) = MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQH.ToString)
 
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookProgram.ToString) = String.Empty
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Program.ToString) = String.Empty
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookRating.ToString) = 0
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Rating.ToString) = 0
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookShare.ToString) = 0
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Share.ToString) = 0
-                                MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.HUTPUT.ToString) = 0
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.CumeRating.ToString) = 0 'ComboReach * 100
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.CumeRating.ToString) = Math.Round(MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.CumeRating.ToString), 1, MidpointRounding.AwayFromZero)
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Cume.ToString) = 0 'ComboReach * Universe
+
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookProgram.ToString) = String.Empty
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Program.ToString) = String.Empty
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookRating.ToString) = 0
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Rating.ToString) = 0
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookShare.ToString) = 0
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Share.ToString) = 0
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.HUTPUT.ToString) = 0
+
+                                Else
+
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.AQHRating)
+
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString) = Math.Round(MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString), 1, MidpointRounding.AwayFromZero)
+
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.AQHRating.ToString) = MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQHRating.ToString)
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookAQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.AQH)
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.AQH.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.AQH)
+
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.CumeRating.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.CumeRating)
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.CumeRating.ToString) = Math.Round(MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.CumeRating.ToString), 1, MidpointRounding.AwayFromZero)
+
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Cume.ToString) = RadioWorksheetRatingDatas.Where(Function(Entity) Entity.NielsenRadioPeriodID = NielsenRadioPeriodID).Average(Function(Entity) Entity.CUME)
+
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookProgram.ToString) = String.Empty
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Program.ToString) = String.Empty
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookRating.ToString) = 0
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Rating.ToString) = 0
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookShare.ToString) = 0
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Share.ToString) = 0
+                                    MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.HUTPUT.ToString) = 0
+
+                                End If
 
                             End If
 
@@ -27862,7 +28791,6 @@
                     End If
 
                 Else
-
 
                     MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookProgram.ToString) = String.Empty
                     MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.Program.ToString) = String.Empty
@@ -28004,7 +28932,7 @@
 
                 End If
 
-                If MediaDemographicID > 0 AndAlso NielsenTVStationCode > 0 AndAlso MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookID.ToString) > 0 AndAlso
+                If MediaDemographicID > 0 AndAlso NielsenTVStationCode <> 0 AndAlso MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookID.ToString) > 0 AndAlso
                         DaysAndTime IsNot Nothing AndAlso String.IsNullOrWhiteSpace(DaysAndTime.Days) = False AndAlso String.IsNullOrWhiteSpace(DaysAndTime.StartTime) = False AndAlso
                         String.IsNullOrWhiteSpace(DaysAndTime.EndTime) = False Then
 
@@ -28097,7 +29025,7 @@
 
                 End If
 
-                If MediaDemographicID > 0 AndAlso NielsenTVStationCode > 0 AndAlso MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookID.ToString) > 0 AndAlso
+                If MediaDemographicID > 0 AndAlso NielsenTVStationCode <> 0 AndAlso MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookID.ToString) > 0 AndAlso
                         DaysAndTime IsNot Nothing AndAlso String.IsNullOrWhiteSpace(DaysAndTime.Days) = False AndAlso String.IsNullOrWhiteSpace(DaysAndTime.StartTime) = False AndAlso
                         String.IsNullOrWhiteSpace(DaysAndTime.EndTime) = False Then
 
@@ -28504,7 +29432,7 @@
 
                 End If
 
-                If MediaDemographicID > 0 AndAlso NielsenTVStationCode > 0 AndAlso MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookID.ToString) > 0 AndAlso
+                If MediaDemographicID > 0 AndAlso NielsenTVStationCode <> 0 AndAlso MeasurementTrendsDataRow(MarketDetails_MeasurementTrendsColumns.BookID.ToString) > 0 AndAlso
                         DaysAndTime IsNot Nothing AndAlso String.IsNullOrWhiteSpace(DaysAndTime.Days) = False AndAlso String.IsNullOrWhiteSpace(DaysAndTime.StartTime) = False AndAlso
                         String.IsNullOrWhiteSpace(DaysAndTime.EndTime) = False Then
 
@@ -31326,6 +32254,7 @@
 
                 DataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString) = SelectedDataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString)
                 DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) = SelectedDataRow(MarketDetailsColumns.VendorIsCableSystem.ToString)
+                DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) = False
                 DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) = 0
                 DataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString) = SelectedDataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString)
 
@@ -31333,6 +32262,7 @@
 
                 DataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString) = 0
                 DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) = False
+                DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) = SelectedDataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString)
                 DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) = SelectedDataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString)
                 DataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString) = 0
 
@@ -31510,6 +32440,8 @@
             Dim StartTime As String = Nothing
             Dim EndTime As String = Nothing
             Dim NextDate As Nullable(Of Date) = Nothing
+            Dim CableNetworkNielsenTVStationCode As Integer = 0
+            Dim CableNetworkStationCode As String = String.Empty
 
             MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.BeginLoadData()
 
@@ -31661,6 +32593,7 @@
 
                 DataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString) = VendorDataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString)
                 DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) = VendorDataRow(MarketDetailsColumns.VendorIsCableSystem.ToString)
+                DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) = False
                 DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) = 0
                 DataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString) = VendorDataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString)
 
@@ -31668,13 +32601,36 @@
 
                 DataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString) = 0
                 DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) = False
+                DataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) = VendorDataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString)
                 DataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString) = VendorDataRow(MarketDetailsColumns.VendorRadioStationComboID.ToString)
                 DataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString) = 0
 
             End If
 
             DataRow(MarketDetailsColumns.CableNetworkStationCode.ToString) = ImportAccountPayableBroadcastDetails.First.NetworkID
-            DataRow(MarketDetailsColumns.CableNetworkNielsenTVStationCode.ToString) = System.DBNull.Value
+
+            If DataRow(MarketDetailsColumns.CableNetworkStationCode.ToString) IsNot System.DBNull.Value Then
+
+                CableNetworkStationCode = DataRow(MarketDetailsColumns.CableNetworkStationCode.ToString)
+
+            End If
+
+            If String.IsNullOrWhiteSpace(CableNetworkStationCode) = False AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations.Any(Function(Entity) Entity.Code = CableNetworkStationCode) Then
+
+                CableNetworkNielsenTVStationCode = MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations.SingleOrDefault(Function(Entity) Entity.Code = CableNetworkStationCode).NielsenTVStationCode
+
+            End If
+
+            If CableNetworkNielsenTVStationCode <> 0 Then
+
+                DataRow(MarketDetailsColumns.CableNetworkNielsenTVStationCode.ToString) = CableNetworkNielsenTVStationCode
+
+            Else
+
+                DataRow(MarketDetailsColumns.CableNetworkNielsenTVStationCode.ToString) = System.DBNull.Value
+
+            End If
+
             DataRow(MarketDetailsColumns.BookProgram.ToString) = String.Empty
             DataRow(MarketDetailsColumns.Program.ToString) = String.Empty
             DataRow(MarketDetailsColumns.Daypart.ToString) = String.Empty
@@ -31808,62 +32764,15 @@
                     MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.HasValue AndAlso
                     MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.RatingsServiceID = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
 
-                ComscoreDemoNumbers = New Generic.List(Of Integer)
+                Try
 
-                ShareHPUTBooks = New Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook)
+                    ComscoreDemoNumbers = New Generic.List(Of Integer)
 
-                Using DbContext As New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+                    ShareHPUTBooks = New Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook)
 
-                    MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.LoadByID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.PrimaryMediaDemographicID.Value)
+                    Using DbContext As New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
 
-                    If MediaDemographic IsNot Nothing AndAlso MediaDemographic.ComscoreDemoNumber.HasValue Then
-
-                        ComscoreDemoNumbers.Add(MediaDemographic.ComscoreDemoNumber.Value)
-
-                    End If
-
-                    CableNetworkNielsenTVStationCodes = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID)
-                                                         Where Entity.CableNetworkNielsenTVStationCode.HasValue
-                                                         Select Entity.CableNetworkNielsenTVStationCode.Value).Distinct.ToList
-
-                    If CableNetworkNielsenTVStationCodes.Count > 0 Then
-
-                        StationNumbers = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT MIN(NUMBER) FROM dbo.COMSCORE_TV_STATION WHERE PRIMARY_MARKET_NUMBER IS NULL AND NETWORK_NUMBER IN ({0}) GROUP BY NETWORK_NUMBER", String.Join(",", CableNetworkNielsenTVStationCodes.ToArray))).ToList
-
-                    Else
-
-                        StationNumbers = New Generic.List(Of Integer)
-
-                    End If
-
-                    StationNumbers.AddRange((From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID).Include("Vendor.ComscoreTVStation")
-                                             Where Entity.Vendor.ComscoreTVStation IsNot Nothing
-                                             Select Entity.Vendor.ComscoreTVStation.Number).Distinct.ToList)
-
-                    'trend books only use Primary Demo and Share book
-                    ComscoreTVBookIDs = (From Book In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketNielsenTVBook.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID)
-                                         Select Book.NielsenTVBookID).ToArray
-
-                    For Each ComscoreTVBookID In ComscoreTVBookIDs
-
-                        ShareHPUTBook = New DTO.Media.ShareHPUTBook()
-                        ShareHPUTBook.ShareBookID = ComscoreTVBookID
-
-                        ShareHPUTBooks.Clear()
-                        ShareHPUTBooks.Add(ShareHPUTBook)
-
-                        For Each StationNumber In StationNumbers
-
-                            AdvantageFramework.ComScore.CacheBooks(DbContext, StationNumber, ComscoreDemoNumbers, ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value)
-
-                        Next
-
-                    Next
-
-                    'now to cache the HUT and secondary demos for the worksheet specific books
-                    If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketSecondaryDemo IsNot Nothing Then
-
-                        MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.LoadByID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketSecondaryDemo.MediaDemographicID)
+                        MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.LoadByID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.PrimaryMediaDemographicID.Value)
 
                         If MediaDemographic IsNot Nothing AndAlso MediaDemographic.ComscoreDemoNumber.HasValue Then
 
@@ -31871,45 +32780,110 @@
 
                         End If
 
-                    End If
+                        CableNetworkNielsenTVStationCodes = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID)
+                                                             Where Entity.CableNetworkNielsenTVStationCode.HasValue
+                                                             Select Entity.CableNetworkNielsenTVStationCode.Value).Distinct.ToList
 
-                    ShareHPUTBook = New DTO.Media.ShareHPUTBook()
-                    ShareHPUTBook.ShareBookID = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID
-                    ShareHPUTBook.HPUTBookID = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.HUTPUTNielsenTVBookID
+                        If CableNetworkNielsenTVStationCodes.Count > 0 Then
 
-                    ShareHPUTBooks.Clear()
-                    ShareHPUTBooks.Add(ShareHPUTBook)
+                            StationNumbers = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT MIN(NUMBER) FROM dbo.COMSCORE_TV_STATION WHERE PRIMARY_MARKET_NUMBER IS NULL AND NETWORK_NUMBER IN ({0}) GROUP BY NETWORK_NUMBER", String.Join(",", CableNetworkNielsenTVStationCodes.ToArray))).ToList
 
-                    For Each StationNumber In StationNumbers
+                        Else
 
-                        AdvantageFramework.ComScore.CacheBooks(DbContext, StationNumber, ComscoreDemoNumbers, ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value)
-
-                    Next
-
-                    'now to cache the special CDMA DemoNumber = 0
-                    If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.IsCable Then
-
-                        VendorCodes = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.OfType(Of System.Data.DataRow).Select(Function(DR) CStr(DR(MarketDetailsColumns.VendorCode.ToString))).Distinct.ToArray
-
-                        If (From Vendor In AdvantageFramework.Database.Procedures.Vendor.Load(DbContext)
-                            Where VendorCodes.Contains(Vendor.Code) AndAlso
-                                  Vendor.IsCableSystem AndAlso
-                                  Vendor.NCCTVSyscodeID IsNot Nothing
-                            Select Vendor).Any Then
-
-                            For Each StationNumber In StationNumbers
-
-                                AdvantageFramework.ComScore.CacheBooks(DbContext, StationNumber, New Generic.List(Of Integer)({0}), ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value)
-
-                            Next
+                            StationNumbers = New Generic.List(Of Integer)
 
                         End If
 
-                    End If
+                        StationNumbers.AddRange((From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID).Include("Vendor.ComscoreTVStation")
+                                                 Where Entity.Vendor.ComscoreTVStation IsNot Nothing
+                                                 Select Entity.Vendor.ComscoreTVStation.Number).Distinct.ToList)
 
-                    PurgeOldCachedBooks(DbContext)
+                        'trend books only use Primary Demo and Share book
+                        ComscoreTVBookIDs = (From Book In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketNielsenTVBook.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID)
+                                             Select Book.NielsenTVBookID).ToArray
 
-                End Using
+                        For Each ComscoreTVBookID In ComscoreTVBookIDs
+
+                            ShareHPUTBook = New DTO.Media.ShareHPUTBook()
+                            ShareHPUTBook.ShareBookID = ComscoreTVBookID
+
+                            ShareHPUTBooks.Clear()
+                            ShareHPUTBooks.Add(ShareHPUTBook)
+
+                            For Each StationNumber In StationNumbers
+
+                                If AdvantageFramework.ComScore.CacheBooks(DbContext, StationNumber, ComscoreDemoNumbers, ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value) = False Then
+
+                                    Throw New Exception("No data found for market:" & MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketCode & ".  Please call customer support and verify your Comscore subscription includes this market and the books selected.")
+
+                                End If
+
+                            Next
+
+                        Next
+
+                        'now to cache the HUT and secondary demos for the worksheet specific books
+                        If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketSecondaryDemo IsNot Nothing Then
+
+                            MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.LoadByID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketSecondaryDemo.MediaDemographicID)
+
+                            If MediaDemographic IsNot Nothing AndAlso MediaDemographic.ComscoreDemoNumber.HasValue Then
+
+                                ComscoreDemoNumbers.Add(MediaDemographic.ComscoreDemoNumber.Value)
+
+                            End If
+
+                        End If
+
+                        ShareHPUTBook = New DTO.Media.ShareHPUTBook()
+                        ShareHPUTBook.ShareBookID = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID
+                        ShareHPUTBook.HPUTBookID = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.HUTPUTNielsenTVBookID
+
+                        ShareHPUTBooks.Clear()
+                        ShareHPUTBooks.Add(ShareHPUTBook)
+
+                        For Each StationNumber In StationNumbers
+
+                            If AdvantageFramework.ComScore.CacheBooks(DbContext, StationNumber, ComscoreDemoNumbers, ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value) = False Then
+
+                                Throw New Exception("No data found for market:" & MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketCode & ".  Please call customer support and verify your Comscore subscription includes this market and the books selected.")
+
+                            End If
+
+                        Next
+
+                        'now to cache the special CDMA DemoNumber = 0
+                        If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.IsCable Then
+
+                            VendorCodes = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.OfType(Of System.Data.DataRow).Select(Function(DR) CStr(DR(MarketDetailsColumns.VendorCode.ToString))).Distinct.ToArray
+
+                            If (From Vendor In AdvantageFramework.Database.Procedures.Vendor.Load(DbContext)
+                                Where VendorCodes.Contains(Vendor.Code) AndAlso
+                                      Vendor.IsCableSystem AndAlso
+                                      Vendor.NCCTVSyscodeID IsNot Nothing
+                                Select Vendor).Any Then
+
+                                For Each StationNumber In StationNumbers
+
+                                    If AdvantageFramework.ComScore.CacheBooks(DbContext, StationNumber, New Generic.List(Of Integer)({0}), ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value) = False Then
+
+                                        Throw New Exception("No data found for market:" & MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketCode & ".  Please call customer support and verify your Comscore subscription includes this market and the books selected.")
+
+                                    End If
+
+                                Next
+
+                            End If
+
+                        End If
+
+                        PurgeOldCachedBooks(DbContext)
+
+                    End Using
+
+                Catch ex As Exception
+                    Throw ex
+                End Try
 
             End If
 
@@ -31977,137 +32951,137 @@
             End If
 
         End Sub
-        Public Function MarketDetails_CacheBooksAsync(MediaBroadcastWorksheetMarketDetailsViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel) As Boolean
+        'Public Function MarketDetails_CacheBooksAsync(MediaBroadcastWorksheetMarketDetailsViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel) As Boolean
 
-            'objects
-            Dim ComscoreTVBookIDs As IEnumerable(Of Integer) = Nothing
-            Dim StationNumbers As Generic.List(Of Integer) = Nothing
-            Dim ComscoreDemoNumbers As Generic.List(Of Integer) = Nothing
-            Dim MediaDemographic As AdvantageFramework.Database.Entities.MediaDemographic = Nothing
-            Dim ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook) = Nothing
-            Dim ShareHPUTBook As DTO.Media.ShareHPUTBook = Nothing
-            Dim VendorCodes As IEnumerable(Of String) = Nothing
-            Dim Tasks As Generic.List(Of Task(Of Boolean)) = Nothing
-            Dim Task As Task(Of Boolean) = Nothing
-            Dim WaitTask As Task = Nothing
+        '    'objects
+        '    Dim ComscoreTVBookIDs As IEnumerable(Of Integer) = Nothing
+        '    Dim StationNumbers As Generic.List(Of Integer) = Nothing
+        '    Dim ComscoreDemoNumbers As Generic.List(Of Integer) = Nothing
+        '    Dim MediaDemographic As AdvantageFramework.Database.Entities.MediaDemographic = Nothing
+        '    Dim ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook) = Nothing
+        '    Dim ShareHPUTBook As DTO.Media.ShareHPUTBook = Nothing
+        '    Dim VendorCodes As IEnumerable(Of String) = Nothing
+        '    Dim Tasks As Generic.List(Of Task(Of Boolean)) = Nothing
+        '    Dim Task As Task(Of Boolean) = Nothing
+        '    Dim WaitTask As Task = Nothing
 
-            Tasks = New Generic.List(Of System.Threading.Tasks.Task(Of Boolean))
+        '    Tasks = New Generic.List(Of System.Threading.Tasks.Task(Of Boolean))
 
-            If MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet IsNot Nothing AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket IsNot Nothing AndAlso
-                    MediaBroadcastWorksheetMarketDetailsViewModel.HasPrimaryDemographic AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID.HasValue AndAlso
-                    MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.HasValue AndAlso
-                    MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.RatingsServiceID = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
+        '    If MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet IsNot Nothing AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket IsNot Nothing AndAlso
+        '            MediaBroadcastWorksheetMarketDetailsViewModel.HasPrimaryDemographic AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID.HasValue AndAlso
+        '            MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.HasValue AndAlso
+        '            MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.RatingsServiceID = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
 
-                ComscoreDemoNumbers = New Generic.List(Of Integer)
+        '        ComscoreDemoNumbers = New Generic.List(Of Integer)
 
-                ShareHPUTBooks = New Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook)
+        '        ShareHPUTBooks = New Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook)
 
-                Using DbContext As New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+        '        Using DbContext As New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
 
-                    MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.LoadByID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.PrimaryMediaDemographicID.Value)
+        '            MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.LoadByID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.PrimaryMediaDemographicID.Value)
 
-                    If MediaDemographic IsNot Nothing AndAlso MediaDemographic.ComscoreDemoNumber.HasValue Then
+        '            If MediaDemographic IsNot Nothing AndAlso MediaDemographic.ComscoreDemoNumber.HasValue Then
 
-                        ComscoreDemoNumbers.Add(MediaDemographic.ComscoreDemoNumber.Value)
+        '                ComscoreDemoNumbers.Add(MediaDemographic.ComscoreDemoNumber.Value)
 
-                    End If
+        '            End If
 
-                    StationNumbers = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID)
-                                      Where Entity.CableNetworkNielsenTVStationCode.HasValue
-                                      Select Entity.CableNetworkNielsenTVStationCode.Value).Distinct.ToList
+        '            StationNumbers = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID)
+        '                              Where Entity.CableNetworkNielsenTVStationCode.HasValue
+        '                              Select Entity.CableNetworkNielsenTVStationCode.Value).Distinct.ToList
 
-                    StationNumbers.AddRange((From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID).Include("Vendor.ComscoreTVStation")
-                                             Where Entity.Vendor.IsComscoreSubsciber = True AndAlso
-                                                       Entity.Vendor.ComscoreTVStation IsNot Nothing
-                                             Select Entity.Vendor.ComscoreTVStation.Number).Distinct.ToList)
+        '            StationNumbers.AddRange((From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID).Include("Vendor.ComscoreTVStation")
+        '                                     Where Entity.Vendor.IsComscoreSubsciber = True AndAlso
+        '                                               Entity.Vendor.ComscoreTVStation IsNot Nothing
+        '                                     Select Entity.Vendor.ComscoreTVStation.Number).Distinct.ToList)
 
-                    'trend books only use Primary Demo and Share book
-                    ComscoreTVBookIDs = (From Book In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketNielsenTVBook.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID)
-                                         Select Book.NielsenTVBookID).ToArray
+        '            'trend books only use Primary Demo and Share book
+        '            ComscoreTVBookIDs = (From Book In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketNielsenTVBook.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID)
+        '                                 Select Book.NielsenTVBookID).ToArray
 
-                    For Each ComscoreTVBookID In ComscoreTVBookIDs
+        '            For Each ComscoreTVBookID In ComscoreTVBookIDs
 
-                        ShareHPUTBook = New DTO.Media.ShareHPUTBook()
-                        ShareHPUTBook.ShareBookID = ComscoreTVBookID
+        '                ShareHPUTBook = New DTO.Media.ShareHPUTBook()
+        '                ShareHPUTBook.ShareBookID = ComscoreTVBookID
 
-                        ShareHPUTBooks.Clear()
-                        ShareHPUTBooks.Add(ShareHPUTBook)
+        '                ShareHPUTBooks.Clear()
+        '                ShareHPUTBooks.Add(ShareHPUTBook)
 
-                        For Each StationNumber In StationNumbers
+        '                For Each StationNumber In StationNumbers
 
-                            Task = AdvantageFramework.ComScore.CacheBooksAsync(Me.Session, StationNumber, ComscoreDemoNumbers, ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value)
-                            Tasks.Add(Task)
+        '                    Task = AdvantageFramework.ComScore.CacheBooksAsync(Me.Session, StationNumber, ComscoreDemoNumbers, ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value)
+        '                    Tasks.Add(Task)
 
-                        Next
+        '                Next
 
-                    Next
+        '            Next
 
-                    'now to cache the HUT and secondary demos for the worksheet specific books
-                    If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketSecondaryDemo IsNot Nothing Then
+        '            'now to cache the HUT and secondary demos for the worksheet specific books
+        '            If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketSecondaryDemo IsNot Nothing Then
 
-                        MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.LoadByID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketSecondaryDemo.MediaDemographicID)
+        '                MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.LoadByID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarketSecondaryDemo.MediaDemographicID)
 
-                        If MediaDemographic IsNot Nothing AndAlso MediaDemographic.ComscoreDemoNumber.HasValue Then
+        '                If MediaDemographic IsNot Nothing AndAlso MediaDemographic.ComscoreDemoNumber.HasValue Then
 
-                            ComscoreDemoNumbers.Add(MediaDemographic.ComscoreDemoNumber.Value)
+        '                    ComscoreDemoNumbers.Add(MediaDemographic.ComscoreDemoNumber.Value)
 
-                        End If
+        '                End If
 
-                    End If
+        '            End If
 
-                    ShareHPUTBook = New DTO.Media.ShareHPUTBook()
-                    ShareHPUTBook.ShareBookID = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID
-                    ShareHPUTBook.HPUTBookID = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.HUTPUTNielsenTVBookID
+        '            ShareHPUTBook = New DTO.Media.ShareHPUTBook()
+        '            ShareHPUTBook.ShareBookID = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID
+        '            ShareHPUTBook.HPUTBookID = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.HUTPUTNielsenTVBookID
 
-                    ShareHPUTBooks.Clear()
-                    ShareHPUTBooks.Add(ShareHPUTBook)
+        '            ShareHPUTBooks.Clear()
+        '            ShareHPUTBooks.Add(ShareHPUTBook)
 
-                    For Each StationNumber In StationNumbers
+        '            For Each StationNumber In StationNumbers
 
-                        Task = AdvantageFramework.ComScore.CacheBooksAsync(Me.Session, StationNumber, ComscoreDemoNumbers, ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value)
-                        Tasks.Add(Task)
+        '                Task = AdvantageFramework.ComScore.CacheBooksAsync(Me.Session, StationNumber, ComscoreDemoNumbers, ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value)
+        '                Tasks.Add(Task)
 
-                    Next
+        '            Next
 
-                    'now to cache the special CDMA DemoNumber = 0
-                    If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.IsCable Then
+        '            'now to cache the special CDMA DemoNumber = 0
+        '            If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.IsCable Then
 
-                        VendorCodes = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.OfType(Of System.Data.DataRow).Select(Function(DR) CStr(DR(MarketDetailsColumns.VendorCode.ToString))).Distinct.ToArray
+        '                VendorCodes = MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.OfType(Of System.Data.DataRow).Select(Function(DR) CStr(DR(MarketDetailsColumns.VendorCode.ToString))).Distinct.ToArray
 
-                        If (From Vendor In AdvantageFramework.Database.Procedures.Vendor.Load(DbContext)
-                            Where VendorCodes.Contains(Vendor.Code) AndAlso
-                                  Vendor.IsCableSystem AndAlso
-                                  Vendor.NCCTVSyscodeID IsNot Nothing
-                            Select Vendor).Any Then
+        '                If (From Vendor In AdvantageFramework.Database.Procedures.Vendor.Load(DbContext)
+        '                    Where VendorCodes.Contains(Vendor.Code) AndAlso
+        '                          Vendor.IsCableSystem AndAlso
+        '                          Vendor.NCCTVSyscodeID IsNot Nothing
+        '                    Select Vendor).Any Then
 
-                            For Each StationNumber In StationNumbers
+        '                    For Each StationNumber In StationNumbers
 
-                                Task = AdvantageFramework.ComScore.CacheBooksAsync(Me.Session, StationNumber, New Generic.List(Of Integer)({0}), ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value)
-                                Tasks.Add(Task)
+        '                        Task = AdvantageFramework.ComScore.CacheBooksAsync(Me.Session, StationNumber, New Generic.List(Of Integer)({0}), ShareHPUTBooks, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.Value)
+        '                        Tasks.Add(Task)
 
-                            Next
+        '                    Next
 
-                        End If
+        '                End If
 
-                    End If
+        '            End If
 
-                    WaitTask = System.Threading.Tasks.Task.WhenAll(Tasks)
+        '            WaitTask = System.Threading.Tasks.Task.WhenAll(Tasks)
 
-                    Do Until WaitTask.IsCompleted = True
+        '            Do Until WaitTask.IsCompleted = True
 
-                        System.Threading.Thread.Sleep(1000)
+        '                System.Threading.Thread.Sleep(1000)
 
-                    Loop
+        '            Loop
 
-                    PurgeOldCachedBooks(DbContext)
+        '            PurgeOldCachedBooks(DbContext)
 
-                End Using
+        '        End Using
 
-            End If
+        '    End If
 
-            Return True
+        '    Return True
 
-        End Function
+        'End Function
         Public Function MarketDetails_CreateProposalXML(MediaBroadcastWorksheetMarketDetailsViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel,
                                                         SuppressRates As Boolean, ByRef VendorCodesNotSetup As Generic.List(Of String), ByRef ErrorMessage As String) As System.IO.MemoryStream
 
@@ -35788,6 +36762,7 @@
                     NewDataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString) = VendorDataRow(MarketDetailsColumns.VendorNCCTVSyscodeID.ToString)
                     NewDataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString) = VendorDataRow(MarketDetailsColumns.VendorNielsenTVStationCode.ToString)
                     NewDataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) = VendorDataRow(MarketDetailsColumns.VendorIsCableSystem.ToString)
+                    NewDataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString) = VendorDataRow(MarketDetailsColumns.VendorIsComboRadioStation.ToString)
 
                     If MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotTV AndAlso
                             MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID.GetValueOrDefault(0) = 0 AndAlso
@@ -37336,6 +38311,7 @@
             Dim ShowingSecondary As Boolean = False
             Dim ShowingPrimary As Boolean = False
             Dim VendorDataRow As System.Data.DataRow = Nothing
+            Dim VendorTotalSpots As Integer = 0
 
             ActiveRow = RowStart
 
@@ -37484,66 +38460,195 @@
 
                 VendorDataRow = ViewModel.DataTable.Rows.OfType(Of System.Data.DataRow).FirstOrDefault(Function(DR) DR(MarketDetailsColumns.VendorCode.ToString) = VendorCode)
 
-                Report_AddVendorRow(Worksheet, ActiveRow, Controller.MarketDetails_LoadVendorInfo(ViewModel, VendorDataRow(MarketDetailsColumns.VendorName.ToString)), DataColumns.Count + 1)
-
-                ActiveRow += 1
-
                 DataView.RowFilter = "VendorCode = '" & VendorCode & "'"
                 DataView.Sort = "LineNumber ASC"
 
                 VendorDataRows = DataView.ToTable.Rows.OfType(Of System.Data.DataRow).ToList
 
-                Worksheet.Cells.Merge(ActiveRow, 0, VendorDataRows.Count + 1, 1)
+                Try
 
-                For Each VendorRow In VendorDataRows
+                    VendorTotalSpots = VendorDataRows.Sum(Function(DataRow) DataRow(MarketDetailsColumns.TotalSpots.ToString))
 
+                Catch ex As Exception
+                    VendorTotalSpots = 0
+                End Try
+
+                If ViewModel.WorksheetPrintOptions.PrintRemoveLinesWithoutSpots = False OrElse
+                        (ViewModel.WorksheetPrintOptions.PrintRemoveLinesWithoutSpots AndAlso VendorTotalSpots > 0) Then
+
+                    Report_AddVendorRow(Worksheet, ActiveRow, Controller.MarketDetails_LoadVendorInfo(ViewModel, VendorDataRow(MarketDetailsColumns.VendorName.ToString)), DataColumns.Count + 1)
+
+                    ActiveRow += 1
+
+                    If ViewModel.WorksheetPrintOptions.PrintRemoveLinesWithoutSpots Then
+
+                        VendorDataRows = VendorDataRows.Where(Function(DR) DR(MarketDetailsColumns.TotalSpots.ToString) > 0).ToList
+
+                    End If
+
+                    Worksheet.Cells.Merge(ActiveRow, 0, VendorDataRows.Count + 1, 1)
+
+                    For Each VendorRow In VendorDataRows
+
+                        If ViewModel.WorksheetPrintOptions.PrintRemoveLinesWithoutSpots = False OrElse
+                                (ViewModel.WorksheetPrintOptions.PrintRemoveLinesWithoutSpots AndAlso VendorRow(MarketDetailsColumns.TotalSpots.ToString) > 0) Then
+
+                            For Each DataColumn In DataColumns
+
+                                ActiveColumn = DataColumns.IndexOf(DataColumn) + 1
+                                Cell = Worksheet.Cells(ActiveRow, ActiveColumn)
+
+                                Style = Cell.GetStyle
+
+                                If Not IsDBNull(VendorRow(DataColumn.ColumnName)) Then
+
+                                    If DataColumn.DataType = GetType(Boolean) Then
+
+                                        Dim CheckboxIndex = Worksheet.CheckBoxes.Add(Cell.Row, Cell.Column, 15, 20)
+
+                                        With Worksheet.CheckBoxes(CheckboxIndex)
+
+                                            .Text = ""
+                                            .IsLocked = True
+                                            .Value = CBool(VendorRow(DataColumn.ColumnName))
+
+                                        End With
+
+                                    ElseIf DataColumn.ColumnName = MarketDetailsColumns.LineNumber.ToString Then
+
+                                        Cell.Value = Report_PadStringValue(VendorRow(DataColumn.ColumnName), "0", 4, True)
+
+                                    ElseIf DataColumn.ColumnName = MarketDetailsColumns.RevisionNumber.ToString Then
+
+                                        Cell.Value = Report_PadStringValue(VendorRow(DataColumn.ColumnName), "0", 3, True)
+
+                                    ElseIf DataColumn.ColumnName = MarketDetailsColumns.PrimaryAQH.ToString OrElse
+                                   DataColumn.ColumnName = MarketDetailsColumns.SecondaryAQH.ToString OrElse
+                                   DataColumn.ColumnName = MarketDetailsColumns.PrimaryCume.ToString OrElse
+                                   DataColumn.ColumnName = MarketDetailsColumns.SecondaryCume.ToString Then
+
+                                        Cell.PutValue(VendorRow(DataColumn.ColumnName) / 100)
+
+                                    Else
+
+                                        Cell.PutValue(VendorRow(DataColumn.ColumnName))
+
+                                    End If
+
+                                End If
+
+                                With Style
+
+                                    .Font.Size = 8
+
+                                    If DataColumn.ExtendedProperties.ContainsKey("Format") Then
+
+                                        .Custom = DataColumn.ExtendedProperties("Format")
+
+                                    End If
+
+                                End With
+
+                                Cell.SetStyle(Style)
+
+
+                            Next
+
+                            ActiveRow += 1
+
+                        End If
+
+                    Next
+
+                    MergeColumnStart = 0
+
+                    ' Vendor Summary Row
                     For Each DataColumn In DataColumns
 
                         ActiveColumn = DataColumns.IndexOf(DataColumn) + 1
                         Cell = Worksheet.Cells(ActiveRow, ActiveColumn)
 
-                        Style = Cell.GetStyle
+                        If DataColumn.ExtendedProperties.ContainsKey("Summary") AndAlso DataColumn.ExtendedProperties("Summary") = True Then
 
-                        If Not IsDBNull(VendorRow(DataColumn.ColumnName)) Then
+                            If DataColumn.ColumnName = MarketDetailsColumns.PrimaryCPP.ToString Then
 
-                            If DataColumn.DataType = GetType(Boolean) Then
+                                Cell.PutValue(Controller.MarketDetails_CalculateCPPGroupTotal(ViewModel, VendorCode, True))
 
-                                Dim CheckboxIndex = Worksheet.CheckBoxes.Add(Cell.Row, Cell.Column, 15, 20)
+                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.SecondaryCPP.ToString Then
 
-                                With Worksheet.CheckBoxes(CheckboxIndex)
+                                Cell.PutValue(Controller.MarketDetails_CalculateCPPGroupTotal(ViewModel, VendorCode, False))
 
-                                    .Text = ""
-                                    .IsLocked = True
-                                    .Value = CBool(VendorRow(DataColumn.ColumnName))
+                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.PrimaryGrossImpressions.ToString Then
 
-                                End With
+                                Cell.PutValue(Controller.MarketDetails_CalculateGrossImpressionsTotal(ViewModel, VendorCode, True))
 
-                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.LineNumber.ToString Then
+                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.SecondaryGrossImpressions.ToString Then
 
-                                Cell.Value = Report_PadStringValue(VendorRow(DataColumn.ColumnName), "0", 4, True)
+                                Cell.PutValue(Controller.MarketDetails_CalculateGrossImpressionsTotal(ViewModel, VendorCode, False))
 
-                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.RevisionNumber.ToString Then
+                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.PrimaryReach.ToString Then
 
-                                Cell.Value = Report_PadStringValue(VendorRow(DataColumn.ColumnName), "0", 3, True)
+                                Cell.PutValue(Controller.MarketDetails_CalculateReachTotal(ViewModel, VendorCode, True, String.Empty))
 
-                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.PrimaryAQH.ToString OrElse
-                                   DataColumn.ColumnName = MarketDetailsColumns.SecondaryAQH.ToString OrElse
-                                   DataColumn.ColumnName = MarketDetailsColumns.PrimaryCume.ToString OrElse
-                                   DataColumn.ColumnName = MarketDetailsColumns.SecondaryCume.ToString Then
+                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.SecondaryReach.ToString Then
 
-                                Cell.PutValue(VendorRow(DataColumn.ColumnName) / 100)
+                                Cell.PutValue(Controller.MarketDetails_CalculateReachTotal(ViewModel, VendorCode, False, String.Empty))
+
+                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.PrimaryFrequency.ToString Then
+
+                                Cell.PutValue(Controller.MarketDetails_CalculateFrequencyTotal(ViewModel, VendorCode, True, String.Empty))
+
+                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.SecondaryFrequency.ToString Then
+
+                                Cell.PutValue(Controller.MarketDetails_CalculateFrequencyTotal(ViewModel, VendorCode, False, String.Empty))
+
+                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.PrimaryCPM.ToString Then
+
+                                Cell.PutValue(Controller.MarketDetails_CalculateCPMTotal(ViewModel, VendorCode, True))
+
+                            ElseIf DataColumn.ColumnName = MarketDetailsColumns.SecondaryCPM.ToString Then
+
+                                Cell.PutValue(Controller.MarketDetails_CalculateCPMTotal(ViewModel, VendorCode, False))
 
                             Else
 
-                                Cell.PutValue(VendorRow(DataColumn.ColumnName))
+                                Cell.PutValue(0)
+
+                                For Each VendorDataRow In VendorDataRows.Where(Function(dr) Not IsDBNull(dr(DataColumn.ColumnName))).ToList
+
+                                    Cell.PutValue(Convert.ChangeType(Cell.Value + Convert.ChangeType(VendorDataRow(DataColumn.ColumnName), DataColumn.DataType), DataColumn.DataType))
+
+                                Next
 
                             End If
 
+                            If MergeColumnStart > 0 Then
+
+                                Worksheet.Cells.Merge(ActiveRow, MergeColumnStart, 1, (ActiveColumn - MergeColumnStart))
+                                MergeColumnStart = 0
+
+                            End If
+
+                        ElseIf MergeColumnStart = 0 Then
+
+                            MergeColumnStart = ActiveColumn
+
                         End If
+
+                        Style = Cell.GetStyle
 
                         With Style
 
                             .Font.Size = 8
+                            .Pattern = Aspose.Cells.BackgroundType.Solid
+                            .ForegroundColor = Drawing.Color.FromArgb(211, 211, 211)
+
+                            If ActiveColumn = 1 Then
+
+                                .HorizontalAlignment = Aspose.Cells.TextAlignmentType.Right
+                                Cell.Value = "Station Totals:"
+
+                            End If
 
                             If DataColumn.ExtendedProperties.ContainsKey("Format") Then
 
@@ -37555,116 +38660,11 @@
 
                         Cell.SetStyle(Style)
 
-
                     Next
 
                     ActiveRow += 1
 
-                Next
-
-                MergeColumnStart = 0
-
-                ' Vendor Summary Row
-                For Each DataColumn In DataColumns
-
-                    ActiveColumn = DataColumns.IndexOf(DataColumn) + 1
-                    Cell = Worksheet.Cells(ActiveRow, ActiveColumn)
-
-                    If DataColumn.ExtendedProperties.ContainsKey("Summary") AndAlso DataColumn.ExtendedProperties("Summary") = True Then
-
-                        If DataColumn.ColumnName = MarketDetailsColumns.PrimaryCPP.ToString Then
-
-                            Cell.PutValue(Controller.MarketDetails_CalculateCPPGroupTotal(ViewModel, VendorCode, True))
-
-                        ElseIf DataColumn.ColumnName = MarketDetailsColumns.SecondaryCPP.ToString Then
-
-                            Cell.PutValue(Controller.MarketDetails_CalculateCPPGroupTotal(ViewModel, VendorCode, False))
-
-                        ElseIf DataColumn.ColumnName = MarketDetailsColumns.PrimaryGrossImpressions.ToString Then
-
-                            Cell.PutValue(Controller.MarketDetails_CalculateGrossImpressionsTotal(ViewModel, VendorCode, True))
-
-                        ElseIf DataColumn.ColumnName = MarketDetailsColumns.SecondaryGrossImpressions.ToString Then
-
-                            Cell.PutValue(Controller.MarketDetails_CalculateGrossImpressionsTotal(ViewModel, VendorCode, False))
-
-                        ElseIf DataColumn.ColumnName = MarketDetailsColumns.PrimaryReach.ToString Then
-
-                            Cell.PutValue(Controller.MarketDetails_CalculateReachTotal(ViewModel, VendorCode, True, String.Empty))
-
-                        ElseIf DataColumn.ColumnName = MarketDetailsColumns.SecondaryReach.ToString Then
-
-                            Cell.PutValue(Controller.MarketDetails_CalculateReachTotal(ViewModel, VendorCode, False, String.Empty))
-
-                        ElseIf DataColumn.ColumnName = MarketDetailsColumns.PrimaryFrequency.ToString Then
-
-                            Cell.PutValue(Controller.MarketDetails_CalculateFrequencyTotal(ViewModel, VendorCode, True, String.Empty))
-
-                        ElseIf DataColumn.ColumnName = MarketDetailsColumns.SecondaryFrequency.ToString Then
-
-                            Cell.PutValue(Controller.MarketDetails_CalculateFrequencyTotal(ViewModel, VendorCode, False, String.Empty))
-
-                        ElseIf DataColumn.ColumnName = MarketDetailsColumns.PrimaryCPM.ToString Then
-
-                            Cell.PutValue(Controller.MarketDetails_CalculateCPMTotal(ViewModel, VendorCode, True))
-
-                        ElseIf DataColumn.ColumnName = MarketDetailsColumns.SecondaryCPM.ToString Then
-
-                            Cell.PutValue(Controller.MarketDetails_CalculateCPMTotal(ViewModel, VendorCode, False))
-
-                        Else
-
-                            Cell.PutValue(0)
-
-                            For Each VendorDataRow In VendorDataRows.Where(Function(dr) Not IsDBNull(dr(DataColumn.ColumnName))).ToList
-
-                                Cell.PutValue(Convert.ChangeType(Cell.Value + Convert.ChangeType(VendorDataRow(DataColumn.ColumnName), DataColumn.DataType), DataColumn.DataType))
-
-                            Next
-
-                        End If
-
-                        If MergeColumnStart > 0 Then
-
-                            Worksheet.Cells.Merge(ActiveRow, MergeColumnStart, 1, (ActiveColumn - MergeColumnStart))
-                            MergeColumnStart = 0
-
-                        End If
-
-                    ElseIf MergeColumnStart = 0 Then
-
-                        MergeColumnStart = ActiveColumn
-
-                    End If
-
-                    Style = Cell.GetStyle
-
-                    With Style
-
-                        .Font.Size = 8
-                        .Pattern = Aspose.Cells.BackgroundType.Solid
-                        .ForegroundColor = Drawing.Color.FromArgb(211, 211, 211)
-
-                        If ActiveColumn = 1 Then
-
-                            .HorizontalAlignment = Aspose.Cells.TextAlignmentType.Right
-                            Cell.Value = "Station Totals:"
-
-                        End If
-
-                        If DataColumn.ExtendedProperties.ContainsKey("Format") Then
-
-                            .Custom = DataColumn.ExtendedProperties("Format")
-
-                        End If
-
-                    End With
-
-                    Cell.SetStyle(Style)
-
-                Next
-
-                ActiveRow += 1
+                End If
 
             Next
 
@@ -38211,7 +39211,7 @@
 
                 ViewModel.FindBuyerEmployeeCode = FindBuyerEmployeeCode
 
-                ViewModel.MediaBuyerEmployeeCodes = AdvantageFramework.Database.Procedures.MediaBuyer.LoadAllActive(DbContext).Include("Employee").ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.BuyerEmployee(Entity)).ToList
+                ViewModel.MediaBuyerEmployeeCodes = AdvantageFramework.Database.Procedures.MediaBuyer.Load(DbContext).Include("Employee").ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.BuyerEmployee(Entity)).ToList
 
                 MissingBuyers = DbContext.Database.SqlQuery(Of String)(String.Format("select DISTINCT BUYER_EMP_CODE from dbo.MEDIA_BROADCAST_WORKSHEET_MARKET WHERE BUYER_EMP_CODE Not IN (select EMP_CODE from dbo.MEDIA_BUYER)")).ToArray
 
@@ -38403,6 +39403,191 @@
             End Try
 
             ETAMExport_Export = Exported
+
+        End Function
+
+#End Region
+
+#Region " Market Books Edit "
+
+        Public Function MarketBooksEdit_Load(MediaBroadcastWorksheetID As Integer, MediaBroadcastWorksheetMarketID As Integer, WorksheetMarket As AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket) As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketEditViewModel
+
+            'objects
+            Dim MediaBroadcastWorksheetMarketEditViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketEditViewModel = Nothing
+
+            MediaBroadcastWorksheetMarketEditViewModel = MarketEdit_Load(MediaBroadcastWorksheetID)
+
+            MediaBroadcastWorksheetMarketEditViewModel.WorksheetMarkets.Clear()
+            MediaBroadcastWorksheetMarketEditViewModel.WorksheetMarkets.Add(WorksheetMarket)
+
+            MarketBooksEdit_Load = MediaBroadcastWorksheetMarketEditViewModel
+
+        End Function
+
+#End Region
+
+#Region " Arianna Export "
+
+        Public Function AriannaExport_GexExportFolder() As String
+
+            Dim UserSetting As AdvantageFramework.Security.Database.Entities.UserSetting = Nothing
+            Dim Folder As String = Nothing
+
+            Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                UserSetting = AdvantageFramework.Security.Database.Procedures.UserSetting.LoadByUserIDAndSettingCode(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.PuertoRicoAriannaFolder.ToString)
+
+                If UserSetting IsNot Nothing Then
+
+                    Folder = UserSetting.StringValue
+
+                End If
+
+            End Using
+
+            AriannaExport_GexExportFolder = Folder
+
+        End Function
+        Public Function AriannaExport_Export(WorksheetMarketID As Integer, OutputFolder As String, ByRef OutputFilename As String) As Boolean
+
+            Dim Exported As Boolean = False
+            Dim UserSetting As AdvantageFramework.Security.Database.Entities.UserSetting = Nothing
+            Dim MediaBroadcastWorksheetMarketDetailDates As Generic.List(Of AdvantageFramework.Database.Entities.MediaBroadcastWorksheetMarketDetailDate) = Nothing
+            Dim NPRStations As Generic.List(Of AdvantageFramework.Database.Entities.NPRStation) = Nothing
+            Dim NPRStation As AdvantageFramework.Database.Entities.NPRStation = Nothing
+            Dim StreamWriter As IO.StreamWriter = Nothing
+            Dim SpotCounter As Integer = 1
+            Dim OutputDate As Date = Nothing
+
+            Try
+
+                Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                    UserSetting = AdvantageFramework.Security.Database.Procedures.UserSetting.LoadByUserIDAndSettingCode(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.PuertoRicoAriannaFolder.ToString)
+
+                    If UserSetting IsNot Nothing AndAlso UserSetting.StringValue <> OutputFolder Then
+
+                        UserSetting.StringValue = OutputFolder
+
+                        AdvantageFramework.Security.Database.Procedures.UserSetting.Update(SecurityDbContext, UserSetting)
+
+                    ElseIf UserSetting Is Nothing Then
+
+                        AdvantageFramework.Security.Database.Procedures.UserSetting.Insert(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.PuertoRicoAriannaFolder.ToString, OutputFolder, Nothing, Nothing, UserSetting)
+
+                    End If
+
+                End Using
+
+                Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+                    NPRStations = (From Entity In DbContext.GetQuery(Of Database.Entities.NPRStation)
+                                   Where Entity.AriannaChannelID IsNot Nothing
+                                   Select Entity).ToList
+
+                    MediaBroadcastWorksheetMarketDetailDates = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.LoadByMediaBroadcastWorksheetMarketID(DbContext, WorksheetMarketID).Include("MediaBroadcastWorksheetMarketDetail.Vendor")
+                                                                Where Entity.MediaBroadcastWorksheetMarketDetail.Vendor.NPRStationID.HasValue AndAlso
+                                                                      Entity.Spots <> 0
+                                                                Select Entity).ToList
+
+                    If MediaBroadcastWorksheetMarketDetailDates IsNot Nothing AndAlso MediaBroadcastWorksheetMarketDetailDates.Count > 0 Then
+
+                        OutputFilename = MediaBroadcastWorksheetMarketDetailDates.First.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarket.MediaBroadcastWorksheet.Name & "_" &
+                                MediaBroadcastWorksheetMarketDetailDates.First.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarket.ID & ".sch"
+
+                        OutputFilename = System.IO.Path.Combine(OutputFolder, OutputFilename)
+
+                        StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(System.IO.Path.Combine(OutputFolder, OutputFilename), False)
+                        StreamWriter.WriteLine("<START>")
+                        StreamWriter.WriteLine("<TYPE>Type;")
+                        StreamWriter.WriteLine("<VER>Version;")
+                        StreamWriter.WriteLine("<AGENCY>DLC;")
+                        StreamWriter.WriteLine("<CLIENT>" & MediaBroadcastWorksheetMarketDetailDates.First.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarket.MediaBroadcastWorksheet.Client.Name & ";")
+                        StreamWriter.WriteLine("<SCHED>Schedule")
+
+                        If MediaBroadcastWorksheetMarketDetailDates.First.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarket.MediaBroadcastWorksheet.Campaign IsNot Nothing Then
+
+                            StreamWriter.WriteLine("<DESC>" & MediaBroadcastWorksheetMarketDetailDates.First.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarket.MediaBroadcastWorksheet.Campaign.Name & "-" &
+                                                   MediaBroadcastWorksheetMarketDetailDates.First.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarket.MediaBroadcastWorksheet.Product.Name & ";")
+
+                        Else
+
+                            StreamWriter.WriteLine("<DESC>" & MediaBroadcastWorksheetMarketDetailDates.First.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarket.MediaBroadcastWorksheet.Product.Name & ";")
+
+                        End If
+
+                        StreamWriter.WriteLine("<MARKETS>" & MediaBroadcastWorksheetMarketDetailDates.First.MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarket.Market.Description & ";")
+                        StreamWriter.WriteLine("<DATA>")
+                        StreamWriter.WriteLine("<CUMES>")
+                        StreamWriter.WriteLine("<DEMOS>")
+                        StreamWriter.WriteLine("<O/NIGHT>")
+                        StreamWriter.WriteLine("<SUMMARY-ONLY>")
+
+                        StreamWriter.WriteLine("<SPOTS>" & MediaBroadcastWorksheetMarketDetailDates.Sum(Function(DD) DD.Spots).ToString & ";")
+
+                        For Each MediaBroadcastWorksheetMarketDetailDate In MediaBroadcastWorksheetMarketDetailDates
+
+                            If NPRStations.Any(Function(S) S.ID = MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.Vendor.NPRStationID.Value) Then
+
+                                NPRStation = NPRStations.Where(Function(S) S.ID = MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.Vendor.NPRStationID.Value).First
+
+                                For OutputRow As Integer = 1 To MediaBroadcastWorksheetMarketDetailDate.Spots
+
+                                    If MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.Monday Then
+
+                                        OutputDate = MediaBroadcastWorksheetMarketDetailDate.Date
+
+                                    ElseIf MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.Tuesday Then
+
+                                        OutputDate = MediaBroadcastWorksheetMarketDetailDate.Date.AddDays(1)
+
+                                    ElseIf MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.Wednesday Then
+
+                                        OutputDate = MediaBroadcastWorksheetMarketDetailDate.Date.AddDays(2)
+
+                                    ElseIf MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.Thursday Then
+
+                                        OutputDate = MediaBroadcastWorksheetMarketDetailDate.Date.AddDays(3)
+
+                                    ElseIf MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.Friday Then
+
+                                        OutputDate = MediaBroadcastWorksheetMarketDetailDate.Date.AddDays(4)
+
+                                    ElseIf MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.Saturday Then
+
+                                        OutputDate = MediaBroadcastWorksheetMarketDetailDate.Date.AddDays(5)
+
+                                    ElseIf MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.Sunday Then
+
+                                        OutputDate = MediaBroadcastWorksheetMarketDetailDate.Date.AddDays(6)
+
+                                    End If
+
+                                    StreamWriter.WriteLine(SpotCounter & ";" & OutputDate.ToString("yyyyMMdd") & ";" & MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.StartHour.ToString.PadLeft(4, "0") & ";" &
+                                                           NPRStation.AriannaChannelID.Value & ";" & MediaBroadcastWorksheetMarketDetailDate.MediaBroadcastWorksheetMarketDetail.Program & ";" & MediaBroadcastWorksheetMarketDetailDate.Rate.ToString & ";")
+
+                                    SpotCounter += 1
+
+                                Next
+
+                            End If
+
+                        Next
+
+                        StreamWriter.WriteLine("<END>")
+                        StreamWriter.Close()
+
+                        Exported = True
+
+                    End If
+
+                End Using
+
+            Catch ex As Exception
+
+            End Try
+
+            AriannaExport_Export = Exported
 
         End Function
 

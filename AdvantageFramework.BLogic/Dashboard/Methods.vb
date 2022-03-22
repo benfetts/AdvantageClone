@@ -235,7 +235,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = 0
 
                     SqlCommand = New SqlClient.SqlCommand("usp_wv_get_Financial_data_dt", SqlConnection)
@@ -334,7 +334,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     List = DbContext.Database.SqlQuery(Of AdvantageFramework.Dashboard.Classes.FinancialDashboardMonthData)("exec dbo.usp_wv_get_Financial_data @startPP, @endPP, @Office, @USER_ID, @Option", SqlParameterStartPP, SqlParameterEndPP, SqlParameterOffice, SqlParameterUserID, SqlParameterOption).ToList
@@ -397,7 +397,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     List = DbContext.Database.SqlQuery(Of AdvantageFramework.Dashboard.Classes.FinancialDashboardMonthChartData)("exec dbo.usp_wv_get_Financial_data @startPP, @endPP, @Office, @USER_ID, @Option", SqlParameterStartPP, SqlParameterEndPP, SqlParameterOffice, SqlParameterUserID, SqlParameterOption).ToList
@@ -459,7 +459,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     List = DbContext.Database.SqlQuery(Of AdvantageFramework.Dashboard.Classes.FinancialDashboardMonthChartGridData)("exec dbo.usp_wv_get_Financial_data @startPP, @endPP, @Office, @USER_ID, @Option", SqlParameterStartPP, SqlParameterEndPP, SqlParameterOffice, SqlParameterUserID, SqlParameterOption).ToList
@@ -522,7 +522,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     List = DbContext.Database.SqlQuery(Of AdvantageFramework.Dashboard.Classes.FinancialDashboardYTDChartData)("exec dbo.usp_wv_get_Financial_data @startPP, @endPP, @Office, @USER_ID, @Option", SqlParameterStartPP, SqlParameterEndPP, SqlParameterOffice, SqlParameterUserID, SqlParameterOption).ToList
@@ -584,7 +584,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     List = DbContext.Database.SqlQuery(Of AdvantageFramework.Dashboard.Classes.FinancialDashboardYTDChartGridData)("exec dbo.usp_wv_get_Financial_data @startPP, @endPP, @Office, @USER_ID, @Option", SqlParameterStartPP, SqlParameterEndPP, SqlParameterOffice, SqlParameterUserID, SqlParameterOption).ToList
@@ -646,7 +646,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     List = DbContext.Database.SqlQuery(Of AdvantageFramework.Dashboard.Classes.FinancialDashboardClientChartData)("exec dbo.usp_wv_get_Financial_data @startPP, @endPP, @Office, @USER_ID, @Option", SqlParameterStartPP, SqlParameterEndPP, SqlParameterOffice, SqlParameterUserID, SqlParameterOption).ToList
@@ -718,7 +718,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     SqlCommand = New SqlClient.SqlCommand("usp_wv_get_Financial_data", SqlConnection)
@@ -817,7 +817,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     List = DbContext.Database.SqlQuery(Of AdvantageFramework.Dashboard.Classes.FinancialDashboardClientChartGridData)("exec dbo.usp_wv_get_Financial_data @startPP, @endPP, @Office, @USER_ID, @Option", SqlParameterStartPP, SqlParameterEndPP, SqlParameterOffice, SqlParameterUserID, SqlParameterOption).ToList
@@ -889,7 +889,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     SqlCommand = New SqlClient.SqlCommand("usp_wv_get_Financial_data", SqlConnection)
@@ -1231,7 +1231,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     List = DbContext.Database.SqlQuery(Of AdvantageFramework.Dashboard.Classes.FinancialDashboardNewBusinessGridData)("exec dbo.usp_wv_get_Financial_data @startPP, @endPP, @Office, @USER_ID, @Option", SqlParameterStartPP, SqlParameterEndPP, SqlParameterOffice, SqlParameterUserID, SqlParameterOption).ToList
@@ -1294,7 +1294,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = Filter.Page
 
                     List = DbContext.Database.SqlQuery(Of AdvantageFramework.Dashboard.Classes.FinancialDashboardGrowGridData)("exec dbo.usp_wv_get_Financial_data @startPP, @endPP, @Office, @USER_ID, @Option", SqlParameterStartPP, SqlParameterEndPP, SqlParameterOffice, SqlParameterUserID, SqlParameterOption).ToList
@@ -1363,7 +1363,7 @@ Namespace Dashboard
                     SqlParameterStartPP.Value = StartDate
                     SqlParameterEndPP.Value = EndDate
                     SqlParameterUserID.Value = DbContext.UserCode
-                    SqlParameterOffice.Value = ""
+                    SqlParameterOffice.Value = IIf(Filter.OfficeCode Is Nothing, "", Filter.OfficeCode)
                     SqlParameterOption.Value = 12
 
                     SqlCommand = New SqlClient.SqlCommand("usp_wv_get_Financial_data", SqlConnection)

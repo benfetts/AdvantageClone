@@ -161,6 +161,12 @@
             CRMAddEditViewNewBusinessClientsOnly
             <AdvantageFramework.Security.Attributes.SecuritySetting(SettingsValueType.StringValue, SettingsParseValueType.Default, "")>
             PuertoRicoETAMfolder
+            <AdvantageFramework.Security.Attributes.SecuritySetting(SettingsValueType.StringValue, SettingsParseValueType.Default, "")>
+            MediaManagerApproveInvoiceShowAll
+            <AdvantageFramework.Security.Attributes.SecuritySetting(SettingsValueType.StringValue, SettingsParseValueType.Default, "")>
+            MediaManagerApproveInvoiceShowWeeks
+            <AdvantageFramework.Security.Attributes.SecuritySetting(SettingsValueType.StringValue, SettingsParseValueType.Default, "")>
+            PuertoRicoAriannaFolder
         End Enum
 
         Public Enum SettingsValueType
@@ -252,6 +258,7 @@
             Desktop_ReportWriter_AdvancedReportWriterDataSets_BillingApprovalARWRPT
             Desktop_ReportWriter_AdvancedReportWriterDataSets_BillingWorksheetMediaARWRPT
             Desktop_ReportWriter_AdvancedReportWriterDataSets_BillingWorksheetProductionARWRPT
+            Desktop_ReportWriter_AdvancedReportWriterDataSets_BroadcastInvoiceDetailARWRPT
             Desktop_ReportWriter_AdvancedReportWriterDataSets_BroadcastInvoiceSummaryARWRPT
             Desktop_ReportWriter_AdvancedReportWriterDataSets_CampaignARWRPT
             Desktop_ReportWriter_AdvancedReportWriterDataSets_CampaignWithProductionAndMediaARWRPT
@@ -340,6 +347,7 @@
             Desktop_ReportWriter_DynamicReportDataSets_BillingApprovalDRPT
             Desktop_ReportWriter_DynamicReportDataSets_BillingWorksheetMediaDRPT
             Desktop_ReportWriter_DynamicReportDataSets_BillingWorksheetProductionDRPT
+            Desktop_ReportWriter_DynamicReportDataSets_BroadcastInvoiceDetailDRPT
             Desktop_ReportWriter_DynamicReportDataSets_BroadcastInvoiceSummaryDRPT
             Desktop_ReportWriter_DynamicReportDataSets_CampaignDRPT
             Desktop_ReportWriter_DynamicReportDataSets_CampaignWithProductionAndMediaDRPT
@@ -561,6 +569,7 @@
             GeneralLedger_Reports_DetailbyAcctCodeRptRTP
             GeneralLedger_Reports_DetailbyTransRptRTP
             GeneralLedger_Reports_FY12PeriodSpreadRTP
+            GeneralLedger_Reports_CrossOfficeReports
             GeneralLedger_ReportWriter
             GeneralLedger_ReportWriter_GLReportWriter
             GeneralLedger_ReportWriter_ReportingAcctGroup
@@ -731,6 +740,7 @@
             Media_BroadcastRec
             Media_BroadcastRecDelete
             Media_BroadcastResearchTool
+            Media_ComscorePrecache
             Media_ComscoreTester
             Media_COREConnect
             Media_DigitalCampaignManager
@@ -774,6 +784,7 @@
             Media_OrdersGlobalEdit
             Media_OutofHomeOrders
             Media_Reports
+            Media_Reports_BroadcastInvoiceRPT
             Media_Reports_MediaCurrentStatusRTP
             Media_Reports_MediaSpecificationRPT
             Media_Reports_MediaOrderFormsRTP

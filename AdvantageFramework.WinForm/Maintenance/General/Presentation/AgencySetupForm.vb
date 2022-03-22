@@ -905,7 +905,7 @@
 
                     Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, AdvantageFramework.Agency.Settings.MEDIATRAFFIC_STARTDT.ToString)
 
-                    If Setting IsNot Nothing Then
+                    If Setting IsNot Nothing AndAlso Setting.Value IsNot Nothing Then
 
                         DateTimePickerSettings_MediaTrafficStartDate.ValueObject = AdvantageFramework.DateUtilities.ConvertStringToShortDateString(Setting.Value)
 

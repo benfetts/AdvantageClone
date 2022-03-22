@@ -509,10 +509,13 @@
 
                                 Me.OpenWindow("Employee Utilization", String.Format("Reporting_InitialLoadingEmployeeUtilization.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, True, True)
 
-                            ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegister _
-                                Or Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+                            ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegister Then
 
                                 Me.OpenWindow("Check Register Criteria", String.Format("Reporting_InitialLoadingCheckRegister.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, True, True)
+
+                            ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+
+                                Me.OpenWindow("Check Register with Invoice Detail Criteria", String.Format("Reporting_InitialLoadingCheckRegister.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, True, True)
 
                             ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.EmployeeInOutBoard Then
 
@@ -574,6 +577,10 @@
 
                                 Me.OpenWindow("Month End Report Criteria", String.Format("Reporting_InitialLoadingMonthEndMediaWIP.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, True, True)
 
+                            ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.MonthEndProductionWIP Then
+
+                                Me.OpenWindow("Month End Report Criteria", String.Format("Reporting_InitialLoadingMonthEndProductionWIP.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, True, True)
+
                             ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.ProjectScheduleTasksByEmployee Then
 
                                 Me.OpenWindow("Job Project Schedule Tasks by Employee Inital Criteria", String.Format("Reporting_InitialLoadingJobProjectScheduleSummary.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 700, True, True)
@@ -610,6 +617,14 @@
                             ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.EmployeeTimeAnalysis Then
 
                                 Me.OpenWindow("Employee Time Analysis Inital Criteria", String.Format("Reporting_InitialLoadingEmployeeTimeAnalysis.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 700, True, True)
+
+                            ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+                                Me.OpenWindow("Employee Time Analysis Inital Criteria", String.Format("Reporting_InitialLoadingDeferredSalesVsOpenAR.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 700, True, True)
+
+                            ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.GLCrossOffice Then
+
+                                Me.OpenWindow("GL Cross Office Inital Criteria", String.Format("Reporting_InitialLoadingGLCrossOffice.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 700, True, True)
 
                             Else
 
@@ -833,10 +848,13 @@
 
                     Me.OpenWindow("Employee Utilization", String.Format("Reporting_InitialLoadingEmployeeUtilization.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, True, True)
 
-                ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegister _
-                    Or Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+                ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegister Then
 
                     Me.OpenWindow("Check Register Criteria", String.Format("Reporting_InitialLoadingCheckRegister.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, True, True)
+
+                ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CheckRegisterWithInvoiceDetails Then
+
+                    Me.OpenWindow("Check Register with Invoice Detail Criteria", String.Format("Reporting_InitialLoadingCheckRegister.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, True, True)
 
                 ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.EmployeeInOutBoard Then
 
@@ -902,6 +920,10 @@
 
                     Me.OpenWindow("Month End Report Criteria", String.Format("Reporting_InitialLoadingMonthEndMediaWIP.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, True, True)
 
+                ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.MonthEndProductionWIP Then
+
+                    Me.OpenWindow("Month End Report Criteria", String.Format("Reporting_InitialLoadingMonthEndProductionWIP.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, True, True)
+
                 ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.EmployeeHoursAllocation Then
 
                     Me.OpenWindow("Employee Hours Allocation Criteria", String.Format("Reporting_InitialLoadingEmployeeHoursAllocation.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, True, True)
@@ -934,6 +956,14 @@
                 ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.EmployeeTimeAnalysis Then
 
                     Me.OpenWindow("Employee Time Analysis Criteria", String.Format("Reporting_InitialLoadingEmployeeTimeAnalysis.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, True, True)
+
+                ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DeferredSalesVsOpenAR Then
+
+                    Me.OpenWindow("Employee Time Analysis Criteria", String.Format("Reporting_InitialLoadingDeferredSalesVsOpenAR.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, True, True)
+
+                ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.GLCrossOffice Then
+
+                    Me.OpenWindow("GL Cross Office Criteria", String.Format("Reporting_InitialLoadingGLCrossOffice.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 875, True, True)
 
                 Else
 

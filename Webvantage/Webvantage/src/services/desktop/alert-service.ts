@@ -26,7 +26,7 @@ export class AlertService extends ServiceBase {
         return this.http.post("EmailExternalReviewers", { AlertID: alertID, ProofingExternalReviewerID: proofingExternalReviewerID });
     }
     saveExternalReviewer(alertID: number, reviewerName: string, reviewerEmail: string) {
-        return this.http.post("SaveExternalReviewer", {AlertID: alertID, Name: reviewerName, Email: reviewerEmail});
+        return this.http.post("SaveExternalReviewer", { AlertID: alertID, Name: reviewerName, Email: reviewerEmail });
     }
     getAssignmentTemplate(alertTemplateID: number) {
         if (alertTemplateID) {
@@ -79,7 +79,7 @@ export class AlertService extends ServiceBase {
     zeroOutEmployeeHours(alertID: number, employeeCode: string) {
         return this.http.post('ZeroOutEmployeeHours', { AlertID: alertID, EmployeeCode: employeeCode });
     }
-    updateRecipientHours(alertID: number, hoursAllowed: number,jobHours: number) {
+    updateRecipientHours(alertID: number, hoursAllowed: number, jobHours: number) {
         return this.http.post('UpdateRecipientHours', {
             AlertID: alertID,
             HoursAllowed: hoursAllowed,
@@ -136,7 +136,7 @@ export class AlertService extends ServiceBase {
         //if (alertID) {
         //    return this.http.get('GetReviewThumbnailString', { AlertID: alertID });
         //} else {
-            return null;
+        return null;
         //}
     }
     getReviewThumbnail(alertID: number) {
@@ -148,13 +148,14 @@ export class AlertService extends ServiceBase {
         }
     }
     initNewAssignment(callingPage: string) {
-        return this.http.get('InitNewAssignment', {CallingPage: callingPage}).then(response => {
+        return this.http.get('InitNewAssignment', { CallingPage: callingPage }).then(response => {
             var newAssignmentSetup: any = {
                 RepositoryLimitText: '',
                 AllowUpload: true,
                 DefaultSubject: '',
                 DefaultAssignment: false,
-                AllowProofHQ: false
+                AllowProofHQ: false,
+                DefaultRoutingForProofingAssignment: true
             };
             try {
                 if (response && response.content) {
@@ -163,6 +164,7 @@ export class AlertService extends ServiceBase {
                     newAssignmentSetup.DefaultSubject = response.content.DefaultSubject;
                     newAssignmentSetup.DefaultAssignment = response.content.DefaultAssignment;
                     newAssignmentSetup.AllowProofHQ = response.content.AllowProofHQ;
+                    newAssignmentSetup.DefaultRoutingForProofingAssignment = response.content.DefaultRoutingForProofingAssignment;
                 }
             } catch (e) {
                 //console.log("ERROR alert-service.ts initNewAssignment", e);
@@ -177,7 +179,7 @@ export class AlertService extends ServiceBase {
                     ExcludeTasks: false,
                     RepositoryLimitText: '',
                     AllowUpload: true,
-                    DefaultAssignment: false  
+                    DefaultAssignment: false
                 };
                 sprintSetup.ExcludeTasks = response.content.ExcludeTasks;
                 sprintSetup.RepositoryLimitText = response.content.RepositoryLimitText;
@@ -248,7 +250,7 @@ export class AlertService extends ServiceBase {
         if (alertID) {
             if (!sprintID || sprintID == undefined || sprintID == null) {
                 sprintID = 0;
-            } 
+            }
             return this.http.get('GetAlertView', { AlertID: alertID, SprintID: sprintID });
         }
     }
@@ -316,7 +318,7 @@ export class AlertService extends ServiceBase {
     getAlertTemplateStates(alertTemplateID: number) {
         if (alertTemplateID && alertTemplateID > 0) {
             return this.http.get("GetAlertTemplateStates", { AlertTemplateID: alertTemplateID });
-        } 
+        }
     };
     getAssignmentsGridDataSource(options?: kendo.data.DataSourceOptions): kendo.data.DataSource {
         //console.log("getAssignmentsGridDataSource::alert-service.ts::options::", options);
@@ -327,14 +329,14 @@ export class AlertService extends ServiceBase {
         return this.initKendoDataSource('GetAlertTemplateStateEmployees', options);
     }
     getAlertComments(alertID: number, documentID: number, hideSystemComments: boolean = null) {
-       //console.log("service.ts", hideSystemComments);
-       if (alertID && alertID > 0) {
-           return this.http.get("GetAlertComments", { AlertID: alertID, DocumentID: documentID, HideSystemComments: hideSystemComments });
-       }
+        //console.log("service.ts", hideSystemComments);
+        if (alertID && alertID > 0) {
+            return this.http.get("GetAlertComments", { AlertID: alertID, DocumentID: documentID, HideSystemComments: hideSystemComments });
+        }
     }
     getAlertChecklists(alertID: number) {
         if (alertID && alertID > 0) {
-           return this.http.get('GetAlertChecklists', { AlertID: alertID });
+            return this.http.get('GetAlertChecklists', { AlertID: alertID });
         }
     }
     getAlertStates() {
@@ -388,7 +390,7 @@ export class AlertService extends ServiceBase {
     jobIsNoTaskBoard(jobNumber: number, jobComponentNumber: number) {
         return this.http.get('JobIsNoTaskBoard', { JobNumber: jobNumber, JobComponentNumber: jobComponentNumber });
     }
-   //getBoardsForJob(jobNumber: number, jobComponentNumber: number) {
+    //getBoardsForJob(jobNumber: number, jobComponentNumber: number) {
     //    return this.http.get('GetBoardsForJob', { JobNumber: jobNumber, JobComponentNumber: jobComponentNumber });
     //}
     getBoardSprints(boardId: number) {
@@ -447,9 +449,9 @@ export class AlertService extends ServiceBase {
         //descMention: are the mentions being added to the database coming from the  
         //main alert/assign. description body?
         try {
-            if (alertID && alertID > 0) {            
+            if (alertID && alertID > 0) {
                 var data = {
-                    AlertID: alertID,                
+                    AlertID: alertID,
                     Mentions: mentions,
                     DescriptionMention: descMention
                 };
@@ -464,9 +466,9 @@ export class AlertService extends ServiceBase {
             return this.http.post('CreateAssignment', { Alert: alert, Notify: notify, UploadToRepository: uploadToRepository, UploadToProofHQ: uploadToProofHQ });
         }
     }
-    createAssignmentWithDateWorkaround(alert: AlertModel, startDate: string, dueDate: string, notify: boolean, uploadToRepository: boolean, uploadToProofHQ: boolean,Report: string, linksString: string) {
+    createAssignmentWithDateWorkaround(alert: AlertModel, startDate: string, dueDate: string, notify: boolean, uploadToRepository: boolean, uploadToProofHQ: boolean, Report: string, linksString: string) {
         if (alert) {
-            return this.http.post('CreateAssignmentWithDateWorkaround', { Alert: alert, StartDate: startDate, DueDate: dueDate, Notify: notify, UploadToRepository: uploadToRepository, UploadToProofHQ: uploadToProofHQ,Report:Report, LinksString: linksString });
+            return this.http.post('CreateAssignmentWithDateWorkaround', { Alert: alert, StartDate: startDate, DueDate: dueDate, Notify: notify, UploadToRepository: uploadToRepository, UploadToProofHQ: uploadToProofHQ, Report: Report, LinksString: linksString });
         }
     }
     uploadAttachmentToProofHQ(attachmentID: number) {
@@ -635,7 +637,7 @@ export class AlertService extends ServiceBase {
     }
     linkExistingDocuments(alert: AlertModel, documents: Array<number>) {
         if (alert) {
-           return this.http.post('LinkExistingDocuments', { Alert: alert, Documents: documents });
+            return this.http.post('LinkExistingDocuments', { Alert: alert, Documents: documents });
         }
     }
     saveWidgetLayout(widgetLayout: Array<string>) {
@@ -653,7 +655,7 @@ export class AlertService extends ServiceBase {
         return this.http.post('CreateChecklist', { AlertID: alertID, Checklist: checklist });
     }
     updateChecklistTitle(checklistID: number, title: string) {
-        return this.http.post('UpdateChecklistTitle', {ChecklistID: checklistID, Title: title})
+        return this.http.post('UpdateChecklistTitle', { ChecklistID: checklistID, Title: title })
     }
     createChecklistItem(checklistID: number, checklistItem: any) {
         var checklist = {
@@ -676,10 +678,10 @@ export class AlertService extends ServiceBase {
     feedbackSummaryLoad(projectID: number, reviewID: number) {
         if (!projectID || projectID == undefined || projectID == null) {
             projectID = 0;
-        } 
+        }
         if (!reviewID || reviewID == undefined || reviewID == null) {
             reviewID = 0;
-        } 
+        }
         //console.log("feedbackSummaryLoad", projectID, reviewID);
         return this.http.get('FeedbackSummaryLoad', { ProjectID: projectID, ReviewID: reviewID });
     }
@@ -698,7 +700,7 @@ export class AlertService extends ServiceBase {
         return this.http.get('GetJobVersionDefaults');
     }
 
-    GetAlertGroupMembers(alertGroup : string) {
+    GetAlertGroupMembers(alertGroup: string) {
         if (!alertGroup) { alertGroup = ""; }
         return this.http.get('GetAlertGroupMembers', { AlertGroup: alertGroup });
     }
@@ -713,5 +715,4 @@ export class AlertService extends ServiceBase {
             { value: 5, text: 'Lowest' }
         ];
     }
-
 }

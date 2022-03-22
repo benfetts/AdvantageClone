@@ -1,4 +1,6 @@
-﻿Namespace Reporting.Database.Classes
+﻿Option Strict On
+
+Namespace Reporting.Database.Classes
 
     <Serializable>
     Public Class BroadcastInvoiceSummary
@@ -76,6 +78,12 @@
         Public Property InvoiceGross As Nullable(Of Decimal)
         <AdvantageFramework.BaseClasses.Attributes.Entity(DisplayFormat:="n2")>
         Public Property InvoiceNet As Nullable(Of Decimal)
+        <AdvantageFramework.BaseClasses.Attributes.Entity(ShowColumnInGrid:=False)>
+        Public ReadOnly Property CDP As String
+            Get
+                CDP = Me.ClientCode & Me.DivisionCode & Me.ProductCode
+            End Get
+        End Property
 
 #End Region
 

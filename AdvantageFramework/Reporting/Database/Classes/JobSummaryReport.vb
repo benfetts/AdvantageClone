@@ -109,6 +109,7 @@
             JobProcessControlDate
             BlackplateVersion2Code
             BlackplateVersion2Desc
+            JobProcessControlChangedByUser
 
         End Enum
 
@@ -328,6 +329,9 @@
         <Column("JobProcessControlDate")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
         Public Property JobProcessControlDate() As Nullable(Of Date)
+        <Column("JobProcessControlChangedByUser")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property JobProcessControlChangedByUser() As String
         <Required>
         <MaxLength(60)>
         <Column("ComponentDescription", TypeName:="varchar")>

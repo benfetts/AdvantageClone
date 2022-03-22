@@ -107,6 +107,7 @@
             ClientAddress1
             ClientAddress2
             ClientCSZ
+            NewspaperCirculationQty
         End Enum
 
 #End Region
@@ -321,6 +322,8 @@
                 End If
             End Get
         End Property
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property NewspaperCirculationQty As Nullable(Of Integer)
 
 #End Region
 

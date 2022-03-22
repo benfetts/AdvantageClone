@@ -147,7 +147,7 @@
             Me.SearchableComboBoxForm_ReplaceBuyer.DisableMouseWheel = True
             Me.SearchableComboBoxForm_ReplaceBuyer.DisplayName = "Replace With Buyer"
             Me.SearchableComboBoxForm_ReplaceBuyer.EnterMoveNextControl = True
-            Me.SearchableComboBoxForm_ReplaceBuyer.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.[Nothing]
+            Me.SearchableComboBoxForm_ReplaceBuyer.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.Nothing
             Me.SearchableComboBoxForm_ReplaceBuyer.Location = New System.Drawing.Point(99, 38)
             Me.SearchableComboBoxForm_ReplaceBuyer.Name = "SearchableComboBoxForm_ReplaceBuyer"
             Me.SearchableComboBoxForm_ReplaceBuyer.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -157,7 +157,7 @@
             Me.SearchableComboBoxForm_ReplaceBuyer.Properties.ShowClearButton = False
             Me.SearchableComboBoxForm_ReplaceBuyer.Properties.ValueMember = "Code"
             Me.SearchableComboBoxForm_ReplaceBuyer.SecurityEnabled = True
-            Me.SearchableComboBoxForm_ReplaceBuyer.SelectedValue = Nothing
+            Me.SearchableComboBoxForm_ReplaceBuyer.SelectedValue = "Select Buyer"
             Me.SearchableComboBoxForm_ReplaceBuyer.Size = New System.Drawing.Size(348, 20)
             Me.SearchableComboBoxForm_ReplaceBuyer.TabIndex = 3
             '

@@ -754,34 +754,46 @@
         End Sub
         Public Sub WriteToEventLog(ByVal Message As String)
 
-            If _EventLog IsNot Nothing Then
+            Try
 
-                SyncLock _EventLog
+                If _EventLog IsNot Nothing Then
 
-                    _EventLog.WriteEntry(Message)
+                    SyncLock _EventLog
 
-                End SyncLock
+                        _EventLog.WriteEntry(Message)
 
-            End If
+                    End SyncLock
+
+                End If
+
+            Catch ex As Exception
+
+            End Try
 
         End Sub
         Public Sub ClearLog()
 
-            If _EventLog Is Nothing Then
+            Try
 
-                LoadLog(False)
+                If _EventLog Is Nothing Then
 
-            End If
+                    LoadLog(False)
 
-            If _EventLog IsNot Nothing Then
+                End If
 
-                SyncLock _EventLog
+                If _EventLog IsNot Nothing Then
 
-                    _EventLog.Clear()
+                    SyncLock _EventLog
 
-                End SyncLock
+                        _EventLog.Clear()
 
-            End If
+                    End SyncLock
+
+                End If
+
+            Catch ex As Exception
+
+            End Try
 
         End Sub
 

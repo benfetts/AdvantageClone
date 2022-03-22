@@ -1156,6 +1156,7 @@
                         If Me.GetCurrentColumnValue(AdvantageFramework.MediaManager.Classes.BroadcastOrder.Properties.NetGross.ToString) = 1 Then
 
                             BroadcastOrderYearMonth.TotalNet = _RadioOrderDetails.Where(Function(ST) ST.YearNumber = YearNumber AndAlso ST.MonthNumber = MonthNumber).Sum(Function(ST) ST.ExtendedGrossAmount) * _ExchangeRate
+                            BroadcastOrderYearMonth.TotalNetWhenGrossOrder = _RadioOrderDetails.Where(Function(ST) ST.YearNumber = YearNumber AndAlso ST.MonthNumber = MonthNumber).Sum(Function(ST) ST.ExtendedNetAmount) * _ExchangeRate
 
                         Else
 
@@ -1168,6 +1169,7 @@
                         If Me.GetCurrentColumnValue(AdvantageFramework.MediaManager.Classes.BroadcastOrder.Properties.NetGross.ToString) = 1 Then
 
                             BroadcastOrderYearMonth.TotalNet = _TVOrderDetails.Where(Function(ST) ST.YearNumber = YearNumber AndAlso ST.MonthNumber = MonthNumber).Sum(Function(ST) ST.ExtendedGrossAmount) * _ExchangeRate
+                            BroadcastOrderYearMonth.TotalNetWhenGrossOrder = _TVOrderDetails.Where(Function(ST) ST.YearNumber = YearNumber AndAlso ST.MonthNumber = MonthNumber).Sum(Function(ST) ST.ExtendedNetAmount) * _ExchangeRate
 
                         Else
 
@@ -1176,6 +1178,8 @@
                         End If
 
                     End If
+
+                    BroadcastOrderYearMonth.ShowTotalNetWhenGrossOrder = _MediaOrderPrintSetting.ShowTotalNetForGrossOrder
 
                 Next
 
@@ -1188,6 +1192,8 @@
                 BroadcastOrderYearMonth.MonthYear = "Total"
                 BroadcastOrderYearMonth.Spots = BroadcastOrderYearMonths.Sum(Function(Entity) Entity.Spots)
                 BroadcastOrderYearMonth.TotalNet = BroadcastOrderYearMonths.Sum(Function(Entity) Entity.TotalNet)
+                BroadcastOrderYearMonth.TotalNetWhenGrossOrder = BroadcastOrderYearMonths.Sum(Function(Entity) Entity.TotalNetWhenGrossOrder)
+                BroadcastOrderYearMonth.ShowTotalNetWhenGrossOrder = _MediaOrderPrintSetting.ShowTotalNetForGrossOrder
 
                 BroadcastOrderYearMonths.Add(BroadcastOrderYearMonth)
 
@@ -2008,6 +2014,15 @@
         Private Sub TableCellClient_CityStateZipValue_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles TableCellClient_CityStateZipValue.BeforePrint
 
             If _MediaOrderPrintSetting.IncludeClientAddress = False Then
+
+                e.Cancel = True
+
+            End If
+
+        End Sub
+        Private Sub GroupFooterLabelTotalNetWhenGross_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles GroupFooterLabelTotalNetWhenGross.BeforePrint
+
+            If _MediaOrderPrintSetting.ShowTotalNetForGrossOrder = False Then
 
                 e.Cancel = True
 

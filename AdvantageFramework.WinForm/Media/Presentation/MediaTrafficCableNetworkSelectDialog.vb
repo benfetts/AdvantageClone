@@ -16,7 +16,7 @@
 
 #Region " Variables "
 
-        Private _CableNetworkStationList As Generic.List(Of AdvantageFramework.Database.Entities.CableNetworkStation) = Nothing
+        Private _CableNetworkStationList As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation) = Nothing
         Private _SelectedCableNetworks As Generic.List(Of String) = Nothing
         Private _RequireSelection As Boolean = False
         Private _NewSelectedCableNetworks As String = Nothing
@@ -37,7 +37,7 @@
 
 #Region " Methods "
 
-        Private Sub New(CableNetworkStationList As Generic.List(Of AdvantageFramework.Database.Entities.CableNetworkStation), SelectedCableNetworks As String, RequireSelection As Boolean)
+        Private Sub New(CableNetworkStationList As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation), SelectedCableNetworks As String, RequireSelection As Boolean)
 
             ' This call is required by the designer.
             InitializeComponent()
@@ -76,7 +76,7 @@
 
 #Region "  Show Form Methods "
 
-        Public Shared Function ShowFormDialog(CableNetworkStationList As Generic.List(Of AdvantageFramework.Database.Entities.CableNetworkStation), SelectedCableNetworks As String, RequireSelection As Boolean,
+        Public Shared Function ShowFormDialog(CableNetworkStationList As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation), SelectedCableNetworks As String, RequireSelection As Boolean,
                                               ByRef NewSelectedCableNetworks As String) As System.Windows.Forms.DialogResult
 
             'objects

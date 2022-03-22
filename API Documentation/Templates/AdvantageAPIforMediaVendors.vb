@@ -65,27 +65,27 @@
         Private Sub SetPicutureBoxImage(ByVal PictureBox As DevExpress.XtraReports.UI.XRPictureBox, ByVal ImagePath As String)
 
             'objects
-            Dim Bitmap As Drawing.Bitmap = Nothing
-            Dim Height As Integer = Nothing
+            'Dim Bitmap As Drawing.Bitmap = Nothing
+            'Dim Height As Integer = Nothing
 
-            Bitmap = New Drawing.Bitmap(ImagePath)
+            'Bitmap = New Drawing.Bitmap(ImagePath)
 
-            If Bitmap.Width > PictureBox.SizeF.Width OrElse Bitmap.Height > 900 Then
+            'If Bitmap.Width > PictureBox.SizeF.Width OrElse Bitmap.Height > 900 Then
 
-                Height = CInt((Bitmap.Height * PictureBox.SizeF.Width) / Bitmap.Width)
-                Height = Math.Min(Height, 900)
-                PictureBox.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Squeeze
-                PictureBox.ImageAlignment = DevExpress.XtraPrinting.ImageAlignment.TopLeft
+            '    Height = CInt((Bitmap.Height * PictureBox.SizeF.Width) / Bitmap.Width)
+            '    Height = Math.Min(Height, 900)
+            '    PictureBox.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Squeeze
+            '    PictureBox.ImageAlignment = DevExpress.XtraPrinting.ImageAlignment.TopLeft
 
-            Else
+            'Else
 
-                Height = Bitmap.Height
-                PictureBox.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Normal
+            '    Height = Bitmap.Height
+            '    PictureBox.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Normal
 
-            End If
+            'End If
 
-            PictureBox.SizeF = New Drawing.SizeF(PictureBox.SizeF.Width, Height)
-            PictureBox.Image = Bitmap
+            'PictureBox.SizeF = New Drawing.SizeF(PictureBox.SizeF.Width, Height)
+            'PictureBox.Image = Bitmap
 
         End Sub
 

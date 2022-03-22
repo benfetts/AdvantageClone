@@ -942,40 +942,42 @@
         End Sub
         Private Sub ButtonItemActions_Export_Click(sender As Object, e As EventArgs) Handles ButtonItemActions_Export.Click
             'objects
-            Dim ProductionSummaryList As Generic.List(Of AdvantageFramework.BillingCommandCenter.Classes.ProductionSummary) = Nothing
-            Dim LayoutLoaded As Boolean = False
+            'Dim ProductionSummaryList As Generic.List(Of AdvantageFramework.BillingCommandCenter.Classes.ProductionSummary) = Nothing
+            'Dim LayoutLoaded As Boolean = False
 
-            ProductionSummaryList = DataGridViewForm_ProductionSummary.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.BillingCommandCenter.Classes.ProductionSummary)().ToList
+            'ProductionSummaryList = DataGridViewForm_ProductionSummary.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.BillingCommandCenter.Classes.ProductionSummary)().ToList
 
-            SaveGridLayout()
+            'SaveGridLayout()
 
-            LayoutLoaded = AdvantageFramework.WinForm.Presentation.Controls.LoadDataGridViewLayout(Session, DataGridViewForm_Export, Database.Entities.GridAdvantageType.BillingCommandCenterProductionReview)
+            'LayoutLoaded = AdvantageFramework.WinForm.Presentation.Controls.LoadDataGridViewLayout(Session, DataGridViewForm_Export, Database.Entities.GridAdvantageType.BillingCommandCenterProductionReview)
 
-            Try
+            'Try
 
-                DataGridViewForm_Export.DataSource = ProductionSummaryList
+            '    DataGridViewForm_Export.DataSource = ProductionSummaryList
 
-            Catch ex As Exception
+            'Catch ex As Exception
 
-            End Try
+            'End Try
 
-            If LayoutLoaded Then
+            'If LayoutLoaded Then
 
-                AdvantageFramework.WinForm.Presentation.Controls.SortGridViewBySortedColumns(DataGridViewForm_Export)
+            '    AdvantageFramework.WinForm.Presentation.Controls.SortGridViewBySortedColumns(DataGridViewForm_Export)
 
-            End If
+            'End If
 
-            AddFixedLeftColumns(DataGridViewForm_Export)
+            'AddFixedLeftColumns(DataGridViewForm_Export)
 
-            'https://www.devexpress.com/Support/Center/Question/Details/Q383062
-            DataGridViewForm_Export.CurrentView.ClearDocument()
-            DevExpress.Utils.Paint.XPaint.ForceGDIPlusPaint()
-            DataGridViewForm_Export.CurrentView.OptionsView.ColumnAutoWidth = False
-            DataGridViewForm_Export.CurrentView.BestFitColumns()
-            DataGridViewForm_Export.CurrentView.OptionsPrint.AutoWidth = False
-            DevExpress.Utils.Paint.XPaint.ForceAPIPaint()
+            ''https://www.devexpress.com/Support/Center/Question/Details/Q383062
+            'DataGridViewForm_Export.CurrentView.ClearDocument()
+            'DevExpress.Utils.Paint.XPaint.ForceGDIPlusPaint()
+            'DataGridViewForm_Export.CurrentView.OptionsView.ColumnAutoWidth = False
+            'DataGridViewForm_Export.CurrentView.BestFitColumns()
+            'DataGridViewForm_Export.CurrentView.OptionsPrint.AutoWidth = False
+            'DevExpress.Utils.Paint.XPaint.ForceAPIPaint()
 
-            DataGridViewForm_Export.Print(DefaultLookAndFeel.LookAndFeel, "Production Review", UseLandscape:=True)
+            'DataGridViewForm_Export.Print(DefaultLookAndFeel.LookAndFeel, "Production Review", UseLandscape:=True)
+
+            DataGridViewForm_ProductionSummary.Print(DefaultLookAndFeel.LookAndFeel, "Production Review", UseLandscape:=True)
 
         End Sub
         Private Sub ButtonItemActions_ManageCoop_Click(sender As Object, e As EventArgs) Handles ButtonItemActions_ManageCoop.Click

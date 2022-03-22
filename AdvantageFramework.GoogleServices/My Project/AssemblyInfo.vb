@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("AdvantageFramework.GoogleServices")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyTitle("AdvantageFramework.GoogleServices")>
+<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("AdvantageFramework.GoogleServices")>
 <Assembly: AssemblyCopyright("Copyright © Advantage Software 2018")>
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("6.70.08.01")>
-<Assembly: AssemblyFileVersion("6.70.08.01")>
+<Assembly: AssemblyVersion("6.70.08.02")>
+<Assembly: AssemblyFileVersion("6.70.08.02")>

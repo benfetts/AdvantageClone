@@ -25,7 +25,10 @@
             Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary3 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+            Dim XrSummary4 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+            Dim XrSummary5 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+            Me.LabelDetail_CDP = New DevExpress.XtraReports.UI.XRLabel()
             Me.XrLabel14 = New DevExpress.XtraReports.UI.XRLabel()
             Me.XrLabel13 = New DevExpress.XtraReports.UI.XRLabel()
             Me.XrLabel12 = New DevExpress.XtraReports.UI.XRLabel()
@@ -72,7 +75,11 @@
             Me.XrLabel18 = New DevExpress.XtraReports.UI.XRLabel()
             Me.NoTransactions = New DevExpress.XtraReports.UI.FormattingRule()
             Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-            Me.LabelDetail_CDP = New DevExpress.XtraReports.UI.XRLabel()
+            Me.XrLabel4 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
+            Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
             CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
             '
@@ -83,6 +90,19 @@
             Me.Detail.Name = "Detail"
             Me.Detail.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
             Me.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+            '
+            'LabelDetail_CDP
+            '
+            Me.LabelDetail_CDP.AnchorHorizontal = CType((DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left Or DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right), DevExpress.XtraReports.UI.HorizontalAnchorStyles)
+            Me.LabelDetail_CDP.CanGrow = False
+            Me.LabelDetail_CDP.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CDP")})
+            Me.LabelDetail_CDP.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelDetail_CDP.LocationFloat = New DevExpress.Utils.PointFloat(210.2455!, 14.99999!)
+            Me.LabelDetail_CDP.Name = "LabelDetail_CDP"
+            Me.LabelDetail_CDP.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+            Me.LabelDetail_CDP.ProcessNullValues = DevExpress.XtraReports.UI.ValueSuppressType.SuppressAndShrink
+            Me.LabelDetail_CDP.SizeF = New System.Drawing.SizeF(344.9998!, 15.0!)
+            Me.LabelDetail_CDP.StylePriority.UseFont = False
             '
             'XrLabel14
             '
@@ -470,11 +490,12 @@
             '
             Me.AccountGroupFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LineReportFooter_1})
             Me.AccountGroupFooter.FormattingRules.Add(Me.LastGroup)
-            Me.AccountGroupFooter.HeightF = 7.0!
+            Me.AccountGroupFooter.HeightF = 6.399155!
             Me.AccountGroupFooter.KeepTogether = True
             Me.AccountGroupFooter.Level = 2
             Me.AccountGroupFooter.Name = "AccountGroupFooter"
             Me.AccountGroupFooter.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+            Me.AccountGroupFooter.PrintAtBottom = True
             Me.AccountGroupFooter.StylePriority.UsePadding = False
             '
             'LineReportFooter_1
@@ -485,7 +506,7 @@
             Me.LineReportFooter_1.BorderWidth = 0!
             Me.LineReportFooter_1.ForeColor = System.Drawing.Color.Gray
             Me.LineReportFooter_1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dash
-            Me.LineReportFooter_1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0.9999864!)
+            Me.LineReportFooter_1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
             Me.LineReportFooter_1.Name = "LineReportFooter_1"
             Me.LineReportFooter_1.SizeF = New System.Drawing.SizeF(750.0!, 5.0!)
             Me.LineReportFooter_1.StylePriority.UseBorderColor = False
@@ -660,22 +681,86 @@
             '
             Me.BindingSource1.DataSource = GetType(AdvantageFramework.Reporting.Database.Classes.GeneralLedgerDetailByAccountReport)
             '
-            'LabelDetail_CDP
+            'XrLabel4
             '
-            Me.LabelDetail_CDP.AnchorHorizontal = CType((DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left Or DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right), DevExpress.XtraReports.UI.HorizontalAnchorStyles)
-            Me.LabelDetail_CDP.CanGrow = False
-            Me.LabelDetail_CDP.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CDP")})
-            Me.LabelDetail_CDP.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelDetail_CDP.LocationFloat = New DevExpress.Utils.PointFloat(210.2455!, 14.99999!)
-            Me.LabelDetail_CDP.Name = "LabelDetail_CDP"
-            Me.LabelDetail_CDP.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-            Me.LabelDetail_CDP.ProcessNullValues = DevExpress.XtraReports.UI.ValueSuppressType.SuppressAndShrink
-            Me.LabelDetail_CDP.SizeF = New System.Drawing.SizeF(344.9998!, 15.0!)
-            Me.LabelDetail_CDP.StylePriority.UseFont = False
+            Me.XrLabel4.AnchorHorizontal = DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right
+            Me.XrLabel4.Borders = DevExpress.XtraPrinting.BorderSide.None
+            Me.XrLabel4.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CreditAmount")})
+            Me.XrLabel4.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(652.1203!, 48.65459!)
+            Me.XrLabel4.Name = "XrLabel4"
+            Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+            Me.XrLabel4.SizeF = New System.Drawing.SizeF(97.8797!, 19.0!)
+            Me.XrLabel4.StylePriority.UseBorders = False
+            Me.XrLabel4.StylePriority.UseFont = False
+            Me.XrLabel4.StylePriority.UseTextAlignment = False
+            XrSummary4.FormatString = "{0:c}"
+            XrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.XrLabel4.Summary = XrSummary4
+            Me.XrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+            '
+            'ReportFooter
+            '
+            Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel3, Me.XrLabel5, Me.XrLine1, Me.XrLabel4})
+            Me.ReportFooter.HeightF = 77.65459!
+            Me.ReportFooter.Name = "ReportFooter"
+            '
+            'XrLabel3
+            '
+            Me.XrLabel3.AnchorHorizontal = DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right
+            Me.XrLabel3.BackColor = System.Drawing.Color.Transparent
+            Me.XrLabel3.BorderColor = System.Drawing.Color.Black
+            Me.XrLabel3.Borders = DevExpress.XtraPrinting.BorderSide.None
+            Me.XrLabel3.BorderWidth = 1.0!
+            Me.XrLabel3.CanGrow = False
+            Me.XrLabel3.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.XrLabel3.ForeColor = System.Drawing.Color.Black
+            Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(342.7083!, 48.65459!)
+            Me.XrLabel3.Name = "XrLabel3"
+            Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+            Me.XrLabel3.SizeF = New System.Drawing.SizeF(212.537!, 19.0!)
+            Me.XrLabel3.StylePriority.UseFont = False
+            Me.XrLabel3.StylePriority.UseTextAlignment = False
+            Me.XrLabel3.Text = "Report Total:"
+            Me.XrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+            '
+            'XrLabel5
+            '
+            Me.XrLabel5.AnchorHorizontal = DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right
+            Me.XrLabel5.Borders = DevExpress.XtraPrinting.BorderSide.None
+            Me.XrLabel5.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "DebitAmount")})
+            Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(555.2454!, 48.65459!)
+            Me.XrLabel5.Name = "XrLabel5"
+            Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+            Me.XrLabel5.SizeF = New System.Drawing.SizeF(96.87494!, 19.0!)
+            Me.XrLabel5.StylePriority.UseBorders = False
+            Me.XrLabel5.StylePriority.UseFont = False
+            Me.XrLabel5.StylePriority.UseTextAlignment = False
+            XrSummary5.FormatString = "{0:c}"
+            XrSummary5.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+            Me.XrLabel5.Summary = XrSummary5
+            Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+            Me.XrLabel5.WordWrap = False
+            '
+            'XrLine1
+            '
+            Me.XrLine1.AnchorHorizontal = DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right
+            Me.XrLine1.BorderColor = System.Drawing.Color.Black
+            Me.XrLine1.Borders = DevExpress.XtraPrinting.BorderSide.None
+            Me.XrLine1.BorderWidth = 0!
+            Me.XrLine1.ForeColor = System.Drawing.Color.Gray
+            Me.XrLine1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dash
+            Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 29.6546!)
+            Me.XrLine1.Name = "XrLine1"
+            Me.XrLine1.SizeF = New System.Drawing.SizeF(750.0!, 6.49999!)
+            Me.XrLine1.StylePriority.UseBorderColor = False
+            Me.XrLine1.StylePriority.UseBorderWidth = False
+            Me.XrLine1.StylePriority.UseForeColor = False
             '
             'GLDetailByAccountReport
             '
-            Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.PageHeader, Me.PageFooter, Me.AccountGroupHeader, Me.AccountGroupFooter, Me.AccountDetailGroupHeader, Me.AccountDetailGroupFooter, Me.PostPeriodGroupHeader, Me.PostPeriodGroupFooter})
+            Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.PageHeader, Me.PageFooter, Me.AccountGroupHeader, Me.AccountGroupFooter, Me.AccountDetailGroupHeader, Me.AccountDetailGroupFooter, Me.PostPeriodGroupHeader, Me.PostPeriodGroupFooter, Me.ReportFooter})
             Me.CalculatedFields.AddRange(New DevExpress.XtraReports.UI.CalculatedField() {Me.Balance})
             Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.BindingSource1})
             Me.DataSource = Me.BindingSource1
@@ -693,13 +778,11 @@
         Friend WithEvents BottomMargin As DevExpress.XtraReports.UI.BottomMarginBand
         Friend WithEvents PageHeader As DevExpress.XtraReports.UI.PageHeaderBand
         Private WithEvents LineTopLine As DevExpress.XtraReports.UI.XRLine
-        Private WithEvents LabelPageHeader_Title As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents LabelPageHeader_Agency As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents Line1 As DevExpress.XtraReports.UI.XRLine
         Friend WithEvents LabelHeader_SortedBy As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents PageFooter As DevExpress.XtraReports.UI.PageFooterBand
         Private WithEvents LabelPageFooter_DateAndUserCode As DevExpress.XtraReports.UI.XRLabel
-        Friend WithEvents PageInfo_Pages As DevExpress.XtraReports.UI.XRPageInfo
         Friend WithEvents BindingSource1 As System.Windows.Forms.BindingSource
         Friend WithEvents XrControlStyle1 As DevExpress.XtraReports.UI.XRControlStyle
         Friend WithEvents Label_GroupCode As DevExpress.XtraReports.UI.XRLabel
@@ -736,6 +819,13 @@
         Friend WithEvents LastGroup As DevExpress.XtraReports.UI.FormattingRule
         Private WithEvents Line26 As DevExpress.XtraReports.UI.XRLine
         Friend WithEvents LabelDetail_CDP As DevExpress.XtraReports.UI.XRLabel
+        Private WithEvents LabelPageHeader_Title As DevExpress.XtraReports.UI.XRLabel
+        Friend WithEvents PageInfo_Pages As DevExpress.XtraReports.UI.XRPageInfo
+        Friend WithEvents XrLabel4 As DevExpress.XtraReports.UI.XRLabel
+        Friend WithEvents ReportFooter As DevExpress.XtraReports.UI.ReportFooterBand
+        Private WithEvents XrLine1 As DevExpress.XtraReports.UI.XRLine
+        Friend WithEvents XrLabel5 As DevExpress.XtraReports.UI.XRLabel
+        Private WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
     End Class
 
 End Namespace

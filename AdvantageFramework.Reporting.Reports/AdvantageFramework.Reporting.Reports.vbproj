@@ -224,6 +224,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Advanced Report Writer Reports\BroadcastInvoiceDetailReport.Designer.vb">
+      <DependentUpon>BroadcastInvoiceDetailReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Advanced Report Writer Reports\BroadcastInvoiceDetailReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Advanced Report Writer Reports\BroadcastInvoiceSummaryReport.Designer.vb">
       <DependentUpon>BroadcastInvoiceSummaryReport.vb</DependentUpon>
     </Compile>
@@ -242,10 +248,28 @@
     <Compile Include="Advanced Report Writer Reports\CampaignProductionMediaSummaryReport.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Advanced Report Writer Reports\CheckRegisterWithInvoiceDetailsReport.Designer.vb">
+      <DependentUpon>CheckRegisterWithInvoiceDetailsReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Advanced Report Writer Reports\CheckRegisterWithInvoiceDetailsReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Advanced Report Writer Reports\DeferredSalesVsOpenAR.Designer.vb">
+      <DependentUpon>DeferredSalesVsOpenAR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Advanced Report Writer Reports\DeferredSalesVsOpenAR.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Advanced Report Writer Reports\EmployeeTimeAnalysisReport.Designer.vb">
       <DependentUpon>EmployeeTimeAnalysisReport.vb</DependentUpon>
     </Compile>
     <Compile Include="Advanced Report Writer Reports\EmployeeTimeAnalysisReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Advanced Report Writer Reports\GLCrossOfficeReport.Designer.vb">
+      <DependentUpon>GLCrossOfficeReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Advanced Report Writer Reports\GLCrossOfficeReport.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Advanced Report Writer Reports\JobDetailIFeesOOPFunctionMinimizedReport.Designer.vb">
@@ -1756,6 +1780,30 @@
     <Compile Include="General Ledger\AccountAllocationDetailsSubReport.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="General Ledger\Cross Office\TransactionsByPeriod.Designer.vb">
+      <DependentUpon>TransactionsByPeriod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="General Ledger\Cross Office\TransactionsByPeriod.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="General Ledger\Cross Office\TransactionsByYear.Designer.vb">
+      <DependentUpon>TransactionsByYear.vb</DependentUpon>
+    </Compile>
+    <Compile Include="General Ledger\Cross Office\TransactionsByYear.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="General Ledger\Cross Office\TransactionsByPeriodAndAccount.Designer.vb">
+      <DependentUpon>TransactionsByPeriodAndAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="General Ledger\Cross Office\TransactionsByPeriodAndAccount.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="General Ledger\Cross Office\TransactionsByYearAndPeriod.Designer.vb">
+      <DependentUpon>TransactionsByYearAndPeriod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="General Ledger\Cross Office\TransactionsByYearAndPeriod.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="General Ledger\DetailGeneralLedgerByTransactionReport.Designer.vb">
       <DependentUpon>DetailGeneralLedgerByTransactionReport.vb</DependentUpon>
     </Compile>
@@ -2653,6 +2701,12 @@
     <Compile Include="Media Manager\ClientBillingAuthReport.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Media Manager\NewspaperOrderReport.Designer.vb">
+      <DependentUpon>NewspaperOrderReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media Manager\NewspaperOrderReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Media Manager\ReminderReport.Designer.vb">
       <DependentUpon>ReminderReport.vb</DependentUpon>
     </Compile>
@@ -2683,6 +2737,12 @@
     <Compile Include="Media Manager\PrintOrderReport.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Media Manager\RequestForProposalReport.Designer.vb">
+      <DependentUpon>RequestForProposalReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media Manager\RequestForProposalReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Media Manager\VendorRepSubReport.Designer.vb">
       <DependentUpon>VendorRepSubReport.vb</DependentUpon>
     </Compile>
@@ -2699,6 +2759,12 @@
       <DependentUpon>VendorShippingSubReport.vb</DependentUpon>
     </Compile>
     <Compile Include="Media Manager\VendorShippingSubReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Media WIP\Accounts Payable\AccountsPayableAgedDetailNoGLAccount.Designer.vb">
+      <DependentUpon>AccountsPayableAgedDetailNoGLAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media WIP\Accounts Payable\AccountsPayableAgedDetailNoGLAccount.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Media WIP\Accounts Payable\AccountsPayableAgedDetail.Designer.vb">
@@ -2729,6 +2795,12 @@
       <DependentUpon>AccountsPayableDetailwithDaysAged.vb</DependentUpon>
     </Compile>
     <Compile Include="Media WIP\Accounts Payable\AccountsPayableDetailwithDaysAged.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Media WIP\Accounts Receivable\AccountsReceivableAgedDetailbyClientNoGLAccount.Designer.vb">
+      <DependentUpon>AccountsReceivableAgedDetailbyClientNoGLAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media WIP\Accounts Receivable\AccountsReceivableAgedDetailbyClientNoGLAccount.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Media WIP\Accounts Receivable\AccountsReceivableAgedSummarybyClient.Designer.vb">
@@ -2845,6 +2917,12 @@
     <Compile Include="Media WIP\MediaWIPAgedSummarybyVendor.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPAgedSummarybyJobwithAccrLiabilityPO.Designer.vb">
+      <DependentUpon>ProductionWIPAgedSummarybyJobwithAccrLiabilityPO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPAgedSummarybyJobwithAccrLiabilityPO.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Media WIP\Production WIP\ProductionWIPAgedSummarybyJobVendorOnly.Designer.vb">
       <DependentUpon>ProductionWIPAgedSummarybyJobVendorOnly.vb</DependentUpon>
     </Compile>
@@ -2861,6 +2939,24 @@
       <DependentUpon>ProductionWIPAgedSummarybyJob.vb</DependentUpon>
     </Compile>
     <Compile Include="Media WIP\Production WIP\ProductionWIPAgedSummarybyJob.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyJobEstHrsDefRecSls.Designer.vb">
+      <DependentUpon>ProductionWIPSummarybyJobEstHrsDefRecSls.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyJobEstHrsDefRecSls.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyJobHrsDefSalesCos.Designer.vb">
+      <DependentUpon>ProductionWIPSummarybyJobHrsDefSalesCos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyJobHrsDefSalesCos.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyJobDefSalesCosInc.Designer.vb">
+      <DependentUpon>ProductionWIPSummarybyJobDefSalesCosInc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyJobDefSalesCosInc.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyVendorwithPayments.Designer.vb">
@@ -2911,6 +3007,12 @@
     <Compile Include="Media\Broadcast Worksheet Other\UpdatedRateRequestReport.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Media\BroadcastInvoiceDetailReport.Designer.vb">
+      <DependentUpon>BroadcastInvoiceDetailReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media\BroadcastInvoiceDetailReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Media\MediaActivityDetailbyCampaignType.Designer.vb">
       <DependentUpon>MediaActivityDetailbyCampaignType.vb</DependentUpon>
     </Compile>
@@ -2921,6 +3023,18 @@
       <DependentUpon>MediaActivityDetailbyType.vb</DependentUpon>
     </Compile>
     <Compile Include="Media\MediaActivityDetailbyType.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Media\BroadcastInvoiceSummaryReport.Designer.vb">
+      <DependentUpon>BroadcastInvoiceSummaryReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media\BroadcastInvoiceSummaryReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Media\BroadcastInvoiceDetailSubReport.Designer.vb">
+      <DependentUpon>BroadcastInvoiceDetailSubReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media\BroadcastInvoiceDetailSubReport.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Media\MediaOrdersBilledWithoutAPByTypeClient.Designer.vb">
@@ -3308,6 +3422,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Advanced Report Writer Reports\BroadcastInvoiceDetailReport.resx">
+      <DependentUpon>BroadcastInvoiceDetailReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Advanced Report Writer Reports\BroadcastInvoiceSummaryReport.resx">
       <DependentUpon>BroadcastInvoiceSummaryReport.vb</DependentUpon>
     </EmbeddedResource>
@@ -3317,8 +3434,17 @@
     <EmbeddedResource Include="Advanced Report Writer Reports\CampaignProductionMediaSummaryReport.resx">
       <DependentUpon>CampaignProductionMediaSummaryReport.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Advanced Report Writer Reports\CheckRegisterWithInvoiceDetailsReport.resx">
+      <DependentUpon>CheckRegisterWithInvoiceDetailsReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Advanced Report Writer Reports\DeferredSalesVsOpenAR.resx">
+      <DependentUpon>DeferredSalesVsOpenAR.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Advanced Report Writer Reports\EmployeeTimeAnalysisReport.resx">
       <DependentUpon>EmployeeTimeAnalysisReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Advanced Report Writer Reports\GLCrossOfficeReport.resx">
+      <DependentUpon>GLCrossOfficeReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Advanced Report Writer Reports\JobDetailIFeesOOPFunctionMinimizedReport.resx">
       <DependentUpon>JobDetailIFeesOOPFunctionMinimizedReport.vb</DependentUpon>
@@ -4065,6 +4191,18 @@
     <EmbeddedResource Include="General Ledger\AccountAllocationDetailsSubReport.resx">
       <DependentUpon>AccountAllocationDetailsSubReport.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="General Ledger\Cross Office\TransactionsByPeriod.resx">
+      <DependentUpon>TransactionsByPeriod.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General Ledger\Cross Office\TransactionsByYear.resx">
+      <DependentUpon>TransactionsByYear.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General Ledger\Cross Office\TransactionsByPeriodAndAccount.resx">
+      <DependentUpon>TransactionsByPeriodAndAccount.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General Ledger\Cross Office\TransactionsByYearAndPeriod.resx">
+      <DependentUpon>TransactionsByYearAndPeriod.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="General Ledger\DetailGeneralLedgerByTransactionReport.resx">
       <DependentUpon>DetailGeneralLedgerByTransactionReport.vb</DependentUpon>
     </EmbeddedResource>
@@ -4513,6 +4651,9 @@
     <EmbeddedResource Include="Media Manager\ClientBillingAuthReport.resx">
       <DependentUpon>ClientBillingAuthReport.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Media Manager\NewspaperOrderReport.resx">
+      <DependentUpon>NewspaperOrderReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Media Manager\ReminderReport.resx">
       <DependentUpon>ReminderReport.vb</DependentUpon>
     </EmbeddedResource>
@@ -4528,6 +4669,9 @@
     <EmbeddedResource Include="Media Manager\PrintOrderReport.resx">
       <DependentUpon>PrintOrderReport.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Media Manager\RequestForProposalReport.resx">
+      <DependentUpon>RequestForProposalReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Media Manager\VendorRepSubReport.resx">
       <DependentUpon>VendorRepSubReport.vb</DependentUpon>
     </EmbeddedResource>
@@ -4536,6 +4680,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Media Manager\VendorShippingSubReport.resx">
       <DependentUpon>VendorShippingSubReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media WIP\Accounts Payable\AccountsPayableAgedDetailNoGLAccount.resx">
+      <DependentUpon>AccountsPayableAgedDetailNoGLAccount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Media WIP\Accounts Payable\AccountsPayableAgedDetail.resx">
       <DependentUpon>AccountsPayableAgedDetail.vb</DependentUpon>
@@ -4551,6 +4698,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Media WIP\Accounts Payable\AccountsPayableDetailwithDaysAged.resx">
       <DependentUpon>AccountsPayableDetailwithDaysAged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media WIP\Accounts Receivable\AccountsReceivableAgedDetailbyClientNoGLAccount.resx">
+      <DependentUpon>AccountsReceivableAgedDetailbyClientNoGLAccount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Media WIP\Accounts Receivable\AccountsReceivableAgedSummarybyClient.resx">
       <DependentUpon>AccountsReceivableAgedSummarybyClient.vb</DependentUpon>
@@ -4609,6 +4759,9 @@
     <EmbeddedResource Include="Media WIP\MediaWIPAgedSummarybyVendor.resx">
       <DependentUpon>MediaWIPAgedSummarybyVendor.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPAgedSummarybyJobwithAccrLiabilityPO.resx">
+      <DependentUpon>ProductionWIPAgedSummarybyJobwithAccrLiabilityPO.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPAgedSummarybyJobVendorOnly.resx">
       <DependentUpon>ProductionWIPAgedSummarybyJobVendorOnly.vb</DependentUpon>
     </EmbeddedResource>
@@ -4617,6 +4770,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPAgedSummarybyJob.resx">
       <DependentUpon>ProductionWIPAgedSummarybyJob.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPSummarybyJobEstHrsDefRecSls.resx">
+      <DependentUpon>ProductionWIPSummarybyJobEstHrsDefRecSls.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPSummarybyJobHrsDefSalesCos.resx">
+      <DependentUpon>ProductionWIPSummarybyJobHrsDefSalesCos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPSummarybyJobDefSalesCosInc.resx">
+      <DependentUpon>ProductionWIPSummarybyJobDefSalesCosInc.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPSummarybyVendorwithPayments.resx">
       <DependentUpon>ProductionWIPSummarybyVendorwithPayments.vb</DependentUpon>
@@ -4642,11 +4804,20 @@
     <EmbeddedResource Include="Media\Broadcast Worksheet Other\UpdatedRateRequestReport.resx">
       <DependentUpon>UpdatedRateRequestReport.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Media\BroadcastInvoiceDetailReport.resx">
+      <DependentUpon>BroadcastInvoiceDetailReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Media\MediaActivityDetailbyCampaignType.resx">
       <DependentUpon>MediaActivityDetailbyCampaignType.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Media\MediaActivityDetailbyType.resx">
       <DependentUpon>MediaActivityDetailbyType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media\BroadcastInvoiceSummaryReport.resx">
+      <DependentUpon>BroadcastInvoiceSummaryReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media\BroadcastInvoiceDetailSubReport.resx">
+      <DependentUpon>BroadcastInvoiceDetailSubReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Media\MediaOrdersBilledWithoutAPByTypeClient.resx">
       <DependentUpon>MediaOrdersBilledWithoutAPByTypeClient.vb</DependentUpon>

@@ -89,6 +89,7 @@
         Private _IsLinkedInQuickbooks As Boolean = False
         Private _QBVendorID As String = Nothing
         Private _APDetails As Generic.List(Of AdvantageFramework.Quickbooks.Classes.APDetail) = Nothing
+        Private _IsAgencyASP As Boolean = False
 
 #End Region
 
@@ -1545,6 +1546,19 @@
                 DocumentLevelSetting = New AdvantageFramework.Database.Classes.DocumentLevelSetting(AdvantageFramework.Database.Entities.DocumentLevel.AccountPayableInvoice) With {.AccountPayableID = _ID}
 
                 DocumentManagerControlDocuments_APDocuments.Enabled = DocumentManagerControlDocuments_APDocuments.LoadControl(Database.Entities.DocumentLevel.AccountPayableInvoice, DocumentLevelSetting, DocumentManagerControl.Type.Default, Database.Entities.DocumentSubLevel.Default)
+
+                If _IsAgencyASP OrElse DocumentManagerControlDocuments_APDocuments.CanUpload = False Then
+
+                    Me.DocumentManagerControlDocuments_APDocuments.AllowDropDocuments = False
+                    Me.DocumentManagerControlDocuments_APDocuments.Location = New Drawing.Point(4, 4)
+                    Me.DocumentManagerControlDocuments_APDocuments.Size = New Drawing.Size(986, 227)
+                    LabelDocumentsPanel_DragDropInstruction.Visible = False
+
+                ElseIf DocumentManagerControlDocuments_APDocuments.CanUpload = True Then
+
+                    Me.DocumentManagerControlDocuments_APDocuments.AllowDropDocuments = True
+
+                End If
 
             End If
 
@@ -5527,6 +5541,16 @@
 
                                 AdvantageFramework.WinForm.MessageBox.Show("This function selected is non-billable, select a GL account.")
 
+                                If AdvantageFramework.Database.Procedures.Agency.IsAPLimitByOfficeEnabled(DbContext) Then
+
+                                    AccountPayableProductionDistributionDetail.OfficeCode = Me.ComboBoxControl_Office.GetSelectedValue
+
+                                Else
+
+                                    AccountPayableProductionDistributionDetail.OfficeCode = Nothing
+
+                                End If
+
                             End If
 
                         End If
@@ -5536,7 +5560,17 @@
                     ElseIf AccountPayableProductionDistributionDetail.IsNonBillable.GetValueOrDefault(0) = 1 Then
 
                         AdvantageFramework.WinForm.MessageBox.Show("The job component selected is non-billable, select a GL account.")
-                        AccountPayableProductionDistributionDetail.OfficeCode = Nothing
+
+                        If AdvantageFramework.Database.Procedures.Agency.IsAPLimitByOfficeEnabled(DbContext) Then
+
+                            AccountPayableProductionDistributionDetail.OfficeCode = Me.ComboBoxControl_Office.GetSelectedValue
+
+                        Else
+
+                            AccountPayableProductionDistributionDetail.OfficeCode = Nothing
+
+                        End If
+
                         AccountPayableProductionDistributionDetail.GLACode = Nothing
                         AccountPayableProductionDistributionDetail.GLADescription = Nothing
 
@@ -5588,6 +5622,16 @@
                             If String.IsNullOrEmpty(AccountPayableProductionDistributionDetail.GLACode) AndAlso AccountPayableProductionDistributionDetail.FunctionCode IsNot Nothing Then
 
                                 AdvantageFramework.WinForm.MessageBox.Show("This function selected is non-billable, select a GL account.")
+
+                                If AdvantageFramework.Database.Procedures.Agency.IsAPLimitByOfficeEnabled(DbContext) Then
+
+                                    AccountPayableProductionDistributionDetail.OfficeCode = Me.ComboBoxControl_Office.GetSelectedValue
+
+                                Else
+
+                                    AccountPayableProductionDistributionDetail.OfficeCode = Nothing
+
+                                End If
 
                             End If
 
@@ -11539,6 +11583,8 @@
                 ClearTabText()
 
                 DbContext.Database.Connection.Open()
+
+                _IsAgencyASP = AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext)
 
                 If _ID <> 0 Then
 
@@ -18130,6 +18176,245 @@
             End If
 
         End Sub
+        Private Sub DocumentManagerControlDocuments_APDocuments_DragOverEvent(sender As Object, e As Windows.Forms.DragEventArgs) Handles DocumentManagerControlDocuments_APDocuments.DragOverEvent
+
+            If e.Data.GetDataPresent(Windows.Forms.DataFormats.FileDrop) Then
+
+                e.Effect = Windows.Forms.DragDropEffects.Copy
+
+            Else
+
+                e.Effect = Windows.Forms.DragDropEffects.None
+
+            End If
+
+        End Sub
+        Private Sub DropFiles(DroppedFiles() As String)
+
+            Dim DocumentLevelSetting As AdvantageFramework.Database.Classes.DocumentLevelSetting = Nothing
+            Dim MaxFileSize As Long = 0
+            Dim LimitText As String = Nothing
+            Dim DocumentLevelSettings As Generic.List(Of AdvantageFramework.Database.Classes.DocumentLevelSetting) = Nothing
+            Dim DocumentUploadType As AdvantageFramework.Database.Entities.DocumentUploadType = Nothing
+            Dim IsValid As Boolean = True
+            Dim ErrorMessage As String = Nothing
+            Dim Agency As AdvantageFramework.Database.Entities.Agency = Nothing
+            Dim Document As AdvantageFramework.Database.Entities.Document = Nothing
+
+            'Dim AlertEmployees As Generic.List(Of AdvantageFramework.Database.Views.Employee) = Nothing
+            '
+            '
+            'Dim SendAlert As Boolean = Nothing
+            'Dim Body As String = Nothing
+            'Dim EmailBody As String = Nothing
+            'Dim PriorityLevel As Short = Nothing
+            'Dim Subject As String = Nothing
+            'Dim AlertCategoryID As Integer = Nothing
+
+            'Dim Inserted As Boolean = False
+
+            Using DbContext As New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
+
+                Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
+
+                    AdvantageFramework.FileSystem.GetDocumentRepositoryMaxFileSizeLimit(DbContext, MaxFileSize, LimitText)
+
+                    DocumentLevelSetting = New AdvantageFramework.Database.Classes.DocumentLevelSetting(Database.Entities.Methods.DocumentLevel.AccountPayableInvoice, Database.Entities.Methods.DocumentSubLevel.Default)
+                    DocumentLevelSetting.AccountPayableID = Me.AccountPayableID
+
+                    DocumentLevelSettings = New Generic.List(Of AdvantageFramework.Database.Classes.DocumentLevelSetting)
+                    DocumentLevelSettings.Add(DocumentLevelSetting)
+
+                    For Each DroppedFile In DroppedFiles
+
+                        Me.ShowWaitForm("Uploading...")
+
+                        'Select Case ComboBoxGeneral_LinkOrDocument.GetSelectedValue
+
+                        '    Case "L"
+
+                        '        DocumentUploadType = Database.Entities.DocumentUploadType.Link
+
+                        '    Case "D"
+
+                        DocumentUploadType = Database.Entities.DocumentUploadType.Document
+
+                        AdvantageFramework.FileSystem.CheckRepositoryConstraints(DbContext, DroppedFile, IsValid, ErrorMessage)
+
+                        'End Select
+
+                        'If CheckBoxGeneral_SendAlert.Checked Then
+
+                        '    SendAlert = True
+
+                        '    AlertEmployees = LoadAlertEmployees()
+
+                        '    If AlertEmployees Is Nothing OrElse AlertEmployees.Count = 0 Then
+
+                        '        ErrorMessage = "Please select at least one recipient."
+                        '        IsValid = False
+
+                        '    End If
+
+                        'End If
+
+                        If IsValid Then
+
+                            Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
+
+                            If Agency IsNot Nothing Then
+
+                                If UploadDocument(DbContext, Agency, DroppedFile, DocumentLevelSettings, Document) Then
+
+                                    AddLevelDocument_AccountPayableInvoice(DataContext, Document.ID)
+
+                                    LoadDocumentsTab()
+
+                                    'If AddLevelDocument(DbContext, DataContext, Document) Then
+
+                                    '    Inserted = True
+
+                                    '    'If SendAlert Then
+
+                                    '    '    Subject = TextBoxAlertOptions_Subject.Text
+                                    '    '    Body = TextBoxGeneral_Description.Text & vbNewLine & vbNewLine & "Keywords: " & TextBoxGeneral_Keywords.Text
+                                    '    '    EmailBody = TextBoxGeneral_Description.Text & "<br/><br/>Keywords: " & TextBoxGeneral_Keywords.Text
+                                    '    '    PriorityLevel = CShort(ComboBoxAlertOptions_Priority.GetSelectedValue)
+                                    '    '    AlertCategoryID = CInt(ComboBoxAlertOptions_Category.GetSelectedValue)
+
+                                    '    '    AdvantageFramework.AlertSystem.CreateAndSendDocumentManagerAlert(Me.Session, Document, _DocumentLevel, _DocumentLevelSetting, Subject, AlertCategoryID, PriorityLevel, AlertEmployees)
+
+                                    '    'End If
+
+                                    'End If
+
+                                End If
+
+                            End If
+
+                        Else
+
+                            AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+                        End If
+
+                    Next
+
+                End Using
+
+            End Using
+
+            Me.CloseWaitForm()
+
+        End Sub
+        'Private Sub LabelControl_Description_DoubleClick(sender As Object, e As EventArgs) Handles LabelControl_Description.DoubleClick
+
+        '    Dim Files As Generic.List(Of String) = Nothing
+
+        '    Files = New Generic.List(Of String)
+        '    Files.Add("C:\Users\mikec\Desktop\Delete\AdvantagePayaTest.docx")
+
+        '    Dim FileName As String = System.IO.Path.GetFileName(Files(0))
+
+        '    DropFiles(Files.ToArray)
+
+        'End Sub
+        Private Sub DocumentManagerControlDocuments_APDocuments_DrapDropEvent(sender As Object, e As Windows.Forms.DragEventArgs) Handles DocumentManagerControlDocuments_APDocuments.DrapDropEvent
+
+            Dim DroppedFiles As String() = Nothing
+
+            If e.Data.GetDataPresent(Windows.Forms.DataFormats.FileDrop) Then
+
+                DroppedFiles = DirectCast(e.Data.GetData(Windows.Forms.DataFormats.FileDrop), String())
+
+                DropFiles(DroppedFiles)
+
+            End If
+
+        End Sub
+        Private Function UploadDocument(ByVal DbContext As AdvantageFramework.Database.DbContext,
+                                        ByVal Agency As AdvantageFramework.Database.Entities.Agency, ByVal FileName As String, DocumentLevelSettings As Generic.List(Of AdvantageFramework.Database.Classes.DocumentLevelSetting),
+                                        ByRef Document As AdvantageFramework.Database.Entities.Document) As Boolean
+
+            'objects
+            Dim Uploaded As Boolean = False
+            Dim FileSystemFile As String = Nothing
+            Dim FileSystemFileName As String = Nothing
+            Dim FileSize As Integer = Nothing
+            Dim MimeType As String = Nothing
+            Dim FinalLevelDescription As String = Nothing
+            Dim FinalLevel As String = Nothing
+            Dim Employee As AdvantageFramework.Database.Views.Employee = Nothing
+            Dim Description As String = Nothing
+
+            Try
+
+                'FileName = AdvantageFramework.FileSystem.GetFileName(FileName)
+                MimeType = AdvantageFramework.FileSystem.GetMIMEType(FileName)
+                FileSize = AdvantageFramework.FileSystem.GetFileSize(FileName)
+                'FinalLevelDescription = GetFinalLevelDescription()
+                'FinalLevel = AdvantageFramework.Database.Entities.DocumentLevel.ExpenseReceipts '_DocumentLevel.ToString
+
+                Description = AdvantageFramework.Desktop.Presentation.GetDefaultDocumentDescription(_Session, DocumentLevelSettings, Database.Entities.DocumentLevel.AccountPayableInvoice)
+                'TextBoxGeneral_Description.Text = Description
+                'TextBoxGeneral_FileDetails.Text = FileName
+                'TextBoxGeneral_Keywords.Text = ""
+
+                If _Session.User IsNot Nothing Then
+
+                    Employee = AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, _Session.User.EmployeeCode)
+
+                End If
+
+                If AdvantageFramework.FileSystem.Add(Agency, FileName, Description, "", If(Employee IsNot Nothing, Employee.ToString, _Session.UserCode), FinalLevel, FinalLevelDescription, FileSystem.DocumentSource.DocumentUpload, FileSystemFile, Nothing, FileSystemFileName) Then
+
+                    Document = New AdvantageFramework.Database.Entities.Document
+
+                    Document.DbContext = DbContext
+                    Document.FileName = System.IO.Path.GetFileName(FileName)
+                    Document.FileSystemFileName = FileSystemFileName
+                    Document.MIMEType = MimeType
+                    Document.Description = Description
+                    Document.Keywords = "" ' TextBoxGeneral_Keywords.Text
+                    Document.UploadedDate = System.DateTime.Now
+                    Document.UserCode = _Session.UserCode
+                    Document.FileSize = FileSize
+                    Document.DocumentTypeID = 3 ' CInt(ComboBoxGeneral_FileType.GetSelectedValue)
+                    Document.IsPrivate = 0 ' CInt(CheckBoxGeneral_Private.CheckValue)
+
+                    Uploaded = AdvantageFramework.Database.Procedures.Document.Insert(DbContext, Document)
+
+                End If
+
+            Catch ex As Exception
+                Uploaded = False
+            Finally
+                UploadDocument = Uploaded
+            End Try
+
+        End Function
+        Private Function AddLevelDocument_AccountPayableInvoice(ByVal DataContext As AdvantageFramework.Database.DataContext, ByVal DocumentID As Integer) As Boolean
+
+            'objects
+            Dim Added As Boolean = False
+            Dim AccountPayableDocument As AdvantageFramework.Database.Entities.AccountPayableDocument = Nothing
+
+            Try
+
+                AccountPayableDocument = New AdvantageFramework.Database.Entities.AccountPayableDocument
+
+                AccountPayableDocument.DocumentID = DocumentID
+                AccountPayableDocument.AccountPayableID = Me.AccountPayableID
+
+                Added = AdvantageFramework.Database.Procedures.AccountPayableDocument.Insert(DataContext, AccountPayableDocument)
+
+            Catch ex As Exception
+                Added = False
+            Finally
+                AddLevelDocument_AccountPayableInvoice = Added
+            End Try
+
+        End Function
 
 #End Region
 

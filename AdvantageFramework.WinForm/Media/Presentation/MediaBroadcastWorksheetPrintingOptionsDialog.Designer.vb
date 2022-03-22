@@ -38,6 +38,7 @@
             Me.categoryOutputOptions = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
             Me.rowPrintLocation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowLocationCode = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowPrintRemoveLinesWithoutSpots = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.categoryFields = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
             Me.rowPrintOnHold = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowPrintLineNumber = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
@@ -61,7 +62,6 @@
             Me.rowPrintPrimaryHPUT = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowPrintPrimaryTVCume = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowPrintPrimaryTVImpressions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintPrimaryCPM = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.categoryPrimarySpotRadio = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
             Me.rowPrintPrimaryAQHRating = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowPrintPrimaryAQH = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
@@ -72,6 +72,7 @@
             Me.rowPrintPrimaryGRP = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowPrintPrimaryReach = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowPrintPrimaryGrossImpressions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowPrintPrimaryCPM = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.categorySecondary = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
             Me.categorySecondaryTV = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
             Me.rowSecondaryTVRating = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
@@ -79,7 +80,6 @@
             Me.rowSecondaryTVHPUT = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowSecondaryTVCume = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowSecondaryTVImpressions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowPrintSecondaryCPM = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.categorySecondaryRadio = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
             Me.rowSecondaryRadioAQHRating = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowSecondaryRadioAQH = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
@@ -90,6 +90,7 @@
             Me.rowSecondaryAllGRP = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowSecondaryAllReach = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowSecondaryAllGrossImpressions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowPrintSecondaryCPM = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.TabItem_Worksheet = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.rowOverrideConsolidation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowUseEmployeeSignature = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
@@ -329,14 +330,13 @@
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.VerticalGridProduction_Settings.Appearance.RowHeaderPanel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
             Me.VerticalGridProduction_Settings.Appearance.RowHeaderPanel.Options.UseFont = True
-            Me.VerticalGridProduction_Settings.Cursor = System.Windows.Forms.Cursors.Default
+            Me.VerticalGridProduction_Settings.Cursor = System.Windows.Forms.Cursors.SizeNS
             Me.VerticalGridProduction_Settings.CustomizationFormBounds = New System.Drawing.Rectangle(1704, 698, 216, 265)
             Me.VerticalGridProduction_Settings.DataSource = Me.BindingSource
             Me.VerticalGridProduction_Settings.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView
             Me.VerticalGridProduction_Settings.Location = New System.Drawing.Point(4, 4)
             Me.VerticalGridProduction_Settings.Name = "VerticalGridProduction_Settings"
             Me.VerticalGridProduction_Settings.OptionsBehavior.UseEnterAsTab = True
-            Me.VerticalGridProduction_Settings.OptionsMenu.EnableContextMenu = True
             Me.VerticalGridProduction_Settings.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemDateEdit2})
             Me.VerticalGridProduction_Settings.Rows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.categoryOutputOptions, Me.categoryFields, Me.categoryPrimary, Me.categorySecondary})
             Me.VerticalGridProduction_Settings.ShowButtonMode = DevExpress.XtraVerticalGrid.ShowButtonModeEnum.ShowAlways
@@ -357,7 +357,7 @@
             '
             'categoryOutputOptions
             '
-            Me.categoryOutputOptions.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowPrintLocation, Me.rowLocationCode})
+            Me.categoryOutputOptions.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowPrintLocation, Me.rowLocationCode, Me.rowPrintRemoveLinesWithoutSpots})
             Me.categoryOutputOptions.Name = "categoryOutputOptions"
             Me.categoryOutputOptions.Properties.Caption = "Output Options"
             '
@@ -372,6 +372,12 @@
             Me.rowLocationCode.Name = "rowLocationCode"
             Me.rowLocationCode.Properties.Caption = "Location Code"
             Me.rowLocationCode.Properties.FieldName = "LocationCode"
+            '
+            'rowPrintRemoveLinesWithoutSpots
+            '
+            Me.rowPrintRemoveLinesWithoutSpots.Name = "rowPrintRemoveLinesWithoutSpots"
+            Me.rowPrintRemoveLinesWithoutSpots.Properties.Caption = "Remove lines without Spots"
+            Me.rowPrintRemoveLinesWithoutSpots.Properties.FieldName = "PrintRemoveLinesWithoutSpots"
             '
             'categoryFields
             '
@@ -511,12 +517,6 @@
             Me.rowPrintPrimaryTVImpressions.Properties.Caption = "Impressions"
             Me.rowPrintPrimaryTVImpressions.Properties.FieldName = "PrintPrimaryTVImpressions"
             '
-            'rowPrintPrimaryCPM
-            '
-            Me.rowPrintPrimaryCPM.Name = "rowPrintPrimaryCPM"
-            Me.rowPrintPrimaryCPM.Properties.Caption = "CPM"
-            Me.rowPrintPrimaryCPM.Properties.FieldName = "PrintPrimaryCPM"
-            '
             'categoryPrimarySpotRadio
             '
             Me.categoryPrimarySpotRadio.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowPrintPrimaryAQHRating, Me.rowPrintPrimaryAQH, Me.rowPrintPrimaryCumeRating, Me.rowPrintPrimaryCume})
@@ -577,6 +577,12 @@
             Me.rowPrintPrimaryGrossImpressions.Properties.Caption = "Gross Impressions"
             Me.rowPrintPrimaryGrossImpressions.Properties.FieldName = "PrintPrimaryGrossImpressions"
             '
+            'rowPrintPrimaryCPM
+            '
+            Me.rowPrintPrimaryCPM.Name = "rowPrintPrimaryCPM"
+            Me.rowPrintPrimaryCPM.Properties.Caption = "CPM"
+            Me.rowPrintPrimaryCPM.Properties.FieldName = "PrintPrimaryCPM"
+            '
             'categorySecondary
             '
             Me.categorySecondary.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.categorySecondaryTV, Me.categorySecondaryRadio, Me.categorySecondaryAll})
@@ -619,12 +625,6 @@
             Me.rowSecondaryTVImpressions.Name = "rowSecondaryTVImpressions"
             Me.rowSecondaryTVImpressions.Properties.Caption = "Impressions"
             Me.rowSecondaryTVImpressions.Properties.FieldName = "PrintSecondaryTVImpressions"
-            '
-            'rowPrintSecondaryCPM
-            '
-            Me.rowPrintSecondaryCPM.Name = "rowPrintSecondaryCPM"
-            Me.rowPrintSecondaryCPM.Properties.Caption = "CPM"
-            Me.rowPrintSecondaryCPM.Properties.FieldName = "PrintSecondaryCPM"
             '
             'categorySecondaryRadio
             '
@@ -686,6 +686,12 @@
             Me.rowSecondaryAllGrossImpressions.Properties.Caption = "Gross Impressions"
             Me.rowSecondaryAllGrossImpressions.Properties.FieldName = "PrintSecondaryGrossImpressions"
             '
+            'rowPrintSecondaryCPM
+            '
+            Me.rowPrintSecondaryCPM.Name = "rowPrintSecondaryCPM"
+            Me.rowPrintSecondaryCPM.Properties.Caption = "CPM"
+            Me.rowPrintSecondaryCPM.Properties.FieldName = "PrintSecondaryCPM"
+            '
             'TabItem_Worksheet
             '
             Me.TabItem_Worksheet.AttachedControl = Me.TabControlPanel1
@@ -694,8 +700,8 @@
             '
             'rowOverrideConsolidation
             '
-            Me.rowOverrideConsolidation.Appearance.Options.UseTextOptions = True
-            Me.rowOverrideConsolidation.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+            Me.rowOverrideConsolidation.AppearanceCell.Options.UseTextOptions = True
+            Me.rowOverrideConsolidation.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
             Me.rowOverrideConsolidation.Height = 17
             Me.rowOverrideConsolidation.Name = "rowOverrideConsolidation"
             Me.rowOverrideConsolidation.Properties.Caption = "Override product consolidation"
@@ -822,6 +828,7 @@
         Friend WithEvents rowSecondaryTVCume As DevExpress.XtraVerticalGrid.Rows.EditorRow
         Friend WithEvents rowPrintPrimaryCPM As DevExpress.XtraVerticalGrid.Rows.EditorRow
         Friend WithEvents rowPrintSecondaryCPM As DevExpress.XtraVerticalGrid.Rows.EditorRow
+        Friend WithEvents rowPrintRemoveLinesWithoutSpots As DevExpress.XtraVerticalGrid.Rows.EditorRow
     End Class
 
 End Namespace

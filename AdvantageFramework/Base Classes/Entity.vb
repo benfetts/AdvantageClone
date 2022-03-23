@@ -450,7 +450,14 @@
             End If
 
             If IsValid = False AndAlso IsRequired = False AndAlso
-                    (Value = Nothing OrElse Value Is Nothing OrElse (Value IsNot Nothing AndAlso Value.ToString = "")) Then
+                    (Value Is Nothing OrElse (Value IsNot Nothing AndAlso Value.ToString = "")) Then
+
+                IsValid = True
+                ErrorText = ""
+
+                ClearNonRequiredPropertiesWithInvalidBlankValues(PropertyName, Value)
+
+            ElseIf IsValid = False AndAlso IsRequired = False AndAlso Value IsNot Nothing AndAlso Value.GetType Is GetType(DateTime) AndAlso CType(Value, DateTime).ToShortDateString = Date.MinValue.ToShortDateString Then
 
                 IsValid = True
                 ErrorText = ""

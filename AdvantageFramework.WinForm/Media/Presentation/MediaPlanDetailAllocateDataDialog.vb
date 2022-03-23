@@ -665,7 +665,7 @@
 
                                                     If _MediaPlan.MediaPlanEstimate.PeriodType = AdvantageFramework.MediaPlanning.PeriodTypes.Week Then
 
-                                                        MediaPlanDetailLevelLineData.EndDate = _MediaPlan.MediaPlanEstimate.GetLastDayOfWeek(StartDate)
+                                                        MediaPlanDetailLevelLineData.EndDate = StartDate.AddDays(6)
 
                                                     ElseIf _MediaPlan.MediaPlanEstimate.PeriodType = AdvantageFramework.MediaPlanning.PeriodTypes.Month Then
 

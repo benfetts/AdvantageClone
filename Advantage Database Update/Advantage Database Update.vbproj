@@ -784,6 +784,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_comboinvoicedetails.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_cover_sheet.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_currentttdinvoicedetails.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

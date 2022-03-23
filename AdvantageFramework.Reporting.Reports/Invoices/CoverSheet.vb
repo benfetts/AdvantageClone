@@ -120,14 +120,28 @@
             Dim CoverSheets As Generic.List(Of AdvantageFramework.InvoicePrinting.Classes.CoverSheet) = Nothing
             Dim OrderedCoverSheets As Generic.List(Of AdvantageFramework.InvoicePrinting.Classes.CoverSheet) = Nothing
             Dim PreviousCurrencyCode As String = String.Empty
+            Dim Batches As Generic.List(Of String) = Nothing
 
             If _AccountReceivableInvoices IsNot Nothing AndAlso _Session IsNot Nothing Then
+
+                If _IsDraft Then
+
+                    Batches = _AccountReceivableInvoices.Where(Function(Entity) String.IsNullOrWhiteSpace(Entity.Batch) = False).Select(Function(Entity) Entity.Batch).Distinct.ToList
+
+                Else
+
+                    Batches = New Generic.List(Of String)
+
+                End If
 
                 Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
 
                     _IsMultiCurrencyEnabled = AdvantageFramework.Database.Procedures.Agency.IsMultiCurrencyEnabled(DbContext)
 
-                    CoverSheets = AdvantageFramework.InvoicePrinting.LoadCoverSheet(DbContext, _UserCode, Join(_AccountReceivableInvoices.Select(Function(Entity) CStr(Entity.InvoiceNumber)).ToList.ToArray(), ","), _IsDraft).ToList
+                    CoverSheets = AdvantageFramework.InvoicePrinting.LoadCoverSheet(DbContext, _UserCode,
+                                                                                    Join(_AccountReceivableInvoices.Select(Function(Entity) CStr(Entity.InvoiceNumber)).ToList.ToArray(), ","),
+                                                                                    _IsDraft,
+                                                                                    Join(Batches.ToArray(), ",")).ToList
 
                 End Using
 

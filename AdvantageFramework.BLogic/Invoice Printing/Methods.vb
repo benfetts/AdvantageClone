@@ -414,13 +414,25 @@
 
 #Region " Methods "
 
-        Public Function LoadCoverSheet(ByVal DbContext As AdvantageFramework.Database.DbContext, UserCode As String, InvoiceNumbers As String, IsDraft As Boolean) As System.Data.Entity.Infrastructure.DbRawSqlQuery(Of AdvantageFramework.InvoicePrinting.Classes.CoverSheet)
+        Public Function LoadCoverSheet(ByVal DbContext As AdvantageFramework.Database.DbContext, UserCode As String, InvoiceNumbers As String, IsDraft As Boolean, Batches As String) As System.Data.Entity.Infrastructure.DbRawSqlQuery(Of AdvantageFramework.InvoicePrinting.Classes.CoverSheet)
 
             Dim UserCodeParameter As System.Data.SqlClient.SqlParameter = New System.Data.SqlClient.SqlParameter("@UserCode", UserCode)
             Dim InvoiceNumbersParameter As System.Data.SqlClient.SqlParameter = New System.Data.SqlClient.SqlParameter("@InvoiceNumbers", InvoiceNumbers)
             Dim IsDraftParameter As System.Data.SqlClient.SqlParameter = New System.Data.SqlClient.SqlParameter("@IsDraft", IsDraft)
+            Dim BatchesParameter As System.Data.SqlClient.SqlParameter = Nothing
 
-            LoadCoverSheet = DbContext.Database.SqlQuery(Of AdvantageFramework.InvoicePrinting.Classes.CoverSheet)("EXEC dbo.advsp_invoice_printing_load_cover_sheet @UserCode, @InvoiceNumbers, @IsDraft", UserCodeParameter, InvoiceNumbersParameter, IsDraftParameter)
+            If String.IsNullOrWhiteSpace(Batches) Then
+
+                BatchesParameter = New System.Data.SqlClient.SqlParameter("@Batches", System.Data.SqlDbType.VarChar, -1)
+                BatchesParameter.Value = ""
+
+            Else
+
+                BatchesParameter = New System.Data.SqlClient.SqlParameter("@Batches", Batches)
+
+            End If
+
+            LoadCoverSheet = DbContext.Database.SqlQuery(Of AdvantageFramework.InvoicePrinting.Classes.CoverSheet)("EXEC dbo.advsp_invoice_printing_load_cover_sheet @UserCode, @InvoiceNumbers, @IsDraft, @Batches", UserCodeParameter, InvoiceNumbersParameter, IsDraftParameter, BatchesParameter)
 
         End Function
         Public Function LoadStandardInvoiceDetails(ByVal DbContext As AdvantageFramework.Database.DbContext, UserCode As String, InvoiceNumber As Integer,

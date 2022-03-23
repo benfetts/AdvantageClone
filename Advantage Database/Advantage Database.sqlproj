@@ -151,6 +151,7 @@
     <Folder Include="Webvantage Script" />
     <Folder Include="Synonyms" />
     <Folder Include="Programmability\Defaults" />
+    <Folder Include="..\" />
   </ItemGroup>
   <ItemGroup>
     <BuildContributorArgument Include="OutDir=$(OutDir)" />

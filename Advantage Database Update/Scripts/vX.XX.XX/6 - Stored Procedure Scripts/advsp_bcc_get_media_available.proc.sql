@@ -60,7 +60,6 @@ BEGIN
 	WHERE (h.BCC_ID IS NULL OR h.BCC_ID = @bcc_id_in OR @bcc_id_in IS NULL)
 	AND COALESCE(h.[STATUS], 0) = 0
 	AND h.ORD_PROCESS_CONTRL IN ( 1, 5 )
-    AND d.ACTIVE_REV = 1
 	AND (
 		(@date_to_use = 1 AND ( d.DATE_TO_BILL BETWEEN @m_start_date AND @m_cutoff_date ))
 		OR
@@ -88,7 +87,6 @@ BEGIN
 	WHERE (h.BCC_ID IS NULL OR h.BCC_ID = @bcc_id_in OR @bcc_id_in IS NULL)
 	AND	COALESCE(h.[STATUS], 0) = 0
 	AND h.ORD_PROCESS_CONTRL IN ( 1, 5 )
-    AND d.ACTIVE_REV = 1
 	AND (
 		(@date_to_use = 1 AND ( d.DATE_TO_BILL BETWEEN @m_start_date AND @m_cutoff_date ))
 		OR
@@ -116,7 +114,6 @@ BEGIN
 	WHERE (h.BCC_ID IS NULL OR h.BCC_ID = @bcc_id_in OR @bcc_id_in IS NULL)
 	AND	COALESCE(h.[STATUS], 0) = 0
 	AND h.ORD_PROCESS_CONTRL IN ( 1, 5 )
-    AND d.ACTIVE_REV = 1
 	AND (
 		(@date_to_use = 1 AND ( d.DATE_TO_BILL BETWEEN @m_start_date AND @m_cutoff_date ))
 		OR
@@ -144,7 +141,6 @@ BEGIN
 	WHERE (h.BCC_ID IS NULL OR h.BCC_ID = @bcc_id_in OR @bcc_id_in IS NULL)
 	AND	COALESCE(h.[STATUS], 0) = 0
 	AND h.ORD_PROCESS_CONTRL IN ( 1, 5 )
-    AND d.ACTIVE_REV = 1 
 	AND (
 		(@date_to_use = 1 AND ( d.DATE_TO_BILL BETWEEN @m_start_date AND @m_cutoff_date ))
 		OR
@@ -212,7 +208,6 @@ BEGIN
 	AND	COALESCE(h.[STATUS], 0) = 0
 	AND h.ORD_PROCESS_CONTRL IN ( 1, 5 )
 	AND ( d.BILLING_AMT <> 0.00 OR ( @incl_zero_spots = 1 AND d.TOTAL_SPOTS <> 0 ))
-    AND d.ACTIVE_REV = 1
 	-- BEGIN Date criteria
 	AND 
 		(
@@ -285,7 +280,6 @@ BEGIN
 	AND	COALESCE(h.[STATUS], 0) = 0
 	AND h.ORD_PROCESS_CONTRL IN ( 1, 5 )
 	AND ( d.BILLING_AMT <> 0.00 OR ( @incl_zero_spots = 1 AND d.TOTAL_SPOTS <> 0 ))
-    AND d.ACTIVE_REV = 1
 	-- BEGIN Date criteria
 	AND 
 		(

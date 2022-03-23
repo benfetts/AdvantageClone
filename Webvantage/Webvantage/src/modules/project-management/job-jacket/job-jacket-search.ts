@@ -104,6 +104,8 @@ export class JobJacketSearch extends ModuleBase {
                 me.openModule('', me.showDetailView(item.JobNumber, item.JobComponentNumber));
             }
         });
+
+        
     }
 
     clearSearch() {
@@ -2037,5 +2039,13 @@ export class JobJacketSearch extends ModuleBase {
             valueMapper: this.componentMapper
         };
 
+    }
+
+    attached() {
+        window.addEventListener('click', e => {
+            if ($(e.target).attr('title') === 'Job Jacket Search') {
+                this.grid.pager.resize();
+            }
+        });
     }
 }

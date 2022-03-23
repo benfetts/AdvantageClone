@@ -65,7 +65,7 @@ BEGIN
 		OR
 		(@date_to_use = 2 AND ( d.[START_DATE] BETWEEN @m_start_date AND @m_cutoff_date ))
 		OR
-		(@date_to_use = 3 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ))
+		(@date_to_use = 3 AND d.ACTIVE_REV = 1 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ))
 		)
 	AND (
 		( @incl_unbilled_only = 1 AND d.AR_INV_NBR IS NULL )
@@ -92,7 +92,7 @@ BEGIN
 		OR
 		(@date_to_use = 2 AND ( d.[START_DATE] BETWEEN @m_start_date AND @m_cutoff_date ))
 		OR
-		(@date_to_use = 3 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ))
+		(@date_to_use = 3 AND d.ACTIVE_REV = 1 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ))
 		)
 	AND (
 		( @incl_unbilled_only = 1 AND d.AR_INV_NBR IS NULL )
@@ -119,7 +119,7 @@ BEGIN
 		OR
 		(@date_to_use = 2 AND ( d.POST_DATE BETWEEN @m_start_date AND @m_cutoff_date ))
 		OR
-		(@date_to_use = 3 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ))
+		(@date_to_use = 3 AND d.ACTIVE_REV = 1 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ))
 		)
 	AND (
 		( @incl_unbilled_only = 1 AND d.AR_INV_NBR IS NULL )
@@ -146,7 +146,7 @@ BEGIN
 		OR
 		(@date_to_use = 2 AND ( d.[START_DATE] BETWEEN @m_start_date AND @m_cutoff_date ))
 		OR
-		(@date_to_use = 3 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ))
+		(@date_to_use = 3 AND d.ACTIVE_REV = 1 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ))
 		)
 	AND (
 		( @incl_unbilled_only = 1 AND d.AR_INV_NBR IS NULL )
@@ -217,7 +217,7 @@ BEGIN
 		OR
 		(@radio_monthly = 1 AND @date_to_use <> 3 AND ( h.UNITS IN ( 'BM', 'CM' ) AND ( CAST(CAST( d.MONTH_NBR as varchar(2)) + '/01/' + CAST( d.YEAR_NBR as varchar(4)) as smalldatetime) BETWEEN @brd_mth1 AND @brd_mth2)))
 		OR
-		(@date_to_use = 3 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ) AND ( (@radio_daily = 1 AND h.UNITS = 'DB') OR (@radio_monthly = 1 AND h.UNITS IN ( 'BM', 'CM' ))))
+		(@date_to_use = 3 AND d.ACTIVE_REV = 1 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ) AND ( (@radio_daily = 1 AND h.UNITS = 'DB') OR (@radio_monthly = 1 AND h.UNITS IN ( 'BM', 'CM' ))))
 		)
 	-- END Date criteria
 	AND (
@@ -289,7 +289,7 @@ BEGIN
 		OR
 		(@tv_monthly = 1 AND @date_to_use <> 3 AND ( h.UNITS IN ( 'BM', 'CM' ) AND ( CAST(CAST( d.MONTH_NBR as varchar(2)) + '/01/' + CAST( d.YEAR_NBR as varchar(4)) as smalldatetime) BETWEEN @brd_mth1 AND @brd_mth2)))
 		OR
-		(@date_to_use = 3 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ) AND ( (@tv_daily = 1 AND h.UNITS = 'DB') OR (@tv_monthly = 1 AND h.UNITS IN ( 'BM', 'CM' ))))
+		(@date_to_use = 3 AND d.ACTIVE_REV = 1 AND ( COALESCE(jc.MEDIA_BILL_DATE, d.DATE_TO_BILL) BETWEEN @job_media_date_from and @job_media_date_to ) AND ( (@tv_daily = 1 AND h.UNITS = 'DB') OR (@tv_monthly = 1 AND h.UNITS IN ( 'BM', 'CM' ))))
 		)
 	-- END Date criteria
 	AND (

@@ -1301,7 +1301,7 @@
             Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.BindingSource})
             Me.DataSource = Me.BindingSource
             Me.DisplayName = "410 Production WIP Aged Summary by Job AccrLiabPO"
-            Me.FilterString = "[WIPCode] In ('C', 'D', 'L', 'P')"
+            Me.FilterString = "[WIPCode] In ('C', 'D', 'L', 'P') And [JobCompAgingWIPALPOFlag] = 1b"
             Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Landscape = True
             Me.Margins = New System.Drawing.Printing.Margins(50, 50, 50, 50)

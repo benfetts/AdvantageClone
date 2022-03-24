@@ -439,25 +439,26 @@ Public Class DigitalAsset_Reviews
                 'Me.RadToolbarDigitalAssetReviews.FindItemByValue("GetAssetsAndThumbnails").Visible = False
                 'Me.RadToolbarDigitalAssetReviews.FindItemByValue("RefreshGetAssetsAndThumbnails").Visible = False
 
-                End If
-
-            Catch ex As Exception
-                Me.DivConceptShare.Visible = False
-            End Try
-            Try
-
-                If cApplication.IsProofingToolActive(Me._Session) = False OrElse MiscFN.IsClientPortal = True Then
-
-                    Me.RadToolbarDigitalAssetReviews.FindItemByValue("Add").Visible = False
-
-                Else
-
-                    Me.RadToolbarDigitalAssetReviews.FindItemByValue("Add").Visible = True
-
-                End If
-
             Catch ex As Exception
             End Try
+
+        Catch ex As Exception
+            Me.DivConceptShare.Visible = False
+        End Try
+        Try
+
+            If cApplication.IsProofingToolActive(Me._Session) = False OrElse MiscFN.IsClientPortal = True Then
+
+                Me.RadToolbarDigitalAssetReviews.FindItemByValue("Add").Visible = False
+
+            Else
+
+                Me.RadToolbarDigitalAssetReviews.FindItemByValue("Add").Visible = True
+
+            End If
+
+        Catch ex As Exception
+        End Try
 
     End Sub
     Private Sub DigitalAsset_Reviews_Load(sender As Object, e As EventArgs) Handles Me.Load

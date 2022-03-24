@@ -831,12 +831,12 @@ SELECT 	d.JOB_NUMBER,
               ABS(SUM(ISNULL(d.HOURS_TOTAL_BILL,0) + ISNULL(d.HOURS_MARKUP_AMT,0))) = 0 AND
               ABS(SUM(ISNULL(d.IO_AMT,0) + ISNULL(d.IO_MARKUP_AMT,0))) = 0 AND
               ABS(SUM(ISNULL(d.ADVANCE_AMT,0) + ISNULL(d.ADVANCE_COST,0))) = 0 AND
-              ABS(SUM(ISNULL(d.OPEN_PO_AMT,0))) >= .01 THEN 1
+              ABS(SUM(ISNULL(d.OPEN_PO_AMT,0))) >= .01  THEN 1
         ELSE 0
     END
 FROM #wip_basic AS d
 GROUP BY d.JOB_NUMBER, d.JOB_COMPONENT_NBR
---SELECT * FROM #job_comp_open_wip_flag WHERE JOB_NUMBER = 322
+--SELECT * FROM #job_comp_open_wip_flag WHERE JOB_NUMBER = 1
 	
 -- ==========================================================
 -- Temp table to hold max posting period for each AP invoice
@@ -1186,7 +1186,7 @@ LEFT JOIN #voucher_open_wip_flag AS vo
 	AND d.VN_FRL_EMP_CODE = vo.VN_FRL_EMP_CODE
 	AND d.JOB_NUMBER = vo.JOB_NUMBER
 	AND d.JOB_COMPONENT_NBR = vo.JOB_COMPONENT_NBR
-WHERE f.JOB_COMP_TOT_WIP_FLAG = 1 OR f.JOB_COMP_ADV_WIP_FLAG = 1 OR ISNULL(d.OPEN_PO_AMT,0) <> 0 OR ISNULL(d.ADVANCE_ACCRUED_LIAB,0) <> 0
+WHERE f.JOB_COMP_TOT_WIP_FLAG = 1 OR f.JOB_COMP_ADV_WIP_FLAG = 1 OR ISNULL(d.OPEN_PO_AMT,0) <> 0 --OR ISNULL(d.ADVANCE_ACCRUED_LIAB,0) <> 0
 										
 --AND d.WIP_CODE IN ('E', 'I')   /* DEBUG - for matching rows with advsp_production_wip */
 			

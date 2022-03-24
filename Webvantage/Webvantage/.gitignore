@@ -25,3 +25,6 @@ node_modules
 
 # Compiled files
 scripts
+
+# No vue in Dev
+vue_src

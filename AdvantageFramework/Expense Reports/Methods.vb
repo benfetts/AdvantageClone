@@ -350,8 +350,8 @@ Namespace ExpenseReports
                                                  If(ProductCode IsNot Nothing, "'" & ProductCode & "'", "NULL"),
                                                  If(SalesClassCode IsNot Nothing, "'" & SalesClassCode & "'", "NULL"),
                                                  If(FunctionType IsNot Nothing, "'" & FunctionType & "'", "NULL"),
-                                                 If(JobNumber IsNot Nothing, JobNumber, "NULL"),
-                                                 If(JobComponentNumber IsNot Nothing, JobComponentNumber, "NULL"),
+                                                 If(JobNumber <> Nothing, JobNumber, "NULL"),
+                                                 If(JobComponentNumber <> Nothing, JobComponentNumber, "NULL"),
                                                  If(EmpTitleID IsNot Nothing, EmpTitleID, "NULL"))
 
                 BillingRate = DbContext.Database.SqlQuery(Of AdvantageFramework.Database.Classes.BillingRate)(ExecuteStatement).FirstOrDefault

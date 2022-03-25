@@ -19402,30 +19402,30 @@
 
                 If MediaBroadcastWorksheetRadioPreBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetRadioPreBuyReports.Count > 0 Then
 
-                    MediaBroadcastWorksheetController = New AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController(Session)
+                    If (MediaBroadcastWorksheetMarketBook.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen AndAlso Session.IsNielsenSetup) OrElse
+                            (MediaBroadcastWorksheetMarketBook.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan AndAlso Session.IsEastlanSetup) Then
 
-                    Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+                        MediaBroadcastWorksheetController = New AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController(Session)
 
-                        NielsenDbContext.Database.Connection.Open()
+                        Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
 
-                        MediaBroadcastWorksheetMarketIDs = MediaBroadcastWorksheetRadioPreBuyReports.Select(Function(Book) Book.MediaBroadcastWorksheetMarketID).Distinct.ToList
+                            NielsenDbContext.Database.Connection.Open()
 
-                        For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetMarketIDs
+                            MediaBroadcastWorksheetMarketIDs = MediaBroadcastWorksheetRadioPreBuyReports.Select(Function(Book) Book.MediaBroadcastWorksheetMarketID).Distinct.ToList
 
-                            MediaBroadcastWorksheetMarket = AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketID)
+                            For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetMarketIDs
 
-                            MediaBroadcastWorksheetMarketBook = (From Entity In MediaBroadcastWorksheetMarketBookList
-                                                                 Where Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
-                                                                 Select Entity).FirstOrDefault
+                                MediaBroadcastWorksheetMarket = AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketID)
 
-                            If MediaBroadcastWorksheetMarketBook IsNot Nothing Then
+                                MediaBroadcastWorksheetMarketBook = (From Entity In MediaBroadcastWorksheetMarketBookList
+                                                                     Where Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
+                                                                     Select Entity).FirstOrDefault
 
-                                BookIDs = MediaBroadcastWorksheetMarketBook.GetRadioBookIDs()
-                                UpdatedBooks = String.Empty
-                                WorksheetBooks = String.Empty
+                                If MediaBroadcastWorksheetMarketBook IsNot Nothing Then
 
-                                If (MediaBroadcastWorksheetMarketBook.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen AndAlso Session.IsNielsenSetup) OrElse
-                                        (MediaBroadcastWorksheetMarketBook.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan AndAlso Session.IsEastlanSetup) Then
+                                    BookIDs = MediaBroadcastWorksheetMarketBook.GetRadioBookIDs()
+                                    UpdatedBooks = String.Empty
+                                    WorksheetBooks = String.Empty
 
                                     For Each RadioBook In (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenRadioPeriod.Load(NielsenDbContext)
                                                            Where BookIDs.Contains(Entity.ID)
@@ -19472,18 +19472,11 @@
 
                                     Next
 
-                                    'ElseIf MediaBroadcastWorksheetRadioPostBuyReport.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.NielsenCounty AndAlso Session.IsNielsenCountySetup  Then
-
                                 End If
 
-                            End If
+                            Next
 
-                        Next
-
-                        MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = DemographicID)
-
-                        If (MediaBroadcastWorksheetMarketBook.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Nielsen AndAlso Session.IsNielsenSetup) OrElse
-                                (MediaBroadcastWorksheetMarketBook.ExternalRadioSource = AdvantageFramework.Nielsen.Database.Entities.RadioSource.Eastlan AndAlso Session.IsEastlanSetup) Then
+                            MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = DemographicID)
 
                             For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetRadioPreBuyReports.Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
 
@@ -19544,8 +19537,8 @@
 
                                                     MediaBroadcastWorksheetRadioPreBuyReport = (From Entity In MediaBroadcastWorksheetRadioPreBuyReports
                                                                                                 Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                  Entity.NielsenRadioStationComboID = StationCode AndAlso
-                                                                                                  Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).SingleOrDefault
+                                                                                                      Entity.NielsenRadioStationComboID = StationCode AndAlso
+                                                                                                      Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).SingleOrDefault
 
                                                     If MediaBroadcastWorksheetRadioPreBuyReport IsNot Nothing Then
 
@@ -19598,9 +19591,9 @@
 
                             Next
 
-                        End If
+                        End Using
 
-                    End Using
+                    End If
 
                 End If
 

@@ -474,7 +474,7 @@
                         </div>
                         <div class="code-description-container" title="Checking this puts the comments before the subject/description.">
                             <div class="code-description-label">
-                                Put Comments First On Emails:
+                                Put comments first on emails. 
                             </div>
                             <div class="code-description-description">
                                 <asp:CheckBox ID="CheckBoxCommentsFirstOnEmails" runat="server" AutoPostBack="true" />

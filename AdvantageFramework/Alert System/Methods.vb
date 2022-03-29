@@ -936,6 +936,25 @@ Namespace AlertSystem
                             HTMLEmail.AddKeyValueRow("Subject", If(String.IsNullOrEmpty(Alert.Subject), "", Alert.Subject))
 
                             UrlToHtmlLink(EmailBody, Agency.WebvantageURL, Agency.ClientPortalURL)
+                            ' Thumbnail?
+                            Try
+
+                                If IsProof = True Then
+
+                                    If DocumentID IsNot Nothing AndAlso DocumentID > 0 Then
+
+                                        HTMLEmail.AddDocumentThumbnailRow(DbContext, CInt(DocumentID), ThumbnailFilename)
+
+                                    Else
+
+                                        HTMLEmail.AddLatestVersionsThumbnails(DbContext, Alert.ID)
+
+                                    End If
+
+                                End If
+
+                            Catch ex As Exception
+                            End Try
 
                             If String.IsNullOrWhiteSpace(EmailBody) = False Then HTMLEmail.AddKeyValueRow("Description", EmailBody)
 

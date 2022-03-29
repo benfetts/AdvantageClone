@@ -65,16 +65,15 @@ Partial Public Class DashboardRealizationEmployee
 
         Try
             If Not Me.IsPostBack Then
-                Dim oSec As New cSecurity(Session("ConnString"))
-                Dim UserHasAccessToEUProductivity As Boolean = (Me.CheckModuleAccess(AdvantageFramework.Security.Modules.FinanceAccounting_DashboardQueries_EmployeeUtilizationProductivityDQ, False) = 1)
-                Dim UserHasAccessToEURealization As Boolean = (Me.CheckModuleAccess(AdvantageFramework.Security.Modules.FinanceAccounting_DashboardQueries_EmployeeUtilizationRealizationDQ, False) = 1)
-
-                If UserHasAccessToEUProductivity = False And UserHasAccessToEURealization = False Then
-                    Server.Transfer("NoAccess.aspx")
-                ElseIf UserHasAccessToEUProductivity = True And UserHasAccessToEURealization = False Then
-                    Server.Transfer("NoAccess.aspx")
-                ElseIf UserHasAccessToEUProductivity = False And UserHasAccessToEURealization = True Then
-                    Me.RadToolbarDash.Items(3).Enabled = False
+                If Not Me.IsPostBack Then
+                    Dim oSec As New cSecurity(Session("ConnString"))
+                    If Me.CheckModuleAccess(AdvantageFramework.Security.Modules.FinanceAccounting_DashboardQueries_EmployeeUtilizationProductivityDQ, False) = 0 And Me.CheckModuleAccess(AdvantageFramework.Security.Modules.FinanceAccounting_DashboardQueries_EmployeeUtilizationRealizationDQ, False) = 0 Then
+                        Server.Transfer("NoAccess.aspx")
+                    ElseIf Me.CheckModuleAccess(AdvantageFramework.Security.Modules.FinanceAccounting_DashboardQueries_EmployeeUtilizationProductivityDQ, False) = 1 And Me.CheckModuleAccess(AdvantageFramework.Security.Modules.FinanceAccounting_DashboardQueries_EmployeeUtilizationRealizationDQ, False) = 0 Then
+                        Server.Transfer("NoAccess.aspx")
+                    ElseIf Me.CheckModuleAccess(AdvantageFramework.Security.Modules.FinanceAccounting_DashboardQueries_EmployeeUtilizationProductivityDQ, False) = 0 And Me.CheckModuleAccess(AdvantageFramework.Security.Modules.FinanceAccounting_DashboardQueries_EmployeeUtilizationRealizationDQ, False) = 1 Then
+                        Me.RadToolbarDash.Items(3).Enabled = False
+                    End If
                 End If
 
             End If

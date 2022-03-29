@@ -637,63 +637,24 @@ namespace AdvantageFramework.Core.AlertSystem
                         {
                         }
 
-                        // Subject and description
-                        try
+                        if (CommentsFirst(DbContext) == false)
                         {
-                            HTMLEmail.AddHeaderRow(Subject);
-                            HTMLEmail.AddKeyValueRow("Subject", string.IsNullOrEmpty(Alert.Subject) ? "" : Alert.Subject);
-
-                            string EmailBody = Alert.BodyHtml;
-
-                            UrlToHtmlLink(ref EmailBody, Agency.WebvantageUrl, Agency.ClientportalUrl);
-
-                            if (string.IsNullOrWhiteSpace(EmailBody) == false)
-                            {
-                                HTMLEmail.AddKeyValueRow("Description", EmailBody);
-                            }
-
-                            HTMLEmail.AddBlankRow();
+                            // Subject and description
+                            AddSubjectAndDescription(ref HTMLEmail, Alert.Subject, Alert.BodyHtml, Agency.WebvantageUrl, Agency.ClientportalUrl);
+                            // Thumbnail?
+                            AddThumbnail(IsProof, DocumentID, ref DbContext, ref HTMLEmail, Alert.AlertId, ThumbnailFilename);
+                            // Comments
+                            AddComments(IsProof, DocumentID, ref DbContext, ref HTMLEmail, Agency, Alert.AlertId, ThumbnailFilename);
                         }
-                        catch (Exception)
+                        else
                         {
+                            // Comments
+                            AddComments(IsProof, DocumentID, ref DbContext, ref HTMLEmail, Agency, Alert.AlertId, ThumbnailFilename);
+                            // Thumbnail?
+                            AddThumbnail(IsProof, DocumentID, ref DbContext, ref HTMLEmail, Alert.AlertId, ThumbnailFilename);
+                            // Subject and description
+                            AddSubjectAndDescription(ref HTMLEmail, Alert.Subject, Alert.BodyHtml, Agency.WebvantageUrl, Agency.ClientportalUrl);
                         }
-
-                        // Thumbnail?
-                        try
-                        {
-                            if (IsProof == true)
-                            {
-                                if (DocumentID > 0)
-                                {
-                                    HTMLEmail.AddDocumentThumbnailRow(DbContext, DocumentID, ref ThumbnailFilename);
-                                }
-                                else
-                                {
-                                    HTMLEmail.AddLatestVersionsThumbnails(DbContext, Alert.AlertId);
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-                        }
-
-                        // Comments
-                        try
-                        {
-                            if (IsProof == true && DocumentID > 0)
-                            {
-                                CommentsHistory(DbContext, false, Alert.AlertId, DocumentID, ThumbnailFilename, Agency, ref HTMLEmail);
-                            }
-                            else
-                            {
-                                CommentsHistory(DbContext, false, Alert.AlertId, Agency, ref HTMLEmail);
-                            }
-                            HTMLEmail.AddBlankRow();
-                        }
-                        catch (Exception)
-                        {
-                        }
-
                         // Details
                         try
                         {
@@ -1136,6 +1097,86 @@ namespace AdvantageFramework.Core.AlertSystem
             }
 
             return Completed;
+        }
+
+
+        static private void AddComments(bool IsProof, int? DocumentID, 
+            ref AdvantageFramework.Core.Database.DbContext DbContext, 
+            ref AdvantageFramework.Core.Email.Classes.HtmlEmail Email, 
+            AdvantageFramework.Core.Database.Entities.Agency Agency, int AlertID, string ThumbnailFilename)
+        {
+            // Comments
+            try
+            {
+                if (IsProof == true && DocumentID != null && DocumentID > 0)
+                    CommentsHistory(DbContext, false, AlertID, System.Convert.ToInt32(DocumentID), ThumbnailFilename, Agency, ref Email);
+                else
+                    CommentsHistory(DbContext, false, AlertID, Agency, ref Email);
+
+                Email.AddBlankRow();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        static private void AddSubjectAndDescription(ref AdvantageFramework.Core.Email.Classes.HtmlEmail Email, 
+            string Subject, string EmailBody, string WebvantageURL, string ClientPortalURL)
+        {
+            // Subject and description
+            try
+            {
+                Email.AddHeaderRow(Subject);
+                Email.AddKeyValueRow("Subject", string.IsNullOrEmpty(Subject) ? "" : Subject);
+
+                UrlToHtmlLink(ref EmailBody, WebvantageURL, ClientPortalURL);
+
+                if (string.IsNullOrWhiteSpace(EmailBody) == false)
+                    Email.AddKeyValueRow("Description", EmailBody);
+
+                Email.AddBlankRow();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        static private void AddThumbnail(bool IsProof, int? DocumentID,
+            ref AdvantageFramework.Core.Database.DbContext DbContext, 
+            ref AdvantageFramework.Core.Email.Classes.HtmlEmail Email, 
+            int AlertID, 
+            string ThumbnailFilename)
+        {
+            try
+            {
+                if (IsProof == true)
+                {
+                    if (DocumentID != null && DocumentID > 0)
+                        Email.AddDocumentThumbnailRow(DbContext, System.Convert.ToInt32(DocumentID), ref ThumbnailFilename);
+                    else
+                        Email.AddLatestVersionsThumbnails(DbContext, AlertID);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        static private bool CommentsFirst(AdvantageFramework.Core.Database.DbContext DbContext)
+        {
+            bool WhyYesTheyAre = false;
+
+            using (var DataContext = new AdvantageFramework.Core.Database.DataContext(DbContext.ConnectionString, DbContext.UserCode))
+            {
+                AdvantageFramework.Core.Database.Entities.Setting Setting = null;
+
+                Setting = AdvantageFramework.Core.Database.Procedures.Settings.LoadBySettingCode(DataContext, "ALRT_ASSGN_CMTS_FST");
+
+                if (Setting != null)
+                {
+                    if (Setting.Value != null)
+                        WhyYesTheyAre = System.Convert.ToInt32(Setting.Value) == 1;
+                }
+            }
+
+            return WhyYesTheyAre;
         }
 
         static private string ReplaceLinks(string HTMLEmail, string ReplacementLink)

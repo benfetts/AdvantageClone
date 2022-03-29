@@ -2382,6 +2382,8 @@ Public Class Maintenance_AlertAssignments
                         Me.RadComboBoxAlertAssignmentDefaultSubject.FindItemByValue(dt.Rows(i)("AGY_SETTINGS_VALUE")).Selected = True
                     Case "ALRT_ASSGN_CS_RT_DFL"
                         Me.CheckBoxRouteReviewsByDefault.Checked = MiscFN.IntToBool(dt.Rows(i)("AGY_SETTINGS_VALUE"))
+                    Case "ALRT_ASSGN_CMTS_FST"
+                        Me.CheckBoxCommentsFirstOnEmails.Checked = MiscFN.IntToBool(dt.Rows(i)("AGY_SETTINGS_VALUE"))
                 End Select
             Next
         End If

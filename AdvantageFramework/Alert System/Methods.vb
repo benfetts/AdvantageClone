@@ -956,23 +956,6 @@ Namespace AlertSystem
                             Catch ex As Exception
                             End Try
 
-                                If IsProof = True Then
-
-                                    If DocumentID IsNot Nothing AndAlso DocumentID > 0 Then
-
-                                        HTMLEmail.AddDocumentThumbnailRow(DbContext, CInt(DocumentID), ThumbnailFilename)
-
-                                    Else
-
-                                        HTMLEmail.AddLatestVersionsThumbnails(DbContext, Alert.ID)
-
-                                    End If
-
-                                End If
-
-                            Catch ex As Exception
-                            End Try
-
                             If String.IsNullOrWhiteSpace(EmailBody) = False Then HTMLEmail.AddKeyValueRow("Description", EmailBody)
 
                             HTMLEmail.AddBlankRow()

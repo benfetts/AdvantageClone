@@ -1137,7 +1137,7 @@
             Me.CheckBoxAlertOptions_CommentsFirstOnEmails.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.CheckBoxAlertOptions_CommentsFirstOnEmails.TabIndex = 5
             Me.CheckBoxAlertOptions_CommentsFirstOnEmails.TabOnEnter = True
-            Me.CheckBoxAlertOptions_CommentsFirstOnEmails.Text = "Put Comments First on Emails"
+            Me.CheckBoxAlertOptions_CommentsFirstOnEmails.Text = "Put Comments First On Emails"
             '
             'CheckBoxAlertOptions_ActivateSystemGeneratedAlerts
             '

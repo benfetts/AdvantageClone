@@ -2474,6 +2474,11 @@ Public Class Maintenance_AlertAssignments
         m.AgencySettingSet("ALRT_ASSGN_CS_RT_DFL", "Use auto-routed template by default when creating reviews",
                            MiscFN.BoolToInt(Me.CheckBoxRouteReviewsByDefault.Checked), "0")
     End Sub
+    Private Sub CheckBoxCommentsFirstOnEmails_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxCommentsFirstOnEmails.CheckedChanged
+        Dim m As New cMaintenanceApps()
+        m.AgencySettingSet("ALRT_ASSGN_CMTS_FST", "Use auto-routed template by default when creating reviews",
+                           MiscFN.BoolToInt(Me.CheckBoxCommentsFirstOnEmails.Checked), "0")
+    End Sub
 
     Private Sub CheckBoxTrackAlertDescriptionChanges_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxTrackAlertDescriptionChanges.CheckedChanged
         Dim m As New cMaintenanceApps()
@@ -2524,6 +2529,5 @@ Public Class Maintenance_AlertAssignments
         End If
 
     End Sub
-
 
 End Class

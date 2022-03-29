@@ -748,8 +748,6 @@ Namespace AlertSystem
                                   Where Entity.IsCC = True And Entity.IsClientPortal = False
                                   Select Entity.EmployeeCode).ToList
 
-
-
                         For Each emp In empsCC
 
                             If emp.Count > 0 Then
@@ -929,58 +927,63 @@ Namespace AlertSystem
                         Catch ex As Exception
                         End Try
 
-                        ' Subject and description
-                        Try
+                        If CommentsFirst(DbContext) = False Then
 
-                            HTMLEmail.AddHeaderRow(Subject)
-                            HTMLEmail.AddKeyValueRow("Subject", If(String.IsNullOrEmpty(Alert.Subject), "", Alert.Subject))
+                            ' Subject and description
+                            AddSubjectAndDescription(HTMLEmail, Alert.Subject, EmailBody, Agency.WebvantageURL, Agency.ClientPortalURL)
 
-                            UrlToHtmlLink(EmailBody, Agency.WebvantageURL, Agency.ClientPortalURL)
+                            ' Thumbnail?
+                            Try
 
-                            If String.IsNullOrWhiteSpace(EmailBody) = False Then HTMLEmail.AddKeyValueRow("Description", EmailBody)
+                                If IsProof = True Then
 
-                            HTMLEmail.AddBlankRow()
+                                    If DocumentID IsNot Nothing AndAlso DocumentID > 0 Then
 
-                        Catch ex As Exception
-                        End Try
+                                        HTMLEmail.AddDocumentThumbnailRow(DbContext, CInt(DocumentID), ThumbnailFilename)
 
-                        ' Thumbnail?
-                        Try
+                                    Else
 
-                            If IsProof = True Then
+                                        HTMLEmail.AddLatestVersionsThumbnails(DbContext, Alert.ID)
 
-                                If DocumentID IsNot Nothing AndAlso DocumentID > 0 Then
-
-                                    HTMLEmail.AddDocumentThumbnailRow(DbContext, DocumentID, ThumbnailFilename)
-
-                                Else
-
-                                    HTMLEmail.AddLatestVersionsThumbnails(DbContext, Alert.ID)
+                                    End If
 
                                 End If
 
-                            End If
+                            Catch ex As Exception
+                            End Try
 
-                        Catch ex As Exception
-                        End Try
+                            ' Comments
+                            AddComments(IsProof, DocumentID, DbContext, HTMLEmail, Agency, Alert.ID, ThumbnailFilename)
 
-                        ' Comments
-                        Try
+                        Else
 
-                            If IsProof = True AndAlso DocumentID IsNot Nothing AndAlso DocumentID > 0 Then
+                            ' Comments
+                            AddComments(IsProof, DocumentID, DbContext, HTMLEmail, Agency, Alert.ID, ThumbnailFilename)
 
-                                CommentsHistory(DbContext, False, Alert.ID, DocumentID, ThumbnailFilename, Agency, HTMLEmail)
+                            ' Thumbnail?
+                            Try
 
-                            Else
+                                If IsProof = True Then
 
-                                CommentsHistory(DbContext, False, Alert.ID, Agency, HTMLEmail)
+                                    If DocumentID IsNot Nothing AndAlso DocumentID > 0 Then
 
-                            End If
+                                        HTMLEmail.AddDocumentThumbnailRow(DbContext, CInt(DocumentID), ThumbnailFilename)
 
-                            HTMLEmail.AddBlankRow()
+                                    Else
 
-                        Catch ex As Exception
-                        End Try
+                                        HTMLEmail.AddLatestVersionsThumbnails(DbContext, Alert.ID)
+
+                                    End If
+
+                                End If
+
+                            Catch ex As Exception
+                            End Try
+
+                            ' Subject and description
+                            AddSubjectAndDescription(HTMLEmail, Alert.Subject, EmailBody, Agency.WebvantageURL, Agency.ClientPortalURL)
+
+                        End If
 
                         ' Details
                         Try
@@ -1510,6 +1513,97 @@ Namespace AlertSystem
             Finally
                 BuildAndSendAlertEmail = Completed
             End Try
+
+        End Function
+        Private Sub AddComments(ByVal IsProof As Boolean, ByVal DocumentID? As Integer,
+                                ByRef DbContext As AdvantageFramework.Database.DbContext,
+                                ByRef Email As AdvantageFramework.Email.Classes.HtmlEmail,
+                                ByVal Agency As AdvantageFramework.Database.Entities.Agency,
+                                ByVal AlertID As Integer,
+                                ByVal ThumbnailFilename As String)
+            ' Comments
+            Try
+
+                If IsProof = True AndAlso DocumentID IsNot Nothing AndAlso DocumentID > 0 Then
+
+                    CommentsHistory(DbContext, False, AlertID, CInt(DocumentID), ThumbnailFilename, Agency, Email)
+
+                Else
+
+                    CommentsHistory(DbContext, False, AlertID, Agency, Email)
+
+                End If
+
+                Email.AddBlankRow()
+
+            Catch ex As Exception
+            End Try
+        End Sub
+        Private Sub AddSubjectAndDescription(ByRef Email As AdvantageFramework.Email.Classes.HtmlEmail, ByVal Subject As String, ByVal EmailBody As String,
+                                             ByVal WebvantageURL As String, ByVal ClientPortalURL As String)
+            ' Subject and description
+            Try
+
+                Email.AddHeaderRow(Subject)
+                Email.AddKeyValueRow("Subject", If(String.IsNullOrEmpty(Subject), "", Subject))
+
+                UrlToHtmlLink(EmailBody, WebvantageURL, ClientPortalURL)
+
+                If String.IsNullOrWhiteSpace(EmailBody) = False Then Email.AddKeyValueRow("Description", EmailBody)
+
+                Email.AddBlankRow()
+
+            Catch ex As Exception
+            End Try
+        End Sub
+        Private Sub AddThumbnail(ByVal IsProof As Boolean, ByVal DocumentID? As Integer,
+                                 ByRef DbContext As AdvantageFramework.Database.DbContext,
+                                 ByRef Email As AdvantageFramework.Email.Classes.HtmlEmail,
+                                 ByVal AlertID As Integer,
+                                ByVal ThumbnailFilename As String)
+            Try
+
+                If IsProof = True Then
+
+                    If DocumentID IsNot Nothing AndAlso DocumentID > 0 Then
+
+                        Email.AddDocumentThumbnailRow(DbContext, CInt(DocumentID), ThumbnailFilename)
+
+                    Else
+
+                        Email.AddLatestVersionsThumbnails(DbContext, AlertID)
+
+                    End If
+
+                End If
+
+            Catch ex As Exception
+            End Try
+
+        End Sub
+        Private Function CommentsFirst(ByVal DbContext As AdvantageFramework.Database.DbContext) As Boolean
+
+            Dim WhyYesTheyAre As Boolean = False
+
+            Using DataContext = New AdvantageFramework.Database.DataContext(DbContext.ConnectionString, DbContext.UserCode)
+
+                Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
+
+                Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, "ALRT_ASSGN_CMTS_FST")
+
+                If Setting IsNot Nothing Then
+
+                    If Setting.Value IsNot Nothing Then
+
+                        WhyYesTheyAre = CType(Setting.Value, Integer) = 1
+
+                    End If
+
+                End If
+
+            End Using
+
+            Return WhyYesTheyAre
 
         End Function
         Private Sub LoadAlertDetailsInTable(ByVal DbContext As AdvantageFramework.Database.DbContext,

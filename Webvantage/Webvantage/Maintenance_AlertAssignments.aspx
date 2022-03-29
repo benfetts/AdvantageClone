@@ -472,6 +472,14 @@
                                 <asp:CheckBox ID="CheckBoxRouteReviewsByDefault" runat="server" AutoPostBack="true" />
                             </div>
                         </div>
+                        <div class="code-description-container" title="Checking this puts the comments before the subject/description.">
+                            <div class="code-description-label">
+                                Put comments first on emails. 
+                            </div>
+                            <div class="code-description-description">
+                                <asp:CheckBox ID="CheckBoxCommentsFirstOnEmails" runat="server" AutoPostBack="true" />
+                            </div>
+                        </div>
                         <div style="margin: 6px 0px 0px 0px; display: none !important;">
                         <h4>Time Zone Display</h4>
                             <div class="code-description-container">

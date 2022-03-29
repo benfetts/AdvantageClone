@@ -419,6 +419,15 @@ Partial Public Class Maintenance_AlertAssignments
     Protected WithEvents CheckBoxRouteReviewsByDefault As Global.System.Web.UI.WebControls.CheckBox
 
     '''<summary>
+    '''CheckBoxCommentsFirstOnEmails control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBoxCommentsFirstOnEmails As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
     '''RadComboBoxDatabaseServerTimeZone control.
     '''</summary>
     '''<remarks>

@@ -23,7 +23,7 @@ RETURNS
 	[Length] smallint NOT NULL,
 	[AdNumber] varchar(30) NULL,
 	[NetworkID] varchar(10) NULL,
-	[GrossRate] decimal NOT NULL,
+	[GrossRate] decimal(18,2) NOT NULL,
 	[Approved] smallint NULL,
 	[Comment] varchar(254) NULL,
 	[VariantCodes] varchar(254) NULL,

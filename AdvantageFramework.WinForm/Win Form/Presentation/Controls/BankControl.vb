@@ -28,6 +28,7 @@
         Private _IsMultiCurrencyEnabled As Boolean = False
         Private _AgencyCurrencyCode As String = Nothing
         Private _CurrencyCode As String = Nothing
+        Private _ImportFolder As String = Nothing
         'Private _CurrencyCodeOrig As String = Nothing
 
 #End Region
@@ -3369,6 +3370,26 @@
 
                     TextBoxPaymentManager_CustomerID.Visible = False
                     TextBoxPaymentManager_Word.Visible = False
+
+                End If
+
+                If SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "FAST" Then
+
+                    Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
+
+                        'If AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext) Then
+
+                        _ImportFolder = AdvantageFramework.StringUtilities.AppendTrailingCharacter(AdvantageFramework.Database.Procedures.Agency.LoadImportPath(DbContext), "\")
+
+                        If String.IsNullOrWhiteSpace(_ImportFolder) = False Then
+
+                            TextBoxPaymentManager_FileOutputDirectory.Text = _ImportFolder + "PAYMENT\"
+
+                        End If
+
+                        'End If
+
+                    End Using
 
                 End If
 

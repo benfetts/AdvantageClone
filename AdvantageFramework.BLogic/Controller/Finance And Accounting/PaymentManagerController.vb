@@ -370,17 +370,17 @@ Namespace Controller.FinanceAndAccounting
 
                     End If
 
-                    If String.IsNullOrWhiteSpace(ViewModel.Bank.PaymentManagerID) OrElse String.IsNullOrWhiteSpace(ViewModel.Bank.PaymentManagerDirectory) Then
+                    If String.IsNullOrWhiteSpace(ViewModel.Bank.PaymentManagerDirectory) Then  'String.IsNullOrWhiteSpace(ViewModel.Bank.PaymentManagerID) OrElse 
 
                         Throw New Exception("Unable to obtain Payment Manager data for bank code " & ViewModel.Bank.Code & ".")
 
                     End If
 
-                    If IsNumeric(ViewModel.Bank.PaymentManagerID) = False OrElse ViewModel.Bank.PaymentManagerID.Length > 7 Then
+                    'If IsNumeric(ViewModel.Bank.PaymentManagerID) = False OrElse ViewModel.Bank.PaymentManagerID.Length > 7 Then
 
-                        Throw New Exception("The Bank Customer ID must be numeric with no more than 7 digits. Please correct and try again.")
+                    '    Throw New Exception("The Bank Customer ID must be numeric with no more than 7 digits. Please correct and try again.")
 
-                    End If
+                    'End If
 
                     If My.Computer.FileSystem.DirectoryExists(ViewModel.Bank.PaymentManagerDirectory) = False Then
 

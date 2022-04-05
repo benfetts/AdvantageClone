@@ -713,6 +713,10 @@ Public Interface IAPIService
                                   JobDateCriteria As Integer, JobStartDate As String, JobEndDate As String, IncludeClosed As Boolean,
                                   IncludeBilledRange As Boolean, StartingPostPeriodCode As String, EndingPostPeriodCode As String) As JobDetailItemAPIResponse
 
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadSalesJournals(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodStart As String, PostPeriodEnd As String, Optional BreakoutCoOpBilling As Boolean = False) As SalesJournalAPIResponse
 
 #End Region
+
 End Interface

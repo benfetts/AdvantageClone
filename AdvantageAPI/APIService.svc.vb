@@ -15272,6 +15272,90 @@ Public Class APIService
 
     End Function
 
+    Public Function LoadSalesJournals(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodStart As String, PostPeriodEnd As String, Optional BreakoutCoOpBilling As Boolean = False) As SalesJournalAPIResponse Implements IAPIService.LoadSalesJournals
+
+        'objects
+        Dim APISession As AdvantageFramework.Security.APISession = Nothing
+        Dim ErrorMessage As String = String.Empty
+        Dim SalesJournalAPIResponse As SalesJournalAPIResponse = Nothing
+        Dim SalesJournalAPIReports As List(Of SalesJournalAPIReport) = Nothing
+        Dim SqlParameterBreakoutCoOpBilling As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterStartingPostPeriodCode As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterEndingPostPeriodCode As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterPeriodType As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterStartingInvoiceDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterEndingInvoiceDate As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterOfficeList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterClientList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterDivisionList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterProductList As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+
+        SalesJournalAPIResponse = New SalesJournalAPIResponse
+        SalesJournalAPIReports = New List(Of SalesJournalAPIReport)
+
+        If ErrorMessage = String.Empty Then
+            If String.IsNullOrWhiteSpace(PostPeriodStart) = True OrElse String.IsNullOrWhiteSpace(PostPeriodEnd) = True Then
+                ErrorMessage = "Please provide valid start & end posting periods."
+            End If
+        End If
+
+        If ErrorMessage = String.Empty Then
+            If PostPeriodStart > PostPeriodEnd Then
+                ErrorMessage = "Please provide a PostPeriodStart on or before the PostPeriodEnd."
+            End If
+        End If
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = True Then
+
+            Try
+
+                If LoginToAPI(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, APISession, ErrorMessage) Then
+
+                    Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
+
+                        SqlParameterStartingPostPeriodCode = New System.Data.SqlClient.SqlParameter("@StartingPostPeriodCode", SqlDbType.VarChar) With {.Value = PostPeriodStart}
+                        SqlParameterEndingPostPeriodCode = New System.Data.SqlClient.SqlParameter("@EndingPostPeriodCode", SqlDbType.VarChar) With {.Value = PostPeriodEnd}
+                        SqlParameterBreakoutCoOpBilling = New System.Data.SqlClient.SqlParameter("@BreakoutCoOpBilling", SqlDbType.Bit) With {.Value = BreakoutCoOpBilling}
+                        SqlParameterPeriodType = New System.Data.SqlClient.SqlParameter("@PeriodType", SqlDbType.SmallInt) With {.Value = DBNull.Value}
+                        SqlParameterStartingInvoiceDate = New System.Data.SqlClient.SqlParameter("@StartingInvoiceDate", SqlDbType.VarChar) With {.Value = String.Empty}
+                        SqlParameterEndingInvoiceDate = New System.Data.SqlClient.SqlParameter("@EndingInvoiceDate", SqlDbType.VarChar) With {.Value = String.Empty}
+                        SqlParameterOfficeList = New System.Data.SqlClient.SqlParameter("@OFFICE_LIST", SqlDbType.VarChar) With {.Value = DBNull.Value}
+                        SqlParameterClientList = New System.Data.SqlClient.SqlParameter("@CLIENT_LIST", SqlDbType.VarChar) With {.Value = DBNull.Value}
+                        SqlParameterDivisionList = New System.Data.SqlClient.SqlParameter("@DIVISION_LIST", SqlDbType.VarChar) With {.Value = DBNull.Value}
+                        SqlParameterProductList = New System.Data.SqlClient.SqlParameter("@PRODUCT_LIST", SqlDbType.VarChar) With {.Value = DBNull.Value}
+                        SqlParameterUserID = New System.Data.SqlClient.SqlParameter("@USER_CODE", SqlDbType.VarChar) With {.Value = UserName}
+
+                        SalesJournalAPIReports = DbContext.Database.SqlQuery(Of SalesJournalAPIReport)("EXEC dbo.advsp_load_drpt_sales_journal @StartingPostPeriodCode, @EndingPostPeriodCode, @BreakoutCoOpBilling, @PeriodType, @StartingInvoiceDate, @EndingInvoiceDate, " &
+                                                                                                        "@OFFICE_LIST, @CLIENT_LIST, @DIVISION_LIST, @PRODUCT_LIST, @USER_CODE",
+                                                                                                        SqlParameterStartingPostPeriodCode, SqlParameterEndingPostPeriodCode, SqlParameterBreakoutCoOpBilling, SqlParameterPeriodType, SqlParameterStartingInvoiceDate, SqlParameterEndingInvoiceDate,
+                                                                                                        SqlParameterOfficeList, SqlParameterClientList, SqlParameterDivisionList, SqlParameterProductList, SqlParameterUserID).ToList
+
+
+                    End Using
+
+                End If
+
+            Catch ex As Exception
+                ProcessException(ex, "APIService-NotCaught")
+                ErrorMessage = "Critical Failure in API" & System.Environment.NewLine & System.Environment.NewLine & ex.Message
+            End Try
+
+        End If
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+            SalesJournalAPIResponse.Message = ErrorMessage
+            SalesJournalAPIResponse.IsSuccessful = False
+            SalesJournalAPIResponse.Results = Nothing
+        Else
+            SalesJournalAPIResponse.Results = SalesJournalAPIReports
+            SalesJournalAPIResponse.Message &= " " & CStr(SalesJournalAPIResponse.Results.Count) & " records"
+        End If
+
+        LoadSalesJournals = SalesJournalAPIResponse
+
+    End Function
+
 #End Region
 
 End Class

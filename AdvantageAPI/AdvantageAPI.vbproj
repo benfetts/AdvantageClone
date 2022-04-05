@@ -172,6 +172,8 @@
     <Compile Include="Classes\General\GeneralLedgerAccounts.vb" />
     <Compile Include="Classes\General\GeneralLedgerDetailAPIReport.vb" />
     <Compile Include="Classes\General\GeneralLedgerDetailAPIResponse.vb" />
+    <Compile Include="Classes\General\SalesJournalAPIReport.vb" />
+    <Compile Include="Classes\General\SalesJournalAPIResponse.vb" />
     <Compile Include="Classes\General\TrialBalanceAPIReport.vb" />
     <Compile Include="Classes\General\TrialBalanceAPIResponse.vb" />
     <Compile Include="Classes\Job\CampaignWithDates.vb" />

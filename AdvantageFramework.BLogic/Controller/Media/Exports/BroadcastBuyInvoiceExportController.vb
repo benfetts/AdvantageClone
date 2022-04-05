@@ -98,8 +98,19 @@
             Dim BuyList As Generic.List(Of AdvantageFramework.DTO.Media.Buy) = Nothing
             Dim InvoiceList As Generic.List(Of AdvantageFramework.DTO.Media.Invoice) = Nothing
             Dim HostedSent As Boolean = False
+            Dim NCCTVSyscodeList As Generic.List(Of AdvantageFramework.Nielsen.Database.Entities.NCCTVSyscode) = Nothing
 
             Try
+
+                If Session.IsNielsenSetup Then
+
+                    Using NielsenDbContext As New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+
+                        NCCTVSyscodeList = AdvantageFramework.Nielsen.Database.Procedures.NCCTVSyscode.Load(NielsenDbContext).ToList
+
+                    End Using
+
+                End If
 
                 Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
@@ -120,7 +131,7 @@
                                                 Entity.BRD_WEEK_END <= ViewModel.EndDate
                                           Select Entity).ToList
 
-                    Header = "MEDIA,CLIENT,PRODUCT,EST,ESTIMATE,BUY_DATES,MARKET,STATION,LINE,PROGRAMMING,DAYPART,LEN,ROTATION,TIMES,COST_PER_SPOT,RATING"
+                    Header = "MEDIA,CLIENT,PRODUCT,EST,ESTIMATE,BUY_DATES,MARKET,SYSCODE,STATION,LINE,CABLE_NETWORK_CODE,PROGRAMMING,DAYPART,LEN,ROTATION,TIMES,COST_PER_SPOT,RATING"
 
                     For Each BroadcastCalendar In BroadcastCalendars
 
@@ -153,8 +164,20 @@
                             Data += """" & .ESTIMATE & """" & ","
                             Data += """" & .BUY_DATES & """" & ","
                             Data += """" & .MARKET & """" & ","
+
+                            If .SYSCODE.HasValue AndAlso NCCTVSyscodeList.Where(Function(SC) SC.ID = .SYSCODE.Value).Count = 1 Then
+
+                                Data += """" & NCCTVSyscodeList.Where(Function(SC) SC.ID = .SYSCODE.Value).First.Syscode.ToString & """" & ","
+
+                            Else
+
+                                Data += """" & "" & """" & ","
+
+                            End If
+
                             Data += """" & .STATION & """" & ","
                             Data += .LINE & ","
+                            Data += .CABLE_NETWORK_CODE & ","
                             Data += """" & .PROGRAMMING & """" & ","
                             Data += """" & .DAYPART & """" & ","
                             Data += .LEN & ","
@@ -326,8 +349,19 @@
             Dim InvoiceList As Generic.List(Of AdvantageFramework.DTO.Media.Invoice) = Nothing
             Dim HostedSent As Boolean = False
             Dim XmlTextWriter As System.Xml.XmlTextWriter = Nothing
+            Dim NCCTVSyscodeList As Generic.List(Of AdvantageFramework.Nielsen.Database.Entities.NCCTVSyscode) = Nothing
 
             Try
+
+                If Session.IsNielsenSetup Then
+
+                    Using NielsenDbContext As New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+
+                        NCCTVSyscodeList = AdvantageFramework.Nielsen.Database.Procedures.NCCTVSyscode.Load(NielsenDbContext).ToList
+
+                    End Using
+
+                End If
 
                 Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
@@ -356,8 +390,10 @@
                     Header.Add("ESTIMATE")
                     Header.Add("BUY_DATES")
                     Header.Add("MARKET")
+                    Header.Add("SYSCODE")
                     Header.Add("STATION")
                     Header.Add("LINE")
+                    Header.Add("CABLE_NETWORK_CODE")
                     Header.Add("PROGRAMMING")
                     Header.Add("DAYPART")
                     Header.Add("LEN")
@@ -400,8 +436,20 @@
                         Data.Add(Buy.ESTIMATE)
                         Data.Add(Buy.BUY_DATES)
                         Data.Add(Buy.MARKET)
+
+                        If Buy.SYSCODE.HasValue AndAlso NCCTVSyscodeList.Where(Function(SC) SC.ID = Buy.SYSCODE.Value).Count = 1 Then
+
+                            Data.Add(NCCTVSyscodeList.Where(Function(SC) SC.ID = Buy.SYSCODE.Value).First.Syscode.ToString)
+
+                        Else
+
+                            Data.Add("")
+
+                        End If
+
                         Data.Add(Buy.STATION)
                         Data.Add(Buy.LINE)
+                        Data.Add(Buy.CABLE_NETWORK_CODE)
                         Data.Add(Buy.PROGRAMMING)
                         Data.Add(Buy.DAYPART)
                         Data.Add(Buy.LEN)

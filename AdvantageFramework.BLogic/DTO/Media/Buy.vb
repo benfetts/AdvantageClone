@@ -19,8 +19,10 @@
             ESTIMATE
             BUY_DATES
             MARKET
+            SYSCODE
             STATION
             LINE
+            CABLE_NETWORK_CODE
             PROGRAMMING
             DAYPART
             LEN
@@ -47,8 +49,10 @@
         Public Property ESTIMATE() As String
         Public Property BUY_DATES() As String
         Public Property MARKET() As String
+        Public Property SYSCODE() As Nullable(Of Integer)
         Public Property STATION() As String
         Public Property LINE() As Integer
+        Public Property CABLE_NETWORK_CODE() As String
         Public Property PROGRAMMING() As String
         Public Property DAYPART() As String
         Public Property LEN() As Nullable(Of Short)

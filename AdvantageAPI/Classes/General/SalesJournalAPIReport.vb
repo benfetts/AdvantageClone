@@ -21,9 +21,6 @@ Public Class SalesJournalAPIReport
 
 #Region " Properties "
     <DataMember>
-    <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", ShowColumnInGrid:=False)>
-    Public Property ID As System.Guid
-    <DataMember>
     <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
     Public Property OfficeCode As String
     <DataMember>

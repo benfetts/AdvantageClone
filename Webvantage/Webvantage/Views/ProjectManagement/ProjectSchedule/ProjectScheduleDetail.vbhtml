@@ -465,7 +465,7 @@ End Functions
 
 End Code
 
-@*@(Html.Action("UnityMenu", "Utilities", UnityMenuModel))*@
+@(Html.Action("UnityMenu", "Utilities", UnityMenuModel))
 
 
 <script>

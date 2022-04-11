@@ -610,7 +610,7 @@
 
                                                 ElseIf _DataColumn = AdvantageFramework.MediaPlanning.DataColumns.Week Then
 
-                                                    If _MediaPlan.MediaPlanEstimate.GetWeek(FromDate.AddDays(-1)) <> _MediaPlan.MediaPlanEstimate.GetWeek(FromDate) Then
+                                                    If StartDatesList.Count = 0 OrElse StartDatesList(StartDatesList.Count - 1).AddDays(6) < FromDate Then
 
                                                         If _MediaPlan.MediaPlanEstimate.IsOnHiatusDate(FromDate) = False Then
 

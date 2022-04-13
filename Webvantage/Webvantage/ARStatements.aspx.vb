@@ -576,6 +576,7 @@ Partial Public Class ARStatements
         Dim agingtype As Integer = 1
         Dim printamount As Integer = 0
         Dim exclude As Integer = 0
+        Dim includeComments As Integer = 0
 
         If Me.RadButtonInvoiceDate.Checked = True Then
             agingtype = 1
@@ -593,11 +594,14 @@ Partial Public Class ARStatements
         If CheckboxExcludeDescription.Checked Then
             exclude = 1
         End If
+        If CheckboxShowInvoiceComment.Checked Then
+            includeComments = 1
+        End If
 
         If ARType = cReports.ARStatementsType.Client Then
-            strURL = "popReportViewer.aspx?ID=" & ID & "&PP=" & PostPeriod & "&Loc=" & Location & "&AD=" & AgedDate & "&Type=" & ddl.SelectedValue & "&Report=clientarstatement00" & Me.ddCReportTemplate.SelectedItem.Value & "&c=" & Me.RblPrintHeaderFooter.SelectedValue & "&aging=" & agingtype & "&exclude=" & exclude
+            strURL = "popReportViewer.aspx?ID=" & ID & "&PP=" & PostPeriod & "&Loc=" & Location & "&AD=" & AgedDate & "&Type=" & ddl.SelectedValue & "&Report=clientarstatement00" & Me.ddCReportTemplate.SelectedItem.Value & "&c=" & Me.RblPrintHeaderFooter.SelectedValue & "&aging=" & agingtype & "&exclude=" & exclude & "&comments=" & includeComments
         ElseIf ARType = cReports.ARStatementsType.Product Then
-            strURL = "popReportViewer.aspx?ID=" & ID & "&PP=" & PostPeriod & "&Loc=" & Location & "&AD=" & AgedDate & "&Type=" & ddl.SelectedValue & "&Report=productarstatement00" & Me.ddCReportTemplate.SelectedItem.Value & "&c=" & Me.RblPrintHeaderFooter.SelectedValue & "&aging=" & agingtype & "&exclude=" & exclude
+            strURL = "popReportViewer.aspx?ID=" & ID & "&PP=" & PostPeriod & "&Loc=" & Location & "&AD=" & AgedDate & "&Type=" & ddl.SelectedValue & "&Report=productarstatement00" & Me.ddCReportTemplate.SelectedItem.Value & "&c=" & Me.RblPrintHeaderFooter.SelectedValue & "&aging=" & agingtype & "&exclude=" & exclude & "&comments=" & includeComments
         End If
 
         Dim strBuilder As System.Text.StringBuilder = New System.Text.StringBuilder

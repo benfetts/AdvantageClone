@@ -131,6 +131,15 @@ Partial Public Class ARStatements
     Protected WithEvents CheckboxExcludeDescription As Global.System.Web.UI.WebControls.CheckBox
 
     '''<summary>
+    '''CheckboxShowInvoiceComment control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckboxShowInvoiceComment As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
     '''CollapsablePanelEmailOptions control.
     '''</summary>
     '''<remarks>

@@ -16,6 +16,7 @@ Public Class arptClientARStatement001
     Public dt As DataTable
     Public PutCommentInFooter As Boolean = False
     Public strExclude As String
+    Public strIncludeComments As String
     'Private ds As arptClientDS
     'Private dt As New arptClientDS.usp_wv_reports_ar_statements_client_001DataTable
     Public _LocationLogo As AdvantageFramework.Database.Entities.LocationLogo = Nothing
@@ -144,7 +145,10 @@ Public Class arptClientARStatement001
                 Me.InvoiceNumber.Text &= "-" & Format(Me.Fields.Item("InvoiceSeq").Value, "0000")
             End If
 
-
+            If strIncludeComments = "0" Then
+                Me.TextboxInvoiceComments.Text = ""
+                Me.TextboxInvoiceComments.Visible = False
+            End If
 
         Catch ex As Exception
 

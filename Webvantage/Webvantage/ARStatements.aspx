@@ -179,7 +179,8 @@
                         </telerik:RadButton>
                     </td>
                     <td colspan="2" align="left" valign="top">
-                        <asp:CheckBox ID="CheckboxExcludeDescription" runat="server" Text="Exclude Reference and Description" />
+                        <asp:CheckBox ID="CheckboxExcludeDescription" runat="server" Text="Exclude Reference and Description" />&nbsp;
+                        <asp:CheckBox ID="CheckboxShowInvoiceComment" runat="server" Text="Include Invoice Comment" />    
                     </td>
                 </tr>
             </table>

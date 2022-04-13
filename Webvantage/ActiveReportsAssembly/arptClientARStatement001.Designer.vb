@@ -56,6 +56,7 @@ Partial Public Class arptClientARStatement001
         Me.Reference = New DataDynamics.ActiveReports.TextBox()
         Me.Description = New DataDynamics.ActiveReports.TextBox()
         Me.InvoiceAmount = New DataDynamics.ActiveReports.TextBox()
+        Me.TextboxInvoiceComments = New DataDynamics.ActiveReports.TextBox()
         Me.PageFooter1 = New DataDynamics.ActiveReports.PageFooter()
         Me.Footer = New DataDynamics.ActiveReports.Label()
         Me.ReportInfo1 = New DataDynamics.ActiveReports.ReportInfo()
@@ -140,6 +141,7 @@ Partial Public Class arptClientARStatement001
         CType(Me.Reference, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Description, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InvoiceAmount, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextboxInvoiceComments, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Footer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportInfo1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label32, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -500,9 +502,10 @@ Partial Public Class arptClientARStatement001
         '
         'Detail1
         '
+        Me.Detail1.CanShrink = True
         Me.Detail1.ColumnSpacing = 0!
-        Me.Detail1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.OriginalAmount, Me.InvoiceNumber, Me.InvoiceDate, Me.Reference, Me.Description, Me.InvoiceAmount})
-        Me.Detail1.Height = 0.3020833!
+        Me.Detail1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.OriginalAmount, Me.InvoiceNumber, Me.InvoiceDate, Me.Reference, Me.Description, Me.InvoiceAmount, Me.TextboxInvoiceComments})
+        Me.Detail1.Height = 0.3229167!
         Me.Detail1.Name = "Detail1"
         '
         'OriginalAmount
@@ -571,6 +574,18 @@ Partial Public Class arptClientARStatement001
         Me.InvoiceAmount.Text = "InvoiceAmount"
         Me.InvoiceAmount.Top = 0.0625!
         Me.InvoiceAmount.Width = 1.125!
+        '
+        'TextboxInvoiceComments
+        '
+        Me.TextboxInvoiceComments.CanShrink = True
+        Me.TextboxInvoiceComments.DataField = "InvoiceComment"
+        Me.TextboxInvoiceComments.Height = 0.06200001!
+        Me.TextboxInvoiceComments.Left = 0.25!
+        Me.TextboxInvoiceComments.Name = "TextboxInvoiceComments"
+        Me.TextboxInvoiceComments.Style = "font-size: 9pt; ddo-char-set: 0"
+        Me.TextboxInvoiceComments.Text = "Invoice Comment"
+        Me.TextboxInvoiceComments.Top = 0.25!
+        Me.TextboxInvoiceComments.Width = 5.75!
         '
         'PageFooter1
         '
@@ -982,6 +997,7 @@ Partial Public Class arptClientARStatement001
         'GroupHeader2
         '
         Me.GroupHeader2.BackColor = System.Drawing.Color.LightGray
+        Me.GroupHeader2.CanShrink = True
         Me.GroupHeader2.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label12, Me.Label13, Me.Label14, Me.Label15, Me.Label16})
         Me.GroupHeader2.Height = 0.3125!
         Me.GroupHeader2.Name = "GroupHeader2"
@@ -1252,6 +1268,7 @@ Partial Public Class arptClientARStatement001
         CType(Me.Reference, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Description, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.InvoiceAmount, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextboxInvoiceComments, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Footer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ReportInfo1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label32, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1382,4 +1399,5 @@ Partial Public Class arptClientARStatement001
     Friend WithEvents PrtHeader As DataDynamics.ActiveReports.Label
     Friend WithEvents CommentsFooter As DataDynamics.ActiveReports.TextBox
     Private WithEvents AgencyInfo As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextboxInvoiceComments As DataDynamics.ActiveReports.TextBox
 End Class

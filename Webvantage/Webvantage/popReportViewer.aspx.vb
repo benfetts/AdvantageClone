@@ -866,6 +866,7 @@ Partial Public Class popReportViewer
                     rpt.strFooter = oReports.GetAgencyFooter(Request.QueryString("Loc"))
                     rpt.imgPath = imgPath
                     rpt.strExclude = Request.QueryString("exclude")
+                    rpt.strIncludeComments = Request.QueryString("comments")
                     rpt.dt = oReports.GetARClientStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "1", StrOffices, Request.QueryString("aging"))
                     strReportName = "Client_AR_Statement"
                     Session("ARPrintIDs") = ""

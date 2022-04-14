@@ -55,6 +55,10 @@ Public Class arptClientARStatement001
             Me.Description.Visible = False
             Me.Label14.Visible = False
             Me.Reference.Visible = False
+            If strIncludeComments = "1" Then
+                Me.Label3.Visible = True
+                Me.TextboxInvoiceComments.Visible = True
+            End If
         End If
 
 
@@ -145,10 +149,6 @@ Public Class arptClientARStatement001
                 Me.InvoiceNumber.Text &= "-" & Format(Me.Fields.Item("InvoiceSeq").Value, "0000")
             End If
 
-            If strIncludeComments = "0" Then
-                Me.TextboxInvoiceComments.Text = ""
-                Me.TextboxInvoiceComments.Visible = False
-            End If
 
         Catch ex As Exception
 

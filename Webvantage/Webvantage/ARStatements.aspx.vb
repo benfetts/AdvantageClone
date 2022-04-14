@@ -386,6 +386,14 @@ Partial Public Class ARStatements
         'End Try
     End Sub
 
+    Private Sub CheckboxExcludeDescription_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckboxExcludeDescription.CheckedChanged
+        If Me.CheckboxExcludeDescription.Checked = True Then
+            Me.CheckboxShowInvoiceComment.Enabled = True
+        Else
+            Me.CheckboxShowInvoiceComment.Enabled = False
+        End If
+    End Sub
+
 #End Region
 
 #Region " Functions"
@@ -435,7 +443,7 @@ Partial Public Class ARStatements
                 End If
             Catch ex As Exception
             End Try
-
+            Me.CheckboxShowInvoiceComment.Enabled = False
 
         Catch ex As Exception
             Me.ShowMessage("No Records Found")

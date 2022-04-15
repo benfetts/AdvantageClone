@@ -124,7 +124,7 @@
                         showKendoAlert(e.response.Message);
                         e.preventDefault(true);
                         ScheduleGanttDataSource.read().then(() => {
-                            expandAll();
+                            //expandAll();
                         });
                     }
                 }
@@ -168,7 +168,7 @@
                         start: { from: "TaskStartDate", type: "date" },
                         end: { from: "JobRevisedDate", type: "date" },
                         title: { from: "TaskDescription", type: 'string' },
-                        expanded: { from: "Expanded", type: "boolean", defaultValue: true }
+                        expanded: { from: "Expanded", type: "boolean", defaultValue: false }
                     }
                 }
             },
@@ -794,14 +794,14 @@
             gantt.resize();
         }
 
-        expandAll();
+        //expandAll();
     }
 
     function refreshGantt() {
         var gantt = $("#gantt").data("kendoGantt");
         if (gantt) {
             gantt.dataSource.read().then(() => {
-                expandAll();
+                //expandAll();
             });
             gantt.dependencies.read();
         }

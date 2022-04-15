@@ -216,18 +216,20 @@ end functions
                     });
                 },
                 read: (e) => {
-
                     var data = {
                         JobNumber: @Model.JobNumber,
                         JobComponentNumber: @Model.JobComponentNumber,
                         Sort: CalculateByPredecessor ? '' : 'order'
                     };
 
+                    console.log('ReadGanttTask start', new Date());
+
                     $.ajax({
                         url: "@Href("~/ProjectManagement/ProjectSchedule/ReadGanttTask")",
                         dataType: 'json',
                         data: data,
                         success: (resultsString) => {
+                            console.log('ReadGanttTask return', new Date());
                             var results = JSON.parse(resultsString);
                             $.each(results, (i, e) => {
                                 if (typeof e.EmployeeCode !== 'undefined' && e.EmployeeCode !== null) {
@@ -243,6 +245,7 @@ end functions
                                     $.extend(e, o);
                                 }
                             });
+                            console.log('ReadGanttTask data parsed', new Date());
                             e.success(results);
                             $(".k-grid-content-locked").height($(".k-grid-content").height());
                         },
@@ -389,7 +392,7 @@ end functions
                 model: {
                     id: "SequenceNumber",
                     parentId: "ParentTaskSequenceNumber",
-                    expanded: true,
+                    //expanded: true,
                     fields: {
                         ID: { from: "ID", type: "number", nullable: true },
                         AlertId: { from: "AlertId", type: "number" },

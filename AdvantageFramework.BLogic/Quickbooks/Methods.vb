@@ -11,16 +11,16 @@
         'QB_CLIENT_ID and QB_CLIENT_SECRET are encryted below!
 
         'next 4 are for sandbox only        
-        'Public Const QBO_BASEURL = "https://sandbox-quickbooks.api.intuit.com"
-        'Public Const QBO_DISCOVERY_URI = "https://developer.api.intuit.com/.well-known/openid_sandbox_configuration/"
-        'Public Const QB_CLIENT_ID = "UakrtSe0VfDiief8N3gZ27JAsw7n/s2L/j9wZqBmkzOaigFyUdDoIU5OWb0SEI6cJFM1lvFA9DWSORgsb8DodUa9r9RjRlChmlilkl/+PXEl4uIRvyWA7sxLHs5c4KayPinWMcEQGQDhbOJ67+Lg6g=="
-        'Public Const QB_CLIENT_SECRET = "YjKmTQq0scQxyfSTuY5dsEr6jZAOGIXGTGvqtga6qur7qgYFWDNdKDPKb+FEol9knZ/X1PvwHG4QjJhpVY6EwBsn94BUtjcEEFt7OCFPP+NpHcp17qXD8aScVXG4fEgq"
+        Public Const QBO_BASEURL = "https://sandbox-quickbooks.api.intuit.com"
+        Public Const QBO_DISCOVERY_URI = "https://developer.api.intuit.com/.well-known/openid_sandbox_configuration/"
+        Public Const QB_CLIENT_ID = "UakrtSe0VfDiief8N3gZ27JAsw7n/s2L/j9wZqBmkzOaigFyUdDoIU5OWb0SEI6cJFM1lvFA9DWSORgsb8DodUa9r9RjRlChmlilkl/+PXEl4uIRvyWA7sxLHs5c4KayPinWMcEQGQDhbOJ67+Lg6g=="
+        Public Const QB_CLIENT_SECRET = "YjKmTQq0scQxyfSTuY5dsEr6jZAOGIXGTGvqtga6qur7qgYFWDNdKDPKb+FEol9knZ/X1PvwHG4QjJhpVY6EwBsn94BUtjcEEFt7OCFPP+NpHcp17qXD8aScVXG4fEgq"
 
         'next 4 are for production
-        Public Const QBO_BASEURL = "https://quickbooks.api.intuit.com"
-        Public Const QBO_DISCOVERY_URI = "https://developer.api.intuit.com/.well-known/openid_configuration/"
-        Public Const QB_CLIENT_ID = "3QEAiaHSjiR5OCZ3nP/KSz/Yt9iH11BSlpb1mLaXrGoadIaoNGTfxij+TzKMHyl7ycvccoLMC5WVMyV/+LmX62X5o0yj1FFBomRgJGdev4J9NOtnqETi9js0zfPnsnOGHXmp+2wDvczInrV9zur2qQ=="
-        Public Const QB_CLIENT_SECRET = "FRijrljP5b7+XIoVkAQvszFZqLKtDDEXD05qDgTL9LKYBQ0fK77WetDP/n+/a4juH9szHMAJMyI13li0Lu3D3JVG97Re9h6KdkEcbghC2WSzewcH1zXf/HflmfSFY7HN"
+        'Public Const QBO_BASEURL = "https://quickbooks.api.intuit.com"
+        'Public Const QBO_DISCOVERY_URI = "https://developer.api.intuit.com/.well-known/openid_configuration/"
+        'Public Const QB_CLIENT_ID = "3QEAiaHSjiR5OCZ3nP/KSz/Yt9iH11BSlpb1mLaXrGoadIaoNGTfxij+TzKMHyl7ycvccoLMC5WVMyV/+LmX62X5o0yj1FFBomRgJGdev4J9NOtnqETi9js0zfPnsnOGHXmp+2wDvczInrV9zur2qQ=="
+        'Public Const QB_CLIENT_SECRET = "FRijrljP5b7+XIoVkAQvszFZqLKtDDEXD05qDgTL9LKYBQ0fK77WetDP/n+/a4juH9szHMAJMyI13li0Lu3D3JVG97Re9h6KdkEcbghC2WSzewcH1zXf/HflmfSFY7HN"
 
 #End Region
 
@@ -534,6 +534,8 @@
 
                 Try
 
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
+
                     OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
                     ServiceContext = New Intuit.Ipp.Core.ServiceContext(GetRealmID(DataContext), Intuit.Ipp.Core.IntuitServicesType.QBO, OAuth2RequestValidator)
@@ -585,6 +587,8 @@
                 RefreshToken = GetRefreshToken(DataContext)
 
                 Try
+
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                     OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
@@ -685,6 +689,8 @@
 
                 Try
 
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
+
                     OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
                     ServiceContext = New Intuit.Ipp.Core.ServiceContext(GetRealmID(DataContext), Intuit.Ipp.Core.IntuitServicesType.QBO, OAuth2RequestValidator)
@@ -736,6 +742,8 @@
                 RefreshToken = GetRefreshToken(DataContext)
 
                 Try
+
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                     OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
@@ -928,6 +936,8 @@
                         End If
 
                         RefreshToken = GetRefreshToken(DataContext)
+
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
@@ -1185,6 +1195,8 @@
 
                     Try
 
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
+
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
                         ServiceContext = New Intuit.Ipp.Core.ServiceContext(GetRealmID(DataContext), Intuit.Ipp.Core.IntuitServicesType.QBO, OAuth2RequestValidator)
@@ -1270,6 +1282,8 @@
                         End If
 
                         RefreshToken = GetRefreshToken(DataContext)
+
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
@@ -1476,6 +1490,8 @@
 
                     Try
 
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
+
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
                         ServiceContext = New Intuit.Ipp.Core.ServiceContext(GetRealmID(DataContext), Intuit.Ipp.Core.IntuitServicesType.QBO, OAuth2RequestValidator)
@@ -1554,6 +1570,8 @@
                     RefreshToken = GetRefreshToken(DataContext)
 
                     Try
+
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls11
 
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
@@ -1725,6 +1743,8 @@
                         End If
 
                         RefreshToken = GetRefreshToken(DataContext)
+
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 

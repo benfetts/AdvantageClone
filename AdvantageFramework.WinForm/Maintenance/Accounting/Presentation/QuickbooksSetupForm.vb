@@ -186,38 +186,44 @@
 
             Me.ShowWaitForm("..Loading")
 
-            AdvantageFramework.Quickbooks.GetSettings(Me.Session, Items, Accounts, _QuickBooksSetting, ErrorMessage)
+            If AdvantageFramework.Quickbooks.GetSettings(Me.Session, Items, Accounts, _QuickBooksSetting, ErrorMessage) Then
 
-            SearchableComboBoxFunction_EmployeeTime.DataSource = Items
-            SearchableComboBoxFunction_IncomeOnly.DataSource = Items
-            SearchableComboBoxFunction_ProductionVendorCost.DataSource = Items
-            SearchableComboBoxMedia_Order.DataSource = Items
+                SearchableComboBoxFunction_EmployeeTime.DataSource = Items
+                SearchableComboBoxFunction_IncomeOnly.DataSource = Items
+                SearchableComboBoxFunction_ProductionVendorCost.DataSource = Items
+                SearchableComboBoxMedia_Order.DataSource = Items
 
-            SearchableComboBoxBill_Media.DataSource = Accounts
-            SearchableComboBoxBill_NonClient.DataSource = Accounts
-            SearchableComboBoxBill_Production.DataSource = Accounts
+                SearchableComboBoxBill_Media.DataSource = Accounts
+                SearchableComboBoxBill_NonClient.DataSource = Accounts
+                SearchableComboBoxBill_Production.DataSource = Accounts
 
-            SearchableComboBoxFunction_EmployeeTime.SelectedValue = _QuickBooksSetting.InvoiceEmployeeTimeItem
-            SearchableComboBoxFunction_ProductionVendorCost.SelectedValue = _QuickBooksSetting.InvoiceProductionItem
-            SearchableComboBoxFunction_IncomeOnly.SelectedValue = _QuickBooksSetting.InvoiceIncomeOnlyItem
-            SearchableComboBoxMedia_Order.SelectedValue = _QuickBooksSetting.InvoiceOrderItem
+                SearchableComboBoxFunction_EmployeeTime.SelectedValue = _QuickBooksSetting.InvoiceEmployeeTimeItem
+                SearchableComboBoxFunction_ProductionVendorCost.SelectedValue = _QuickBooksSetting.InvoiceProductionItem
+                SearchableComboBoxFunction_IncomeOnly.SelectedValue = _QuickBooksSetting.InvoiceIncomeOnlyItem
+                SearchableComboBoxMedia_Order.SelectedValue = _QuickBooksSetting.InvoiceOrderItem
 
-            TextBoxForm_InvoiceSuffix.Text = _QuickBooksSetting.InvoiceNumberSuffix
+                TextBoxForm_InvoiceSuffix.Text = _QuickBooksSetting.InvoiceNumberSuffix
 
-            CheckBoxInvoiceProduction_IncludeSalesClass.Checked = _QuickBooksSetting.InvoiceLineProductionSalesClass
-            CheckBoxInvoiceProduction_IncludeJobNumber.Checked = _QuickBooksSetting.InvoiceLineProductionJobNumber
-            CheckBoxInvoiceProduction_IncludeComponentNumber.Checked = _QuickBooksSetting.InvoiceLineProductionComponentNumber
-            CheckBoxInvoiceProduction_IncludeJobDescription.Checked = _QuickBooksSetting.InvoiceLineProductionJobDescription
-            CheckBoxInvoiceProduction_IncludeComponentDescription.Checked = _QuickBooksSetting.InvoiceLineProductionComponentDescription
-            CheckBoxInvoiceProduction_IncludeFunctionDescription.Checked = _QuickBooksSetting.InvoiceLineProductionFunctionDescription
+                CheckBoxInvoiceProduction_IncludeSalesClass.Checked = _QuickBooksSetting.InvoiceLineProductionSalesClass
+                CheckBoxInvoiceProduction_IncludeJobNumber.Checked = _QuickBooksSetting.InvoiceLineProductionJobNumber
+                CheckBoxInvoiceProduction_IncludeComponentNumber.Checked = _QuickBooksSetting.InvoiceLineProductionComponentNumber
+                CheckBoxInvoiceProduction_IncludeJobDescription.Checked = _QuickBooksSetting.InvoiceLineProductionJobDescription
+                CheckBoxInvoiceProduction_IncludeComponentDescription.Checked = _QuickBooksSetting.InvoiceLineProductionComponentDescription
+                CheckBoxInvoiceProduction_IncludeFunctionDescription.Checked = _QuickBooksSetting.InvoiceLineProductionFunctionDescription
 
-            CheckBoxInvoiceMedia_IncludeSalesClass.Checked = _QuickBooksSetting.InvoiceLineMediaSalesClass
-            CheckBoxInvoiceMedia_IncludeOrderNumber.Checked = _QuickBooksSetting.InvoiceLineMediaOrderNumber
-            CheckBoxInvoiceMedia_IncludeOrderLineNumber.Checked = _QuickBooksSetting.InvoiceLineMediaOrderLineNumber
+                CheckBoxInvoiceMedia_IncludeSalesClass.Checked = _QuickBooksSetting.InvoiceLineMediaSalesClass
+                CheckBoxInvoiceMedia_IncludeOrderNumber.Checked = _QuickBooksSetting.InvoiceLineMediaOrderNumber
+                CheckBoxInvoiceMedia_IncludeOrderLineNumber.Checked = _QuickBooksSetting.InvoiceLineMediaOrderLineNumber
 
-            SearchableComboBoxBill_Media.SelectedValue = _QuickBooksSetting.BillMediaAccount
-            SearchableComboBoxBill_NonClient.SelectedValue = _QuickBooksSetting.BillNonClientAccount
-            SearchableComboBoxBill_Production.SelectedValue = _QuickBooksSetting.BillProductionAccount
+                SearchableComboBoxBill_Media.SelectedValue = _QuickBooksSetting.BillMediaAccount
+                SearchableComboBoxBill_NonClient.SelectedValue = _QuickBooksSetting.BillNonClientAccount
+                SearchableComboBoxBill_Production.SelectedValue = _QuickBooksSetting.BillProductionAccount
+
+            Else
+
+                AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+            End If
 
             Me.ClearChanged()
 

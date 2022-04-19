@@ -1571,7 +1571,7 @@
 
                     Try
 
-                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls11
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 

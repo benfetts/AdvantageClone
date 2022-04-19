@@ -219,7 +219,7 @@
                 SearchableComboBoxBill_NonClient.SelectedValue = _QuickBooksSetting.BillNonClientAccount
                 SearchableComboBoxBill_Production.SelectedValue = _QuickBooksSetting.BillProductionAccount
 
-            Else
+            ElseIf String.IsNullOrWhiteSpace(ErrorMessage) = False Then
 
                 AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
 

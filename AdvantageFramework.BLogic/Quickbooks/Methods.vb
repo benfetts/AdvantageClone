@@ -534,6 +534,8 @@
 
                 Try
 
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
+
                     OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
                     ServiceContext = New Intuit.Ipp.Core.ServiceContext(GetRealmID(DataContext), Intuit.Ipp.Core.IntuitServicesType.QBO, OAuth2RequestValidator)
@@ -585,6 +587,8 @@
                 RefreshToken = GetRefreshToken(DataContext)
 
                 Try
+
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                     OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
@@ -685,6 +689,8 @@
 
                 Try
 
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
+
                     OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
                     ServiceContext = New Intuit.Ipp.Core.ServiceContext(GetRealmID(DataContext), Intuit.Ipp.Core.IntuitServicesType.QBO, OAuth2RequestValidator)
@@ -736,6 +742,8 @@
                 RefreshToken = GetRefreshToken(DataContext)
 
                 Try
+
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                     OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
@@ -928,6 +936,8 @@
                         End If
 
                         RefreshToken = GetRefreshToken(DataContext)
+
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
@@ -1185,6 +1195,8 @@
 
                     Try
 
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
+
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
                         ServiceContext = New Intuit.Ipp.Core.ServiceContext(GetRealmID(DataContext), Intuit.Ipp.Core.IntuitServicesType.QBO, OAuth2RequestValidator)
@@ -1270,6 +1282,8 @@
                         End If
 
                         RefreshToken = GetRefreshToken(DataContext)
+
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
@@ -1476,6 +1490,8 @@
 
                     Try
 
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
+
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
                         ServiceContext = New Intuit.Ipp.Core.ServiceContext(GetRealmID(DataContext), Intuit.Ipp.Core.IntuitServicesType.QBO, OAuth2RequestValidator)
@@ -1554,6 +1570,8 @@
                     RefreshToken = GetRefreshToken(DataContext)
 
                     Try
+
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 
@@ -1725,6 +1743,8 @@
                         End If
 
                         RefreshToken = GetRefreshToken(DataContext)
+
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
 
                         OAuth2RequestValidator = New Intuit.Ipp.Security.OAuth2RequestValidator(GetAccessToken(DataContext))
 

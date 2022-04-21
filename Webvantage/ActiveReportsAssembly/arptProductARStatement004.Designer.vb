@@ -54,6 +54,7 @@ Partial Public Class arptProductARStatement004
         Me.InvoiceDate = New DataDynamics.ActiveReports.TextBox()
         Me.InvoiceNumber = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox1 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextboxInvoiceComments = New DataDynamics.ActiveReports.TextBox()
         Me.PageFooter1 = New DataDynamics.ActiveReports.PageFooter()
         Me.Footer = New DataDynamics.ActiveReports.Label()
         Me.ReportInfo1 = New DataDynamics.ActiveReports.ReportInfo()
@@ -98,6 +99,7 @@ Partial Public Class arptProductARStatement004
         Me.Label15 = New DataDynamics.ActiveReports.Label()
         Me.Label16 = New DataDynamics.ActiveReports.Label()
         Me.Label3 = New DataDynamics.ActiveReports.Label()
+        Me.Label6 = New DataDynamics.ActiveReports.Label()
         Me.GroupFooter2 = New DataDynamics.ActiveReports.GroupFooter()
         Me.Line3 = New DataDynamics.ActiveReports.Line()
         Me.Label22 = New DataDynamics.ActiveReports.Label()
@@ -142,6 +144,7 @@ Partial Public Class arptProductARStatement004
         CType(Me.InvoiceDate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InvoiceNumber, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextboxInvoiceComments, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Footer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportInfo1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label32, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -180,6 +183,7 @@ Partial Public Class arptProductARStatement004
         CType(Me.Label15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label22, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label23, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label24, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -475,9 +479,9 @@ Partial Public Class arptProductARStatement004
         Me.Picture1.Left = 0.0625!
         Me.Picture1.Name = "Picture1"
         Me.Picture1.PictureAlignment = DataDynamics.ActiveReports.PictureAlignment.TopLeft
+        Me.Picture1.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch
         Me.Picture1.Top = 0!
         Me.Picture1.Width = 7.45!
-        Me.Picture1.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch
         '
         'PrtHeader
         '
@@ -506,7 +510,7 @@ Partial Public Class arptProductARStatement004
         'Detail1
         '
         Me.Detail1.ColumnSpacing = 0!
-        Me.Detail1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.OriginalAmount, Me.InvoiceAmount, Me.Description, Me.Reference, Me.InvoiceDate, Me.InvoiceNumber, Me.TextBox1})
+        Me.Detail1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.OriginalAmount, Me.InvoiceAmount, Me.Description, Me.Reference, Me.InvoiceDate, Me.InvoiceNumber, Me.TextBox1, Me.TextboxInvoiceComments})
         Me.Detail1.Height = 0.3020833!
         Me.Detail1.Name = "Detail1"
         '
@@ -587,6 +591,19 @@ Partial Public Class arptProductARStatement004
         Me.TextBox1.Text = "InvoiceSeq"
         Me.TextBox1.Top = 0.0625!
         Me.TextBox1.Width = 0.3125!
+        '
+        'TextboxInvoiceComments
+        '
+        Me.TextboxInvoiceComments.CanShrink = True
+        Me.TextboxInvoiceComments.DataField = "InvoiceComment"
+        Me.TextboxInvoiceComments.Height = 0.188!
+        Me.TextboxInvoiceComments.Left = 2.062!
+        Me.TextboxInvoiceComments.Name = "TextboxInvoiceComments"
+        Me.TextboxInvoiceComments.Style = "font-size: 9pt; ddo-char-set: 0"
+        Me.TextboxInvoiceComments.Text = "Invoice Comment"
+        Me.TextboxInvoiceComments.Top = 0.062!
+        Me.TextboxInvoiceComments.Visible = False
+        Me.TextboxInvoiceComments.Width = 3.938!
         '
         'PageFooter1
         '
@@ -1025,7 +1042,7 @@ Partial Public Class arptProductARStatement004
         'GroupHeader2
         '
         Me.GroupHeader2.BackColor = System.Drawing.Color.LightGray
-        Me.GroupHeader2.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label12, Me.Label13, Me.Label14, Me.Label15, Me.Label16, Me.Label3})
+        Me.GroupHeader2.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label12, Me.Label13, Me.Label14, Me.Label15, Me.Label16, Me.Label3, Me.Label6})
         Me.GroupHeader2.Height = 0.3125!
         Me.GroupHeader2.Name = "GroupHeader2"
         '
@@ -1094,6 +1111,18 @@ Partial Public Class arptProductARStatement004
         Me.Label3.Text = "Seq"
         Me.Label3.Top = 0.0625!
         Me.Label3.Width = 0.3125!
+        '
+        'Label6
+        '
+        Me.Label6.Height = 0.1875!
+        Me.Label6.HyperLink = Nothing
+        Me.Label6.Left = 2.063!
+        Me.Label6.Name = "Label6"
+        Me.Label6.Style = "font-size: 9pt; font-weight: bold; text-decoration: underline; ddo-char-set: 0"
+        Me.Label6.Text = "Comment"
+        Me.Label6.Top = 0.062!
+        Me.Label6.Visible = False
+        Me.Label6.Width = 3.937!
         '
         'GroupFooter2
         '
@@ -1302,6 +1331,7 @@ Partial Public Class arptProductARStatement004
         CType(Me.InvoiceDate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.InvoiceNumber, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextboxInvoiceComments, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Footer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ReportInfo1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label32, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1340,6 +1370,7 @@ Partial Public Class arptProductARStatement004
         CType(Me.Label15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label22, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label23, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label24, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1442,4 +1473,6 @@ Partial Public Class arptProductARStatement004
     Friend WithEvents CommentsFooter As DataDynamics.ActiveReports.TextBox
     Friend WithEvents TextBox1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents Label3 As DataDynamics.ActiveReports.Label
+    Private WithEvents TextboxInvoiceComments As DataDynamics.ActiveReports.TextBox
+    Private WithEvents Label6 As DataDynamics.ActiveReports.Label
 End Class

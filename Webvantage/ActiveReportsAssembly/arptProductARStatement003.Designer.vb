@@ -110,6 +110,8 @@ Partial Public Class arptProductARStatement003
         Me.Line1 = New DataDynamics.ActiveReports.Line()
         Me.ReportHeader1 = New DataDynamics.ActiveReports.ReportHeader()
         Me.ReportFooter1 = New DataDynamics.ActiveReports.ReportFooter()
+        Me.Label6 = New DataDynamics.ActiveReports.Label()
+        Me.TextboxInvoiceComments = New DataDynamics.ActiveReports.TextBox()
         CType(Me.PrtAddr1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrtAddr2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AgencyAddress2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -184,6 +186,8 @@ Partial Public Class arptProductARStatement003
         CType(Me.OverThirtyAR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OverSixtyAR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TotalAR, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextboxInvoiceComments, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'PageHeader1
@@ -471,9 +475,9 @@ Partial Public Class arptProductARStatement003
         Me.Picture1.Left = 0.0625!
         Me.Picture1.Name = "Picture1"
         Me.Picture1.PictureAlignment = DataDynamics.ActiveReports.PictureAlignment.TopLeft
+        Me.Picture1.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch
         Me.Picture1.Top = 0!
         Me.Picture1.Width = 7.45!
-        Me.Picture1.SizeMode = DataDynamics.ActiveReports.SizeModes.Stretch
         '
         'PrtHeader
         '
@@ -502,7 +506,7 @@ Partial Public Class arptProductARStatement003
         'Detail1
         '
         Me.Detail1.ColumnSpacing = 0!
-        Me.Detail1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.InvoiceAmount, Me.Description, Me.Reference, Me.InvoiceDate, Me.InvoiceNumber, Me.TextBox1})
+        Me.Detail1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.InvoiceAmount, Me.Description, Me.Reference, Me.InvoiceDate, Me.InvoiceNumber, Me.TextBox1, Me.TextboxInvoiceComments})
         Me.Detail1.Height = 0.3020833!
         Me.Detail1.Name = "Detail1"
         '
@@ -998,7 +1002,7 @@ Partial Public Class arptProductARStatement003
         'GroupHeader2
         '
         Me.GroupHeader2.BackColor = System.Drawing.Color.LightGray
-        Me.GroupHeader2.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label12, Me.Label13, Me.Label14, Me.Label15, Me.Label16, Me.Label3})
+        Me.GroupHeader2.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label12, Me.Label13, Me.Label14, Me.Label15, Me.Label16, Me.Label3, Me.Label6})
         Me.GroupHeader2.Height = 0.3125!
         Me.GroupHeader2.Name = "GroupHeader2"
         '
@@ -1220,6 +1224,31 @@ Partial Public Class arptProductARStatement003
         Me.ReportFooter1.Name = "ReportFooter1"
         Me.ReportFooter1.Visible = False
         '
+        'Label6
+        '
+        Me.Label6.Height = 0.1875!
+        Me.Label6.HyperLink = Nothing
+        Me.Label6.Left = 2.062!
+        Me.Label6.Name = "Label6"
+        Me.Label6.Style = "font-size: 9pt; font-weight: bold; text-decoration: underline; ddo-char-set: 0"
+        Me.Label6.Text = "Comment"
+        Me.Label6.Top = 0.062!
+        Me.Label6.Visible = False
+        Me.Label6.Width = 3.937!
+        '
+        'TextboxInvoiceComments
+        '
+        Me.TextboxInvoiceComments.CanShrink = True
+        Me.TextboxInvoiceComments.DataField = "InvoiceComment"
+        Me.TextboxInvoiceComments.Height = 0.188!
+        Me.TextboxInvoiceComments.Left = 2.061!
+        Me.TextboxInvoiceComments.Name = "TextboxInvoiceComments"
+        Me.TextboxInvoiceComments.Style = "font-size: 9pt; ddo-char-set: 0"
+        Me.TextboxInvoiceComments.Text = "Invoice Comment"
+        Me.TextboxInvoiceComments.Top = 0.062!
+        Me.TextboxInvoiceComments.Visible = False
+        Me.TextboxInvoiceComments.Width = 3.938!
+        '
         'arptProductARStatement003
         '
         Me.MasterReport = False
@@ -1320,6 +1349,8 @@ Partial Public Class arptProductARStatement003
         CType(Me.OverThirtyAR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OverSixtyAR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TotalAR, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextboxInvoiceComments, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -1412,4 +1443,6 @@ Partial Public Class arptProductARStatement003
     Friend WithEvents CommentsFooter As DataDynamics.ActiveReports.TextBox
     Friend WithEvents TextBox1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents Label3 As DataDynamics.ActiveReports.Label
+    Private WithEvents Label6 As DataDynamics.ActiveReports.Label
+    Private WithEvents TextboxInvoiceComments As DataDynamics.ActiveReports.TextBox
 End Class

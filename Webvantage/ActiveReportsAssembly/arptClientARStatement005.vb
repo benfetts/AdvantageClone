@@ -17,6 +17,7 @@ Public Class arptClientARStatement005
     Public dt As DataTable
     Public PutCommentInFooter As Boolean = False
     Public strExclude As String
+    Public strIncludeComments As String
     'Private ds As arptClientDS
     'Private dt As New arptClientDS.usp_wv_reports_ar_statements_client_001DataTable
     Public _LocationLogo As AdvantageFramework.Database.Entities.LocationLogo = Nothing
@@ -55,6 +56,10 @@ Public Class arptClientARStatement005
             Me.Description.Visible = False
             Me.Label14.Visible = False
             Me.Reference.Visible = False
+            If strIncludeComments = "1" Then
+                Me.Label3.Visible = True
+                Me.TextboxInvoiceComments.Visible = True
+            End If
         End If
     End Sub
 

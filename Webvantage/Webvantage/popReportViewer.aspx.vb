@@ -919,6 +919,7 @@ Partial Public Class popReportViewer
                     'rpt.strFooter = Request.QueryString("Footer")
                     rpt.imgPath = imgPath
                     rpt.strExclude = Request.QueryString("exclude")
+                    rpt.strIncludeComments = Request.QueryString("comments")
                     rpt.dt = oReports.GetARClientStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "2", StrOffices, Request.QueryString("aging"))
                     strReportName = "Client_AR_Statement"
                     Session("ARPrintIDs") = ""
@@ -970,6 +971,7 @@ Partial Public Class popReportViewer
                     'rpt.strFooter = Request.QueryString("Footer")
                     rpt.imgPath = imgPath
                     rpt.strExclude = Request.QueryString("exclude")
+                    rpt.strIncludeComments = Request.QueryString("comments")
                     rpt.dt = oReports.GetARClientStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "3", StrOffices, Request.QueryString("aging"))
                     strReportName = "Client_AR_Statement"
                     Session("ARPrintIDs") = ""
@@ -1021,6 +1023,7 @@ Partial Public Class popReportViewer
                     'rpt.strFooter = Request.QueryString("Footer")
                     rpt.imgPath = imgPath
                     rpt.strExclude = Request.QueryString("exclude")
+                    rpt.strIncludeComments = Request.QueryString("comments")
                     rpt.dt = oReports.GetARClientStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "4", StrOffices, Request.QueryString("aging"))
                     strReportName = "Client_AR_Statement"
                     Session("ARPrintIDs") = ""
@@ -1072,6 +1075,7 @@ Partial Public Class popReportViewer
                     'rpt.strFooter = Request.QueryString("Footer")
                     rpt.imgPath = imgPath
                     rpt.strExclude = Request.QueryString("exclude")
+                    rpt.strIncludeComments = Request.QueryString("comments")
                     rpt.dt = oReports.GetARClientStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "1", StrOffices, Request.QueryString("aging"))
                     strReportName = "Client_AR_Statement"
                     Session("ARPrintIDs") = ""
@@ -2903,6 +2907,7 @@ Partial Public Class popReportViewer
                     'rpt.strFooter = Request.QueryString("Footer")
                     rpt.imgPath = imgPath
                     rpt.strExclude = Request.QueryString("exclude")
+                    rpt.strIncludeComments = Request.QueryString("comments")
                     rpt.dt = oReports.GetARProductStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "1", StrOffices, Request.QueryString("aging"))
                     strReportName = "Product_AR_Statement"
                     Session("ARPrintIDs") = ""
@@ -2953,6 +2958,7 @@ Partial Public Class popReportViewer
                     rpt.strFooter = oReports.GetAgencyFooter(Request.QueryString("Loc"))
                     rpt.imgPath = imgPath
                     rpt.strExclude = Request.QueryString("exclude")
+                    rpt.strIncludeComments = Request.QueryString("comments")
                     rpt.dt = oReports.GetARProductStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "2", StrOffices, Request.QueryString("aging"))
                     strReportName = "Product_AR_Statement"
                     Session("ARPrintIDs") = ""
@@ -3002,6 +3008,7 @@ Partial Public Class popReportViewer
                     rpt.strFooter = oReports.GetAgencyFooter(Request.QueryString("Loc"))
                     rpt.imgPath = imgPath
                     rpt.strExclude = Request.QueryString("exclude")
+                    rpt.strIncludeComments = Request.QueryString("comments")
                     rpt.dt = oReports.GetARProductStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "3", StrOffices, Request.QueryString("aging"))
                     strReportName = "Product_AR_Statement"
                     Session("ARPrintIDs") = ""
@@ -3051,6 +3058,7 @@ Partial Public Class popReportViewer
                     rpt.strFooter = oReports.GetAgencyFooter(Request.QueryString("Loc"))
                     rpt.imgPath = imgPath
                     rpt.strExclude = Request.QueryString("exclude")
+                    rpt.strIncludeComments = Request.QueryString("comments")
                     rpt.dt = oReports.GetARProductStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "4", StrOffices, Request.QueryString("aging"))
                     strReportName = "Product_AR_Statement"
                     Session("ARPrintIDs") = ""
@@ -4953,7 +4961,8 @@ Partial Public Class popReportViewer
     End Sub
     Public Function renderDoc(ByVal strFileName As String, ByVal strReport As String, ByVal ID As String, ByVal PP As String, ByVal Loc As String, ByVal AD As String,
                          ByVal Footer As String, ByVal exportType As Integer, ByVal imgPath As String, Optional ByVal options As String = "", Optional ByVal OfficeCodes As String = "",
-                         Optional ByRef ErrorMessage As String = "", Optional ByVal AgingDateType As Integer = 1, Optional ByVal ExcludeDescription As String = "0") As Boolean
+                         Optional ByRef ErrorMessage As String = "", Optional ByVal AgingDateType As Integer = 1, Optional ByVal ExcludeDescription As String = "0",
+                         Optional ByVal IncludeComment As String = "0") As Boolean
         Try
             Dim rpt As Object = Nothing
             Dim CurrentCultureCode As String = LoGlo.UserCultureGet()
@@ -4975,6 +4984,7 @@ Partial Public Class popReportViewer
                             rpt.PutCommentInFooter = False
                         End If
                         rpt.strExclude = ExcludeDescription
+                        rpt.strIncludeComments = IncludeComment
                         rpt.dt = oReports.GetARClientStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "1", OfficeCodes, AgingDateType)
 
                         If Loc <> "" Then
@@ -4997,6 +5007,7 @@ Partial Public Class popReportViewer
                             rpt.PutCommentInFooter = False
                         End If
                         rpt.strExclude = ExcludeDescription
+                        rpt.strIncludeComments = IncludeComment
                         rpt.dt = oReports.GetARClientStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "2", OfficeCodes, AgingDateType)
 
                         If Loc <> "" Then
@@ -5017,6 +5028,7 @@ Partial Public Class popReportViewer
                             rpt.PutCommentInFooter = False
                         End If
                         rpt.strExclude = ExcludeDescription
+                        rpt.strIncludeComments = IncludeComment
                         rpt.dt = oReports.GetARClientStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "3", OfficeCodes, AgingDateType)
 
                         If Loc <> "" Then
@@ -5038,6 +5050,7 @@ Partial Public Class popReportViewer
                             rpt.PutCommentInFooter = False
                         End If
                         rpt.strExclude = ExcludeDescription
+                        rpt.strIncludeComments = IncludeComment
                         rpt.dt = oReports.GetARClientStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "4", OfficeCodes, AgingDateType)
 
                         If Loc <> "" Then
@@ -5059,6 +5072,7 @@ Partial Public Class popReportViewer
                             rpt.PutCommentInFooter = False
                         End If
                         rpt.strExclude = ExcludeDescription
+                        rpt.strIncludeComments = IncludeComment
                         rpt.dt = oReports.GetARClientStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "1", OfficeCodes, AgingDateType)
 
                         If Loc <> "" Then
@@ -5080,6 +5094,7 @@ Partial Public Class popReportViewer
                             rpt.PutCommentInFooter = False
                         End If
                         rpt.strExclude = ExcludeDescription
+                        rpt.strIncludeComments = IncludeComment
                         rpt.dt = oReports.GetARProductStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "1", OfficeCodes, AgingDateType)
 
                         If Loc <> "" Then
@@ -5101,6 +5116,7 @@ Partial Public Class popReportViewer
                             rpt.PutCommentInFooter = False
                         End If
                         rpt.strExclude = ExcludeDescription
+                        rpt.strIncludeComments = IncludeComment
                         rpt.dt = oReports.GetARProductStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "2", OfficeCodes, AgingDateType)
 
                         If Loc <> "" Then
@@ -5122,6 +5138,7 @@ Partial Public Class popReportViewer
                             rpt.PutCommentInFooter = False
                         End If
                         rpt.strExclude = ExcludeDescription
+                        rpt.strIncludeComments = IncludeComment
                         rpt.dt = oReports.GetARProductStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "3", OfficeCodes, AgingDateType)
 
                         If Loc <> "" Then
@@ -5143,6 +5160,7 @@ Partial Public Class popReportViewer
                             rpt.PutCommentInFooter = False
                         End If
                         rpt.strExclude = ExcludeDescription
+                        rpt.strIncludeComments = IncludeComment
                         rpt.dt = oReports.GetARProductStatement(rpt.strID, rpt.strPostPeriod, rpt.strLocation, rpt.strAgedDate, rpt.strFooter, "4", OfficeCodes, AgingDateType)
 
                         If Loc <> "" Then

@@ -82,6 +82,7 @@ Partial Public Class ARStatements
             Dim BoolCCReport As Boolean = Me.cbAddcc.Checked
             Dim agingtype As Integer = 1
             Dim strExclude As String = "0"
+            Dim strIncludeComment As String = "0"
 
             Dim OverthirtySixty As Boolean = False
             Dim OverSixty As Boolean = False
@@ -95,6 +96,10 @@ Partial Public Class ARStatements
 
             If CheckboxExcludeDescription.Checked Then
                 strExclude = "1"
+            End If
+
+            If CheckboxShowInvoiceComment.Checked Then
+                strIncludeComment = "1"
             End If
 
             'Set AR Type
@@ -206,7 +211,7 @@ Partial Public Class ARStatements
 
                             If rpt.renderDoc(Filename, StrReport, StrEmailID, Me.ddPostingPeriod.SelectedValue.ToString(),
                                           Me.ddLocation.SelectedValue.ToString(), StrAgingDate, oReports.GetAgencyFooter(Me.ddLocation.SelectedValue.ToString()),
-                                          DropReportType.SelectedValue, StrImagePath, Me.RblPrintHeaderFooter.SelectedValue, Me.StrOfficeList, err, agingtype, strExclude) = False Then
+                                          DropReportType.SelectedValue, StrImagePath, Me.RblPrintHeaderFooter.SelectedValue, Me.StrOfficeList, err, agingtype, strExclude, strIncludeComment) = False Then
 
                                 If err.Trim() <> "" Then
 
@@ -391,6 +396,7 @@ Partial Public Class ARStatements
             Me.CheckboxShowInvoiceComment.Enabled = True
         Else
             Me.CheckboxShowInvoiceComment.Enabled = False
+            Me.CheckboxShowInvoiceComment.Checked = False
         End If
     End Sub
 

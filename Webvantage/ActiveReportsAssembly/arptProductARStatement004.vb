@@ -12,6 +12,7 @@ Public Class arptProductARStatement004
     Public dt As DataTable
     Public PutCommentInFooter As Boolean = False
     Public strExclude As String
+    Public strIncludeComments As String
     'Private ds As arptProduct003DS
     'Private dt As New arptProduct003DS.usp_wv_reports_ar_statements_product_003DataTable
     Public CultureCode As String = "en-US"
@@ -50,6 +51,10 @@ Public Class arptProductARStatement004
                 Me.Description.Visible = False
                 Me.Label14.Visible = False
                 Me.Reference.Visible = False
+                If strIncludeComments = "1" Then
+                    Me.Label6.Visible = True
+                    Me.TextboxInvoiceComments.Visible = True
+                End If
             End If
         Catch ex As Exception
 

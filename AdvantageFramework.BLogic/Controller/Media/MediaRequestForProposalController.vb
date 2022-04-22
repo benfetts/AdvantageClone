@@ -1303,13 +1303,13 @@
 
                             'MediaBroadcastWorksheetController.MarketDetails_DefaultRateChanging(MediaBroadcastWorksheetMarketDetailsViewModel, MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.IndexOf(DataRow), MediaRFPAvailLine.Rate, 0)
 
-                            For Each AllowSpotsToBeEnteredDate In MediaBroadcastWorksheetMarketDetailsViewModel.AllowSpotsToBeEnteredDates.Keys.OfType(Of Date)
+                            For Each AllowSpotsToBeEnteredDate In MediaBroadcastWorksheetMarketDetailsViewModel.AllowSpotsToBeEnteredDates.Keys.OfType(Of Date).OrderBy(Function(K) K)
 
                                 DataRow(MediaBroadcastWorksheetMarketDetailsViewModel.AllowSpotsToBeEnteredDates.Item(AllowSpotsToBeEnteredDate)) = False
 
                             Next
 
-                            For Each OrderStatusDate In MediaBroadcastWorksheetMarketDetailsViewModel.OrderStatusDates.Keys.OfType(Of Date)
+                            For Each OrderStatusDate In MediaBroadcastWorksheetMarketDetailsViewModel.OrderStatusDates.Keys.OfType(Of Date).OrderBy(Function(K) K)
 
                                 DataRow(MediaBroadcastWorksheetMarketDetailsViewModel.OrderStatusDates.Item(OrderStatusDate)) = CInt(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.OrderStatuses.Unordered)
 
@@ -1333,7 +1333,7 @@
 
                                 Else
 
-                                    For Each Key In MediaBroadcastWorksheetMarketDetailsViewModel.DetailDates.Keys
+                                    For Each Key In MediaBroadcastWorksheetMarketDetailsViewModel.DetailDates.Keys.OfType(Of Date).OrderBy(Function(K) K)
 
                                         If MediaRFPAvailLineSpot.WeekDate >= CDate(Key) AndAlso MediaRFPAvailLineSpot.WeekDate <= DateAdd(DateInterval.Day, 6, CDate(Key)) Then
 
@@ -1365,7 +1365,7 @@
 
                                     If MediaRFPAvailLineSpot.MediaRFPAvailLine.FileSource = Database.Entities.Methods.MediaRFPAvailLineFileSource.PRP AndAlso MediaRFPAvailLineSpot.MediaRFPAvailLine.EndDate.HasValue Then
 
-                                        For Each Key In MediaBroadcastWorksheetMarketDetailsViewModel.DetailDates.Keys
+                                        For Each Key In MediaBroadcastWorksheetMarketDetailsViewModel.DetailDates.Keys.OfType(Of Date).OrderBy(Function(K) K)
 
                                             If MediaRFPAvailLineSpot.MediaRFPAvailLine.EndDate.Value >= CDate(Key) AndAlso MediaRFPAvailLineSpot.MediaRFPAvailLine.EndDate.Value <= DateAdd(DateInterval.Day, 6, CDate(Key)) Then
 
@@ -1375,7 +1375,7 @@
 
                                         Next
 
-                                        For Each Key In MediaBroadcastWorksheetMarketDetailsViewModel.RateDates.Keys
+                                        For Each Key In MediaBroadcastWorksheetMarketDetailsViewModel.RateDates.Keys.OfType(Of Date).OrderBy(Function(K) K)
 
                                             If MediaRFPAvailLineSpot.MediaRFPAvailLine.EndDate.Value >= CDate(Key) AndAlso MediaRFPAvailLineSpot.MediaRFPAvailLine.EndDate.Value <= DateAdd(DateInterval.Day, 6, CDate(Key)) Then
 
@@ -1397,7 +1397,7 @@
 
                                 Else
 
-                                    For Each Key In MediaBroadcastWorksheetMarketDetailsViewModel.RateDates.Keys
+                                    For Each Key In MediaBroadcastWorksheetMarketDetailsViewModel.RateDates.Keys.OfType(Of Date).OrderBy(Function(K) K)
 
                                         If MediaRFPAvailLineSpot.WeekDate >= CDate(Key) AndAlso MediaRFPAvailLineSpot.WeekDate <= DateAdd(DateInterval.Day, 6, CDate(Key)) Then
 

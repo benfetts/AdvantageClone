@@ -662,7 +662,10 @@ Partial Public Class ARStatements
         'Else
         '    Response.Redirect(strURL)
         'End If
-        ScriptManager.RegisterStartupScript(Page, Me.GetType, "ReportPage", strBuilder.ToString(), False)
+
+        MiscFN.ResponseRedirect(strURL, True)
+
+        'ScriptManager.RegisterStartupScript(Page, Me.GetType, "ReportPage", strBuilder.ToString(), False)
         'Me.Page.ClientScript.RegisterStartupScript(Me.GetType, "ReportPage", strBuilder.ToString())
 
     End Sub

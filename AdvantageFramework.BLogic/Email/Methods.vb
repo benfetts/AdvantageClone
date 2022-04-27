@@ -75,51 +75,64 @@
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-                Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
+                Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
 
-                If Agency IsNot Nothing Then
+                    Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
 
-                    If String.IsNullOrWhiteSpace(EmailAddress) Then
+                    If Agency IsNot Nothing Then
 
-                        Try
+                        If String.IsNullOrWhiteSpace(EmailAddress) Then
 
-                            EmployeeEmailAddress = AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, Session.User.EmployeeCode).Email
+                            Try
 
-                        Catch ex As Exception
-                            EmployeeEmailAddress = ""
-                        End Try
+                                EmployeeEmailAddress = AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, Session.User.EmployeeCode).Email
 
-                    Else
+                            Catch ex As Exception
+                                EmployeeEmailAddress = ""
+                            End Try
 
-                        EmployeeEmailAddress = EmailAddress
+                        Else
+
+                            EmployeeEmailAddress = EmailAddress
+
+                        End If
+
+                        If String.IsNullOrWhiteSpace(EmployeeEmailAddress) = False Then
+
+                            WebvantageURL = AdvantageFramework.StringUtilities.AppendTrailingCharacter(Agency.WebvantageURL, "/")
+
+                            MIMEType = AdvantageFramework.FileSystem.GetMIMEType(File)
+                            FileName = AdvantageFramework.FileSystem.GetFileName(File)
+
+                            HtmlEmail = New AdvantageFramework.Email.Classes.HtmlEmail(False, True)
+
+                            HtmlEmail.AddHeaderRow("Report Link")
+
+                            If Agency.IsASP = 1 AndAlso AdvantageFramework.Agency.LoadSendFilesAsOneTimeLink(DataContext) Then
+
+                                HtmlEmail.AddBlankRow()
+                                HtmlEmail.AddCustomRow("This email contains a one time use link to download the requested report")
+                                HtmlEmail.AddBlankRow()
+
+                            End If
+
+                            HtmlEmail.AddCustomRow(Nothing, 3, Nothing, "#FF0000", "<a href=""" & WebvantageURL & "Document/ReportDownload?%7C" & AdvantageFramework.Security.Encryption.Encrypt("Database=" & Session.DatabaseName &
+                                                                                                                                                                                                 "&Date=" & Now.ToString("MM/dd/yyyy hh:mm:ss tt") &
+                                                                                                                                                                                                 "&File=" & File.Replace("&", "<>") &
+                                                                                                                                                                                                 "&MIMEType=" & MIMEType) & "%7C"" > Click Here to download your report</a>")
+
+                            HtmlEmail.AddBlankRow()
+                            HtmlEmail.AddBlankRow()
+
+                            HtmlEmail.Finish()
+
+                            EmailSent = AdvantageFramework.Email.Send(DbContext, EmployeeEmailAddress, "", "", "Report Download - " & FileName, HtmlEmail.ToString, 3, New Generic.List(Of AdvantageFramework.Email.Classes.Attachment), SendingEmailStatus)
+
+                        End If
 
                     End If
 
-                    If String.IsNullOrWhiteSpace(EmployeeEmailAddress) = False Then
-
-                        WebvantageURL = AdvantageFramework.StringUtilities.AppendTrailingCharacter(Agency.WebvantageURL, "/")
-
-                        MIMEType = AdvantageFramework.FileSystem.GetMIMEType(File)
-                        FileName = AdvantageFramework.FileSystem.GetFileName(File)
-
-                        HtmlEmail = New AdvantageFramework.Email.Classes.HtmlEmail(False, True)
-
-                        HtmlEmail.AddHeaderRow("Report Link")
-                        HtmlEmail.AddCustomRow(Nothing, 3, Nothing, "#FF0000", "<a href=""" & WebvantageURL & "Document/ReportDownload?%7C" & AdvantageFramework.Security.Encryption.Encrypt("Database=" & Session.DatabaseName &
-                                                                                                                                                                                           "&Date=" & Now.ToString("MM/dd/yyyy hh:mm:ss tt") &
-                                                                                                                                                                                           "&File=" & File.Replace("&", "<>") &
-                                                                                                                                                                                           "&MIMEType=" & MIMEType) & "%7C"" > Click Here to download your report</a>")
-
-                        HtmlEmail.AddBlankRow()
-                        HtmlEmail.AddBlankRow()
-
-                        HtmlEmail.Finish()
-
-                        EmailSent = AdvantageFramework.Email.Send(DbContext, EmployeeEmailAddress, "", "", "Report Download - " & FileName, HtmlEmail.ToString, 3, New Generic.List(Of AdvantageFramework.Email.Classes.Attachment), SendingEmailStatus)
-
-                    End If
-
-                End If
+                End Using
 
             End Using
 

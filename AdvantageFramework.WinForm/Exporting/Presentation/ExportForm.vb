@@ -797,7 +797,7 @@
 
                                 If AdvantageFramework.WinForm.Presentation.SendASPReportDownloadEmail(Session, FullFileName) Then
 
-                                    AdvantageFramework.WinForm.MessageBox.Show("Export file created successfully and also email link has been sent to your email.")
+                                    AdvantageFramework.WinForm.MessageBox.Show("Export file email link has been sent to your email.")
 
                                 Else
 

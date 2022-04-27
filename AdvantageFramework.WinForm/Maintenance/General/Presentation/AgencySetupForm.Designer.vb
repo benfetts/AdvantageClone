@@ -453,6 +453,8 @@
             Me.ButtonItemActions_Refresh = New DevComponents.DotNetBar.ButtonItem()
             Me.RibbonBarOptions_Text = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
             Me.ButtonItemText_CheckSpelling = New DevComponents.DotNetBar.ButtonItem()
+            Me.GroupBoxOptions_EmailingDocuments = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
             CType(Me.TabControlForm_AgencySetup, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlForm_AgencySetup.SuspendLayout
             Me.TabControlPanelSystemAndAlertOptionsTab_SystemAndAlertOptions.SuspendLayout
@@ -625,6 +627,8 @@
             CType(Me.GroupBoxUserSelectedRequiredFields_JobsAndMedia, System.ComponentModel.ISupportInitialize).BeginInit
             Me.GroupBoxUserSelectedRequiredFields_JobsAndMedia.SuspendLayout
             Me.RibbonBarMergeContainerForm_Options.SuspendLayout
+            CType(Me.GroupBoxOptions_EmailingDocuments, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxOptions_EmailingDocuments.SuspendLayout
             Me.SuspendLayout
             '
             'TabControlForm_AgencySetup
@@ -706,6 +710,7 @@
             '
             'TabControlPanelOptionsTab_Options
             '
+            Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.GroupBoxOptions_EmailingDocuments)
             Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.GroupBoxSystemAndAlertOptions_ProofingURL)
             Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.GroupBoxSystemAndAlertOptions_DotNetFolder)
             Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.GroupBoxSystemAndAlertOptions_ClientPortalURL)
@@ -9343,6 +9348,44 @@
             Me.ButtonItemText_CheckSpelling.SubItemsExpandWidth = 14
             Me.ButtonItemText_CheckSpelling.Text = "Check Spelling"
             '
+            'GroupBoxOptions_EmailingDocuments
+            '
+            Me.GroupBoxOptions_EmailingDocuments.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.GroupBoxOptions_EmailingDocuments.Controls.Add(Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink)
+            Me.GroupBoxOptions_EmailingDocuments.Location = New System.Drawing.Point(370, 324)
+            Me.GroupBoxOptions_EmailingDocuments.Name = "GroupBoxOptions_EmailingDocuments"
+            Me.GroupBoxOptions_EmailingDocuments.Size = New System.Drawing.Size(567, 52)
+            Me.GroupBoxOptions_EmailingDocuments.TabIndex = 9
+            Me.GroupBoxOptions_EmailingDocuments.Text = "Emailing Documents"
+            '
+            'CheckBoxEmailingDocuments_SendFilesAsOneTimeLink
+            '
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.CheckValue = CType(0, Short)
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.CheckValueChecked = CType(1, Short)
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Short]
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.CheckValueUnchecked = CType(0, Short)
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.ChildControls = CType(resources.GetObject("CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.EnableMnemonicWithAltKeyOnly = True
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.Location = New System.Drawing.Point(6, 21)
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.Name = "CheckBoxEmailingDocuments_SendFilesAsOneTimeLink"
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.OldestSibling = Nothing
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.SecurityEnabled = True
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.SiblingControls = CType(resources.GetObject("CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.Size = New System.Drawing.Size(557, 20)
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.TabIndex = 0
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.TabOnEnter = True
+            Me.CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.Text = "Send Files as One Time Link"
+            '
             'AgencySetupForm
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -9525,6 +9568,8 @@
             CType(Me.GroupBoxUserSelectedRequiredFields_JobsAndMedia, System.ComponentModel.ISupportInitialize).EndInit
             Me.GroupBoxUserSelectedRequiredFields_JobsAndMedia.ResumeLayout(False)
             Me.RibbonBarMergeContainerForm_Options.ResumeLayout(False)
+            CType(Me.GroupBoxOptions_EmailingDocuments, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxOptions_EmailingDocuments.ResumeLayout(False)
             Me.ResumeLayout(False)
 
         End Sub
@@ -9955,6 +10000,8 @@
         Friend WithEvents RadioButtonControlProofingURL_UseGlobal As WinForm.Presentation.Controls.RadioButtonControl
         Friend WithEvents CheckBoxMediaGeneral_MediaAutoBuyer As WinForm.Presentation.Controls.CheckBox
         Friend WithEvents CheckBoxAlertOptions_CommentsFirstOnEmails As WinForm.Presentation.Controls.CheckBox
+        Friend WithEvents GroupBoxOptions_EmailingDocuments As WinForm.Presentation.Controls.GroupBox
+        Friend WithEvents CheckBoxEmailingDocuments_SendFilesAsOneTimeLink As WinForm.Presentation.Controls.CheckBox
     End Class
 
 End Namespace

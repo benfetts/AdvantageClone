@@ -1204,7 +1204,7 @@
 
                     Else
 
-                        AdvantageFramework.WinForm.MessageBox.Show("Images zipped, exported and also email link has been sent to your email.")
+                        AdvantageFramework.WinForm.MessageBox.Show("Images  email link has been sent to your email.")
 
                     End If
 

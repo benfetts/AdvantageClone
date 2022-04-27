@@ -680,9 +680,9 @@
 
 								If AdvantageFramework.WinForm.Presentation.SendASPReportDownloadEmail(_Session, File) Then
 
-									AdvantageFramework.WinForm.MessageBox.Show("Document exported and also email link has been sent to your email.")
+                                    AdvantageFramework.WinForm.MessageBox.Show("Document email link has been sent to your email.")
 
-								Else
+                                Else
 
 									AdvantageFramework.WinForm.MessageBox.Show("Document exported!")
 

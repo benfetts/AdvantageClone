@@ -5620,7 +5620,7 @@
 
             Else
 
-                AdvantageFramework.WinForm.MessageBox.Show("Export file created successfully and also email link has been sent to you email.")
+                AdvantageFramework.WinForm.MessageBox.Show("Export file email link has been sent to you email.")
 
             End If
 
@@ -9626,7 +9626,7 @@
 
                                         If AdvantageFramework.WinForm.Presentation.SendASPReportDownloadEmail(Me.Session, DefaultFileName) Then
 
-                                            AdvantageFramework.WinForm.MessageBox.Show("Broadcast Worksheet Report has been exported and also email link has been sent to your email.")
+                                            AdvantageFramework.WinForm.MessageBox.Show("Broadcast Worksheet Report email link has been sent to your email.")
 
                                         Else
 

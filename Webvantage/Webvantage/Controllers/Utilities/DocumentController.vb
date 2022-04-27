@@ -2485,36 +2485,52 @@ Namespace Controllers.Utilities
 
                         Using DbContext = New AdvantageFramework.Database.DbContext(SqlConnectionStringBuilder.ConnectionString, SqlConnectionStringBuilder.UserID)
 
-                            Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
+                            Using DataContext = New AdvantageFramework.Database.DataContext(SqlConnectionStringBuilder.ConnectionString, SqlConnectionStringBuilder.UserID)
 
-                            If Agency IsNot Nothing Then
+                                Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
 
-                                Try
-
-                                    AdvantageFramework.Security.Impersonate.BeginImpersonation(Agency.FileSystemUserName, Agency.FileSystemDomain, AdvantageFramework.Security.Encryption.Decrypt(Agency.FileSystemPassword))
+                                If Agency IsNot Nothing Then
 
                                     Try
 
-                                        FileStream = New System.IO.FileStream(File, IO.FileMode.OpenOrCreate)
-                                        BinaryReader = New System.IO.BinaryReader(FileStream)
-                                        ByteFile = BinaryReader.ReadBytes(New System.IO.FileInfo(File).Length)
+                                        AdvantageFramework.Security.Impersonate.BeginImpersonation(Agency.FileSystemUserName, Agency.FileSystemDomain, AdvantageFramework.Security.Encryption.Decrypt(Agency.FileSystemPassword))
 
-                                        FileStream.Close()
-                                        BinaryReader.Close()
+                                        Try
 
-                                        Downloaded = True
+                                            FileStream = New System.IO.FileStream(File, IO.FileMode.OpenOrCreate)
+                                            BinaryReader = New System.IO.BinaryReader(FileStream)
+                                            ByteFile = BinaryReader.ReadBytes(New System.IO.FileInfo(File).Length)
+
+                                            FileStream.Close()
+                                            BinaryReader.Close()
+
+                                            Downloaded = True
+
+                                        Catch ex As Exception
+                                            Downloaded = False
+                                        End Try
+
+                                        If Downloaded AndAlso Agency.IsASP = 1 AndAlso AdvantageFramework.Agency.LoadSendFilesAsOneTimeLink(DataContext) Then
+
+                                            Try
+
+                                                System.IO.File.Delete(File)
+
+                                            Catch ex As Exception
+
+                                            End Try
+
+                                        End If
+
+                                        AdvantageFramework.Security.Impersonate.EndImpersonation()
 
                                     Catch ex As Exception
                                         Downloaded = False
                                     End Try
 
-                                    AdvantageFramework.Security.Impersonate.EndImpersonation()
+                                End If
 
-                                Catch ex As Exception
-                                    Downloaded = False
-                                End Try
-
-                            End If
+                            End Using
 
                         End Using
 

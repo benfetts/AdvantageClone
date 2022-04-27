@@ -389,6 +389,12 @@
 
                 End If
 
+                Using DataContext = New AdvantageFramework.Database.DataContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                    CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.Checked = AdvantageFramework.Agency.LoadSendFilesAsOneTimeLink(DataContext)
+
+                End Using
+
                 TabItemAgencySetup_SystemAndAlertOptions.Tag = True
 
                 EnableOrDisableEmailOptions()
@@ -1418,6 +1424,12 @@
                 'Agency.POP3Password = TextBoxPOP3EmailListenerSettings_Password.Text
                 'Agency.POP3DefaultReplyToEmail = TextBoxPOP3EmailListenerSettings_ReplyToAddress.Text
                 'Agency.POP3DeleteMessages = CheckBoxPOP3EMailListenerSettings_DeleteProcessedEmail.GetValue
+
+                Using DataContext = New AdvantageFramework.Database.DataContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                    AdvantageFramework.Agency.SaveSendFilesAsOneTimeLink(DataContext, CheckBoxEmailingDocuments_SendFilesAsOneTimeLink.Checked)
+
+                End Using
 
             End If
 
@@ -2771,6 +2783,11 @@
                     TextBoxImportSettings_CSIClearedChecksImportPath.SecurityEnabled = False
                     TextBoxDotNetFolder_Path.SecurityEnabled = False
                     TextBoxProofingURL_URL.SecurityEnabled = False
+                    GroupBoxOptions_EmailingDocuments.Visible = True
+
+                Else
+
+                    GroupBoxOptions_EmailingDocuments.Visible = False
 
                 End If
 

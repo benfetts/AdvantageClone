@@ -5286,7 +5286,7 @@
 
                 If AdvantageFramework.Email.SendASPReportDownloadEmail(Session, FileName) Then
 
-                    AdvantageFramework.Navigation.ShowMessageBox("Flow chart created successfully and also email link has been sent to your email.")
+                    AdvantageFramework.Navigation.ShowMessageBox("Flow chart email link has been sent to your email.")
 
                 Else
 
@@ -5305,7 +5305,7 @@
 
                 If AdvantageFramework.Email.SendASPReportDownloadEmail(Session, FileName) Then
 
-                    AdvantageFramework.Navigation.ShowMessageBox("Flow chart created successfully and also email link has been sent to your email.")
+                    AdvantageFramework.Navigation.ShowMessageBox("Flow chart email link has been sent to your email.")
 
                 Else
 

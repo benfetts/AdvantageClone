@@ -215,6 +215,7 @@
             RSC_RPT_NO_ETI_CLR
             RSC_RPT_PRE_CLR
             RSC_RPT_STC_CLR
+            SEND_FILE_ONE_TIME
             SERVICE_TAX_ENABLED
             SMTP_OAUTH2_TOKEN
             SYNC_GOOGLECALENDAR
@@ -1289,6 +1290,67 @@
             End If
 
             SaveMediaAutoBuyer = Saved
+
+        End Function
+        Public Function LoadSendFilesAsOneTimeLink(ByVal DataContext As AdvantageFramework.Database.DataContext) As Boolean
+
+            Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
+            Dim SendFilesAsOneTimeLink As Boolean = False
+
+            Try
+
+                Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, AdvantageFramework.Agency.Settings.SEND_FILE_ONE_TIME.ToString)
+
+            Catch ex As Exception
+                Setting = Nothing
+            End Try
+
+            If Setting IsNot Nothing Then
+
+                SendFilesAsOneTimeLink = CBool(Setting.Value)
+
+            End If
+
+            LoadSendFilesAsOneTimeLink = SendFilesAsOneTimeLink
+
+        End Function
+        Public Function SaveSendFilesAsOneTimeLink(ByVal DataContext As AdvantageFramework.Database.DataContext, SendFilesAsOneTimeLink As Boolean) As Boolean
+
+            Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
+            Dim Saved As Boolean = False
+
+            Try
+
+                Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, AdvantageFramework.Agency.Settings.SEND_FILE_ONE_TIME.ToString)
+
+            Catch ex As Exception
+                Setting = Nothing
+            End Try
+
+            If Setting IsNot Nothing Then
+
+                Setting.Value = SendFilesAsOneTimeLink
+
+                Saved = AdvantageFramework.Database.Procedures.Setting.Update(DataContext, Setting)
+
+            Else
+
+                Setting = New AdvantageFramework.Database.Entities.Setting
+
+                Setting.DataContext = DataContext
+                Setting.Code = AdvantageFramework.Agency.Settings.SEND_FILE_ONE_TIME.ToString
+                Setting.Description = "Send files as one time link"
+                Setting.Value = SendFilesAsOneTimeLink
+                Setting.DefaultValue = False
+                Setting.MinimumValue = 0
+                Setting.MaximumValue = 1
+                Setting.SettingDatabaseTypeID = 16
+
+                Saved = AdvantageFramework.Database.Procedures.Setting.Insert(DataContext, Setting)
+
+            End If
+
+            SaveSendFilesAsOneTimeLink = Saved
 
         End Function
         Public Function LoadJobDetailFeesFunctionCodes(DataContext As AdvantageFramework.Database.DataContext) As Generic.List(Of String)

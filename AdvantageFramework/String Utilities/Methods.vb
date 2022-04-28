@@ -1569,6 +1569,40 @@
             Return ErrorString.ToString
 
         End Function
+        Public Function FullErrorMessage(OriginalException As Exception) As String
+
+            Dim ErrorString As System.Text.StringBuilder = Nothing
+            Dim Exception As Exception = Nothing
+
+            ErrorString = New System.Text.StringBuilder
+
+            If OriginalException IsNot Nothing Then
+
+                Exception = OriginalException
+
+                Do
+
+                    If String.IsNullOrWhiteSpace(Exception.Message) = False Then
+
+                        ErrorString.Append(Exception.Message)
+
+                    End If
+
+                    Exception = Exception.InnerException
+
+                    If Exception IsNot Nothing Then
+
+                        ErrorString.Append(Environment.NewLine)
+
+                    End If
+
+                Loop While Exception IsNot Nothing
+
+            End If
+
+            FullErrorMessage = ErrorString.ToString
+
+        End Function
 
 #End Region
 

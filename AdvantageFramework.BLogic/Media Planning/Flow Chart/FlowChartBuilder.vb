@@ -5286,7 +5286,19 @@
 
                 If AdvantageFramework.Email.SendASPReportDownloadEmail(Session, FileName) Then
 
-                    AdvantageFramework.Navigation.ShowMessageBox("Flow chart email link has been sent to your email.")
+                    Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+
+                        If AdvantageFramework.Agency.LoadSendFilesAsOneTimeLink(DataContext) Then
+
+                            AdvantageFramework.Navigation.ShowMessageBox("Flow chart email link has been sent to your email.")
+
+                        Else
+
+                            AdvantageFramework.Navigation.ShowMessageBox("Flow chart created successfully and also email link has been sent to your email.")
+
+                        End If
+
+                    End Using
 
                 Else
 
@@ -5305,7 +5317,19 @@
 
                 If AdvantageFramework.Email.SendASPReportDownloadEmail(Session, FileName) Then
 
-                    AdvantageFramework.Navigation.ShowMessageBox("Flow chart email link has been sent to your email.")
+                    Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+
+                        If AdvantageFramework.Agency.LoadSendFilesAsOneTimeLink(DataContext) Then
+
+                            AdvantageFramework.Navigation.ShowMessageBox("Flow chart email link has been sent to your email.")
+
+                        Else
+
+                            AdvantageFramework.Navigation.ShowMessageBox("Flow chart created successfully and also email link has been sent to your email.")
+
+                        End If
+
+                    End Using
 
                 Else
 

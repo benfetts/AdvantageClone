@@ -331,6 +331,17 @@
             End Try
 
         End Function
+        Public Function IsAgencyASP(ByVal DataContext As AdvantageFramework.Database.DataContext) As Boolean
+
+            Try
+
+                IsAgencyASP = (DataContext.ExecuteQuery(Of Short)("SELECT ISNULL(ASP_ACTIVE, 0) FROM [dbo].[AGENCY] WITH(NOLOCK);").FirstOrDefault = 1)
+
+            Catch ex As Exception
+                IsAgencyASP = False
+            End Try
+
+        End Function
         Public Function GetHomeCurrency(ByVal DbContext As AdvantageFramework.Database.DbContext) As String
 
             Try

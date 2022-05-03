@@ -797,7 +797,20 @@
 
                                 If AdvantageFramework.WinForm.Presentation.SendASPReportDownloadEmail(Session, FullFileName) Then
 
-                                    AdvantageFramework.WinForm.MessageBox.Show("Export file email link has been sent to your email.")
+                                    Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+
+                                        If IsAgencyASP AndAlso
+                                                AdvantageFramework.Agency.LoadSendFilesAsOneTimeLink(DataContext) Then
+
+                                            AdvantageFramework.WinForm.MessageBox.Show("Export file created successfully and also email link has been sent to your email.")
+
+                                        Else
+
+                                            AdvantageFramework.WinForm.MessageBox.Show("Export file email link has been sent to your email.")
+
+                                        End If
+
+                                    End Using
 
                                 Else
 

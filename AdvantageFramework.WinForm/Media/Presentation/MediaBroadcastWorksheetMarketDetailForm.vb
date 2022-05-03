@@ -5620,7 +5620,20 @@
 
             Else
 
-                AdvantageFramework.WinForm.MessageBox.Show("Export file email link has been sent to you email.")
+                Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+
+                    If AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DataContext) AndAlso
+                            AdvantageFramework.Agency.LoadSendFilesAsOneTimeLink(DataContext) Then
+
+                        AdvantageFramework.WinForm.MessageBox.Show("Export file email link has been sent to you email.")
+
+                    Else
+
+                        AdvantageFramework.WinForm.MessageBox.Show("Export file created successfully and also email link has been sent to you email.")
+
+                    End If
+
+                End Using
 
             End If
 
@@ -9626,7 +9639,20 @@
 
                                         If AdvantageFramework.WinForm.Presentation.SendASPReportDownloadEmail(Me.Session, DefaultFileName) Then
 
-                                            AdvantageFramework.WinForm.MessageBox.Show("Broadcast Worksheet Report email link has been sent to your email.")
+                                            Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+
+                                                If IsAsp AndAlso
+                                                        AdvantageFramework.Agency.LoadSendFilesAsOneTimeLink(DataContext) Then
+
+                                                    AdvantageFramework.WinForm.MessageBox.Show("Broadcast Worksheet Report email link has been sent to your email.")
+
+                                                Else
+
+                                                    AdvantageFramework.WinForm.MessageBox.Show("Broadcast Worksheet Report has been exported and also email link has been sent to your email.")
+
+                                                End If
+
+                                            End Using
 
                                         Else
 

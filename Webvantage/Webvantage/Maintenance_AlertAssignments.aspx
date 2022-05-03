@@ -466,18 +466,10 @@
                         </div>
                         <div class="code-description-container">
                             <div class="code-description-label">
-                                Routed Proofs By Default:
+                                Routed proofs by default:
                             </div>
                             <div class="code-description-description">
                                 <asp:CheckBox ID="CheckBoxRouteReviewsByDefault" runat="server" AutoPostBack="true" />
-                            </div>
-                        </div>
-                        <div class="code-description-container" title="Checking this puts the comments before the subject/description.">
-                            <div class="code-description-label">
-                                Put Comments First On Emails:
-                            </div>
-                            <div class="code-description-description">
-                                <asp:CheckBox ID="CheckBoxCommentsFirstOnEmails" runat="server" AutoPostBack="true" />
                             </div>
                         </div>
                         <div style="margin: 6px 0px 0px 0px; display: none !important;">

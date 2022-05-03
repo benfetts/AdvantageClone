@@ -157,16 +157,6 @@
 
                     AgencyDotNetPath = AdvantageFramework.Agency.GetDotNetFolder(DataContext)
 
-                    Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
-
-                    Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, "ALRT_ASSGN_CMTS_FST")
-
-                    If Setting IsNot Nothing Then
-
-                        CheckBoxAlertOptions_CommentsFirstOnEmails.Checked = CType(Setting.Value, Integer) = 1
-
-                    End If
-
                 End Using
 
                 Try
@@ -2907,7 +2897,11 @@
             Save()
 
         End Sub
-        Private Sub ParentChild_SiblingCheckbox_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxAccountsPayableDisbursement_PopupMessageInAP.CheckedChanged, CheckBoxAccountsPayableDisbursement_RejectAPEntry.CheckedChanged
+        Private Sub ParentChild_SiblingCheckbox_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxAccountsPayableDisbursement_PopupMessageInAP.CheckedChanged, CheckBoxAccountsPayableDisbursement_RejectAPEntry.CheckedChanged,
+                                                                                                                            CheckBoxAccountsPayableDisbursement_RejectAPEntry.EnabledChanged, CheckBoxAccountsPayableDisbursement_PopupMessageInAP.EnabledChanged,
+                                                                                                                            CheckBoxAlertOptions_IncludeAttachmentsWithAlerts.CheckedChanged, CheckBoxAlertOptions_ExcludeAttachmentByDefault.CheckedChanged,
+                                                                                                                            CheckBoxJobJacketOptions_EnableFileAttachments.CheckedChanged, CheckBoxPurchaseOrdersOptions_EnablePurchaseOrderAlertGroup.CheckedChanged,
+                                                                                                                            CheckBoxTimesheetOptions_UseBatchMethod.CheckedChanged
 
             If TypeOf sender Is AdvantageFramework.WinForm.Presentation.Controls.CheckBox Then
 
@@ -4129,52 +4123,6 @@
         Private Sub ButtonItemEmail_TestSending_Click(sender As Object, e As EventArgs) Handles ButtonItemEmail_TestSending.Click
 
             AdvantageFramework.Maintenance.General.Presentation.AgencyTestEmailDialog.ShowFormDialog(_Agency)
-
-        End Sub
-        Private Sub CheckBoxAlertOptions_CommentsFirstOnEmails_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxAlertOptions_CommentsFirstOnEmails.CheckedChanged
-
-            Using DataContext = New AdvantageFramework.Database.DataContext(Me.Session.ConnectionString, Me.Session.UserCode)
-
-                Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
-
-                Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, "ALRT_ASSGN_CMTS_FST")
-
-                If Setting Is Nothing Then
-
-                    Setting = New Database.Entities.Setting
-
-                    Setting.Code = "ALRT_ASSGN_CMTS_FST"
-                    Setting.DefaultValue = 0
-
-                    If CheckBoxAlertOptions_CommentsFirstOnEmails.Checked = True Then
-
-                        Setting.Value = 1
-
-                    Else
-
-                        Setting.Value = 0
-
-                    End If
-
-                    AdvantageFramework.Database.Procedures.Setting.Insert(DataContext, Setting)
-
-                Else
-
-                    If CheckBoxAlertOptions_CommentsFirstOnEmails.Checked = True Then
-
-                        Setting.Value = 1
-
-                    Else
-
-                        Setting.Value = 0
-
-                    End If
-
-                    AdvantageFramework.Database.Procedures.Setting.Update(DataContext, Setting)
-
-                End If
-
-            End Using
 
         End Sub
 

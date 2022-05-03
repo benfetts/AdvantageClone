@@ -3083,16 +3083,10 @@
         End Function
         Private Function LoadGridViewDataSourceView(ByVal Jobs As IEnumerable(Of AdvantageFramework.Database.Views.JobView)) As Object
 
-            Try
-
-                LoadGridViewDataSourceView = (From Job In Jobs
-                                              Order By Job.JobNumber Descending
-                                              Select New With {.Number = Job.JobNumber,
-                                                               .Description = Job.JobDescription}).ToList
-
-            Catch ex As Exception
-                Return Nothing
-            End Try
+            LoadGridViewDataSourceView = (From Job In Jobs
+                                          Order By Job.JobNumber Descending
+                                          Select New With {.Number = Job.JobNumber,
+                                                           .Description = Job.JobDescription}).ToList
 
         End Function
         Private Function LoadGridViewDataSourceView(ByVal JobComponents As IEnumerable(Of AdvantageFramework.Database.Entities.JobComponent)) As Object
@@ -3119,19 +3113,13 @@
         End Function
         Private Function LoadGridViewDataSourceView(ByVal JobComponents As IEnumerable(Of AdvantageFramework.Database.Views.JobComponentView)) As Object
 
-            Try
-
-                LoadGridViewDataSourceView = (From JobComponent In JobComponents
-                                              Order By JobComponent.JobNumber Descending,
+            LoadGridViewDataSourceView = (From JobComponent In JobComponents
+                                          Order By JobComponent.JobNumber Descending,
                                                    JobComponent.JobComponentNumber Ascending
-                                              Select New With {.Number = JobComponent.JobComponentNumber,
+                                          Select New With {.Number = JobComponent.JobComponentNumber,
                                                            .Description = JobComponent.JobComponentDescription,
                                                            .ID = JobComponent.ID,
                                                            .JobNumber = JobComponent.JobNumber}).ToList
-
-            Catch ex As Exception
-                Return Nothing
-            End Try
 
         End Function
         Private Function LoadGridViewDataSourceView(ByVal SalesTaxes As IEnumerable(Of AdvantageFramework.Database.Entities.SalesTax)) As Object

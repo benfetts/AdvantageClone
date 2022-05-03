@@ -2512,14 +2512,12 @@ Namespace Controllers.Utilities
 
                                         If Downloaded AndAlso Agency.IsASP = 1 AndAlso AdvantageFramework.Agency.LoadSendFilesAsOneTimeLink(DataContext) Then
 
-                                            AdvantageFramework.Security.AddWebvantageEventLog("INSIDE FILE DELETION")
-
                                             Try
 
                                                 System.IO.File.Delete(File)
 
                                             Catch ex As Exception
-                                                AdvantageFramework.Security.AddWebvantageEventLog(AdvantageFramework.StringUtilities.FullErrorMessage(ex))
+                                                AdvantageFramework.Security.AddWebvantageEventLog("Document delete after download " & System.Environment.NewLine & System.Environment.NewLine & AdvantageFramework.StringUtilities.FullErrorMessage(ex))
                                             End Try
 
                                         End If

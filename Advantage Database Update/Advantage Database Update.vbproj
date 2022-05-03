@@ -907,6 +907,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_production_wip_detail.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_project_schedule_cmplt_sched_last_cpmlt.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_proofing_add_external_reviewer_to_assignment.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

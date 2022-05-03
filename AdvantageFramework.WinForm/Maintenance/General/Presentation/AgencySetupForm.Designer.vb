@@ -3005,14 +3005,10 @@
             Me.CheckBoxAlertOptions_CommentsFirstOnEmails.TabIndex = 5
             Me.CheckBoxAlertOptions_CommentsFirstOnEmails.TabOnEnter = True
 <<<<<<< HEAD
-<<<<<<< HEAD
             Me.CheckBoxAlertOptions_CommentsFirstOnEmails.Text = "Put Comments First On Emails"
 =======
             Me.CheckBoxAlertOptions_CommentsFirstOnEmails.Text = "Put Comments First on Emails"
 >>>>>>> b779a0a79 (4618-1-367 - PRIORITY - enhancement - have option for alert/assignment email layout preference)
-=======
-            Me.CheckBoxAlertOptions_CommentsFirstOnEmails.Text = "Put Comments First On Emails"
->>>>>>> 6588e5d7e (4618-1-367 - PRIORITY - enhancement - have option for alert/assignment email layout preference)
             '
 >>>>>>> 54c48fad0 (4618-1-367 - PRIORITY - enhancement - have option for alert/assignment email layout preference)
             'CheckBoxAlertOptions_ActivateSystemGeneratedAlerts

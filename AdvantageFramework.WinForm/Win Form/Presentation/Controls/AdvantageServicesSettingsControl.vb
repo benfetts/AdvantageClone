@@ -3153,16 +3153,6 @@
 
                 TextBoxMediaOceanImportLog_Log.ByPassUserEntryChanged = True
 
-                If _FromAdvantageServices = False AndAlso IsAgencyASP Then
-
-                    TabItemServices_MediaOceanImportTab.Visible = False
-
-                Else
-
-                    TabItemServices_MediaOceanImportTab.Visible = True
-
-                End If
-
             Catch ex As Exception
 
             End Try

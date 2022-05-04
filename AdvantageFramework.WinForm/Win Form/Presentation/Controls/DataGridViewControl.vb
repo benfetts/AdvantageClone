@@ -4343,133 +4343,139 @@
                          Optional AdvantageServiceReportScheduleExportType As Database.Entities.Methods.AdvantageServiceReportScheduleExportType = Nothing)
 
             'objects
-            Dim CompositeLink As DevExpress.XtraPrintingLinks.CompositeLink = Nothing
+            'Dim CompositeLink As DevExpress.XtraPrintingLinks.CompositeLink = Nothing
             Dim ComponentResourceManager As System.ComponentModel.ComponentResourceManager = Nothing
-            Dim PrintingSystem As DevExpress.XtraPrinting.PrintingSystem = Nothing
-            Dim ReportHeaderLink As AdvantageFramework.Reporting.Reports.CustomLink = Nothing
-            Dim PrintableComponentLink As DevExpress.XtraPrinting.PrintableComponentLink = Nothing
-            Dim Agency As AdvantageFramework.Database.Entities.Agency = Nothing
+            'Dim PrintingSystem As DevExpress.XtraPrinting.PrintingSystem = Nothing
+            'Dim ReportHeaderLink As AdvantageFramework.Reporting.Reports.CustomLink = Nothing
+            'Dim PrintableComponentLink As DevExpress.XtraPrinting.PrintableComponentLink = Nothing
+            'Dim Agency As AdvantageFramework.Database.Entities.Agency = Nothing
+            Dim AgencyImportPath As String = String.Empty
             Dim KeepLoading As Boolean = True
 
             ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdvantageFramework.Desktop.Presentation.DynamicReportEditForm))
 
-            PrintingSystem = New DevExpress.XtraPrinting.PrintingSystem
-            CompositeLink = New DevExpress.XtraPrintingLinks.CompositeLink(PrintingSystem)
+            Using PrintingSystem = New DevExpress.XtraPrinting.PrintingSystem
 
-            ReportHeaderLink = New AdvantageFramework.Reporting.Reports.CustomLink
+                Using CompositeLink = New DevExpress.XtraPrintingLinks.CompositeLink(PrintingSystem)
 
-            If IsScheduledReportService Then
+                    Using ReportHeaderLink = New AdvantageFramework.Reporting.Reports.CustomLink
 
-                ReportHeaderLink.Tag = Me
+                        If IsScheduledReportService Then
 
-            End If
-
-            PrintingSystem.ExportOptions.PrintPreview.DefaultFileName = DocumentDescription
-
-            If _Session IsNot Nothing AndAlso Not IsScheduledReportService Then
-
-                Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
-
-                    Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
-
-                    If Agency IsNot Nothing Then
-
-                        If Agency.IsASP = 1 Then
-
-                            If My.Computer.FileSystem.DirectoryExists(Agency.ImportPath) Then
-
-                                If My.Computer.FileSystem.DirectoryExists(AdvantageFramework.StringUtilities.AppendTrailingCharacter(Agency.ImportPath.Trim, "\") & "Reports\") = False Then
-
-                                    My.Computer.FileSystem.CreateDirectory(AdvantageFramework.StringUtilities.AppendTrailingCharacter(Agency.ImportPath.Trim, "\") & "Reports\")
-
-                                End If
-
-                            End If
-
-                            PrintingSystem.ExportOptions.PrintPreview.DefaultFileName = DocumentDescription & "_" & Now.ToShortDateString.Replace("/", " ").Replace(".", " ") & " " & Now.ToString("HH mm ss")
-                            PrintingSystem.ExportOptions.PrintPreview.DefaultDirectory = If(String.IsNullOrWhiteSpace(Agency.ImportPath), "", AdvantageFramework.StringUtilities.AppendTrailingCharacter(Agency.ImportPath.Trim, "\") & "Reports\")
-                            PrintingSystem.ExportOptions.PrintPreview.SaveMode = DevExpress.XtraPrinting.SaveMode.UsingDefaultPath
-                            PrintingSystem.ExportOptions.PrintPreview.ActionAfterExport = DevExpress.XtraPrinting.ActionAfterExport.None
-
-                            PrintingSystem.AddCommandHandler(New AdvantageFramework.WinForm.Presentation.Controls.Classes.PrintingSystemCommandHandler(_Session, If(String.IsNullOrWhiteSpace(Agency.ImportPath), "", AdvantageFramework.StringUtilities.AppendTrailingCharacter(Agency.ImportPath.Trim, "\") & "Reports\"), DocumentDescription))
-
-                            'PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.SendFile, DevExpress.XtraPrinting.CommandVisibility.None)
-                            PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.ExportHtm, DevExpress.XtraPrinting.CommandVisibility.None)
+                            ReportHeaderLink.Tag = Me
 
                         End If
 
-                    End If
+                        PrintingSystem.ExportOptions.PrintPreview.DefaultFileName = DocumentDescription
+
+                        If _Session IsNot Nothing AndAlso Not IsScheduledReportService Then
+
+                            Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
+
+                                AgencyImportPath = AdvantageFramework.Database.Procedures.Agency.LoadImportPath(DbContext)
+
+                                If AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext) Then
+
+                                    If My.Computer.FileSystem.DirectoryExists(AgencyImportPath) Then
+
+                                        If My.Computer.FileSystem.DirectoryExists(AdvantageFramework.StringUtilities.AppendTrailingCharacter(AgencyImportPath.Trim, "\") & "Reports\") = False Then
+
+                                            My.Computer.FileSystem.CreateDirectory(AdvantageFramework.StringUtilities.AppendTrailingCharacter(AgencyImportPath.Trim, "\") & "Reports\")
+
+                                        End If
+
+                                    End If
+
+                                    PrintingSystem.ExportOptions.PrintPreview.DefaultFileName = DocumentDescription & "_" & Now.ToShortDateString.Replace("/", " ").Replace(".", " ") & " " & Now.ToString("HH mm ss")
+                                    PrintingSystem.ExportOptions.PrintPreview.DefaultDirectory = If(String.IsNullOrWhiteSpace(AgencyImportPath), "", AdvantageFramework.StringUtilities.AppendTrailingCharacter(AgencyImportPath.Trim, "\") & "Reports\")
+                                    PrintingSystem.ExportOptions.PrintPreview.SaveMode = DevExpress.XtraPrinting.SaveMode.UsingDefaultPath
+                                    PrintingSystem.ExportOptions.PrintPreview.ActionAfterExport = DevExpress.XtraPrinting.ActionAfterExport.None
+
+                                    PrintingSystem.AddCommandHandler(New AdvantageFramework.WinForm.Presentation.Controls.Classes.PrintingSystemCommandHandler(_Session, If(String.IsNullOrWhiteSpace(AgencyImportPath), "", AdvantageFramework.StringUtilities.AppendTrailingCharacter(AgencyImportPath.Trim, "\") & "Reports\"), DocumentDescription))
+
+                                    'PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.SendFile, DevExpress.XtraPrinting.CommandVisibility.None)
+                                    PrintingSystem.SetCommandVisibility(DevExpress.XtraPrinting.PrintingSystemCommand.ExportHtm, DevExpress.XtraPrinting.CommandVisibility.None)
+
+                                End If
+
+                            End Using
+
+                        End If
+
+                        If KeepLoading Then
+
+                            AddHandler ReportHeaderLink.CreateDetailArea, AddressOf ReportHeaderLink_CreateDetailArea
+
+                            CompositeLink.Links.Add(ReportHeaderLink)
+
+                            Using PrintableComponentLink = New DevExpress.XtraPrinting.PrintableComponentLink(PrintingSystem)
+
+                                PrintableComponentLink.Component = Me.GridControl
+
+                                If UseLandscape Then
+
+                                    PrintableComponentLink.Landscape = True
+                                    PrintingSystem.PageSettings.Landscape = True
+                                    CompositeLink.Landscape = True
+
+                                End If
+
+                                AddHandler PrintableComponentLink.CreateMarginalHeaderArea, AddressOf PrintableComponentLink_CreateMarginalHeaderArea
+
+                                CompositeLink.Links.Add(PrintableComponentLink)
+
+                                CompositeLink.ImageCollection.ImageStream = CType(ComponentResourceManager.GetObject("PrintableComponentLink.ImageCollection.ImageStream"), DevExpress.Utils.ImageCollectionStreamer)
+
+                                CompositeLink.PrintingSystem.ExportOptions.PrintPreview.DefaultSendFormat = DevExpress.XtraPrinting.PrintingSystemCommand.ExportXls
+                                CompositeLink.PrintingSystem.ExportOptions.PrintPreview.DefaultExportFormat = DevExpress.XtraPrinting.PrintingSystemCommand.ExportXls
+                                CompositeLink.PrintingSystem.ExportOptions.PrintPreview.DefaultFileName = DocumentDescription
+
+                                If Images IsNot Nothing Then
+
+                                    For Each Image In Images
+
+                                        CompositeLink.Images.Add(Image)
+
+                                    Next
+
+                                End If
+
+                                CompositeLink.CreateDocument()
+
+                                If IsScheduledReportService Then
+
+                                    If AdvantageServiceReportScheduleExportType = Database.Entities.Methods.AdvantageServiceReportScheduleExportType.CSV Then
+
+                                        PrintingSystem.ExportToCsv(SaveToFilename)
+
+                                    ElseIf AdvantageServiceReportScheduleExportType = Database.Entities.Methods.AdvantageServiceReportScheduleExportType.XLS Then
+
+                                        PrintingSystem.ExportToXls(SaveToFilename)
+
+                                    ElseIf AdvantageServiceReportScheduleExportType = Database.Entities.Methods.AdvantageServiceReportScheduleExportType.XLSX Then
+
+                                        PrintingSystem.ExportToXlsx(SaveToFilename)
+
+                                    End If
+
+                                Else
+
+                                    CompositeLink.ShowRibbonPreviewDialog(LookAndFeel)
+
+                                End If
+
+                                RemoveHandler ReportHeaderLink.CreateDetailArea, AddressOf ReportHeaderLink_CreateDetailArea
+                                RemoveHandler PrintableComponentLink.CreateMarginalHeaderArea, AddressOf PrintableComponentLink_CreateMarginalHeaderArea
+
+                            End Using
+
+                        End If
+
+                    End Using
 
                 End Using
 
-            End If
-
-            If KeepLoading Then
-
-                AddHandler ReportHeaderLink.CreateDetailArea, AddressOf ReportHeaderLink_CreateDetailArea
-
-                CompositeLink.Links.Add(ReportHeaderLink)
-
-                PrintableComponentLink = New DevExpress.XtraPrinting.PrintableComponentLink(PrintingSystem)
-
-                PrintableComponentLink.Component = Me.GridControl
-
-                If UseLandscape Then
-
-                    PrintableComponentLink.Landscape = True
-                    PrintingSystem.PageSettings.Landscape = True
-                    CompositeLink.Landscape = True
-
-                End If
-
-                AddHandler PrintableComponentLink.CreateMarginalHeaderArea, AddressOf PrintableComponentLink_CreateMarginalHeaderArea
-
-                CompositeLink.Links.Add(PrintableComponentLink)
-
-                CompositeLink.ImageCollection.ImageStream = CType(ComponentResourceManager.GetObject("PrintableComponentLink.ImageCollection.ImageStream"), DevExpress.Utils.ImageCollectionStreamer)
-
-                CompositeLink.PrintingSystem.ExportOptions.PrintPreview.DefaultSendFormat = DevExpress.XtraPrinting.PrintingSystemCommand.ExportXls
-                CompositeLink.PrintingSystem.ExportOptions.PrintPreview.DefaultExportFormat = DevExpress.XtraPrinting.PrintingSystemCommand.ExportXls
-                CompositeLink.PrintingSystem.ExportOptions.PrintPreview.DefaultFileName = DocumentDescription
-
-                If Images IsNot Nothing Then
-
-                    For Each Image In Images
-
-                        CompositeLink.Images.Add(Image)
-
-                    Next
-
-                End If
-
-                CompositeLink.CreateDocument()
-
-                If IsScheduledReportService Then
-
-                    If AdvantageServiceReportScheduleExportType = Database.Entities.Methods.AdvantageServiceReportScheduleExportType.CSV Then
-
-                        PrintingSystem.ExportToCsv(SaveToFilename)
-
-                    ElseIf AdvantageServiceReportScheduleExportType = Database.Entities.Methods.AdvantageServiceReportScheduleExportType.XLS Then
-
-                        PrintingSystem.ExportToXls(SaveToFilename)
-
-                    ElseIf AdvantageServiceReportScheduleExportType = Database.Entities.Methods.AdvantageServiceReportScheduleExportType.XLSX Then
-
-                        PrintingSystem.ExportToXlsx(SaveToFilename)
-
-                    End If
-
-                Else
-
-                    CompositeLink.ShowRibbonPreviewDialog(LookAndFeel)
-
-                End If
-
-                RemoveHandler ReportHeaderLink.CreateDetailArea, AddressOf ReportHeaderLink_CreateDetailArea
-                RemoveHandler PrintableComponentLink.CreateMarginalHeaderArea, AddressOf PrintableComponentLink_CreateMarginalHeaderArea
-
-            End If
+            End Using
 
         End Sub
         Public Sub CancelNewItemRow()

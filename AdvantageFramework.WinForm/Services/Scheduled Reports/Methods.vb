@@ -368,6 +368,8 @@
 
             DataGridViewReport_Report.ClearDatasource()
 
+            DataGridViewReport_Report.Dispose()
+
             DataGridViewReport_Report = Nothing
 
         End Sub

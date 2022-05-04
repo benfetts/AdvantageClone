@@ -1297,6 +1297,30 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Job_Template_NewJob.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_reports_ar_statements_client_001.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_reports_ar_statements_client_002.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_reports_ar_statements_client_003.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_reports_ar_statements_client_004.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_reports_ar_statements_product_001.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_reports_ar_statements_product_002.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_reports_ar_statements_product_003.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_reports_ar_statements_product_004.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_RESOURCES_EMP_ALLOCATION.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

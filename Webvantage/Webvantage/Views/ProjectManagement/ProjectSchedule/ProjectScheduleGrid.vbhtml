@@ -193,6 +193,8 @@ end functions
     var selectingPreds = false;
     var numberOfLockedColumns = @LockedColumnCount();
 
+    var firstPass = true;
+
     $(() => {
         ScheduleTreeListDataSource = new kendo.data.TreeListDataSource({
             batch: true,
@@ -221,15 +223,11 @@ end functions
                         JobComponentNumber: @Model.JobComponentNumber,
                         Sort: CalculateByPredecessor ? '' : 'order'
                     };
-
-                    console.log('ReadGanttTask start', new Date());
-
                     $.ajax({
                         url: "@Href("~/ProjectManagement/ProjectSchedule/ReadGanttTask")",
                         dataType: 'json',
                         data: data,
                         success: (resultsString) => {
-                            console.log('ReadGanttTask return', new Date());
                             var results = JSON.parse(resultsString);
                             $.each(results, (i, e) => {
                                 if (typeof e.EmployeeCode !== 'undefined' && e.EmployeeCode !== null) {
@@ -245,7 +243,6 @@ end functions
                                     $.extend(e, o);
                                 }
                             });
-                            console.log('ReadGanttTask data parsed', new Date());
                             e.success(results);
                             $(".k-grid-content-locked").height($(".k-grid-content").height());
                         },
@@ -370,7 +367,7 @@ end functions
                             }
                             taskDeleted = false;
                             e.success();
-                            $('#treelist').data('kendoTreeList').refresh();
+                            //$('#treelist').data('kendoTreeList').refresh();
                             setSave();
                         },
                         error: (jqXHR, textStatus, errorThrown) => {
@@ -392,7 +389,7 @@ end functions
                 model: {
                     id: "SequenceNumber",
                     parentId: "ParentTaskSequenceNumber",
-                    //expanded: true,
+                    expanded: false,
                     fields: {
                         ID: { from: "ID", type: "number", nullable: true },
                         AlertId: { from: "AlertId", type: "number" },
@@ -494,7 +491,6 @@ end functions
                     let selector = `div[taskduedate-cell='${model.AlertId}']`;
                     if (model) {
                         var className = getDueDateClass(model);
-
                         if ($(selector).length) {
                             $(selector).closest("td").removeClass("ps-standard-light-pink");
                             $(selector).closest("td").removeClass("ps-standard-light-orange");
@@ -562,7 +558,6 @@ end functions
                         let selector = `div[taskduedate-cell='${dataItem.AlertId}']`;
 
                         var elm = $(selector);
-
                         //due date was manually entered
                         if ($(selector).length) {
                             $(selector).closest("td").removeClass("ps-standard-light-pink");
@@ -579,6 +574,23 @@ end functions
 
             },
             expand: (e) => {
+            },
+            dataBinding: (e) => {
+                console.log('dataBinding', expanded);
+                if (treeList.dataSource._data.length < 100 && _expandCollapse == false) {
+                    expanded = true;
+                    $.each(treeList.dataSource._data, function (i, item) {
+                        item.expanded = expanded;
+                    });
+                }
+                else if (expanded) {
+                    $.each(treeList.dataSource._data, function (i, item) {
+                        item.expanded = expanded;
+                    });
+                }
+                else {
+                    _expandCollapse = false;
+                }
             },
             dataBound: (e) => {
 
@@ -625,17 +637,6 @@ end functions
                         column.headerAttributes.class = column.headerAttributes.class + ' lastColumn';
                     }
                 }
-
-                //var fixed_grid = $('.k-grid-content-locked');
-                //if (fixed_grid) {
-                //    fixed_grid.height(fixed_grid.height() + 15);
-                //}
-
-                //var lockedHeight = $('#treelist').find('.k-grid-content-locked').height();
-                //var scrollableHeight = $('#treelist').find('.k-grid-content.k-auto-scrollable').height();
-
-                //console.log("databound", lockedHeight, scrollableHeight);
-                //$('#treelist').find('.k-grid-content-locked').css("height", scrollableHeight);
             },
             drop: (e) => {
                 var container = e.sender.wrapper.children(".k-grid-content");
@@ -1216,19 +1217,19 @@ end functions
                        Case AdvantageFramework.ProjectSchedule.Classes.Schedule.ScheduleColumn.Type.DueDateComments
                     @<text> {
                     field: "DueDateComments", title: "@item.HeaderText", template: (dataitem) => {
-                        return "<div style='max-height:38px;overflow:hidden;text-overflow:ellipsis;'>" + (dataitem.DueDateComments != null ? dataitem.DueDateComments : "") + "</div>";
+                        return "<div style='overflow:hidden;text-overflow:ellipsis;'>" + (dataitem.DueDateComments != null ? setLineBreaks(dataitem.DueDateComments) : "") + "</div>";
                     }, editor: textAreaCommentEditor, width: "260px", attributes: { class: "editable-cell" }, filterable: false }, </text>
 
                        Case AdvantageFramework.ProjectSchedule.Classes.Schedule.ScheduleColumn.Type.RevisionComments
                     @<text> {
                     field: "RevisionDateComments", title: "@item.HeaderText", template: (dataitem) => {
-                            return "<div style='max-height:38px;overflow:hidden;text-overflow:ellipsis;'>" + (dataitem.RevisionDateComments != null ? dataitem.RevisionDateComments : "") + "</div>";
+                            return "<div style='overflow:hidden;text-overflow:ellipsis;'>" + (dataitem.RevisionDateComments != null ? setLineBreaks(dataitem.RevisionDateComments) : "") + "</div>";
                     }, editor: textAreaCommentEditor, width: "260px", attributes: { class: "editable-cell" }, filterable: false }, </text>
 
                         case AdvantageFramework.ProjectSchedule.Classes.Schedule.ScheduleColumn.Type.TaskCommentsTextbox
                     @<text> {
                     field: "FunctionComments", title: "@item.HeaderText", template: (dataitem) => {
-                            return "<div style='max-height:38px;overflow:hidden;text-overflow:ellipsis;'>" + (dataitem.FunctionComments != null ? dataitem.FunctionComments : "")  + "</div>";
+                            return "<div style='overflow:hidden;text-overflow:ellipsis;'>" + (dataitem.FunctionComments != null ? setLineBreaks(dataitem.FunctionComments) : "")  + "</div>";
                     }, editor: textAreaCommentEditor, width: "260px", attributes: { class: "editable-cell" }, filterable: false
                 }, </text>
 
@@ -1462,10 +1463,12 @@ end functions
 
     });
 
-    var expanded = true;
+    var expanded = false;
+    var _expandCollapse = false;
 
     function expandCollapse() {
         var treelist = $("#treelist").data('kendoTreeList');
+        console.log('expandCollapse', expanded);
         expanded = !expanded;
 
         var dataItems = treeList.dataSource.data();
@@ -1474,6 +1477,9 @@ end functions
             item.expanded = expanded;
         });
 
+        //treelist.refresh();
+
+        _expandCollapse = true;
         treelist.setDataSource(treelist.dataSource)
 
         if (expanded) {
@@ -1481,6 +1487,13 @@ end functions
         }
         else {
             collapseAll();
+        }
+    }
+
+    function expand() {
+        //don't toggle modes, just expend if not expanded
+        if (!expanded) {
+            expandCollapse();
         }
     }
 
@@ -1602,9 +1615,11 @@ end functions
                     treeList.dataSource.sync().then(() => {
                         setSave();
 
-                        treeList.dataSource.read().then(() => {
-                            kendo.ui.progress(treeList.element, false);
-                        });
+                        kendo.ui.progress(treeList.element, false);
+
+                    //    treeList.dataSource.read().then(() => {
+                    //        kendo.ui.progress(treeList.element, false);
+                    //    });
                     });
                 }
             })
@@ -2314,6 +2329,15 @@ end functions
         });
     }
 
+    function setLineBreaks(text) {
+        var regex = new RegExp('\n', 'g');
+        if (!regex.test(text)) {
+            return text;
+        } else {
+            return text.replace(regex, '<br>');
+        }
+    }
+
     function getModelData() {
         return psModel;
     }
@@ -2463,10 +2487,7 @@ end functions
                     options.model.EmployeeName = nameArray.join(', ');
                     options.model.EmployeeCode = e.sender.value().join(", ");
 
-                    setSave();            
-
-                    //e.sender.input.val("");
-                    //e.sender.dataSource.filter([]);
+                    setSave();
                 }
             }).data('kendoMultiSelect');
 
@@ -2957,8 +2978,6 @@ End If
 
     function getDueDateClass(dataItem) {
         let taskClass = '';
-
-
         if (dataItem.JobRevisedDate != null) {
             let IsWeekendDate = IsWeekend(dataItem.JobRevisedDate);
             let TaskDateDiff = DateDiff(dataItem.JobRevisedDate);
@@ -3336,8 +3355,6 @@ End If
                                     } else {
                                         row.cells[levelPosition + sheetColumns[k].columnIndex].value = "FALSE";
                                     }
-                                    //row.cells[levelPosition + sheetColumns[k].columnIndex].value = row.cells[levelPosition + sheetColumns[k].columnIndex].value ? "TRUE" : "FALSE";
-                                    //console.log(dataItem[0].Milestone);
                                 } catch (e) {
                                     console.error("M/S: ", e);
                                 }

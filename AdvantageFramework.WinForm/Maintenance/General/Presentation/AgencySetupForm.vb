@@ -4145,6 +4145,8 @@
 
                     Setting.Code = "ALRT_ASSGN_CMTS_FST"
                     Setting.DefaultValue = 0
+                    Setting.SettingDatabaseTypeID = 19
+                    Setting.Description = "Put comments first on email"
 
                     If CheckBoxAlertOptions_CommentsFirstOnEmails.Checked = True Then
 

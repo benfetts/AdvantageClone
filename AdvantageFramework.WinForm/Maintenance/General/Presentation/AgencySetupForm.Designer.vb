@@ -1561,8 +1561,6 @@
             Me.ComboBoxPOP3EmailListenerSettings_AuthenticationMethod.FocusHighlightEnabled = True
             Me.ComboBoxPOP3EmailListenerSettings_AuthenticationMethod.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxPOP3EmailListenerSettings_AuthenticationMethod.FormattingEnabled = True
-            Me.ComboBoxPOP3EmailListenerSettings_AuthenticationMethod.IsDisposingDataSource = False
-            Me.ComboBoxPOP3EmailListenerSettings_AuthenticationMethod.ItemHeight = 16
             Me.ComboBoxPOP3EmailListenerSettings_AuthenticationMethod.Location = New System.Drawing.Point(152, 25)
             Me.ComboBoxPOP3EmailListenerSettings_AuthenticationMethod.Name = "ComboBoxPOP3EmailListenerSettings_AuthenticationMethod"
             Me.ComboBoxPOP3EmailListenerSettings_AuthenticationMethod.ReadOnly = False
@@ -1816,7 +1814,6 @@
             Me.ComboBoxSMTPEmailSetup_AuthenticationMethod.FocusHighlightEnabled = True
             Me.ComboBoxSMTPEmailSetup_AuthenticationMethod.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxSMTPEmailSetup_AuthenticationMethod.FormattingEnabled = True
-            Me.ComboBoxSMTPEmailSetup_AuthenticationMethod.IsDisposingDataSource = False
             Me.ComboBoxSMTPEmailSetup_AuthenticationMethod.ItemHeight = 16
             Me.ComboBoxSMTPEmailSetup_AuthenticationMethod.Location = New System.Drawing.Point(152, 25)
             Me.ComboBoxSMTPEmailSetup_AuthenticationMethod.Name = "ComboBoxSMTPEmailSetup_AuthenticationMethod"
@@ -2852,7 +2849,6 @@
             Me.ComboBoxMediaOrders_Country.FocusHighlightEnabled = True
             Me.ComboBoxMediaOrders_Country.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxMediaOrders_Country.FormattingEnabled = True
-            Me.ComboBoxMediaOrders_Country.IsDisposingDataSource = False
             Me.ComboBoxMediaOrders_Country.ItemHeight = 16
             Me.ComboBoxMediaOrders_Country.Location = New System.Drawing.Point(736, 21)
             Me.ComboBoxMediaOrders_Country.Name = "ComboBoxMediaOrders_Country"
@@ -3191,7 +3187,6 @@
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeTV.FocusHighlightEnabled = True
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeTV.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeTV.FormattingEnabled = True
-            Me.ComboBoxMediaPlanning_DefaultGroupingTypeTV.IsDisposingDataSource = False
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeTV.ItemHeight = 16
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeTV.Location = New System.Drawing.Point(557, 76)
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeTV.Name = "ComboBoxMediaPlanning_DefaultGroupingTypeTV"
@@ -3239,7 +3234,6 @@
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeRadio.FocusHighlightEnabled = True
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeRadio.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeRadio.FormattingEnabled = True
-            Me.ComboBoxMediaPlanning_DefaultGroupingTypeRadio.IsDisposingDataSource = False
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeRadio.ItemHeight = 16
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeRadio.Location = New System.Drawing.Point(321, 76)
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeRadio.Name = "ComboBoxMediaPlanning_DefaultGroupingTypeRadio"
@@ -3287,7 +3281,6 @@
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeOutOfHome.FocusHighlightEnabled = True
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeOutOfHome.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeOutOfHome.FormattingEnabled = True
-            Me.ComboBoxMediaPlanning_DefaultGroupingTypeOutOfHome.IsDisposingDataSource = False
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeOutOfHome.ItemHeight = 16
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeOutOfHome.Location = New System.Drawing.Point(85, 76)
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeOutOfHome.Name = "ComboBoxMediaPlanning_DefaultGroupingTypeOutOfHome"
@@ -3335,7 +3328,6 @@
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeNewspaper.FocusHighlightEnabled = True
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeNewspaper.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeNewspaper.FormattingEnabled = True
-            Me.ComboBoxMediaPlanning_DefaultGroupingTypeNewspaper.IsDisposingDataSource = False
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeNewspaper.ItemHeight = 16
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeNewspaper.Location = New System.Drawing.Point(557, 50)
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeNewspaper.Name = "ComboBoxMediaPlanning_DefaultGroupingTypeNewspaper"
@@ -3383,7 +3375,6 @@
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeMagazine.FocusHighlightEnabled = True
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeMagazine.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeMagazine.FormattingEnabled = True
-            Me.ComboBoxMediaPlanning_DefaultGroupingTypeMagazine.IsDisposingDataSource = False
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeMagazine.ItemHeight = 16
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeMagazine.Location = New System.Drawing.Point(321, 50)
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeMagazine.Name = "ComboBoxMediaPlanning_DefaultGroupingTypeMagazine"
@@ -3453,7 +3444,6 @@
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeInternet.FocusHighlightEnabled = True
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeInternet.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeInternet.FormattingEnabled = True
-            Me.ComboBoxMediaPlanning_DefaultGroupingTypeInternet.IsDisposingDataSource = False
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeInternet.ItemHeight = 16
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeInternet.Location = New System.Drawing.Point(85, 50)
             Me.ComboBoxMediaPlanning_DefaultGroupingTypeInternet.Name = "ComboBoxMediaPlanning_DefaultGroupingTypeInternet"
@@ -3711,7 +3701,6 @@
             Me.ComboBoxSettings_MediaImportDefault.FocusHighlightEnabled = True
             Me.ComboBoxSettings_MediaImportDefault.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxSettings_MediaImportDefault.FormattingEnabled = True
-            Me.ComboBoxSettings_MediaImportDefault.IsDisposingDataSource = False
             Me.ComboBoxSettings_MediaImportDefault.ItemHeight = 14
             Me.ComboBoxSettings_MediaImportDefault.Location = New System.Drawing.Point(154, 4)
             Me.ComboBoxSettings_MediaImportDefault.Name = "ComboBoxSettings_MediaImportDefault"
@@ -4226,7 +4215,6 @@
             Me.ComboBoxTimesheetOptions_DefaultDisplayDays.FocusHighlightEnabled = True
             Me.ComboBoxTimesheetOptions_DefaultDisplayDays.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxTimesheetOptions_DefaultDisplayDays.FormattingEnabled = True
-            Me.ComboBoxTimesheetOptions_DefaultDisplayDays.IsDisposingDataSource = False
             Me.ComboBoxTimesheetOptions_DefaultDisplayDays.ItemHeight = 16
             Me.ComboBoxTimesheetOptions_DefaultDisplayDays.Location = New System.Drawing.Point(121, 261)
             Me.ComboBoxTimesheetOptions_DefaultDisplayDays.Name = "ComboBoxTimesheetOptions_DefaultDisplayDays"
@@ -6197,7 +6185,6 @@
             Me.ComboBoxImportSettings_DefaultInvoiceDescription.FocusHighlightEnabled = True
             Me.ComboBoxImportSettings_DefaultInvoiceDescription.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxImportSettings_DefaultInvoiceDescription.FormattingEnabled = True
-            Me.ComboBoxImportSettings_DefaultInvoiceDescription.IsDisposingDataSource = False
             Me.ComboBoxImportSettings_DefaultInvoiceDescription.ItemHeight = 14
             Me.ComboBoxImportSettings_DefaultInvoiceDescription.Location = New System.Drawing.Point(187, 56)
             Me.ComboBoxImportSettings_DefaultInvoiceDescription.Name = "ComboBoxImportSettings_DefaultInvoiceDescription"
@@ -6233,7 +6220,6 @@
             Me.ComboBoxImportSettings_CurrencyRateImportFileType.FocusHighlightEnabled = True
             Me.ComboBoxImportSettings_CurrencyRateImportFileType.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxImportSettings_CurrencyRateImportFileType.FormattingEnabled = True
-            Me.ComboBoxImportSettings_CurrencyRateImportFileType.IsDisposingDataSource = False
             Me.ComboBoxImportSettings_CurrencyRateImportFileType.ItemHeight = 14
             Me.ComboBoxImportSettings_CurrencyRateImportFileType.Location = New System.Drawing.Point(187, 30)
             Me.ComboBoxImportSettings_CurrencyRateImportFileType.Name = "ComboBoxImportSettings_CurrencyRateImportFileType"
@@ -6269,7 +6255,6 @@
             Me.ComboBoxImportSettings_IncomeOnlyImportFileType.FocusHighlightEnabled = True
             Me.ComboBoxImportSettings_IncomeOnlyImportFileType.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxImportSettings_IncomeOnlyImportFileType.FormattingEnabled = True
-            Me.ComboBoxImportSettings_IncomeOnlyImportFileType.IsDisposingDataSource = False
             Me.ComboBoxImportSettings_IncomeOnlyImportFileType.ItemHeight = 14
             Me.ComboBoxImportSettings_IncomeOnlyImportFileType.Location = New System.Drawing.Point(187, 4)
             Me.ComboBoxImportSettings_IncomeOnlyImportFileType.Name = "ComboBoxImportSettings_IncomeOnlyImportFileType"
@@ -6419,7 +6404,6 @@
             Me.ComboBoxCheckFormatSettings_AdjustCheckBodyLinesDown.FocusHighlightEnabled = True
             Me.ComboBoxCheckFormatSettings_AdjustCheckBodyLinesDown.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxCheckFormatSettings_AdjustCheckBodyLinesDown.FormattingEnabled = True
-            Me.ComboBoxCheckFormatSettings_AdjustCheckBodyLinesDown.IsDisposingDataSource = False
             Me.ComboBoxCheckFormatSettings_AdjustCheckBodyLinesDown.ItemHeight = 16
             Me.ComboBoxCheckFormatSettings_AdjustCheckBodyLinesDown.Location = New System.Drawing.Point(174, 100)
             Me.ComboBoxCheckFormatSettings_AdjustCheckBodyLinesDown.Name = "ComboBoxCheckFormatSettings_AdjustCheckBodyLinesDown"
@@ -6453,7 +6437,6 @@
             Me.ComboBoxCheckFormatSettings_AdjustCheckStubLinesUp.FocusHighlightEnabled = True
             Me.ComboBoxCheckFormatSettings_AdjustCheckStubLinesUp.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxCheckFormatSettings_AdjustCheckStubLinesUp.FormattingEnabled = True
-            Me.ComboBoxCheckFormatSettings_AdjustCheckStubLinesUp.IsDisposingDataSource = False
             Me.ComboBoxCheckFormatSettings_AdjustCheckStubLinesUp.ItemHeight = 16
             Me.ComboBoxCheckFormatSettings_AdjustCheckStubLinesUp.Location = New System.Drawing.Point(174, 75)
             Me.ComboBoxCheckFormatSettings_AdjustCheckStubLinesUp.Name = "ComboBoxCheckFormatSettings_AdjustCheckStubLinesUp"
@@ -6504,7 +6487,6 @@
             Me.ComboBoxCheckCurrecny_CurrencySymbols.FocusHighlightEnabled = True
             Me.ComboBoxCheckCurrecny_CurrencySymbols.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxCheckCurrecny_CurrencySymbols.FormattingEnabled = True
-            Me.ComboBoxCheckCurrecny_CurrencySymbols.IsDisposingDataSource = False
             Me.ComboBoxCheckCurrecny_CurrencySymbols.ItemHeight = 16
             Me.ComboBoxCheckCurrecny_CurrencySymbols.Location = New System.Drawing.Point(95, 26)
             Me.ComboBoxCheckCurrecny_CurrencySymbols.Name = "ComboBoxCheckCurrecny_CurrencySymbols"

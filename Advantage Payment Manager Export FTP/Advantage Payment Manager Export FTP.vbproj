@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FB8E34E4-1CBD-4AD4-A85F-AA8D6614E1A6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>Advantage_Payment_Manager_Export_FTP.Timer</StartupObject>
+    <StartupObject>Advantage_Payment_Manager_Export_FTP.RunFTP</StartupObject>
     <RootNamespace>Advantage_Payment_Manager_Export_FTP</RootNamespace>
     <AssemblyName>Advantage Payment Manager Export FTP</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -20,7 +20,7 @@
     <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
@@ -107,7 +107,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Timer.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -134,10 +133,6 @@
     <ProjectReference Include="..\AdvantageFramework.BLogic\AdvantageFramework.BLogic.vbproj">
       <Project>{cf80c6a7-30b6-45b8-8ff2-cc3176b95239}</Project>
       <Name>AdvantageFramework.BLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AdvantageFramework.WinForm\AdvantageFramework.WinForm.vbproj">
-      <Project>{8bbd586b-eb2e-4971-ae41-91a8e68f114e}</Project>
-      <Name>AdvantageFramework.WinForm</Name>
     </ProjectReference>
     <ProjectReference Include="..\AdvantageFramework\AdvantageFramework.vbproj">
       <Project>{a5adbd34-dc5f-45ee-ab6a-8e9122da478d}</Project>

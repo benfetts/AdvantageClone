@@ -81,63 +81,63 @@
 
             '              
 
-            Await System.Threading.Tasks.Task.Run(Sub()
+            'Await System.Threading.Tasks.Task.Run(Sub()
 
-                                                      System.Threading.Tasks.Parallel.ForEach(DatabaseProfiles, Sub(DatabaseProfile As Database.DatabaseProfile)
+            System.Threading.Tasks.Parallel.ForEach(DatabaseProfiles, Sub(DatabaseProfile As Database.DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.EmailListener.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.EmailListener.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.QvAAlert.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.QvAAlert.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.MediaExport.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.MediaExport.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.Task.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.Task.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.MissingTime.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.MissingTime.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.PaidTimeOffAccruals.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.PaidTimeOffAccruals.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.Calendar.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.Calendar.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.CoreMediaCheckExport.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.CoreMediaCheckExport.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.Contract.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.Contract.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.MediaOceanImport.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.MediaOceanImport.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.CSIPreferredPartner.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.CSIPreferredPartner.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.JobCompUDFImport.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.JobCompUDFImport.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.Imports.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.Imports.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.Exports.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.Exports.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.VendorContract.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.VendorContract.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.CurrencyExchange.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.CurrencyExchange.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.VCC.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.VCC.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.Nielsen.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.Nielsen.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.CalendarTimeSheetImport.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.CalendarTimeSheetImport.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.ScheduledReports.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.ScheduledReports.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.ComScore.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.ComScore.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.InOutBoard.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.InOutBoard.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.AutomatedAssignments.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.AutomatedAssignments.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.DocumentRepositoryCapacityWarning.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.DocumentRepositoryCapacityWarning.Run(DatabaseProfile)
 
-                                                                                                                    AdvantageFramework.Services.NielsenPuertoRico.Run(DatabaseProfile)
+                                                                          AdvantageFramework.Services.NielsenPuertoRico.Run(DatabaseProfile)
 
-                                                                                                                End Sub)
+                                                                      End Sub)
 
-                                                  End Sub)
+            'End Sub)
 
             'For Each DatabaseProfile In DatabaseProfiles
 

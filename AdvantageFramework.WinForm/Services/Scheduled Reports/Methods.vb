@@ -23,6 +23,7 @@
 #Region " Variables "
 
         Private WithEvents _EventLog As System.Diagnostics.EventLog = Nothing
+        Private _IsRunning As Boolean = False
 
 #End Region
 
@@ -612,14 +613,26 @@
 
                 Try
 
-                    If IsServiceReadyToRun(DatabaseProfile) Then
+                    If _IsRunning = False Then
 
-                        ProcessDatabase(DatabaseProfile, False)
+                        _IsRunning = True
+
+                        If IsServiceReadyToRun(DatabaseProfile) Then
+
+                            ProcessDatabase(DatabaseProfile, False)
+
+                        End If
+
+                    Else
+
+                        WriteToEventLog("Service is already running -->" & Space(1) & DatabaseProfile.DatabaseName)
 
                     End If
 
                 Catch ex As Exception
                     WriteToEventLog("Error -->" & ex.Message & Space(1) & DatabaseProfile.DatabaseName)
+                Finally
+                    _IsRunning = False
                 End Try
 
                 WriteToEventLog("Running -->" & Space(1) & DatabaseProfile.DatabaseName)

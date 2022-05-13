@@ -15,7 +15,7 @@ CREATE PROCEDURE [dbo].[advsp_direct_time_load]
 	@DepartmentsList varchar(max),
 	@EmployeesList varchar(max),
 	@FunctionsList varchar(max),
-    @OnlyActiveEmployees bit
+    @OnlyActiveEmployees bit = 0
 AS
 BEGIN
 		
@@ -468,3 +468,4 @@ END
 GO
 
 GRANT EXECUTE ON [advsp_direct_time_load] TO PUBLIC AS dbo
+GO
